@@ -1,0 +1,156 @@
+  name: CI
+
+  on:
+    schedule:
+      # run every midnight (on main)
+      - cron: '0 0 * * *'
+    push:
+
+  jobs:
+
+    test_amd64:
+      runs-on: actuated
+      concurrency:
+        group: ${{ github.ref }}-amd64
+        cancel-in-progress: true
+      steps:
+        - uses: actions/checkout@v3
+          with:
+            fetch-depth: 0 # gets additionally all tags which we need
+        - run: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+        # selecting a toolchain either by action or manual `rustup` calls should happen
+        # before the plugin, as the cache uses the current rustc version as its cache key
+        - run: rustup toolchain install stable --profile minimal
+        - uses: Swatinem/rust-cache@v2
+          with:
+            # The prefix cache key, this can be changed to start a new cache manually.
+            # default: "v0-rust"
+            prefix-key: ""
+
+            # A cache key that is used instead of the automatic `job`-based key,
+            # and is stable over multiple jobs.
+            # default: empty
+            shared-key: ""
+
+            # An additional cache key that is added alongside the automatic `job`-based
+            # cache key and can be used to further differentiate jobs.
+            # default: empty
+            key: ""
+
+            # A whitespace separated list of env-var *prefixes* who's value contributes
+            # to the environment cache key.
+            # The env-vars are matched by *prefix*, so the default `RUST` var will
+            # match all of `RUSTC`, `RUSTUP_*`, `RUSTFLAGS`, `RUSTDOC_*`, etc.
+            # default: "CARGO CC CFLAGS CXX CMAKE RUST"
+            env-vars: ""
+
+            # The cargo workspaces and target directory configuration.
+            # These entries are separated by newlines and have the form
+            # `$workspace -> $target`. The `$target` part is treated as a directory
+            # relative to the `$workspace` and defaults to "target" if not explicitly given.
+            # default: ". -> target"
+            workspaces: ""
+
+            # Additional non workspace directories to be cached, separated by newlines.
+            cache-directories: ""
+
+            # Determines whether workspace `target` directories are cached.
+            # If `false`, only the cargo registry will be cached.
+            # default: "true"
+            cache-targets: ""
+
+            # Determines if the cache should be saved even when the workflow has failed.
+            # default: "false"
+            cache-on-failure: ""
+
+            # Determines which crates are cached.
+            # If `true` all crates will be cached, otherwise only dependent crates will be cached.
+            # Useful if additional crates are used for CI tooling.
+            # default: "false"
+            cache-all-crates: ""
+
+            # Determiners whether the cache should be saved.
+            # If `false`, the cache is only restored.
+            # Useful for jobs where the matrix is additive e.g. additional Cargo features.
+            # default: "true"
+            save-if: ""
+        - name: Lint
+          run: cargo clippy -- -D warnings
+        - name: Build
+          run: cargo build --verbose
+        - name: Test
+          run: cargo test --verbose
+
+    test_aarch64:
+      runs-on: actuated-aarch64
+      concurrency:
+        group: ${{ github.ref }}-aarch64
+        cancel-in-progress: true
+      steps:
+        - uses: actions/checkout@v3
+          with:
+            fetch-depth: 0 # gets additionally all tags which we need
+        - run: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+        # selecting a toolchain either by action or manual `rustup` calls should happen
+        # before the plugin, as the cache uses the current rustc version as its cache key
+        - run: rustup toolchain install stable --profile minimal
+
+        - uses: Swatinem/rust-cache@v2
+          with:
+            # The prefix cache key, this can be changed to start a new cache manually.
+            # default: "v0-rust"
+            prefix-key: ""
+
+            # A cache key that is used instead of the automatic `job`-based key,
+            # and is stable over multiple jobs.
+            # default: empty
+            shared-key: ""
+
+            # An additional cache key that is added alongside the automatic `job`-based
+            # cache key and can be used to further differentiate jobs.
+            # default: empty
+            key: ""
+
+            # A whitespace separated list of env-var *prefixes* who's value contributes
+            # to the environment cache key.
+            # The env-vars are matched by *prefix*, so the default `RUST` var will
+            # match all of `RUSTC`, `RUSTUP_*`, `RUSTFLAGS`, `RUSTDOC_*`, etc.
+            # default: "CARGO CC CFLAGS CXX CMAKE RUST"
+            env-vars: ""
+
+            # The cargo workspaces and target directory configuration.
+            # These entries are separated by newlines and have the form
+            # `$workspace -> $target`. The `$target` part is treated as a directory
+            # relative to the `$workspace` and defaults to "target" if not explicitly given.
+            # default: ". -> target"
+            workspaces: ""
+
+            # Additional non workspace directories to be cached, separated by newlines.
+            cache-directories: ""
+
+            # Determines whether workspace `target` directories are cached.
+            # If `false`, only the cargo registry will be cached.
+            # default: "true"
+            cache-targets: ""
+
+            # Determines if the cache should be saved even when the workflow has failed.
+            # default: "false"
+            cache-on-failure: ""
+
+            # Determines which crates are cached.
+            # If `true` all crates will be cached, otherwise only dependent crates will be cached.
+            # Useful if additional crates are used for CI tooling.
+            # default: "false"
+            cache-all-crates: ""
+
+            # Determiners whether the cache should be saved.
+            # If `false`, the cache is only restored.
+            # Useful for jobs where the matrix is additive e.g. additional Cargo features.
+            # default: "true"
+            save-if: ""
+        - name: Lint
+          run: cargo clippy -- -D warnings
+        - name: Build
+          run: cargo build --verbose
+        - name: Test
+          run: cargo test --verbose
