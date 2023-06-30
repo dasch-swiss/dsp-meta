@@ -1,0 +1,37 @@
+  name: CI
+
+  on:
+    schedule:
+      # run every midnight (on main)
+      - cron: '0 0 * * *'
+    push:
+
+  jobs:
+
+    test_amd64:
+      runs-on: actuated
+      concurrency:
+        group: ${{ github.ref }}-amd64
+        cancel-in-progress: true
+      steps:
+        - uses: actions/checkout@v3
+          with:
+            fetch-depth: 0 # gets additionally all tags which we need
+        - name: Build
+          run: cargo build --verbose
+        - name: Test
+          run: cargo test --verbose
+
+    test_aarch64:
+      runs-on: actuated-aarch64
+      concurrency:
+        group: ${{ github.ref }}-aarch64
+        cancel-in-progress: true
+      steps:
+        - uses: actions/checkout@v3
+          with:
+            fetch-depth: 0 # gets additionally all tags which we need
+        - name: Build
+          run: cargo build --verbose
+        - name: Test
+          run: cargo test --verbose
