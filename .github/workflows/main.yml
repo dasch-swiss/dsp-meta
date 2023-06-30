@@ -75,7 +75,7 @@
             # default: "true"
             save-if: ""
         - name: Lint
-          run: cargo clippy
+          run: cargo clippy -- -D warnings
         - name: Build
           run: cargo build --verbose
         - name: Test
@@ -149,7 +149,7 @@
             # default: "true"
             save-if: ""
         - name: Lint
-          run: cargo clippy
+          run: cargo clippy -- -D warnings
         - name: Build
           run: cargo build --verbose
         - name: Test
