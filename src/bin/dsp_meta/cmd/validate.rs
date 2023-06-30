@@ -1,6 +1,14 @@
+use std::fs;
+use std::path::PathBuf;
+
+use dsp_meta::domain::metadata::Metadata;
+
 /// Read projects definition from .toml
-pub fn read_metadata() {
-    println! {"Hello from read_metadata!"}
+pub fn validate(project: &PathBuf) {
+    println! {"Hello from validate!"};
+
+    let toml = fs::read_to_string(project).unwrap();
+    let _: Metadata = toml::from_str(toml.as_str()).unwrap();
 }
 
 #[test]

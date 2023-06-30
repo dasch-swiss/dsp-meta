@@ -2,16 +2,11 @@ use std::path::PathBuf;
 
 use clap::{Parser, Subcommand};
 
+use crate::cmd::validate::validate;
+
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
 struct Cli {
-    /// Optional name to operate on
-    name: Option<String>,
-
-    /// Sets a custom config file
-    #[arg(short, long, value_name = "FILE")]
-    config: Option<PathBuf>,
-
     /// Turn debugging information on
     #[arg(short, long, action = clap::ArgAction::Count)]
     debug: u8,
@@ -23,24 +18,29 @@ struct Cli {
 #[derive(Subcommand)]
 enum Commands {
     /// does testing thing
-    Test {
-        /// lists test values
+    Validate {
+        /// The required path to the project metadata file to operate on
+        #[arg(short, long, value_name = "FILE")]
+        project: PathBuf,
+    },
+
+    Transform {
+        /// The required path to the project metadata file to operate on
+        #[arg(short, long, value_name = "FILE")]
+        project: PathBuf,
+
+        /// Json output format
         #[arg(short, long)]
-        list: bool,
+        json: bool,
+
+        /// Turtle output format
+        #[arg(short, long)]
+        ttl: bool,
     },
 }
 
 pub fn parse() {
     let cli = Cli::parse();
-
-    // You can check the value provided by positional arguments, or option arguments
-    if let Some(name) = cli.name.as_deref() {
-        println!("Value for name: {name}");
-    }
-
-    if let Some(config_path) = cli.config.as_deref() {
-        println!("Value for config: {}", config_path.display());
-    }
 
     // You can see how many times a particular flag or argument occurred
     // Note, only flags can have multiple occurrences
@@ -54,13 +54,8 @@ pub fn parse() {
     // You can check for the existence of subcommands, and if found use their
     // matches just as you would the top level cmd
     match &cli.command {
-        Some(Commands::Test { list }) => {
-            if *list {
-                println!("Printing testing lists...");
-            } else {
-                println!("Not printing testing lists...")
-            }
-        }
+        Some(Commands::Validate { project }) => validate(project),
         None => {}
+        _ => {}
     }
 }
