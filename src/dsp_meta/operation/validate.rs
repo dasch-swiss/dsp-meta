@@ -8,7 +8,8 @@ pub fn validate(project: &PathBuf) -> anyhow::Result<()> {
     println! {"Hello from validate!"};
 
     // TODO: needs better error message in case that the path cannot be opened.
-    let toml = fs::read_to_string(project)?;
+    let toml = fs::read_to_string(project)
+        .expect("Should have been able to read the file at the supplied path.");
     println!("read project: \n{toml}");
     let _: Project = toml::from_str(toml.as_str())?;
     anyhow::Ok(())
