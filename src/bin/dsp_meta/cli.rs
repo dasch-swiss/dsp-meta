@@ -1,8 +1,7 @@
 use std::path::PathBuf;
 
 use clap::{Parser, Subcommand};
-
-use crate::cmd::validate::validate;
+use dsp_meta::operation::validate::validate;
 
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
@@ -39,7 +38,7 @@ enum Commands {
     },
 }
 
-pub fn parse() {
+pub fn parse() -> anyhow::Result<()> {
     let cli = Cli::parse();
 
     // You can see how many times a particular flag or argument occurred
@@ -55,7 +54,7 @@ pub fn parse() {
     // matches just as you would the top level cmd
     match &cli.command {
         Some(Commands::Validate { project }) => validate(project),
-        None => {}
-        _ => {}
+        None => anyhow::Ok(()),
+        _ => anyhow::Ok(()),
     }
 }

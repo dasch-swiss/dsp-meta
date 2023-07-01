@@ -1,7 +1,7 @@
 mod cli;
-mod cmd;
 
-fn main() {
+fn main() -> anyhow::Result<()> {
     println!("Hello, world!");
-    cli::parse();
+    cli::parse()?;
+    anyhow::Ok(())
 }

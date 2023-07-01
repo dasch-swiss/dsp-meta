@@ -1,0 +1,16 @@
+id = "0000-project"
+shortcode = "0000"
+
+[[datasets]]
+id = "dataset-001"
+title = "Dataset 1"
+
+[[datasets]]
+id = "dataset-002"
+title = "Dataset 2"
+
+[[persons]]
+id = "person-001"
+
+[[persons]]
+id = "person-002"
