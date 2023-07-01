@@ -1,8 +1,7 @@
 mod cli;
-mod cmd;
 
-fn main() {
+fn main() -> anyhow::Result<()> {
     println!("Hello, world!");
-    cmd::validate::read_metadata();
-    cli::parse();
+    cli::parse()?;
+    anyhow::Ok(())
 }
