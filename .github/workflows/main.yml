@@ -24,6 +24,7 @@
           run: |
             rustup toolchain install stable --profile minimal
             rustup toolchain install nightly --profile minimal
+            rustup component add rustfmt --toolchain nightly
         - uses: Swatinem/rust-cache@v2
           with:
             # The prefix cache key, this can be changed to start a new cache manually.
@@ -102,6 +103,7 @@
           run: |
             rustup toolchain install stable --profile minimal
             rustup toolchain install nightly --profile minimal
+            rustup component add rustfmt --toolchain nightly
 
         - uses: Swatinem/rust-cache@v2
           with:
