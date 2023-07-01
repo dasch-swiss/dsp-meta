@@ -74,6 +74,8 @@
             # Useful for jobs where the matrix is additive e.g. additional Cargo features.
             # default: "true"
             save-if: ""
+        - name: Rust fmt
+          run:  cargo +nightly fmt --check
         - name: Lint
           run: cargo clippy -- -D warnings
         - name: Build
