@@ -52,6 +52,5 @@ pub fn parse() -> anyhow::Result<()> {
         Some(Commands::Validate { project }) => validate(project),
         Some(Commands::Convert { source, target }) => convert(source, target),
         None => anyhow::Ok(()),
-        _ => anyhow::Ok(()),
     }
 }

@@ -2,7 +2,7 @@ use std::fs;
 use std::path::PathBuf;
 
 use hcl::Body;
-use log::{error, info, trace, warn};
+use log::{error, trace};
 
 pub fn convert(source_path: &PathBuf, target_path: &PathBuf) -> anyhow::Result<()> {
     let source_string = match fs::read_to_string(source_path) {
