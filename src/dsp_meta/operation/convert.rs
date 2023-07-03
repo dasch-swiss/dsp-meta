@@ -4,7 +4,7 @@ use std::path::PathBuf;
 use hcl::Body;
 use log::{error, trace};
 
-pub fn convert(source_path: &PathBuf, target_path: &PathBuf) -> anyhow::Result<()> {
+pub fn convert(source_path: &PathBuf, _target_path: &PathBuf) -> anyhow::Result<()> {
     let source_string = match fs::read_to_string(source_path) {
         Ok(s) => {
             trace!("Successfully read file at: {}", source_path.display());

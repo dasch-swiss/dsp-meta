@@ -1,7 +1,7 @@
 use std::fs;
 use std::path::PathBuf;
 
-use log::{error, info, trace, warn};
+use log::{error, info, trace};
 
 use crate::domain::project::Project;
 
