@@ -1,5 +1,6 @@
 version = 1
 
+// Description of the project
 project "dsp-0804-project" {
   shortcode = "0804"
   name = "Bilddatenbank Bibliothek St. Moritz"
@@ -13,7 +14,6 @@ project "dsp-0804-project" {
     skos "https://skos.um.es/unesco6/5501" {
       text: "Local history"
     }
-
     skos "https://skos.um.es/unesco6/5502" {
       text: "Regional history"
     }
@@ -37,8 +37,6 @@ project "dsp-0804-project" {
       "Schweiz"
     ]
   }
-
-
   spatial_coverage {
     geonames "https://www.geonames.org/2658822" {
       text: "St. Moritz"

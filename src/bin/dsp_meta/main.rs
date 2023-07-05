@@ -1,12 +1,18 @@
 mod cli;
 
-use env_logger::{Env, Target};
-use log::trace;
+use tracing::{trace, Level};
+use tracing_subscriber::FmtSubscriber;
 
 fn main() -> anyhow::Result<()> {
-    env_logger::Builder::from_env(Env::default().default_filter_or("trace"))
-        .target(Target::Stdout)
-        .init();
+    // a builder for `FmtSubscriber`.
+    let subscriber = FmtSubscriber::builder()
+        // all spans/events with a level higher than TRACE (e.g, debug, info, warn, etc.)
+        // will be written to stdout.
+        .with_max_level(Level::TRACE)
+        // completes the builder.
+        .finish();
+
+    tracing::subscriber::set_global_default(subscriber).expect("setting default subscriber failed");
 
     trace!("Hello, world!");
 
