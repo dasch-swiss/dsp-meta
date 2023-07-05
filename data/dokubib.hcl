@@ -1,13 +1,4 @@
-schema = "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json"
-
-project = {
-  "__id" = "http://ns.dasch.swiss/repository#dsp-0804-project"
-
-  "__type" = "Project"
-
-  "__createdAt" = "1630601297599944000"
-
-  "__createdBy" = "dsp-metadata-gui"
+project "dsp-0804-project" {
 
   "howToCite" = "Dokumentationsbibliothek St. Moritz"
 
