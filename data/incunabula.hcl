@@ -8,20 +8,18 @@ project "0803" {
   start_date  = "2008-06-01"
   end_date    = "2012-08-31",
 
-  keywords = [
-    {
+  keyword {
       de = "Basel"
-    },
-    {
+  }
+  keyword {
       en = "Contectualisation of images"
-    },
-    {
+  }
+  keyword {
       en = "Late Middle Ages"
-    },
-    {
+  }
+  keyword {
       en = "Letterpress Printing"
-    }
-  ]
+  }
 
   name "1" {
     de = "Die Bilderfolgen der Basler Frühdrucke: Spätmittelalterliche Didaxe als Bild-Text-Lektüre"

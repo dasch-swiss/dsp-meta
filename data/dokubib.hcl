@@ -15,21 +15,25 @@ project "0804" {
     de = "Die Bibliothek St. Moritz Dokumentation ist das Lokalarchiv der Gemeinde St. Moritz. Ihre Sammlung umfasst Publikationen, Manuskripte und audiovisuelle Dokumente zur touristischen Entwicklung von St. Moritz."
   }
 
-  keywords = {
-    en = [
-      "local history",
-      "regional history",
-      "tourism",
-      "St. Moritz",
-      "Switzerland"
-    ],
-    de = [
-      "Lokalgeschichte",
-      "Regionalgeschichte",
-      "Tourismus",
-      "St. Moritz",
-      "Schweiz"
-    ]
+  keyword {
+    en = "local history"
+    de = "Lokalgeschichte"
+  }
+  keyword {
+    en = "regional history"
+    de = "Regionalgeschichte"
+  }
+  keyword {
+    en = "tourism"
+    de = "Tourismus"
+  }
+  keyword {
+    en = "St. Moritz"
+    de = "St. Moritz"
+  }
+  keyword {
+    en = "Switzerland"
+    de = "Schweiz"
   }
 
   name "1" {
