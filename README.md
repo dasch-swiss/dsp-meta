@@ -171,6 +171,14 @@ if condition {
 
 ## Metadata HCL: Domain Specific Configuration Language for DSP Metadata
 
+### Style Conventions
+- All block types are lowercase
+- Indent two spaces for each level of nesting
+- When multiple arguments with single-line values appear on consecutive lines, align their equals signs (=)
+- When both arguments and blocks appear together inside a block body, place all of the arguments together at the top
+and then place nested blocks below them. Use one blank line to separate the arguments from the blocks.
+
+
 ### Project
 
 The project block type takes one required label, which is the project identifier. The project identifier is a 4 digit

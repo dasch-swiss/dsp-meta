@@ -29,7 +29,7 @@ person "0803:hannes_hug" {
 }
 
 person "0803:lukas_rosenthaler" {
-  created_at  = "1637624150959124000",
+  created_at = "1637624150959124000",
   created_by = "dsp-metadata-gui",
   family_name "1" {
     text = "Rosenthaler"
@@ -38,7 +38,7 @@ person "0803:lukas_rosenthaler" {
     text = "Lukas"
   }
   affiliation "1" {
-    ref= "0803:dhlab_basel" // reference to organization
+    ref = "0803:dhlab_basel" // reference to organization
   }
 }
 
