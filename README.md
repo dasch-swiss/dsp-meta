@@ -186,6 +186,39 @@ hexadecimal number. The project block type can contain the following attributes:
 
 ```hcl
 project "0000" {
-  # Project metadata
+  # Project specific attributes and blocks
+}
+```
+
+### Dataset
+
+```hcl
+dataset "0804:dataset-001" {
+  # Dataset specific attributes and blocks
+}
+```
+
+
+### Person
+
+```hcl
+person "0803:lothar_schmitt" {
+  # Person specific attributes and blocks
+}
+```
+
+### Organization
+
+```hcl
+organization "0803:lothar_schmitt" {
+  # Organization specific attributes and blocks
+}
+```
+
+### Grant
+
+```hcl
+grant "0803:lothar_schmitt" {
+  # Grant specific attributes and blocks
 }
 ```
