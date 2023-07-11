@@ -1,9 +1,10 @@
 mod cli;
 
+use dsp_meta::errors::DspMetaError;
 use tracing::{trace, Level};
 use tracing_subscriber::FmtSubscriber;
 
-fn main() -> anyhow::Result<()> {
+fn main() -> Result<(), DspMetaError> {
     // a builder for `FmtSubscriber`.
     let subscriber = FmtSubscriber::builder()
         // all spans/events with a level higher than TRACE (e.g, debug, info, warn, etc.)
@@ -17,5 +18,5 @@ fn main() -> anyhow::Result<()> {
     trace!("Hello, world!");
 
     cli::parse()?;
-    anyhow::Ok(())
+    Ok(())
 }

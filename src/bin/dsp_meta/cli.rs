@@ -1,6 +1,7 @@
 use std::path::PathBuf;
 
 use clap::{Parser, Subcommand};
+use dsp_meta::errors::DspMetaError;
 use dsp_meta::operation::convert::convert;
 use dsp_meta::operation::validate::validate;
 use log::info;
@@ -34,7 +35,7 @@ enum Commands {
     },
 }
 
-pub fn parse() -> anyhow::Result<()> {
+pub fn parse() -> Result<(), DspMetaError> {
     let cli = Cli::parse();
 
     // You can see how many times a particular flag or argument occurred
@@ -51,6 +52,6 @@ pub fn parse() -> anyhow::Result<()> {
     match &cli.command {
         Some(Commands::Validate { project }) => validate(project),
         Some(Commands::Convert { source, target }) => convert(source, target),
-        None => anyhow::Ok(()),
+        None => Ok(()),
     }
 }
