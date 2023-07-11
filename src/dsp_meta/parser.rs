@@ -58,11 +58,10 @@ fn parse_project(project: Vec<&Block>) -> Result<Project, DspMetaError> {
     let project_block = *(project.first().unwrap());
     dbg!(project_block);
 
-    let mut id = "";
     let project_label = project_block.labels().first().ok_or_else(|| {
         DspMetaError::ParseProject("Parse error: project needs to have one label.")
     })?;
-    id = project_label.as_str();
+    let id = project_label.as_str();
 
     let mut shortcode: &str = "";
     let project_attributes: Vec<&hcl::Attribute> = project_block.body.attributes().collect();
