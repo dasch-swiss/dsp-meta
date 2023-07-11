@@ -1,5 +1,5 @@
 use std::fs;
-use std::path::{Path};
+use std::path::Path;
 
 use hcl::Body;
 use log::{error, trace};
