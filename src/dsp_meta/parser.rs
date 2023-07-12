@@ -1,9 +1,9 @@
 mod project;
 mod version;
 
-use hcl::{Attribute, Block, Expression};
+use hcl::{Attribute, Block};
 
-use crate::domain::{Metadata, Project};
+use crate::domain::{Metadata};
 use crate::errors::DspMetaError;
 use crate::parser::project::parse_project;
 use crate::parser::version::parse_version;
