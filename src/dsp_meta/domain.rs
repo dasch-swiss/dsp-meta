@@ -1,6 +1,13 @@
+pub(crate) mod value_objects;
+
 use std::fmt::Debug;
 
 use serde::{Deserialize, Serialize};
+
+use crate::domain::value_objects::{
+    CreatedAt, CreatedBy, Datasets, EndDate, Funders, Grants, HowToCite, Shortcode, StartDate,
+    TeaserText, ID,
+};
 
 #[derive(Debug, Default, PartialEq, Deserialize, Serialize)]
 pub struct Metadata {
@@ -37,34 +44,70 @@ impl Metadata {
 
 #[derive(Debug, Default, PartialEq, Deserialize, Serialize)]
 pub struct Project {
-    id: String,
-    shortcode: String,
-    datasets: Vec<String>,
-    funders: Vec<String>,
-    grants: Vec<String>,
+    id: ID,
+    created_at: CreatedAt,
+    created_by: CreatedBy,
+    shortcode: Shortcode,
+    teaser_text: TeaserText,
+    how_to_cite: HowToCite,
+    start_date: StartDate,
+    end_date: EndDate,
+    datasets: Datasets,
+    funders: Funders,
+    grants: Grants,
 }
 
 impl Project {
     pub fn new(
-        id: &str,
-        shortcode: &str,
-        datasets: Vec<String>,
-        funders: Vec<String>,
-        grants: Vec<String>,
+        id: ID,
+        created_at: CreatedAt,
+        created_by: CreatedBy,
+        shortcode: Shortcode,
+        teaser_text: TeaserText,
+        how_to_cite: HowToCite,
+        start_date: StartDate,
+        end_date: EndDate,
+        datasets: Datasets,
+        funders: Funders,
+        grants: Grants,
     ) -> Self {
         Self {
-            id: id.to_string(),
-            shortcode: shortcode.to_string(),
+            id,
+            created_at,
+            created_by,
+            shortcode,
+            teaser_text,
+            how_to_cite,
+            start_date,
+            end_date,
             datasets,
             funders,
             grants,
         }
     }
-    pub fn id(&self) -> &str {
+    pub fn id(&self) -> &ID {
         &self.id
     }
-    pub fn shortcode(&self) -> &str {
+    pub fn created_at(&self) -> &CreatedAt {
+        &self.created_at
+    }
+    pub fn created_by(&self) -> &CreatedBy {
+        &self.created_by
+    }
+    pub fn shortcode(&self) -> &Shortcode {
         &self.shortcode
+    }
+    pub fn teaser_text(&self) -> &TeaserText {
+        &self.teaser_text
+    }
+    pub fn how_to_cite(&self) -> &HowToCite {
+        &self.how_to_cite
+    }
+    pub fn start_date(&self) -> &StartDate {
+        &self.start_date
+    }
+    pub fn end_date(&self) -> &EndDate {
+        &self.end_date
     }
 }
 

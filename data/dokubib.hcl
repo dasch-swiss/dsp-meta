@@ -1,14 +1,13 @@
 version = 1
 
-// Description of the project
 project "0804" {
-  created_at  = "1630601300976368000"
+  created_at  = 1630601300976368000
   created_by  = "dsp-metadata-gui"
   shortcode   = "0804"
+  teaser_text = "Bibliothek St. Moritz Dokumentation is the local history archive of the community of St. Moritz, Switzerland."
+  how_to_cite = "Dokumentationsbibliothek St. Moritz"
   start_date  = "2021-01-01"
   end_date    = "2021-12-31"
-  how_to_cite = "Dokumentationsbibliothek St. Moritz"
-  teaser_text = "Bibliothek St. Moritz Dokumentation is the local history archive of the community of St. Moritz, Switzerland."
   datasets    = ["dataset-001"]
   funders     = ["gemeinde_st_moritz", "snf"]
 
