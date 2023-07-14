@@ -58,6 +58,7 @@ pub struct Project {
 }
 
 impl Project {
+    #[allow(clippy::too_many_arguments)]
     pub fn new(
         id: ID,
         created_at: CreatedAt,
