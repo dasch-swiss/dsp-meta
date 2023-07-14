@@ -1,60 +1,16 @@
-use std::fs;
-use std::path::PathBuf;
+use std::path::Path;
 
-use crate::domain::project::Project;
+use tracing::info;
+
+use crate::errors::DspMetaError;
+use crate::load_model;
 
 /// Read projects definition from .toml
-pub fn validate(project: &PathBuf) -> anyhow::Result<()> {
-    println! {"Hello from validate!"};
-
-    // TODO: needs better error message in case that the path cannot be opened.
-    let toml = fs::read_to_string(project)
-        .expect("Should have been able to read the file at the supplied path.");
-    println!("read project: \n{toml}");
-    let _: Project = toml::from_str(toml.as_str())?;
-    anyhow::Ok(())
+pub fn validate<P: AsRef<Path>>(project_path: &P) -> Result<(), DspMetaError> {
+    info!("Hello from validate!");
+    let _ = load_model(project_path)?;
+    Ok(())
 }
 
 #[cfg(test)]
-mod tests {
-    #[test]
-    fn deserialize_metadata_from_toml() {
-        use crate::domain::dataset::Dataset;
-        use crate::domain::person::Person;
-        use crate::domain::project::Project;
-
-        let project_metadata: Project = Project::make(
-            "0000-project",
-            "0000",
-            vec![
-                Dataset::make("dataset-001", "Dataset 1"),
-                Dataset::make("dataset-002", "Dataset 2"),
-            ],
-            vec![Person::make("person-001"), Person::make("person-002")],
-        );
-
-        let project_metadata_from_toml: Project = toml::from_str(
-            r#"
-            id = "0000-project"
-            shortcode = "0000"
-
-            [[datasets]]
-            id = "dataset-001"
-            title = "Dataset 1"
-
-            [[datasets]]
-            id = "dataset-002"
-            title = "Dataset 2"
-
-            [[persons]]
-            id = "person-001"
-
-            [[persons]]
-            id = "person-002"
-        "#,
-        )
-        .unwrap();
-
-        assert_eq!(project_metadata, project_metadata_from_toml);
-    }
-}
+mod tests {}
