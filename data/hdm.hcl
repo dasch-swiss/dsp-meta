@@ -3,12 +3,14 @@ version = 1
 project "081C" {
   created_at  = 1630601274523025000
   created_by  = "dsp-metadata-gui"
-  short_code  = "081C"
+  shortcode   = "081C"
   teaser_text = "The database documents the different kinds of spectacles such as theatre plays, operas, ballets, or concerts that took place in the Hôtel de Musique in Bern between 1766 and 1905."
   how_to_cite = "HdM-Bern"
   start_date  = "2009-04-01"
+  end_date    = "2015-04-01"
   datasets    = ["081C-dataset-0000"]
   funders     = ["081C-organization-000"]
+  grants      = [""]
 
   name "1" {
     de = "Hôtel de Musique Bern"
