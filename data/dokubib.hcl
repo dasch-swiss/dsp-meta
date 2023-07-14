@@ -4,25 +4,30 @@ project "0804" {
   created_at  = 1630601300976368000
   created_by  = "dsp-metadata-gui"
   shortcode   = "0804"
-  teaser_text = "Bibliothek St. Moritz Dokumentation is the local history archive of the community of St. Moritz, Switzerland."
-  how_to_cite = "Dokumentationsbibliothek St. Moritz"
-  start_date  = "2021-01-01"
-  end_date    = "2021-12-31"
-  datasets    = ["dataset-001"]
-  funders     = ["gemeinde_st_moritz", "snf"]
+  name        = "Bilddatenbank Bibliothek St. Moritz"
 
-  description = {
+  alternativeName "1" {
+    de = "Dokumentationsbibliothek St. Moritz"
+    en = "St. Moritz Documentation Library"
+  }
+
+  teaser_text = "Bibliothek St. Moritz Dokumentation is the local history archive of the community of St. Moritz, Switzerland."
+
+  description {
     en = "Bibliothek St. Moritz Dokumentation is the local history archive of the community of St. Moritz, Switzerland. It’s collection contains publications, manuscripts and audiovisual documents of the touristic development of St. Moritz",
     de = "Die Bibliothek St. Moritz Dokumentation ist das Lokalarchiv der Gemeinde St. Moritz. Ihre Sammlung umfasst Publikationen, Manuskripte und audiovisuelle Dokumente zur touristischen Entwicklung von St. Moritz."
   }
 
-  name "1" {
-    de = "Bilddatenbank Bibliothek St. Moritz"
+  url "1" "https://data.dasch.swiss/dokubib/" {
+    text = "Project Website"
   }
-  name "2" {
-    de = "Bibliothek St. Moritz Dokumentation"
-    en = "Bibliothek St. Moritz Dokumentation"
+  url "2" "https://www.stmoritz.ch/" {
+    text = "St. Moritz Tourism Website"
   }
+
+  how_to_cite = "Dokumentationsbibliothek St. Moritz"
+  start_date  = "2021-01-01"
+  end_date    = "2021-12-31"
 
   keyword {
     en = "local history"
@@ -81,18 +86,6 @@ project "0804" {
     }
   }
 
-  url "1" "https://data.dasch.swiss/dokubib/" {
-    text = "Project Website"
-  }
-  url "2" "https://www.stmoritz.ch/" {
-    text = "St. Moritz Tourism Website"
-  }
-
-  dmp {
-    available = true
-    url       = "https://data.dasch.swiss/dokubib/dmp.pdf"
-  }
-
   publication "1" {
     text = "Bibliothek St. Moritz Dokumentation"
   }
@@ -103,6 +96,14 @@ project "0804" {
 
   contact_point "1" {
     id = "gemeinde_st_moritz"
+  }
+
+  datasets    = ["dataset-001"]
+  funders     = ["gemeinde_st_moritz", "snf"]
+
+  dmp {
+    available = true
+    url       = "https://data.dasch.swiss/dokubib/dmp.pdf"
   }
 }
 

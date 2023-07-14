@@ -1,12 +1,17 @@
+use std::collections::HashMap;
+
 use serde::{Deserialize, Serialize};
 
+/// Denotes possible values for a project.
 #[derive(Debug, PartialEq, Deserialize, Serialize)]
-pub enum ProjectValues {
+pub enum ProjectValue {
     ID(ID),
     CreatedAt(CreatedAt),
     CreatedBy(CreatedBy),
     Shortcode(Shortcode),
+    Name(Name),
     TeaserText(TeaserText),
+    Description(Description),
     HowToCite(HowToCite),
     StartDate(StartDate),
     EndDate(EndDate),
@@ -61,6 +66,17 @@ impl Shortcode {
 }
 
 #[derive(Debug, Default, Clone, PartialEq, Deserialize, Serialize)]
+pub struct Name(String);
+impl Name {
+    pub fn new(name: &str) -> Self {
+        Self(name.to_string())
+    }
+    pub fn value(&self) -> &str {
+        &self.0
+    }
+}
+
+#[derive(Debug, Default, Clone, PartialEq, Deserialize, Serialize)]
 pub struct TeaserText(String);
 impl TeaserText {
     pub fn new(teaser_text: &str) -> Self {
@@ -68,6 +84,18 @@ impl TeaserText {
     }
     pub fn value(&self) -> &str {
         &self.0
+    }
+}
+
+/// A HashMap of language codes and their corresponding descriptions.
+#[derive(Debug, Default, Clone, PartialEq, Deserialize, Serialize)]
+pub struct Description(HashMap<String, String>);
+impl Description {
+    pub fn new(description: HashMap<String, String>) -> Self {
+        Self(description)
+    }
+    pub fn value(&self) -> HashMap<String, String> {
+        self.0.clone()
     }
 }
 

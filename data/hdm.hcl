@@ -4,23 +4,21 @@ project "081C" {
   created_at  = 1630601274523025000
   created_by  = "dsp-metadata-gui"
   shortcode   = "081C"
-  teaser_text = "The database documents the different kinds of spectacles such as theatre plays, operas, ballets, or concerts that took place in the Hôtel de Musique in Bern between 1766 and 1905."
-  how_to_cite = "HdM-Bern"
-  start_date  = "2009-04-01"
-  end_date    = "2015-04-01"
-  datasets    = ["081C-dataset-0000"]
-  funders     = ["081C-organization-000"]
-  grants      = [""]
+  name        = "Hôtel de Musique Bern"
 
-  name "1" {
-    de = "Hôtel de Musique Bern"
-    en = "Hôtel de Musique Bern"
-    fr = "Hôtel de Musique Bern"
-  }
+  teaser_text = "The database documents the different kinds of spectacles such as theatre plays, operas, ballets, or concerts that took place in the Hôtel de Musique in Bern between 1766 and 1905."
 
   description {
     en = "The database documents the events that took place in the Hôtel de Musique in Bern between 1766 and 1905. The repertoire was constituted by different kinds of spectacles like theatre plays, operas, ballets, concerts, dance parties, acrobatic performances, conferences or magicians. The list reconstructs the lifely and colourful theatre culture of Bern in the 19th Century."
   }
+
+  url "1" "https://admin.dasch.swiss/project/081C" {
+    text = "Discover Project Data"
+  }
+
+  how_to_cite = "HdM-Bern"
+  start_date  = "2009-04-01"
+  end_date    = "2015-04-01"
 
   keyword {
     en = "19 Century"
@@ -115,9 +113,9 @@ project "081C" {
     }
   }
 
-  url "1" "https://admin.dasch.swiss/project/081C" {
-    text = "Discover Project Data"
-  }
+  datasets    = ["081C-dataset-0000"]
+  funders     = ["081C-organization-000"]
+  grants      = [""]
 }
 
 dataset "081C-dataset-000" {
