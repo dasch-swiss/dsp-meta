@@ -17,10 +17,16 @@ pub fn parse_project_attributes(
     for attribute in attributes {
         match attribute.key() {
             "created_at" => {
-                parse_created_at(&mut results, attribute)?;
+                results.insert(
+                    "created_at",
+                    ProjectValue::CreatedAt(parse_created_at(attribute)?),
+                );
             }
             "created_by" => {
-                parse_created_by(&mut results, attribute)?;
+                results.insert(
+                    "created_by",
+                    ProjectValue::CreatedBy(parse_created_by(attribute)?),
+                );
             }
             "shortcode" => {
                 let shortcode = match attribute.expr() {
@@ -158,48 +164,43 @@ pub fn parse_project_attributes(
     Ok(results)
 }
 
-fn parse_created_by(
-    results: &mut HashMap<&str, ProjectValue>,
-    attribute: &Attribute,
-) -> Result<(), DspMetaError> {
-    let created_by = match attribute.expr() {
-        Expression::String(value) => Ok(ProjectValue::CreatedBy(CreatedBy::new(value))),
-        _ => Err(DspMetaError::ParseProject(
-            "Parse error: created_by needs to be a string.",
-        )),
-    }?;
-    results.insert("created_by", created_by);
-    Ok(())
-}
-
-fn parse_created_at(
-    results: &mut HashMap<&str, ProjectValue>,
-    attribute: &Attribute,
-) -> Result<(), DspMetaError> {
+fn parse_created_at(attribute: &Attribute) -> Result<CreatedAt, DspMetaError> {
     let created_at = match attribute.expr() {
-        Expression::Number(value) => Ok(ProjectValue::CreatedAt(CreatedAt::new(
-            value.as_u64().unwrap(),
-        ))),
+        Expression::Number(value) => Ok(CreatedAt::new(value.as_u64().unwrap())),
         _ => Err(DspMetaError::ParseProject(
             "Parse error: created_at needs to be a number.",
         )),
     }?;
-    results.insert("created_at", created_at);
-    Ok(())
+    Ok(created_at)
+}
+
+fn parse_created_by(attribute: &Attribute) -> Result<CreatedBy, DspMetaError> {
+    let created_by = match attribute.expr() {
+        Expression::String(value) => Ok(CreatedBy::new(value)),
+        _ => Err(DspMetaError::ParseProject(
+            "Parse error: created_by needs to be a string.",
+        )),
+    }?;
+    Ok(created_by)
 }
 
 #[cfg(test)]
 mod tests {
+    use hcl::Number;
+
     use super::*;
 
     #[test]
+    fn created_at() {
+        let attribute = Attribute::new("created_at", Expression::Number(Number::from(123456789)));
+        let created_at = parse_created_at(&attribute).unwrap();
+        assert_eq!(created_at, CreatedAt::new(123456789));
+    }
+
+    #[test]
     fn created_by() {
-        let mut results: HashMap<&str, ProjectValue> = HashMap::new();
         let attribute = Attribute::new("created_by", Expression::String("John Doe".to_string()));
-        parse_created_by(&mut results, &attribute).unwrap();
-        assert_eq!(
-            results.get("created_by"),
-            Some(&ProjectValue::CreatedBy(CreatedBy::new("John Doe")))
-        );
+        let created_by = parse_created_by(&attribute).unwrap();
+        assert_eq!(created_by, CreatedBy::new("John Doe"));
     }
 }
