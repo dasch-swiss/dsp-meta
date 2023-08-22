@@ -18,11 +18,8 @@ project "0804" {
     de = "Die Bibliothek St. Moritz Dokumentation ist das Lokalarchiv der Gemeinde St. Moritz. Ihre Sammlung umfasst Publikationen, Manuskripte und audiovisuelle Dokumente zur touristischen Entwicklung von St. Moritz."
   }
 
-  url "1" "https://data.dasch.swiss/dokubib/" {
+  url "https://data.dasch.swiss/dokubib/" {
     text = "Project Website"
-  }
-  url "2" "https://www.stmoritz.ch/" {
-    text = "St. Moritz Tourism Website"
   }
 
   how_to_cite = "Dokumentationsbibliothek St. Moritz"

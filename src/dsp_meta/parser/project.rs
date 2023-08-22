@@ -8,8 +8,8 @@ use tracing::info;
 
 use crate::domain::project::Project;
 use crate::domain::value_objects::{
-    CreatedAt, CreatedBy, Datasets, EndDate, Funders, Grants, HowToCite, Name, ProjectValue,
-    Shortcode, StartDate, TeaserText, ID,
+    AlternativeNames, CreatedAt, CreatedBy, Datasets, Description, EndDate, Funders, Grants,
+    HowToCite, Name, ProjectValue, Shortcode, StartDate, TeaserText, ID,
 };
 use crate::errors::DspMetaError;
 use crate::parser::project::project_blocks::parse_project_blocks;
@@ -19,6 +19,9 @@ pub fn parse_project(project_block: &Block) -> Result<Project, DspMetaError> {
         DspMetaError::ParseProject("Parse error: project needs to have one label.")
     })?;
     let id = ID::new(project_label.as_str());
+
+    // extract the project attributes
+    // created_at, created_by, shortcode, name, teaser_text, how_to_cite, start_date, end_date, datasets, funders, grants
 
     let attributes =
         project_attributes::parse_project_attributes(project_block.body.attributes().collect())?;
@@ -45,8 +48,14 @@ pub fn parse_project(project_block: &Block) -> Result<Project, DspMetaError> {
 
     let grants = extract_grants(&attributes)?;
 
+    // extract the project blocks
+    // alternative_names, description, url, keywords, disciplines, publications)
+
     let project_blocks: Vec<&Block> = project_block.body.blocks().collect();
-    let _ = parse_project_blocks(project_blocks);
+    let _blocks = parse_project_blocks(project_blocks)?;
+
+    let alternative_names = AlternativeNames::new(HashMap::new());
+    let description = Description::new(HashMap::new());
 
     let project = Project::new(
         id,
@@ -54,7 +63,9 @@ pub fn parse_project(project_block: &Block) -> Result<Project, DspMetaError> {
         created_by,
         shortcode,
         name,
+        alternative_names,
         teaser_text,
+        description,
         how_to_cite,
         start_date,
         end_date,
@@ -95,7 +106,7 @@ fn extract_shortcode(attributes: &HashMap<&str, ProjectValue>) -> Result<Shortco
         DspMetaError::ParseProject("Parse error: project needs to have a shortcode.")
     })?;
 
-    // FIXME: This is feels a bit hacky to get the value object out of the enum.
+    // FIXME: Feels a bit hacky, to get the value object out of the enum in this way.
     let mut shortcode = Default::default();
     if let ProjectValue::Shortcode(v) = shortcode_value {
         shortcode = v.clone();
@@ -228,10 +239,14 @@ mod tests {
                 created_by  = "dsp-metadata-gui"
                 shortcode = "0803"
                 name = "The German Family Panel (pairfam)"
+                alternative_name "1" {
+                    de = "Der deutsche Familienpanel (pairfam)"
+                    en = "The German Family Panel (pairfam)"
+                }
                 teaser_text = "The German Family Panel (pairfam) is a multidisciplinary, longitudinal study."
                 description {
                     de = "Der deutsche Familienpanel (pairfam) ist eine multidisziplinäre, längsschnittliche Studie."
-                    en = "The German Family Panel (pairfam) is a multidisciplinary, longitudinal study." 
+                    en = "The German Family Panel (pairfam) is a multidisciplinary, longitudinal study."
                 }
                 how_to_cite = "Huinink, Johannes; Schröder, Carolin; Castiglioni, Laura; Feldhaus, Michael"
                 start_date  = "2009-04-01"

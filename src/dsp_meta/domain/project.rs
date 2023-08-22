@@ -1,8 +1,8 @@
 use serde::{Deserialize, Serialize};
 
 use crate::domain::value_objects::{
-    CreatedAt, CreatedBy, Datasets, EndDate, Funders, Grants, HowToCite, Name, Shortcode,
-    StartDate, TeaserText, ID,
+    AlternativeNames, CreatedAt, CreatedBy, Datasets, Description, EndDate, Funders, Grants,
+    HowToCite, Name, Shortcode, StartDate, TeaserText, ID,
 };
 
 #[derive(Debug, Default, PartialEq, Deserialize, Serialize)]
@@ -12,7 +12,9 @@ pub struct Project {
     created_by: CreatedBy,
     shortcode: Shortcode,
     name: Name,
+    alternative_names: AlternativeNames,
     teaser_text: TeaserText,
+    description: Description,
     how_to_cite: HowToCite,
     start_date: StartDate,
     end_date: Option<EndDate>,
@@ -29,7 +31,9 @@ impl Project {
         created_by: CreatedBy,
         shortcode: Shortcode,
         name: Name,
+        alternative_names: AlternativeNames,
         teaser_text: TeaserText,
+        description: Description,
         how_to_cite: HowToCite,
         start_date: StartDate,
         end_date: Option<EndDate>,
@@ -43,7 +47,9 @@ impl Project {
             created_by,
             shortcode,
             name,
+            alternative_names,
             teaser_text,
+            description,
             how_to_cite,
             start_date,
             end_date,
@@ -67,8 +73,14 @@ impl Project {
     pub fn name(&self) -> &Name {
         &self.name
     }
+    pub fn alternative_names(&self) -> &AlternativeNames {
+        &self.alternative_names
+    }
     pub fn teaser_text(&self) -> &TeaserText {
         &self.teaser_text
+    }
+    pub fn description(&self) -> &Description {
+        &self.description
     }
     pub fn how_to_cite(&self) -> &HowToCite {
         &self.how_to_cite

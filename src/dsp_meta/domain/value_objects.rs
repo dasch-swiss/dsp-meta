@@ -10,6 +10,7 @@ pub enum ProjectValue {
     CreatedBy(CreatedBy),
     Shortcode(Shortcode),
     Name(Name),
+    AlternativeNames(AlternativeNames),
     TeaserText(TeaserText),
     Description(Description),
     HowToCite(HowToCite),
@@ -73,6 +74,18 @@ impl Name {
     }
     pub fn value(&self) -> &str {
         &self.0
+    }
+}
+
+/// A HashMap of language codes and their corresponding alternative names.
+#[derive(Debug, Default, Clone, PartialEq, Deserialize, Serialize)]
+pub struct AlternativeNames(HashMap<String, String>);
+impl AlternativeNames {
+    pub fn new(alternative_names: HashMap<String, String>) -> Self {
+        Self(alternative_names)
+    }
+    pub fn value(&self) -> HashMap<String, String> {
+        self.0.clone()
     }
 }
 
