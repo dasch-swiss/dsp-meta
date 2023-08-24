@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-use crate::domain::value_objects::{
+use crate::domain::{
     AlternativeNames, CreatedAt, CreatedBy, Datasets, Description, EndDate, Funders, Grants,
     HowToCite, Name, Shortcode, StartDate, TeaserText, ID,
 };

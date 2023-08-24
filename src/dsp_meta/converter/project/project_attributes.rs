@@ -3,7 +3,7 @@ use std::collections::HashMap;
 use hcl::{Attribute, Expression};
 use tracing::warn;
 
-use crate::domain::value_objects::{
+use crate::domain::{
     CreatedAt, CreatedBy, Datasets, EndDate, Funders, Grants, HowToCite, Name, ProjectValue,
     Shortcode, StartDate, TeaserText,
 };

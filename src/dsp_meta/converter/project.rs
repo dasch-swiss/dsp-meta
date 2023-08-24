@@ -8,7 +8,7 @@ use tracing::info;
 
 use crate::converter::project::project_blocks::parse_project_blocks;
 use crate::domain::project::Project;
-use crate::domain::value_objects::{
+use crate::domain::{
     AlternativeNames, CreatedAt, CreatedBy, Datasets, Description, EndDate, Funders, Grants,
     HowToCite, Name, ProjectValue, Shortcode, StartDate, TeaserText, ID,
 };

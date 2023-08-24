@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use hcl::Block;
 
-use crate::domain::value_objects::ProjectValue;
+use crate::domain::ProjectValue;
 use crate::errors::DspMetaError;
 
 pub fn parse_project_blocks(
