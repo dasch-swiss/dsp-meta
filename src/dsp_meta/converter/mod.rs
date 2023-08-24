@@ -3,10 +3,10 @@ mod version;
 
 use hcl::Block;
 
+use crate::converter::project::parse_project;
+use crate::converter::version::parse_version;
 use crate::domain::Metadata;
 use crate::errors::DspMetaError;
-use crate::parser::project::parse_project;
-use crate::parser::version::parse_version;
 
 /// The function parses the body of HCL.
 pub fn parse(body: hcl::Body) -> Result<Metadata, DspMetaError> {

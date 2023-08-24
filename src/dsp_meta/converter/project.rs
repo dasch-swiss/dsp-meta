@@ -6,13 +6,13 @@ use std::collections::HashMap;
 use hcl::Block;
 use tracing::info;
 
+use crate::converter::project::project_blocks::parse_project_blocks;
 use crate::domain::project::Project;
 use crate::domain::value_objects::{
     AlternativeNames, CreatedAt, CreatedBy, Datasets, Description, EndDate, Funders, Grants,
     HowToCite, Name, ProjectValue, Shortcode, StartDate, TeaserText, ID,
 };
 use crate::errors::DspMetaError;
-use crate::parser::project::project_blocks::parse_project_blocks;
 
 pub fn parse_project(project_block: &Block) -> Result<Project, DspMetaError> {
     let project_label = project_block.labels().first().ok_or_else(|| {
@@ -57,7 +57,7 @@ pub fn parse_project(project_block: &Block) -> Result<Project, DspMetaError> {
     let alternative_names = AlternativeNames::new(HashMap::new());
     let description = Description::new(HashMap::new());
 
-    let project = Project::new(
+    let project = Project {
         id,
         created_at,
         created_by,
@@ -71,8 +71,8 @@ pub fn parse_project(project_block: &Block) -> Result<Project, DspMetaError> {
         end_date,
         datasets,
         funders,
-        Some(grants),
-    );
+        grants: Some(grants),
+    };
 
     Ok(project)
 }
@@ -228,7 +228,7 @@ mod tests {
     use tracing_test::traced_test;
 
     use super::*;
-    use crate::parser::project::project_attributes::parse_project_attributes;
+    use crate::converter::project::project_attributes::parse_project_attributes;
 
     #[traced_test]
     #[test]
@@ -261,28 +261,25 @@ mod tests {
         let blocks: Vec<&hcl::Block> = body.blocks().collect();
         let project = super::parse_project(blocks.first().unwrap()).unwrap();
         dbg!(&project);
-        assert_eq!(project.id(), &ID::new("0803"));
-        assert_eq!(project.created_at(), &CreatedAt::new(1630601274523025000));
-        assert_eq!(project.created_by(), &CreatedBy::new("dsp-metadata-gui"));
-        assert_eq!(project.shortcode(), &Shortcode::new("0803"));
+        assert_eq!(project.id, ID::new("0803"));
+        assert_eq!(project.created_at, CreatedAt::new(1630601274523025000));
+        assert_eq!(project.created_by, CreatedBy::new("dsp-metadata-gui"));
+        assert_eq!(project.shortcode, Shortcode::new("0803"));
+        assert_eq!(project.name, Name::new("The German Family Panel (pairfam)"));
         assert_eq!(
-            project.name(),
-            &Name::new("The German Family Panel (pairfam)")
-        );
-        assert_eq!(
-            project.teaser_text(),
-            &TeaserText::new(
+            project.teaser_text,
+            TeaserText::new(
                 "The German Family Panel (pairfam) is a multidisciplinary, longitudinal study."
             )
         );
         assert_eq!(
-            project.how_to_cite(),
-            &HowToCite::new(
+            project.how_to_cite,
+            HowToCite::new(
                 "Huinink, Johannes; Schröder, Carolin; Castiglioni, Laura; Feldhaus, Michael"
             )
         );
-        assert_eq!(project.start_date(), &StartDate::new("2009-04-01"));
-        assert_eq!(project.end_date(), &Some(EndDate::new("2012-03-31")));
+        assert_eq!(project.start_date, StartDate::new("2009-04-01"));
+        assert_eq!(project.end_date, Some(EndDate::new("2012-03-31")));
     }
 
     #[traced_test]

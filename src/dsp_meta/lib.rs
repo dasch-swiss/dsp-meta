@@ -1,7 +1,7 @@
+pub mod converter;
 pub mod domain;
 pub mod errors;
 pub mod operation;
-pub mod parser;
 
 use std::path::Path;
 
@@ -11,7 +11,7 @@ use crate::errors::DspMetaError;
 pub fn load_model<P: AsRef<Path>>(path: P) -> Result<Metadata, DspMetaError> {
     let input = std::fs::read_to_string(path)?;
     let body: hcl::Body = hcl::from_str(&input)?;
-    let model = parser::parse(body)?;
+    let model = converter::parse(body)?;
     Ok(model)
 }
 
