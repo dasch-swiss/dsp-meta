@@ -224,7 +224,7 @@ fn extract_grants(attributes: &HashMap<&str, ProjectValue>) -> Result<Grants, Ds
 
 #[cfg(test)]
 mod tests {
-
+    use hcl::body;
     use tracing_test::traced_test;
 
     use super::*;
@@ -233,9 +233,9 @@ mod tests {
     #[traced_test]
     #[test]
     fn parse_project() {
-        let input = r#"
+        let body = body!(
             project "0803" {
-                created_at = 1630601274523025000
+                created_at = 1630601274523025000i64 // FIXME: is there a more readable way to write an i64?
                 created_by  = "dsp-metadata-gui"
                 shortcode = "0803"
                 name = "The German Family Panel (pairfam)"
@@ -255,9 +255,7 @@ mod tests {
                 funders = ["funder-1"]
                 grants = []
             }
-        "#;
-
-        let body: hcl::Body = hcl::from_str(input).unwrap();
+        );
         let blocks: Vec<&hcl::Block> = body.blocks().collect();
         let project = super::parse_project(blocks.first().unwrap()).unwrap();
         dbg!(&project);
