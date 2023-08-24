@@ -6,6 +6,8 @@ use std::fmt::Debug;
 use project::Project;
 use serde::{Deserialize, Serialize};
 
+// move everything to domain module
+
 #[derive(Debug, Default, PartialEq, Deserialize, Serialize)]
 pub struct Metadata {
     version: u64,

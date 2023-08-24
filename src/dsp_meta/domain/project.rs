@@ -5,6 +5,7 @@ use crate::domain::value_objects::{
     HowToCite, Name, Shortcode, StartDate, TeaserText, ID,
 };
 
+// no need for smart constructors here, as there is no validation happening
 #[derive(Debug, Default, PartialEq, Deserialize, Serialize)]
 pub struct Project {
     id: ID,

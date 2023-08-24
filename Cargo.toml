@@ -5,10 +5,10 @@
 [workspace.dependencies]
 anyhow = "1"
 async-trait = "0.1.68"
-clap = { version = "4.3.23", features = ["derive"] } # command-line parser
+clap = { version = "4.3.23", features = ["derive"] } # command-line converter
 config = "0.13.1" # Layered configuration with strong support for 12-factor applications
 dirs = "5.0.1" # provides platform-specific locations for storing user configuration
-hcl-rs = "0.14.6" # HCL parser
+hcl-rs = "0.14.6" # HCL converter
 indicatif = "0.17.0" # prograss bars and spinners
 log = "0.4.20" # logging facade
 once_cell = "1.18.0"
