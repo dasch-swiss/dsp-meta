@@ -1,10 +1,16 @@
+mod converter;
 pub(crate) mod project;
 
 use std::collections::HashMap;
 use std::fmt::Debug;
 
+use converter::project::convert_project;
+use converter::version::convert_version;
+use hcl::Block;
 use project::Project;
 use serde::{Deserialize, Serialize};
+
+use crate::domain::converter::extract_project_block;
 
 // move everything to domain module
 
@@ -38,6 +44,29 @@ impl Metadata {
     }
     pub fn version(&self) -> u64 {
         self.version
+    }
+}
+
+impl TryFrom<hcl::Body> for Metadata {
+    type Error = crate::errors::DspMetaError;
+
+    fn try_from(body: hcl::Body) -> Result<Self, Self::Error> {
+        let version = convert_version(body.attributes().collect())?;
+
+        let blocks: Vec<&Block> = body.blocks().collect();
+        let project_block = extract_project_block(blocks)?;
+        let project = convert_project(project_block)?;
+        dbg!(&project);
+
+        let metadata = Metadata::new(
+            version,
+            project,
+            Vec::new(),
+            Vec::new(),
+            Vec::new(),
+            Vec::new(),
+        );
+        Ok(metadata)
     }
 }
 
@@ -262,5 +291,35 @@ impl Grants {
     }
     pub fn value(&self) -> Vec<String> {
         self.0.clone()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use hcl::body;
+
+    use super::*;
+
+    #[test]
+    fn try_from_multiple_projects_error() {
+        let input = body!(
+            project "0803" {
+                shortcode = "0803"
+            }
+            project "0804" {
+                shortcode = "0804"
+            }
+        );
+
+        let project = Metadata::try_from(input);
+        assert!(project.is_err());
+    }
+
+    #[test]
+    fn try_from_no_project_error() {
+        let input = body!();
+
+        let project = Metadata::try_from(input);
+        assert!(project.is_err());
     }
 }

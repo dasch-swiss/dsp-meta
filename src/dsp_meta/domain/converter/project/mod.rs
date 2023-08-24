@@ -6,7 +6,7 @@ use std::collections::HashMap;
 use hcl::Block;
 use tracing::info;
 
-use crate::converter::project::project_blocks::parse_project_blocks;
+use crate::domain::converter::project::project_blocks::parse_project_blocks;
 use crate::domain::project::Project;
 use crate::domain::{
     AlternativeNames, CreatedAt, CreatedBy, Datasets, Description, EndDate, Funders, Grants,
@@ -14,7 +14,7 @@ use crate::domain::{
 };
 use crate::errors::DspMetaError;
 
-pub fn parse_project(project_block: &Block) -> Result<Project, DspMetaError> {
+pub fn convert_project(project_block: &Block) -> Result<Project, DspMetaError> {
     let project_label = project_block.labels().first().ok_or_else(|| {
         DspMetaError::ParseProject("Parse error: project needs to have one label.")
     })?;
@@ -228,7 +228,7 @@ mod tests {
     use tracing_test::traced_test;
 
     use super::*;
-    use crate::converter::project::project_attributes::parse_project_attributes;
+    use crate::domain::converter::project::project_attributes::parse_project_attributes;
 
     #[traced_test]
     #[test]
@@ -257,7 +257,7 @@ mod tests {
             }
         );
         let blocks: Vec<&hcl::Block> = body.blocks().collect();
-        let project = super::parse_project(blocks.first().unwrap()).unwrap();
+        let project = super::convert_project(blocks.first().unwrap()).unwrap();
         dbg!(&project);
         assert_eq!(project.id, ID::new("0803"));
         assert_eq!(project.created_at, CreatedAt::new(1630601274523025000));

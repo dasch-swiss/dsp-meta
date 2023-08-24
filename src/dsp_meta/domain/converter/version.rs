@@ -2,7 +2,7 @@ use hcl::{Attribute, Expression};
 
 use crate::errors::DspMetaError;
 
-pub fn parse_version(attributes: Vec<&Attribute>) -> Result<u64, DspMetaError> {
+pub fn convert_version(attributes: Vec<&Attribute>) -> Result<u64, DspMetaError> {
     let mut version: u64 = 0;
     for attribute in attributes {
         if attribute.key() == "version" {
@@ -17,15 +17,18 @@ pub fn parse_version(attributes: Vec<&Attribute>) -> Result<u64, DspMetaError> {
 
 #[cfg(test)]
 mod tests {
+
+    use super::*;
+
     #[test]
-    fn parse_version() {
+    fn test_convert_version() {
         let input = r#"
             version = 1
         "#;
 
         let body: hcl::Body = hcl::from_str(input).unwrap();
         let attributes: Vec<&hcl::Attribute> = body.attributes().collect();
-        let version = super::parse_version(attributes).unwrap();
+        let version = convert_version(attributes).unwrap();
         assert_eq!(version, 1);
     }
 }

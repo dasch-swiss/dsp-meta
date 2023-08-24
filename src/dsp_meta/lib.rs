@@ -1,4 +1,3 @@
-pub mod converter;
 pub mod domain;
 pub mod errors;
 pub mod operation;
@@ -8,16 +7,18 @@ use std::path::Path;
 use crate::domain::Metadata;
 use crate::errors::DspMetaError;
 
-pub fn load_model<P: AsRef<Path>>(path: P) -> Result<Metadata, DspMetaError> {
+pub fn load<P: AsRef<Path>>(path: P) -> Result<Metadata, DspMetaError> {
     let input = std::fs::read_to_string(path)?;
     let body: hcl::Body = hcl::from_str(&input)?;
-    let model = converter::parse(body)?;
-    Ok(model)
+    let metadata = Metadata::try_from(body)?;
+    Ok(metadata)
 }
 
 #[cfg(test)]
 mod tests {
-    use crate::load_model;
+    use hcl::body;
+
+    use super::*;
 
     #[test]
     fn deserialize_metadata_from_hcl() {
@@ -70,40 +71,38 @@ mod tests {
             )
             .build();
 
-        let input = r#"
-          project "0803" {
-            created_at  = "1637624150548721000"
-            created_by  = "dsp-metadata-gui"
-            shortcode   = "0803"
-            teaser_text = "An artscientific monograph of the richly illustrated early prints in Basel"
-            start_date  = "2008-06-01"
-            end_date    = "2012-08-31"
+        let actual = body!(
+              project "0803" {
+                created_at  = "1637624150548721000"
+                created_by  = "dsp-metadata-gui"
+                shortcode   = "0803"
+                teaser_text = "An artscientific monograph of the richly illustrated early prints in Basel"
+                start_date  = "2008-06-01"
+                end_date    = "2012-08-31"
 
-            keyword {
-              en = "local history"
-              de = "Lokalgeschichte"
-            }
-            keyword {
-              en = "regional history"
-              de = "Regionalgeschichte"
-            }
+                keyword {
+                  en = "local history"
+                  de = "Lokalgeschichte"
+                }
+                keyword {
+                  en = "regional history"
+                  de = "Regionalgeschichte"
+                }
 
-            name "1" {
-              de = "Die Bilderfolgen der Basler Frühdrucke: Spätmittelalterliche Didaxe als Bild-Text-Lektüre"
-            }
-            name "2" {
-              en = "Incunabula"
-            }
+                name "1" {
+                  de = "Die Bilderfolgen der Basler Frühdrucke: Spätmittelalterliche Didaxe als Bild-Text-Lektüre"
+                }
+                name "2" {
+                  en = "Incunabula"
+                }
 
-            discipline {
-              text {
-                en = "10404 Visual arts and Art history"
+                discipline {
+                  text {
+                    en = "10404 Visual arts and Art history"
+                  }
+                }
               }
-            }
-          }
-    "#;
-        let actual: Body = hcl::from_str(input).unwrap();
-
+        );
         assert_eq!(expected, actual);
     }
 
@@ -111,20 +110,18 @@ mod tests {
     fn deserialize_hcl_block_label() {
         use hcl::{Attribute, Block};
 
-        let input = r#"
-          version = 1
-          project "0803" {
-            shortcode = "0803"
-          }
-          dataset "dataset-001" {
-            title = "One dataset"
-          }
-          dataset "dataset-002" {
-            title = "Another dataset"
-          }
-    "#;
-
-        let body: hcl::Body = hcl::from_str(input).unwrap();
+        let body = body!(
+              version = 1
+              project "0803" {
+                shortcode = "0803"
+              }
+              dataset "dataset-001" {
+                title = "One dataset"
+              }
+              dataset "dataset-002" {
+                title = "Another dataset"
+              }
+        );
         dbg!(&body);
 
         let attributes: Vec<&Attribute> = body.attributes().collect();
@@ -133,13 +130,13 @@ mod tests {
         let blocks: Vec<&Block> = body.blocks().collect();
         dbg!(blocks);
 
-        let json: serde_json::Value = hcl::from_str(input).unwrap();
+        let json: serde_json::Value = hcl::from_body(body).unwrap();
         dbg!(json);
     }
 
     #[test]
     fn load_hdm_config() {
-        let model = load_model("./data/hdm.hcl").unwrap();
-        assert_eq!(model.version(), 1);
+        let hdm_metadata = load("./data/hdm.hcl").unwrap();
+        assert_eq!(hdm_metadata.version(), 1);
     }
 }

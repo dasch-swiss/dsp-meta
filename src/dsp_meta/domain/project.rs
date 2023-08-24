@@ -1,4 +1,3 @@
-use hcl::block;
 use serde::{Deserialize, Serialize};
 
 use crate::domain::{
@@ -45,6 +44,8 @@ impl TryFrom<hcl::Block> for Project {
 
 #[cfg(test)]
 mod tests {
+    use hcl::block;
+
     use super::*;
     use crate::domain::Shortcode;
 
