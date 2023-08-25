@@ -137,6 +137,6 @@ mod tests {
     #[test]
     fn load_hdm_config() {
         let hdm_metadata = load("./data/hdm.hcl").unwrap();
-        assert_eq!(hdm_metadata.version(), 1);
+        assert_eq!(hdm_metadata.version.0, 1);
     }
 }

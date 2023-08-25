@@ -1,88 +1,58 @@
 mod converter;
 pub(crate) mod project;
+pub(crate) mod version;
 
 use std::collections::HashMap;
 use std::fmt::Debug;
 
 use converter::project::convert_project;
-use converter::version::convert_version;
 use hcl::Block;
 use project::Project;
 use serde::{Deserialize, Serialize};
 
 use crate::domain::converter::extract_project_block;
+use crate::domain::version::Version;
 
-// move everything to domain module
-
+/// The Metadata struct represents the metadata of a DSP project.
+/// TODO: check if the cardinality of the fields are correct
 #[derive(Debug, Default, PartialEq, Deserialize, Serialize)]
 pub struct Metadata {
-    version: u64,
-    project: Project,
-    datasets: Vec<Dataset>,
-    grants: Vec<Grant>,
-    organizations: Vec<Organization>,
-    persons: Vec<Person>,
-}
-
-impl Metadata {
-    pub fn new(
-        version: u64,
-        project: Project,
-        datasets: Vec<Dataset>,
-        grants: Vec<Grant>,
-        organizations: Vec<Organization>,
-        persons: Vec<Person>,
-    ) -> Self {
-        Self {
-            version,
-            project,
-            datasets,
-            grants,
-            organizations,
-            persons,
-        }
-    }
-    pub fn version(&self) -> u64 {
-        self.version
-    }
+    pub version: Version,
+    pub project: Project,
+    pub datasets: Vec<Dataset>,
+    pub grants: Vec<Grant>,
+    pub organizations: Vec<Organization>,
+    pub persons: Vec<Person>,
 }
 
 impl TryFrom<hcl::Body> for Metadata {
     type Error = crate::errors::DspMetaError;
 
     fn try_from(body: hcl::Body) -> Result<Self, Self::Error> {
-        let version = convert_version(body.attributes().collect())?;
+        let attributes: Vec<&hcl::Attribute> = body.attributes().collect();
+        let version = Version::try_from(attributes)?;
 
         let blocks: Vec<&Block> = body.blocks().collect();
         let project_block = extract_project_block(blocks)?;
         let project = convert_project(project_block)?;
         dbg!(&project);
 
-        let metadata = Metadata::new(
+        let metadata = Metadata {
             version,
             project,
-            Vec::new(),
-            Vec::new(),
-            Vec::new(),
-            Vec::new(),
-        );
+            datasets: Vec::new(),
+            grants: Vec::new(),
+            organizations: Vec::new(),
+            persons: Vec::new(),
+        };
         Ok(metadata)
     }
 }
 
 #[derive(Debug, PartialEq, Deserialize, Serialize)]
 pub struct Dataset {
-    id: String,
-    title: String,
-}
-
-impl Dataset {
-    pub fn new(id: &str, title: &str) -> Self {
-        Self {
-            id: id.to_string(),
-            title: title.to_string(),
-        }
-    }
+    pub id: String,
+    pub title: String,
 }
 
 #[derive(Debug, PartialEq, Deserialize, Serialize)]
@@ -90,8 +60,8 @@ pub struct Person {
     id: String,
 }
 
-impl Person {
-    pub fn new(id: &str) -> Self {
+impl From<&str> for Person {
+    fn from(id: &str) -> Self {
         Self { id: id.to_string() }
     }
 }
@@ -138,14 +108,13 @@ pub enum ProjectValue {
 }
 
 #[derive(Debug, Default, Clone, PartialEq, Deserialize, Serialize)]
-pub struct ID(String);
+pub struct ID {
+    pub id: String,
+}
 
-impl ID {
-    pub fn new(id: &str) -> Self {
-        Self(id.to_string())
-    }
-    pub fn value(&self) -> &str {
-        &self.0
+impl From<&str> for ID {
+    fn from(id: &str) -> Self {
+        Self { id: id.to_string() }
     }
 }
 

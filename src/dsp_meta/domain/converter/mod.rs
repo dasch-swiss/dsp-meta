@@ -3,7 +3,6 @@ use hcl::Block;
 use crate::errors::DspMetaError;
 
 pub mod project;
-pub mod version;
 
 pub fn extract_project_block(blocks: Vec<&Block>) -> Result<&Block, DspMetaError> {
     let mut project_block: Vec<&Block> = vec![];

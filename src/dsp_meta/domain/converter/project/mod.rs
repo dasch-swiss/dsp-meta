@@ -18,7 +18,7 @@ pub fn convert_project(project_block: &Block) -> Result<Project, DspMetaError> {
     let project_label = project_block.labels().first().ok_or_else(|| {
         DspMetaError::ParseProject("Parse error: project needs to have one label.")
     })?;
-    let id = ID::new(project_label.as_str());
+    let id = ID::from(project_label.as_str());
 
     // extract the project attributes
     // created_at, created_by, shortcode, name, teaser_text, how_to_cite, start_date, end_date, datasets, funders, grants
@@ -259,7 +259,7 @@ mod tests {
         let blocks: Vec<&hcl::Block> = body.blocks().collect();
         let project = super::convert_project(blocks.first().unwrap()).unwrap();
         dbg!(&project);
-        assert_eq!(project.id, ID::new("0803"));
+        assert_eq!(project.id, ID::from("0803"));
         assert_eq!(project.created_at, CreatedAt::new(1630601274523025000));
         assert_eq!(project.created_by, CreatedBy::new("dsp-metadata-gui"));
         assert_eq!(project.shortcode, Shortcode::new("0803"));
