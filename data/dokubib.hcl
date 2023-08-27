@@ -95,16 +95,13 @@ project "0804" {
     id = "gemeinde_st_moritz"
   }
 
-  datasets    = ["dataset-001"]
-  funders     = ["gemeinde_st_moritz", "snf"]
-
   dmp {
     available = true
     url       = "https://data.dasch.swiss/dokubib/dmp.pdf"
   }
 }
 
-dataset "0804:dataset-001" {
+dataset "1" {
   created_at        = "1630601300976368000"
   created_by        = "dsp-metadata-gui"
   access_conditions = Restricted
@@ -130,7 +127,7 @@ dataset "0804:dataset-001" {
     fr = "Allemand"
   }
 
-  attribution "1" "biblio" {
+  attribution "1" "biblio_stmoritz" {
     roles = [
       Creator,
       Publisher
@@ -138,7 +135,17 @@ dataset "0804:dataset-001" {
   }
 }
 
-organization "0804:gemeinde_st_moritz" {
+grant "1" {
+  name   = "Ordinary Budget"
+  funder = "gemeinde_st_moritz" // reference to organization
+}
+
+grant "2" {
+  name   = "Project Funding"
+  funder = "snf" // reference to organization
+}
+
+organization "gemeinde_st_moritz" {
   created_at = "1630601301506212000",
   created_by = "dsp-metadata-gui",
   name       = "Gemeinde St. Moritz"
@@ -151,7 +158,7 @@ organization "0804:gemeinde_st_moritz" {
   }
 }
 
-organization "0804:biblio" {
+organization "biblio_stmoritz" {
   created_at = "1630601301561696000"
   created_by = "dsp-metadata-gui"
   email      = "doku@biblio-stmoritz.ch"
@@ -167,4 +174,8 @@ organization "0804:biblio" {
     locality    = "St. Moritz",
     country     = "Switzerland"
   }
+}
+
+organization "snf" {
+  name = "Swiss National Science Foundation (SNSF)"
 }

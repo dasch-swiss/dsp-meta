@@ -75,13 +75,9 @@ project "0803" {
   publication "11" {
     text = "Schweizer Tobias, Development of a Topographical Transcription Method, in Clivaz Claire u. a. (ed.), ebook, auf der Plattform http://www.ppur.info/lire-demain.html, Lausanne, 671-680."
   }
-
-  datasets = ["dsp-0803-dataset-000"]
-  funders  = ["dsp:snf"]
-  grants   = ["dsp:snf-120378"]
 }
 
-dataset "0803-dataset-000" {
+dataset "1" {
   created_at = "1637624150907146000",
   created_by = "dsp-metadata-gui",
   title      = "Die Bilderfolgen der Basler Frühdrucke: Spätmittelalterliche Didaxe als Bild-Text-Lektüre"
@@ -92,38 +88,38 @@ dataset "0803-dataset-000" {
   }
 
   attribution "1" {
-    agent = "0803:katrin_graf_lamei"
+    agent = "katrin_graf_lamei" // reference to person
     roles = [
       Employee
     ]
   }
   attribution "2" {
-    agent = "0803:barbara_schellewald",
+    agent = "barbara_schellewald", // reference to person
     roles = [
       Applicant
     ]
   }
   attribution "3" {
-    agent = "0803_lothar_schmidt",
+    agent = "lothar_schmidt", // reference to person
     roles = [
       Employee
     ]
   }
   attribution "4" {
-    agent = "0803:hannes_hug",
+    agent = "hannes_hug",  // reference to person
     roles = [
       Co-Applicant
     ]
   }
   attribution "5" {
-    agent = "0803:lukas_rosenthaler",
+    agent = "lukas_rosenthaler", // reference to person
     roles = [
       Co-Applicant
     ]
   }
 }
 
-person "0803:barbara_schellewald" {
+person "barbara_schellewald" {
   created_at = "1637624150958979000",
   created_by = "dsp-metadata-gui",
 
@@ -134,11 +130,11 @@ person "0803:barbara_schellewald" {
     text = "Barbara"
   }
   affiliation "1" {
-    ref = "0803:kunst_seminar_unibas" // reference to organization
+    ref = "kunst_seminar_unibas" // reference to organization
   }
 }
 
-person "0803:hannes_hug" {
+person "hannes_hug" {
   created_at = "1637624150959055000",
   created_by = "dsp-metadata-gui",
 
@@ -149,11 +145,11 @@ person "0803:hannes_hug" {
     text = "Hannes"
   }
   affiliation "1" {
-    ref = "0803:ub_unibas" // reference to organization
+    ref = "ub_unibas" // reference to organization
   }
 }
 
-person "0803:lukas_rosenthaler" {
+person "lukas_rosenthaler" {
   created_at = "1637624150959124000",
   created_by = "dsp-metadata-gui",
 
@@ -164,11 +160,11 @@ person "0803:lukas_rosenthaler" {
     text = "Lukas"
   }
   affiliation "1" {
-    ref = "0803:dhlab_basel" // reference to organization
+    ref = "dhlab_basel" // reference to organization
   }
 }
 
-person "0803:lothar_schmitt" {
+person "lothar_schmitt" {
   created_at = "1637624150959191000",
   created_by = "dsp-metadata-gui",
 
@@ -180,7 +176,7 @@ person "0803:lothar_schmitt" {
   }
 }
 
-person "0803:katrin_graf_lamei" {
+person "katrin_graf_lamei" {
   created_at = "1637624150959244000",
   created_by = "dsp-metadata-gui",
 
@@ -195,26 +191,29 @@ person "0803:katrin_graf_lamei" {
   }
 }
 
-organization "0803:kunst_seminar_unibas" {
+organization "kunst_seminar_unibas" {
   name = "Kunsthistorisches Seminar Universität Basel"
 }
 
-organization "0803:ub_unibas" {
+organization "ub_unibas" {
   name = "Universität Basel Universitätsbibliothek Sekretariat"
 }
 
-organization "0803:dhlab_basel" {
+organization "dhlab_basel" {
   name = "Digital Humanities Lab Philosophisch-Historische Fakultät Universität Basel"
 }
 
-grant "0803:snf-120378" {
+organization "snf" {
+  name = "Swiss National Science Foundation (SNSF)"
+}
+
+grant "snf-120378" {
   name   = "Project funding"
   number = "120378"
+  funder = "snf" // reference to organization
 
   url "https://data.snf.ch/grants/grant/120378" {
     text = "https://data.snf.ch/grants/grant/120378"
   }
-  funder {
-    ref = "snf"
-  }
+
 }

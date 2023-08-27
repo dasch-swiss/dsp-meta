@@ -112,13 +112,9 @@ project "081C" {
       fr = "1766-1905"
     }
   }
-
-  datasets    = ["081C-dataset-0000"]
-  funders     = ["081C-organization-000"]
-  grants      = [""]
 }
 
-dataset "081C-dataset-000" {
+dataset "1" {
   created_at        = 1630601285266958000
   created_by        = "dsp-metadata-gui"
   title             = "Hôtel de Musique Bern"
@@ -136,7 +132,7 @@ dataset "081C-dataset-000" {
   language {
     de = "Deutsch"
     en = "German"
-    fr = "allemand"
+    fr = "Allemand"
   }
 
   license {
@@ -147,12 +143,17 @@ dataset "081C-dataset-000" {
   }
 
   attribution {
-    agent = "081C-organization-000"
+    agent = "musik_unibe"
     roles = [author]
   }
 }
 
-organization "081C-organization-000" {
+grant "1" {
+  name   = "Ordinary Budget"
+  funder = "musik_unibe" // reference to organization
+}
+
+organization "musik_unibe" {
   created_at = 1630601285796580000
   created_by = "dsp-metadata-gui"
   name       = "Institut für Musikwissenschaft der Universität Bern"
