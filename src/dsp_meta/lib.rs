@@ -4,7 +4,8 @@ pub mod operation;
 
 use std::path::Path;
 
-use crate::domain::Metadata;
+use domain::Metadata;
+
 use crate::errors::DspMetaError;
 
 pub fn load<P: AsRef<Path>>(path: P) -> Result<Metadata, DspMetaError> {

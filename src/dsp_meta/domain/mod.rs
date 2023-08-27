@@ -1,16 +1,24 @@
 mod converter;
-pub(crate) mod project;
-pub(crate) mod version;
+mod dataset;
+mod grant;
+mod organization;
+mod person;
+mod project;
+mod version;
 
 use std::collections::HashMap;
 use std::fmt::Debug;
 
-use converter::project::convert_project;
 use hcl::Block;
-use project::Project;
 use serde::{Deserialize, Serialize};
 
 use crate::domain::converter::extract_project_block;
+use crate::domain::converter::project::convert_project;
+use crate::domain::dataset::Dataset;
+use crate::domain::grant::Grant;
+use crate::domain::organization::Organization;
+use crate::domain::person::Person;
+use crate::domain::project::Project;
 use crate::domain::version::Version;
 
 /// The Metadata struct represents the metadata of a DSP project.
@@ -46,45 +54,6 @@ impl TryFrom<hcl::Body> for Metadata {
             persons: Vec::new(),
         };
         Ok(metadata)
-    }
-}
-
-#[derive(Debug, PartialEq, Deserialize, Serialize)]
-pub struct Dataset {
-    pub id: String,
-    pub title: String,
-}
-
-#[derive(Debug, PartialEq, Deserialize, Serialize)]
-pub struct Person {
-    id: String,
-}
-
-impl From<&str> for Person {
-    fn from(id: &str) -> Self {
-        Self { id: id.to_string() }
-    }
-}
-
-#[derive(Debug, PartialEq, Deserialize, Serialize)]
-pub struct Organization {
-    id: String,
-}
-
-impl Organization {
-    pub fn new(id: &str) -> Self {
-        Self { id: id.to_string() }
-    }
-}
-
-#[derive(Debug, PartialEq, Deserialize, Serialize)]
-pub struct Grant {
-    id: String,
-}
-
-impl Grant {
-    pub fn new(id: &str) -> Self {
-        Self { id: id.to_string() }
     }
 }
 
@@ -267,7 +236,7 @@ impl Grants {
 mod tests {
     use hcl::body;
 
-    use super::*;
+    use crate::domain::Metadata;
 
     #[test]
     fn try_from_multiple_projects_error() {
