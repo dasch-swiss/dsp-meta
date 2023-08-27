@@ -1,6 +1,3 @@
-mod project_attributes;
-mod project_blocks;
-
 use std::collections::HashMap;
 
 use hcl::Block;
@@ -9,10 +6,13 @@ use tracing::info;
 use crate::domain::converter::project::project_blocks::parse_project_blocks;
 use crate::domain::project::Project;
 use crate::domain::{
-    AlternativeNames, CreatedAt, CreatedBy, Datasets, Description, EndDate, Funders, Grants,
-    HowToCite, Name, ProjectValue, Shortcode, StartDate, TeaserText, ID,
+    AlternativeNames, CreatedAt, CreatedBy, Description, EndDate, HowToCite, Name, ProjectValue,
+    Shortcode, StartDate, TeaserText, ID,
 };
 use crate::errors::DspMetaError;
+
+mod project_attributes;
+mod project_blocks;
 
 pub fn convert_project(project_block: &Block) -> Result<Project, DspMetaError> {
     let project_label = project_block.labels().first().ok_or_else(|| {
@@ -42,12 +42,6 @@ pub fn convert_project(project_block: &Block) -> Result<Project, DspMetaError> {
 
     let end_date = extract_end_date(&attributes)?;
 
-    let datasets = extract_datasets(&attributes)?;
-
-    let funders = extract_funders(&attributes)?;
-
-    let grants = extract_grants(&attributes)?;
-
     // extract the project blocks
     // alternative_names, description, url, keywords, disciplines, publications)
 
@@ -69,9 +63,6 @@ pub fn convert_project(project_block: &Block) -> Result<Project, DspMetaError> {
         how_to_cite,
         start_date,
         end_date,
-        datasets,
-        funders,
-        grants: Some(grants),
     };
 
     Ok(project)
@@ -184,42 +175,6 @@ fn extract_end_date(
         }
     }
     Ok(end_date)
-}
-
-fn extract_datasets(attributes: &HashMap<&str, ProjectValue>) -> Result<Datasets, DspMetaError> {
-    let datasets_value = attributes.get("datasets").ok_or_else(|| {
-        DspMetaError::ParseProject("Parse error: project needs to have datasets.")
-    })?;
-
-    let mut datasets = Default::default();
-    if let ProjectValue::Datasets(v) = datasets_value {
-        datasets = v.clone();
-    }
-    Ok(datasets)
-}
-
-fn extract_funders(attributes: &HashMap<&str, ProjectValue>) -> Result<Funders, DspMetaError> {
-    let funders_value = attributes
-        .get("funders")
-        .ok_or_else(|| DspMetaError::ParseProject("Parse error: project needs to have funders."))?;
-
-    let mut funders = Default::default();
-    if let ProjectValue::Funders(v) = funders_value {
-        funders = v.clone();
-    }
-    Ok(funders)
-}
-
-fn extract_grants(attributes: &HashMap<&str, ProjectValue>) -> Result<Grants, DspMetaError> {
-    let grants_value = attributes
-        .get("grants")
-        .ok_or_else(|| DspMetaError::ParseProject("Parse error: project needs to have grants."))?;
-
-    let mut grants = Default::default();
-    if let ProjectValue::Grants(v) = grants_value {
-        grants = v.clone();
-    }
-    Ok(grants)
 }
 
 #[cfg(test)]

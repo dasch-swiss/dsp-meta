@@ -4,8 +4,7 @@ use hcl::{Attribute, Expression};
 use tracing::warn;
 
 use crate::domain::{
-    CreatedAt, CreatedBy, Datasets, EndDate, Funders, Grants, HowToCite, Name, ProjectValue,
-    Shortcode, StartDate, TeaserText,
+    CreatedAt, CreatedBy, EndDate, HowToCite, Name, ProjectValue, Shortcode, StartDate, TeaserText,
 };
 use crate::errors::DspMetaError;
 
@@ -83,78 +82,6 @@ pub fn parse_project_attributes(
                     )),
                 }?;
                 results.insert("end_date", end_date);
-            }
-            "datasets" => {
-                let datasets = match attribute.expr() {
-                    Expression::Array(value) => {
-                        let mut datasets_value: Vec<String> = Vec::new();
-                        for element in value {
-                            match element {
-                                Expression::String(value) => {
-                                    datasets_value.push(value.to_string());
-                                }
-                                _ => {
-                                    return Err(DspMetaError::ParseProject(
-                                        "Parse error: datasets needs to be a list of strings.",
-                                    ))
-                                }
-                            }
-                        }
-                        Ok(ProjectValue::Datasets(Datasets::new(datasets_value)))
-                    }
-                    _ => Err(DspMetaError::ParseProject(
-                        "Parse error: datasets needs to be a list of strings.",
-                    )),
-                }?;
-                results.insert("datasets", datasets);
-            }
-            "funders" => {
-                let funders = match attribute.expr() {
-                    Expression::Array(value) => {
-                        let mut funders_value: Vec<String> = Vec::new();
-                        for element in value {
-                            match element {
-                                Expression::String(value) => {
-                                    funders_value.push(value.to_string());
-                                }
-                                _ => {
-                                    return Err(DspMetaError::ParseProject(
-                                        "Parse error: funders needs to be a list of strings.",
-                                    ))
-                                }
-                            }
-                        }
-                        Ok(ProjectValue::Funders(Funders::new(funders_value)))
-                    }
-                    _ => Err(DspMetaError::ParseProject(
-                        "Parse error: funders needs to be a list of strings.",
-                    )),
-                }?;
-                results.insert("funders", funders);
-            }
-            "grants" => {
-                let grants = match attribute.expr() {
-                    Expression::Array(value) => {
-                        let mut grants_value: Vec<String> = Vec::new();
-                        for element in value {
-                            match element {
-                                Expression::String(value) => {
-                                    grants_value.push(value.to_string());
-                                }
-                                _ => {
-                                    return Err(DspMetaError::ParseProject(
-                                        "Parse error: grants needs to be a list of strings.",
-                                    ))
-                                }
-                            }
-                        }
-                        Ok(ProjectValue::Grants(Grants::new(grants_value)))
-                    }
-                    _ => Err(DspMetaError::ParseProject(
-                        "Parse error: grants needs to be a list of strings.",
-                    )),
-                }?;
-                results.insert("grants", grants);
             }
             _ => {
                 warn!("Parse error: unknown attribute '{}'.", attribute.key());

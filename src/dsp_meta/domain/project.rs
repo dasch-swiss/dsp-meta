@@ -1,8 +1,8 @@
 use serde::{Deserialize, Serialize};
 
 use crate::domain::{
-    AlternativeNames, CreatedAt, CreatedBy, Datasets, Description, EndDate, Funders, Grants,
-    HowToCite, Name, Shortcode, StartDate, TeaserText, ID,
+    AlternativeNames, CreatedAt, CreatedBy, Description, EndDate, HowToCite, Name, Shortcode,
+    StartDate, TeaserText, ID,
 };
 
 // no need for smart constructors here, as there is no validation happening
@@ -19,9 +19,6 @@ pub struct Project {
     pub how_to_cite: HowToCite,
     pub start_date: StartDate,
     pub end_date: Option<EndDate>,
-    pub datasets: Datasets,
-    pub funders: Funders,
-    pub grants: Option<Grants>,
 }
 
 impl TryFrom<hcl::Block> for Project {
