@@ -14,7 +14,7 @@ project "0804" {
   teaser_text = "Bibliothek St. Moritz Dokumentation is the local history archive of the community of St. Moritz, Switzerland."
 
   description {
-    en = "Bibliothek St. Moritz Dokumentation is the local history archive of the community of St. Moritz, Switzerland. It’s collection contains publications, manuscripts and audiovisual documents of the touristic development of St. Moritz",
+    en = "Bibliothek St. Moritz Dokumentation is the local history archive of the community of St. Moritz, Switzerland. It’s collection contains publications, manuscripts and audiovisual documents of the touristic development of St. Moritz"
     de = "Die Bibliothek St. Moritz Dokumentation ist das Lokalarchiv der Gemeinde St. Moritz. Ihre Sammlung umfasst Publikationen, Manuskripte und audiovisuelle Dokumente zur touristischen Entwicklung von St. Moritz."
   }
 
@@ -91,14 +91,7 @@ project "0804" {
     url  = "https://www.stmoritz.ch/"
   }
 
-  contact_point "1" {
-    id = "gemeinde_st_moritz"
-  }
-
-  dmp {
-    available = true
-    url       = "https://data.dasch.swiss/dokubib/dmp.pdf"
-  }
+  contact_point = "gemeinde_st_moritz" // reference to person or organization
 }
 
 dataset "1" {
@@ -106,8 +99,8 @@ dataset "1" {
   created_by        = "dsp-metadata-gui"
   access_conditions = Restricted
   how_to_cite       = "Dokumentationsbibliothek St. Moritz"
-  status            = Ongoing,
-  title             = "Dokumentationsbibliothek St. Moritz Bilddatenbank",
+  status            = Ongoing
+  title             = "Dokumentationsbibliothek St. Moritz Bilddatenbank"
   type_of_data      = [
     Image,
     Text
@@ -127,7 +120,8 @@ dataset "1" {
     fr = "Allemand"
   }
 
-  attribution "1" "biblio_stmoritz" {
+  attribution "1" {
+    agent = "biblio_stmoritz"
     roles = [
       Creator,
       Publisher
@@ -135,19 +129,24 @@ dataset "1" {
   }
 }
 
+dmp {
+  available = true
+  url       = "https://data.dasch.swiss/dokubib/dmp.pdf"
+}
+
 grant "1" {
   name   = "Ordinary Budget"
-  funder = "gemeinde_st_moritz" // reference to organization
+  funder = "gemeinde_st_moritz" // reference to person or organization
 }
 
 grant "2" {
   name   = "Project Funding"
-  funder = "snf" // reference to organization
+  funder = "snf" // reference to person or organization
 }
 
 organization "gemeinde_st_moritz" {
-  created_at = "1630601301506212000",
-  created_by = "dsp-metadata-gui",
+  created_at = "1630601301506212000"
+  created_by = "dsp-metadata-gui"
   name       = "Gemeinde St. Moritz"
 
   address {
@@ -169,9 +168,9 @@ organization "biblio_stmoritz" {
   }
 
   address {
-    street      = "Plazza da Scoula 14",
-    postal_code = "7500",
-    locality    = "St. Moritz",
+    street      = "Plazza da Scoula 14"
+    postal_code = "7500"
+    locality    = "St. Moritz"
     country     = "Switzerland"
   }
 }

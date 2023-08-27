@@ -10,7 +10,7 @@ project "0803" {
     en = "Incunabula"
   }
 
-  teaser_text = "An art-scientific monograph of the richly illustrated early prints in Basel - the most important center of early letterpress printing in the territory of present-day Switzerland.",
+  teaser_text = "An art-scientific monograph of the richly illustrated early prints in Basel - the most important center of early letterpress printing in the territory of present-day Switzerland."
 
   description {
     de = "Eine kunstwissenschaftliche Monographie der reich bebilderten Frühdrucke in Basel - dem wichtigsten Zentrum des frühen Buchdrucks auf dem Gebiet der heutigen Schweiz - wird im vorliegenden Projekt erstmals seit über einem Jahrhundert ins Auge gefasst. Im Zentrum stehen 18 Werke aus vier verschiedenen Offizinen, welche insgesamt über 1000 Holzschnitte enthalten, die bedeutendsten überlieferten Basler Bilderfolgen des Spätmittelalters nach den massiven Zerstörungen im Zuge der Reformation. Bei den Texten handelt es sich fast ausschliesslich um deutsche und lateinische Kompilationen religiösen, didaktischen Inhalts, darunter viele zeitgenössische und in Basel entstandene, neben Übersetzungen des 15. Jahrhunderts und vollständig überarbeiteten Ausgaben bereits verbreiteter Werke. Äusserst erfolgreiche Bücher wie das Narrenschiff oder der Heilsspiegel stehen neben kaum bekannten wie den seelsorgerischen Schriften des Kartäusers Ludwig Moser und des Franziskaners Johannes Meder. Die Analyse eines umfassenden Corpus bebilderter Frühdrucke fehlt in der neueren Forschung, welche sich bezüglich der Basler Produktion vorwiegend der Untersuchung der Produzentenkreise gewidmet, die Bilder dagegen - mit Ausnahme des Narrenschiffs - wenig beachtet hat. Sehr heterogen ist auch die Erforschung der Texte, von denen ein grosser Teil unediert geblieben ist, von anderen wiederum existieren ausführlich kommentierte Faksimileausgaben. Die bisherige Bild-Text-Forschung hat sich auf das Narrenschiff fokussiert.Neben der Quellenanalyse der Bilder und Texte strebt das Projekt eine umfassende Untersuchung der Bild-Text-Bezüge unter Berücksichtigung rezeptionsästethischer Fragestellungen an. Gefragt wird nach der Funktion der Bilder für die spätmittelalterlichen visuellen und auditiven Rezipienten. Dabei wird davon ausgegangen, dass es sich bei unseren Frühdrucken ausnahmslos um kalkulierte Bild-Text-Kompilationen handelt, welche einen reflektierten und kreativen Umgang ihrer Produzenten mit den drucktechnischen Möglichkeiten des neuen Mediums voraussetzen, wie z.B. mit der Möglichkeit der vielfältigen Kontextualisierung von Bildern. Die Analyse der Bild- und Textquellen liefert eine umfassende Fallstudie zum Medienwechsel zwischen Handschrift und Frühdruck, diejenige der Bild-Text-Bezüge im Spannungsfeld zwischen mündlicher Tradierung und schriftlicher Fixierung religiöser Didaxe eine Fallstudie zur spätmittelalterlichen Rezeptionsforschung.Methodisch knüpft das Projekt an rezeptionsästhetische Konzepte und Studien der jüngeren literaturwissenschaftlichen Forschung an, welche mit ikonographischen Analysen kombiniert werden. Durch diese Erweiterung textzentrierter methodischer Ansätze treten die Texte in Bezug auf die Bilder nicht mehr als übergeordnete, unabhängige Einheiten in den Blick, sondern die Konstruktion des Werksinnes erscheint im Wechselspiel der Medien. Der traditionelle Begriff der Buchillustration wird dadurch grundlegend revidiert.Neben mehreren Aufsätzen und einer Tagung sind eine Monographie in Buchform geplant, welche sich an die Fachwelt sowie an eine interessierte Öffentlichkeit wendet, ausserdem eine Internet-Publikation der Bild- und Textquellen im Rahmen der Zusammenarbeit mit der Basler Univeristätsbibliothek."
@@ -20,8 +20,9 @@ project "0803" {
     text = "Discover Project Data"
   }
 
+  how_to_cite = "Incunabula"
   start_date = "2008-06-01"
-  end_date   = "2012-08-31",
+  end_date   = "2012-08-31"
 
   keyword {
     de = "Basel"
@@ -78,8 +79,8 @@ project "0803" {
 }
 
 dataset "1" {
-  created_at = "1637624150907146000",
-  created_by = "dsp-metadata-gui",
+  created_at = "1637624150907146000"
+  created_by = "dsp-metadata-gui"
   title      = "Die Bilderfolgen der Basler Frühdrucke: Spätmittelalterliche Didaxe als Bild-Text-Lektüre"
   status     = Finished
 
@@ -88,31 +89,31 @@ dataset "1" {
   }
 
   attribution "1" {
-    agent = "katrin_graf_lamei" // reference to person
+    agent = "katrin_graf_lamei" // reference to person or organization
     roles = [
       Employee
     ]
   }
   attribution "2" {
-    agent = "barbara_schellewald", // reference to person
+    agent = "barbara_schellewald" // reference to person or organization
     roles = [
       Applicant
     ]
   }
   attribution "3" {
-    agent = "lothar_schmidt", // reference to person
+    agent = "lothar_schmidt" // reference to person or organization
     roles = [
       Employee
     ]
   }
   attribution "4" {
-    agent = "hannes_hug",  // reference to person
+    agent = "hannes_hug"  // reference to person or organization
     roles = [
       Co-Applicant
     ]
   }
   attribution "5" {
-    agent = "lukas_rosenthaler", // reference to person
+    agent = "lukas_rosenthaler" // reference to person or organization
     roles = [
       Co-Applicant
     ]
@@ -120,8 +121,8 @@ dataset "1" {
 }
 
 person "barbara_schellewald" {
-  created_at = "1637624150958979000",
-  created_by = "dsp-metadata-gui",
+  created_at = "1637624150958979000"
+  created_by = "dsp-metadata-gui"
 
   family_name "1" {
     text = "Schellewald"
@@ -135,8 +136,8 @@ person "barbara_schellewald" {
 }
 
 person "hannes_hug" {
-  created_at = "1637624150959055000",
-  created_by = "dsp-metadata-gui",
+  created_at = "1637624150959055000"
+  created_by = "dsp-metadata-gui"
 
   family_name "1" {
     text = "Hug"
@@ -150,8 +151,8 @@ person "hannes_hug" {
 }
 
 person "lukas_rosenthaler" {
-  created_at = "1637624150959124000",
-  created_by = "dsp-metadata-gui",
+  created_at = "1637624150959124000"
+  created_by = "dsp-metadata-gui"
 
   family_name "1" {
     text = "Rosenthaler"
@@ -165,8 +166,8 @@ person "lukas_rosenthaler" {
 }
 
 person "lothar_schmitt" {
-  created_at = "1637624150959191000",
-  created_by = "dsp-metadata-gui",
+  created_at = "1637624150959191000"
+  created_by = "dsp-metadata-gui"
 
   family_name "1" {
     text = "Schmitt"
@@ -177,8 +178,8 @@ person "lothar_schmitt" {
 }
 
 person "katrin_graf_lamei" {
-  created_at = "1637624150959244000",
-  created_by = "dsp-metadata-gui",
+  created_at = "1637624150959244000"
+  created_by = "dsp-metadata-gui"
 
   family_name "1" {
     text = "Graf"

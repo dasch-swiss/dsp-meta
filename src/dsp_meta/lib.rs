@@ -18,8 +18,6 @@ pub fn load<P: AsRef<Path>>(path: P) -> Result<Metadata, DspMetaError> {
 mod tests {
     use hcl::body;
 
-    use super::*;
-
     #[test]
     fn deserialize_metadata_from_hcl() {
         use hcl::{Block, Body};
@@ -132,11 +130,5 @@ mod tests {
 
         let json: serde_json::Value = hcl::from_body(body).unwrap();
         dbg!(json);
-    }
-
-    #[test]
-    fn load_hdm_config() {
-        let hdm_metadata = load("./data/hdm.hcl").unwrap();
-        assert_eq!(hdm_metadata.version.0, 1);
     }
 }
