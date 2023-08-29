@@ -185,7 +185,7 @@ fn extract_end_date(
 
 #[cfg(test)]
 mod tests {
-    use hcl::body;
+    use hcl::block;
     use tracing_test::traced_test;
 
     use super::*;
@@ -193,8 +193,8 @@ mod tests {
 
     #[traced_test]
     #[test]
-    fn parse_project() {
-        let body = body!(
+    fn test_convert_project_block() {
+        let input_project_block = block!(
             project "0803" {
                 created_at = 1630601274523025000i64 // FIXME: is there a more readable way to write an i64?
                 created_by  = "dsp-metadata-gui"
@@ -217,8 +217,7 @@ mod tests {
                 grants = []
             }
         );
-        let blocks: Vec<&hcl::Block> = body.blocks().collect();
-        let project = super::convert_project_block(blocks.first().unwrap()).unwrap();
+        let project = super::convert_project_block(&input_project_block).unwrap();
         dbg!(&project);
         assert_eq!(project.id, ID::from("0803"));
         assert_eq!(project.created_at, CreatedAt::new(1630601274523025000));
@@ -244,16 +243,13 @@ mod tests {
     #[traced_test]
     #[test]
     fn warn_on_unknown_attribute_or_block() {
-        let input = r#"
+        let project_block = block!(
             project "0803" {
                 shortcode = "0803"
                 gugus = "gugus"
             }
-        "#;
+        );
 
-        let body: hcl::Body = hcl::from_str(input).unwrap();
-        let blocks: Vec<&hcl::Block> = body.blocks().collect();
-        let project_block = blocks.first().unwrap();
         let attributes: Vec<&hcl::Attribute> = project_block.body().attributes().collect();
         let _ = parse_project_attributes(attributes);
 
