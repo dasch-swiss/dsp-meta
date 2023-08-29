@@ -14,7 +14,13 @@ use crate::errors::DspMetaError;
 mod project_attributes;
 mod project_blocks;
 
-pub fn convert_project(project_block: &Block) -> Result<Project, DspMetaError> {
+pub fn convert_project_block(project_block: &Block) -> Result<Project, DspMetaError> {
+    if project_block.identifier.as_str() != "project" {
+        return Err(crate::errors::DspMetaError::ParseProject(
+            "Parse error: project block needs to be named 'project'.",
+        ));
+    }
+
     let project_label = project_block.labels().first().ok_or_else(|| {
         DspMetaError::ParseProject("Parse error: project needs to have one label.")
     })?;
@@ -212,7 +218,7 @@ mod tests {
             }
         );
         let blocks: Vec<&hcl::Block> = body.blocks().collect();
-        let project = super::convert_project(blocks.first().unwrap()).unwrap();
+        let project = super::convert_project_block(blocks.first().unwrap()).unwrap();
         dbg!(&project);
         assert_eq!(project.id, ID::from("0803"));
         assert_eq!(project.created_at, CreatedAt::new(1630601274523025000));

@@ -11,7 +11,7 @@ use crate::errors::DspMetaError;
 pub fn load<P: AsRef<Path>>(path: P) -> Result<Metadata, DspMetaError> {
     let input = std::fs::read_to_string(path)?;
     let body: hcl::Body = hcl::from_str(&input)?;
-    let metadata = Metadata::try_from(body)?;
+    let metadata = Metadata::try_from(&body)?;
     Ok(metadata)
 }
 

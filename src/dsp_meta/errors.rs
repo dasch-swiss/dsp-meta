@@ -4,6 +4,7 @@ use std::io;
 pub enum DspMetaError {
     IO(io::Error),
     ParseHcl(hcl::Error),
+    UnknownAttribute(&'static str),
     ParseVersion(&'static str),
     ParseProject(&'static str),
 }

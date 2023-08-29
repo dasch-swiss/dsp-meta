@@ -1,3 +1,16 @@
+use std::collections::HashMap;
+use std::fmt::Debug;
+
+use hcl::Block;
+use serde::{Deserialize, Serialize};
+
+use crate::domain::dataset::Dataset;
+use crate::domain::grant::Grant;
+use crate::domain::organization::Organization;
+use crate::domain::person::Person;
+use crate::domain::project::Project;
+use crate::domain::version::Version;
+
 mod converter;
 mod dataset;
 mod grant;
@@ -5,21 +18,6 @@ mod organization;
 mod person;
 mod project;
 mod version;
-
-use std::collections::HashMap;
-use std::fmt::Debug;
-
-use hcl::Block;
-use serde::{Deserialize, Serialize};
-
-use crate::domain::converter::extract_project_block;
-use crate::domain::converter::project::convert_project;
-use crate::domain::dataset::Dataset;
-use crate::domain::grant::Grant;
-use crate::domain::organization::Organization;
-use crate::domain::person::Person;
-use crate::domain::project::Project;
-use crate::domain::version::Version;
 
 /// The Metadata struct represents the metadata of a DSP project.
 /// TODO: check if the cardinality of the fields are correct
@@ -33,21 +31,43 @@ pub struct Metadata {
     pub persons: Vec<Person>,
 }
 
-impl TryFrom<hcl::Body> for Metadata {
+impl TryFrom<&hcl::Body> for Metadata {
     type Error = crate::errors::DspMetaError;
 
-    fn try_from(body: hcl::Body) -> Result<Self, Self::Error> {
+    fn try_from(body: &hcl::Body) -> Result<Self, Self::Error> {
+        let mut version: Option<Version> = None;
+        let mut projects: Vec<Project> = vec![];
+
         let attributes: Vec<&hcl::Attribute> = body.attributes().collect();
-        let version = Version::try_from(attributes)?;
+        for attribute in attributes {
+            match attribute.key() {
+                "version" => version = Some(Version::try_from(attribute)?),
+                _ => {
+                    continue;
+                }
+            }
+        }
 
         let blocks: Vec<&Block> = body.blocks().collect();
-        let project_block = extract_project_block(blocks)?;
-        let project = convert_project(project_block)?;
-        dbg!(&project);
+        for block in blocks {
+            match block.identifier() {
+                "project" => projects.push(Project::try_from(block)?),
+                _ => {
+                    continue;
+                }
+            }
+        }
 
         let metadata = Metadata {
-            version,
-            project,
+            version: match version {
+                None => {
+                    return Err(crate::errors::DspMetaError::ParseVersion(
+                        "Version attribute is not provided.",
+                    ));
+                }
+                Some(value) => value,
+            },
+            project: project::extract_project(projects)?,
             datasets: Vec::new(),
             grants: Vec::new(),
             organizations: Vec::new(),
@@ -236,7 +256,7 @@ impl Grants {
 mod tests {
     use hcl::body;
 
-    use crate::domain::Metadata;
+    use super::*;
 
     #[test]
     fn try_from_multiple_projects_error() {
@@ -249,7 +269,7 @@ mod tests {
             }
         );
 
-        let project = Metadata::try_from(input);
+        let project = Metadata::try_from(&input);
         assert!(project.is_err());
     }
 
@@ -257,7 +277,7 @@ mod tests {
     fn try_from_no_project_error() {
         let input = body!();
 
-        let project = Metadata::try_from(input);
+        let project = Metadata::try_from(&input);
         assert!(project.is_err());
     }
 }

@@ -5,38 +5,34 @@ use serde::{Deserialize, Serialize};
 pub struct Version(pub u64);
 
 /// Given a list of attributes, try to extract the version.
-impl TryFrom<Vec<&Attribute>> for Version {
+impl TryFrom<&Attribute> for Version {
     type Error = crate::errors::DspMetaError;
-    fn try_from(attributes: Vec<&Attribute>) -> Result<Self, Self::Error> {
+    fn try_from(attribute: &Attribute) -> Result<Self, Self::Error> {
         type Error = crate::errors::DspMetaError;
 
         let mut result: Result<Self, Error> =
             Err(Error::ParseVersion("Version attribute is not provided."));
 
-        for attribute in attributes {
-            if attribute.key() == "version" {
-                result = match attribute.expr() {
-                    Expression::Number(value) => Ok(Self(value.as_u64().unwrap())),
-                    _ => Err(Error::ParseVersion("Version needs to be a number.")),
-                }
+        if attribute.key() == "version" {
+            result = match attribute.expr() {
+                Expression::Number(value) => Ok(Self(value.as_u64().unwrap())),
+                _ => Err(Error::ParseVersion("Version needs to be a number.")),
             }
         }
+
         result
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use hcl::body;
 
     use super::*;
 
     #[test]
     fn test_try_from_attributes() {
-        let body = body!(version = 1);
-
-        let attributes: Vec<&hcl::Attribute> = body.attributes().collect();
-        let version = Version::try_from(attributes).unwrap();
+        let attribute = Attribute::new("version", 1u64);
+        let version = Version::try_from(&attribute).unwrap();
         assert_eq!(version, Version(1));
     }
 }
