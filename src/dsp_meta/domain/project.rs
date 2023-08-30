@@ -31,20 +31,24 @@ impl TryFrom<&hcl::Block> for Project {
     }
 }
 
-/// Helper function that extracts the project from a list of projects.
+/// Given potentially a list of projects, flatten to one project.
 /// Our constraint is that there must be exactly one project defined per metadata file.
-pub fn extract_project(projects: Vec<Project>) -> Result<Project, DspMetaError> {
-    if projects.len() > 1 {
-        return Err(DspMetaError::ParseProject(
-            "There can only be one project block.",
-        ));
-    }
+impl TryFrom<Vec<Project>> for Project {
+    type Error = crate::errors::DspMetaError;
 
-    if projects.is_empty() {
-        return Err(DspMetaError::ParseProject(
-            "There needs to be a project block.",
-        ));
-    }
+    fn try_from(projects: Vec<Project>) -> Result<Self, Self::Error> {
+        if projects.len() > 1 {
+            return Err(DspMetaError::ParseProject(
+                "There can only be one project block.",
+            ));
+        }
 
-    Ok(projects[0].clone())
+        if projects.is_empty() {
+            return Err(DspMetaError::ParseProject(
+                "There needs to be a project block.",
+            ));
+        }
+
+        Ok(projects[0].clone())
+    }
 }

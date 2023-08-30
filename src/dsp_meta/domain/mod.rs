@@ -37,6 +37,7 @@ impl TryFrom<&hcl::Body> for Metadata {
     fn try_from(body: &hcl::Body) -> Result<Self, Self::Error> {
         let mut version: Option<Version> = None;
         let mut projects: Vec<Project> = vec![];
+        let mut datasets: Vec<Dataset> = vec![];
 
         let attributes: Vec<&hcl::Attribute> = body.attributes().collect();
         for attribute in attributes {
@@ -52,6 +53,7 @@ impl TryFrom<&hcl::Body> for Metadata {
         for block in blocks {
             match block.identifier() {
                 "project" => projects.push(Project::try_from(block)?),
+                "dataset" => datasets.push(Dataset::try_from(block)?),
                 _ => {
                     continue;
                 }
@@ -67,7 +69,7 @@ impl TryFrom<&hcl::Body> for Metadata {
                 }
                 Some(value) => value,
             },
-            project: project::extract_project(projects)?,
+            project: Project::try_from(projects)?,
             datasets: Vec::new(),
             grants: Vec::new(),
             organizations: Vec::new(),
