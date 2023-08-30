@@ -10,7 +10,12 @@ impl TryFrom<hcl::Block> for Dataset {
     type Error = crate::errors::DspMetaError;
 
     fn try_from(dataset_block: hcl::Block) -> Result<Self, Self::Error> {
-        let id = dataset_block.label().unwrap().to_string();
+        if dataset_block.identifier.as_str() != "dataset" {
+            return Err(crate::errors::DspMetaError::ParseDataset(
+                "Parse error: dataset block needs to be named 'dataset'.",
+            ));
+        }
+        let id = dataset_block.labels().unwrap().to_string();
         let title = dataset_block
             .attributes()
             .next()

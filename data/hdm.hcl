@@ -1,6 +1,6 @@
 version = 1
 
-project "081C" {
+project {
   created_at  = 1630601274523025000
   created_by  = "dsp-metadata-gui"
   shortcode   = "081C"

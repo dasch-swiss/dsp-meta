@@ -7,6 +7,7 @@ pub enum DspMetaError {
     UnknownAttribute(&'static str),
     ParseVersion(&'static str),
     ParseProject(&'static str),
+    ParseDataset(&'static str),
 }
 
 impl From<io::Error> for DspMetaError {
