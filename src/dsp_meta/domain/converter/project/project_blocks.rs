@@ -2,8 +2,12 @@ use std::collections::HashMap;
 
 use hcl::Block;
 
-use crate::domain::ProjectValue;
 use crate::errors::DspMetaError;
+
+struct ExtractedProjectBlocks<'a> {
+    pub alternative_names: Vec<AlterntiveName>,
+    pub description: Option<Description<'a>>,
+}
 
 pub fn parse_project_blocks(
     blocks: Vec<&Block>,

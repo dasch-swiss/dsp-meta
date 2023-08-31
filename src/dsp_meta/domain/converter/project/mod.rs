@@ -4,10 +4,7 @@ use hcl::Block;
 
 use crate::domain::converter::project::project_blocks::parse_project_blocks;
 use crate::domain::project::Project;
-use crate::domain::{
-    AlternativeNames, CreatedAt, CreatedBy, Description, EndDate, HowToCite, Name, Shortcode,
-    StartDate, TeaserText, ID,
-};
+use crate::domain::{AlternativeNames, Description, ID};
 use crate::errors::DspMetaError;
 
 mod project_attributes;
@@ -91,6 +88,10 @@ pub fn convert_project_block(project_block: &Block) -> Result<Project, DspMetaEr
 mod tests {
     use hcl::block;
     use tracing_test::traced_test;
+
+    use crate::domain::{
+        CreatedAt, CreatedBy, EndDate, HowToCite, Name, Shortcode, StartDate, TeaserText,
+    };
 
     use super::*;
 

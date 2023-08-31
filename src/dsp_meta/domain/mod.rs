@@ -93,6 +93,32 @@ pub struct Name<'a>(&'a str);
 #[derive(Debug, Default, Clone, PartialEq, Deserialize, Serialize)]
 pub struct AlternativeNames(HashMap<String, String>);
 
+pub struct AlternativeName {}
+
+/// Represents a string in a specific language.
+pub struct LangString<'a> {
+    pub iso_code: IsoCode,
+    pub string: &'a str,
+}
+
+/// Language codes according to ISO 639-1
+/// Not an exhaustive list.
+enum IsoCode {
+    DE, // German
+    EN, // English
+    FR, // French
+    IT, // Italian
+    ES, // Spanish
+    PT, // Portuguese
+    NL, // Dutch
+    PL, // Polish
+    RU, // Russian
+    JA, // Japanese
+    ZH, // Chinese
+    AR, // Arabic
+    FA, // Persian
+}
+
 #[derive(Debug, Default, Clone, PartialEq, Deserialize, Serialize)]
 pub struct TeaserText<'a>(&'a str);
 
