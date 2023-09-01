@@ -1,7 +1,6 @@
 use hcl::{Attribute, Expression};
-use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Default, PartialEq, Deserialize, Serialize)]
+#[derive(Debug, PartialEq)]
 pub struct Version(pub u64);
 
 /// Given a list of attributes, try to extract the version.
@@ -21,6 +20,12 @@ impl TryFrom<&Attribute> for Version {
         }
 
         result
+    }
+}
+
+impl<'a> Default for &'a Version {
+    fn default() -> Self {
+        &Version(1)
     }
 }
 

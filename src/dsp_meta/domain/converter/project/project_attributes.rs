@@ -1,5 +1,3 @@
-use std::collections::HashMap;
-
 use hcl::{Attribute, Expression};
 use tracing::warn;
 
@@ -8,7 +6,7 @@ use crate::domain::{
 };
 use crate::errors::DspMetaError;
 
-pub struct ExtractedAttributes<'a> {
+struct ExtractedAttributes<'a> {
     pub created_at: Option<CreatedAt>,
     pub created_by: Option<CreatedBy<'a>>,
     pub shortcode: Option<Shortcode<'a>>,
@@ -35,7 +33,7 @@ pub fn extract_project_attributes(
         match attribute.key() {
             "created_at" => {
                 created_at = match attribute.expr() {
-                    Expression::Number(value) => Ok(Some(CreatedAt(value.as_u64().unwrap()))), /* FIXME: unwrap */
+                    Expression::Number(value) => Ok(Some(CreatedAt(value.as_u64().unwrap()))), /* FIXME: get rid of unwrap */
                     _ => Err(DspMetaError::ParseProject(
                         "Parse error: created_at needs to be a number.",
                     )),

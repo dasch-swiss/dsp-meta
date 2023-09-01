@@ -1,8 +1,8 @@
-use std::collections::HashMap;
+use std::collections::HashSet;
 use std::fmt::Debug;
+use std::hash::Hash;
 
 use hcl::Block;
-use serde::{Deserialize, Serialize};
 
 use crate::domain::dataset::Dataset;
 use crate::domain::grant::Grant;
@@ -21,29 +21,28 @@ mod project;
 mod version;
 
 /// The Metadata struct represents the metadata of a DSP project.
-/// TODO: check if the cardinality of the fields are correct
-#[derive(Debug, Default, PartialEq, Deserialize, Serialize)]
-pub struct Metadata {
-    pub version: Version,
-    pub project: Project,
-    pub datasets: Vec<Dataset>,
+#[derive(Debug, Default, PartialEq)]
+pub struct Metadata<'a> {
+    pub version: &'a Version,
+    pub project: &'a Project<'a>,
+    pub datasets: Vec<&'a Dataset<'a>>,
     pub grants: Vec<Grant>,
     pub organizations: Vec<Organization>,
-    pub persons: Vec<Person>,
+    pub persons: Vec<Person<'a>>,
 }
 
-impl TryFrom<&hcl::Body> for Metadata {
-    type Error = crate::errors::DspMetaError;
+impl<'a> TryFrom<&hcl::Body> for Metadata<'a> {
+    type Error = DspMetaError;
 
     fn try_from(body: &hcl::Body) -> Result<Self, Self::Error> {
-        let mut version: Option<Version> = None;
-        let mut projects: Vec<Project> = vec![];
-        let mut datasets: Vec<Dataset> = vec![];
+        let mut version: Option<&Version> = None;
+        let mut project: Option<&Project> = None;
+        let mut datasets: Vec<&Dataset> = vec![];
 
         let attributes: Vec<&hcl::Attribute> = body.attributes().collect();
         for attribute in attributes {
             match attribute.key() {
-                "version" => version = Some(Version::try_from(attribute)?),
+                "version" => version = Some(&Version::try_from(attribute)?),
                 _ => {
                     continue;
                 }
@@ -53,8 +52,16 @@ impl TryFrom<&hcl::Body> for Metadata {
         let blocks: Vec<&Block> = body.blocks().collect();
         for block in blocks {
             match block.identifier() {
-                "project" => projects.push(Project::try_from(block)?),
-                "dataset" => datasets.push(Dataset::try_from(block)?),
+                "project" => {
+                    if project.is_some() {
+                        return Err(DspMetaError::ParseProject(
+                            "Only one project block allowed.",
+                        ));
+                    } else {
+                        project = Some(&Project::try_from(block)?)
+                    }
+                }
+                "dataset" => datasets.push(&Dataset::try_from(block)?),
                 _ => {
                     continue;
                 }
@@ -64,7 +71,8 @@ impl TryFrom<&hcl::Body> for Metadata {
         let metadata = Metadata {
             version: version
                 .ok_or_else(|| DspMetaError::ParseVersion("Version attribute is not provided."))?,
-            project: Project::try_from(projects)?,
+            project: project
+                .ok_or_else(|| DspMetaError::ParseProject("Project block is not provided."))?,
             datasets: Vec::new(),
             grants: Vec::new(),
             organizations: Vec::new(),
@@ -74,36 +82,102 @@ impl TryFrom<&hcl::Body> for Metadata {
     }
 }
 
-#[derive(Debug, Default, Clone, PartialEq, Deserialize, Serialize)]
+#[derive(Debug, Default, Clone, PartialEq)]
 pub struct ID<'a>(&'a str);
 
-#[derive(Debug, Default, Clone, PartialEq, Deserialize, Serialize)]
+#[derive(Debug, Default, Clone, PartialEq)]
 pub struct CreatedAt(pub u64);
 
-#[derive(Debug, Default, Clone, PartialEq, Deserialize, Serialize)]
+#[derive(Debug, Default, Clone, PartialEq)]
 pub struct CreatedBy<'a>(&'a str);
 
-#[derive(Debug, Default, Clone, PartialEq, Deserialize, Serialize)]
+#[derive(Debug, Default, Clone, PartialEq)]
 pub struct Shortcode<'a>(&'a str);
 
-#[derive(Debug, Default, Clone, PartialEq, Deserialize, Serialize)]
+#[derive(Debug, Default, Clone, PartialEq)]
 pub struct Name<'a>(&'a str);
 
-/// A HashMap of language codes and their corresponding alternative names.
-#[derive(Debug, Default, Clone, PartialEq, Deserialize, Serialize)]
-pub struct AlternativeNames(HashMap<String, String>);
+/// A HashSet of alternative names in different languages.
+/// The HashSet is used to ensure that there are no duplicates values in regards
+/// to the language code, as LangString only compares the iso_code.
+/// TODO: check if this is the correct data structure
+#[derive(Debug, Clone, PartialEq)]
+pub struct AlternativeNames<'a>(HashSet<LangString<'a>>);
 
-pub struct AlternativeName {}
+impl Default for AlternativeNames<'_> {
+    fn default() -> Self {
+        Self::from(vec![
+            &AlternativeName {
+                iso_code: &IsoCode::DE,
+                string: "Der Default AlternativeName.",
+            },
+            &AlternativeName {
+                iso_code: &IsoCode::EN,
+                string: "The default AlternativeName.",
+            },
+            &AlternativeName {
+                iso_code: &IsoCode::FR,
+                string: "Le default AlternativeName.",
+            },
+        ])
+    }
+}
+
+impl<'a> From<Vec<&AlternativeName<'a>>> for AlternativeNames<'_> {
+    fn from(names: Vec<&AlternativeName>) -> Self {
+        let mut set = HashSet::new();
+        for name in names {
+            set.insert(LangString {
+                iso_code: name.iso_code,
+                string: name.string,
+            });
+        }
+        Self(set)
+    }
+}
+
+#[derive(Debug, Clone, PartialEq)]
+pub struct AlternativeName<'a> {
+    iso_code: &'a IsoCode,
+    string: &'a str,
+}
 
 /// Represents a string in a specific language.
+/// Equality of two language specific strings is ONLY based iso_code.
+#[derive(Debug, Clone)]
 pub struct LangString<'a> {
-    pub iso_code: IsoCode,
+    pub iso_code: &'a IsoCode,
     pub string: &'a str,
 }
 
+impl Default for LangString<'_> {
+    fn default() -> Self {
+        Self {
+            iso_code: &IsoCode::DE,
+            string: "Der Default LangString.",
+        }
+    }
+}
+
+impl Hash for LangString<'_> {
+    fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
+        self.iso_code.hash(state);
+    }
+}
+
+impl PartialEq for LangString<'_> {
+    fn eq(&self, other: &Self) -> bool {
+        self.iso_code == other.iso_code
+    }
+}
+
+impl Eq for LangString<'_> {}
+
 /// Language codes according to ISO 639-1
 /// Not an exhaustive list.
+#[derive(Debug, Default, Clone, PartialEq, Eq, Hash)]
 enum IsoCode {
+    #[default]
     DE, // German
     EN, // English
     FR, // French
@@ -119,27 +193,62 @@ enum IsoCode {
     FA, // Persian
 }
 
-#[derive(Debug, Default, Clone, PartialEq, Deserialize, Serialize)]
+#[derive(Debug, Default, Clone, PartialEq)]
 pub struct TeaserText<'a>(&'a str);
 
-/// A HashMap of language codes and their corresponding descriptions.
-#[derive(Debug, Default, Clone, PartialEq, Deserialize, Serialize)]
-pub struct Description(HashMap<String, String>);
+/// A set of descriptions in different languages.
+#[derive(Debug, Clone, PartialEq)]
+pub struct Description<'a>(HashSet<LangString<'a>>);
 
-#[derive(Debug, Default, Clone, PartialEq, Deserialize, Serialize)]
+impl Default for Description<'_> {
+    fn default() -> Self {
+        Self::from(vec![
+            &LangString {
+                iso_code: &IsoCode::DE,
+                string: "Die default Beschreibung.",
+            },
+            &LangString {
+                iso_code: &IsoCode::EN,
+                string: "The default description.",
+            },
+            &LangString {
+                iso_code: &IsoCode::FR,
+                string: "Le standard description.",
+            },
+        ])
+    }
+}
+
+impl From<Vec<&LangString<'_>>> for Description<'_> {
+    fn from(descriptions: Vec<&LangString>) -> Self {
+        let mut set = HashSet::new();
+        for description in descriptions {
+            set.insert(LangString {
+                iso_code: description.iso_code,
+                string: description.string,
+            });
+        }
+        Self(set)
+    }
+}
+
+#[derive(Debug, Default, Clone, PartialEq)]
 pub struct HowToCite<'a>(&'a str);
 
-#[derive(Debug, Default, Clone, PartialEq, Deserialize, Serialize)]
+#[derive(Debug, Default, Clone, PartialEq)]
 pub struct StartDate<'a>(&'a str);
 
-#[derive(Debug, Default, Clone, PartialEq, Deserialize, Serialize)]
+#[derive(Debug, Default, Clone, PartialEq)]
 pub struct EndDate<'a>(&'a str);
 
-#[derive(Debug, Default, PartialEq, Deserialize, Serialize)]
-pub struct Datasets(Vec<Dataset>);
+#[derive(Debug, Default, PartialEq)]
+pub struct Datasets<'a>(Vec<&'a Dataset<'a>>);
 
-#[derive(Debug, Default, PartialEq, Deserialize, Serialize)]
+#[derive(Debug, Default, PartialEq)]
 pub struct Grants(Vec<Grant>);
+
+#[derive(Debug, Default, PartialEq)]
+pub struct Title<'a>(&'a str);
 
 #[cfg(test)]
 mod tests {
