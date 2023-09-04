@@ -8,21 +8,20 @@ use crate::errors::DspMetaError;
 
 // no need for smart constructors here, as there is no validation happening
 #[derive(Debug, Default, Clone, PartialEq)]
-pub struct Project<'a> {
-    pub id: ID<'a>,
+pub struct Project {
     pub created_at: CreatedAt,
-    pub created_by: CreatedBy<'a>,
-    pub shortcode: Shortcode<'a>,
-    pub name: Name<'a>,
-    pub alternative_names: AlternativeNames<'a>,
-    pub teaser_text: TeaserText<'a>,
-    pub description: Description<'a>,
-    pub how_to_cite: HowToCite<'a>,
-    pub start_date: StartDate<'a>,
-    pub end_date: Option<EndDate<'a>>,
+    pub created_by: CreatedBy,
+    pub shortcode: Shortcode,
+    pub name: Name,
+    pub alternative_names: AlternativeNames,
+    pub teaser_text: TeaserText,
+    pub description: Description,
+    pub how_to_cite: HowToCite,
+    pub start_date: StartDate,
+    pub end_date: Option<EndDate>,
 }
 
-impl<'a> TryFrom<&hcl::Block> for Project<'a> {
+impl TryFrom<&hcl::Block> for Project {
     type Error = DspMetaError;
 
     fn try_from(project_block: &hcl::Block) -> Result<Self, Self::Error> {
@@ -31,11 +30,6 @@ impl<'a> TryFrom<&hcl::Block> for Project<'a> {
                 "Parse error: project block needs to be named 'project'.",
             ));
         }
-
-        let project_label = project_block.labels().first().ok_or_else(|| {
-            DspMetaError::ParseProject("Parse error: project needs to have one label.")
-        })?;
-        let id = ID(project_label.as_str());
 
         // extract the project attributes
         // created_at, created_by, shortcode, name, teaser_text, how_to_cite, start_date, end_date, datasets, funders, grants
@@ -84,7 +78,6 @@ impl<'a> TryFrom<&hcl::Block> for Project<'a> {
         let description = Description::default();
 
         let project = Project {
-            id,
             created_at,
             created_by,
             shortcode,
@@ -98,12 +91,6 @@ impl<'a> TryFrom<&hcl::Block> for Project<'a> {
         };
 
         Ok(project)
-    }
-}
-
-impl Default for &Project<'_> {
-    fn default() -> Self {
-        &Project::default()
     }
 }
 
@@ -142,24 +129,29 @@ mod tests {
         );
         let project = Project::try_from(&input_project_block).unwrap();
         dbg!(&project);
-        assert_eq!(project.id, ID("0803"));
         assert_eq!(project.created_at, CreatedAt(1630601274523025000));
-        assert_eq!(project.created_by, CreatedBy("dsp-metadata-gui"));
-        assert_eq!(project.shortcode, Shortcode("0803"));
-        assert_eq!(project.name, Name("The German Family Panel (pairfam)"));
+        assert_eq!(
+            project.created_by,
+            CreatedBy(String::from("dsp-metadata-gui"))
+        );
+        assert_eq!(project.shortcode, Shortcode(String::from("0803")));
+        assert_eq!(
+            project.name,
+            Name(String::from("The German Family Panel (pairfam)"))
+        );
         assert_eq!(
             project.teaser_text,
-            TeaserText(
+            TeaserText(String::from(
                 "The German Family Panel (pairfam) is a multidisciplinary, longitudinal study."
-            )
+            ))
         );
         assert_eq!(
             project.how_to_cite,
-            HowToCite(
+            HowToCite(String::from(
                 "Huinink, Johannes; Schröder, Carolin; Castiglioni, Laura; Feldhaus, Michael"
-            )
+            ))
         );
-        assert_eq!(project.start_date, StartDate("2009-04-01"));
-        assert_eq!(project.end_date, Some(EndDate("2012-03-31")));
+        assert_eq!(project.start_date, StartDate(String::from("2009-04-01")));
+        assert_eq!(project.end_date, Some(EndDate(String::from("2012-03-31"))));
     }
 }

@@ -1,4 +1,4 @@
-#[derive(Debug, PartialEq)]
-pub struct Person<'a> {
-    id: &'a str,
+#[derive(Debug, Default, PartialEq)]
+pub struct Person {
+    id: String,
 }

@@ -2,12 +2,12 @@ use crate::domain::{Title, ID};
 use crate::errors::DspMetaError;
 
 #[derive(Debug, PartialEq)]
-pub struct Dataset<'a> {
-    pub id: ID<'a>,
-    pub title: Title<'a>,
+pub struct Dataset {
+    pub id: ID,
+    pub title: Title,
 }
 
-impl<'a> TryFrom<&hcl::Block> for Dataset<'a> {
+impl TryFrom<&hcl::Block> for Dataset {
     type Error = DspMetaError;
 
     fn try_from(dataset_block: &hcl::Block) -> Result<Self, Self::Error> {
@@ -20,9 +20,9 @@ impl<'a> TryFrom<&hcl::Block> for Dataset<'a> {
         let dataset_label = dataset_block.labels().first().ok_or_else(|| {
             DspMetaError::ParseDataset("Parse error: dataset needs to have one label.")
         })?;
-        let id = ID(dataset_label.as_str());
+        let id = ID(dataset_label.as_str().to_string());
 
-        let title = Title("TODO: implement title extraction");
+        let title = Title(String::from("TODO: implement title extraction"));
         Ok(Self { id, title })
     }
 }

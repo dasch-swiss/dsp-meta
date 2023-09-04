@@ -1,16 +1,16 @@
 use crate::domain::{AlternativeName, AlternativeNames, Description};
 use crate::errors::DspMetaError;
 
-struct ExtractedProjectBlocks<'a> {
-    pub alternative_names: AlternativeNames<'a>,
-    pub description: Option<Description<'a>>,
+pub struct ExtractedProjectBlocks {
+    pub alternative_names: AlternativeNames,
+    pub description: Option<Description>,
 }
 
 pub fn extract_project_blocks(
     blocks: Vec<&hcl::Block>,
 ) -> Result<ExtractedProjectBlocks, DspMetaError> {
     for block in blocks {
-        let mut alternative_names: Vec<&AlternativeName> = vec![];
+        let mut _alternative_names: Vec<&AlternativeName> = vec![];
 
         match block.identifier.as_str() {
             "alternative_name" => {

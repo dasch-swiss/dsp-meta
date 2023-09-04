@@ -6,15 +6,15 @@ use crate::domain::{
 };
 use crate::errors::DspMetaError;
 
-struct ExtractedAttributes<'a> {
+pub struct ExtractedAttributes {
     pub created_at: Option<CreatedAt>,
-    pub created_by: Option<CreatedBy<'a>>,
-    pub shortcode: Option<Shortcode<'a>>,
-    pub name: Option<Name<'a>>,
-    pub teaser_text: Option<TeaserText<'a>>,
-    pub how_to_cite: Option<HowToCite<'a>>,
-    pub start_date: Option<StartDate<'a>>,
-    pub end_date: Option<EndDate<'a>>,
+    pub created_by: Option<CreatedBy>,
+    pub shortcode: Option<Shortcode>,
+    pub name: Option<Name>,
+    pub teaser_text: Option<TeaserText>,
+    pub how_to_cite: Option<HowToCite>,
+    pub start_date: Option<StartDate>,
+    pub end_date: Option<EndDate>,
 }
 
 pub fn extract_project_attributes(
@@ -41,7 +41,7 @@ pub fn extract_project_attributes(
             }
             "created_by" => {
                 created_by = match attribute.expr() {
-                    Expression::String(value) => Ok(Some(CreatedBy(value))),
+                    Expression::String(value) => Ok(Some(CreatedBy(value.to_owned()))),
                     _ => Err(DspMetaError::ParseProject(
                         "Parse error: created_by needs to be a string.",
                     )),
@@ -49,7 +49,7 @@ pub fn extract_project_attributes(
             }
             "shortcode" => {
                 shortcode = match attribute.expr() {
-                    Expression::String(value) => Ok(Some(Shortcode(value))),
+                    Expression::String(value) => Ok(Some(Shortcode(value.to_owned()))),
                     _ => Err(DspMetaError::ParseProject(
                         "Parse error: shortcode needs to be a string.",
                     )),
@@ -57,15 +57,15 @@ pub fn extract_project_attributes(
             }
             "name" => {
                 name = match attribute.expr() {
-                    Expression::String(value) => Ok(Some(Name(value))),
+                    Expression::String(value) => Ok(Some(Name(value.to_owned()))),
                     _ => Err(DspMetaError::ParseProject(
                         "Parse error: name needs to be a string.",
                     )),
                 }?;
             }
             "teaser_text" => {
-                let teaser_text = match attribute.expr() {
-                    Expression::String(value) => Ok(Some(TeaserText(value))),
+                teaser_text = match attribute.expr() {
+                    Expression::String(value) => Ok(Some(TeaserText(value.to_owned()))),
                     _ => Err(DspMetaError::ParseProject(
                         "Parse error: teaser_text needs to be a string.",
                     )),
@@ -73,7 +73,7 @@ pub fn extract_project_attributes(
             }
             "how_to_cite" => {
                 how_to_cite = match attribute.expr() {
-                    Expression::String(value) => Ok(Some(HowToCite(value))),
+                    Expression::String(value) => Ok(Some(HowToCite(value.to_owned()))),
                     _ => Err(DspMetaError::ParseProject(
                         "Parse error: how_to_cite needs to be a string.",
                     )),
@@ -81,7 +81,7 @@ pub fn extract_project_attributes(
             }
             "start_date" => {
                 start_date = match attribute.expr() {
-                    Expression::String(value) => Ok(Some(StartDate(value))),
+                    Expression::String(value) => Ok(Some(StartDate(value.to_owned()))),
                     _ => Err(DspMetaError::ParseProject(
                         "Parse error: start_date needs to be a string.",
                     )),
@@ -89,7 +89,7 @@ pub fn extract_project_attributes(
             }
             "end_date" => {
                 end_date = match attribute.expr() {
-                    Expression::String(value) => Ok(Some(EndDate(value))),
+                    Expression::String(value) => Ok(Some(EndDate(value.to_owned()))),
                     _ => Err(DspMetaError::ParseProject(
                         "Parse error: end_date needs to be a string.",
                     )),
@@ -131,7 +131,7 @@ mod tests {
         let attribute = Attribute::new("created_by", "someone");
         let attributes = vec![&attribute];
         let result = extract_project_attributes(attributes).unwrap();
-        assert_eq!(result.created_by.unwrap(), CreatedBy("someone"));
+        assert_eq!(result.created_by.unwrap(), CreatedBy("someone".to_owned()));
     }
 
     #[traced_test]
