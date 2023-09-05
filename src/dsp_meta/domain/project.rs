@@ -2,7 +2,7 @@ use crate::domain::converter::project::project_attributes;
 use crate::domain::converter::project::project_blocks::extract_project_blocks;
 use crate::domain::{
     AlternativeNames, CreatedAt, CreatedBy, Description, EndDate, HowToCite, Name, Shortcode,
-    StartDate, TeaserText, ID,
+    StartDate, TeaserText,
 };
 use crate::errors::DspMetaError;
 
