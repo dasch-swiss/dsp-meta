@@ -51,70 +51,52 @@ project {
     en = "Theatre"
   }
 
-  discipline "1" {
-    snf "10302" {
+  discipline "snf" "10302" {
       de = "Schweizer Geschichte"
-      url "1" "https://www.snf.ch/SiteCollectionDocuments/allg_disziplinenliste.pdf" {
+      url "https://www.snf.ch/SiteCollectionDocuments/allg_disziplinenliste.pdf" {
         text = "SNF Disziplinenliste"
       }
-    }
   }
-  discipline "2" {
-    snf "10405" {
+  discipline "snf" "10405" {
       de = "Musikologie"
-      url "1" "https://www.snf.ch/SiteCollectionDocuments/allg_disziplinenliste.pdf" {
+      url "https://www.snf.ch/SiteCollectionDocuments/allg_disziplinenliste.pdf" {
         text = "SNF Disziplinenliste"
       }
-    }
   }
-  discipline "3" {
-    snf "10406" {
+  discipline "snf" "10406" {
       de = "Theater-und Filmwissenschaften"
-      url "1" "https://www.snf.ch/SiteCollectionDocuments/allg_disziplinenliste.pdf" {
+      url "https://www.snf.ch/SiteCollectionDocuments/allg_disziplinenliste.pdf" {
         text = "SNF Disziplinenliste"
       }
-    }
   }
-  discipline "4" {
-    snf "10604" {
+  discipline "snf" "10604" {
       de = "Musik und Theater"
-      url "1" "https://www.snf.ch/SiteCollectionDocuments/allg_disziplinenliste.pdf" {
+      url "https://www.snf.ch/SiteCollectionDocuments/allg_disziplinenliste.pdf" {
         text = "SNF Disziplinenliste"
       }
-    }
   }
 
-  spatial_coverage {
-    geonames "https://www.geonames.org/2661552" {
+  spatial_coverage "geonames" "https://www.geonames.org/2661552" {
       text = "Bern"
-    }
   }
 
-  temporal_coverage {
-    periodo "https://n2t.net/ark:/99152/p06c6g3pvr5" {
+  temporal_coverage "periodo" "https://n2t.net/ark:/99152/p06c6g3pvr5" {
       text = "Under Mediation act, 1803-1814"
-    }
   }
-  temporal_coverage {
-    periodo "https://n2t.net/ark:/99152/p06c6g3p4cf" {
+  temporal_coverage "periodo" "https://n2t.net/ark:/99152/p06c6g3p4cf" {
       text = "Sonderbund, 1845-1847"
-    }
   }
-  temporal_coverage {
-    periodo "https://n2t.net/ark:/99152/p06c6g364np" {
+  temporal_coverage "periodo" "https://n2t.net/ark:/99152/p06c6g364np" {
       text = "Helvetic Republic, 1798-1803"
-    }
   }
-  temporal_coverage {
-    text {
+  temporal_coverage "text" {
       de = "1766-1905"
       en = "1766-1905"
       fr = "1766-1905"
-    }
   }
 }
 
-dataset "1" {
+dataset {
   created_at        = 1630601285266958000
   created_by        = "dsp-metadata-gui"
   title             = "Hôtel de Musique Bern"
@@ -135,20 +117,18 @@ dataset "1" {
     fr = "Allemand"
   }
 
-  license {
+  license "creative_commons" "https://creativecommons.org/licenses/by-nc/4.0" {
     date = "2021-09-02"
-    creative_commons "https://creativecommons.org/licenses/by-nc/4.0" {
-      text = "CC BY-NC 4.0"
-    }
+    text = "CC BY-NC 4.0"
   }
 
-  attribution {
-    agent = "musik_unibe"
-    roles = [author]
+  // reference to person or organization
+  attribution "musik_unibe" {
+    roles = [Author]
   }
 }
 
-grant "1" {
+grant {
   name   = "Ordinary Budget"
   funder = "musik_unibe" // reference to organization
 }
@@ -159,7 +139,7 @@ organization "musik_unibe" {
   name       = "Institut für Musikwissenschaft der Universität Bern"
   email      = "urchueguia@musik.unibe.ch"
 
-  url "1" "https://www.musik.unibe.ch" {
+  url "https://www.musik.unibe.ch" {
     text = "https://www.musik.unibe.ch"
   }
 

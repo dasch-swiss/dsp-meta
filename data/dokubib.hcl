@@ -6,16 +6,10 @@ project {
   shortcode   = "0804"
   name        = "Bilddatenbank Bibliothek St. Moritz"
 
-  alternativeName "1" {
-    de = "Dokumentationsbibliothek St. Moritz"
-    en = "St. Moritz Documentation Library"
-  }
-
   teaser_text = "Bibliothek St. Moritz Dokumentation is the local history archive of the community of St. Moritz, Switzerland."
 
   description {
     en = "Bibliothek St. Moritz Dokumentation is the local history archive of the community of St. Moritz, Switzerland. It’s collection contains publications, manuscripts and audiovisual documents of the touristic development of St. Moritz"
-    de = "Die Bibliothek St. Moritz Dokumentation ist das Lokalarchiv der Gemeinde St. Moritz. Ihre Sammlung umfasst Publikationen, Manuskripte und audiovisuelle Dokumente zur touristischen Entwicklung von St. Moritz."
   }
 
   url "https://data.dasch.swiss/dokubib/" {
@@ -47,81 +41,52 @@ project {
     de = "Schweiz"
   }
 
-  discipline "1" {
-    skos "https://skos.um.es/unesco6/5501" {
+  discipline "skos" "https://skos.um.es/unesco6/5501" {
       text = "Local history"
-    }
-  }
-  discipline "2" {
-    skos "https://skos.um.es/unesco6/5502" {
-      text = "Regional history"
-    }
-  }
-  discipline "3" {
-    snf "10302" {
-      en = "Swiss history"
-      de = "Schweizer Geschichte"
-      url "1" "https://www.snf.ch/SiteCollectionDocuments/allg_disziplinenliste.pdf" {
-        text = "SNF Discipline List"
-      }
-    }
   }
 
-  spatial_coverage {
-    geonames "https://www.geonames.org/2658822" {
+  spatial_coverage "geonames" "https://www.geonames.org/2658822" {
       text = "St. Moritz"
-    }
   }
-  temporal_coverage {
-    chronontology "https://chronontology.dainst.org/period/INtagfT8h7Fs" {
+  temporal_coverage "chronontology" "https://chronontology.dainst.org/period/INtagfT8h7Fs" {
       text = "20th and 21st Centuries"
-    }
   }
-  temporal_coverage {
-    chronontology "https://chronontology.dainst.org/period/kqORhO4TGm4n" {
+  temporal_coverage "chronontology" "https://chronontology.dainst.org/period/kqORhO4TGm4n" {
       text = "20th Century (1900 - 1999)"
-    }
   }
 
-  publication "1" {
+  publication {
     text = "Bibliothek St. Moritz Dokumentation"
   }
-  publication "2" {
-    text = "Doe, J. (2020): Some publication. In: Journal for sample publications. Vol. 100.1, p. 1-32."
-    url  = "https://www.stmoritz.ch/"
-  }
 
-  contact_point = "gemeinde_st_moritz" // reference to person or organization
+  // reference to person or organization (0-1)
+  contact_point = "gemeinde_st_moritz"
 }
 
-dataset "1" {
+dataset {
   created_at        = "1630601300976368000"
   created_by        = "dsp-metadata-gui"
   access_conditions = Restricted
   how_to_cite       = "Dokumentationsbibliothek St. Moritz"
   status            = Ongoing
   title             = "Dokumentationsbibliothek St. Moritz Bilddatenbank"
-  type_of_data      = [
-    Image,
-    Text
-  ]
+  type_of_data      = [Image, Text]
 
   abstract {
     en = "Bilddatenbank makes accessible the collection of historic photographs and other graphical representation of St. Moritz Dokumentationsbibliothek"
   }
 
-  language "1" {
+  language {
     de = "Deutsch"
   }
-  language "2" {
+  language {
     en = "German"
   }
-  language "3" {
+  language {
     fr = "Allemand"
   }
 
-  attribution "1" {
-    agent = "biblio_stmoritz"
+  attribution "biblio_stmoritz" {
     roles = [
       Creator,
       Publisher
@@ -130,18 +95,12 @@ dataset "1" {
 }
 
 dmp {
-  available = true
-  url       = "https://data.dasch.swiss/dokubib/dmp.pdf"
+  available = false
 }
 
-grant "1" {
+grant {
   name   = "Ordinary Budget"
   funder = "gemeinde_st_moritz" // reference to person or organization
-}
-
-grant "2" {
-  name   = "Project Funding"
-  funder = "snf" // reference to person or organization
 }
 
 organization "gemeinde_st_moritz" {
@@ -163,7 +122,7 @@ organization "biblio_stmoritz" {
   email      = "doku@biblio-stmoritz.ch"
   name       = "Dokumentationsbibliothek St. Moritz"
 
-  url "1" "https://www.biblio-stmoritz.ch" {
+  url "https://www.biblio-stmoritz.ch" {
     text = "www.biblio-stmoritz.ch"
   }
 
@@ -173,8 +132,4 @@ organization "biblio_stmoritz" {
     locality    = "St. Moritz"
     country     = "Switzerland"
   }
-}
-
-organization "snf" {
-  name = "Swiss National Science Foundation (SNSF)"
 }

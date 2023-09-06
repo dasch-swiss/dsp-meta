@@ -6,7 +6,7 @@ project {
   shortcode  = "0803"
   name       = "Die Bilderfolgen der Basler Frühdrucke: Spätmittelalterliche Didaxe als Bild-Text-Lektüre"
 
-  alternativeName "1" {
+  alternative_name {
     en = "Incunabula"
   }
 
@@ -37,48 +37,49 @@ project {
     en = "Letterpress Printing"
   }
 
-  discipline {
-    text {
-      en = "10404 Visual arts and Art history"
+  discipline "snf" "10404" {
+    en = "Visual arts and Art history"
+    url "https://www.snf.ch/SiteCollectionDocuments/allg_disziplinenliste.pdf" {
+      text = "SNF Disziplinenliste"
     }
   }
 
-  publication "1" {
+  publication {
     text = "Graf Kathrin (2011), Klerikersatiren in Bild und Text. Zur Kompilationstechnik im Narrenschiff, in Krause Karin u. Schellewald Barbara (ed.), 205-227."
   }
-  publication "2" {
+  publication {
     text = "Krause Karin u. Schellewald Barbara (ed.) (2011), Bild und Text im Mittelalter."
   }
-  publication "3" {
+  publication {
     text = "Rosenthaler Lukas u. Ryf Patrick (2009), Incunabula Basilea: A Web 2.0 Application as Research Tool to Early Prints, in Archiving, 6, 175-177."
   }
-  publication "4" {
+  publication {
     text = "Rosenthaler Lukas u. Schweizer Tobias (2012), SALSAH - eine webbasierte Forschungsplattform für die Geisteswissenschaften, in SAGW Bulletin, 32-33."
   }
-  publication "5" {
+  publication {
     text = "Rosenthaler Lukas, Virtual Research Environments. A New Approach for Dealing with Digitized Sources in Research in Arts and Humanities, in Clivaz Claire (ed.), ebook auf der Plattform http://www.ppur.info/lire-demain.html, Lausanne, 661-670."
   }
-  publication "6" {
+  publication {
     text = "Rosenthaler Lukas, Virtual Research Environments. A New Approach for Dealing with Digitized Sources in Research in Arts and Humanities, in Clivaz Claire (ed.), ebook auf der Plattform http://www.ppur.info/lire-demain.html, Lausanne, 661-670."
   }
-  publication "7" {
+  publication {
     text = "Ryf Patrick u. Rosenthaler Lukas (2010), SALSAH: System for Annotation and Linkage of Sources in Arts and Humanities. Eine Web 2.0 Applikation zur wissenschaftlichen Betrachtung und Bearbeitung von historischem Bild- und Textmaterial, in Bienert Andreas u.a. (ed.), GFaI, Berlin, 123-126."
   }
-  publication "8" {
+  publication {
     text = "Schmitt Lothar (2009), Sebastian Brant, Albrecht Dürer und das Narrenschiff, in Wolfenbütteler Abhandlungen zur Renaissanceforschung, 26, 347-412."
   }
-  publication "9" {
+  publication {
     text = "Schmitt Lothar (2010), Mehr als Dürer. Die Ilustrationen in Friedrich Riederers \"Spiegel der wahren Rhetorik\", in Knape Joachim u. Luppold Stefanie (ed.), 191-216."
   }
-  publication "10" {
+  publication {
     text = "Schweizer Tobias u. Rosenthaler Lukas (2011), SALSAH - eine virtuelle Forschungsumgebung für die Geisteswissenschaften, in Bienert Andreas u.a. (ed.), GFaI, Berlin, 147-153."
   }
-  publication "11" {
+  publication {
     text = "Schweizer Tobias, Development of a Topographical Transcription Method, in Clivaz Claire u. a. (ed.), ebook, auf der Plattform http://www.ppur.info/lire-demain.html, Lausanne, 671-680."
   }
 }
 
-dataset "1" {
+dataset {
   created_at = "1637624150907146000"
   created_by = "dsp-metadata-gui"
   title      = "Die Bilderfolgen der Basler Frühdrucke: Spätmittelalterliche Didaxe als Bild-Text-Lektüre"
@@ -88,35 +89,25 @@ dataset "1" {
     en = "The interdisciplinary research project \"The image sequences of Basel's early prints: Late Medieval didactic didactics as an image-text reading\" combines a comprehensive art scholarly analysis of the links between images and texts in the illustrated incunabula in Basel with the digitization of the holdings of the University Library and the development of an electronic edition in the form of a new kind of Web-0.2 application. The project is carried out by Kunsthistorische Seminar of the University of Basel (Prof. Dr. B. Schellewald) and Digital Humanities Lab of the University of Basel (Prof. Dr. L. Rosenthaler).  The core of the digital edition consists of around twenty richly illustrated early prints from four different Basel officers. Many of them appeared in several editions before 1500, some of them in German and Latin at almost the same time. It is an extraordinarily varied production; in addition to the Mirror of Salvation, there is a novel, the Melusine, the travelogues of Jean de Mandeville, some prayer and edification books, theological writings, Lent sermons, the lives of Saints Fridolin and Meinrad, the famous ship of fools and the knight of Thurn.  The Internet publication makes the digitized corpus of these early prints usable for the scientific edition as well as for the exploration of images and texts through the possibilities of non-linear linking and commenting on the images and texts. Existing and emerging online editions can also be linked to it, which optimises the use of databases from other institutions with regard to our corpus."
   }
 
-  attribution "1" {
-    agent = "katrin_graf_lamei" // reference to person or organization
-    roles = [
-      Employee
-    ]
+  // reference to person or organization
+  attribution "katrin_graf_lamei" {
+    roles = [Employee]
   }
-  attribution "2" {
-    agent = "barbara_schellewald" // reference to person or organization
-    roles = [
-      Applicant
-    ]
+  // reference to person or organization
+  attribution "barbara_schellewald" {
+    roles = [Applicant]
   }
-  attribution "3" {
-    agent = "lothar_schmidt" // reference to person or organization
-    roles = [
-      Employee
-    ]
+  // reference to person or organization
+  attribution "lothar_schmidt" {
+    roles = [Employee]
   }
-  attribution "4" {
-    agent = "hannes_hug"  // reference to person or organization
-    roles = [
-      Co-Applicant
-    ]
+  // reference to person or organization
+  attribution "hannes_hug" {
+    roles = [Co-Applicant]
   }
-  attribution "5" {
-    agent = "lukas_rosenthaler" // reference to person or organization
-    roles = [
-      Co-Applicant
-    ]
+  // reference to person or organization
+  attribution "lukas_rosenthaler" {
+    roles = [Co-Applicant]
   }
 }
 
@@ -124,15 +115,14 @@ person "barbara_schellewald" {
   created_at = "1637624150958979000"
   created_by = "dsp-metadata-gui"
 
-  family_name "1" {
+  family_name {
     text = "Schellewald"
   }
-  given_name "1" {
+  given_name {
     text = "Barbara"
   }
-  affiliation "1" {
-    ref = "kunst_seminar_unibas" // reference to organization
-  }
+  // reference to organization (1-n)
+  affiliation = ["kunst_seminar_unibas"]
 }
 
 person "hannes_hug" {
@@ -145,9 +135,8 @@ person "hannes_hug" {
   given_name "1" {
     text = "Hannes"
   }
-  affiliation "1" {
-    ref = "ub_unibas" // reference to organization
-  }
+  // reference to organization (1-n)
+  affiliation = ["ub_unibas"]
 }
 
 person "lukas_rosenthaler" {
@@ -160,9 +149,8 @@ person "lukas_rosenthaler" {
   given_name "1" {
     text = "Lukas"
   }
-  affiliation "1" {
-    ref = "dhlab_basel" // reference to organization
-  }
+  // reference to organization (1-n)
+  affiliation = ["dhlab_basel"]
 }
 
 person "lothar_schmitt" {
@@ -175,6 +163,9 @@ person "lothar_schmitt" {
   given_name "1" {
     text = "Lothar"
   }
+
+  // reference to organization (1-n)
+  affiliation = ["dhlab_basel"]
 }
 
 person "katrin_graf_lamei" {
@@ -190,6 +181,9 @@ person "katrin_graf_lamei" {
   given_name "1" {
     text = "Katrin"
   }
+
+  // reference to organization (1-n)
+  affiliation = ["dhlab_basel"]
 }
 
 organization "kunst_seminar_unibas" {
@@ -208,10 +202,11 @@ organization "snf" {
   name = "Swiss National Science Foundation (SNSF)"
 }
 
-grant "snf-120378" {
+grant {
   name   = "Project funding"
   number = "120378"
-  funder = "snf" // reference to organization
+  // reference to person or organization (1-n)
+  funders = ["snf"]
 
   url "https://data.snf.ch/grants/grant/120378" {
     text = "https://data.snf.ch/grants/grant/120378"
