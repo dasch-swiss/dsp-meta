@@ -1,4 +1,4 @@
-use hcl::Expression;
+use hcl::{Attribute, Expression};
 use tracing::warn;
 
 use crate::domain::{
@@ -124,14 +124,11 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
     type Error = DspMetaError;
 
     fn try_from(blocks: Vec<&hcl::Block>) -> Result<Self, Self::Error> {
-        let mut _alternative_names: Vec<&AlternativeName> = vec![];
+        let mut alternative_names: Vec<&AlternativeName> = vec![];
 
         for block in blocks {
             match block.identifier.as_str() {
-                "alternative_name" => {
-                    println!("alternative_name");
-                    dbg!(block);
-                }
+                "alternative_name" => alternative_names.push(&AlternativeName::try_from(&block)?),
                 "description" => {
                     println!("description");
                     dbg!(block);
@@ -146,6 +143,14 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
             alternative_names: AlternativeNames::default(),
             description: None,
         })
+    }
+}
+
+impl TryFrom<&hcl::Block> for AlternativeName {
+    type Error = DspMetaError;
+
+    fn try_from(block: &hcl::Block) -> Result<Self, Self::Error> {
+        AlternativeName::default()
     }
 }
 

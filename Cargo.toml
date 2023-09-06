@@ -19,6 +19,7 @@ serde_json = "1" # JSON serialization
 tracing = "0.1"
 tracing-subscriber = "0.3"
 tracing-test = "0.2"
+url = { version = "2", features = ["serde"] }
 warp = "0.3"
 
 [package]
@@ -47,6 +48,7 @@ serde_json.workspace = true
 tracing.workspace = true
 tracing-subscriber.workspace = true
 tracing-test.workspace = true
+url.workspace = true
 
 [[bin]]
 name = "dsp_meta"

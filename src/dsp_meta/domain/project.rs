@@ -1,11 +1,11 @@
 use crate::domain::convert::project::{ExtractedProjectAttributes, ExtractedProjectBlocks};
 use crate::domain::{
-    AlternativeNames, CreatedAt, CreatedBy, Description, EndDate, HowToCite, Name, Shortcode,
-    StartDate, TeaserText,
+    AlternativeNames, CreatedAt, CreatedBy, Description, Discipline, EndDate, HowToCite, Keyword,
+    Name, Publication, Shortcode, StartDate, TeaserText, UrlValue,
 };
 use crate::errors::DspMetaError;
 
-#[derive(Debug, Default, Clone, PartialEq)]
+#[derive(Debug, Default, PartialEq)]
 pub struct Project {
     pub created_at: CreatedAt,
     pub created_by: CreatedBy,
@@ -14,9 +14,13 @@ pub struct Project {
     pub alternative_names: AlternativeNames,
     pub teaser_text: TeaserText,
     pub description: Description,
+    pub url: UrlValue,
     pub how_to_cite: HowToCite,
     pub start_date: StartDate,
     pub end_date: Option<EndDate>,
+    pub keywords: Vec<Keyword>,
+    pub disciplines: Vec<Discipline>,
+    pub publications: Vec<Publication>,
 }
 
 impl TryFrom<&hcl::Block> for Project {
@@ -74,6 +78,10 @@ impl TryFrom<&hcl::Block> for Project {
 
         let alternative_names = AlternativeNames::default();
         let description = Description::default();
+        let url = UrlValue::default();
+        let keywords = vec![Keyword::default()];
+        let disciplines = vec![Discipline::default()];
+        let publications = vec![Publication::default()];
 
         let project = Project {
             created_at,
@@ -83,9 +91,13 @@ impl TryFrom<&hcl::Block> for Project {
             alternative_names,
             teaser_text,
             description,
+            url,
             how_to_cite,
             start_date,
             end_date,
+            keywords,
+            disciplines,
+            publications,
         };
 
         Ok(project)

@@ -2,6 +2,8 @@ use std::collections::HashSet;
 use std::fmt::Debug;
 use std::hash::Hash;
 
+use url::Url as UrlString;
+
 use hcl::Block;
 
 use crate::domain::dataset::Dataset;
@@ -205,7 +207,7 @@ impl Default for Description {
         Self::from(vec![
             LangString {
                 iso_code: IsoCode::DE,
-                string: String::from("Die default Beschreibung."),
+                string: String::from("Die Default-Beschreibung."),
             },
             LangString {
                 iso_code: IsoCode::EN,
@@ -232,8 +234,26 @@ impl From<Vec<LangString>> for Description {
     }
 }
 
+#[derive(Debug, PartialEq, Eq)]
+pub struct UrlValue {
+    pub value: UrlString,
+    pub text: String,
+}
+
+impl Default for UrlValue {
+    fn default() -> Self {
+        UrlValue {
+            value: UrlString::try_from("https://default.xyz").unwrap(),
+            text: "Default URL description".to_string(),
+        }
+    }
+}
+
 #[derive(Debug, Default, Clone, PartialEq)]
 pub struct HowToCite(String);
+
+#[derive(Debug, Default, PartialEq)]
+pub struct Keyword(LangString);
 
 #[derive(Debug, Default, Clone, PartialEq)]
 pub struct StartDate(String);
@@ -249,6 +269,28 @@ pub struct Grants(Vec<Grant>);
 
 #[derive(Debug, Default, PartialEq)]
 pub struct Title(String);
+
+#[derive(Debug, Default, PartialEq)]
+pub struct Discipline {
+    discipline_type: DisciplineType,
+    description: LangString,
+    url: UrlValue,
+}
+
+#[derive(Debug, Default, PartialEq)]
+pub enum DisciplineType {
+    #[default]
+    Snf,
+}
+
+#[derive(Debug, PartialEq)]
+pub struct Publication(String);
+
+impl Default for Publication {
+    fn default() -> Self {
+        Publication("Default publication".to_string())
+    }
+}
 
 #[cfg(test)]
 mod tests {
