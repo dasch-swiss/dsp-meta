@@ -12,7 +12,7 @@ use crate::domain::project::Project;
 use crate::domain::version::Version;
 use crate::errors::DspMetaError;
 
-mod converter;
+mod convert;
 mod dataset;
 mod grant;
 mod organization;

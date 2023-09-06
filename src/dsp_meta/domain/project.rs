@@ -1,12 +1,10 @@
-use crate::domain::converter::project::project_attributes;
-use crate::domain::converter::project::project_blocks::extract_project_blocks;
+use crate::domain::convert::project::{ExtractedProjectAttributes, ExtractedProjectBlocks};
 use crate::domain::{
     AlternativeNames, CreatedAt, CreatedBy, Description, EndDate, HowToCite, Name, Shortcode,
     StartDate, TeaserText,
 };
 use crate::errors::DspMetaError;
 
-// no need for smart constructors here, as there is no validation happening
 #[derive(Debug, Default, Clone, PartialEq)]
 pub struct Project {
     pub created_at: CreatedAt,
@@ -34,9 +32,9 @@ impl TryFrom<&hcl::Block> for Project {
         // extract the project attributes
         // created_at, created_by, shortcode, name, teaser_text, how_to_cite, start_date, end_date, datasets, funders, grants
 
-        let attributes = project_block.body.attributes().collect();
+        let attributes: Vec<&hcl::Attribute> = project_block.body.attributes().collect();
 
-        let extracted_attributes = project_attributes::extract_project_attributes(attributes)?;
+        let extracted_attributes = ExtractedProjectAttributes::try_from(attributes)?;
 
         let created_at = extracted_attributes.created_at.ok_or_else(|| {
             DspMetaError::ParseProject("Parse error: project needs to have a created_at value.")
@@ -72,7 +70,7 @@ impl TryFrom<&hcl::Block> for Project {
         // alternative_names, description, url, keywords, disciplines, publications)
 
         let blocks: Vec<&hcl::Block> = project_block.body.blocks().collect();
-        let _extracted_blocks = extract_project_blocks(blocks)?;
+        let _extracted_blocks = ExtractedProjectBlocks::try_from(blocks)?;
 
         let alternative_names = AlternativeNames::default();
         let description = Description::default();
@@ -99,10 +97,11 @@ mod tests {
     use hcl::block;
     use tracing_test::traced_test;
 
-    use super::*;
     use crate::domain::{
         CreatedAt, CreatedBy, EndDate, HowToCite, Name, Shortcode, StartDate, TeaserText,
     };
+
+    use super::*;
 
     #[traced_test]
     #[test]
