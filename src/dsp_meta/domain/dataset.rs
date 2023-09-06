@@ -1,9 +1,8 @@
-use crate::domain::{Title, ID};
+use crate::domain::Title;
 use crate::errors::DspMetaError;
 
 #[derive(Debug, PartialEq)]
 pub struct Dataset {
-    pub id: ID,
     pub title: Title,
 }
 
@@ -17,12 +16,7 @@ impl TryFrom<&hcl::Block> for Dataset {
             ));
         }
 
-        let dataset_label = dataset_block.labels().first().ok_or_else(|| {
-            DspMetaError::ParseDataset("Parse error: dataset needs to have one label.")
-        })?;
-        let id = ID(dataset_label.as_str().to_string());
-
         let title = Title(String::from("TODO: implement title extraction"));
-        Ok(Self { id, title })
+        Ok(Self { title })
     }
 }
