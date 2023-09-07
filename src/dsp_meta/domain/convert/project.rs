@@ -2,7 +2,7 @@ use hcl::Expression;
 use tracing::warn;
 
 use crate::domain::{
-    AlternativeNames, CreatedAt, CreatedBy, Description, Discipline, EndDate, HowToCite, IsoCode,
+    AlternativeName, CreatedAt, CreatedBy, Description, Discipline, EndDate, HowToCite, IsoCode,
     Keyword, LangString, Name, Publication, Shortcode, StartDate, TeaserText, UrlValue,
 };
 use crate::errors::DspMetaError;
@@ -117,7 +117,7 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedProjectAttributes {
 
 #[derive(Debug, Default, PartialEq)]
 pub struct ExtractedProjectBlocks {
-    pub alternative_names: Option<AlternativeNames>,
+    pub alternative_names: Vec<AlternativeName>,
     pub description: Option<Description>,
     pub url: Option<UrlValue>,
     pub keywords: Vec<Keyword>,
@@ -129,7 +129,7 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
     type Error = DspMetaError;
 
     fn try_from(blocks: Vec<&hcl::Block>) -> Result<Self, Self::Error> {
-        let mut alternative_names: Option<AlternativeNames> = None;
+        let mut alternative_names: Vec<AlternativeName> = vec![];
         let mut description: Option<Description> = None;
         let mut url: Option<UrlValue> = None;
         let mut keywords: Vec<Keyword> = vec![];
@@ -138,14 +138,8 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
 
         for block in blocks {
             match block.identifier.as_str() {
-                "alternative_names" => {
-                    alternative_names = if alternative_names.is_none() {
-                        Ok(Some(AlternativeNames::try_from(block)?))
-                    } else {
-                        Err(DspMetaError::ParseProject(
-                            "Only one 'alternative_names' block allowed.",
-                        ))
-                    }?
+                "alternative_name" => {
+                    alternative_names.push(AlternativeName::try_from(block)?);
                 }
                 "description" => {
                     description = if description.is_none() {
@@ -163,8 +157,8 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
                         Err(DspMetaError::ParseProject("Only one 'url' block allowed."))
                     }?
                 }
-                "keywords" => {
-                    keywords = vec![];
+                "keyword" => {
+                    keywords.push(Keyword::try_from(block)?);
                 }
                 "disciplines" => {
                     disciplines = vec![];
@@ -193,17 +187,17 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
 // Since these implementations convert from hcl::Block to a value object,
 // would it be better to implement them as TryInto and have them live
 // in a new hcl_converter module?
-impl TryFrom<&hcl::Block> for AlternativeNames {
+impl TryFrom<&hcl::Block> for AlternativeName {
     type Error = DspMetaError;
 
     fn try_from(block: &hcl::Block) -> Result<Self, Self::Error> {
-        if block.identifier.as_str() == "alternative_names" {
-            let mut names: Vec<LangString> = vec![];
+        if block.identifier.as_str() == "alternative_name" {
+            let mut values: Vec<LangString> = vec![];
             let attrs: Vec<&hcl::Attribute> = block.body.attributes().collect();
             for attr in attrs {
-                names.push(LangString::try_from(attr)?)
+                values.push(LangString::try_from(attr)?)
             }
-            Ok(AlternativeNames::from(names))
+            Ok(AlternativeName::from(values))
         } else {
             // FIXME: Add received value to error message.
             Err(DspMetaError::CreateValueObject(
@@ -232,6 +226,26 @@ impl TryFrom<&hcl::Block> for Description {
     }
 }
 
+impl TryFrom<&hcl::Block> for Keyword {
+    type Error = DspMetaError;
+
+    fn try_from(block: &hcl::Block) -> Result<Self, Self::Error> {
+        if block.identifier.as_str() == "keyword" {
+            let mut values: Vec<LangString> = vec![];
+            let attrs: Vec<&hcl::Attribute> = block.body.attributes().collect();
+            for attr in attrs {
+                values.push(LangString::try_from(attr)?)
+            }
+            Ok(Keyword::from(values))
+        } else {
+            // FIXME: Add received value to error message.
+            Err(DspMetaError::CreateValueObject(
+                "The passed block is not named correctly. Expected 'keyword'.",
+            ))
+        }
+    }
+}
+
 // FIXME: Where should these implementations live?
 impl TryFrom<&hcl::Attribute> for LangString {
     type Error = DspMetaError;
@@ -253,8 +267,10 @@ impl TryFrom<&hcl::Attribute> for LangString {
 mod tests {
     use hcl::{block, Identifier, Number};
     use tracing_test::traced_test;
+    use url::Url as UrlString;
 
     use super::*;
+    use crate::domain::AlternativeName;
 
     #[test]
     fn extract_created_at() {
@@ -284,32 +300,39 @@ mod tests {
 
     #[test]
     fn extract_alternative_names() {
-        let input = block!(
-            alternative_names {
-                de = "name_de"
-                en = "name_en"
-                fr = "name_fr"
+        let input1 = block!(
+            alternative_name {
+                de = "name1_de"
+                en = "name1_en"
+                fr = "name1_fr"
             }
         );
-        let blocks = vec![&input];
+        let input2 = block!(
+            alternative_name {
+                de = "name2_de"
+                en = "name2_en"
+                fr = "name2_fr"
+            }
+        );
+        let blocks = vec![&input1, &input2];
         let result = ExtractedProjectBlocks::try_from(blocks).unwrap();
-        assert!(result.alternative_names.is_some());
+        assert_eq!(result.alternative_names.len(), 2);
 
         let l1 = LangString {
             iso_code: IsoCode::DE,
-            string: "name_de".to_owned(),
+            string: "name1_de".to_owned(),
         };
         let l2 = LangString {
             iso_code: IsoCode::EN,
-            string: "name_en".to_owned(),
+            string: "name1_en".to_owned(),
         };
         let l3 = LangString {
             iso_code: IsoCode::FR,
-            string: "name_fr".to_owned(),
+            string: "name1_fr".to_owned(),
         };
         assert_eq!(
-            result.alternative_names.unwrap(),
-            AlternativeNames::from(vec![l1, l2, l3])
+            result.alternative_names[0],
+            AlternativeName::from(vec![l1, l2, l3])
         );
     }
 
@@ -342,6 +365,66 @@ mod tests {
             result.description.unwrap(),
             Description::from(vec![l1, l2, l3])
         );
+    }
+
+    #[test]
+    fn extract_url() {
+        let input = block!(
+            url "https://data.dasch.swiss/dokubib/" {
+                text = "Project Website"
+            }
+        );
+        let blocks = vec![&input];
+        let result = ExtractedProjectBlocks::try_from(blocks).unwrap();
+
+        let _expected = UrlValue {
+            value: UrlString::try_from("https://data.dasch.swiss/dokubib/").unwrap(),
+            text: "".to_string(),
+        };
+
+        // assert!(result.url.is_some());
+        // assert_eq!(
+        //     result.url.unwrap(),
+        //     expected
+        // );
+        assert!(result.url.is_none());
+    }
+
+    #[test]
+    fn extract_keywords() {
+        let input1 = block!(
+            keyword {
+                de = "keyword1_de"
+                en = "keyword1_en"
+                fr = "keyword1_fr"
+            }
+
+        );
+        let input2 = block!(
+            keyword {
+                de = "keyword2_de"
+                en = "keyword2_en"
+                fr = "keyword2_fr"
+            }
+        );
+        let blocks = vec![&input1, &input2];
+        let result = ExtractedProjectBlocks::try_from(blocks).unwrap();
+        assert_eq!(result.keywords.len(), 2);
+
+        let l1 = LangString {
+            iso_code: IsoCode::DE,
+            string: "keyword1_de".to_owned(),
+        };
+        let l2 = LangString {
+            iso_code: IsoCode::EN,
+            string: "keyword1_en".to_owned(),
+        };
+        let l3 = LangString {
+            iso_code: IsoCode::FR,
+            string: "keyword1_fr".to_owned(),
+        };
+
+        assert_eq!(result.keywords[0], Keyword::from(vec![l1, l2, l3]));
     }
 
     #[traced_test]

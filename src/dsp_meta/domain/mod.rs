@@ -98,14 +98,14 @@ pub struct Shortcode(String);
 #[derive(Debug, Default, Clone, PartialEq)]
 pub struct Name(String);
 
-/// A HashSet of alternative names in different languages.
-/// The HashSet is used to ensure that there are no duplicates values in regards
+/// A HashSet of an alternative name in different languages.
+/// The HashSet is used to ensure that there are no duplicate values in regards
 /// to the language code, as LangString only compares the iso_code.
 /// TODO: check if this is the correct data structure
 #[derive(Debug, Clone, PartialEq)]
-pub struct AlternativeNames(HashSet<LangString>);
+pub struct AlternativeName(HashSet<LangString>);
 
-impl Default for AlternativeNames {
+impl Default for AlternativeName {
     fn default() -> Self {
         Self::from(vec![
             LangString {
@@ -124,7 +124,7 @@ impl Default for AlternativeNames {
     }
 }
 
-impl From<Vec<LangString>> for AlternativeNames {
+impl From<Vec<LangString>> for AlternativeName {
     fn from(names: Vec<LangString>) -> Self {
         let mut set = HashSet::new();
         for name in names {
@@ -256,13 +256,10 @@ impl Default for Description {
 }
 
 impl From<Vec<LangString>> for Description {
-    fn from(descriptions: Vec<LangString>) -> Self {
+    fn from(values: Vec<LangString>) -> Self {
         let mut set = HashSet::new();
-        for description in descriptions {
-            set.insert(LangString {
-                iso_code: description.iso_code,
-                string: description.string,
-            });
+        for value in values {
+            set.insert(value);
         }
         Self(set)
     }
@@ -287,7 +284,16 @@ impl Default for UrlValue {
 pub struct HowToCite(String);
 
 #[derive(Debug, Default, PartialEq)]
-pub struct Keyword(LangString);
+pub struct Keyword(HashSet<LangString>);
+impl From<Vec<LangString>> for Keyword {
+    fn from(values: Vec<LangString>) -> Self {
+        let mut set = HashSet::new();
+        for value in values {
+            set.insert(value);
+        }
+        Self(set)
+    }
+}
 
 #[derive(Debug, Default, Clone, PartialEq)]
 pub struct StartDate(String);

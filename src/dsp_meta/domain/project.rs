@@ -1,6 +1,6 @@
 use crate::domain::convert::project::{ExtractedProjectAttributes, ExtractedProjectBlocks};
 use crate::domain::{
-    AlternativeNames, CreatedAt, CreatedBy, Description, Discipline, EndDate, HowToCite, Keyword,
+    AlternativeName, CreatedAt, CreatedBy, Description, Discipline, EndDate, HowToCite, Keyword,
     Name, Publication, Shortcode, StartDate, TeaserText, UrlValue,
 };
 use crate::errors::DspMetaError;
@@ -11,7 +11,7 @@ pub struct Project {
     pub created_by: CreatedBy,
     pub shortcode: Shortcode,
     pub name: Name,
-    pub alternative_names: Option<AlternativeNames>,
+    pub alternative_names: Vec<AlternativeName>,
     pub teaser_text: TeaserText,
     pub description: Description,
     pub url: UrlValue,
