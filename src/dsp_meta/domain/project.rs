@@ -11,7 +11,7 @@ pub struct Project {
     pub created_by: CreatedBy,
     pub shortcode: Shortcode,
     pub name: Name,
-    pub alternative_names: AlternativeNames,
+    pub alternative_names: Option<AlternativeNames>,
     pub teaser_text: TeaserText,
     pub description: Description,
     pub url: UrlValue,
@@ -74,10 +74,12 @@ impl TryFrom<&hcl::Block> for Project {
         // alternative_names, description, url, keywords, disciplines, publications)
 
         let blocks: Vec<&hcl::Block> = project_block.body.blocks().collect();
-        let _extracted_blocks = ExtractedProjectBlocks::try_from(blocks)?;
+        let extracted_blocks = ExtractedProjectBlocks::try_from(blocks)?;
 
-        let alternative_names = AlternativeNames::default();
-        let description = Description::default();
+        let alternative_names = extracted_blocks.alternative_names;
+        let description = extracted_blocks.description.ok_or_else(|| {
+            DspMetaError::ParseProject("Parse error: project needs to have a description.")
+        })?;
         let url = UrlValue::default();
         let keywords = vec![Keyword::default()];
         let disciplines = vec![Discipline::default()];

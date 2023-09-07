@@ -1,5 +1,5 @@
 use std::collections::HashSet;
-use std::fmt::Debug;
+use std::fmt::{Debug, Display, Formatter};
 use std::hash::Hash;
 
 use url::Url as UrlString;
@@ -109,15 +109,15 @@ pub struct AlternativeNames(HashSet<LangString>);
 impl Default for AlternativeNames {
     fn default() -> Self {
         Self::from(vec![
-            AlternativeName {
+            LangString {
                 iso_code: IsoCode::DE,
                 string: String::from("Der Default AlternativeName."),
             },
-            AlternativeName {
+            LangString {
                 iso_code: IsoCode::EN,
                 string: String::from("The default AlternativeName."),
             },
-            AlternativeName {
+            LangString {
                 iso_code: IsoCode::FR,
                 string: String::from("Le default AlternativeName."),
             },
@@ -125,23 +125,14 @@ impl Default for AlternativeNames {
     }
 }
 
-impl From<Vec<AlternativeName>> for AlternativeNames {
-    fn from(names: Vec<AlternativeName>) -> Self {
+impl From<Vec<LangString>> for AlternativeNames {
+    fn from(names: Vec<LangString>) -> Self {
         let mut set = HashSet::new();
         for name in names {
-            set.insert(LangString {
-                iso_code: name.iso_code,
-                string: name.string,
-            });
+            set.insert(name);
         }
         Self(set)
     }
-}
-
-#[derive(Debug, Clone, PartialEq)]
-pub struct AlternativeName {
-    iso_code: IsoCode,
-    string: String,
 }
 
 /// Represents a string in a specific language.
@@ -193,6 +184,50 @@ pub enum IsoCode {
     ZH, // Chinese
     AR, // Arabic
     FA, // Persian
+}
+impl Display for IsoCode {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        match self {
+            IsoCode::DE => write!(f, "de"),
+            IsoCode::EN => write!(f, "en"),
+            IsoCode::FR => write!(f, "fr"),
+            IsoCode::IT => write!(f, "it"),
+            IsoCode::ES => write!(f, "es"),
+            IsoCode::PT => write!(f, "pt"),
+            IsoCode::NL => write!(f, "nl"),
+            IsoCode::PL => write!(f, "pl"),
+            IsoCode::RU => write!(f, "ru"),
+            IsoCode::JA => write!(f, "ja"),
+            IsoCode::ZH => write!(f, "zh"),
+            IsoCode::AR => write!(f, "ar"),
+            IsoCode::FA => write!(f, "fa"),
+        }
+    }
+}
+
+impl TryFrom<&str> for IsoCode {
+    type Error = DspMetaError;
+
+    fn try_from(value: &str) -> Result<Self, Self::Error> {
+        match value {
+            "de" => Ok(IsoCode::DE),
+            "en" => Ok(IsoCode::EN),
+            "fr" => Ok(IsoCode::FR),
+            "it" => Ok(IsoCode::IT),
+            "es" => Ok(IsoCode::ES),
+            "pt" => Ok(IsoCode::PT),
+            "nl" => Ok(IsoCode::NL),
+            "pl" => Ok(IsoCode::PL),
+            "ru" => Ok(IsoCode::RU),
+            "ja" => Ok(IsoCode::JA),
+            "zh" => Ok(IsoCode::ZH),
+            "ar" => Ok(IsoCode::AR),
+            "fa" => Ok(IsoCode::FA),
+            _ => Err(DspMetaError::CreateValueObject(
+                "Creating an IsoCode failed because provided value is not allowed.",
+            )),
+        }
+    }
 }
 
 #[derive(Debug, Default, Clone, PartialEq)]

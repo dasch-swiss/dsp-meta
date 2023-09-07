@@ -8,6 +8,7 @@ pub enum DspMetaError {
     ParseVersion(&'static str),
     ParseProject(&'static str),
     ParseDataset(&'static str),
+    CreateValueObject(&'static str),
 }
 
 impl From<io::Error> for DspMetaError {

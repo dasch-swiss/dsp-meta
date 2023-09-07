@@ -6,7 +6,7 @@ project {
   shortcode  = "0803"
   name       = "Die Bilderfolgen der Basler Frühdrucke: Spätmittelalterliche Didaxe als Bild-Text-Lektüre"
 
-  alternative_name {
+  alternative_names {
     en = "Incunabula"
   }
 
