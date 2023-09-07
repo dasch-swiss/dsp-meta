@@ -111,10 +111,6 @@ mod tests {
     use hcl::block;
     use tracing_test::traced_test;
 
-    use crate::domain::{
-        CreatedAt, CreatedBy, EndDate, HowToCite, Name, Shortcode, StartDate, TeaserText,
-    };
-
     use super::*;
 
     #[traced_test]

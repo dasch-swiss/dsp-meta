@@ -2,9 +2,8 @@ use std::collections::HashSet;
 use std::fmt::{Debug, Display, Formatter};
 use std::hash::Hash;
 
-use url::Url as UrlString;
-
 use hcl::Block;
+use url::Url as UrlString;
 
 use crate::domain::dataset::Dataset;
 use crate::domain::grant::Grant;
