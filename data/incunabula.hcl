@@ -28,7 +28,7 @@ project {
     de = "Basel"
   }
   keyword {
-    en = "Contectualisation of images"
+    en = "Contextualisation of images"
   }
   keyword {
     en = "Late Middle Ages"
@@ -37,7 +37,7 @@ project {
     en = "Letterpress Printing"
   }
 
-  discipline "snf" "10404" {
+  discipline snf "10404" {
     en = "Visual arts and Art history"
     url "https://www.snf.ch/SiteCollectionDocuments/allg_disziplinenliste.pdf" {
       text = "SNF Disziplinenliste"

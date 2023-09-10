@@ -265,12 +265,39 @@ impl From<Vec<LangString>> for Description {
     }
 }
 
+/// Represents an HCL attribute which consists of an attribute key and a value expression.
+///
+/// In HCL syntax this is represented as:
+///
+/// ```hcl
+/// url  "value" {
+///    text = "text"
+/// }
+/// ```
+///
+/// Use [`Attribute::new`] to construct an [`Attribute`] from a value that is convertible to this
+/// crate's [`Expression`] type.
 #[derive(Debug, PartialEq, Eq)]
 pub struct UrlValue {
-    pub value: UrlString,
-    pub text: String,
+    pub url_value: UrlString,
+    pub description: String,
 }
 
+impl UrlValue {
+    pub fn new(value: String, text: String) -> Result<Self, DspMetaError> {
+        let maybe_url = UrlString::try_from(value.as_str());
+        if maybe_url.is_err() {
+            Err(DspMetaError::CreateValueObject(
+                "Creating an UrlValue failed because provided value is not a valid URL.",
+            ))
+        } else {
+            Ok(UrlValue {
+                value: maybe_url.unwrap(),
+                text,
+            })
+        }
+    }
+}
 impl Default for UrlValue {
     fn default() -> Self {
         UrlValue {

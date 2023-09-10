@@ -1,5 +1,6 @@
 use hcl::Expression;
 use tracing::warn;
+use url::Url as UrlString;
 
 use crate::domain::{
     AlternativeName, CreatedAt, CreatedBy, Description, Discipline, EndDate, HowToCite, IsoCode,
@@ -152,7 +153,7 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
                 }
                 "url" => {
                     url = if url.is_none() {
-                        Ok(None)
+                        Ok(Some(UrlValue::try_from(block)?))
                     } else {
                         Err(DspMetaError::ParseProject("Only one 'url' block allowed."))
                     }?
@@ -221,6 +222,45 @@ impl TryFrom<&hcl::Block> for Description {
         } else {
             Err(DspMetaError::CreateValueObject(
                 "The passed block is not named correctly. Expected 'description'.",
+            ))
+        }
+    }
+}
+
+impl TryFrom<&hcl::Block> for UrlValue {
+    type Error = DspMetaError;
+
+    fn try_from(block: &hcl::Block) -> Result<Self, Self::Error> {
+        if block.identifier.as_str() == "url" {
+            let url_value = block
+                .labels
+                .get(0)
+                .ok_or_else(|| {
+                    DspMetaError::CreateValueObject(
+                        "The passed url block is missing the label containing the url.",
+                    )
+                })?
+                .as_str();
+
+            let text_value = block
+                .body
+                .attributes()
+                .next()
+                .ok_or_else(|| {
+                    DspMetaError::CreateValueObject(
+                        "The passed url block is missing the text attribute.",
+                    )
+                })?
+                .expr()
+                .to_string();
+
+            Ok(UrlValue {
+                value: UrlString::try_from(url_value)?,
+                text: text_value,
+            })
+        } else {
+            Err(DspMetaError::CreateValueObject(
+                "The passed block is not named correctly. Expected 'url'.",
             ))
         }
     }
@@ -425,6 +465,20 @@ mod tests {
         };
 
         assert_eq!(result.keywords[0], Keyword::from(vec![l1, l2, l3]));
+    }
+
+    #[test]
+    fn extract_disciplines() {
+        let blocks = vec![];
+        let result = ExtractedProjectBlocks::try_from(blocks).unwrap();
+        assert_eq!(result.disciplines.len(), 0);
+    }
+
+    #[test]
+    fn extract_publications() {
+        let blocks = vec![];
+        let result = ExtractedProjectBlocks::try_from(blocks).unwrap();
+        assert_eq!(result.publications.len(), 0);
     }
 
     #[traced_test]

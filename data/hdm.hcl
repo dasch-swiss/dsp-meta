@@ -51,45 +51,45 @@ project {
     en = "Theatre"
   }
 
-  discipline "snf" "10302" {
+  discipline snf "10302" {
       de = "Schweizer Geschichte"
       url "https://www.snf.ch/SiteCollectionDocuments/allg_disziplinenliste.pdf" {
         text = "SNF Disziplinenliste"
       }
   }
-  discipline "snf" "10405" {
+  discipline snf "10405" {
       de = "Musikologie"
       url "https://www.snf.ch/SiteCollectionDocuments/allg_disziplinenliste.pdf" {
         text = "SNF Disziplinenliste"
       }
   }
-  discipline "snf" "10406" {
+  discipline snf "10406" {
       de = "Theater-und Filmwissenschaften"
       url "https://www.snf.ch/SiteCollectionDocuments/allg_disziplinenliste.pdf" {
         text = "SNF Disziplinenliste"
       }
   }
-  discipline "snf" "10604" {
+  discipline snf "10604" {
       de = "Musik und Theater"
       url "https://www.snf.ch/SiteCollectionDocuments/allg_disziplinenliste.pdf" {
         text = "SNF Disziplinenliste"
       }
   }
 
-  spatial_coverage "geonames" "https://www.geonames.org/2661552" {
+  spatial_coverage geonames "https://www.geonames.org/2661552" {
       text = "Bern"
   }
 
-  temporal_coverage "periodo" "https://n2t.net/ark:/99152/p06c6g3pvr5" {
+  temporal_coverage periodo "https://n2t.net/ark:/99152/p06c6g3pvr5" {
       text = "Under Mediation act, 1803-1814"
   }
-  temporal_coverage "periodo" "https://n2t.net/ark:/99152/p06c6g3p4cf" {
+  temporal_coverage periodo "https://n2t.net/ark:/99152/p06c6g3p4cf" {
       text = "Sonderbund, 1845-1847"
   }
-  temporal_coverage "periodo" "https://n2t.net/ark:/99152/p06c6g364np" {
+  temporal_coverage periodo "https://n2t.net/ark:/99152/p06c6g364np" {
       text = "Helvetic Republic, 1798-1803"
   }
-  temporal_coverage "text" {
+  temporal_coverage text {
       de = "1766-1905"
       en = "1766-1905"
       fr = "1766-1905"

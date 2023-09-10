@@ -41,17 +41,17 @@ project {
     de = "Schweiz"
   }
 
-  discipline "skos" "https://skos.um.es/unesco6/5501" {
+  discipline skos "https://skos.um.es/unesco6/5501" {
       text = "Local history"
   }
 
-  spatial_coverage "geonames" "https://www.geonames.org/2658822" {
+  spatial_coverage geonames "https://www.geonames.org/2658822" {
       text = "St. Moritz"
   }
-  temporal_coverage "chronontology" "https://chronontology.dainst.org/period/INtagfT8h7Fs" {
+  temporal_coverage chronontology "https://chronontology.dainst.org/period/INtagfT8h7Fs" {
       text = "20th and 21st Centuries"
   }
-  temporal_coverage "chronontology" "https://chronontology.dainst.org/period/kqORhO4TGm4n" {
+  temporal_coverage chronontology "https://chronontology.dainst.org/period/kqORhO4TGm4n" {
       text = "20th Century (1900 - 1999)"
   }
 
