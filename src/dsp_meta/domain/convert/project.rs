@@ -1,10 +1,9 @@
 use hcl::Expression;
 use tracing::warn;
-use url::Url as UrlString;
 
 use crate::domain::{
     AlternativeName, CreatedAt, CreatedBy, Description, Discipline, EndDate, HowToCite, IsoCode,
-    Keyword, LangString, Name, Publication, Shortcode, StartDate, TeaserText, UrlValue,
+    Keyword, LangString, Name, Publication, Shortcode, StartDate, TeaserText, URL,
 };
 use crate::errors::DspMetaError;
 
@@ -120,7 +119,7 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedProjectAttributes {
 pub struct ExtractedProjectBlocks {
     pub alternative_names: Vec<AlternativeName>,
     pub description: Option<Description>,
-    pub url: Option<UrlValue>,
+    pub url: Option<URL>,
     pub keywords: Vec<Keyword>,
     pub disciplines: Vec<Discipline>,
     pub publications: Vec<Publication>,
@@ -132,7 +131,7 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
     fn try_from(blocks: Vec<&hcl::Block>) -> Result<Self, Self::Error> {
         let mut alternative_names: Vec<AlternativeName> = vec![];
         let mut description: Option<Description> = None;
-        let mut url: Option<UrlValue> = None;
+        let mut url: Option<URL> = None;
         let mut keywords: Vec<Keyword> = vec![];
         let mut disciplines: Vec<Discipline> = vec![];
         let mut publications: Vec<Publication> = vec![];
@@ -153,7 +152,7 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
                 }
                 "url" => {
                     url = if url.is_none() {
-                        Ok(Some(UrlValue::try_from(block)?))
+                        Ok(Some(URL::try_from(block)?))
                     } else {
                         Err(DspMetaError::ParseProject("Only one 'url' block allowed."))
                     }?
@@ -227,7 +226,7 @@ impl TryFrom<&hcl::Block> for Description {
     }
 }
 
-impl TryFrom<&hcl::Block> for UrlValue {
+impl TryFrom<&hcl::Block> for URL {
     type Error = DspMetaError;
 
     fn try_from(block: &hcl::Block) -> Result<Self, Self::Error> {
@@ -242,7 +241,7 @@ impl TryFrom<&hcl::Block> for UrlValue {
                 })?
                 .as_str();
 
-            let text_value = block
+            let text_value_expr = block
                 .body
                 .attributes()
                 .next()
@@ -251,12 +250,20 @@ impl TryFrom<&hcl::Block> for UrlValue {
                         "The passed url block is missing the text attribute.",
                     )
                 })?
-                .expr()
-                .to_string();
+                .expr();
 
-            Ok(UrlValue {
-                value: UrlString::try_from(url_value)?,
-                text: text_value,
+            let text_value = match text_value_expr {
+                Expression::String(value) => Ok(value.to_owned()),
+                _ => Err(DspMetaError::CreateValueObject(
+                    "The passed url block text attribute is not of String type.",
+                )),
+            }?;
+
+            Ok(URL {
+                value: url::Url::try_from(url_value).map_err(|_| {
+                    DspMetaError::CreateValueObject("The passed url is not a valid url.")
+                })?,
+                description: text_value,
             })
         } else {
             Err(DspMetaError::CreateValueObject(
@@ -307,7 +314,6 @@ impl TryFrom<&hcl::Attribute> for LangString {
 mod tests {
     use hcl::{block, Identifier, Number};
     use tracing_test::traced_test;
-    use url::Url as UrlString;
 
     use super::*;
     use crate::domain::AlternativeName;
@@ -417,17 +423,14 @@ mod tests {
         let blocks = vec![&input];
         let result = ExtractedProjectBlocks::try_from(blocks).unwrap();
 
-        let _expected = UrlValue {
-            value: UrlString::try_from("https://data.dasch.swiss/dokubib/").unwrap(),
-            text: "".to_string(),
-        };
+        let expected = URL::new(
+            "https://data.dasch.swiss/dokubib/".to_string(),
+            "Project Website".to_string(),
+        )
+        .unwrap();
 
-        // assert!(result.url.is_some());
-        // assert_eq!(
-        //     result.url.unwrap(),
-        //     expected
-        // );
-        assert!(result.url.is_none());
+        assert!(result.url.is_some());
+        assert_eq!(result.url.unwrap(), expected);
     }
 
     #[test]

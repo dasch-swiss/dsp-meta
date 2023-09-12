@@ -3,7 +3,6 @@ use std::fmt::{Debug, Display, Formatter};
 use std::hash::Hash;
 
 use hcl::Block;
-use url::Url as UrlString;
 
 use crate::domain::dataset::Dataset;
 use crate::domain::grant::Grant;
@@ -278,31 +277,27 @@ impl From<Vec<LangString>> for Description {
 /// Use [`Attribute::new`] to construct an [`Attribute`] from a value that is convertible to this
 /// crate's [`Expression`] type.
 #[derive(Debug, PartialEq, Eq)]
-pub struct UrlValue {
-    pub url_value: UrlString,
+pub struct URL {
+    pub value: url::Url,
     pub description: String,
 }
 
-impl UrlValue {
-    pub fn new(value: String, text: String) -> Result<Self, DspMetaError> {
-        let maybe_url = UrlString::try_from(value.as_str());
-        if maybe_url.is_err() {
-            Err(DspMetaError::CreateValueObject(
+impl URL {
+    pub fn new(value: String, description: String) -> Result<Self, DspMetaError> {
+        let maybe_url = url::Url::try_from(value.as_str());
+        match maybe_url {
+            Ok(value) => Ok(URL { value, description }),
+            Err(_) => Err(DspMetaError::CreateValueObject(
                 "Creating an UrlValue failed because provided value is not a valid URL.",
-            ))
-        } else {
-            Ok(UrlValue {
-                value: maybe_url.unwrap(),
-                text,
-            })
+            )),
         }
     }
 }
-impl Default for UrlValue {
+impl Default for URL {
     fn default() -> Self {
-        UrlValue {
-            value: UrlString::try_from("https://default.xyz").unwrap(),
-            text: "Default URL description".to_string(),
+        URL {
+            value: url::Url::try_from("https://default.xyz").unwrap(),
+            description: "Default URL description".to_string(),
         }
     }
 }
@@ -341,7 +336,7 @@ pub struct Title(String);
 pub struct Discipline {
     discipline_type: DisciplineType,
     description: LangString,
-    url: UrlValue,
+    url: URL,
 }
 
 #[derive(Debug, Default, PartialEq)]

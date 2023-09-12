@@ -1,7 +1,7 @@
 use crate::domain::convert::project::{ExtractedProjectAttributes, ExtractedProjectBlocks};
 use crate::domain::{
     AlternativeName, CreatedAt, CreatedBy, Description, Discipline, EndDate, HowToCite, Keyword,
-    Name, Publication, Shortcode, StartDate, TeaserText, UrlValue,
+    Name, Publication, Shortcode, StartDate, TeaserText, URL,
 };
 use crate::errors::DspMetaError;
 
@@ -14,7 +14,7 @@ pub struct Project {
     pub alternative_names: Vec<AlternativeName>,
     pub teaser_text: TeaserText,
     pub description: Description,
-    pub url: UrlValue,
+    pub url: URL,
     pub how_to_cite: HowToCite,
     pub start_date: StartDate,
     pub end_date: Option<EndDate>,
@@ -80,7 +80,7 @@ impl TryFrom<&hcl::Block> for Project {
         let description = extracted_blocks.description.ok_or_else(|| {
             DspMetaError::ParseProject("Parse error: project needs to have a description.")
         })?;
-        let url = UrlValue::default();
+        let url = URL::default();
         let keywords = vec![Keyword::default()];
         let disciplines = vec![Discipline::default()];
         let publications = vec![Publication::default()];
