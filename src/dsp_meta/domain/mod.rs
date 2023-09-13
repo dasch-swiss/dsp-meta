@@ -315,6 +315,8 @@ pub struct EndDate(String);
 #[derive(Debug, Default, PartialEq)]
 pub struct ContactPoint(String);
 
+pub struct
+
 #[derive(Debug, Default, PartialEq)]
 pub struct Datasets(Vec<Dataset>);
 

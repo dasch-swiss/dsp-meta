@@ -175,7 +175,7 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
                     keywords.push(Keyword::try_from(block)?);
                 }
                 "disciplines" => {
-                    disciplines = vec![];
+                    disciplines.push(Discipline::try_from(block)?);
                 }
                 "publications" => {
                     publications = vec![];
@@ -322,6 +322,41 @@ impl TryFrom<&hcl::Attribute> for LangString {
                 "Parse error: name needs to be a string.".to_string(),
             )),
         }
+    }
+}
+
+impl TryFrom<&hcl::Block> for Discipline {
+    type Error = DspMetaError;
+
+    fn try_from(block: &hcl::Block) -> Result<Self, Self::Error> {
+        if block.identifier.as_str() != "discipline" {
+            let msg = format!(
+                "The passed block is not named correctly. Expected 'discipline', however got '{}' instead.",
+                block.identifier.as_str()
+            );
+            return Err(DspMetaError::CreateValueObject(msg));
+        }
+
+        if block.labels.len() != 2 {
+            return Err(DspMetaError::CreateValueObject("The passed number of block labels is not correct. Expected '2', namely 'vocabulary' and 'id'.".to_string()));
+        }
+
+        let vocabulary = block.labels.get(0).ok_or_else(|| {
+            DspMetaError::CreateValueObject(
+                "The passed discipline block is missing the vocabulary label.".to_string(),
+            )
+        })?;
+
+        let id = block.labels.get(1).ok_or_else(|| {
+            DspMetaError::CreateValueObject(
+                "The passed discipline block is missing the id label.".to_string(),
+            )
+        })?;
+
+        Ok(Discipline {
+            vocabulary: vocabulary.to_owned(),
+            id: id.to_owned(),
+        })
     }
 }
 
@@ -487,9 +522,14 @@ mod tests {
 
     #[test]
     fn extract_disciplines() {
-        let blocks = vec![];
+        let input1 = block!(
+            discipline skos "https://skos.um.es/unesco6/5501" {
+                text = "Local history"
+            }
+        );
+        let blocks = vec![&input1];
         let result = ExtractedProjectBlocks::try_from(blocks).unwrap();
-        assert_eq!(result.disciplines.len(), 0);
+        assert_eq!(result.disciplines.len(), 1);
     }
 
     #[test]
