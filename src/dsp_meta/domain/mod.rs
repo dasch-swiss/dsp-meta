@@ -1,4 +1,4 @@
-use std::collections::HashSet;
+use std::collections::HashMap;
 use std::fmt::{Debug, Display, Formatter};
 use std::hash::Hash;
 
@@ -104,7 +104,7 @@ pub struct Name(String);
 /// to the language code, as LangString only compares the iso_code.
 /// TODO: check if this is the correct data structure
 #[derive(Debug, Clone, PartialEq)]
-pub struct AlternativeName(HashSet<LangString>);
+pub struct AlternativeName(HashMap<IsoCode, String>);
 
 impl Default for AlternativeName {
     fn default() -> Self {
@@ -127,17 +127,17 @@ impl Default for AlternativeName {
 
 impl From<Vec<LangString>> for AlternativeName {
     fn from(names: Vec<LangString>) -> Self {
-        let mut set = HashSet::new();
+        let mut map = HashMap::new();
         for name in names {
-            set.insert(name);
+            map.insert(name.iso_code, name.string);
         }
-        Self(set)
+        Self(map)
     }
 }
 
 /// Represents a string in a specific language.
 /// Equality of two language specific strings is ONLY based iso_code.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub struct LangString {
     pub iso_code: IsoCode,
     pub string: String,
@@ -151,20 +151,6 @@ impl Default for LangString {
         }
     }
 }
-
-impl Hash for LangString {
-    fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
-        self.iso_code.hash(state);
-    }
-}
-
-impl PartialEq for LangString {
-    fn eq(&self, other: &Self) -> bool {
-        self.iso_code == other.iso_code
-    }
-}
-
-impl Eq for LangString {}
 
 /// Language codes according to ISO 639-1
 /// Not an exhaustive list.
@@ -235,7 +221,7 @@ pub struct TeaserText(String);
 
 /// A set of descriptions in different languages.
 #[derive(Debug, Clone, PartialEq)]
-pub struct Description(HashSet<LangString>);
+pub struct Description(HashMap<IsoCode, String>);
 
 impl Default for Description {
     fn default() -> Self {
@@ -258,11 +244,11 @@ impl Default for Description {
 
 impl From<Vec<LangString>> for Description {
     fn from(values: Vec<LangString>) -> Self {
-        let mut set = HashSet::new();
+        let mut map = HashMap::new();
         for value in values {
-            set.insert(value);
+            map.insert(value.iso_code, value.string);
         }
-        Self(set)
+        Self(map)
     }
 }
 
@@ -309,14 +295,14 @@ impl Default for URL {
 pub struct HowToCite(String);
 
 #[derive(Debug, Default, PartialEq)]
-pub struct Keyword(HashSet<LangString>);
+pub struct Keyword(HashMap<IsoCode, String>);
 impl From<Vec<LangString>> for Keyword {
     fn from(values: Vec<LangString>) -> Self {
-        let mut set = HashSet::new();
+        let mut map = HashMap::new();
         for value in values {
-            set.insert(value);
+            map.insert(value.iso_code, value.string);
         }
-        Self(set)
+        Self(map)
     }
 }
 
