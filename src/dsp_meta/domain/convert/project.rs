@@ -37,7 +37,7 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedProjectAttributes {
                     created_at = match attribute.expr() {
                         Expression::Number(value) => Ok(Some(CreatedAt(value.as_u64().unwrap()))), /* FIXME: get rid of unwrap */
                         _ => Err(DspMetaError::ParseProject(
-                            "Parse error: created_at needs to be a number.",
+                            "Parse error: created_at needs to be a number.".to_string(),
                         )),
                     }?
                 }
@@ -45,7 +45,7 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedProjectAttributes {
                     created_by = match attribute.expr() {
                         Expression::String(value) => Ok(Some(CreatedBy(value.to_owned()))),
                         _ => Err(DspMetaError::ParseProject(
-                            "Parse error: created_by needs to be a string.",
+                            "Parse error: created_by needs to be a string.".to_string(),
                         )),
                     }?
                 }
@@ -53,7 +53,7 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedProjectAttributes {
                     shortcode = match attribute.expr() {
                         Expression::String(value) => Ok(Some(Shortcode(value.to_owned()))),
                         _ => Err(DspMetaError::ParseProject(
-                            "Parse error: shortcode needs to be a string.",
+                            "Parse error: shortcode needs to be a string.".to_string(),
                         )),
                     }?;
                 }
@@ -61,7 +61,7 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedProjectAttributes {
                     name = match attribute.expr() {
                         Expression::String(value) => Ok(Some(Name(value.to_owned()))),
                         _ => Err(DspMetaError::ParseProject(
-                            "Parse error: name needs to be a string.",
+                            "Parse error: name needs to be a string.".to_string(),
                         )),
                     }?;
                 }
@@ -69,7 +69,7 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedProjectAttributes {
                     teaser_text = match attribute.expr() {
                         Expression::String(value) => Ok(Some(TeaserText(value.to_owned()))),
                         _ => Err(DspMetaError::ParseProject(
-                            "Parse error: teaser_text needs to be a string.",
+                            "Parse error: teaser_text needs to be a string.".to_string(),
                         )),
                     }?;
                 }
@@ -77,7 +77,7 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedProjectAttributes {
                     how_to_cite = match attribute.expr() {
                         Expression::String(value) => Ok(Some(HowToCite(value.to_owned()))),
                         _ => Err(DspMetaError::ParseProject(
-                            "Parse error: how_to_cite needs to be a string.",
+                            "Parse error: how_to_cite needs to be a string.".to_string(),
                         )),
                     }?;
                 }
@@ -85,7 +85,7 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedProjectAttributes {
                     start_date = match attribute.expr() {
                         Expression::String(value) => Ok(Some(StartDate(value.to_owned()))),
                         _ => Err(DspMetaError::ParseProject(
-                            "Parse error: start_date needs to be a string.",
+                            "Parse error: start_date needs to be a string.".to_string(),
                         )),
                     }?;
                 }
@@ -93,7 +93,7 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedProjectAttributes {
                     end_date = match attribute.expr() {
                         Expression::String(value) => Ok(Some(EndDate(value.to_owned()))),
                         _ => Err(DspMetaError::ParseProject(
-                            "Parse error: end_date needs to be a string.",
+                            "Parse error: end_date needs to be a string.".to_string(),
                         )),
                     }?;
                 }
@@ -146,7 +146,7 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
                         Ok(Some(Description::try_from(block)?))
                     } else {
                         Err(DspMetaError::ParseProject(
-                            "Only one 'description' block allowed.",
+                            "Only one 'description' block allowed.".to_string(),
                         ))
                     }?
                 }
@@ -154,7 +154,9 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
                     url = if url.is_none() {
                         Ok(Some(URL::try_from(block)?))
                     } else {
-                        Err(DspMetaError::ParseProject("Only one 'url' block allowed."))
+                        Err(DspMetaError::ParseProject(
+                            "Only one 'url' block allowed.".to_string(),
+                        ))
                     }?
                 }
                 "keyword" => {
@@ -200,9 +202,11 @@ impl TryFrom<&hcl::Block> for AlternativeName {
             Ok(AlternativeName::from(values))
         } else {
             // FIXME: Add received value to error message.
-            Err(DspMetaError::CreateValueObject(
-                "The passed block is not named correctly. Expected 'alternative_name'.",
-            ))
+            let msg = format!(
+                "The passed block is not named correctly. Expected 'alternative_name', however got '{}' instead.",
+                block.identifier.as_str()
+            );
+            Err(DspMetaError::CreateValueObject(msg))
         }
     }
 }
@@ -211,18 +215,20 @@ impl TryFrom<&hcl::Block> for Description {
     type Error = DspMetaError;
 
     fn try_from(block: &hcl::Block) -> Result<Self, Self::Error> {
-        if block.identifier.as_str() == "description" {
-            let mut descriptions: Vec<LangString> = vec![];
-            let attrs: Vec<&hcl::Attribute> = block.body.attributes().collect();
-            for attr in attrs {
-                descriptions.push(LangString::try_from(attr)?)
-            }
-            Ok(Description::from(descriptions))
-        } else {
-            Err(DspMetaError::CreateValueObject(
-                "The passed block is not named correctly. Expected 'description'.",
-            ))
+        if block.identifier.as_str() != "description" {
+            let msg = format!(
+                "The passed block is not named correctly. Expected 'description', however got '{}' instead.",
+                block.identifier.as_str()
+            );
+            return Err(DspMetaError::CreateValueObject(msg));
         }
+
+        let mut descriptions: Vec<LangString> = vec![];
+        let attrs: Vec<&hcl::Attribute> = block.body.attributes().collect();
+        for attr in attrs {
+            descriptions.push(LangString::try_from(attr)?)
+        }
+        Ok(Description::from(descriptions))
     }
 }
 
@@ -230,46 +236,48 @@ impl TryFrom<&hcl::Block> for URL {
     type Error = DspMetaError;
 
     fn try_from(block: &hcl::Block) -> Result<Self, Self::Error> {
-        if block.identifier.as_str() == "url" {
-            let url_value = block
-                .labels
-                .get(0)
-                .ok_or_else(|| {
-                    DspMetaError::CreateValueObject(
-                        "The passed url block is missing the label containing the url.",
-                    )
-                })?
-                .as_str();
-
-            let text_value_expr = block
-                .body
-                .attributes()
-                .next()
-                .ok_or_else(|| {
-                    DspMetaError::CreateValueObject(
-                        "The passed url block is missing the text attribute.",
-                    )
-                })?
-                .expr();
-
-            let text_value = match text_value_expr {
-                Expression::String(value) => Ok(value.to_owned()),
-                _ => Err(DspMetaError::CreateValueObject(
-                    "The passed url block text attribute is not of String type.",
-                )),
-            }?;
-
-            Ok(URL {
-                value: url::Url::try_from(url_value).map_err(|_| {
-                    DspMetaError::CreateValueObject("The passed url is not a valid url.")
-                })?,
-                description: text_value,
-            })
-        } else {
-            Err(DspMetaError::CreateValueObject(
-                "The passed block is not named correctly. Expected 'url'.",
-            ))
+        if block.identifier.as_str() != "url" {
+            let msg = format!(
+                "The passed block is not named correctly. Expected 'url', however got '{}' instead.",
+                block.identifier.as_str()
+            );
+            return Err(DspMetaError::CreateValueObject(msg));
         }
+
+        let url_value = block
+            .labels
+            .get(0)
+            .ok_or_else(|| {
+                DspMetaError::CreateValueObject(
+                    "The passed url block is missing the label containing the url.".to_string(),
+                )
+            })?
+            .as_str();
+
+        let text_value_expr = block
+            .body
+            .attributes()
+            .next()
+            .ok_or_else(|| {
+                DspMetaError::CreateValueObject(
+                    "The passed url block is missing the text attribute.".to_string(),
+                )
+            })?
+            .expr();
+
+        let text_value = match text_value_expr {
+            Expression::String(value) => Ok(value.to_owned()),
+            _ => Err(DspMetaError::CreateValueObject(
+                "The passed url block text attribute is not of String type.".to_string(),
+            )),
+        }?;
+
+        Ok(URL {
+            value: url::Url::try_from(url_value).map_err(|_| {
+                DspMetaError::CreateValueObject("The passed url is not a valid url.".to_string())
+            })?,
+            description: text_value,
+        })
     }
 }
 
@@ -277,19 +285,20 @@ impl TryFrom<&hcl::Block> for Keyword {
     type Error = DspMetaError;
 
     fn try_from(block: &hcl::Block) -> Result<Self, Self::Error> {
-        if block.identifier.as_str() == "keyword" {
-            let mut values: Vec<LangString> = vec![];
-            let attrs: Vec<&hcl::Attribute> = block.body.attributes().collect();
-            for attr in attrs {
-                values.push(LangString::try_from(attr)?)
-            }
-            Ok(Keyword::from(values))
-        } else {
-            // FIXME: Add received value to error message.
-            Err(DspMetaError::CreateValueObject(
-                "The passed block is not named correctly. Expected 'keyword'.",
-            ))
+        if block.identifier.as_str() != "keyword" {
+            let msg = format!(
+                "The passed block is not named correctly. Expected 'keyword', however got '{}' instead.",
+                block.identifier.as_str()
+            );
+            return Err(DspMetaError::CreateValueObject(msg));
         }
+
+        let mut values: Vec<LangString> = vec![];
+        let attrs: Vec<&hcl::Attribute> = block.body.attributes().collect();
+        for attr in attrs {
+            values.push(LangString::try_from(attr)?)
+        }
+        Ok(Keyword::from(values))
     }
 }
 
@@ -304,7 +313,7 @@ impl TryFrom<&hcl::Attribute> for LangString {
                 string: value.to_owned(),
             }),
             _ => Err(DspMetaError::ParseProject(
-                "Parse error: name needs to be a string.",
+                "Parse error: name needs to be a string.".to_string(),
             )),
         }
     }

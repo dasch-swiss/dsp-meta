@@ -55,7 +55,7 @@ impl TryFrom<&hcl::Body> for Metadata {
                 "project" => {
                     if project.is_some() {
                         return Err(DspMetaError::ParseProject(
-                            "Only one project block allowed.",
+                            "Only one project block allowed.".to_string(),
                         ));
                     } else {
                         project = Some(Project::try_from(block)?)
@@ -69,10 +69,12 @@ impl TryFrom<&hcl::Body> for Metadata {
         }
 
         let metadata = Metadata {
-            version: version
-                .ok_or_else(|| DspMetaError::ParseVersion("Version attribute is not provided."))?,
-            project: project
-                .ok_or_else(|| DspMetaError::ParseProject("Project block is not provided."))?,
+            version: version.ok_or_else(|| {
+                DspMetaError::ParseVersion("Version attribute is not provided.".to_string())
+            })?,
+            project: project.ok_or_else(|| {
+                DspMetaError::ParseProject("Project block is not provided.".to_string())
+            })?,
             datasets: Vec::new(),
             grants: Vec::new(),
             organizations: Vec::new(),
@@ -222,7 +224,7 @@ impl TryFrom<&str> for IsoCode {
             "ar" => Ok(IsoCode::AR),
             "fa" => Ok(IsoCode::FA),
             _ => Err(DspMetaError::CreateValueObject(
-                "Creating an IsoCode failed because provided value is not allowed.",
+                "Creating an IsoCode failed because provided value is not allowed.".to_string(),
             )),
         }
     }
@@ -288,7 +290,8 @@ impl URL {
         match maybe_url {
             Ok(value) => Ok(URL { value, description }),
             Err(_) => Err(DspMetaError::CreateValueObject(
-                "Creating an UrlValue failed because provided value is not a valid URL.",
+                "Creating an UrlValue failed because provided value is not a valid URL."
+                    .to_string(),
             )),
         }
     }

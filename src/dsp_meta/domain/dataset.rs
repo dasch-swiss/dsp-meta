@@ -12,7 +12,11 @@ impl TryFrom<&hcl::Block> for Dataset {
     fn try_from(dataset_block: &hcl::Block) -> Result<Self, Self::Error> {
         if dataset_block.identifier.as_str() != "dataset" {
             return Err(DspMetaError::ParseDataset(
-                "Parse error: dataset block needs to be named 'dataset'.",
+                format!(
+                    "Parse error: dataset block needs to be named 'dataset', however got '{}' instead.",
+                    dataset_block.identifier.as_str()
+                )
+                .to_string(),
             ));
         }
 

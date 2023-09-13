@@ -9,13 +9,18 @@ impl TryFrom<&Attribute> for Version {
     fn try_from(attribute: &Attribute) -> Result<Self, Self::Error> {
         type Error = crate::errors::DspMetaError;
 
-        let mut result: Result<Self, Error> =
-            Err(Error::ParseVersion("Version attribute is not provided."));
+        let mut result: Result<Self, Error> = Err(Error::ParseVersion(
+            "Version attribute is not provided.".to_string(),
+        ));
 
         if attribute.key() == "version" {
             result = match attribute.expr() {
-                Expression::Number(value) => Ok(Self(value.as_u64().unwrap())),
-                _ => Err(Error::ParseVersion("Version needs to be a number.")),
+                Expression::Number(value) => Ok(Self(value.as_u64().ok_or_else(|| {
+                    Error::ParseVersion("Version needs to be a non-negative number.".to_string())
+                })?)),
+                _ => Err(Error::ParseVersion(
+                    "Version needs to be a non-negative number.".to_string(),
+                )),
             }
         }
 

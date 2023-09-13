@@ -29,7 +29,11 @@ impl TryFrom<&hcl::Block> for Project {
     fn try_from(project_block: &hcl::Block) -> Result<Self, Self::Error> {
         if project_block.identifier.as_str() != "project" {
             return Err(DspMetaError::ParseProject(
-                "Parse error: project block needs to be named 'project'.",
+                format!(
+                    "Parse error: project block needs to be named 'project', however got '{}' instead.",
+                    project_block.identifier.as_str()
+                )
+                .to_string(),
             ));
         }
 
@@ -41,31 +45,43 @@ impl TryFrom<&hcl::Block> for Project {
         let extracted_attributes = ExtractedProjectAttributes::try_from(attributes)?;
 
         let created_at = extracted_attributes.created_at.ok_or_else(|| {
-            DspMetaError::ParseProject("Parse error: project needs to have a created_at value.")
+            DspMetaError::ParseProject(
+                "Parse error: project needs to have a created_at value.".to_string(),
+            )
         })?;
 
         let created_by = extracted_attributes.created_by.ok_or_else(|| {
-            DspMetaError::ParseProject("Parse error: project needs to have a created_by value.")
+            DspMetaError::ParseProject(
+                "Parse error: project needs to have a created_by value.".to_string(),
+            )
         })?;
 
         let shortcode = extracted_attributes.shortcode.ok_or_else(|| {
-            DspMetaError::ParseProject("Parse error: project needs to have a shortcode.")
+            DspMetaError::ParseProject(
+                "Parse error: project needs to have a shortcode.".to_string(),
+            )
         })?;
 
         let name = extracted_attributes.name.ok_or_else(|| {
-            DspMetaError::ParseProject("Parse error: project needs to have a name.")
+            DspMetaError::ParseProject("Parse error: project needs to have a name.".to_string())
         })?;
 
         let teaser_text = extracted_attributes.teaser_text.ok_or_else(|| {
-            DspMetaError::ParseProject("Parse error: project needs to have a teaser_text.")
+            DspMetaError::ParseProject(
+                "Parse error: project needs to have a teaser_text.".to_string(),
+            )
         })?;
 
         let how_to_cite = extracted_attributes.how_to_cite.ok_or_else(|| {
-            DspMetaError::ParseProject("Parse error: project needs to have a how_to_cite.")
+            DspMetaError::ParseProject(
+                "Parse error: project needs to have a how_to_cite.".to_string(),
+            )
         })?;
 
         let start_date = extracted_attributes.start_date.ok_or_else(|| {
-            DspMetaError::ParseProject("Parse error: project needs to have a start_date.")
+            DspMetaError::ParseProject(
+                "Parse error: project needs to have a start_date.".to_string(),
+            )
         })?;
 
         let end_date = extracted_attributes.end_date;
@@ -78,7 +94,9 @@ impl TryFrom<&hcl::Block> for Project {
 
         let alternative_names = extracted_blocks.alternative_names;
         let description = extracted_blocks.description.ok_or_else(|| {
-            DspMetaError::ParseProject("Parse error: project needs to have a description.")
+            DspMetaError::ParseProject(
+                "Parse error: project needs to have a description.".to_string(),
+            )
         })?;
         let url = URL::default();
         let keywords = vec![Keyword::default()];
