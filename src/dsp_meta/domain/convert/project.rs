@@ -2,8 +2,9 @@ use hcl::Expression;
 use tracing::warn;
 
 use crate::domain::{
-    AlternativeName, CreatedAt, CreatedBy, Description, Discipline, EndDate, HowToCite, IsoCode,
-    Keyword, LangString, Name, Publication, Shortcode, StartDate, TeaserText, URL,
+    AlternativeName, ContactPoint, CreatedAt, CreatedBy, Description, Discipline, EndDate,
+    HowToCite, IsoCode, Keyword, LangString, Name, Publication, Shortcode, StartDate, TeaserText,
+    URL,
 };
 use crate::errors::DspMetaError;
 
@@ -16,6 +17,7 @@ pub struct ExtractedProjectAttributes {
     pub how_to_cite: Option<HowToCite>,
     pub start_date: Option<StartDate>,
     pub end_date: Option<EndDate>,
+    pub contact_point: Option<ContactPoint>,
 }
 
 impl TryFrom<Vec<&hcl::Attribute>> for ExtractedProjectAttributes {
@@ -30,6 +32,7 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedProjectAttributes {
         let mut how_to_cite: Option<HowToCite> = None;
         let mut start_date: Option<StartDate> = None;
         let mut end_date: Option<EndDate> = None;
+        let mut contact_point: Option<ContactPoint> = None;
 
         for attribute in attributes {
             match attribute.key() {
@@ -97,6 +100,14 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedProjectAttributes {
                         )),
                     }?;
                 }
+                "contact_point" => {
+                    contact_point = match attribute.expr() {
+                        Expression::String(value) => Ok(Some(ContactPoint(value.to_owned()))),
+                        _ => Err(DspMetaError::ParseProject(
+                            "Parse error: contact_point needs to be a string.".to_string(),
+                        )),
+                    }?;
+                }
                 _ => {
                     warn!("Parse error: unknown attribute '{}'.", attribute.key());
                 }
@@ -111,6 +122,7 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedProjectAttributes {
             how_to_cite,
             start_date,
             end_date,
+            contact_point,
         })
     }
 }
@@ -185,10 +197,6 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
     }
 }
 
-// FIXME: Where should these implementations live?
-// Since these implementations convert from hcl::Block to a value object,
-// would it be better to implement them as TryInto and have them live
-// in a new hcl_converter module?
 impl TryFrom<&hcl::Block> for AlternativeName {
     type Error = DspMetaError;
 
@@ -201,7 +209,6 @@ impl TryFrom<&hcl::Block> for AlternativeName {
             }
             Ok(AlternativeName::from(values))
         } else {
-            // FIXME: Add received value to error message.
             let msg = format!(
                 "The passed block is not named correctly. Expected 'alternative_name', however got '{}' instead.",
                 block.identifier.as_str()
@@ -302,7 +309,6 @@ impl TryFrom<&hcl::Block> for Keyword {
     }
 }
 
-// FIXME: Where should these implementations live?
 impl TryFrom<&hcl::Attribute> for LangString {
     type Error = DspMetaError;
 

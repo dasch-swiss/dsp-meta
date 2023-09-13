@@ -1,7 +1,7 @@
 use crate::domain::convert::project::{ExtractedProjectAttributes, ExtractedProjectBlocks};
 use crate::domain::{
-    AlternativeName, CreatedAt, CreatedBy, Description, Discipline, EndDate, HowToCite, Keyword,
-    Name, Publication, Shortcode, StartDate, TeaserText, URL,
+    AlternativeName, ContactPoint, CreatedAt, CreatedBy, Description, Discipline, EndDate,
+    HowToCite, Keyword, Name, Publication, Shortcode, StartDate, TeaserText, URL,
 };
 use crate::errors::DspMetaError;
 
@@ -18,6 +18,7 @@ pub struct Project {
     pub how_to_cite: HowToCite,
     pub start_date: StartDate,
     pub end_date: Option<EndDate>,
+    pub contact_point: Option<ContactPoint>,
     pub keywords: Vec<Keyword>,
     pub disciplines: Vec<Discipline>,
     pub publications: Vec<Publication>,
@@ -85,6 +86,7 @@ impl TryFrom<&hcl::Block> for Project {
         })?;
 
         let end_date = extracted_attributes.end_date;
+        let contact_point = extracted_attributes.contact_point;
 
         // extract the project blocks
         // alternative_names, description, url, keywords, disciplines, publications)
@@ -115,6 +117,7 @@ impl TryFrom<&hcl::Block> for Project {
             how_to_cite,
             start_date,
             end_date,
+            contact_point,
             keywords,
             disciplines,
             publications,
@@ -152,10 +155,10 @@ mod tests {
                 how_to_cite = "Huinink, Johannes; Schröder, Carolin; Castiglioni, Laura; Feldhaus, Michael"
                 start_date  = "2009-04-01"
                 end_date    = "2012-03-31"
+                contact_point = "project_organization"
             }
         );
         let project = Project::try_from(&input_project_block).unwrap();
-        dbg!(&project);
         assert_eq!(project.created_at, CreatedAt(1630601274523025000));
         assert_eq!(
             project.created_by,
@@ -180,5 +183,9 @@ mod tests {
         );
         assert_eq!(project.start_date, StartDate(String::from("2009-04-01")));
         assert_eq!(project.end_date, Some(EndDate(String::from("2012-03-31"))));
+        assert_eq!(
+            project.contact_point,
+            Some(ContactPoint(String::from("project_organization")))
+        );
     }
 }
