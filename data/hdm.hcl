@@ -53,44 +53,44 @@ project {
 
   discipline snf {
     ref_id = "10302"
-    text = "Schweizer Geschichte"
+    description = "Schweizer Geschichte"
     url = "https://www.snf.ch/SiteCollectionDocuments/allg_disziplinenliste.pdf"
   }
   discipline snf {
     ref_id = "10405"
-    text = "Musikologie"
+    description = "Musikologie"
     url = "https://www.snf.ch/SiteCollectionDocuments/allg_disziplinenliste.pdf"
   }
   discipline snf {
     ref_id = "10406"
-    text = "Theater-und Filmwissenschaften"
+    description = "Theater-und Filmwissenschaften"
     url  = "https://www.snf.ch/SiteCollectionDocuments/allg_disziplinenliste.pdf"
   }
   discipline snf {
     ref_id = "10604"
-    text = "Musik und Theater"
+    description = "Musik und Theater"
     url = "https://www.snf.ch/SiteCollectionDocuments/allg_disziplinenliste.pdf"
   }
 
   spatial_coverage geonames {
     ref_id = "https://www.geonames.org/2661552"
-    text = "Bern"
+    description = "Bern"
     url = "https://www.geonames.org/2661552"
   }
 
   temporal_coverage periodo {
     ref_id = "https://n2t.net/ark:/99152/p06c6g3pvr5"
-    text = "Under Mediation act, 1803-1814"
+    description = "Under Mediation act, 1803-1814"
     url = "https://n2t.net/ark:/99152/p06c6g3pvr5"
   }
   temporal_coverage periodo {
     ref_id = "https://n2t.net/ark:/99152/p06c6g3p4cf"
-    text = "Sonderbund, 1845-1847"
+    description = "Sonderbund, 1845-1847"
     url = "https://n2t.net/ark:/99152/p06c6g3p4cf"
   }
   temporal_coverage periodo {
     ref_id = "https://n2t.net/ark:/99152/p06c6g364np"
-    text = "Helvetic Republic, 1798-1803"
+    description = "Helvetic Republic, 1798-1803"
     url = "https://n2t.net/ark:/99152/p06c6g364np"
   }
   temporal_coverage text {

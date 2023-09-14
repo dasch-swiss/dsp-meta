@@ -39,7 +39,7 @@ project {
 
   discipline snf {
     ref_id = "10404"
-    text = "Visual arts and Art history"
+    description = "Visual arts and Art history"
     url = "https://www.snf.ch/SiteCollectionDocuments/allg_disziplinenliste.pdf"
   }
 
