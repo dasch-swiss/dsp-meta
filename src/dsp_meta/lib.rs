@@ -2,9 +2,8 @@ pub mod domain;
 pub mod errors;
 pub mod operation;
 
+use domain::entity::metadata::Metadata;
 use std::path::Path;
-
-use domain::Metadata;
 
 use crate::errors::DspMetaError;
 

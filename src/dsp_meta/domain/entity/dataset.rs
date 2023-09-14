@@ -1,4 +1,4 @@
-use crate::domain::Title;
+use crate::domain::value::Title;
 use crate::errors::DspMetaError;
 
 #[derive(Debug, PartialEq)]

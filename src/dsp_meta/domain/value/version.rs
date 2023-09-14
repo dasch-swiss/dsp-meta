@@ -1,12 +1,12 @@
-use hcl::{Attribute, Expression};
+use hcl::Expression;
 
 #[derive(Debug, Default, PartialEq)]
 pub struct Version(pub u64);
 
 /// Given a list of attributes, try to extract the version.
-impl TryFrom<&Attribute> for Version {
+impl TryFrom<&hcl::Attribute> for Version {
     type Error = crate::errors::DspMetaError;
-    fn try_from(attribute: &Attribute) -> Result<Self, Self::Error> {
+    fn try_from(attribute: &hcl::Attribute) -> Result<Self, Self::Error> {
         type Error = crate::errors::DspMetaError;
 
         let mut result: Result<Self, Error> = Err(Error::ParseVersion(
@@ -30,12 +30,11 @@ impl TryFrom<&Attribute> for Version {
 
 #[cfg(test)]
 mod tests {
-
     use super::*;
 
     #[test]
     fn test_try_from_attributes() {
-        let attribute = Attribute::new("version", 1u64);
+        let attribute = hcl::Attribute::new("version", 1u64);
         let version = Version::try_from(&attribute).unwrap();
         assert_eq!(version, Version(1));
     }

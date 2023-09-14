@@ -1,11 +1,7 @@
 use hcl::Expression;
 use tracing::warn;
 
-use crate::domain::{
-    AlternativeName, ContactPoint, CreatedAt, CreatedBy, Description, Discipline, EndDate,
-    HowToCite, IsoCode, Keyword, LangString, Name, Publication, Shortcode, StartDate, TeaserText,
-    URL,
-};
+use crate::domain::value::{AlternativeName, ContactPoint, CreatedAt, CreatedBy, Description, Discipline, EndDate, HowToCite, IsoCode, Keyword, LangString, Name, Publication, Shortcode, StartDate, TeaserText, URL};
 use crate::errors::DspMetaError;
 
 pub struct ExtractedProjectAttributes {
@@ -366,7 +362,7 @@ mod tests {
     use tracing_test::traced_test;
 
     use super::*;
-    use crate::domain::AlternativeName;
+    use crate::domain::value::AlternativeName;
 
     #[test]
     fn extract_created_at() {

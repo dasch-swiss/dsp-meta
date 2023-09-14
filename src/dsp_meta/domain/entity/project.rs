@@ -1,5 +1,5 @@
 use crate::domain::convert::project::{ExtractedProjectAttributes, ExtractedProjectBlocks};
-use crate::domain::{
+use crate::domain::value::{
     AlternativeName, ContactPoint, CreatedAt, CreatedBy, Description, Discipline, EndDate,
     HowToCite, Keyword, Name, Publication, Shortcode, StartDate, TeaserText, URL,
 };
@@ -129,10 +129,10 @@ impl TryFrom<&hcl::Block> for Project {
 
 #[cfg(test)]
 mod tests {
+    use super::*;
+    use crate::domain::entity::project::Project;
     use hcl::block;
     use tracing_test::traced_test;
-
-    use super::*;
 
     #[traced_test]
     #[test]
