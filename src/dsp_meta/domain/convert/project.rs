@@ -1,7 +1,14 @@
+use clap::builder::Str;
 use hcl::Expression;
+use std::collections::HashMap;
 use tracing::warn;
 
-use crate::domain::value::{AlternativeName, ContactPoint, CreatedAt, CreatedBy, Description, Discipline, EndDate, HowToCite, IsoCode, Keyword, LangString, Name, Publication, Shortcode, StartDate, TeaserText, URL};
+use crate::domain::value::discipline::{Discipline, DisciplineData};
+use crate::domain::value::iso_code::IsoCode;
+use crate::domain::value::{
+    AlternativeName, ContactPoint, CreatedAt, CreatedBy, Description, EndDate, HowToCite, Keyword,
+    LangString, Name, Publication, Shortcode, StartDate, TeaserText, URL,
+};
 use crate::errors::DspMetaError;
 
 pub struct ExtractedProjectAttributes {
@@ -333,26 +340,86 @@ impl TryFrom<&hcl::Block> for Discipline {
             return Err(DspMetaError::CreateValueObject(msg));
         }
 
-        if block.labels.len() != 2 {
-            return Err(DspMetaError::CreateValueObject("The passed number of block labels is not correct. Expected '2', namely 'vocabulary' and 'id'.".to_string()));
+        if block.labels.len() != 1 {
+            return Err(DspMetaError::CreateValueObject("The passed number of block labels is not correct. Expected '1', namely 'reference data type' (e.g., 'skos').".to_string()));
         }
 
-        let vocabulary = block.labels.get(0).ok_or_else(|| {
+        let reference_data_type = block.labels.first().ok_or_else(|| {
             DspMetaError::CreateValueObject(
-                "The passed discipline block is missing the vocabulary label.".to_string(),
+                "The passed discipline block is missing the reference data type label.".to_string(),
             )
         })?;
 
-        let id = block.labels.get(1).ok_or_else(|| {
-            DspMetaError::CreateValueObject(
-                "The passed discipline block is missing the id label.".to_string(),
-            )
-        })?;
-
-        Ok(Discipline {
-            vocabulary: vocabulary.to_owned(),
-            id: id.to_owned(),
-        })
+        match reference_data_type.as_str() {
+           "skos" || "snf" => {
+               let mut ref_id: Option<String> = None;
+               let mut description: Option<String> = None;
+               let mut url: Option<url::Url> = None;
+               let attrs: Vec<&hcl::Attribute> = block.body.attributes().collect();
+               for attr in attrs {
+                   match attr.key() {
+                       "ref_id" => {
+                           ref_id = match attr.expr() {
+                               Expression::String(value) => Ok(Some(value.to_owned())),
+                               _ => Err(DspMetaError::CreateValueObject(
+                                   "The passed discipline block ref_id attribute is not of String type.".to_string(),
+                               )),
+                           }?;
+                       }
+                       "description" => {
+                           description = match attr.expr() {
+                               Expression::String(value) => Ok(Some(value.to_owned())),
+                               _ => Err(DspMetaError::CreateValueObject(
+                                   "The passed discipline block description attribute is not of String type.".to_string(),
+                               )),
+                           }?;
+                       }
+                       "url" => {
+                           url = match attr.expr() {
+                               Expression::String(value) => Ok(Some(url::Url::parse(value).map_err(|_| {
+                                   DspMetaError::CreateValueObject("The passed discipline block url attribute is not a valid url.".to_string())
+                               })?)),
+                               _ => Err(DspMetaError::CreateValueObject(
+                                   "The passed discipline block url attribute is not of String type.".to_string(),
+                               )),
+                           }?;
+                       }
+                       _ => {
+                           warn!("Parse error: unknown attribute '{}'.", attr.key());
+                       }
+                   }
+               }
+               Ok(Discipline::Skos {
+                   ref_id: ref_id.ok_or_else(|| {
+                       DspMetaError::CreateValueObject(
+                           "The passed discipline block is missing the ref_id attribute.".to_string(),
+                       )
+                   })?,
+                   description: description.ok_or_else(|| {
+                       DspMetaError::CreateValueObject(
+                           "The passed discipline block is missing the description attribute.".to_string(),
+                       )
+                   })?,
+                   url: url.ok_or_else(|| {
+                       DspMetaError::CreateValueObject(
+                           "The passed discipline block is missing the url attribute.".to_string(),
+                       )
+                   })?,
+               })
+           }
+           "text" => {
+               let mut descriptions: HashMap<IsoCode, String> = HashMap::new();
+               let attrs: Vec<&hcl::Attribute> = block.body.attributes().collect();
+               for attr in attrs {
+                   let lang_string = LangString::try_from(attr)?;
+                   descriptions.insert(lang_string.iso_code, lang_string.string);
+               }
+               Ok(Discipline::Text(descriptions))
+           }
+           _ => {
+               Err(DspMetaError::CreateValueObject("The passed discipline block is missing the correct reference data type label: 'skos', 'snf', or 'text'.".to_string()))
+           }
+       }
     }
 }
 

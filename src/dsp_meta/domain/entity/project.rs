@@ -1,7 +1,8 @@
 use crate::domain::convert::project::{ExtractedProjectAttributes, ExtractedProjectBlocks};
+use crate::domain::value::discipline::Discipline;
 use crate::domain::value::{
-    AlternativeName, ContactPoint, CreatedAt, CreatedBy, Description, Discipline, EndDate,
-    HowToCite, Keyword, Name, Publication, Shortcode, StartDate, TeaserText, URL,
+    AlternativeName, ContactPoint, CreatedAt, CreatedBy, Description, EndDate, HowToCite, Keyword,
+    Name, Publication, Shortcode, StartDate, TeaserText, URL,
 };
 use crate::errors::DspMetaError;
 
