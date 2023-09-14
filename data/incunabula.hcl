@@ -37,11 +37,10 @@ project {
     en = "Letterpress Printing"
   }
 
-  discipline snf "10404" {
-    en = "Visual arts and Art history"
-    url "https://www.snf.ch/SiteCollectionDocuments/allg_disziplinenliste.pdf" {
-      text = "SNF Disziplinenliste"
-    }
+  discipline snf {
+    ref_id = "10404"
+    text = "Visual arts and Art history"
+    url = "https://www.snf.ch/SiteCollectionDocuments/allg_disziplinenliste.pdf"
   }
 
   publication {
