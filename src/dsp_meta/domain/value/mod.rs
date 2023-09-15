@@ -6,6 +6,9 @@ use crate::errors::DspMetaError;
 
 pub(crate) mod discipline;
 pub(crate) mod iso_code;
+mod lang_text_data;
+mod ref_data;
+pub(crate) mod spatial_coverage;
 pub(crate) mod version;
 
 #[derive(Debug, Default, Clone, PartialEq)]
