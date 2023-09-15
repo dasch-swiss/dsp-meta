@@ -102,9 +102,9 @@ impl TryFrom<&hcl::Block> for Project {
             )
         })?;
         let url = URL::default();
-        let keywords = vec![Keyword::default()];
-        let disciplines = vec![Discipline::default()];
-        let publications = vec![Publication::default()];
+        let keywords = vec![];
+        let disciplines = vec![];
+        let publications = vec![];
 
         let project = Project {
             created_at,
@@ -130,10 +130,11 @@ impl TryFrom<&hcl::Block> for Project {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use crate::domain::entity::project::Project;
     use hcl::block;
     use tracing_test::traced_test;
+
+    use super::*;
+    use crate::domain::entity::project::Project;
 
     #[traced_test]
     #[test]

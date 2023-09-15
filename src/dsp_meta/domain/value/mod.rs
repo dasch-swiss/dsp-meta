@@ -1,10 +1,11 @@
-use crate::errors::DspMetaError;
-use iso_code::IsoCode;
 use std::collections::HashMap;
-use std::fmt::Display;
+
+use iso_code::IsoCode;
+
+use crate::errors::DspMetaError;
 
 pub(crate) mod discipline;
-mod iso_code;
+pub(crate) mod iso_code;
 pub(crate) mod version;
 
 #[derive(Debug, Default, Clone, PartialEq)]
