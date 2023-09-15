@@ -4,8 +4,11 @@ use std::io;
 pub enum DspMetaError {
     IO(io::Error),
     ParseHcl(hcl::Error),
-    ParseVersion(&'static str),
-    ParseProject(&'static str),
+    UnknownAttribute(String),
+    ParseVersion(String),
+    ParseProject(String),
+    ParseDataset(String),
+    CreateValueObject(String),
 }
 
 impl From<io::Error> for DspMetaError {
