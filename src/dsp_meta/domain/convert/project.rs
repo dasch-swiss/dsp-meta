@@ -4,6 +4,7 @@ use tracing::warn;
 use crate::domain::value::discipline::Discipline;
 use crate::domain::value::iso_code::IsoCode;
 use crate::domain::value::spatial_coverage::SpacialCoverage;
+use crate::domain::value::temporal_coverage::TemporalCoverage;
 use crate::domain::value::{
     AlternativeName, ContactPoint, CreatedAt, CreatedBy, Description, EndDate, HowToCite, Keyword,
     LangString, Name, Publication, Shortcode, StartDate, TeaserText, URL,
@@ -137,6 +138,7 @@ pub struct ExtractedProjectBlocks {
     pub keywords: Vec<Keyword>,
     pub disciplines: Vec<Discipline>,
     pub spacial_coverages: Vec<SpacialCoverage>,
+    pub temporal_coverages: Vec<TemporalCoverage>,
     pub publications: Vec<Publication>,
 }
 
@@ -150,6 +152,7 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
         let mut keywords: Vec<Keyword> = vec![];
         let mut disciplines: Vec<Discipline> = vec![];
         let mut spacial_coverages: Vec<SpacialCoverage> = vec![];
+        let mut temporal_coverages: Vec<TemporalCoverage> = vec![];
         let mut publications: Vec<Publication> = vec![];
 
         for block in blocks {
@@ -184,6 +187,9 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
                 "spacial_coverage" => {
                     spacial_coverages.push(SpacialCoverage::try_from(block)?);
                 }
+                "temporal_coverage" => {
+                    temporal_coverages.push(TemporalCoverage::try_from(block)?);
+                }
                 "publication" => {
                     publications = vec![];
                 }
@@ -200,6 +206,7 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
             keywords,
             disciplines,
             spacial_coverages,
+            temporal_coverages,
             publications,
         })
     }
@@ -519,6 +526,20 @@ mod tests {
         let blocks = vec![&input1];
         let result = ExtractedProjectBlocks::try_from(blocks).unwrap();
         assert_eq!(result.spacial_coverages.len(), 1);
+    }
+
+    #[test]
+    fn extract_temporal_coverage() {
+        let input1 = block!(
+            temporal_coverage chronontology {
+                ref_id = "https://chronontology.dainst.org/period/INtagfT8h7Fs"
+                description = "20th and 21st Centuries"
+                url = "https://chronontology.dainst.org/period/INtagfT8h7Fs"
+            }
+        );
+        let blocks = vec![&input1];
+        let result = ExtractedProjectBlocks::try_from(blocks).unwrap();
+        assert_eq!(result.temporal_coverages.len(), 1);
     }
 
     #[test]

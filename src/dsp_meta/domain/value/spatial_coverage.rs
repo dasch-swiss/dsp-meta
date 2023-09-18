@@ -1,6 +1,9 @@
 use crate::domain::value::ref_data::RefData;
 use crate::errors::DspMetaError;
 
+const SPACIAL_COVERAGE: &str = "spacial_coverage";
+const GEONAMES: &str = "geonames";
+
 #[derive(Debug, PartialEq)]
 pub enum SpacialCoverage {
     Geonames(RefData),
@@ -10,7 +13,7 @@ impl TryFrom<&hcl::Block> for SpacialCoverage {
     type Error = DspMetaError;
 
     fn try_from(block: &hcl::Block) -> Result<Self, Self::Error> {
-        if block.identifier.as_str() != "spacial_coverage" {
+        if block.identifier.as_str() != SPACIAL_COVERAGE {
             let msg = format!(
                 "The passed block is not named correctly. Expected 'spacial_coverage', however got '{}' instead.",
                 block.identifier.as_str()
@@ -32,7 +35,7 @@ impl TryFrom<&hcl::Block> for SpacialCoverage {
         let attributes: Vec<&hcl::Attribute> = block.body.attributes().collect();
 
         match reference_data_type.as_str() {
-            "geonames" => {
+            GEONAMES => {
                 let ref_data = RefData::try_from(attributes)?;
                 Ok(SpacialCoverage::Geonames(ref_data))
             }
