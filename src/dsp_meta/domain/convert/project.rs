@@ -3,11 +3,12 @@ use tracing::warn;
 
 use crate::domain::value::discipline::Discipline;
 use crate::domain::value::iso_code::IsoCode;
+use crate::domain::value::publication::Publication;
 use crate::domain::value::spatial_coverage::SpacialCoverage;
 use crate::domain::value::temporal_coverage::TemporalCoverage;
 use crate::domain::value::{
     AlternativeName, ContactPoint, CreatedAt, CreatedBy, Description, EndDate, HowToCite, Keyword,
-    LangString, Name, Publication, Shortcode, StartDate, TeaserText, URL,
+    LangString, Name, Shortcode, StartDate, TeaserText, URL,
 };
 use crate::errors::DspMetaError;
 
@@ -37,6 +38,7 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedProjectAttributes {
         let mut end_date: Option<EndDate> = None;
         let mut contact_point: Option<ContactPoint> = None;
 
+        // FIXME: throw error on duplicate attributes
         for attribute in attributes {
             match attribute.key() {
                 "created_at" => {
@@ -130,6 +132,15 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedProjectAttributes {
     }
 }
 
+const ALTERNATIVE_NAME_BLOCK: &str = "alternative_name";
+const DESCRIPTION_BLOCK: &str = "description";
+const URL_BLOCK: &str = "url";
+const KEYWORD_BLOCK: &str = "keyword";
+const DISCIPLINE_BLOCK: &str = "discipline";
+const SPACIAL_COVERAGE_BLOCK: &str = "spacial_coverage";
+const TEMPORAL_COVERAGE_BLOCK: &str = "temporal_coverage";
+const PUBLICATION_BLOCK: &str = "publication";
+
 #[derive(Debug, Default, PartialEq)]
 pub struct ExtractedProjectBlocks {
     pub alternative_names: Vec<AlternativeName>,
@@ -157,10 +168,10 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
 
         for block in blocks {
             match block.identifier.as_str() {
-                "alternative_name" => {
+                ALTERNATIVE_NAME_BLOCK => {
                     alternative_names.push(AlternativeName::try_from(block)?);
                 }
-                "description" => {
+                DESCRIPTION_BLOCK => {
                     description = if description.is_none() {
                         Ok(Some(Description::try_from(block)?))
                     } else {
@@ -169,7 +180,7 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
                         ))
                     }?
                 }
-                "url" => {
+                URL_BLOCK => {
                     url = if url.is_none() {
                         Ok(Some(URL::try_from(block)?))
                     } else {
@@ -178,21 +189,13 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
                         ))
                     }?
                 }
-                "keyword" => {
-                    keywords.push(Keyword::try_from(block)?);
+                KEYWORD_BLOCK => keywords.push(Keyword::try_from(block)?),
+                DISCIPLINE_BLOCK => disciplines.push(Discipline::try_from(block)?),
+                SPACIAL_COVERAGE_BLOCK => spacial_coverages.push(SpacialCoverage::try_from(block)?),
+                TEMPORAL_COVERAGE_BLOCK => {
+                    temporal_coverages.push(TemporalCoverage::try_from(block)?)
                 }
-                "discipline" => {
-                    disciplines.push(Discipline::try_from(block)?);
-                }
-                "spacial_coverage" => {
-                    spacial_coverages.push(SpacialCoverage::try_from(block)?);
-                }
-                "temporal_coverage" => {
-                    temporal_coverages.push(TemporalCoverage::try_from(block)?);
-                }
-                "publication" => {
-                    publications = vec![];
-                }
+                PUBLICATION_BLOCK => publications.push(Publication::try_from(block)?),
                 _ => {
                     // catch all
                     warn!("Parse error: unknown block '{}'.", block.identifier);
@@ -544,9 +547,14 @@ mod tests {
 
     #[test]
     fn extract_publications() {
-        let blocks = vec![];
+        let input1 = block!(
+            publication {
+                text = "A publication"
+            }
+        );
+        let blocks = vec![&input1];
         let result = ExtractedProjectBlocks::try_from(blocks).unwrap();
-        assert_eq!(result.publications.len(), 0);
+        assert_eq!(result.publications.len(), 1);
     }
 
     #[traced_test]

@@ -1,8 +1,9 @@
 use crate::domain::convert::project::{ExtractedProjectAttributes, ExtractedProjectBlocks};
 use crate::domain::value::discipline::Discipline;
+use crate::domain::value::publication::Publication;
 use crate::domain::value::{
     AlternativeName, ContactPoint, CreatedAt, CreatedBy, Description, EndDate, HowToCite, Keyword,
-    Name, Publication, Shortcode, StartDate, TeaserText, URL,
+    Name, Shortcode, StartDate, TeaserText, URL,
 };
 use crate::errors::DspMetaError;
 
@@ -40,7 +41,8 @@ impl TryFrom<&hcl::Block> for Project {
         }
 
         // extract the project attributes
-        // created_at, created_by, shortcode, name, teaser_text, how_to_cite, start_date, end_date, datasets, funders, grants
+        // created_at, created_by, shortcode, name, teaser_text, how_to_cite, start_date, end_date,
+        // datasets, funders, grants
 
         let attributes: Vec<&hcl::Attribute> = project_block.body.attributes().collect();
 

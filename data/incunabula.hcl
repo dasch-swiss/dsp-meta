@@ -128,10 +128,10 @@ person "hannes_hug" {
   created_at = "1637624150959055000"
   created_by = "dsp-metadata-gui"
 
-  family_name "1" {
+  family_name {
     text = "Hug"
   }
-  given_name "1" {
+  given_name {
     text = "Hannes"
   }
   // reference to organization (1-n)
@@ -142,10 +142,10 @@ person "lukas_rosenthaler" {
   created_at = "1637624150959124000"
   created_by = "dsp-metadata-gui"
 
-  family_name "1" {
+  family_name {
     text = "Rosenthaler"
   }
-  given_name "1" {
+  given_name {
     text = "Lukas"
   }
   // reference to organization (1-n)
@@ -156,10 +156,10 @@ person "lothar_schmitt" {
   created_at = "1637624150959191000"
   created_by = "dsp-metadata-gui"
 
-  family_name "1" {
+  family_name {
     text = "Schmitt"
   }
-  given_name "1" {
+  given_name {
     text = "Lothar"
   }
 
@@ -171,13 +171,13 @@ person "katrin_graf_lamei" {
   created_at = "1637624150959244000"
   created_by = "dsp-metadata-gui"
 
-  family_name "1" {
+  family_name {
     text = "Graf"
   }
-  family_name "2" {
+  family_name {
     text = "Lamei"
   }
-  given_name "1" {
+  given_name {
     text = "Katrin"
   }
 
