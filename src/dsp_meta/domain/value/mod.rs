@@ -7,7 +7,9 @@ use crate::errors::DspMetaError;
 pub(crate) mod discipline;
 pub(crate) mod iso_code;
 mod lang_text_data;
+pub(crate) mod publication;
 mod ref_data;
+mod simple_text_data;
 pub(crate) mod spatial_coverage;
 pub(crate) mod temporal_coverage;
 pub(crate) mod version;
@@ -183,12 +185,3 @@ pub struct ContactPoint(pub String);
 
 #[derive(Debug, Default, PartialEq)]
 pub struct Title(pub String);
-
-#[derive(Debug, PartialEq)]
-pub struct Publication(String);
-
-impl Default for Publication {
-    fn default() -> Self {
-        Publication("Default publication".to_string())
-    }
-}
