@@ -41,7 +41,8 @@ impl TryFrom<&hcl::Block> for Project {
         }
 
         // extract the project attributes
-        // created_at, created_by, shortcode, name, teaser_text, how_to_cite, start_date, end_date, datasets, funders, grants
+        // created_at, created_by, shortcode, name, teaser_text, how_to_cite, start_date, end_date,
+        // datasets, funders, grants
 
         let attributes: Vec<&hcl::Attribute> = project_block.body.attributes().collect();
 
