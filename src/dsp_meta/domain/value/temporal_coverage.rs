@@ -1,12 +1,18 @@
+use crate::domain::value::lang_text_data::LangTextData;
 use crate::domain::value::ref_data::RefData;
 use crate::errors::DspMetaError;
 
 const TEMPORAL_COVERAGE: &str = "temporal_coverage";
 const CHRONONTOLOGY: &str = "chronontology";
+const PERIODO: &str = "periodo";
+
+const TEXT: &str = "text";
 
 #[derive(Debug, PartialEq)]
 pub enum TemporalCoverage {
     Chronontology(RefData),
+    Periodo(RefData),
+    Text(LangTextData),
 }
 
 impl TryFrom<&hcl::Block> for TemporalCoverage {
@@ -22,7 +28,7 @@ impl TryFrom<&hcl::Block> for TemporalCoverage {
         }
 
         if block.labels.len() != 1 {
-            return Err(DspMetaError::CreateValueObject("The passed number of block labels is not correct. Expected '1', namely 'reference data type' (e.g., 'chronontology').".to_string()));
+            return Err(DspMetaError::CreateValueObject("The passed number of block labels is not correct. Expected '1', namely 'reference data type' (e.g., 'chronontology, periodo').".to_string()));
         }
 
         let reference_data_type = block.labels.first().ok_or_else(|| {
@@ -39,8 +45,17 @@ impl TryFrom<&hcl::Block> for TemporalCoverage {
                 let ref_data = RefData::try_from(attributes)?;
                 Ok(TemporalCoverage::Chronontology(ref_data))
             }
+            PERIODO => {
+                let ref_data = RefData::try_from(attributes)?;
+                Ok(TemporalCoverage::Periodo(ref_data))
+            }
+            TEXT => {
+                let text_data = LangTextData::try_from(attributes)?;
+                Ok(TemporalCoverage::Text(text_data))
+            }
             _ => {
-                Err(DspMetaError::CreateValueObject("The passed temporal_coverage block is missing the correct reference data type label: 'chronontology'.".to_string()))
+                let msg = format!("The passed temporal_coverage block is missing the correct reference data type label. Expected one of '{}', '{}' or '{}'. Got '{}'.", CHRONONTOLOGY, PERIODO, TEXT, reference_data_type.as_str());
+                Err(DspMetaError::CreateValueObject(msg))
             }
         }
     }
