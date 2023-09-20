@@ -12,8 +12,9 @@ project {
     en = "Bibliothek St. Moritz Dokumentation is the local history archive of the community of St. Moritz, Switzerland. It’s collection contains publications, manuscripts and audiovisual documents of the touristic development of St. Moritz"
   }
 
-  url "https://data.dasch.swiss/dokubib/" {
-    text = "Project Website"
+  url {
+    href = "https://data.dasch.swiss/dokubib/"
+    label = "Project Website"
   }
 
   how_to_cite = "Dokumentationsbibliothek St. Moritz"
@@ -130,8 +131,9 @@ organization "biblio_stmoritz" {
   email      = "doku@biblio-stmoritz.ch"
   name       = "Dokumentationsbibliothek St. Moritz"
 
-  url "https://www.biblio-stmoritz.ch" {
-    text = "www.biblio-stmoritz.ch"
+  url {
+    href = "https://www.biblio-stmoritz.ch"
+    label = "www.biblio-stmoritz.ch"
   }
 
   address {

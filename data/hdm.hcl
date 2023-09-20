@@ -12,8 +12,9 @@ project {
     en = "The database documents the events that took place in the Hôtel de Musique in Bern between 1766 and 1905. The repertoire was constituted by different kinds of spectacles like theatre plays, operas, ballets, concerts, dance parties, acrobatic performances, conferences or magicians. The list reconstructs the lifely and colourful theatre culture of Bern in the 19th Century."
   }
 
-  url "https://admin.dasch.swiss/project/081C" {
-    text = "Discover Project Data"
+  url {
+    href = "https://admin.dasch.swiss/project/081C"
+    label = "Discover Project Data"
   }
 
   how_to_cite = "HdM-Bern"
@@ -143,8 +144,9 @@ organization "musik_unibe" {
   name       = "Institut für Musikwissenschaft der Universität Bern"
   email      = "urchueguia@musik.unibe.ch"
 
-  url "https://www.musik.unibe.ch" {
-    text = "https://www.musik.unibe.ch"
+  url {
+    href = "https://www.musik.unibe.ch"
+    description = "https://www.musik.unibe.ch"
   }
 
   address {
