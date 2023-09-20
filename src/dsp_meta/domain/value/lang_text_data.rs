@@ -3,11 +3,11 @@ use std::collections::HashMap;
 use crate::domain::value::iso_code::IsoCode;
 use crate::errors::DspMetaError;
 
+/// Represents multiple strings in different languages.
 #[derive(Debug, PartialEq)]
 pub struct LangTextData(pub HashMap<IsoCode, String>);
 
-/// Try to create the text description of the discipline
-/// FIXME: Move to the API layer where the service adapter is implemented
+/// FIXME: Move to the API layer where the service adapter will be implemented
 impl TryFrom<Vec<&hcl::Attribute>> for LangTextData {
     type Error = DspMetaError;
 
@@ -19,8 +19,7 @@ impl TryFrom<Vec<&hcl::Attribute>> for LangTextData {
             let text = match attribute.expr() {
                 hcl::Expression::String(value) => Ok(value.to_owned()),
                 _ => Err(DspMetaError::CreateValueObject(
-                    "The passed discipline block description attribute is not of String type."
-                        .to_string(),
+                    "The attribute value is not of String type.".to_string(),
                 )),
             }?;
 
