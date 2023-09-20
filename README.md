@@ -117,18 +117,6 @@ fruits = ["apple", "banana", "orange"]
 numbers = [1, 2, 3, 4, 5]
 ```
 
-### Maps
-Maps in HCL are similar to dictionaries or key-value pairs in other languages. They are represented by curly braces ({})
-and consist of key-value pairs. Keys are written without quotes.
-
-```hcl
-person = {
-  name = "John Doe"
-  age = 30
-  email = "john@example.com"
-}
-```
-
 ### Heredoc Syntax
 HCL supports heredoc syntax for multiline strings. It is enclosed in triple double quotes ("""). Heredocs preserve
 leading indentation and line breaks.
@@ -139,36 +127,6 @@ This is a multiline string.
 It can span multiple lines.
 """
 ```
-
-### Variable Interpolation
-HCL allows variable interpolation, where the value of a variable can be inserted into a string using the "${}" syntax.
-This enables dynamic configurations.
-
-```hcl
-name = "John Doe"
-greeting = "Hello, ${name}!"
-```
-
-### Expressions
-HCL supports expressions that can be used to perform computations or manipulate values within the configuration.
-Expressions are enclosed in parentheses.
-
-```hcl
-result = (4 + 2) * 3
-```
-
-### Conditional Statements
-HCL supports conditional statements for making decisions within the configuration. Conditions are written using the
-"if" and "else" keywords.
-
-```hcl
-if condition {
-  # Code to execute if the condition is true
-} else {
-  # Code to execute if the condition is false
-}
-```
-
 ## Metadata HCL: Domain Specific Configuration Language for DSP Metadata
 
 ### Style Conventions
@@ -181,19 +139,85 @@ and then place nested blocks below them. Use one blank line to separate the argu
 
 ### Project
 
-The project block type takes one required label, which is the project identifier. The project identifier is a 4 digit
-hexadecimal number. The project block type can contain the following attributes:
+The project block contains the project specific attributes and blocks.
+
+Example:
 
 ```hcl
-project "0000" {
-  # Project specific attributes and blocks
+project {
+  created_at = 1637624150548721000
+  created_by = "dsp-metadata-gui"
+  shortcode  = "0803"
+  name       = "Project name"
+
+  alternative_name {
+    en = "Alternative name"
+  }
+
+  teaser_text = "Teaser text"
+
+  description {
+    de = "Description in German."
+    en = "Description in English."
+    fr = "Description in French."
+  }
+
+  url {
+    href = "https://example.com"
+    label = "Example label of the URL"
+  }
+
+  how_to_cite = "How to cite the project"
+  start_date = "2008-06-01"
+  end_date   = "2012-08-31"
+
+  keyword {
+    de = "Basel"
+  }
+
+  discipline snf {
+    ref_id = "10404"
+    description = "Visual arts and Art history"
+    url = "https://www.snf.ch/SiteCollectionDocuments/allg_disziplinenliste.pdf"
+  }
+  discipline skos {
+    ref_id = "https://skos.um.es/unesco6/5501"
+    description = "Local history"
+    url = "https://skos.um.es/unesco6/5501"
+  }
+
+  spatial_coverage geonames {
+    ref_id = "https://www.geonames.org/2661552"
+    description = "Bern"
+    url = "https://www.geonames.org/2661552"
+  }
+  
+  temporal_coverage periodo {
+    ref_id = "https://n2t.net/ark:/99152/p06c6g3pvr5"
+    description = "Under Mediation act, 1803-1814"
+    url = "https://n2t.net/ark:/99152/p06c6g3pvr5"
+  }
+  temporal_coverage chronontology {
+    ref_id = "https://chronontology.dainst.org/period/kqORhO4TGm4n"
+    description = "20th Century (1900 - 1999)"
+    url = "https://chronontology.dainst.org/period/kqORhO4TGm4n"
+  }
+  temporal_coverage text {
+    de = "1766-1905"
+    en = "1766-1905"
+    fr = "1766-1905"
+  }
+
+  publication {
+    text = "Citation of the publication"
+  }
 }
 ```
 
 ### Dataset
 
 ```hcl
-dataset "0804:dataset-001" {
+dataset {
   # Dataset specific attributes and blocks
 }
 ```
@@ -202,7 +226,7 @@ dataset "0804:dataset-001" {
 ### Person
 
 ```hcl
-person "0803:lothar_schmitt" {
+person {
   # Person specific attributes and blocks
 }
 ```
@@ -210,7 +234,7 @@ person "0803:lothar_schmitt" {
 ### Organization
 
 ```hcl
-organization "0803:lothar_schmitt" {
+organization {
   # Organization specific attributes and blocks
 }
 ```
@@ -218,7 +242,7 @@ organization "0803:lothar_schmitt" {
 ### Grant
 
 ```hcl
-grant "0803:lothar_schmitt" {
+grant {
   # Grant specific attributes and blocks
 }
 ```
