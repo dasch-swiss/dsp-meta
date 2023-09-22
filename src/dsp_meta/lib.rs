@@ -1,17 +1,19 @@
 pub mod domain;
 pub mod errors;
 pub mod operation;
+mod repo;
+mod service;
 
 use std::path::Path;
 
-use domain::entity::metadata::Metadata;
+use domain::entity::project_metadata::ProjectMetadata;
 
 use crate::errors::DspMetaError;
 
-pub fn load<P: AsRef<Path>>(path: P) -> Result<Metadata, DspMetaError> {
+pub fn load<P: AsRef<Path>>(path: P) -> Result<ProjectMetadata, DspMetaError> {
     let input = std::fs::read_to_string(path)?;
     let body: hcl::Body = hcl::from_str(&input)?;
-    let metadata = Metadata::try_from(&body)?;
+    let metadata = ProjectMetadata::try_from(&body)?;
     Ok(metadata)
 }
 

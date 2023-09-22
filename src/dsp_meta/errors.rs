@@ -9,6 +9,7 @@ pub enum DspMetaError {
     ParseProject(String),
     ParseDataset(String),
     CreateValueObject(String),
+    NotFound,
 }
 
 impl From<io::Error> for DspMetaError {

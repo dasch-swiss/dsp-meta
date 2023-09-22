@@ -6,7 +6,7 @@ pub mod value;
 mod tests {
     use hcl::body;
 
-    use crate::domain::entity::metadata::Metadata;
+    use crate::domain::entity::project_metadata::ProjectMetadata;
 
     #[test]
     fn try_from_multiple_projects_error() {
@@ -19,7 +19,7 @@ mod tests {
             }
         );
 
-        let project = Metadata::try_from(&input);
+        let project = ProjectMetadata::try_from(&input);
         assert!(project.is_err());
     }
 
@@ -27,7 +27,7 @@ mod tests {
     fn try_from_no_project_error() {
         let input = body!();
 
-        let project = Metadata::try_from(&input);
+        let project = ProjectMetadata::try_from(&input);
         assert!(project.is_err());
     }
 }

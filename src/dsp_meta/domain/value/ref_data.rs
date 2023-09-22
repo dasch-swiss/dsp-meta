@@ -2,7 +2,7 @@ use tracing::warn;
 
 use crate::errors::DspMetaError;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct RefData {
     pub(crate) ref_id: String,
     pub(crate) description: String,

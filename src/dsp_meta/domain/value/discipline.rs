@@ -14,7 +14,7 @@ use crate::errors::DspMetaError;
 ///     url = "https://skos.um.es/unesco6/5501"
 /// }
 /// ```
-#[derive(Debug, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum Discipline {
     Skos(RefData),
     Snf(RefData),

@@ -10,7 +10,7 @@ use crate::domain::value::{
 };
 use crate::errors::DspMetaError;
 
-#[derive(Debug, Default, PartialEq)]
+#[derive(Debug, Default, Clone, PartialEq)]
 pub struct Project {
     pub created_at: CreatedAt,
     pub created_by: CreatedBy,

@@ -6,7 +6,7 @@ use crate::errors::DspMetaError;
 
 const KEYWORD_BLOCK_IDENTIFIER: &str = "keyword";
 
-#[derive(Debug, Default, PartialEq)]
+#[derive(Clone, Debug, Default, PartialEq)]
 pub struct Keyword(HashMap<IsoCode, String>);
 
 impl TryFrom<&hcl::Block> for Keyword {
