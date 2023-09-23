@@ -1,1 +1,1 @@
-pub(crate) mod project_metadata_repository;
+pub mod project_metadata_repository;
