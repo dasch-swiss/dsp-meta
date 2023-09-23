@@ -1,5 +1,5 @@
 mod convert;
-pub(crate) mod entity;
+pub mod entity;
 pub mod value;
 
 #[cfg(test)]

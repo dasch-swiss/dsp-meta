@@ -1,3 +1,5 @@
+use tracing::trace;
+
 use crate::domain::entity::project_metadata::ProjectMetadata;
 use crate::domain::value::Shortcode;
 use crate::errors::DspMetaError;
@@ -13,6 +15,7 @@ where
     R: ProjectMetadataRepositoryContract,
 {
     pub fn new(repo: R) -> Self {
+        trace!("tracing from dsp_meta::core::project_metadata_service::new()");
         Self { repo }
     }
 }
@@ -34,6 +37,6 @@ where
     }
 
     fn delete(&self, id: Shortcode) -> Result<(), DspMetaError> {
-        todo!()
+        self.repo.delete(id)
     }
 }

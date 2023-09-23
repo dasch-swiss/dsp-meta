@@ -3,4 +3,4 @@ pub(crate) mod grant;
 mod organization;
 mod person;
 mod project;
-pub(crate) mod project_metadata;
+pub mod project_metadata;

@@ -1,6 +1,8 @@
 use std::collections::HashMap;
 use std::sync::{Arc, RwLock};
 
+use tracing::trace;
+
 use crate::domain::entity::project_metadata::ProjectMetadata;
 use crate::domain::value::Shortcode;
 use crate::errors::DspMetaError;
@@ -12,6 +14,7 @@ pub struct ProjectMetadataRepository {
 
 impl ProjectMetadataRepository {
     pub fn new() -> Self {
+        trace!("ProjectMetadataRepository::new");
         let db: Arc<RwLock<HashMap<String, ProjectMetadata>>> =
             Arc::new(RwLock::new(HashMap::new()));
         Self { db }
@@ -59,7 +62,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_store() {
+    fn successfully_store_project_metadata() {
         let metadata = ProjectMetadata::default();
         let shortcode = Shortcode("1234".to_owned());
 

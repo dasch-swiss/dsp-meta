@@ -51,6 +51,11 @@ tracing-test.workspace = true
 url.workspace = true
 
 [[bin]]
-name = "dsp_meta"
+name = "dsp_meta_cli"
+test = false
+doc = false
+
+[[bin]]
+name = "dsp_meta_server"
 test = false
 doc = false
