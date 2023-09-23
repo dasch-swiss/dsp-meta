@@ -1,4 +1,6 @@
-use dsp_meta::load;
+mod common;
+
+use common::load;
 
 #[test]
 fn load_dokubib_config() {

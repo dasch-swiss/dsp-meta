@@ -39,8 +39,8 @@ pub struct StartDate(pub String);
 #[derive(Debug, Default, Clone, PartialEq)]
 pub struct EndDate(pub String);
 
-#[derive(Debug, Default, PartialEq)]
+#[derive(Debug, Default, Clone, PartialEq)]
 pub struct ContactPoint(pub String);
 
-#[derive(Debug, Default, PartialEq)]
+#[derive(Debug, Default, Clone, PartialEq)]
 pub struct Title(pub String);

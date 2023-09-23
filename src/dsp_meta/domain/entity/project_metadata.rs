@@ -7,8 +7,8 @@ use crate::domain::value::version::Version;
 use crate::errors::DspMetaError;
 
 /// The Metadata struct represents the metadata of a DSP project.
-#[derive(Debug, Default, PartialEq)]
-pub struct Metadata {
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct ProjectMetadata {
     pub version: Version,
     pub project: Project,
     pub datasets: Vec<Dataset>,
@@ -17,7 +17,7 @@ pub struct Metadata {
     pub persons: Vec<Person>,
 }
 
-impl TryFrom<&hcl::Body> for Metadata {
+impl TryFrom<&hcl::Body> for ProjectMetadata {
     type Error = DspMetaError;
 
     fn try_from(body: &hcl::Body) -> Result<Self, Self::Error> {
@@ -54,7 +54,7 @@ impl TryFrom<&hcl::Body> for Metadata {
             }
         }
 
-        let metadata = Metadata {
+        let metadata = ProjectMetadata {
             version: version.ok_or_else(|| {
                 DspMetaError::ParseVersion("Version attribute is not provided.".to_string())
             })?,

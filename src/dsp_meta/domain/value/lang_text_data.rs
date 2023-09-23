@@ -4,7 +4,7 @@ use crate::domain::value::iso_code::IsoCode;
 use crate::errors::DspMetaError;
 
 /// Represents multiple strings in different languages.
-#[derive(Debug, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct LangTextData(pub HashMap<IsoCode, String>);
 
 /// FIXME: Move to the API layer where the service adapter will be implemented

@@ -4,7 +4,7 @@ use crate::errors::DspMetaError;
 
 const TEXT_ATTRIBUTE_IDENTIFIER: &str = "text";
 
-#[derive(Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct SimpleTextData(pub String);
 
 impl TryFrom<Vec<&hcl::Attribute>> for SimpleTextData {

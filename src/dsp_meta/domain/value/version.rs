@@ -1,6 +1,6 @@
 use hcl::Expression;
 
-#[derive(Debug, Default, PartialEq)]
+#[derive(Debug, Default, Clone, PartialEq)]
 pub struct Version(pub u64);
 
 /// Given a list of attributes, try to extract the version.

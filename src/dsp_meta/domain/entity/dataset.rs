@@ -1,7 +1,7 @@
 use crate::domain::value::Title;
 use crate::errors::DspMetaError;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Dataset {
     pub title: Title,
 }

@@ -3,7 +3,7 @@ use crate::errors::DspMetaError;
 
 const PUBLICATION_BLOCK_IDENTIFIER: &str = "publication";
 
-#[derive(Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq)]
 pub enum Publication {
     SimpleText(SimpleTextData),
 }
