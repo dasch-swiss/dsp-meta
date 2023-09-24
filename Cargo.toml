@@ -17,6 +17,8 @@ serde = {version = "1", features = ["derive"]}
 serde_json = "1" # JSON serialization
 tokio = { version = "1", features = ["rt", "macros", "rt-multi-thread"] }
 tokio-test = "0.4.2"
+tower = "0.4.13"
+hyper = "0.14.27"
 tracing = "0.1"
 tracing-subscriber = "0.3"
 tracing-test = "0.2"
@@ -43,14 +45,17 @@ anyhow.workspace = true
 axum.workspace = true
 clap.workspace = true
 hcl-rs.workspace = true
+hyper.workspace = true
 log.workspace = true
 serde.workspace = true
 serde_json.workspace = true
 tokio.workspace = true
+tower.workspace = true
 tracing.workspace = true
 tracing-subscriber.workspace = true
 tracing-test.workspace = true
 url.workspace = true
+
 
 [[bin]]
 name = "dsp_meta_cli"
@@ -61,3 +66,6 @@ doc = false
 name = "dsp_meta_server"
 test = false
 doc = false
+
+[dev-dependencies]
+assert_cmd = "2.0.12"

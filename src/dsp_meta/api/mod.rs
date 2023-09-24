@@ -1,15 +1,18 @@
+use std::sync::Arc;
+
+use axum::extract::State;
 use axum::http::StatusCode;
 use axum::Json;
 use serde::{Deserialize, Serialize};
 
 // basic handler that responds with a static string
-pub async fn root() -> &'static str {
+pub async fn hello_world(State(state): State<Arc<AppState>>) -> &'static str {
     "Hello, World!"
 }
 
-pub async fn get_foo() {}
+pub async fn get_root() {}
 
-pub async fn post_foo() {}
+pub async fn post_root() {}
 
 pub async fn foo_bar() {}
 
