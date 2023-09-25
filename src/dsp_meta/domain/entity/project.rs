@@ -1,3 +1,5 @@
+use serde::Serialize;
+
 use crate::domain::convert::project::{ExtractedProjectAttributes, ExtractedProjectBlocks};
 use crate::domain::value::alternative_name::AlternativeName;
 use crate::domain::value::description::Description;
@@ -10,7 +12,7 @@ use crate::domain::value::{
 };
 use crate::errors::DspMetaError;
 
-#[derive(Debug, Default, Clone, PartialEq)]
+#[derive(Debug, Default, Clone, PartialEq, Serialize)]
 pub struct Project {
     pub created_at: CreatedAt,
     pub created_by: CreatedBy,

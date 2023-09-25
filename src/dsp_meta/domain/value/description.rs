@@ -1,5 +1,7 @@
 use std::collections::HashMap;
 
+use serde::Serialize;
+
 use crate::domain::value::iso_code::IsoCode;
 use crate::domain::value::lang_text_data::LangTextData;
 use crate::errors::DspMetaError;
@@ -7,7 +9,7 @@ use crate::errors::DspMetaError;
 const DESCRIPTION_BLOCK_IDENTIFIER: &str = "description";
 
 /// A set of descriptions in different languages.
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Serialize)]
 pub struct Description(HashMap<IsoCode, String>);
 
 impl Default for Description {

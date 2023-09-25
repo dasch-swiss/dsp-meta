@@ -1,3 +1,5 @@
+use serde::Serialize;
+
 use crate::domain::entity::dataset::Dataset;
 use crate::domain::entity::grant::Grant;
 use crate::domain::entity::organization::Organization;
@@ -7,7 +9,7 @@ use crate::domain::value::version::Version;
 use crate::errors::DspMetaError;
 
 /// The Metadata struct represents the metadata of a DSP project.
-#[derive(Debug, Default, Clone, PartialEq)]
+#[derive(Debug, Default, Clone, PartialEq, Serialize)]
 pub struct ProjectMetadata {
     pub version: Version,
     pub project: Project,

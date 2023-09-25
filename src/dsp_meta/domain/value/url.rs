@@ -1,3 +1,4 @@
+use serde::Serialize;
 use tracing::warn;
 
 use crate::errors::DspMetaError;
@@ -19,7 +20,7 @@ const LABEL_ATTRIBUTE_KEY: &str = "label";
 ///
 /// Use [`Attribute::new`] to construct an [`Attribute`] from a value that is convertible to this
 /// crate's [`Expression`] type.
-#[derive(Clone, Debug, PartialEq, Eq)]
+#[derive(Clone, Debug, PartialEq, Eq, Serialize)]
 pub struct Url {
     pub href: url::Url,
     pub label: String,

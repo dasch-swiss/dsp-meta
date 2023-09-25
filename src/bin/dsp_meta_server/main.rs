@@ -2,16 +2,12 @@ use std::sync::Arc;
 
 use axum::routing::{get, post};
 use axum::Router;
-use dsp_meta::api;
+use dsp_meta::api::project_metadata_handler;
+use dsp_meta::app_state::app_state::AppState;
 use dsp_meta::repo::project_metadata_repository::ProjectMetadataRepository;
 use dsp_meta::service::project_metadata_service::ProjectMetadataService;
 use tracing::{trace, Level};
 use tracing_subscriber::FmtSubscriber;
-
-#[derive(Clone)]
-pub struct AppState {
-    project_metadata_service: ProjectMetadataService<ProjectMetadataRepository>,
-}
 
 #[tokio::main]
 async fn main() {
@@ -41,11 +37,14 @@ async fn main() {
 /// without having to create an HTTP server.
 fn app(shared_state: Arc<AppState>) -> Router {
     Router::new()
-        .route("/", get(api::get_root).post(api::post_root))
-        .route("/hello_world", get(api::hello_world))
-        .route("/foo/bar", get(api::foo_bar))
+        .route(
+            "/",
+            get(project_metadata_handler::get_root).post(project_metadata_handler::post_root),
+        )
+        .route("/hello_world", get(project_metadata_handler::hello_world))
+        .route("/foo/bar", get(project_metadata_handler::foo_bar))
         // `POST /users` goes to `create_user`
-        .route("/users", post(api::create_user))
+        .route("/users", post(project_metadata_handler::create_user))
         .with_state(shared_state)
 }
 

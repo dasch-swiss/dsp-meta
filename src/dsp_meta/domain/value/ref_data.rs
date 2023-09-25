@@ -1,8 +1,9 @@
+use serde::Serialize;
 use tracing::warn;
 
 use crate::errors::DspMetaError;
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Serialize)]
 pub struct RefData {
     pub(crate) ref_id: String,
     pub(crate) description: String,

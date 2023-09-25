@@ -1,6 +1,7 @@
 use hcl::Expression;
+use serde::Serialize;
 
-#[derive(Debug, Default, Clone, PartialEq)]
+#[derive(Debug, Default, Clone, PartialEq, Serialize)]
 pub struct Version(pub u64);
 
 /// Given a list of attributes, try to extract the version.

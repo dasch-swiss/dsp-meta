@@ -8,13 +8,14 @@ use crate::domain::value::Shortcode;
 use crate::errors::DspMetaError;
 use crate::service::project_metadata_repository_contract::ProjectMetadataRepositoryContract;
 
+#[derive(Default, Clone)]
 pub struct ProjectMetadataRepository {
     db: Arc<RwLock<HashMap<String, ProjectMetadata>>>,
 }
 
 impl ProjectMetadataRepository {
     pub fn new() -> Self {
-        trace!("ProjectMetadataRepository::new");
+        trace!("Entering ProjectMetadataRepository::new");
         let db: Arc<RwLock<HashMap<String, ProjectMetadata>>> =
             Arc::new(RwLock::new(HashMap::new()));
         Self { db }

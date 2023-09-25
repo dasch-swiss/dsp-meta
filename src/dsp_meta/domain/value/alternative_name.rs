@@ -1,12 +1,14 @@
 use std::collections::HashMap;
 
+use serde::Serialize;
+
 use crate::domain::value::iso_code::IsoCode;
 use crate::domain::value::lang_text_data::LangTextData;
 use crate::errors::DspMetaError;
 
 const ALTERNATIVE_NAME_BLOCK_IDENTIFIER: &str = "alternative_name";
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Serialize)]
 pub struct AlternativeName(HashMap<IsoCode, String>);
 
 impl Default for AlternativeName {

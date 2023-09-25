@@ -1,9 +1,11 @@
+use serde::Serialize;
+
 use crate::domain::value::simple_text_data::SimpleTextData;
 use crate::errors::DspMetaError;
 
 const PUBLICATION_BLOCK_IDENTIFIER: &str = "publication";
 
-#[derive(Clone, Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq, Serialize)]
 pub enum Publication {
     SimpleText(SimpleTextData),
 }

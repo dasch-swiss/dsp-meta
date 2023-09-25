@@ -1,10 +1,11 @@
+use serde::Serialize;
 use tracing::warn;
 
 use crate::errors::DspMetaError;
 
 const TEXT_ATTRIBUTE_IDENTIFIER: &str = "text";
 
-#[derive(Clone, Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq, Serialize)]
 pub struct SimpleTextData(pub String);
 
 impl TryFrom<Vec<&hcl::Attribute>> for SimpleTextData {

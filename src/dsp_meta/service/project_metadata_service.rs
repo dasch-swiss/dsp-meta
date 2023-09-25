@@ -6,6 +6,7 @@ use crate::errors::DspMetaError;
 use crate::service::project_metadata_api_contract::ProjectMetadataApiContract;
 use crate::service::project_metadata_repository_contract::ProjectMetadataRepositoryContract;
 
+#[derive(Clone)]
 pub struct ProjectMetadataService<R> {
     repo: R,
 }
@@ -15,7 +16,7 @@ where
     R: ProjectMetadataRepositoryContract,
 {
     pub fn new(repo: R) -> Self {
-        trace!("tracing from dsp_meta::core::project_metadata_service::new()");
+        trace!("Entering ProjectMetadataService::new()");
         Self { repo }
     }
 }

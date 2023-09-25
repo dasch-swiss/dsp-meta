@@ -1,12 +1,14 @@
 use std::collections::HashMap;
 
+use serde::Serialize;
+
 use crate::domain::value::iso_code::IsoCode;
 use crate::domain::value::lang_text_data::LangTextData;
 use crate::errors::DspMetaError;
 
 const KEYWORD_BLOCK_IDENTIFIER: &str = "keyword";
 
-#[derive(Clone, Debug, Default, PartialEq)]
+#[derive(Clone, Debug, Default, PartialEq, Serialize)]
 pub struct Keyword(HashMap<IsoCode, String>);
 
 impl TryFrom<&hcl::Block> for Keyword {

@@ -1,3 +1,5 @@
+use serde::Serialize;
+
 use crate::domain::value::lang_text_data::LangTextData;
 use crate::domain::value::ref_data::RefData;
 use crate::errors::DspMetaError;
@@ -14,7 +16,7 @@ use crate::errors::DspMetaError;
 ///     url = "https://skos.um.es/unesco6/5501"
 /// }
 /// ```
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Serialize)]
 pub enum Discipline {
     Skos(RefData),
     Snf(RefData),
