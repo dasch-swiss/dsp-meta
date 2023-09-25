@@ -6,7 +6,7 @@ use crate::errors::DspMetaError;
 use crate::service::project_metadata_api_contract::ProjectMetadataApiContract;
 use crate::service::project_metadata_repository_contract::ProjectMetadataRepositoryContract;
 
-#[derive(Clone)]
+#[derive(Debug, Clone)]
 pub struct ProjectMetadataService<R> {
     repo: R,
 }

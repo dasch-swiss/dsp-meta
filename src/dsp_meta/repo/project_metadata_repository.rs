@@ -8,7 +8,7 @@ use crate::domain::value::Shortcode;
 use crate::errors::DspMetaError;
 use crate::service::project_metadata_repository_contract::ProjectMetadataRepositoryContract;
 
-#[derive(Default, Clone)]
+#[derive(Debug, Default, Clone)]
 pub struct ProjectMetadataRepository {
     db: Arc<RwLock<HashMap<String, ProjectMetadata>>>,
 }

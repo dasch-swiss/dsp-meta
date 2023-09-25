@@ -1,13 +1,13 @@
 use std::sync::Arc;
 
-use axum::extract::State;
+use axum::extract::{Path, State};
 use axum::http::StatusCode;
 use axum::response::Json;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use tracing::trace;
 
-use crate::app_state::app_state::AppState;
+use crate::app_state::AppState;
 use crate::domain::value::Shortcode;
 use crate::service::project_metadata_api_contract::ProjectMetadataApiContract;
 
@@ -17,7 +17,7 @@ use crate::service::project_metadata_api_contract::ProjectMetadataApiContract;
 /// TODO: Add error handling with correct status codes
 /// TODO: Add parameter extraction
 pub async fn get_project_metadata_by_shortcode(
-    shortcode: String,
+    Path(shortcode): Path<String>, // TODO: Change to Shortcode
     State(state): State<Arc<AppState>>,
 ) -> Json<Value> {
     trace!("entered dsp_meta::api::get_project_metadata_by_shortcode()");
@@ -57,13 +57,13 @@ pub async fn create_user(
 }
 
 // the input to our `create_user` handler
-#[derive(Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct CreateUser {
     username: String,
 }
 
 // the output to our `create_user` handler
-#[derive(Serialize)]
+#[derive(Debug, Serialize)]
 pub struct User {
     id: u64,
     username: String,

@@ -44,5 +44,5 @@ pub struct EndDate(pub String);
 #[derive(Debug, Default, Clone, PartialEq, Serialize)]
 pub struct ContactPoint(pub String);
 
-#[derive(Debug, Default, Clone, PartialEq)]
+#[derive(Debug, Default, Clone, PartialEq, Serialize)]
 pub struct Title(pub String);

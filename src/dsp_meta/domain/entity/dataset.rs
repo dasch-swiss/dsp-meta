@@ -1,7 +1,9 @@
+use serde::Serialize;
+
 use crate::domain::value::Title;
 use crate::errors::DspMetaError;
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Serialize)]
 pub struct Dataset {
     pub title: Title,
 }
