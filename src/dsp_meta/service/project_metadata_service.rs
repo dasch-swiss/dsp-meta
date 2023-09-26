@@ -33,7 +33,7 @@ where
         todo!()
     }
 
-    fn store(&self, id: Shortcode, metadata: ProjectMetadata) -> Result<(), DspMetaError> {
+    fn store(&self, id: &Shortcode, metadata: &ProjectMetadata) -> Result<(), DspMetaError> {
         self.repo.store(id, metadata)
     }
 

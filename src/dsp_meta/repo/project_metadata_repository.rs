@@ -42,9 +42,9 @@ impl ProjectMetadataRepositoryContract for ProjectMetadataRepository {
         Ok(result)
     }
 
-    fn store(&self, shortcode: Shortcode, metadata: ProjectMetadata) -> Result<(), DspMetaError> {
+    fn store(&self, shortcode: &Shortcode, metadata: &ProjectMetadata) -> Result<(), DspMetaError> {
         let mut db = self.db.write().unwrap();
-        db.insert(shortcode.0, metadata);
+        db.insert(shortcode.0.to_owned(), metadata.clone());
         Ok(())
     }
 

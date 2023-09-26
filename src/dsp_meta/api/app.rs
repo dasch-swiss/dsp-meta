@@ -19,8 +19,14 @@ use crate::app_state::AppState;
 pub fn app(shared_state: Arc<AppState>) -> Router {
     Router::new()
         .route(
-            "/",
-            get(project_metadata_handler::get_root).post(project_metadata_handler::post_root),
+            "/projects",
+            get(project_metadata_handler::get_all_project_metadata)
+                .post(project_metadata_handler::store_project_metadata),
+        )
+        .route(
+            "/projects/:shortcode",
+            get(project_metadata_handler::get_project_metadata_by_shortcode)
+                .post(project_metadata_handler::post_root),
         )
         .route("/hello_world", get(project_metadata_handler::hello_world))
         .route("/foo/bar", get(project_metadata_handler::foo_bar))
