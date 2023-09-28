@@ -89,9 +89,3 @@ pub struct User {
     id: u64,
     username: String,
 }
-
-#[cfg(test)]
-mod tests {
-
-    fn store_valid_project_metadata() {}
-}

@@ -68,7 +68,7 @@ mod tests {
         let shortcode = Shortcode("1234".to_owned());
 
         let repo = ProjectMetadataRepository::new();
-        let result = repo.store(shortcode, metadata);
+        let result = repo.store(&shortcode, &metadata);
         assert!(result.is_ok());
     }
 }
