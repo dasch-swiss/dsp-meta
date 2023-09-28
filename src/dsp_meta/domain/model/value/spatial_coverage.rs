@@ -1,4 +1,4 @@
-use crate::domain::value::ref_data::RefData;
+use crate::domain::model::value::ref_data::RefData;
 use crate::errors::DspMetaError;
 
 const SPACIAL_COVERAGE: &str = "spacial_coverage";
@@ -48,8 +48,8 @@ impl TryFrom<&hcl::Block> for SpacialCoverage {
 
 #[cfg(test)]
 mod tests {
-    use crate::domain::value::ref_data::RefData;
-    use crate::domain::value::spatial_coverage::SpacialCoverage;
+    use crate::domain::model::value::ref_data::RefData;
+    use crate::domain::model::value::spatial_coverage::SpacialCoverage;
 
     #[test]
     fn test_try_from_block_with_geonames() {

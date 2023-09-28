@@ -1,13 +1,13 @@
 use serde::Serialize;
 
 use crate::domain::convert::project::{ExtractedProjectAttributes, ExtractedProjectBlocks};
-use crate::domain::value::alternative_name::AlternativeName;
-use crate::domain::value::description::Description;
-use crate::domain::value::discipline::Discipline;
-use crate::domain::value::keyword::Keyword;
-use crate::domain::value::publication::Publication;
-use crate::domain::value::url::Url;
-use crate::domain::value::{
+use crate::domain::model::value::alternative_name::AlternativeName;
+use crate::domain::model::value::description::Description;
+use crate::domain::model::value::discipline::Discipline;
+use crate::domain::model::value::keyword::Keyword;
+use crate::domain::model::value::publication::Publication;
+use crate::domain::model::value::url::Url;
+use crate::domain::model::value::{
     ContactPoint, CreatedAt, CreatedBy, EndDate, HowToCite, Name, Shortcode, StartDate, TeaserText,
 };
 use crate::errors::DspMetaError;
@@ -141,7 +141,7 @@ mod tests {
     use tracing_test::traced_test;
 
     use super::*;
-    use crate::domain::entity::project::Project;
+    use crate::domain::model::entity::project::Project;
 
     #[traced_test]
     #[test]

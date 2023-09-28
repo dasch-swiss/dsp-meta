@@ -1,6 +1,6 @@
 use serde::Serialize;
 
-use crate::domain::value::Title;
+use crate::domain::model::value::Title;
 use crate::errors::DspMetaError;
 
 #[derive(Debug, Clone, PartialEq, Serialize)]

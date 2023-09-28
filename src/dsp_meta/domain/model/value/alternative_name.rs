@@ -2,8 +2,8 @@ use std::collections::HashMap;
 
 use serde::Serialize;
 
-use crate::domain::value::iso_code::IsoCode;
-use crate::domain::value::lang_text_data::LangTextData;
+use crate::domain::model::value::iso_code::IsoCode;
+use crate::domain::model::value::lang_text_data::LangTextData;
 use crate::errors::DspMetaError;
 
 const ALTERNATIVE_NAME_BLOCK_IDENTIFIER: &str = "alternative_name";

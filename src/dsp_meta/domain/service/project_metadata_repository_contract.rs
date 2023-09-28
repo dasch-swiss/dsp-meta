@@ -1,5 +1,5 @@
-use crate::domain::entity::project_metadata::ProjectMetadata;
-use crate::domain::value::Shortcode;
+use crate::domain::model::entity::project_metadata::ProjectMetadata;
+use crate::domain::model::value::Shortcode;
 use crate::errors::DspMetaError;
 
 pub trait ProjectMetadataRepositoryContract {

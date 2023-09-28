@@ -1,15 +1,15 @@
 use hcl::Expression;
 use tracing::warn;
 
-use crate::domain::value::alternative_name::AlternativeName;
-use crate::domain::value::description::Description;
-use crate::domain::value::discipline::Discipline;
-use crate::domain::value::keyword::Keyword;
-use crate::domain::value::publication::Publication;
-use crate::domain::value::spatial_coverage::SpacialCoverage;
-use crate::domain::value::temporal_coverage::TemporalCoverage;
-use crate::domain::value::url::Url;
-use crate::domain::value::{
+use crate::domain::model::value::alternative_name::AlternativeName;
+use crate::domain::model::value::description::Description;
+use crate::domain::model::value::discipline::Discipline;
+use crate::domain::model::value::keyword::Keyword;
+use crate::domain::model::value::publication::Publication;
+use crate::domain::model::value::spatial_coverage::SpacialCoverage;
+use crate::domain::model::value::temporal_coverage::TemporalCoverage;
+use crate::domain::model::value::url::Url;
+use crate::domain::model::value::{
     ContactPoint, CreatedAt, CreatedBy, EndDate, HowToCite, Name, Shortcode, StartDate, TeaserText,
 };
 use crate::errors::DspMetaError;

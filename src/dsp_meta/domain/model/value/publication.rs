@@ -1,6 +1,6 @@
 use serde::Serialize;
 
-use crate::domain::value::simple_text_data::SimpleTextData;
+use crate::domain::model::value::simple_text_data::SimpleTextData;
 use crate::errors::DspMetaError;
 
 const PUBLICATION_BLOCK_IDENTIFIER: &str = "publication";

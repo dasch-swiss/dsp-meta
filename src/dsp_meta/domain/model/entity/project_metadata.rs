@@ -1,11 +1,11 @@
 use serde::Serialize;
 
-use crate::domain::entity::dataset::Dataset;
-use crate::domain::entity::grant::Grant;
-use crate::domain::entity::organization::Organization;
-use crate::domain::entity::person::Person;
-use crate::domain::entity::project::Project;
-use crate::domain::value::version::Version;
+use crate::domain::model::entity::dataset::Dataset;
+use crate::domain::model::entity::grant::Grant;
+use crate::domain::model::entity::organization::Organization;
+use crate::domain::model::entity::person::Person;
+use crate::domain::model::entity::project::Project;
+use crate::domain::model::value::version::Version;
 use crate::errors::DspMetaError;
 
 /// The Metadata struct represents the metadata of a DSP project.

@@ -1,12 +1,12 @@
 mod convert;
-pub mod entity;
-pub mod value;
+pub mod model;
+pub mod service;
 
 #[cfg(test)]
 mod tests {
     use hcl::body;
 
-    use crate::domain::entity::project_metadata::ProjectMetadata;
+    use crate::domain::model::entity::project_metadata::ProjectMetadata;
 
     #[test]
     fn try_from_multiple_projects_error() {

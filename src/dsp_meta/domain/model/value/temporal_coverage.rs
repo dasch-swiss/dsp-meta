@@ -1,5 +1,5 @@
-use crate::domain::value::lang_text_data::LangTextData;
-use crate::domain::value::ref_data::RefData;
+use crate::domain::model::value::lang_text_data::LangTextData;
+use crate::domain::model::value::ref_data::RefData;
 use crate::errors::DspMetaError;
 
 const TEMPORAL_COVERAGE: &str = "temporal_coverage";
@@ -63,7 +63,7 @@ impl TryFrom<&hcl::Block> for TemporalCoverage {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::domain::value::ref_data::RefData;
+    use crate::domain::model::value::ref_data::RefData;
 
     #[test]
     fn test_try_from_block_with_chonontology() {

@@ -1,10 +1,10 @@
 use tracing::trace;
 
-use crate::domain::entity::project_metadata::ProjectMetadata;
-use crate::domain::value::Shortcode;
+use crate::domain::model::entity::project_metadata::ProjectMetadata;
+use crate::domain::model::value::Shortcode;
+use crate::domain::service::project_metadata_api_contract::ProjectMetadataApiContract;
+use crate::domain::service::project_metadata_repository_contract::ProjectMetadataRepositoryContract;
 use crate::errors::DspMetaError;
-use crate::service::project_metadata_api_contract::ProjectMetadataApiContract;
-use crate::service::project_metadata_repository_contract::ProjectMetadataRepositoryContract;
 
 #[derive(Debug, Clone)]
 pub struct ProjectMetadataService<R> {

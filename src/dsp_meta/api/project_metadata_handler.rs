@@ -8,10 +8,10 @@ use serde_json::Value;
 use tracing::trace;
 
 use crate::app_state::AppState;
-use crate::domain::entity::project_metadata::ProjectMetadata;
-use crate::domain::value::Shortcode;
+use crate::domain::model::entity::project_metadata::ProjectMetadata;
+use crate::domain::model::value::Shortcode;
+use crate::domain::service::project_metadata_api_contract::ProjectMetadataApiContract;
 use crate::errors::DspMetaError;
-use crate::service::project_metadata_api_contract::ProjectMetadataApiContract;
 
 /// GET /project_metadata/:shortcode
 /// Get project metadata by shortcode

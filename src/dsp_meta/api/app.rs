@@ -88,8 +88,8 @@ mod tests {
     use tower::ServiceExt; // for `oneshot` and `ready`
 
     use super::*;
+    use crate::domain::service::project_metadata_service::ProjectMetadataService;
     use crate::repo::project_metadata_repository::ProjectMetadataRepository;
-    use crate::service::project_metadata_service::ProjectMetadataService;
 
     #[tokio::test]
     async fn hello_world() {

@@ -1,7 +1,7 @@
 use serde::Serialize;
 
-use crate::domain::value::lang_text_data::LangTextData;
-use crate::domain::value::ref_data::RefData;
+use crate::domain::model::value::lang_text_data::LangTextData;
+use crate::domain::model::value::ref_data::RefData;
 use crate::errors::DspMetaError;
 
 /// The discipline of a project can be defined in two ways:
@@ -73,7 +73,7 @@ mod tests {
     use tracing_test::traced_test;
 
     use super::*;
-    use crate::domain::value::iso_code::IsoCode;
+    use crate::domain::model::value::iso_code::IsoCode;
 
     #[test]
     #[traced_test]

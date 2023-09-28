@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use serde::Serialize;
 
-use crate::domain::value::iso_code::IsoCode;
+use crate::domain::model::value::iso_code::IsoCode;
 use crate::errors::DspMetaError;
 
 /// Represents multiple strings in different languages.
