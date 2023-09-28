@@ -30,7 +30,7 @@ where
     }
 
     fn get_all(&self) -> Result<Vec<ProjectMetadata>, DspMetaError> {
-        todo!()
+        self.repo.get_all()
     }
 
     fn store(&self, id: &Shortcode, metadata: &ProjectMetadata) -> Result<(), DspMetaError> {
