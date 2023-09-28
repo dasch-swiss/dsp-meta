@@ -35,18 +35,17 @@ pub async fn get_all_project_metadata(State(state): State<Arc<AppState>>) -> Jso
 }
 
 pub async fn store_project_metadata(
-    body: String,
     State(state): State<Arc<AppState>>,
+    body: String,
 ) -> Result<(), DspMetaError> {
     trace!("entered store_project_metadata");
+
+    let service = &state.project_metadata_service;
 
     let hcl_body = hcl::from_str(body.as_str())?;
     let project_metadata = ProjectMetadata::try_from(&hcl_body)?;
 
-    let store_result = state
-        .project_metadata_service
-        .store(&project_metadata.project.shortcode, &project_metadata);
-    store_result
+    service.store(&project_metadata.project.shortcode, &project_metadata)
 }
 
 // basic handler that responds with a static string

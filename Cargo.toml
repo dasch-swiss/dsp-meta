@@ -36,6 +36,7 @@ documentation = "https://github.com/dasch-swiss/dsp-ingest"
 readme = "README.md"
 description = "The DSP Metadata Command Line Tool providing transformation, validation and serving of research project's metadata."
 authors = ["DaSCH - Swiss National Data and Service Center for the Humanities"]
+default-run = "dsp_meta_server"
 
 [lib]
 name = "dsp_meta"
