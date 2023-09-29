@@ -5,13 +5,13 @@ use axum::body::Bytes;
 use axum::extract::MatchedPath;
 use axum::http::{HeaderMap, Request};
 use axum::response::Response;
-use axum::routing::{get, post};
+use axum::routing::get;
 use axum::Router;
 use tower_http::classify::ServerErrorsFailureClass;
 use tower_http::trace::TraceLayer;
 use tracing::{info_span, Span};
 
-use crate::api::project_metadata_handler;
+use crate::api::{health, project_metadata_handler};
 use crate::app_state::AppState;
 
 /// Having a function that produces our app makes it easy to call it from tests
@@ -21,17 +21,13 @@ pub fn app(shared_state: Arc<AppState>) -> Router {
         .route(
             "/projects",
             get(project_metadata_handler::get_all_project_metadata)
-                .post(project_metadata_handler::store_project_metadata),
+                .post(project_metadata_handler::save_project_metadata),
         )
         .route(
             "/projects/:shortcode",
-            get(project_metadata_handler::get_project_metadata_by_shortcode)
-                .post(project_metadata_handler::post_root),
+            get(project_metadata_handler::get_project_metadata_by_shortcode),
         )
-        .route("/hello_world", get(project_metadata_handler::hello_world))
-        .route("/foo/bar", get(project_metadata_handler::foo_bar))
-        // `POST /users` goes to `create_user`
-        .route("/users", post(project_metadata_handler::create_user))
+        .route("/health", get(health::health_handler))
         .with_state(shared_state)
         // `TraceLayer` is provided by tower-http so you have to add that as a dependency.
         // It provides good defaults but is also very customizable.
@@ -89,7 +85,7 @@ mod tests {
 
     use super::*;
     use crate::domain::service::project_metadata_service::ProjectMetadataService;
-    use crate::repo::project_metadata_repository::ProjectMetadataRepository;
+    use crate::repo::service::project_metadata_repository::ProjectMetadataRepository;
 
     #[tokio::test]
     async fn hello_world() {
@@ -104,7 +100,7 @@ mod tests {
         let response = app
             .oneshot(
                 Request::builder()
-                    .uri("/hello_world")
+                    .uri("/health")
                     .body(Body::empty())
                     .unwrap(),
             )
@@ -114,6 +110,6 @@ mod tests {
         assert_eq!(response.status(), StatusCode::OK);
 
         let body = hyper::body::to_bytes(response.into_body()).await.unwrap();
-        assert_eq!(&body[..], b"Hello, World!");
+        assert_eq!(&body[..], b"healthy");
     }
 }

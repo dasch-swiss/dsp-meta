@@ -5,7 +5,7 @@ use tracing::trace;
 
 use crate::domain::model::entity::project_metadata::ProjectMetadata;
 use crate::domain::model::value::Shortcode;
-use crate::domain::service::project_metadata_repository_contract::ProjectMetadataRepositoryContract;
+use crate::domain::service::repository_contract::RepositoryContract;
 use crate::errors::DspMetaError;
 
 #[derive(Debug, Default, Clone)]
@@ -22,16 +22,16 @@ impl ProjectMetadataRepository {
     }
 }
 
-impl ProjectMetadataRepositoryContract for ProjectMetadataRepository {
-    fn get_by_shortcode(&self, shortcode: Shortcode) -> Result<ProjectMetadata, DspMetaError> {
+impl RepositoryContract<ProjectMetadata, Shortcode, DspMetaError> for ProjectMetadataRepository {
+    fn find_by_id(&self, id: &Shortcode) -> Result<Option<ProjectMetadata>, DspMetaError> {
         let db = self.db.read().unwrap();
-        match db.get(shortcode.0.as_str()) {
-            Some(metadata) => Ok(metadata.clone()),
-            None => Err(DspMetaError::NotFound),
+        match db.get(id.0.as_str()) {
+            Some(metadata) => Ok(Some(metadata.clone())),
+            None => Ok(None),
         }
     }
 
-    fn get_all(&self) -> Result<Vec<ProjectMetadata>, DspMetaError> {
+    fn find_all(&self) -> Result<Vec<ProjectMetadata>, DspMetaError> {
         let mut result: Vec<ProjectMetadata> = vec![];
         let db = self.db.read().unwrap();
 
@@ -42,16 +42,16 @@ impl ProjectMetadataRepositoryContract for ProjectMetadataRepository {
         Ok(result)
     }
 
-    fn store(&self, shortcode: &Shortcode, metadata: &ProjectMetadata) -> Result<(), DspMetaError> {
+    fn save(&self, entity: ProjectMetadata) -> Result<ProjectMetadata, DspMetaError> {
         let mut db = self.db.write().unwrap();
-        db.insert(shortcode.0.to_owned(), metadata.clone());
-        Ok(())
+        db.insert(entity.project.shortcode.0.to_owned(), entity.clone());
+        Ok(entity)
     }
 
-    fn delete(&self, shortcode: Shortcode) -> Result<(), DspMetaError> {
+    fn delete(&self, entity: ProjectMetadata) -> Result<(), DspMetaError> {
         let mut db = self.db.write().unwrap();
 
-        match db.remove(shortcode.0.as_str()) {
+        match db.remove(entity.project.shortcode.0.as_str()) {
             Some(_) => Ok(()),
             None => Ok(()),
         }
@@ -65,10 +65,9 @@ mod tests {
     #[test]
     fn successfully_store_project_metadata() {
         let metadata = ProjectMetadata::default();
-        let shortcode = Shortcode("1234".to_owned());
 
         let repo = ProjectMetadataRepository::new();
-        let result = repo.store(&shortcode, &metadata);
+        let result = repo.save(metadata);
         assert!(result.is_ok());
     }
 }

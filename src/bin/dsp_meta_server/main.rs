@@ -2,7 +2,7 @@ use std::sync::Arc;
 
 use dsp_meta::app_state::AppState;
 use dsp_meta::domain::service::project_metadata_service::ProjectMetadataService;
-use dsp_meta::repo::project_metadata_repository::ProjectMetadataRepository;
+use dsp_meta::repo::service::project_metadata_repository::ProjectMetadataRepository;
 use tracing::{trace, Level};
 use tracing_subscriber::FmtSubscriber;
 

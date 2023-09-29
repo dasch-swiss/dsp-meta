@@ -1,1 +1,1 @@
-pub mod project_metadata_repository;
+pub mod service;
