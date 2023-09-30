@@ -1,5 +1,4 @@
 pub mod app;
 pub mod dto;
-mod health;
+mod handler;
 mod model_converter;
-pub mod project_metadata_handler;
