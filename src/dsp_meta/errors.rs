@@ -1,9 +1,11 @@
 use std::io;
 
-#[derive(Debug)]
+use serde::Serialize;
+
+#[derive(Debug, Serialize)]
 pub enum DspMetaError {
-    IO(io::Error),
-    ParseHcl(hcl::Error),
+    IO(String),
+    ParseHcl(String),
     UnknownAttribute(String),
     ParseVersion(String),
     ParseProject(String),
@@ -14,12 +16,12 @@ pub enum DspMetaError {
 
 impl From<io::Error> for DspMetaError {
     fn from(error: io::Error) -> Self {
-        DspMetaError::IO(error)
+        DspMetaError::IO(error.to_string())
     }
 }
 
 impl From<hcl::Error> for DspMetaError {
     fn from(error: hcl::Error) -> Self {
-        DspMetaError::ParseHcl(error)
+        DspMetaError::ParseHcl(error.to_string())
     }
 }

@@ -1,8 +1,9 @@
+pub mod api;
+pub mod app_state;
 pub mod domain;
 pub mod errors;
 pub mod operation;
-mod repo;
-mod service;
+pub mod repo;
 
 #[cfg(test)]
 mod tests {
