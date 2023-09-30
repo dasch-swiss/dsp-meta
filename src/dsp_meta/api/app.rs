@@ -11,7 +11,7 @@ use tower_http::classify::ServerErrorsFailureClass;
 use tower_http::trace::TraceLayer;
 use tracing::{info_span, Span};
 
-use crate::api::{health, project_metadata_handler};
+use crate::api::handler::{health, project_metadata_handler};
 use crate::app_state::AppState;
 
 /// Having a function that produces our app makes it easy to call it from tests
