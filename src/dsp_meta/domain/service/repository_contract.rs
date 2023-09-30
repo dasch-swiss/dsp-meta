@@ -12,9 +12,8 @@ pub trait RepositoryContract<Entity, Id, Error> {
     fn find_all_by_id(&self, ids: Vec<&Id>) -> Result<Vec<Entity>, Error> {
         let mut result: Vec<Entity> = vec![];
         for id in ids {
-            match self.find_by_id(id)? {
-                Some(entity) => result.push(entity),
-                None => (),
+            if let Some(entity) = self.find_by_id(id)? {
+                result.push(entity)
             }
         }
         Ok(result)

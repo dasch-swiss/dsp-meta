@@ -6,6 +6,7 @@ use axum_macros::debug_handler;
 use serde_json::Value;
 use tracing::trace;
 
+use crate::api::dto::project_metadata::OptionalProjectMetadata;
 use crate::app_state::AppState;
 use crate::domain::model::entity::project_metadata::ProjectMetadata;
 use crate::domain::model::value::Shortcode;
@@ -19,12 +20,12 @@ use crate::errors::DspMetaError;
 pub async fn get_project_metadata_by_shortcode(
     Path(shortcode): Path<String>,
     State(state): State<Arc<AppState>>,
-) -> Json<Value> {
+) -> Result<OptionalProjectMetadata, DspMetaError> {
     trace!("entered get_project_metadata_by_shortcode()");
-    let project_metadata = state
+    state
         .project_metadata_service
-        .find_by_id(Shortcode(shortcode));
-    Json(serde_json::to_value(project_metadata).unwrap())
+        .find_by_id(Shortcode(shortcode))
+        .map(OptionalProjectMetadata)
 }
 
 pub async fn get_all_project_metadata(State(state): State<Arc<AppState>>) -> Json<Value> {

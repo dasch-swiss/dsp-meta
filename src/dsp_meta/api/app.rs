@@ -88,7 +88,7 @@ mod tests {
     use crate::repo::service::project_metadata_repository::ProjectMetadataRepository;
 
     #[tokio::test]
-    async fn hello_world() {
+    async fn test_health_route() {
         let shared_state = Arc::new(AppState {
             project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new()),
         });
@@ -111,5 +111,28 @@ mod tests {
 
         let body = hyper::body::to_bytes(response.into_body()).await.unwrap();
         assert_eq!(&body[..], b"healthy");
+    }
+
+    #[tokio::test]
+    async fn test_not_found_project() {
+        let shared_state = Arc::new(AppState {
+            project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new()),
+        });
+
+        let app = app(shared_state);
+
+        // `Router` implements `tower::Service<Request<Body>>` so we can
+        // call it like any tower service, no need to run an HTTP server.
+        let response = app
+            .oneshot(
+                Request::builder()
+                    .uri("/projects/nonexistent_shortcode")
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(response.status(), StatusCode::NOT_FOUND);
     }
 }
