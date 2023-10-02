@@ -43,6 +43,9 @@ impl IntoResponse for DspMetaError {
                 format!("Something went wrong: {}", err),
             )
                 .into_response(),
+            DspMetaError::SerializeToTtl(_) => {
+                (StatusCode::INTERNAL_SERVER_ERROR, "Something went wrong").into_response()
+            }
             DspMetaError::NotFound => (StatusCode::NOT_FOUND, "Not Found").into_response(),
         }
     }

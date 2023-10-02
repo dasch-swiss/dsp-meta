@@ -296,6 +296,7 @@ dependencies = [
  "hcl-rs",
  "hyper",
  "log",
+ "rio_turtle 0.8.4",
  "serde",
  "serde_json",
  "sophia",
@@ -806,6 +807,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6ed96d73ad4e0de59e667b26c899930c90912cad3fec5f0291fc3171c90dacae"
 
 [[package]]
+name = "rio_api"
+version = "0.8.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1924fa1f0e6d851f9b73b3c569e607c368a0d92995d99d563ad7bf1414696603"
+
+[[package]]
 name = "rio_turtle"
 version = "0.6.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -813,7 +820,18 @@ checksum = "1945ea5cf5f489bd2cbafeb705686abdc94edfa9dd88a63a25e8c5c0d38f9cc2"
 dependencies = [
  "oxilangtag",
  "oxiri",
- "rio_api",
+ "rio_api 0.6.2",
+]
+
+[[package]]
+name = "rio_turtle"
+version = "0.8.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5cec59971eafd99b9c7e3544bfcabafea81a7072ac51c9f46985ca0bd7ba6016"
+dependencies = [
+ "oxilangtag",
+ "oxiri",
+ "rio_api 0.8.4",
 ]
 
 [[package]]
@@ -991,7 +1009,7 @@ version = "0.7.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fbdcd2f32812619d11e0c531ce35f6d2704fa354dec97ca4072872744d042311"
 dependencies = [
- "rio_api",
+ "rio_api 0.6.2",
  "sophia_api",
 ]
 
@@ -1020,8 +1038,8 @@ dependencies = [
  "lazy_static",
  "oxiri",
  "regex",
- "rio_api",
- "rio_turtle",
+ "rio_api 0.6.2",
+ "rio_turtle 0.6.2",
  "sophia_api",
  "sophia_indexed",
  "sophia_inmem",

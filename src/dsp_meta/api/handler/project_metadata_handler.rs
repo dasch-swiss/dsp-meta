@@ -22,6 +22,7 @@ pub async fn get_project_metadata_by_shortcode(
     State(state): State<Arc<AppState>>,
 ) -> Result<OptionalProjectMetadata, DspMetaError> {
     trace!("entered get_project_metadata_by_shortcode()");
+    ProjectMetadata::default().to_turtle()?;
     state
         .project_metadata_service
         .find_by_id(Shortcode(shortcode))
