@@ -6,7 +6,7 @@ use axum_macros::debug_handler;
 use serde_json::Value;
 use tracing::trace;
 
-use crate::api::dto::project_metadata::OptionalProjectMetadata;
+use crate::api::model_converter::axum::project_metadata::OptionalProjectMetadata;
 use crate::app_state::AppState;
 use crate::domain::model::entity::project_metadata::ProjectMetadata;
 use crate::domain::model::value::Shortcode;
