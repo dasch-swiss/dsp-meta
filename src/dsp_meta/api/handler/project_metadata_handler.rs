@@ -4,6 +4,7 @@ use axum::extract::{Path, State};
 use axum::response::Json;
 use axum_macros::debug_handler;
 use serde_json::Value;
+use sophia::graph::inmem::FastGraph;
 use tracing::trace;
 
 use crate::api::model_converter::axum::project_metadata::OptionalProjectMetadata;
@@ -22,7 +23,7 @@ pub async fn get_project_metadata_by_shortcode(
     State(state): State<Arc<AppState>>,
 ) -> Result<OptionalProjectMetadata, DspMetaError> {
     trace!("entered get_project_metadata_by_shortcode()");
-    ProjectMetadata::default().to_turtle()?;
+    let _maybe_graph: FastGraph = ProjectMetadata::default().try_into()?;
     state
         .project_metadata_service
         .find_by_id(Shortcode(shortcode))

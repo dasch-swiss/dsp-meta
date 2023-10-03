@@ -79,5 +79,10 @@ name = "dsp_meta_server"
 test = false
 doc = false
 
+[[bench]]
+name = "rdf_bench"
+harness = false
+
 [dev-dependencies]
 assert_cmd = "2.0.12"
+criterion = { version = "0.5.1", features = ["html_reports"] }
