@@ -1,7 +1,7 @@
 use std::path::PathBuf;
 
 use clap::{Parser, Subcommand};
-use dsp_meta::errors::DspMetaError;
+use dsp_meta::error::DspMetaError;
 use dsp_meta::operation::convert::convert;
 use dsp_meta::operation::validate::validate;
 use log::info;

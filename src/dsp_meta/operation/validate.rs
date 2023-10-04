@@ -3,7 +3,7 @@ use std::path::Path;
 use tracing::info;
 
 use crate::domain::model::entity::project_metadata::ProjectMetadata;
-use crate::errors::DspMetaError;
+use crate::error::DspMetaError;
 
 /// Read projects definition from .toml
 pub fn validate<P: AsRef<Path>>(project_path: &P) -> Result<(), DspMetaError> {

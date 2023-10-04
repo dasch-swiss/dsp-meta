@@ -1,7 +1,7 @@
 pub mod api;
 pub mod app_state;
 pub mod domain;
-pub mod errors;
+pub mod error;
 pub mod operation;
 pub mod repo;
 

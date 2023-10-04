@@ -1,8 +1,8 @@
-use crate::api::model_converter::hcl::extracted_project_attributes::ExtractedProjectAttributes;
-use crate::api::model_converter::hcl::extracted_project_blocks::ExtractedProjectBlocks;
+use crate::api::converter::hcl::extracted_project_attributes::ExtractedProjectAttributes;
+use crate::api::converter::hcl::extracted_project_blocks::ExtractedProjectBlocks;
 use crate::domain::model::entity::project::Project;
 use crate::domain::model::value::url::Url;
-use crate::errors::DspMetaError;
+use crate::error::DspMetaError;
 
 impl TryFrom<&hcl::Block> for Project {
     type Error = DspMetaError;

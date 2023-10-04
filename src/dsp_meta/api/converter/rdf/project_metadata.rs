@@ -1,4 +1,4 @@
-use sophia::graph::inmem::{FastGraph, LightGraph};
+use sophia::graph::inmem::LightGraph;
 use sophia::graph::*;
 use sophia::ns::Namespace;
 use sophia::serializer::nt::NtSerializer;
@@ -6,7 +6,7 @@ use sophia::serializer::*;
 use tracing::trace;
 
 use crate::domain::model::entity::project_metadata::ProjectMetadata;
-use crate::errors::DspMetaError;
+use crate::error::DspMetaError;
 
 /// Convert `ProjectMetadata` into a TTL response.
 /// Example output:
@@ -67,7 +67,11 @@ use crate::errors::DspMetaError;
 ///                     sdo:propertyID "Discover Project Data" ] ;
 ///             sdo:url "https://admin.dasch.swiss/project/081C" ] .
 /// ```
-
+/// LightGraph (in contrast to FastGraph) is a simple in-memory graph implementation with a low
+/// memory footprint, without indexing, thus fast to build but slow to query. Since we are only
+/// interested in building the graph and immediately serializing it, this is the better choice.
+///
+/// Benchmarking results support this decision.
 impl TryInto<LightGraph> for ProjectMetadata {
     type Error = DspMetaError;
 
@@ -77,22 +81,23 @@ impl TryInto<LightGraph> for ProjectMetadata {
         let mut graph: LightGraph = LightGraph::new();
 
         let _dsp = Namespace::new("http://ns.dasch.swiss/repository#").map_err(|_| {
-            DspMetaError::SerializeToTtl("Error serializing result to TTL.".to_string())
+            DspMetaError::SerializeToRdf("Error serializing result to TTL.".to_string())
         })?;
 
         let _prov = Namespace::new("http://www.w3.org/ns/prov#").map_err(|_| {
-            DspMetaError::SerializeToTtl("Error serializing result to TTL.".to_string())
+            DspMetaError::SerializeToRdf("Error serializing result to TTL.".to_string())
         })?;
 
         let _sdo = Namespace::new("https://schema.org/").map_err(|_| {
-            DspMetaError::SerializeToTtl("Error serializing result to TTL.".to_string())
+            DspMetaError::SerializeToRdf("Error serializing result to TTL.".to_string())
         })?;
 
         let _xsd = Namespace::new("http://www.w3.org/2001/XMLSchema#").map_err(|_| {
-            DspMetaError::SerializeToTtl("Error serializing result to TTL.".to_string())
+            DspMetaError::SerializeToRdf("Error serializing result to TTL.".to_string())
         })?;
 
-        let project_graph: LightGraph = self.project.try_into()?;
+        let project_graph = self.project.as_graph()?;
+
         graph
             .insert_all(project_graph.triples())
             .expect("insert of project triples into project metadata graph failed");
@@ -101,48 +106,7 @@ impl TryInto<LightGraph> for ProjectMetadata {
         let example2 = nt_stringifier
             .serialize_graph(&graph)
             .map_err(|_| {
-                DspMetaError::SerializeToTtl("Error serializing result to TTL.".to_string())
-            })?
-            .as_str();
-        trace!("The resulting graph\n{}", example2);
-        Ok(graph)
-    }
-}
-
-impl TryInto<FastGraph> for ProjectMetadata {
-    type Error = DspMetaError;
-
-    fn try_into(self) -> Result<FastGraph, Self::Error> {
-        trace!("entered ProjectMetadata::to_turtle()");
-
-        let mut graph: FastGraph = FastGraph::new();
-
-        let _dsp = Namespace::new("http://ns.dasch.swiss/repository#").map_err(|_| {
-            DspMetaError::SerializeToTtl("Error serializing result to TTL.".to_string())
-        })?;
-
-        let _prov = Namespace::new("http://www.w3.org/ns/prov#").map_err(|_| {
-            DspMetaError::SerializeToTtl("Error serializing result to TTL.".to_string())
-        })?;
-
-        let _sdo = Namespace::new("https://schema.org/").map_err(|_| {
-            DspMetaError::SerializeToTtl("Error serializing result to TTL.".to_string())
-        })?;
-
-        let _xsd = Namespace::new("http://www.w3.org/2001/XMLSchema#").map_err(|_| {
-            DspMetaError::SerializeToTtl("Error serializing result to TTL.".to_string())
-        })?;
-
-        let project_graph: LightGraph = self.project.try_into()?;
-        graph
-            .insert_all(project_graph.triples())
-            .expect("insert of project triples into project metadata graph failed");
-
-        let mut nt_stringifier = NtSerializer::new_stringifier();
-        let example2 = nt_stringifier
-            .serialize_graph(&graph)
-            .map_err(|_| {
-                DspMetaError::SerializeToTtl("Error serializing result to TTL.".to_string())
+                DspMetaError::SerializeToRdf("Error serializing result to TTL.".to_string())
             })?
             .as_str();
         trace!("The resulting graph\n{}", example2);

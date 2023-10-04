@@ -1,7 +1,7 @@
 use serde::Serialize;
 use tracing::warn;
 
-use crate::errors::DspMetaError;
+use crate::error::DspMetaError;
 
 const URL_BLOCK_IDENTIFIER: &str = "url";
 const HREF_ATTRIBUTE_KEY: &str = "href";

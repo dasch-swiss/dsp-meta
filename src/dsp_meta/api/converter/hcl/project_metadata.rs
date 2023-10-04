@@ -2,7 +2,7 @@ use crate::domain::model::entity::dataset::Dataset;
 use crate::domain::model::entity::project::Project;
 use crate::domain::model::entity::project_metadata::ProjectMetadata;
 use crate::domain::model::value::version::Version;
-use crate::errors::DspMetaError;
+use crate::error::DspMetaError;
 
 impl TryFrom<&hcl::Body> for ProjectMetadata {
     type Error = DspMetaError;

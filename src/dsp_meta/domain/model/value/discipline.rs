@@ -2,7 +2,7 @@ use serde::Serialize;
 
 use crate::domain::model::value::lang_text_data::LangTextData;
 use crate::domain::model::value::ref_data::RefData;
-use crate::errors::DspMetaError;
+use crate::error::DspMetaError;
 
 /// The discipline of a project can be defined in two ways:
 /// 1. A reference to a discipline defined in an external reference system (e.g. SNF or SKOS)

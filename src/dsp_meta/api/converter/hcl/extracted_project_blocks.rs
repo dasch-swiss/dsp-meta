@@ -8,7 +8,7 @@ use crate::domain::model::value::publication::Publication;
 use crate::domain::model::value::spatial_coverage::SpacialCoverage;
 use crate::domain::model::value::temporal_coverage::TemporalCoverage;
 use crate::domain::model::value::url::Url;
-use crate::errors::DspMetaError;
+use crate::error::DspMetaError;
 
 const ALTERNATIVE_NAME_BLOCK: &str = "alternative_name";
 const DESCRIPTION_BLOCK: &str = "description";

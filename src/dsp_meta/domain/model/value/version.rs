@@ -6,9 +6,9 @@ pub struct Version(pub u64);
 
 /// Given a list of attributes, try to extract the version.
 impl TryFrom<&hcl::Attribute> for Version {
-    type Error = crate::errors::DspMetaError;
+    type Error = crate::error::DspMetaError;
     fn try_from(attribute: &hcl::Attribute) -> Result<Self, Self::Error> {
-        type Error = crate::errors::DspMetaError;
+        type Error = crate::error::DspMetaError;
 
         let mut result: Result<Self, Error> = Err(Error::ParseVersion(
             "Version attribute is not provided.".to_string(),

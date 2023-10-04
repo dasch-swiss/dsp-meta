@@ -1,6 +1,6 @@
 use crate::domain::model::entity::project_metadata::ProjectMetadata;
 use crate::domain::model::value::Shortcode;
-use crate::errors::DspMetaError;
+use crate::error::DspMetaError;
 
 pub trait ProjectMetadataApiContract {
     fn find_by_id(&self, id: Shortcode) -> Result<Option<ProjectMetadata>, DspMetaError>;

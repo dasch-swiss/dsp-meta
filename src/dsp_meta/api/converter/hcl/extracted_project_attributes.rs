@@ -4,7 +4,7 @@ use tracing::warn;
 use crate::domain::model::value::{
     ContactPoint, CreatedAt, CreatedBy, EndDate, HowToCite, Name, Shortcode, StartDate, TeaserText,
 };
-use crate::errors::DspMetaError;
+use crate::error::DspMetaError;
 
 pub struct ExtractedProjectAttributes {
     pub created_at: Option<CreatedAt>,

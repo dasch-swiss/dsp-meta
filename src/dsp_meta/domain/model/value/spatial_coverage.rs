@@ -1,5 +1,5 @@
 use crate::domain::model::value::ref_data::RefData;
-use crate::errors::DspMetaError;
+use crate::error::DspMetaError;
 
 const SPACIAL_COVERAGE: &str = "spacial_coverage";
 const GEONAMES: &str = "geonames";

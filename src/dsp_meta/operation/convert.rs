@@ -3,7 +3,7 @@ use std::path::Path;
 use tracing::info;
 
 use crate::domain::model::entity::project_metadata::ProjectMetadata;
-use crate::errors::DspMetaError;
+use crate::error::DspMetaError;
 
 pub fn convert<P: AsRef<Path>>(source_path: &P, _target_path: &P) -> Result<(), DspMetaError> {
     info!("Hello from convert!");

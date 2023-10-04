@@ -1,7 +1,7 @@
 use std::path::Path;
 
 use dsp_meta::domain::model::entity::project_metadata::ProjectMetadata;
-use dsp_meta::errors::DspMetaError;
+use dsp_meta::error::DspMetaError;
 
 pub fn load<P: AsRef<Path>>(path: P) -> Result<ProjectMetadata, DspMetaError> {
     let input = std::fs::read_to_string(path)?;

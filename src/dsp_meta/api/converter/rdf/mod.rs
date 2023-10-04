@@ -1,3 +1,4 @@
-mod dsp_meta_error;
+mod error;
 mod project;
 mod project_metadata;
+mod value;
