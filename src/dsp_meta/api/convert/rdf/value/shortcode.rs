@@ -8,7 +8,7 @@ use crate::domain::model::value::Shortcode;
 use crate::error::Result;
 
 impl Shortcode {
-    pub fn as_graph(&self, project_iri: &SimpleIri) -> Result<LightGraph> {
+    pub fn to_graph(&self, project_iri: &SimpleIri) -> Result<LightGraph> {
         let mut graph: LightGraph = LightGraph::new();
 
         // http://ns.dasch.swiss/repository#dsp-081C-project  http://ns.dasch.swiss/repository#hasShortcode "081C"^^http://www.w3.org/2001/XMLSchema#string
