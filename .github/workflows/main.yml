@@ -17,6 +17,7 @@
         - uses: actions/checkout@v3
           with:
             fetch-depth: 0 # gets additionally all tags which we need
+        - uses: extractions/setup-just@v1
         - run: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
         # selecting a toolchain either by action or manual `rustup` calls should happen
         # before the plugin, as the cache uses the current rustc version as its cache key  
@@ -78,14 +79,12 @@
             # Useful for jobs where the matrix is additive e.g. additional Cargo features.
             # default: "true"
             save-if: ""
-        - name: Rust fmt
-          run:  cargo +nightly fmt --check
-        - name: Lint
-          run: cargo clippy -- -D warnings
+        - name: Check
+          run: just check
         - name: Build
-          run: cargo build --verbose
+          run: just build
         - name: Test
-          run: cargo test --verbose
+          run: just test
 
     test_aarch64:
       runs-on: actuated-aarch64
@@ -96,6 +95,7 @@
         - uses: actions/checkout@v3
           with:
             fetch-depth: 0 # gets additionally all tags which we need
+        - uses: extractions/setup-just@v1
         - run: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
         # selecting a toolchain either by action or manual `rustup` calls should happen
         # before the plugin, as the cache uses the current rustc version as its cache key
@@ -158,11 +158,9 @@
             # Useful for jobs where the matrix is additive e.g. additional Cargo features.
             # default: "true"
             save-if: ""
-        - name: Rust fmt
-          run: cargo +nightly fmt --check
-        - name: Lint
-          run: cargo clippy -- -D warnings
+        - name: Check
+          run: just check
         - name: Build
-          run: cargo build --verbose
+          run: just build
         - name: Test
-          run: cargo test --verbose
+          run: just test

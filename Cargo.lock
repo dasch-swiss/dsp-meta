@@ -285,7 +285,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fea41bba32d969b513997752735605054bc0dfa92b4c56bf1189f2e174be7a10"
 
 [[package]]
-name = "dsp_meta"
+name = "dsp-domain"
 version = "0.1.0"
 dependencies = [
  "anyhow",
@@ -293,6 +293,77 @@ dependencies = [
  "axum",
  "axum-macros",
  "clap",
+ "hcl-rs",
+ "hyper",
+ "log",
+ "serde",
+ "serde_json",
+ "tokio",
+ "tower",
+ "tower-http",
+ "tracing",
+ "tracing-subscriber",
+ "tracing-test",
+ "url",
+]
+
+[[package]]
+name = "dsp-meta"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "assert_cmd",
+ "axum",
+ "axum-macros",
+ "clap",
+ "hcl-rs",
+ "hyper",
+ "log",
+ "serde",
+ "serde_json",
+ "tokio",
+ "tower",
+ "tower-http",
+ "tracing",
+ "tracing-subscriber",
+ "tracing-test",
+ "url",
+]
+
+[[package]]
+name = "dsp-meta-cli"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "assert_cmd",
+ "axum",
+ "axum-macros",
+ "clap",
+ "dsp-meta",
+ "hcl-rs",
+ "hyper",
+ "log",
+ "serde",
+ "serde_json",
+ "tokio",
+ "tower",
+ "tower-http",
+ "tracing",
+ "tracing-subscriber",
+ "tracing-test",
+ "url",
+]
+
+[[package]]
+name = "dsp-meta-server"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "assert_cmd",
+ "axum",
+ "axum-macros",
+ "clap",
+ "dsp-meta",
  "hcl-rs",
  "hyper",
  "log",
