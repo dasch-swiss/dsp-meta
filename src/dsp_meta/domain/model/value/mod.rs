@@ -5,7 +5,7 @@ pub(crate) mod description;
 pub(crate) mod discipline;
 pub(crate) mod iso_code;
 pub(crate) mod keyword;
-mod lang_text_data;
+pub(crate) mod lang_text_data;
 pub(crate) mod publication;
 mod ref_data;
 mod simple_text_data;

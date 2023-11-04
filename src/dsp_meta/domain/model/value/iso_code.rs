@@ -2,11 +2,12 @@ use std::fmt::{Display, Formatter};
 
 use serde::Serialize;
 
-use crate::errors::DspMetaError;
+use crate::error::DspMetaError;
 
 /// Language codes according to ISO 639-1
 /// Not an exhaustive list.
 #[derive(Debug, Default, Clone, PartialEq, Eq, Hash, Serialize)]
+#[serde(rename_all(serialize = "lowercase"))]
 pub enum IsoCode {
     #[default]
     DE, // German

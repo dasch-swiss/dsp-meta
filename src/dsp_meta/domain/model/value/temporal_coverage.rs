@@ -1,6 +1,6 @@
 use crate::domain::model::value::lang_text_data::LangTextData;
 use crate::domain::model::value::ref_data::RefData;
-use crate::errors::DspMetaError;
+use crate::error::DspMetaError;
 
 const TEMPORAL_COVERAGE: &str = "temporal_coverage";
 const CHRONONTOLOGY: &str = "chronontology";

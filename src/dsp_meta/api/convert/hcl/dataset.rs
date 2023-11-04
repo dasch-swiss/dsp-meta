@@ -1,6 +1,6 @@
 use crate::domain::model::entity::dataset::Dataset;
 use crate::domain::model::value::Title;
-use crate::errors::DspMetaError;
+use crate::error::DspMetaError;
 
 impl TryFrom<&hcl::Block> for Dataset {
     type Error = DspMetaError;

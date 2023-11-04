@@ -6,12 +6,13 @@ use axum_macros::debug_handler;
 use serde_json::Value;
 use tracing::trace;
 
-use crate::api::dto::project_metadata::OptionalProjectMetadata;
+use crate::api::convert::axum::project_metadata::OptionalProjectMetadata;
+use crate::api::convert::rdf::project_metadata::ProjectMetadataGraph;
 use crate::app_state::AppState;
 use crate::domain::model::entity::project_metadata::ProjectMetadata;
 use crate::domain::model::value::Shortcode;
 use crate::domain::service::project_metadata_api_contract::ProjectMetadataApiContract;
-use crate::errors::DspMetaError;
+use crate::error::DspMetaError;
 
 /// GET /project_metadata/:shortcode
 /// Get project metadata by shortcode
@@ -22,6 +23,7 @@ pub async fn get_project_metadata_by_shortcode(
     State(state): State<Arc<AppState>>,
 ) -> Result<OptionalProjectMetadata, DspMetaError> {
     trace!("entered get_project_metadata_by_shortcode()");
+    let _maybe_graph: ProjectMetadataGraph = ProjectMetadata::default().try_into()?;
     state
         .project_metadata_service
         .find_by_id(Shortcode(shortcode))

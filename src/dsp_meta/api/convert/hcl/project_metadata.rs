@@ -2,11 +2,13 @@ use crate::domain::model::entity::dataset::Dataset;
 use crate::domain::model::entity::project::Project;
 use crate::domain::model::entity::project_metadata::ProjectMetadata;
 use crate::domain::model::value::version::Version;
-use crate::errors::DspMetaError;
+use crate::error::DspMetaError;
 
 impl TryFrom<&hcl::Body> for ProjectMetadata {
     type Error = DspMetaError;
 
+    /// Converts an `hcl::Body` into `ProjectMetadata` by consuming the
+    /// input. This operation can fail.
     fn try_from(body: &hcl::Body) -> Result<Self, Self::Error> {
         let mut version: Option<Version> = None;
         let mut project: Option<Project> = None;

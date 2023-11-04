@@ -4,7 +4,7 @@ use serde::Serialize;
 
 use crate::domain::model::value::iso_code::IsoCode;
 use crate::domain::model::value::lang_text_data::LangTextData;
-use crate::errors::DspMetaError;
+use crate::error::DspMetaError;
 
 const DESCRIPTION_BLOCK_IDENTIFIER: &str = "description";
 

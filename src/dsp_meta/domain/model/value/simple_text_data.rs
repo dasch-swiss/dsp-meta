@@ -1,7 +1,7 @@
 use serde::Serialize;
 use tracing::warn;
 
-use crate::errors::DspMetaError;
+use crate::error::DspMetaError;
 
 const TEXT_ATTRIBUTE_IDENTIFIER: &str = "text";
 

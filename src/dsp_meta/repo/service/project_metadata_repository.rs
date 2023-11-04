@@ -6,7 +6,7 @@ use tracing::trace;
 use crate::domain::model::entity::project_metadata::ProjectMetadata;
 use crate::domain::model::value::Shortcode;
 use crate::domain::service::repository_contract::RepositoryContract;
-use crate::errors::DspMetaError;
+use crate::error::DspMetaError;
 
 #[derive(Debug, Default, Clone)]
 pub struct ProjectMetadataRepository {
