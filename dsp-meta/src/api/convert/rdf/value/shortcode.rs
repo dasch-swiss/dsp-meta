@@ -7,7 +7,9 @@ use sophia::term::SimpleIri;
 
 use crate::error::Result;
 
-impl Shortcode {
+struct ShortcodeDto(Shortcode);
+
+impl ShortcodeDto {
     pub fn to_graph(&self, project_iri: &SimpleIri) -> Result<LightGraph> {
         let mut graph: LightGraph = LightGraph::new();
 

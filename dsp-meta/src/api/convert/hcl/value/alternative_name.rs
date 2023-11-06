@@ -1,24 +1,25 @@
 use dsp_domain::metadata::value::alternative_name::AlternativeName;
 use dsp_domain::metadata::value::lang_text_data::LangTextData;
 
+use crate::api::convert::hcl::hcl_block::HclBlock;
 use crate::error::DspMetaError;
 
 const ALTERNATIVE_NAME_BLOCK_IDENTIFIER: &str = "alternative_name";
 
-impl TryFrom<&hcl::Block> for AlternativeName {
+impl<'a> TryInto<AlternativeName> for HclBlock<'a> {
     type Error = DspMetaError;
 
-    fn try_from(block: &hcl::Block) -> Result<Self, Self::Error> {
-        if block.identifier.as_str() != ALTERNATIVE_NAME_BLOCK_IDENTIFIER {
+    fn try_into(self) -> Result<AlternativeName, Self::Error> {
+        if self.0.identifier.as_str() != ALTERNATIVE_NAME_BLOCK_IDENTIFIER {
             let msg = format!(
                 "The passed block is not named correctly. Expected '{}', however got '{}' instead.",
                 ALTERNATIVE_NAME_BLOCK_IDENTIFIER,
-                block.identifier.as_str()
+                self.0.identifier.as_str()
             );
             return Err(DspMetaError::CreateValueObject(msg));
         }
 
-        let attributes: Vec<&hcl::Attribute> = block.body.attributes().collect();
+        let attributes: Vec<&hcl::Attribute> = self.0.body.attributes().collect();
         LangTextData::try_from(attributes).map(|lang_text_data| AlternativeName(lang_text_data.0))
     }
 }
@@ -32,7 +33,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_try_from_correct_block() {
+    fn test_try_into_from_correct_block() {
         let block = hcl::block!(
             alternative_name {
                 de = "Der alternative Name"
@@ -41,8 +42,7 @@ mod tests {
             }
         );
 
-        let alternative_name = AlternativeName::try_from(&block).unwrap();
-
+        let alternative_name: AlternativeName = HclBlock(&block).try_into().unwrap();
         let mut map: HashMap<IsoCode, String> = HashMap::new();
         map.insert(IsoCode::DE, String::from("Der alternative Name"));
         map.insert(IsoCode::EN, String::from("The alternative name"));
@@ -53,7 +53,7 @@ mod tests {
     }
 
     #[test]
-    fn test_try_from_incorrect_block() {
+    fn test_try_into_from_incorrect_block() {
         let block = hcl::block!(
             alternative_name_other {
                 de = "Der alternative Name"
@@ -62,7 +62,7 @@ mod tests {
             }
         );
 
-        let alternative_name = AlternativeName::try_from(&block);
+        let alternative_name: Result<AlternativeName, DspMetaError> = HclBlock(&block).try_into();
 
         assert!(alternative_name.is_err());
     }

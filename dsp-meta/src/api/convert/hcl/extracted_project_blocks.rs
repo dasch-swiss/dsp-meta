@@ -8,6 +8,7 @@ use dsp_domain::metadata::value::temporal_coverage::TemporalCoverage;
 use dsp_domain::metadata::value::url::Url;
 use tracing::warn;
 
+use crate::api::convert::hcl::hcl_block::HclBlock;
 use crate::error::DspMetaError;
 
 const ALTERNATIVE_NAME_BLOCK: &str = "alternative_name";
@@ -47,7 +48,8 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
         for block in blocks {
             match block.identifier.as_str() {
                 ALTERNATIVE_NAME_BLOCK => {
-                    alternative_names.push(AlternativeName::try_from(block)?);
+                    // alternative_names.push(AlternativeName::try_from(block)?);
+                    alternative_names.push(HclBlock(block).try_into()?)
                 }
                 DESCRIPTION_BLOCK => {
                     if description.is_some() {
