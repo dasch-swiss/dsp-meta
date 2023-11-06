@@ -7,7 +7,7 @@ check:
     cargo clippy -- -D warnings
 
 build:
-    cargo build --verbose
+    cargo build
 
 test:
-    cargo test --verbose
+    cargo test

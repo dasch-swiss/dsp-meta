@@ -1,9 +1,9 @@
+use dsp_domain::metadata::value::{
+    ContactPoint, CreatedAt, CreatedBy, EndDate, HowToCite, Name, Shortcode, StartDate, TeaserText,
+};
 use hcl::Expression;
 use tracing::warn;
 
-use crate::domain::model::value::{
-    ContactPoint, CreatedAt, CreatedBy, EndDate, HowToCite, Name, Shortcode, StartDate, TeaserText,
-};
 use crate::error::DspMetaError;
 
 pub struct ExtractedProjectAttributes {

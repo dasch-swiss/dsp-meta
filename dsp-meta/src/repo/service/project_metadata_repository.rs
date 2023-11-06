@@ -1,10 +1,10 @@
 use std::collections::HashMap;
 use std::sync::{Arc, RwLock};
 
+use dsp_domain::metadata::entity::project_metadata::ProjectMetadata;
+use dsp_domain::metadata::value::Shortcode;
 use tracing::trace;
 
-use crate::domain::model::entity::project_metadata::ProjectMetadata;
-use crate::domain::model::value::Shortcode;
 use crate::domain::service::repository_contract::RepositoryContract;
 use crate::error::DspMetaError;
 

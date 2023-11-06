@@ -1,13 +1,13 @@
+use dsp_domain::metadata::value::alternative_name::AlternativeName;
+use dsp_domain::metadata::value::description::Description;
+use dsp_domain::metadata::value::discipline::Discipline;
+use dsp_domain::metadata::value::keyword::Keyword;
+use dsp_domain::metadata::value::publication::Publication;
+use dsp_domain::metadata::value::spatial_coverage::SpacialCoverage;
+use dsp_domain::metadata::value::temporal_coverage::TemporalCoverage;
+use dsp_domain::metadata::value::url::Url;
 use tracing::warn;
 
-use crate::domain::model::value::alternative_name::AlternativeName;
-use crate::domain::model::value::description::Description;
-use crate::domain::model::value::discipline::Discipline;
-use crate::domain::model::value::keyword::Keyword;
-use crate::domain::model::value::publication::Publication;
-use crate::domain::model::value::spatial_coverage::SpacialCoverage;
-use crate::domain::model::value::temporal_coverage::TemporalCoverage;
-use crate::domain::model::value::url::Url;
 use crate::error::DspMetaError;
 
 const ALTERNATIVE_NAME_BLOCK: &str = "alternative_name";

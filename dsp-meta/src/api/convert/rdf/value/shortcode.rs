@@ -1,10 +1,10 @@
+use dsp_domain::metadata::value::Shortcode;
 use sophia::graph::inmem::LightGraph;
 use sophia::graph::MutableGraph;
 use sophia::ns::Namespace;
 use sophia::term::literal::Literal;
 use sophia::term::SimpleIri;
 
-use crate::domain::model::value::Shortcode;
 use crate::error::Result;
 
 impl Shortcode {

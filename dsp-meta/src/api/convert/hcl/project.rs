@@ -1,7 +1,8 @@
+use dsp_domain::metadata::entity::project::Project;
+use dsp_domain::metadata::value::url::Url;
+
 use crate::api::convert::hcl::extracted_project_attributes::ExtractedProjectAttributes;
 use crate::api::convert::hcl::extracted_project_blocks::ExtractedProjectBlocks;
-use crate::domain::model::entity::project::Project;
-use crate::domain::model::value::url::Url;
 use crate::error::DspMetaError;
 
 impl TryFrom<&hcl::Block> for Project {
@@ -110,14 +111,14 @@ impl TryFrom<&hcl::Block> for Project {
 
 #[cfg(test)]
 mod tests {
+    use dsp_domain::metadata::value::{
+        ContactPoint, CreatedAt, CreatedBy, EndDate, HowToCite, Name, Shortcode, StartDate,
+        TeaserText,
+    };
     use hcl::block;
     use tracing_test::traced_test;
 
     use super::*;
-    use crate::domain::model::value::{
-        ContactPoint, CreatedAt, CreatedBy, EndDate, HowToCite, Name, Shortcode, StartDate,
-        TeaserText,
-    };
 
     #[traced_test]
     #[test]

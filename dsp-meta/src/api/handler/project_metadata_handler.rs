@@ -3,14 +3,14 @@ use std::sync::Arc;
 use axum::extract::{Path, State};
 use axum::response::Json;
 use axum_macros::debug_handler;
+use dsp_domain::metadata::entity::project_metadata::ProjectMetadata;
+use dsp_domain::metadata::value::Shortcode;
 use serde_json::Value;
 use tracing::trace;
 
 use crate::api::convert::axum::project_metadata::OptionalProjectMetadata;
 use crate::api::convert::rdf::project_metadata::ProjectMetadataGraph;
 use crate::app_state::AppState;
-use crate::domain::model::entity::project_metadata::ProjectMetadata;
-use crate::domain::model::value::Shortcode;
 use crate::domain::service::project_metadata_api_contract::ProjectMetadataApiContract;
 use crate::error::DspMetaError;
 

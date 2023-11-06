@@ -1,5 +1,6 @@
-use crate::domain::model::entity::dataset::Dataset;
-use crate::domain::model::value::Title;
+use dsp_domain::metadata::entity::dataset::Dataset;
+use dsp_domain::metadata::value::Title;
+
 use crate::error::DspMetaError;
 
 impl TryFrom<&hcl::Block> for Dataset {

@@ -1,8 +1,7 @@
 use axum::http::StatusCode;
 use axum::response::{IntoResponse, Json, Response};
+use dsp_domain::metadata::entity::project_metadata::ProjectMetadata;
 use serde::Serialize;
-
-use crate::domain::model::entity::project_metadata::ProjectMetadata;
 
 #[derive(Debug, Default, Clone, PartialEq, Serialize)]
 pub struct OptionalProjectMetadata(pub Option<ProjectMetadata>);

@@ -1,7 +1,8 @@
-use crate::domain::model::entity::dataset::Dataset;
-use crate::domain::model::entity::project::Project;
-use crate::domain::model::entity::project_metadata::ProjectMetadata;
-use crate::domain::model::value::version::Version;
+use dsp_domain::metadata::entity::dataset::Dataset;
+use dsp_domain::metadata::entity::project::Project;
+use dsp_domain::metadata::entity::project_metadata::ProjectMetadata;
+use dsp_domain::metadata::value::version::Version;
+
 use crate::error::DspMetaError;
 
 impl TryFrom<&hcl::Body> for ProjectMetadata {

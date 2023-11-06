@@ -1,11 +1,11 @@
 // placeholder for project
 
+use dsp_domain::metadata::entity::project::Project;
 use sophia::graph::inmem::LightGraph;
 use sophia::graph::{Graph, MutableGraph};
 use sophia::ns::{rdf, Namespace};
 
 use crate::api::convert::rdf::constance::DSP_NAMESPACE_STRING;
-use crate::domain::model::entity::project::Project;
 use crate::error::Result;
 
 impl Project {

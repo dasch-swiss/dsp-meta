@@ -1,7 +1,8 @@
 use std::collections::HashMap;
 
-use crate::domain::model::value::iso_code::IsoCode;
-use crate::domain::model::value::lang_text_data::LangTextData;
+use dsp_domain::metadata::value::iso_code::IsoCode;
+use dsp_domain::metadata::value::lang_text_data::LangTextData;
+
 use crate::error::DspMetaError;
 
 impl TryFrom<Vec<&hcl::Attribute>> for LangTextData {

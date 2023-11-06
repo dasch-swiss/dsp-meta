@@ -1,5 +1,6 @@
-use crate::domain::model::value::alternative_name::AlternativeName;
-use crate::domain::model::value::lang_text_data::LangTextData;
+use dsp_domain::metadata::value::alternative_name::AlternativeName;
+use dsp_domain::metadata::value::lang_text_data::LangTextData;
+
 use crate::error::DspMetaError;
 
 const ALTERNATIVE_NAME_BLOCK_IDENTIFIER: &str = "alternative_name";
@@ -26,8 +27,10 @@ impl TryFrom<&hcl::Block> for AlternativeName {
 mod tests {
     use std::collections::HashMap;
 
+    use dsp_domain::metadata::value::iso_code::IsoCode;
+
     use super::*;
-    use crate::domain::model::value::iso_code::IsoCode;
+
     #[test]
     fn test_try_from_correct_block() {
         let block = hcl::block!(

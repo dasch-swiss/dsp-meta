@@ -1,11 +1,9 @@
-pub mod model;
 pub mod service;
 
 #[cfg(test)]
 mod tests {
+    use dsp_domain::metadata::entity::project_metadata::ProjectMetadata;
     use hcl::body;
-
-    use crate::domain::model::entity::project_metadata::ProjectMetadata;
 
     #[test]
     fn try_from_multiple_projects_error() {

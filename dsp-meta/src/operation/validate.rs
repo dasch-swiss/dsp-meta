@@ -1,8 +1,8 @@
 use std::path::Path;
 
+use dsp_domain::metadata::entity::project_metadata::ProjectMetadata;
 use tracing::info;
 
-use crate::domain::model::entity::project_metadata::ProjectMetadata;
 use crate::error::DspMetaError;
 
 /// Read projects definition from .toml

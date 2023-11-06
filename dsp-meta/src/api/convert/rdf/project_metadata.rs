@@ -1,3 +1,4 @@
+use dsp_domain::metadata::entity::project_metadata::ProjectMetadata;
 use sophia::graph::inmem::LightGraph;
 use sophia::graph::*;
 use sophia::iri::IriBox;
@@ -10,7 +11,6 @@ use tracing::trace;
 use crate::api::convert::rdf::constance::{
     DSP_NAMESPACE_STRING, PROV_NAMESPACE_STRING, SCHEMA_NAMESPACE_STRING, XSD_NAMESPACE_STRING,
 };
-use crate::domain::model::entity::project_metadata::ProjectMetadata;
 use crate::error::DspMetaError;
 
 pub struct ProjectMetadataGraph {

@@ -13,6 +13,7 @@ authors = ["DaSCH - Swiss National Data and Service Center for the Humanities"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+dsp-domain = { path = "../dsp-domain", version = "0" }
 anyhow.workspace = true
 axum.workspace = true
 axum-macros.workspace = true
@@ -22,6 +23,7 @@ hyper.workspace = true
 log.workspace = true
 serde.workspace = true
 serde_json.workspace = true
+sophia = "0.7.2"
 tokio.workspace = true
 tower.workspace = true
 tower-http.workspace = true
@@ -29,6 +31,7 @@ tracing.workspace = true
 tracing-subscriber.workspace = true
 tracing-test.workspace = true
 url.workspace = true
+thiserror = "1.0.50"
 
 [dev-dependencies]
 assert_cmd = "2.0.12"
