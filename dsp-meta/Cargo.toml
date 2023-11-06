@@ -1,0 +1,34 @@
+[package]
+name = "dsp-meta"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+homepage = "https://github.com/dasch-swiss/dsp-meta"
+repository = "https://github.com/dasch-swiss/dsp-ingest"
+documentation = "https://github.com/dasch-swiss/dsp-ingest"
+readme = "../README.md"
+description = "The DSP Metadata Command Line Tool providing transformation, validation and serving of research project's metadata."
+authors = ["DaSCH - Swiss National Data and Service Center for the Humanities"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow.workspace = true
+axum.workspace = true
+axum-macros.workspace = true
+clap.workspace = true
+hcl-rs.workspace = true
+hyper.workspace = true
+log.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tokio.workspace = true
+tower.workspace = true
+tower-http.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+tracing-test.workspace = true
+url.workspace = true
+
+[dev-dependencies]
+assert_cmd = "2.0.12"
