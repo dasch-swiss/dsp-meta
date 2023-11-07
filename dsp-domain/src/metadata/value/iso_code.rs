@@ -2,6 +2,8 @@ use std::fmt::{Display, Formatter};
 
 use serde::Serialize;
 
+use crate::error::DspDomainError;
+
 /// Language codes according to ISO 639-1
 /// Not an exhaustive list.
 #[derive(Debug, Default, Clone, PartialEq, Eq, Hash, Serialize)]
@@ -44,7 +46,7 @@ impl Display for IsoCode {
 }
 
 impl TryFrom<&str> for IsoCode {
-    type Error = String;
+    type Error = DspDomainError;
 
     fn try_from(value: &str) -> Result<Self, Self::Error> {
         match value {
@@ -61,9 +63,9 @@ impl TryFrom<&str> for IsoCode {
             "zh" => Ok(IsoCode::ZH),
             "ar" => Ok(IsoCode::AR),
             "fa" => Ok(IsoCode::FA),
-            _ => {
-                Err("Creating an IsoCode failed because provided value is not allowed.".to_string())
-            }
+            _ => Err(DspDomainError::CreateValueObject(
+                "Creating an IsoCode failed because provided value is not allowed.".to_string(),
+            )),
         }
     }
 }

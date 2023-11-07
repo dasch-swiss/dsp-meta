@@ -1,9 +1,10 @@
 use std::io;
 
+use dsp_domain::error::DspDomainError;
 use serde::Serialize;
 use thiserror::Error;
 
-/// Type alias for `Result` with default error `InvalidIri`.
+/// Type alias for `Result` with default error `DspMetaError`.
 ///
 /// Can be used like `std::result::Result` as well.
 pub type Result<T, E = DspMetaError> = std::result::Result<T, E>;
@@ -34,5 +35,13 @@ pub enum DspMetaError {
 impl From<io::Error> for DspMetaError {
     fn from(error: io::Error) -> Self {
         DspMetaError::IO(error.to_string())
+    }
+}
+
+impl From<DspDomainError> for DspMetaError {
+    fn from(value: DspDomainError) -> Self {
+        match value {
+            DspDomainError::CreateValueObject(err) => DspMetaError::CreateValueObject(err),
+        }
     }
 }

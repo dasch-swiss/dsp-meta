@@ -2,6 +2,7 @@ use dsp_domain::metadata::value::lang_text_data::LangTextData;
 use dsp_domain::metadata::value::ref_data::RefData;
 use dsp_domain::metadata::value::temporal_coverage::TemporalCoverage;
 
+use crate::api::convert::hcl::hcl_block::HclBlock;
 use crate::error::DspMetaError;
 
 const TEMPORAL_COVERAGE: &str = "temporal_coverage";
@@ -10,30 +11,30 @@ const PERIODO: &str = "periodo";
 
 const TEXT: &str = "text";
 
-impl TryFrom<&hcl::Block> for TemporalCoverage {
+impl<'a> TryInto<TemporalCoverage> for HclBlock<'a> {
     type Error = DspMetaError;
 
-    fn try_from(block: &hcl::Block) -> Result<Self, Self::Error> {
-        if block.identifier.as_str() != TEMPORAL_COVERAGE {
+    fn try_into(self) -> Result<TemporalCoverage, Self::Error> {
+        if self.0.identifier.as_str() != TEMPORAL_COVERAGE {
             let msg = format!(
                 "The passed block is not named correctly. Expected 'temporal_coverage', however got '{}' instead.",
-                block.identifier.as_str()
+                self.0.identifier.as_str()
             );
             return Err(DspMetaError::CreateValueObject(msg));
         }
 
-        if block.labels.len() != 1 {
+        if self.0.labels.len() != 1 {
             return Err(DspMetaError::CreateValueObject("The passed number of block labels is not correct. Expected '1', namely 'reference data type' (e.g., 'chronontology, periodo').".to_string()));
         }
 
-        let reference_data_type = block.labels.first().ok_or_else(|| {
+        let reference_data_type = self.0.labels.first().ok_or_else(|| {
             DspMetaError::CreateValueObject(
                 "The passed spacial_coverage block is missing the reference data type label."
                     .to_string(),
             )
         })?;
 
-        let attributes: Vec<&hcl::Attribute> = block.body.attributes().collect();
+        let attributes: Vec<&hcl::Attribute> = self.0.body.attributes().collect();
 
         match reference_data_type.as_str() {
             CHRONONTOLOGY => {

@@ -2,43 +2,45 @@ use dsp_domain::metadata::value::discipline::Discipline;
 use dsp_domain::metadata::value::lang_text_data::LangTextData;
 use dsp_domain::metadata::value::ref_data::RefData;
 
+use crate::api::convert::hcl::hcl_attribute::HclAttributes;
+use crate::api::convert::hcl::hcl_block::HclBlock;
 use crate::error::DspMetaError;
 
-impl TryFrom<&hcl::Block> for Discipline {
+impl<'a> TryInto<Discipline> for HclBlock<'a> {
     type Error = DspMetaError;
 
-    fn try_from(block: &hcl::Block) -> Result<Self, Self::Error> {
-        if block.identifier.as_str() != "discipline" {
+    fn try_into(self) -> Result<Discipline, Self::Error> {
+        if self.0.identifier.as_str() != "discipline" {
             let msg = format!(
                 "The passed block is not named correctly. Expected 'discipline', however got '{}' instead.",
-                block.identifier.as_str()
+                self.0.identifier.as_str()
             );
             return Err(DspMetaError::CreateValueObject(msg));
         }
 
-        if block.labels.len() != 1 {
+        if self.0.labels.len() != 1 {
             return Err(DspMetaError::CreateValueObject("The passed number of block labels is not correct. Expected '1', namely 'reference data type' (e.g., 'skos').".to_string()));
         }
 
-        let reference_data_type = block.labels.first().ok_or_else(|| {
+        let reference_data_type = self.0.labels.first().ok_or_else(|| {
             DspMetaError::CreateValueObject(
                 "The passed discipline block is missing the reference data type label.".to_string(),
             )
         })?;
 
-        let attributes: Vec<&hcl::Attribute> = block.body.attributes().collect();
+        let attributes: Vec<&hcl::Attribute> = self.0.body.attributes().collect();
 
         match reference_data_type.as_str() {
             "skos" => {
-                let ref_data = RefData::try_from(attributes)?;
+                let ref_data: RefData = HclAttributes(attributes).try_into()?;
                 Ok(Discipline::Skos(ref_data))
             }
             "snf" => {
-                let ref_data = RefData::try_from(attributes)?;
+                let ref_data: RefData = HclAttributes(attributes).try_into()?;
                 Ok(Discipline::Snf(ref_data))
             }
             "text" => {
-                let text_data = LangTextData::try_from(attributes)?;
+                let text_data: LangTextData = HclAttributes(attributes).try_into()?;
                 Ok(Discipline::Text(text_data))
             }
             _ => {
@@ -68,7 +70,7 @@ mod tests {
             }
         );
 
-        let input = Discipline::try_from(&block).unwrap();
+        let input: Discipline = HclBlock(&block).try_into().unwrap();
         let expected = Discipline::Skos(RefData {
             ref_id: "https://skos.um.es/unesco6/5501".to_string(),
             description: "Local history".to_string(),
@@ -89,7 +91,7 @@ mod tests {
             }
         );
 
-        let input = Discipline::try_from(&block).unwrap();
+        let input: Discipline = HclBlock(&block).try_into().unwrap();
         let expected = Discipline::Text(LangTextData(
             vec![
                 (IsoCode::DE, "Lokalgeschichte".to_string()),

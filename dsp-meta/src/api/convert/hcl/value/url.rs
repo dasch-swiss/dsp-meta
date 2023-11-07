@@ -1,21 +1,22 @@
 use dsp_domain::metadata::value::url::Url;
 use tracing::warn;
 
+use crate::api::convert::hcl::hcl_block::HclBlock;
 use crate::error::DspMetaError;
 
 const URL_BLOCK_IDENTIFIER: &str = "url";
 const HREF_ATTRIBUTE_KEY: &str = "href";
 const LABEL_ATTRIBUTE_KEY: &str = "label";
 
-impl TryFrom<&hcl::Block> for Url {
+impl<'a> TryInto<Url> for HclBlock<'a> {
     type Error = DspMetaError;
 
-    fn try_from(block: &hcl::Block) -> Result<Self, Self::Error> {
-        if block.identifier.as_str() != URL_BLOCK_IDENTIFIER {
+    fn try_into(self) -> Result<Url, Self::Error> {
+        if self.0.identifier.as_str() != URL_BLOCK_IDENTIFIER {
             let msg = format!(
                 "The passed block is not named correctly. Expected '{}', however got '{}' instead.",
                 URL_BLOCK_IDENTIFIER,
-                block.identifier.as_str()
+                self.0.identifier.as_str()
             );
             return Err(DspMetaError::CreateValueObject(msg));
         }
@@ -23,7 +24,7 @@ impl TryFrom<&hcl::Block> for Url {
         let mut href: Option<url::Url> = None;
         let mut label: Option<String> = None;
 
-        let attributes: Vec<&hcl::Attribute> = block.body.attributes().collect();
+        let attributes: Vec<&hcl::Attribute> = self.0.body.attributes().collect();
         for attribute in attributes {
             match attribute.key() {
                 LABEL_ATTRIBUTE_KEY => {

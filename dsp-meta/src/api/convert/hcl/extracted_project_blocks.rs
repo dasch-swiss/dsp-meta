@@ -47,17 +47,14 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
 
         for block in blocks {
             match block.identifier.as_str() {
-                ALTERNATIVE_NAME_BLOCK => {
-                    // alternative_names.push(AlternativeName::try_from(block)?);
-                    alternative_names.push(HclBlock(block).try_into()?)
-                }
+                ALTERNATIVE_NAME_BLOCK => alternative_names.push(HclBlock(block).try_into()?),
                 DESCRIPTION_BLOCK => {
                     if description.is_some() {
                         return Err(DspMetaError::ParseProject(
                             "Only one 'description' block allowed.".to_string(),
                         ));
                     }
-                    description = Some(Description::try_from(block)?)
+                    description = Some(HclBlock(&block).try_into()?)
                 }
                 URL_BLOCK => {
                     if url.is_some() {
@@ -65,15 +62,13 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
                             "Only one 'url' block allowed.".to_string(),
                         ));
                     }
-                    url = Some(Url::try_from(block)?)
+                    url = Some(HclBlock(&block).try_into()?)
                 }
-                KEYWORD_BLOCK => keywords.push(Keyword::try_from(block)?),
-                DISCIPLINE_BLOCK => disciplines.push(Discipline::try_from(block)?),
-                SPACIAL_COVERAGE_BLOCK => spacial_coverages.push(SpacialCoverage::try_from(block)?),
-                TEMPORAL_COVERAGE_BLOCK => {
-                    temporal_coverages.push(TemporalCoverage::try_from(block)?)
-                }
-                PUBLICATION_BLOCK => publications.push(Publication::try_from(block)?),
+                KEYWORD_BLOCK => keywords.push(HclBlock(&block).try_into()?),
+                DISCIPLINE_BLOCK => disciplines.push(HclBlock(&block).try_into()?),
+                SPACIAL_COVERAGE_BLOCK => spacial_coverages.push(HclBlock(&block).try_into()?),
+                TEMPORAL_COVERAGE_BLOCK => temporal_coverages.push(HclBlock(&block).try_into()?),
+                PUBLICATION_BLOCK => publications.push(HclBlock(&block).try_into()?),
                 _ => {
                     // catch all
                     warn!("Parse error: unknown block '{}'.", block.identifier);

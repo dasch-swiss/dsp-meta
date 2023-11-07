@@ -3,15 +3,16 @@ use std::collections::HashMap;
 use dsp_domain::metadata::value::iso_code::IsoCode;
 use dsp_domain::metadata::value::lang_text_data::LangTextData;
 
+use crate::api::convert::hcl::hcl_attribute::HclAttributes;
 use crate::error::DspMetaError;
 
-impl TryFrom<Vec<&hcl::Attribute>> for LangTextData {
+impl<'a> TryInto<LangTextData> for HclAttributes<'a> {
     type Error = DspMetaError;
 
-    fn try_from(attributes: Vec<&hcl::Attribute>) -> Result<Self, Self::Error> {
+    fn try_into(self) -> Result<LangTextData, Self::Error> {
         let mut text_data: HashMap<IsoCode, String> = HashMap::new();
 
-        for attribute in attributes {
+        for attribute in self.0 {
             let iso_code = IsoCode::try_from(attribute.key())?;
             let text = match attribute.expr() {
                 hcl::Expression::String(value) => Ok(value.to_owned()),

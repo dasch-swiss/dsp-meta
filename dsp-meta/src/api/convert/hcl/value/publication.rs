@@ -1,25 +1,28 @@
 use dsp_domain::metadata::value::publication::Publication;
 use dsp_domain::metadata::value::simple_text_data::SimpleTextData;
 
+use crate::api::convert::hcl::hcl_attribute::HclAttributes;
+use crate::api::convert::hcl::hcl_block::HclBlock;
 use crate::error::DspMetaError;
 
 const PUBLICATION_BLOCK_IDENTIFIER: &str = "publication";
 
-impl TryFrom<&hcl::Block> for Publication {
+impl<'a> TryInto<Publication> for HclBlock<'a> {
     type Error = DspMetaError;
 
-    fn try_from(block: &hcl::Block) -> Result<Self, Self::Error> {
-        if block.identifier.as_str() != PUBLICATION_BLOCK_IDENTIFIER {
+    fn try_into(self) -> Result<Publication, Self::Error> {
+        if self.0.identifier.as_str() != PUBLICATION_BLOCK_IDENTIFIER {
             let msg = format!(
                 "The passed block is not named correctly. Expected 'publication', however got '{}' instead.",
-                block.identifier.as_str()
+                self.0.identifier.as_str()
             );
             return Err(DspMetaError::CreateValueObject(msg));
         }
 
-        let attributes: Vec<&hcl::Attribute> = block.body.attributes().collect();
-
-        SimpleTextData::try_from(attributes).map(Publication::SimpleText)
+        let attributes: Vec<&hcl::Attribute> = self.0.body.attributes().collect();
+        let simple_text_data: Result<SimpleTextData, DspMetaError> =
+            HclAttributes(attributes).try_into();
+        simple_text_data.map(|s| s.into_simple_text())
     }
 }
 
@@ -27,6 +30,9 @@ impl TryFrom<&hcl::Block> for Publication {
 mod tests {
     use dsp_domain::metadata::value::publication::*;
     use dsp_domain::metadata::value::simple_text_data::SimpleTextData;
+
+    use crate::api::convert::hcl::hcl_block::HclBlock;
+    use crate::error::DspMetaError;
 
     #[test]
     fn test_try_from_correct_block() {
@@ -36,7 +42,7 @@ mod tests {
             }
         );
 
-        let publication = Publication::try_from(&block).unwrap();
+        let publication: Publication = HclBlock(&block).try_into().unwrap();
 
         match publication {
             Publication::SimpleText(data) => {
@@ -53,7 +59,7 @@ mod tests {
             }
         );
 
-        let publication = Publication::try_from(&block);
+        let publication: Result<Publication, DspMetaError> = HclBlock(&block).try_into();
 
         assert!(publication.is_err());
     }

@@ -3,6 +3,7 @@ use std::collections::HashMap;
 use serde::Serialize;
 
 use crate::metadata::value::iso_code::IsoCode;
+use crate::metadata::value::lang_text_data::LangTextData;
 
 /// A set of descriptions in different languages.
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -15,5 +16,11 @@ impl Default for Description {
         map.insert(IsoCode::EN, String::from("The default description."));
         map.insert(IsoCode::FR, String::from("Le standard description."));
         Self(map)
+    }
+}
+
+impl From<LangTextData> for Description {
+    fn from(value: LangTextData) -> Self {
+        Description(value.0)
     }
 }

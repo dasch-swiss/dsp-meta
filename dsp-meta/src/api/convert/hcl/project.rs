@@ -3,17 +3,18 @@ use dsp_domain::metadata::value::url::Url;
 
 use crate::api::convert::hcl::extracted_project_attributes::ExtractedProjectAttributes;
 use crate::api::convert::hcl::extracted_project_blocks::ExtractedProjectBlocks;
+use crate::api::convert::hcl::hcl_block::HclBlock;
 use crate::error::DspMetaError;
 
-impl TryFrom<&hcl::Block> for Project {
+impl<'a> TryInto<Project> for HclBlock<'a> {
     type Error = DspMetaError;
 
-    fn try_from(project_block: &hcl::Block) -> Result<Self, Self::Error> {
-        if project_block.identifier.as_str() != "project" {
+    fn try_into(self) -> Result<Project, Self::Error> {
+        if self.0.identifier.as_str() != "project" {
             return Err(DspMetaError::ParseProject(
                 format!(
                     "Parse error: project block needs to be named 'project', however got '{}' instead.",
-                    project_block.identifier.as_str()
+                    self.0.identifier.as_str()
                 )
                 .to_string(),
             ));
@@ -23,7 +24,7 @@ impl TryFrom<&hcl::Block> for Project {
         // created_at, created_by, shortcode, name, teaser_text, how_to_cite, start_date, end_date,
         // datasets, funders, grants
 
-        let attributes: Vec<&hcl::Attribute> = project_block.body.attributes().collect();
+        let attributes: Vec<&hcl::Attribute> = self.0.body.attributes().collect();
 
         let extracted_attributes = ExtractedProjectAttributes::try_from(attributes)?;
 
@@ -73,7 +74,7 @@ impl TryFrom<&hcl::Block> for Project {
         // extract the project blocks
         // alternative_names, description, url, keywords, disciplines, publications)
 
-        let blocks: Vec<&hcl::Block> = project_block.body.blocks().collect();
+        let blocks: Vec<&hcl::Block> = self.0.body.blocks().collect();
         let extracted_blocks = ExtractedProjectBlocks::try_from(blocks)?;
 
         let alternative_names = extracted_blocks.alternative_names;
@@ -144,7 +145,7 @@ mod tests {
                 contact_point = "project_organization"
             }
         );
-        let project = Project::try_from(&input_project_block).unwrap();
+        let project: Project = HclBlock(&input_project_block).try_into().unwrap();
         assert_eq!(project.created_at, CreatedAt(1630601274523025000));
         assert_eq!(
             project.created_by,

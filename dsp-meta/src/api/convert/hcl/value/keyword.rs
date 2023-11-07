@@ -1,25 +1,30 @@
 use dsp_domain::metadata::value::keyword::Keyword;
 use dsp_domain::metadata::value::lang_text_data::LangTextData;
 
+use crate::api::convert::hcl::hcl_attribute::HclAttributes;
+use crate::api::convert::hcl::hcl_block::HclBlock;
 use crate::error::DspMetaError;
 
 const KEYWORD_BLOCK_IDENTIFIER: &str = "keyword";
 
-impl TryFrom<&hcl::Block> for Keyword {
+impl<'a> TryInto<Keyword> for HclBlock<'a> {
     type Error = DspMetaError;
 
-    fn try_from(block: &hcl::Block) -> Result<Self, Self::Error> {
-        if block.identifier.as_str() != KEYWORD_BLOCK_IDENTIFIER {
+    fn try_into(self) -> Result<Keyword, Self::Error> {
+        if self.0.identifier.as_str() != KEYWORD_BLOCK_IDENTIFIER {
             let msg = format!(
                 "The passed block is not named correctly. Expected '{}', however got '{}' instead.",
                 KEYWORD_BLOCK_IDENTIFIER,
-                block.identifier.as_str()
+                self.0.identifier.as_str()
             );
             return Err(DspMetaError::CreateValueObject(msg));
         }
 
-        let attributes: Vec<&hcl::Attribute> = block.body.attributes().collect();
-        LangTextData::try_from(attributes).map(|lang_text_data| Keyword(lang_text_data.0))
+        let attributes: Vec<&hcl::Attribute> = self.0.body.attributes().collect();
+        // FIXME: improve API
+        let lang_text_data: Result<LangTextData, DspMetaError> =
+            HclAttributes(attributes).try_into();
+        lang_text_data.map(|l| l.into())
     }
 }
 
@@ -29,6 +34,9 @@ mod tests {
 
     use dsp_domain::metadata::value::iso_code::IsoCode;
     use dsp_domain::metadata::value::keyword::*;
+
+    use crate::api::convert::hcl::hcl_block::HclBlock;
+    use crate::error::DspMetaError;
 
     #[test]
     fn test_try_from_correct_block() {
@@ -40,7 +48,7 @@ mod tests {
             }
         );
 
-        let keyword = Keyword::try_from(&block).unwrap();
+        let keyword: Keyword = HclBlock(&block).try_into().unwrap();
 
         let mut map: HashMap<IsoCode, String> = HashMap::new();
         map.insert(IsoCode::DE, String::from("Der keyword"));
@@ -61,7 +69,7 @@ mod tests {
             }
         );
 
-        let keyword = Keyword::try_from(&block);
+        let keyword: Result<Keyword, DspMetaError> = HclBlock(&block).try_into();
 
         assert!(keyword.is_err());
     }

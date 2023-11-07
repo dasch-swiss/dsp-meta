@@ -3,29 +3,32 @@ use dsp_domain::metadata::entity::project::Project;
 use dsp_domain::metadata::entity::project_metadata::ProjectMetadata;
 use dsp_domain::metadata::value::version::Version;
 
+use crate::api::convert::hcl::hcl_attribute::HclAttribute;
+use crate::api::convert::hcl::hcl_block::HclBlock;
+use crate::api::convert::hcl::hcl_body::HclBody;
 use crate::error::DspMetaError;
 
-impl TryFrom<&hcl::Body> for ProjectMetadata {
+impl<'a> TryInto<ProjectMetadata> for HclBody<'a> {
     type Error = DspMetaError;
 
     /// Converts an `hcl::Body` into `ProjectMetadata` by consuming the
     /// input. This operation can fail.
-    fn try_from(body: &hcl::Body) -> Result<Self, Self::Error> {
+    fn try_into(self) -> Result<ProjectMetadata, Self::Error> {
         let mut version: Option<Version> = None;
         let mut project: Option<Project> = None;
         let mut datasets: Vec<Dataset> = vec![];
 
-        let attributes: Vec<&hcl::Attribute> = body.attributes().collect();
+        let attributes: Vec<&hcl::Attribute> = self.0.body.attributes().collect();
         for attribute in attributes {
             match attribute.key() {
-                "version" => version = Some(Version::try_from(attribute)?),
+                "version" => version = Some(HclAttribute(attribute).try_into()?),
                 _ => {
                     continue;
                 }
             }
         }
 
-        let blocks: Vec<&hcl::Block> = body.blocks().collect();
+        let blocks: Vec<&hcl::Block> = self.0.body.blocks().collect();
         for block in blocks {
             match block.identifier() {
                 "project" => {
@@ -34,10 +37,10 @@ impl TryFrom<&hcl::Body> for ProjectMetadata {
                             "Only one project block allowed.".to_string(),
                         ));
                     } else {
-                        project = Some(Project::try_from(block)?)
+                        project = Some(HclBlock(block).try_into()?)
                     }
                 }
-                "dataset" => datasets.push(Dataset::try_from(block)?),
+                "dataset" => datasets.push(HclBlock(block).try_into()?),
                 _ => {
                     continue;
                 }
