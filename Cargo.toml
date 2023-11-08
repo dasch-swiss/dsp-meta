@@ -1,4 +1,11 @@
-
+[workspace]
+members = [
+    "dsp-domain",
+    "dsp-meta",
+    "dsp-meta-cli",
+    "dsp-meta-server"
+]
+resolver = "2"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -14,77 +21,14 @@ hcl-rs = "0.16.6" # HCL converter
 indicatif = "0.17.0" # prograss bars and spinners
 log = "0.4.20" # logging facade
 once_cell = "1.18.0"
-rio_turtle = "0.8.4"
 serde = {version = "1", features = ["derive"]}
 serde_json = "1" # JSON serialization
-sophia = "0.7.2" # RDF library
 tokio = { version = "1", features = ["rt", "macros", "rt-multi-thread"] }
 tokio-test = "0.4.2"
 tower = "0.4.13"
 tower-http = { version = "0.4.0", features = ["trace"] }
 hyper = "0.14.27"
-thiserror = "1.0.49" # derive Error types
 tracing = "0.1"
-tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+tracing-subscriber = "0.3"
 tracing-test = "0.2"
 url = { version = "2", features = ["serde"] }
-uuid = "1.4.1" # UUIDs
-
-
-[package]
-name = "dsp_meta"
-version = "0.1.0"
-edition = "2021"
-license = "MIT OR Apache-2.0"
-homepage = "https://github.com/dasch-swiss/dsp-meta"
-repository = "https://github.com/dasch-swiss/dsp-ingest"
-documentation = "https://github.com/dasch-swiss/dsp-ingest"
-readme = "README.md"
-description = "The DSP Metadata Command Line Tool providing transformation, validation and serving of research project's metadata."
-authors = ["DaSCH - Swiss National Data and Service Center for the Humanities"]
-default-run = "dsp_meta_server"
-
-[lib]
-name = "dsp_meta"
-path = "src/dsp_meta/lib.rs"
-
-[dependencies]
-anyhow.workspace = true
-axum.workspace = true
-axum-macros.workspace = true
-clap.workspace = true
-hcl-rs.workspace = true
-hyper.workspace = true
-log.workspace = true
-rio_turtle.workspace = true
-serde.workspace = true
-serde_json.workspace = true
-sophia.workspace = true
-thiserror.workspace = true
-tokio.workspace = true
-tower.workspace = true
-tower-http.workspace = true
-tracing.workspace = true
-tracing-subscriber.workspace = true
-tracing-test.workspace = true
-url.workspace = true
-uuid.workspace = true
-
-
-[[bin]]
-name = "dsp_meta_cli"
-test = false
-doc = false
-
-[[bin]]
-name = "dsp_meta_server"
-test = false
-doc = false
-
-[[bench]]
-name = "rdf_bench"
-harness = false
-
-[dev-dependencies]
-assert_cmd = "2.0.12"
-criterion = { version = "0.5.1", features = ["html_reports"] }

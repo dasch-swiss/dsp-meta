@@ -1,0 +1,12 @@
+mod alternative_name;
+mod description;
+mod discipline;
+mod keyword;
+mod lang_text_data;
+mod publication;
+mod ref_data;
+mod simple_text_data;
+mod spatial_coverage;
+mod temporal_coverage;
+mod url;
+mod version;
