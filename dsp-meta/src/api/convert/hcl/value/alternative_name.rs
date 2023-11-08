@@ -1,10 +1,8 @@
 use dsp_domain::metadata::value::alternative_name::AlternativeName;
 use dsp_domain::metadata::value::lang_text_data::LangTextData;
-use sophia::ns::rdf::language;
 
 use crate::api::convert::hcl::hcl_attribute::HclAttributes;
 use crate::api::convert::hcl::hcl_block::HclBlock;
-use crate::api::convert::hcl::value::lang_text_data;
 use crate::error::DspMetaError;
 
 const ALTERNATIVE_NAME_BLOCK_IDENTIFIER: &str = "alternative_name";

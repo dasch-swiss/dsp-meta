@@ -1,1 +1,1 @@
-mod shortcode;
+pub mod shortcode;

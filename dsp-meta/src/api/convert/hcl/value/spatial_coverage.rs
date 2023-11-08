@@ -1,6 +1,7 @@
 use dsp_domain::metadata::value::ref_data::RefData;
 use dsp_domain::metadata::value::spatial_coverage::SpacialCoverage;
 
+use crate::api::convert::hcl::hcl_attribute::HclAttributes;
 use crate::api::convert::hcl::hcl_block::HclBlock;
 use crate::error::DspMetaError;
 
@@ -34,7 +35,7 @@ impl<'a> TryInto<SpacialCoverage> for HclBlock<'a> {
 
         match reference_data_type.as_str() {
             GEONAMES => {
-                let ref_data = RefData::try_from(attributes)?;
+                let ref_data: RefData = HclAttributes(attributes).try_into()?;
                 Ok(SpacialCoverage::Geonames(ref_data))
             }
             _ => {
@@ -58,7 +59,7 @@ mod tests {
             }
         );
 
-        let input = SpacialCoverage::try_from(&block).unwrap();
+        let input: SpacialCoverage = HclBlock(&block).try_into().unwrap();
         let expected = SpacialCoverage::Geonames(RefData {
             ref_id: "1234".to_string(),
             description: "A description".to_string(),

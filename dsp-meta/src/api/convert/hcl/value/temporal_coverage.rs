@@ -2,6 +2,7 @@ use dsp_domain::metadata::value::lang_text_data::LangTextData;
 use dsp_domain::metadata::value::ref_data::RefData;
 use dsp_domain::metadata::value::temporal_coverage::TemporalCoverage;
 
+use crate::api::convert::hcl::hcl_attribute::HclAttributes;
 use crate::api::convert::hcl::hcl_block::HclBlock;
 use crate::error::DspMetaError;
 
@@ -38,15 +39,15 @@ impl<'a> TryInto<TemporalCoverage> for HclBlock<'a> {
 
         match reference_data_type.as_str() {
             CHRONONTOLOGY => {
-                let ref_data = RefData::try_from(attributes)?;
+                let ref_data: RefData = HclAttributes(attributes).try_into()?;
                 Ok(TemporalCoverage::Chronontology(ref_data))
             }
             PERIODO => {
-                let ref_data = RefData::try_from(attributes)?;
+                let ref_data: RefData = HclAttributes(attributes).try_into()?;
                 Ok(TemporalCoverage::Periodo(ref_data))
             }
             TEXT => {
-                let text_data = LangTextData::try_from(attributes)?;
+                let text_data: LangTextData = HclAttributes(attributes).try_into()?;
                 Ok(TemporalCoverage::Text(text_data))
             }
             _ => {
@@ -71,7 +72,7 @@ mod tests {
             }
         );
 
-        let input = TemporalCoverage::try_from(&block).unwrap();
+        let input: TemporalCoverage = HclBlock(&block).try_into().unwrap();
         let expected = TemporalCoverage::Chronontology(RefData {
             ref_id: "https://chronontology.dainst.org/period/INtagfT8h7Fs".to_string(),
             description: "20th and 21st Centuries".to_string(),

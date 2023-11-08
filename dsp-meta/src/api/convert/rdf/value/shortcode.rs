@@ -7,9 +7,9 @@ use sophia::term::SimpleIri;
 
 use crate::error::Result;
 
-struct ShortcodeDto(Shortcode);
+pub(crate) struct ShortcodeDto<'a>(pub &'a Shortcode);
 
-impl ShortcodeDto {
+impl<'a> ShortcodeDto<'a> {
     pub fn to_graph(&self, project_iri: &SimpleIri) -> Result<LightGraph> {
         let mut graph: LightGraph = LightGraph::new();
 
@@ -20,7 +20,7 @@ impl ShortcodeDto {
             .insert(
                 project_iri,
                 &dsp.get("hasShortcode")?,
-                &Literal::<String>::new_lang(&self.0, "en")?,
+                &Literal::<String>::new_lang(&self.0.to_string(), "en")?,
             )
             .expect("insert of shortcode triples into graph failed.");
 

@@ -11,6 +11,7 @@ use tracing::trace;
 use crate::api::convert::rdf::constance::{
     DSP_NAMESPACE_STRING, PROV_NAMESPACE_STRING, SCHEMA_NAMESPACE_STRING, XSD_NAMESPACE_STRING,
 };
+use crate::api::convert::rdf::project::ProjectDto;
 use crate::error::DspMetaError;
 
 pub struct ProjectMetadataGraph {
@@ -143,7 +144,7 @@ impl TryFrom<ProjectMetadata> for ProjectMetadataGraph {
 
         let _xsd = Namespace::new_unchecked(XSD_NAMESPACE_STRING);
 
-        let project_graph = value.project.to_graph()?;
+        let project_graph = ProjectDto(value.project).to_graph()?;
 
         graph
             .insert_all(project_graph.triples())

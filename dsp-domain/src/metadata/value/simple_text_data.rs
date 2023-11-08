@@ -6,7 +6,7 @@ use crate::metadata::value::publication::Publication;
 pub struct SimpleTextData(pub String);
 
 impl SimpleTextData {
-    pub fn into_simple_text(self) -> Publication {
-        Publication::SimpleText(self)
+    pub fn to_simple_text(&self) -> Publication {
+        Publication::SimpleText(self.to_owned())
     }
 }

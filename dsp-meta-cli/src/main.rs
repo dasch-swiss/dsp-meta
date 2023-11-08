@@ -1,6 +1,6 @@
 mod cli;
 
-use dsp_meta::errors::DspMetaError;
+use dsp_meta::error::DspMetaError;
 use tracing::{trace, Level};
 use tracing_subscriber::FmtSubscriber;
 

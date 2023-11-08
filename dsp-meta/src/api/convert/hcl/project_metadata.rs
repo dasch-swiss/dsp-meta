@@ -18,7 +18,7 @@ impl<'a> TryInto<ProjectMetadata> for HclBody<'a> {
         let mut project: Option<Project> = None;
         let mut datasets: Vec<Dataset> = vec![];
 
-        let attributes: Vec<&hcl::Attribute> = self.0.body.attributes().collect();
+        let attributes: Vec<&hcl::Attribute> = self.0.attributes().collect();
         for attribute in attributes {
             match attribute.key() {
                 "version" => version = Some(HclAttribute(attribute).try_into()?),
@@ -28,7 +28,7 @@ impl<'a> TryInto<ProjectMetadata> for HclBody<'a> {
             }
         }
 
-        let blocks: Vec<&hcl::Block> = self.0.body.blocks().collect();
+        let blocks: Vec<&hcl::Block> = self.0.blocks().collect();
         for block in blocks {
             match block.identifier() {
                 "project" => {
@@ -60,5 +60,37 @@ impl<'a> TryInto<ProjectMetadata> for HclBody<'a> {
             persons: Vec::new(),
         };
         Ok(metadata)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use dsp_domain::metadata::entity::project_metadata::ProjectMetadata;
+    use hcl::body;
+
+    use crate::api::convert::hcl::hcl_body::HclBody;
+    use crate::error::DspMetaError;
+
+    #[test]
+    fn try_from_multiple_projects_error() {
+        let input = body!(
+            project {
+                shortcode = "0803"
+            }
+            project {
+                shortcode = "0804"
+            }
+        );
+
+        let project: Result<ProjectMetadata, DspMetaError> = HclBody(&input).try_into();
+        assert!(project.is_err());
+    }
+
+    #[test]
+    fn try_from_no_project_error() {
+        let input = body!();
+
+        let project: Result<ProjectMetadata, DspMetaError> = HclBody(&input).try_into();
+        assert!(project.is_err());
     }
 }

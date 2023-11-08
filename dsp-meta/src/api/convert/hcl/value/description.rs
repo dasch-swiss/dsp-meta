@@ -32,7 +32,6 @@ impl<'a> TryInto<Description> for HclBlock<'a> {
 #[cfg(test)]
 mod tests {
     use std::collections::HashMap;
-    use std::convert::Infallible;
 
     use dsp_domain::metadata::value::description::*;
     use dsp_domain::metadata::value::iso_code::IsoCode;

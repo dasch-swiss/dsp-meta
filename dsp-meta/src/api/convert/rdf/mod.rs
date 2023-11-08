@@ -3,4 +3,4 @@ mod error;
 mod project;
 pub(crate) mod project_metadata;
 mod triple;
-mod value;
+pub mod value;

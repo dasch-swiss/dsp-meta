@@ -6,9 +6,10 @@ use sophia::graph::{Graph, MutableGraph};
 use sophia::ns::{rdf, Namespace};
 
 use crate::api::convert::rdf::constance::DSP_NAMESPACE_STRING;
+use crate::api::convert::rdf::value::shortcode::ShortcodeDto;
 use crate::error::Result;
 
-struct ProjectDto(Project);
+pub struct ProjectDto(pub Project);
 impl ProjectDto {
     pub(crate) fn to_graph(&self) -> Result<LightGraph> {
         let mut graph = LightGraph::new();
@@ -18,7 +19,7 @@ impl ProjectDto {
         let project_iri_suffix = format!("dsp-{}-project", self.0.shortcode.0);
         let project_iri = dsp.get(&project_iri_suffix)?;
 
-        let shortcode_graph = self.0.shortcode.to_graph(&project_iri)?;
+        let shortcode_graph = ShortcodeDto(&self.0.shortcode).to_graph(&project_iri)?;
 
         graph
             .insert(&project_iri, &rdf::type_, &dsp.get("Project")?)

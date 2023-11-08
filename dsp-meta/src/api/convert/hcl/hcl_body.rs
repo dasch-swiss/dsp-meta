@@ -1,1 +1,1 @@
-pub struct HclBody<'a>(pub &'a hcl::Block);
+pub struct HclBody<'a>(pub &'a hcl::Body);

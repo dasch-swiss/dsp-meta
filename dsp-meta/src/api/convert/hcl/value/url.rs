@@ -83,6 +83,9 @@ mod tests {
 
     use dsp_domain::metadata::value::url::*;
 
+    use crate::api::convert::hcl::hcl_block::HclBlock;
+    use crate::error::DspMetaError;
+
     #[test]
     fn test_try_from_correct_block() {
         let block = hcl::block!(
@@ -92,7 +95,7 @@ mod tests {
             }
         );
 
-        let url = Url::try_from(&block).unwrap();
+        let url: Url = HclBlock(&block).try_into().unwrap();
 
         let expected = Url {
             href: url::Url::try_from("https://www.google.com").unwrap(),
@@ -111,7 +114,7 @@ mod tests {
             }
         );
 
-        let url = Url::try_from(&block);
+        let url: Result<Url, DspMetaError> = HclBlock(&block).try_into();
 
         assert!(url.is_err());
     }

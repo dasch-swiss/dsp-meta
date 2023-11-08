@@ -22,7 +22,7 @@ impl<'a> TryInto<Publication> for HclBlock<'a> {
         let attributes: Vec<&hcl::Attribute> = self.0.body.attributes().collect();
         let simple_text_data: Result<SimpleTextData, DspMetaError> =
             HclAttributes(attributes).try_into();
-        simple_text_data.map(|s| s.into_simple_text())
+        simple_text_data.map(|s| s.to_simple_text())
     }
 }
 

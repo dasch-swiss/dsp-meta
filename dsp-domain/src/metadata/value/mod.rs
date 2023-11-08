@@ -26,6 +26,12 @@ pub struct CreatedBy(pub String);
 #[derive(Debug, Default, Clone, PartialEq, Serialize)]
 pub struct Shortcode(pub String);
 
+impl Shortcode {
+    pub fn to_string(&self) -> String {
+        self.0.to_string()
+    }
+}
+
 #[derive(Debug, Default, Clone, PartialEq, Serialize)]
 pub struct Name(pub String);
 

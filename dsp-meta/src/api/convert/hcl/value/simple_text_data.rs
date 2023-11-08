@@ -40,7 +40,6 @@ impl<'a> TryInto<SimpleTextData> for HclAttributes<'a> {
 
 #[cfg(test)]
 mod tests {
-    use std::convert::Infallible;
 
     use dsp_domain::metadata::value::simple_text_data::*;
     use tracing_test::traced_test;
