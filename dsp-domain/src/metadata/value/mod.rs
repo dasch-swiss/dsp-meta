@@ -27,7 +27,7 @@ pub struct CreatedBy(pub String);
 pub struct Shortcode(pub String);
 
 impl Shortcode {
-    pub fn to_string(&self) -> String {
+    pub fn as_string(&self) -> String {
         self.0.to_string()
     }
 }

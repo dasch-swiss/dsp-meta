@@ -6,4 +6,3 @@ use crate::metadata::value::simple_text_data::SimpleTextData;
 pub enum Publication {
     SimpleText(SimpleTextData),
 }
-

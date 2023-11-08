@@ -20,7 +20,7 @@ impl<'a> ShortcodeDto<'a> {
             .insert(
                 project_iri,
                 &dsp.get("hasShortcode")?,
-                &Literal::<String>::new_lang(&self.0.to_string(), "en")?,
+                &Literal::<String>::new_lang(&self.0.as_string(), "en")?,
             )
             .expect("insert of shortcode triples into graph failed.");
 

@@ -54,7 +54,7 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
                             "Only one 'description' block allowed.".to_string(),
                         ));
                     }
-                    description = Some(HclBlock(&block).try_into()?)
+                    description = Some(HclBlock(block).try_into()?)
                 }
                 URL_BLOCK => {
                     if url.is_some() {
@@ -62,13 +62,13 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
                             "Only one 'url' block allowed.".to_string(),
                         ));
                     }
-                    url = Some(HclBlock(&block).try_into()?)
+                    url = Some(HclBlock(block).try_into()?)
                 }
-                KEYWORD_BLOCK => keywords.push(HclBlock(&block).try_into()?),
-                DISCIPLINE_BLOCK => disciplines.push(HclBlock(&block).try_into()?),
-                SPACIAL_COVERAGE_BLOCK => spacial_coverages.push(HclBlock(&block).try_into()?),
-                TEMPORAL_COVERAGE_BLOCK => temporal_coverages.push(HclBlock(&block).try_into()?),
-                PUBLICATION_BLOCK => publications.push(HclBlock(&block).try_into()?),
+                KEYWORD_BLOCK => keywords.push(HclBlock(block).try_into()?),
+                DISCIPLINE_BLOCK => disciplines.push(HclBlock(block).try_into()?),
+                SPACIAL_COVERAGE_BLOCK => spacial_coverages.push(HclBlock(block).try_into()?),
+                TEMPORAL_COVERAGE_BLOCK => temporal_coverages.push(HclBlock(block).try_into()?),
+                PUBLICATION_BLOCK => publications.push(HclBlock(block).try_into()?),
                 _ => {
                     // catch all
                     warn!("Parse error: unknown block '{}'.", block.identifier);
