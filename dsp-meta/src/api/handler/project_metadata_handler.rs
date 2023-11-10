@@ -8,7 +8,7 @@ use dsp_domain::metadata::value::Shortcode;
 use serde_json::Value;
 use tracing::trace;
 
-use crate::api::convert::axum::project_metadata::ProjectMetadataDto;
+use crate::api::convert::axum::responses::ProjectMetadataDto;
 use crate::api::convert::hcl::hcl_body::HclBody;
 use crate::api::convert::rdf::project_metadata::ProjectMetadataGraph;
 use crate::app_state::AppState;

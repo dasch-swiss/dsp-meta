@@ -1,7 +1,22 @@
 use axum::http::StatusCode;
-use axum::response::{IntoResponse, Response};
+use axum::response::{IntoResponse, Json, Response};
+use dsp_domain::metadata::entity::project_metadata::ProjectMetadata;
+use serde::Serialize;
 
 use crate::error::DspMetaError;
+
+#[derive(Debug, Default, Clone, PartialEq, Serialize)]
+pub struct ProjectMetadataDto(pub Option<ProjectMetadata>);
+
+/// Convert `ProjectMetadataDto` into a response.
+impl IntoResponse for ProjectMetadataDto {
+    fn into_response(self) -> Response {
+        match self.0 {
+            Some(pm) => (StatusCode::OK, Json(serde_json::to_value(pm).unwrap())).into_response(),
+            None => (StatusCode::NOT_FOUND).into_response(),
+        }
+    }
+}
 
 /// Convert `DspMetaError` into a response.
 /// TODO: Add correct status codes and error messages.
