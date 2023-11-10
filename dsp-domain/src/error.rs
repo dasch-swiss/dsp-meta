@@ -11,4 +11,6 @@ pub type Result<T, E = DspDomainError> = std::result::Result<T, E>;
 pub enum DspDomainError {
     #[error("Error creating value object: `{0}`")]
     CreateValueObject(String),
+    #[error("Error creating domain object.")]
+    CreateDomainObject,
 }

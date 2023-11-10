@@ -3,6 +3,11 @@
 // Functional domain for ontologies.
 //
 
+use std::cell::RefCell;
+use std::collections::{HashMap, HashSet};
+
+use crate::error::DspDomainError;
+
 type Iri = String;
 
 #[derive(Debug, PartialEq)]
@@ -21,9 +26,12 @@ struct WithOntologyInfo {
 #[derive(Debug, PartialEq)]
 struct NoOntologyInfo;
 
-#[derive(Debug, PartialEq)]
+/// Used to track defined classes inside the ontology
+struct DefinedClasses(RefCell<HashSet<Iri>>);
+
+#[derive(Debug, Clone, PartialEq)]
 struct OntologyClass {
-    name: String, // only one per class
+    id: Iri, // only one per ontology
     label: String,
     comment: String,
 }
@@ -50,7 +58,7 @@ enum CardinalityType {
     MinCardinalityZero,
 }
 
-struct Ontology {
+pub struct Ontology {
     id: Iri,
     label: String,
     project_iri: Iri,
@@ -61,6 +69,7 @@ struct Ontology {
 struct OntologyBuilder<ID, INFO> {
     id: ID,
     info: INFO,
+    classes: HashMap<Iri, OntologyClass>,
 }
 
 /// gives us an empty ontology builder
@@ -69,27 +78,29 @@ impl OntologyBuilder<UnIdentified, NoOntologyInfo> {
         Self {
             id: UnIdentified,
             info: NoOntologyInfo,
+            classes: HashMap::new(),
         }
     }
 }
 
 /// we always allow setting the id and info
-impl OntologyBuilder<UnIdentified, NoOntologyInfo> {
-    fn id(self, iri: Iri) -> OntologyBuilder<Identified, NoOntologyInfo> {
+impl<T> OntologyBuilder<UnIdentified, T> {
+    fn id(self, iri: Iri) -> OntologyBuilder<Identified, T> {
         OntologyBuilder {
             id: Identified(iri),
-            info: NoOntologyInfo,
+            info: self.info,
+            classes: self.classes,
         }
     }
 }
 
-impl OntologyBuilder<Identified, NoOntologyInfo> {
+impl<T> OntologyBuilder<T, NoOntologyInfo> {
     fn info(
         self,
         label: String,
         project_iri: Iri,
         comment: String,
-    ) -> OntologyBuilder<Identified, WithOntologyInfo> {
+    ) -> OntologyBuilder<T, WithOntologyInfo> {
         OntologyBuilder {
             id: self.id,
             info: WithOntologyInfo {
@@ -97,7 +108,19 @@ impl OntologyBuilder<Identified, NoOntologyInfo> {
                 project_iri,
                 comment,
             },
+            classes: self.classes,
         }
+    }
+}
+
+impl<T, S> OntologyBuilder<T, S> {
+    fn add_class(mut self, clazz: OntologyClass) -> Result<OntologyBuilder<T, S>, DspDomainError> {
+        if self.classes.contains_key(&clazz.id) {
+            return Err(DspDomainError::CreateDomainObject);
+        }
+        let id = clazz.id.clone();
+        self.classes.insert(id, clazz);
+        Ok(self)
     }
 }
 
@@ -138,6 +161,7 @@ mod tests {
     #[test]
     fn ontology_with_info() {
         let empty = OntologyBuilder::default();
+
         let with_id = empty.id("https:://example.com/example".to_owned());
         let with_info = with_id.info("label".to_owned(), "iri".to_owned(), "comment".to_owned());
         assert_eq!(
@@ -152,5 +176,59 @@ mod tests {
                 comment: "comment".to_owned(),
             }
         )
+    }
+
+    #[test]
+    fn ontology_with_info_1() {
+        let empty = OntologyBuilder::default();
+        let with_info = empty.info("label".to_owned(), "iri".to_owned(), "comment".to_owned());
+        let with_id = with_info.id("https:://example.com/example".to_owned());
+
+        assert_eq!(
+            with_id.id,
+            Identified("https:://example.com/example".to_owned())
+        );
+        assert_eq!(
+            with_id.info,
+            WithOntologyInfo {
+                label: "label".to_owned(),
+                project_iri: "iri".to_owned(),
+                comment: "comment".to_owned(),
+            }
+        )
+    }
+
+    #[test]
+    fn ontology_with_class() {
+        let empty = OntologyBuilder::default();
+        let actual = empty
+            .info("label".to_owned(), "iri".to_owned(), "comment".to_owned())
+            .id("https:://example.com/example".to_owned())
+            .add_class(OntologyClass {
+                id: "something".to_string(),
+                label: "".to_string(),
+                comment: "".to_string(),
+            });
+
+        assert!(actual.unwrap().classes.contains_key("something"));
+    }
+
+    #[test]
+    fn error_adding_duplicate_class() {
+        let empty = OntologyBuilder::default();
+        let actual = empty
+            .add_class(OntologyClass {
+                id: "something".to_string(),
+                label: "".to_string(),
+                comment: "".to_string(),
+            })
+            .unwrap()
+            .add_class(OntologyClass {
+                id: "something".to_string(),
+                label: "".to_string(),
+                comment: "".to_string(),
+            });
+
+        assert!(actual.is_err());
     }
 }

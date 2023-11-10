@@ -28,6 +28,8 @@ pub enum DspMetaError {
     CreateValueObject(String),
     #[error("Error serializing to RDF: `{0}`")]
     SerializeToRdf(String),
+    #[error("Error creating domain object.")]
+    CreateDomainObject,
     #[error("The requested resource was not found")]
     NotFound,
 }
@@ -42,6 +44,7 @@ impl From<DspDomainError> for DspMetaError {
     fn from(value: DspDomainError) -> Self {
         match value {
             DspDomainError::CreateValueObject(err) => DspMetaError::CreateValueObject(err),
+            DspDomainError::CreateDomainObject => DspMetaError::CreateDomainObject,
         }
     }
 }
