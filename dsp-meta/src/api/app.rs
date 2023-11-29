@@ -26,6 +26,10 @@ pub fn app(shared_state: Arc<AppState>) -> Router {
             "/projects/:shortcode",
             get(project_metadata_handler::get_project_metadata_by_shortcode),
         )
+        .route(
+            "/projects/:shortcode/rdf",
+            get(project_metadata_handler::get_project_metadata_by_shortcode_as_rdf),
+        )
         .route("/health", get(health::health_handler))
         .with_state(shared_state)
         // See https://docs.rs/tower-http/latest/tower_http/trace/index.html for more details

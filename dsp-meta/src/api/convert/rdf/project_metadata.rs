@@ -11,8 +11,7 @@ use tracing::trace;
 use crate::api::convert::rdf::constance::{
     DSP_NAMESPACE_STRING, PROV_NAMESPACE_STRING, SCHEMA_NAMESPACE_STRING, XSD_NAMESPACE_STRING,
 };
-use crate::api::convert::rdf::project::ProjectDto;
-use crate::error::DspMetaError;
+use crate::api::convert::rdf::project::ProjectGraphDto;
 
 pub struct ProjectMetadataGraph {
     graph: LightGraph,
@@ -119,23 +118,18 @@ impl ProjectMetadataGraph {
     }
 }
 
-/// Tries to convert a `ProjectMetadata` into a `ProjectMetadataGraph`.
+/// A wrapper around an optional ProjectMetadata.
+pub struct ProjectMetadataGraphDto(pub ProjectMetadata);
+
+/// Convert a `ProjectMetadataGraphDto` into a `ProjectMetadataGraph`.
 ///
 /// The underlying graph implementation is a `LightGraph` (in contrast to FastGraph) which is a
 /// simple in-memory graph graph implementation with a low memory footprint, without indexing,
 /// thus fast to build but slow to query. Since we are only interested in building the graph and
 /// immediately serializing it, this is the better choice (supported by benchmarking results).
-///
-/// FIXME: This conversion should actually never fail. Need to be sure about that and remove the
-///        error handling
-impl TryFrom<ProjectMetadata> for ProjectMetadataGraph {
-    type Error = DspMetaError;
-
-    fn try_from(value: ProjectMetadata) -> Result<ProjectMetadataGraph, Self::Error> {
-        trace!("entered ProjectMetadata::try_into()");
-
-        let mut graph: LightGraph = LightGraph::new();
-
+impl From<ProjectMetadataGraphDto> for ProjectMetadataGraph {
+    fn from(value: ProjectMetadataGraphDto) -> ProjectMetadataGraph {
+        trace!("entered ProjectMetadataGraph::from()");
         let _dsp = Namespace::new_unchecked(DSP_NAMESPACE_STRING);
 
         let _prov = Namespace::new_unchecked(PROV_NAMESPACE_STRING);
@@ -144,7 +138,9 @@ impl TryFrom<ProjectMetadata> for ProjectMetadataGraph {
 
         let _xsd = Namespace::new_unchecked(XSD_NAMESPACE_STRING);
 
-        let project_graph = ProjectDto(value.project).to_graph()?;
+        let mut graph: LightGraph = LightGraph::new();
+
+        let project_graph = ProjectGraphDto(value.0.project).to_graph();
 
         graph
             .insert_all(project_graph.triples())
@@ -154,6 +150,6 @@ impl TryFrom<ProjectMetadata> for ProjectMetadataGraph {
 
         trace!("The resulting graph\n{}", result.to_turtle_string());
 
-        Ok(result)
+        result
     }
 }
