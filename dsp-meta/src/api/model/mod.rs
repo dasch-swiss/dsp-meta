@@ -1,1 +1,1 @@
-mod project_metadata_dto;
+pub mod project_metadata_dto;
