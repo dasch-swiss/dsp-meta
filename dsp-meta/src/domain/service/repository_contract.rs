@@ -35,12 +35,4 @@ pub trait RepositoryContract<Entity, Id, Error> {
         let all_entities = self.find_all()?;
         Ok(all_entities.len())
     }
-
-    /// Saves a given entity and return the saved instance, as the save operation
-    /// could have potentially changed the initially provide instance.
-    ///
-    /// Consumes the provided instance and returns a new one.
-    fn save(&self, entity: Entity) -> Result<Entity, Error>;
-
-    fn delete(&self, entity: Entity) -> Result<(), Error>;
 }

@@ -11,3 +11,6 @@ build:
 
 test:
     cargo test
+
+run:
+    export DSP_META_DATA_DIR=${PWD}/data && cargo run --bin dsp_meta_server

@@ -1,5 +1,6 @@
 use std::sync::Arc;
 
+use config::Config;
 use dsp_meta::app_state::AppState;
 use dsp_meta::domain::service::project_metadata_service::ProjectMetadataService;
 use dsp_meta::repo::service::project_metadata_repository::ProjectMetadataRepository;
@@ -15,10 +16,23 @@ async fn main() {
 
     tracing::subscriber::set_global_default(subscriber).expect("setting default subscriber failed");
 
-    trace!("Hello, world!");
+    trace!("Ivan was here!");
+
+    let settings = Config::builder()
+        // Add in settings from the environment (with a prefix of APP)
+        // Eg.. `APP_DEBUG=1 ./target/app` would set the `debug` key
+        .add_source(config::Environment::with_prefix("DSP_META"))
+        .build()
+        .unwrap();
+
+    let data_dir = settings
+        .get::<String>("data_dir")
+        .unwrap_or("/data".to_string());
 
     let shared_state = Arc::new(AppState {
-        project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new()),
+        project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new(
+            &data_dir,
+        )),
     });
 
     // build our application with a single route

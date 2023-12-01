@@ -18,6 +18,7 @@ anyhow.workspace = true
 axum.workspace = true
 axum-macros.workspace = true
 clap.workspace = true
+config.workspace = true
 hcl-rs.workspace = true
 hyper.workspace = true
 log.workspace = true
