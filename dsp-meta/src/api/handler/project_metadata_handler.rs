@@ -10,8 +10,8 @@ use tracing::trace;
 
 use crate::api::convert::axum::responses::ProjectMetadataDto;
 use crate::api::convert::hcl::hcl_body::HclBody;
-use crate::api::convert::rdf::project_metadata::ProjectMetadataGraphDto;
-use crate::api::model::project_metadata_dto::ProjectMetadataGraphResult;
+use crate::api::convert::rdf::project_metadata::ProjectMetadataGraphWrapper;
+use crate::api::model::project_metadata_dto::ProjectMetadataGraphDto;
 use crate::app_state::AppState;
 use crate::domain::service::project_metadata_api_contract::ProjectMetadataApiContract;
 use crate::error::DspMetaError;
@@ -36,13 +36,13 @@ pub async fn get_project_metadata_by_shortcode(
 pub async fn get_project_metadata_by_shortcode_as_rdf(
     Path(shortcode): Path<String>,
     State(state): State<Arc<AppState>>,
-) -> Result<ProjectMetadataGraphResult, DspMetaError> {
+) -> Result<ProjectMetadataGraphDto, DspMetaError> {
     trace!("entered get_project_metadata_by_shortcode_as_rdf()");
     state
         .project_metadata_service
         .find_by_id(Shortcode(shortcode))
-        .map(|metadata| metadata.map(|m| ProjectMetadataGraphDto(m).into()))
-        .map(ProjectMetadataGraphResult)
+        .map(|metadata| metadata.map(|m| ProjectMetadataGraphWrapper(m).into()))
+        .map(ProjectMetadataGraphDto)
 }
 
 pub async fn get_all_project_metadata(State(state): State<Arc<AppState>>) -> Json<Value> {

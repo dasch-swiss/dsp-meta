@@ -3,7 +3,7 @@ use axum::response::{IntoResponse, Json, Response};
 use dsp_domain::metadata::entity::project_metadata::ProjectMetadata;
 use serde::Serialize;
 
-use crate::api::model::project_metadata_dto::ProjectMetadataGraphResult;
+use crate::api::model::project_metadata_dto::ProjectMetadataGraphDto;
 use crate::error::DspMetaError;
 
 #[derive(Debug, Default, Clone, PartialEq, Serialize)]
@@ -13,14 +13,21 @@ pub struct ProjectMetadataDto(pub Option<ProjectMetadata>);
 impl IntoResponse for ProjectMetadataDto {
     fn into_response(self) -> Response {
         match self.0 {
-            Some(pm) => (StatusCode::OK, Json(serde_json::to_value(pm).unwrap())).into_response(),
+            Some(metadata) => (
+                StatusCode::OK,
+                Json(
+                    serde_json::to_value(metadata)
+                        .expect("project metadata should convert to JSON."),
+                ),
+            )
+                .into_response(),
             None => (StatusCode::NOT_FOUND).into_response(),
         }
     }
 }
 
 /// Convert `ProjectMetadataGraph` into a response.
-impl IntoResponse for ProjectMetadataGraphResult {
+impl IntoResponse for ProjectMetadataGraphDto {
     fn into_response(self) -> Response {
         match self.0 {
             Some(metadata_graph) => {
