@@ -33,15 +33,7 @@ where
         self.repo.find_all()
     }
 
-    fn save(&self, entity: ProjectMetadata) -> Result<ProjectMetadata, DspMetaError> {
-        self.repo.save(entity)
-    }
-
-    fn delete(&self, id: Shortcode) -> Result<(), DspMetaError> {
-        let entity_to_delete = self.repo.find_by_id(&id)?;
-        match entity_to_delete {
-            Some(entity) => self.repo.delete(entity),
-            None => Ok(()),
-        }
+    fn count(&self) -> Result<usize, DspMetaError> {
+        self.repo.count()
     }
 }

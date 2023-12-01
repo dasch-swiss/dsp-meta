@@ -19,8 +19,7 @@ pub fn app(shared_state: Arc<AppState>) -> Router {
     Router::new()
         .route(
             "/projects",
-            get(project_metadata_handler::get_all_project_metadata)
-                .post(project_metadata_handler::save_project_metadata),
+            get(project_metadata_handler::get_all_project_metadata),
         )
         .route(
             "/projects/:shortcode",
