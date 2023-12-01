@@ -119,7 +119,7 @@ impl ProjectMetadataGraph {
 }
 
 /// A wrapper around an optional ProjectMetadata.
-pub struct ProjectMetadataGraphDto(pub ProjectMetadata);
+pub struct ProjectMetadataGraphWrapper(pub ProjectMetadata);
 
 /// Convert a `ProjectMetadataGraphDto` into a `ProjectMetadataGraph`.
 ///
@@ -127,8 +127,8 @@ pub struct ProjectMetadataGraphDto(pub ProjectMetadata);
 /// simple in-memory graph graph implementation with a low memory footprint, without indexing,
 /// thus fast to build but slow to query. Since we are only interested in building the graph and
 /// immediately serializing it, this is the better choice (supported by benchmarking results).
-impl From<ProjectMetadataGraphDto> for ProjectMetadataGraph {
-    fn from(value: ProjectMetadataGraphDto) -> ProjectMetadataGraph {
+impl From<ProjectMetadataGraphWrapper> for ProjectMetadataGraph {
+    fn from(value: ProjectMetadataGraphWrapper) -> ProjectMetadataGraph {
         trace!("entered ProjectMetadataGraph::from()");
         let _dsp = Namespace::new_unchecked(DSP_NAMESPACE_STRING);
 
