@@ -51,3 +51,10 @@ pub async fn get_all_project_metadata(State(state): State<Arc<AppState>>) -> Jso
     let all_project_metadata = state.project_metadata_service.find_all();
     Json(serde_json::to_value(all_project_metadata).unwrap())
 }
+
+#[debug_handler]
+pub async fn get_projects_count(State(state): State<Arc<AppState>>) -> String {
+    trace!("entered get_projects_count()");
+    let count = state.project_metadata_service.count();
+    count.unwrap().to_string()
+}

@@ -29,6 +29,10 @@ pub fn app(shared_state: Arc<AppState>) -> Router {
             "/projects/:shortcode/rdf",
             get(project_metadata_handler::get_project_metadata_by_shortcode_as_rdf),
         )
+        .route(
+            "/projects/count",
+            get(project_metadata_handler::get_projects_count),
+        )
         .route("/health", get(health::health_handler))
         .with_state(shared_state)
         // See https://docs.rs/tower-http/latest/tower_http/trace/index.html for more details
@@ -62,6 +66,8 @@ pub fn app(shared_state: Arc<AppState>) -> Router {
 
 #[cfg(test)]
 mod tests {
+    use std::env;
+
     use axum::body::Body;
     use axum::http::{Request, StatusCode};
     // use tower::Service; // for `call`
@@ -73,8 +79,12 @@ mod tests {
 
     #[tokio::test]
     async fn test_health_route() {
+        let data_dir = env::current_dir().unwrap().parent().unwrap().join("data");
+
         let shared_state = Arc::new(AppState {
-            project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new()),
+            project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new(
+                &data_dir.as_path(),
+            )),
         });
 
         let app = app(shared_state);
@@ -99,8 +109,12 @@ mod tests {
 
     #[tokio::test]
     async fn test_not_found_project() {
+        let data_dir = env::current_dir().unwrap().parent().unwrap().join("data");
+
         let shared_state = Arc::new(AppState {
-            project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new()),
+            project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new(
+                &data_dir.as_path(),
+            )),
         });
 
         let app = app(shared_state);
@@ -118,5 +132,35 @@ mod tests {
             .unwrap();
 
         assert_eq!(response.status(), StatusCode::NOT_FOUND);
+    }
+
+    #[tokio::test]
+    async fn test_get_projects_count() {
+        let data_dir = env::current_dir().unwrap().parent().unwrap().join("data");
+
+        let shared_state = Arc::new(AppState {
+            project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new(
+                &data_dir.as_path(),
+            )),
+        });
+
+        let app = app(shared_state);
+
+        // `Router` implements `tower::Service<Request<Body>>` so we can
+        // call it like any tower service, no need to run an HTTP server.
+        let response = app
+            .oneshot(
+                Request::builder()
+                    .uri("/projects/count")
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(response.status(), StatusCode::OK);
+
+        let body = hyper::body::to_bytes(response.into_body()).await.unwrap();
+        assert_eq!(&body[..], b"3");
     }
 }
