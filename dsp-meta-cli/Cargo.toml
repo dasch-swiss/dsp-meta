@@ -35,5 +35,5 @@ url.workspace = true
 assert_cmd = "2.0.12"
 
 [[bin]]
-name = "dsp_meta_cli"
+name = "dsp-meta-cli"
 path = "src/main.rs"
