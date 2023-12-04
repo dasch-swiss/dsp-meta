@@ -25,7 +25,7 @@ run:
 
 # build linux/amd64 Docker image locally
 docker-build-amd64:
-  docker buildx build --platform linux/amd64 -t {{DOCKER_IMAGE}}-amd64 -t {{DOCKER_REPO}}:latest --load .
+  docker buildx build --cache-to type=gha --cache-from type=gha --platform linux/amd64 -t {{DOCKER_IMAGE}}-amd64 -t {{DOCKER_REPO}}:latest --load .
 
 # push previously build linux/amd64 image to Docker hub
 docker-push-amd64:
@@ -33,7 +33,7 @@ docker-push-amd64:
 
 # build linux/arm64 Docker image locally
 docker-build-arm64:
-	docker buildx build --platform linux/arm64 -t {{DOCKER_IMAGE}}-arm64 -t {{DOCKER_REPO}}:latest --load .
+	docker buildx build --cache-to type=gha --cache-from type=gha --platform linux/arm64 -t {{DOCKER_IMAGE}}-arm64 -t {{DOCKER_REPO}}:latest --load .
 
 # push previously build linux/arm64 image to Docker hub
 docker-push-arm64:
