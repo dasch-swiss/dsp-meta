@@ -1,16 +1,5 @@
-FROM rust:1-slim-bookworm as chef
-RUN cargo install cargo-chef
+FROM rust:1-slim-bookworm as builder
 WORKDIR /usr/src/dsp-meta
-
-FROM chef as planner
-COPY . .
-RUN cargo chef prepare --recipe-path recipe.json
-
-FROM chef as builder
-COPY --from=planner /usr/src/dsp-meta/recipe.json recipe.json
-# Build dependencies - this is the caching Docker layer!
-RUN cargo chef cook --release --recipe-path recipe.json
-# Build application
 COPY . .
 RUN cargo install --path ./dsp-meta-server
 
