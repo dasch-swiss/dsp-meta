@@ -11,7 +11,7 @@ jobs:
 
   # Run tests and publish amd64
   build_amd64:
-    runs-on: actuated-4cpu-20gb
+    runs-on: actuated-8cpu-20gb
     concurrency:
       group: ${{ github.ref }}-amd64
       cancel-in-progress: true
