@@ -45,7 +45,7 @@ jobs:
         run: just docker-push-amd64
 
   # Run tests and publish arm64
-  build_aarch64:
+  build_arm64:
     runs-on: actuated-aarch64
     concurrency:
       group: ${{ github.ref }}-arm64
