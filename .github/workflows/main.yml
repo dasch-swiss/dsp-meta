@@ -11,11 +11,16 @@ jobs:
 
   # Run tests and publish amd64
   build_amd64:
-    runs-on: actuated
+    runs-on: actuated-4cpu-20gb
     concurrency:
       group: ${{ github.ref }}-amd64
       cancel-in-progress: true
     steps:
+      - name: Collect Workflow Telemetry
+        uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          github_token: ${{ secrets.DASCHBOT_PAT }}
+          theme: dark
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0 # gets additionally all tags which we need
@@ -46,11 +51,16 @@ jobs:
 
   # Run tests and publish arm64
   build_arm64:
-    runs-on: actuated-aarch64
+    runs-on: actuated-arm64-16cpu-20gb
     concurrency:
       group: ${{ github.ref }}-arm64
       cancel-in-progress: true
     steps:
+      - name: Collect Workflow Telemetry
+        uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          github_token: ${{ secrets.DASCHBOT_PAT }}
+          theme: dark
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0 # gets additionally all tags which we need
