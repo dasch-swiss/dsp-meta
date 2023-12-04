@@ -366,7 +366,7 @@ checksum = "fea41bba32d969b513997752735605054bc0dfa92b4c56bf1189f2e174be7a10"
 
 [[package]]
 name = "dsp-domain"
-version = "0.0.1"
+version = "0.1.2"
 dependencies = [
  "anyhow",
  "assert_cmd",
@@ -390,7 +390,7 @@ dependencies = [
 
 [[package]]
 name = "dsp-meta"
-version = "0.0.1"
+version = "0.1.2"
 dependencies = [
  "anyhow",
  "assert_cmd",
@@ -417,7 +417,7 @@ dependencies = [
 
 [[package]]
 name = "dsp-meta-cli"
-version = "0.0.1"
+version = "0.1.2"
 dependencies = [
  "anyhow",
  "assert_cmd",
@@ -441,7 +441,7 @@ dependencies = [
 
 [[package]]
 name = "dsp-meta-server"
-version = "0.0.1"
+version = "0.1.2"
 dependencies = [
  "anyhow",
  "assert_cmd",
