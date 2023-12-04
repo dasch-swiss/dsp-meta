@@ -1,6 +1,6 @@
 [package]
 name = "dsp-meta-cli"
-version = "0.0.1"
+version = "0.1.2"
 edition.workspace = true
 license.workspace = true
 homepage.workspace = true
@@ -13,7 +13,7 @@ authors.workspace = true
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-dsp-meta = { path = "../dsp-meta", version = "0.0.1" }
+dsp-meta = { path = "../dsp-meta", version = "0.1.2" }
 anyhow.workspace = true
 axum.workspace = true
 axum-macros.workspace = true
