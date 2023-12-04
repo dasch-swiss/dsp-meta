@@ -1,6 +1,6 @@
 [package]
 name = "dsp-meta"
-version = "0.1.0"
+version = "0.0.2"
 edition = "2021"
 license = "MIT OR Apache-2.0"
 homepage = "https://github.com/dasch-swiss/dsp-meta"
@@ -13,7 +13,7 @@ authors = ["DaSCH - Swiss National Data and Service Center for the Humanities"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-dsp-domain = { path = "../dsp-domain", version = "0" }
+dsp-domain = { path = "../dsp-domain", version = "0.0.2" }
 anyhow.workspace = true
 axum.workspace = true
 axum-macros.workspace = true

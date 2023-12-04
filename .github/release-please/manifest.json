@@ -1,6 +1,6 @@
 {
-  "dsp-domain": "0.0.1",
-  "dsp-meta": "0.0.1",
-  "dsp-meta-cli": "0.0.1",
-  "dsp-meta-server": "0.0.1"
+  "dsp-domain": "0.0.2",
+  "dsp-meta": "0.0.2",
+  "dsp-meta-cli": "0.1.1",
+  "dsp-meta-server": "0.0.2"
 }
