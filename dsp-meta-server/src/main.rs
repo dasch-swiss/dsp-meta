@@ -1,14 +1,22 @@
 use std::sync::Arc;
+use std::time::Duration;
 
 use config::Config;
 use dsp_meta::app_state::AppState;
 use dsp_meta::domain::service::project_metadata_service::ProjectMetadataService;
 use dsp_meta::repo::service::project_metadata_repository::ProjectMetadataRepository;
+use pid1::Pid1Settings;
 use tracing::{trace, Level};
 use tracing_subscriber::FmtSubscriber;
 
 #[tokio::main]
 async fn main() {
+    Pid1Settings::new()
+        .enable_log(true)
+        .timeout(Duration::from_secs(2))
+        .launch()
+        .expect("pid1 launch");
+
     // configure tracing library
     let subscriber = FmtSubscriber::builder()
         .with_max_level(Level::TRACE)
