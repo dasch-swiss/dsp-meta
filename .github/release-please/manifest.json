@@ -1,6 +1,5 @@
 {
   "dsp-domain": "0.1.3",
   "dsp-meta": "0.1.3",
-  "dsp-meta-cli": "0.1.3",
-  "dsp-meta-server": "0.1.3"
+  "dsp-meta-cmd": "0.1.3"
 }

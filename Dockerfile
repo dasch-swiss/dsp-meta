@@ -1,7 +1,7 @@
 FROM rust:1-slim-bookworm as builder
 WORKDIR /usr/src/dsp-meta
 COPY . .
-RUN cargo install --path ./dsp-meta-server
+RUN cargo install --path ./dsp-meta-cmd
 
 FROM debian:bookworm-slim AS runtime
 # add data
