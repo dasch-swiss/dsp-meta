@@ -2,25 +2,8 @@
   "release-type": "rust",
   "bump-minor-pre-major": true,
   "bump-patch-for-minor-pre-major": true,
-  "plugins": ["cargo-workspace", "sentence-case",
-    {
-      "type": "linked-versions",
-      "groupName": "dsp-meta",
-      "components": [
-        "dsp-domain", "dsp-meta", "dsp-meta-cli", "dsp-meta-server"
-      ]
-    }
-  ],
+  "plugins": ["cargo-workspace", "sentence-case"],
   "packages": {
-    "dsp-domain": {
-      "component": "dsp-domain"
-    },
-    "dsp-meta": {
-      "component": "dsp-meta"
-    },
-    "dsp-meta-cli": {
-      "component": "dsp-meta-cli"
-    },
     "dsp-meta-server": {
       "component": "dsp-meta-server"
     }
