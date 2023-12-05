@@ -1,9 +1,10 @@
 use std::path::PathBuf;
 
 use clap::{Parser, Subcommand};
+use config::Config;
 use dsp_meta::error::DspMetaError;
 use dsp_meta::operation::convert::convert;
-use dsp_meta::operation::validate::validate;
+use dsp_meta::operation::validate::{validate, validate_data};
 use log::info;
 
 #[derive(Parser)]
@@ -52,6 +53,19 @@ pub fn parse() -> Result<(), DspMetaError> {
     match &cli.command {
         Some(Commands::Validate { project }) => validate(project),
         Some(Commands::Convert { source, target }) => convert(source, target),
-        None => Ok(()),
+        None => {
+            let settings = Config::builder()
+                // Add in settings from the environment (with a prefix of APP)
+                // Eg.. `APP_DEBUG=1 ./target/app` would set the `debug` key
+                .add_source(config::Environment::with_prefix("DSP_META"))
+                .build()
+                .unwrap();
+
+            let data_dir = settings
+                .get::<String>("data_dir")
+                .unwrap_or("/data".to_string());
+
+            validate_data(&data_dir)
+        }
     }
 }
