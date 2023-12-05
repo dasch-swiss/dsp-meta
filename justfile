@@ -28,6 +28,10 @@ test:
 run:
     export DSP_META_DATA_DIR=${PWD}/data && cargo run --bin dsp-meta-server
 
+# Run dsp-meta-validator validating all hcl documents under ./data
+validate:
+    export DSP_META_DATA_DIR=${PWD}/data && cargo run --bin dsp-meta-validator
+
 # build linux/amd64 Docker image locally
 docker-build-amd64:
     docker buildx build --platform linux/amd64 -t {{ DOCKER_IMAGE }}-amd64 -t {{ DOCKER_REPO }}:latest --load .
