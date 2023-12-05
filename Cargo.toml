@@ -2,8 +2,7 @@
 members = [
     "dsp-domain",
     "dsp-meta",
-    "dsp-meta-cli",
-    "dsp-meta-server"
+    "dsp-meta-cmd",
 ]
 resolver = "2"
 

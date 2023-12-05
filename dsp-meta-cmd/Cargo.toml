@@ -1,5 +1,5 @@
 [package]
-name = "dsp-meta-cli"
+name = "dsp-meta-cmd"
 version = "0.1.3"
 edition.workspace = true
 license.workspace = true
@@ -18,9 +18,11 @@ anyhow.workspace = true
 axum.workspace = true
 axum-macros.workspace = true
 clap.workspace = true
+config.workspace = true
 hcl-rs.workspace = true
 hyper.workspace = true
 log.workspace = true
+pid1.workspace = true
 serde.workspace = true
 serde_json.workspace = true
 tokio.workspace = true
@@ -35,5 +37,9 @@ url.workspace = true
 assert_cmd = "2.0.12"
 
 [[bin]]
-name = "dsp-meta-cli"
-path = "src/main.rs"
+name = "dsp-meta-server"
+path = "src/main-server.rs"
+
+[[bin]]
+name = "dsp-meta-validator"
+path = "src/main-validator.rs"
