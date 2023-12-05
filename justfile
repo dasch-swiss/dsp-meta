@@ -1,6 +1,7 @@
 DOCKER_REPO := "daschswiss/dsp-meta-server"
-BUILD_TAG := `git describe --tag --dirty=-changed --abbrev=7 --always`
-DOCKER_IMAGE := DOCKER_REPO + ":" + BUILD_TAG
+BUILD_TAG := `cargo metadata --format-version=1 --no-deps | jq --raw-output '.packages[] | select(.name == "dsp-meta-cmd") | .version'`
+COMMIT_HASH := `git log --pretty=format:'%h' -n 1`
+DOCKER_IMAGE := DOCKER_REPO + ":" + BUILD_TAG + "-" + COMMIT_HASH
 
 # List all recipies
 default:
@@ -25,7 +26,7 @@ test:
     cargo test
 
 # Run dsp-meta-server
-run:
+serve:
     export DSP_META_DATA_DIR=${PWD}/data && cargo run --bin dsp-meta-server
 
 # Run dsp-meta-validator validating all hcl documents under ./data
@@ -34,7 +35,7 @@ validate:
 
 # build linux/amd64 Docker image locally
 docker-build-amd64:
-    docker buildx build --platform linux/amd64 -t {{ DOCKER_IMAGE }}-amd64 -t {{ DOCKER_REPO }}:latest --load .
+    docker buildx build --platform linux/amd64 -t {{ DOCKER_IMAGE }}-amd64 --load .
 
 # push previously build linux/amd64 image to Docker hub
 docker-push-amd64:
@@ -42,7 +43,7 @@ docker-push-amd64:
 
 # build linux/arm64 Docker image locally
 docker-build-arm64:
-    docker buildx build --platform linux/arm64 -t {{ DOCKER_IMAGE }}-arm64 -t {{ DOCKER_REPO }}:latest --load .
+    docker buildx build --platform linux/arm64 -t {{ DOCKER_IMAGE }}-arm64 --load .
 
 # push previously build linux/arm64 image to Docker hub
 docker-push-arm64:

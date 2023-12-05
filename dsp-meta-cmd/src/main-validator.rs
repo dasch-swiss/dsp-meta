@@ -15,7 +15,10 @@ fn main() -> Result<(), DspMetaError> {
 
     tracing::subscriber::set_global_default(subscriber).expect("setting default subscriber failed");
 
-    trace!("Hello, world!");
+    trace!("Ivan was here!");
+
+    const VERSION: &str = env!("CARGO_PKG_VERSION");
+    trace!("Version: {}", VERSION);
 
     cli::parse()?;
     Ok(())
