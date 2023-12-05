@@ -1,6 +1,7 @@
 DOCKER_REPO := "daschswiss/dsp-meta-server"
 BUILD_TAG := `cargo metadata --format-version=1 --no-deps | jq --raw-output '.packages[] | select(.name == "dsp-meta-cmd") | .version'`
-DOCKER_IMAGE := DOCKER_REPO + ":" + BUILD_TAG
+COMMIT_HASH := `git log --pretty=format:'%h' -n 1`
+DOCKER_IMAGE := DOCKER_REPO + ":" + BUILD_TAG + "-" + COMMIT_HASH
 
 # List all recipies
 default:
