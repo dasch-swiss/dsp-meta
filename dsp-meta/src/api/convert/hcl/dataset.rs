@@ -1,5 +1,5 @@
 use dsp_domain::metadata::entity::dataset::Dataset;
-use dsp_domain::metadata::value::Title;
+use dsp_domain::metadata::value::{CreatedAt, CreatedBy, Title};
 
 use crate::api::convert::hcl::hcl_block::HclBlock;
 use crate::error::DspMetaError;
@@ -19,6 +19,13 @@ impl<'a> TryInto<Dataset> for HclBlock<'a> {
         }
 
         let title = Title(String::from("TODO: implement title extraction"));
-        Ok(Dataset { title })
+        let created_at = CreatedAt(1630601274523025000);
+        let created_by = CreatedBy(String::from("TODO: implement created_by extraction"));
+
+        Ok(Dataset {
+            created_at,
+            created_by,
+            title,
+        })
     }
 }
