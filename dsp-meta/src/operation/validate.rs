@@ -1,7 +1,7 @@
 use std::path::Path;
 
 use dsp_domain::metadata::entity::project_metadata::ProjectMetadata;
-use tracing::{info, info_span};
+use tracing::info;
 
 use crate::api::convert::hcl::hcl_body::HclBody;
 use crate::error::DspMetaError;
