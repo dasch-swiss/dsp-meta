@@ -26,6 +26,9 @@ async fn main() {
 
     trace!("Ivan was here!");
 
+    const VERSION: &str = env!("CARGO_PKG_VERSION");
+    trace!("Version: {}", VERSION);
+
     let settings = Config::builder()
         // Add in settings from the environment (with a prefix of APP)
         // Eg.. `APP_DEBUG=1 ./target/app` would set the `debug` key
