@@ -7,6 +7,7 @@ use dsp_domain::metadata::value::Shortcode;
 use tracing::trace;
 
 use crate::api::convert::hcl::hcl_body::HclBody;
+use crate::domain::model::project_info::ProjectInfo;
 use crate::domain::service::repository_contract::RepositoryContract;
 use crate::error::DspMetaError;
 
@@ -58,7 +59,9 @@ impl ProjectMetadataRepository {
     }
 }
 
-impl RepositoryContract<ProjectMetadata, Shortcode, DspMetaError> for ProjectMetadataRepository {
+impl RepositoryContract<ProjectMetadata, ProjectInfo, Shortcode, DspMetaError>
+    for ProjectMetadataRepository
+{
     fn find_by_id(&self, id: &Shortcode) -> Result<Option<ProjectMetadata>, DspMetaError> {
         let db = self.db.read().unwrap();
         match db.get(id.0.as_str()) {
@@ -67,12 +70,12 @@ impl RepositoryContract<ProjectMetadata, Shortcode, DspMetaError> for ProjectMet
         }
     }
 
-    fn find_all(&self) -> Result<Vec<ProjectMetadata>, DspMetaError> {
-        let mut result: Vec<ProjectMetadata> = vec![];
+    fn find_all(&self) -> Result<Vec<ProjectInfo>, DspMetaError> {
+        let mut result: Vec<ProjectInfo> = vec![];
         let db = self.db.read().unwrap();
 
         for project_metadata in db.values() {
-            result.push(project_metadata.clone());
+            result.push(ProjectInfo::from(project_metadata.project.clone()));
         }
 
         Ok(result)

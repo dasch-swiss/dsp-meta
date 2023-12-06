@@ -40,17 +40,23 @@ async fn main() {
         .get::<String>("data_dir")
         .unwrap_or("/data".to_string());
 
+    let frontend_dir = settings
+        .get::<String>("frontend_dir")
+        .unwrap_or("/public".to_string());
+
     let shared_state = Arc::new(AppState {
         project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new(
             &data_dir,
         )),
+        frontend_dir,
+        version: VERSION,
     });
 
     // build our application with a single route
 
     // run it with hyper on localhost:3000
     axum::Server::bind(&"0.0.0.0:3000".parse().unwrap())
-        .serve(dsp_meta::api::app::app(shared_state).into_make_service())
+        .serve(dsp_meta::api::api::router(shared_state).into_make_service())
         .await
         .unwrap();
 }

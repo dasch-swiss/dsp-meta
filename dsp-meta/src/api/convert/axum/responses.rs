@@ -1,42 +1,7 @@
 use axum::http::StatusCode;
-use axum::response::{IntoResponse, Json, Response};
-use dsp_domain::metadata::entity::project_metadata::ProjectMetadata;
-use serde::Serialize;
+use axum::response::{IntoResponse, Response};
 
-use crate::api::model::project_metadata_dto::ProjectMetadataGraphDto;
 use crate::error::DspMetaError;
-
-#[derive(Debug, Default, Clone, PartialEq, Serialize)]
-pub struct ProjectMetadataDto(pub Option<ProjectMetadata>);
-
-/// Convert `ProjectMetadataDto` into a response.
-impl IntoResponse for ProjectMetadataDto {
-    fn into_response(self) -> Response {
-        match self.0 {
-            Some(metadata) => (
-                StatusCode::OK,
-                Json(
-                    serde_json::to_value(metadata)
-                        .expect("project metadata should convert to JSON."),
-                ),
-            )
-                .into_response(),
-            None => (StatusCode::NOT_FOUND).into_response(),
-        }
-    }
-}
-
-/// Convert `ProjectMetadataGraph` into a response.
-impl IntoResponse for ProjectMetadataGraphDto {
-    fn into_response(self) -> Response {
-        match self.0 {
-            Some(metadata_graph) => {
-                (StatusCode::OK, metadata_graph.to_turtle_string()).into_response()
-            }
-            None => StatusCode::NOT_FOUND.into_response(),
-        }
-    }
-}
 
 /// Convert `DspMetaError` into a response.
 /// TODO: Add correct status codes and error messages.
@@ -85,6 +50,11 @@ impl IntoResponse for DspMetaError {
                 (StatusCode::INTERNAL_SERVER_ERROR, "Something went wrong").into_response()
             }
             DspMetaError::NotFound => (StatusCode::NOT_FOUND, "Not Found").into_response(),
+            DspMetaError::JsonSerialization(err) => (
+                StatusCode::INTERNAL_SERVER_ERROR,
+                format!("Error serializing response to JSON: {}", err),
+            )
+                .into_response(),
         }
     }
 }

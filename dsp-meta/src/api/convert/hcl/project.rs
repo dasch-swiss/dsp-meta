@@ -69,6 +69,11 @@ impl<'a> TryInto<Project> for HclBlock<'a> {
         })?;
 
         let end_date = extracted_attributes.end_date;
+
+        let status = extracted_attributes.status.ok_or_else(|| {
+            DspMetaError::ParseProject("Parse error: project needs to have a status.".to_string())
+        })?;
+
         let contact_point = extracted_attributes.contact_point;
 
         // extract the project blocks
@@ -100,6 +105,7 @@ impl<'a> TryInto<Project> for HclBlock<'a> {
             how_to_cite,
             start_date,
             end_date,
+            status,
             contact_point,
             keywords,
             disciplines,

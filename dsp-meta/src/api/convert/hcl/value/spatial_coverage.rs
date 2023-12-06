@@ -5,14 +5,14 @@ use crate::api::convert::hcl::hcl_attribute::HclAttributes;
 use crate::api::convert::hcl::hcl_block::HclBlock;
 use crate::error::DspMetaError;
 
-const SPACIAL_COVERAGE: &str = "spacial_coverage";
+const SPATIAL_COVERAGE: &str = "spatial_coverage";
 const GEONAMES: &str = "geonames";
 
 impl<'a> TryInto<SpacialCoverage> for HclBlock<'a> {
     type Error = DspMetaError;
 
     fn try_into(self) -> Result<SpacialCoverage, Self::Error> {
-        if self.0.identifier.as_str() != SPACIAL_COVERAGE {
+        if self.0.identifier.as_str() != SPATIAL_COVERAGE {
             let msg = format!(
                 "The passed block is not named correctly. Expected 'spacial_coverage', however got '{}' instead.",
                 self.0.identifier.as_str()

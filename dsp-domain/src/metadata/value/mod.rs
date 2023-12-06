@@ -10,6 +10,7 @@ pub mod publication;
 pub mod ref_data;
 pub mod simple_text_data;
 pub mod spatial_coverage;
+pub mod status;
 pub mod temporal_coverage;
 pub mod url;
 pub mod version;

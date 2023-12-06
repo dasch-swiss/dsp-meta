@@ -16,7 +16,7 @@ const DESCRIPTION_BLOCK: &str = "description";
 const URL_BLOCK: &str = "url";
 const KEYWORD_BLOCK: &str = "keyword";
 const DISCIPLINE_BLOCK: &str = "discipline";
-const SPACIAL_COVERAGE_BLOCK: &str = "spacial_coverage";
+const SPACIAL_COVERAGE_BLOCK: &str = "spatial_coverage";
 const TEMPORAL_COVERAGE_BLOCK: &str = "temporal_coverage";
 const PUBLICATION_BLOCK: &str = "publication";
 
