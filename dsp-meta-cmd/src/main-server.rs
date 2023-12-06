@@ -40,15 +40,15 @@ async fn main() {
         .get::<String>("data_dir")
         .unwrap_or("/data".to_string());
 
-    let frontend_dir = settings
-        .get::<String>("frontend_dir")
+    let public_dir = settings
+        .get::<String>("public_dir")
         .unwrap_or("/public".to_string());
 
     let shared_state = Arc::new(AppState {
         project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new(
             &data_dir,
         )),
-        frontend_dir,
+        public_dir,
         version: VERSION,
     });
 
