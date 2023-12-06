@@ -69,6 +69,11 @@ impl<'a> TryInto<Project> for HclBlock<'a> {
         })?;
 
         let end_date = extracted_attributes.end_date;
+
+        let status = extracted_attributes.status.ok_or_else(|| {
+            DspMetaError::ParseProject("Parse error: project needs to have a status.".to_string())
+        })?;
+
         let contact_point = extracted_attributes.contact_point;
 
         // extract the project blocks
@@ -100,6 +105,7 @@ impl<'a> TryInto<Project> for HclBlock<'a> {
             how_to_cite,
             start_date,
             end_date,
+            status,
             contact_point,
             keywords,
             disciplines,
@@ -142,6 +148,7 @@ mod tests {
                 how_to_cite = "Huinink, Johannes; Schröder, Carolin; Castiglioni, Laura; Feldhaus, Michael"
                 start_date  = "2009-04-01"
                 end_date    = "2012-03-31"
+                status      = "Ongoing"
                 contact_point = "project_organization"
             }
         );

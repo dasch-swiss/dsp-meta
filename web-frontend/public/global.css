@@ -1,0 +1,205 @@
+@import url(../assets/fonts/Roboto/stylesheet.css);
+
+:root {
+  --dasch-primary: #336790;
+  --dasch-secondary: #74A2CF;
+  --dasch-third: #112230;
+  --dasch-hover: #A3C0FF;
+  --dasch-text: #3f3f40;
+  --text-darker: #282828;
+  --dasch-grey-2: #dddede;
+  --dasch-grey-3: #f1f1f1;
+  --cl-background: #ccc;
+  --cl-background-light: #ddd;
+  
+  --cl-transparent-light: rgba(255, 255, 255, 0.3);
+
+  --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-2: 0px 2px 4px -1px rgba(0,0,0,0.3);
+
+  --lead-colour: var(--dasch-primary);
+}
+
+html, body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  color: var(--dasch-text);
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'robotoregular';
+  font-style: normal;
+  font-weight: normal;
+  color: var(--text-darker);
+}
+a {
+  text-decoration: none;
+  color: var(--lead-colour);
+  width: fit-content;
+  /* animated links */
+  position: relative;
+  white-space: nowrap;
+  color: var(--color-text);
+}
+a.email {
+  color: var(--dasch-primary) !important;
+  font-size: 0.85rem;
+}
+a:visited {
+  color: inherit;
+}
+/* disable fancy animation for certain links */
+.regular-link::before {
+  background: none;
+}
+/* read-more styles are here due to encapsulation & router Link component transformed to a taf */
+.read-more.regular-link {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 0.25rem;
+  background-color: #fff;
+  border: 1px solid var(--lead-colour);
+  padding: 5px 20px;
+  color: var(--lead-colour);
+  box-shadow: var(--shadow-1);
+}
+button {
+  cursor: pointer;
+}
+button:hover {
+  background-color: var(--dasch-hover);
+}
+button:focus {
+  color: #fff;
+  background-color: var(--lead-colour);
+}
+button:disabled {
+  cursor: not-allowed;
+}
+.hidden {
+  display: none;
+}
+.row, .property-row {
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  width: 100%;
+}
+.label, .data {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 2;
+  margin-bottom: 10px;
+  word-break: break-word;
+  width: fit-content;
+}
+.label {
+  margin: 10px 0;
+  flex: 1;
+}
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0.25rem;
+}
+.expand-button {
+  background-image: linear-gradient(to right, #fff, var(--dasch-grey-3), #fff);
+  color: var(--lead-colour);
+  text-align: center;
+  font-size: 0.8em;
+  padding: 2px 0;
+  cursor: pointer;
+}
+/* new typography styles */
+.top-heading {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  padding: 0 16px;
+}
+.new-section-title {
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 0 16px;
+}
+.new-section-subtitle {
+  font-family: robotobold;
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 0.8px;
+  padding: 0 8px;
+}
+.new-text, .new-link, .data, .abstract {
+  font-size: 1rem;
+  line-height: 1.25;
+}
+.new-link {
+  color: var(--lead-colour);
+}
+.new-label, .label {
+  font-size: 1rem;
+  font-family: robotobold;
+  color: var(--dasch-text);
+  padding: 0;
+}
+.new-keyword, .keyword {
+  font-family: robotolight;
+  font-size: 1rem;
+  line-height: 1.25;
+  padding: 4px;
+  letter-spacing: 0.4px;
+}
+.warning {
+  color: red;
+}
+/* media queries */
+@media screen and (max-width: 991px) {
+  input:focus, button:focus {
+    outline: none;
+  }
+}
+@media screen and (min-width: 576px) {
+  .xs-inline-block {
+    display: inline-block !important;
+  }
+  .xs-hidden {
+    display: none !important;
+  }
+  .top-heading {font-size: 2.5rem;}
+}
+@media screen and (min-width: 768px) {
+  .s-inline-block {
+    display: inline-block !important;
+  }
+  .s-hidden {
+    display: none !important;
+  }
+}
+@media screen and (min-width: 992px) {
+  .m-inline-block {
+    display: inline-block !important;
+  }
+  .m-hidden {
+    display: none !important;
+  }
+}
+@media screen and (min-width: 1200px){
+  .l-inline-block {
+    display: inline-block !important;
+  }
+  .l-hidden {
+    display: none !important;
+  }
+}
+@media screen and (min-width: 1280px){
+  .xl-inline-block {
+    display: inline-block !important;
+  }
+  .xl-hidden {
+    display: none;
+  }
+}

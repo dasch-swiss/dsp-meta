@@ -1,3 +1,4 @@
+use dsp_domain::metadata::value::status::Status;
 use dsp_domain::metadata::value::{
     ContactPoint, CreatedAt, CreatedBy, EndDate, HowToCite, Name, Shortcode, StartDate, TeaserText,
 };
@@ -15,6 +16,7 @@ pub struct ExtractedProjectAttributes {
     pub how_to_cite: Option<HowToCite>,
     pub start_date: Option<StartDate>,
     pub end_date: Option<EndDate>,
+    pub status: Option<Status>,
     pub contact_point: Option<ContactPoint>,
 }
 
@@ -30,6 +32,7 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedProjectAttributes {
         let mut how_to_cite: Option<HowToCite> = None;
         let mut start_date: Option<StartDate> = None;
         let mut end_date: Option<EndDate> = None;
+        let mut status: Option<Status> = None;
         let mut contact_point: Option<ContactPoint> = None;
 
         // FIXME: throw error on duplicate attributes
@@ -99,6 +102,14 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedProjectAttributes {
                         )),
                     }?;
                 }
+                "status" => {
+                    status = match attribute.expr() {
+                        Expression::String(value) => Ok(Some(Status::try_from(value.to_owned())?)),
+                        _ => Err(DspMetaError::ParseProject(
+                            "Parse error: end_date needs to be a string.".to_string(),
+                        )),
+                    }?;
+                }
                 "contact_point" => {
                     contact_point = match attribute.expr() {
                         Expression::String(value) => Ok(Some(ContactPoint(value.to_owned()))),
@@ -121,6 +132,7 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedProjectAttributes {
             how_to_cite,
             start_date,
             end_date,
+            status,
             contact_point,
         })
     }

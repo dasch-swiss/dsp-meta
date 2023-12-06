@@ -1,7 +1,8 @@
 DOCKER_REPO := "daschswiss/dsp-meta-server"
-BUILD_TAG := `cargo metadata --format-version=1 --no-deps | jq --raw-output '.packages[] | select(.name == "dsp-meta-cmd") | .version'`
+CARGO_VERSION := `cargo metadata --format-version=1 --no-deps | jq --raw-output '.packages[] | select(.name == "dsp-meta-cmd") | .version'`
 COMMIT_HASH := `git log --pretty=format:'%h' -n 1`
-DOCKER_IMAGE := DOCKER_REPO + ":" + BUILD_TAG + "-" + COMMIT_HASH
+IMAGE_TAG := CARGO_VERSION + "-" + COMMIT_HASH
+DOCKER_IMAGE := DOCKER_REPO + ":" + IMAGE_TAG
 
 # List all recipies
 default:
@@ -27,7 +28,7 @@ test:
 
 # Run dsp-meta-server
 serve:
-    export DSP_META_DATA_DIR=${PWD}/data && cargo run --bin dsp-meta-server
+    export DSP_META_DATA_DIR=${PWD}/data && export DSP_META_FRONTEND_DIR=${PWD}/web-frontend/public && cargo run --bin dsp-meta-server
 
 # Run dsp-meta-validator validating all hcl documents under ./data
 validate:
@@ -56,3 +57,7 @@ docker-publish-manifest:
     docker manifest annotate --arch arm64 --os linux {{ DOCKER_IMAGE }} {{ DOCKER_IMAGE }}-arm64
     docker manifest inspect {{ DOCKER_IMAGE }}
     docker manifest push {{ DOCKER_IMAGE }}
+
+# output the BUILD_TAG
+docker-image-tag:
+    @echo {{ IMAGE_TAG }}

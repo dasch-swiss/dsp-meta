@@ -21,6 +21,8 @@ project {
   start_date  = "2009-04-01"
   end_date    = "2015-04-01"
 
+  status = "Finished"
+
   keyword {
     en = "19 Century"
   }

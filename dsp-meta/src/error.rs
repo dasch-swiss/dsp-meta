@@ -2,6 +2,7 @@ use std::io;
 
 use dsp_domain::error::DspDomainError;
 use serde::Serialize;
+use serde_json::Error;
 use thiserror::Error;
 
 /// Type alias for `Result` with default error `DspMetaError`.
@@ -32,6 +33,8 @@ pub enum DspMetaError {
     CreateDomainObject,
     #[error("The requested resource was not found")]
     NotFound,
+    #[error("Error serializing to Json")]
+    JsonSerialization(String),
 }
 
 impl From<io::Error> for DspMetaError {
@@ -46,5 +49,11 @@ impl From<DspDomainError> for DspMetaError {
             DspDomainError::CreateValueObject(err) => DspMetaError::CreateValueObject(err),
             DspDomainError::CreateDomainObject => DspMetaError::CreateDomainObject,
         }
+    }
+}
+
+impl From<serde_json::Error> for DspMetaError {
+    fn from(value: Error) -> Self {
+        DspMetaError::JsonSerialization(value.to_string())
     }
 }

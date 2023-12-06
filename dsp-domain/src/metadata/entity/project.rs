@@ -5,6 +5,7 @@ use crate::metadata::value::description::Description;
 use crate::metadata::value::discipline::Discipline;
 use crate::metadata::value::keyword::Keyword;
 use crate::metadata::value::publication::Publication;
+use crate::metadata::value::status::Status;
 use crate::metadata::value::url::Url;
 use crate::metadata::value::{
     ContactPoint, CreatedAt, CreatedBy, EndDate, HowToCite, Name, Shortcode, StartDate, TeaserText,
@@ -23,6 +24,7 @@ pub struct Project {
     pub how_to_cite: HowToCite,
     pub start_date: StartDate,
     pub end_date: Option<EndDate>,
+    pub status: Status,
     pub contact_point: Option<ContactPoint>,
     pub keywords: Vec<Keyword>,
     pub disciplines: Vec<Discipline>,

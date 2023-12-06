@@ -1,20 +1,20 @@
 use dsp_domain::metadata::value::ref_data::RefData;
-use dsp_domain::metadata::value::spatial_coverage::SpacialCoverage;
+use dsp_domain::metadata::value::spatial_coverage::SpatialCoverage;
 
 use crate::api::convert::hcl::hcl_attribute::HclAttributes;
 use crate::api::convert::hcl::hcl_block::HclBlock;
 use crate::error::DspMetaError;
 
-const SPACIAL_COVERAGE: &str = "spacial_coverage";
+const SPATIAL_COVERAGE: &str = "spatial_coverage";
 const GEONAMES: &str = "geonames";
 
-impl<'a> TryInto<SpacialCoverage> for HclBlock<'a> {
+impl<'a> TryInto<SpatialCoverage> for HclBlock<'a> {
     type Error = DspMetaError;
 
-    fn try_into(self) -> Result<SpacialCoverage, Self::Error> {
-        if self.0.identifier.as_str() != SPACIAL_COVERAGE {
+    fn try_into(self) -> Result<SpatialCoverage, Self::Error> {
+        if self.0.identifier.as_str() != SPATIAL_COVERAGE {
             let msg = format!(
-                "The passed block is not named correctly. Expected 'spacial_coverage', however got '{}' instead.",
+                "The passed block is not named correctly. Expected 'spatial_coverage', however got '{}' instead.",
                 self.0.identifier.as_str()
             );
             return Err(DspMetaError::CreateValueObject(msg));
@@ -36,7 +36,7 @@ impl<'a> TryInto<SpacialCoverage> for HclBlock<'a> {
         match reference_data_type.as_str() {
             GEONAMES => {
                 let ref_data: RefData = HclAttributes(attributes).try_into()?;
-                Ok(SpacialCoverage::Geonames(ref_data))
+                Ok(SpatialCoverage::Geonames(ref_data))
             }
             _ => {
                 Err(DspMetaError::CreateValueObject("The passed spacial_coverage block is missing the correct reference data type label: 'geonames'.".to_string()))
@@ -52,15 +52,15 @@ mod tests {
     #[test]
     fn test_try_from_block_with_geonames() {
         let block = hcl::block!(
-            spacial_coverage geonames {
+            spatial_coverage geonames {
                 ref_id = "1234"
                 description = "A description"
                 url = "https://geonames.org/1234"
             }
         );
 
-        let input: SpacialCoverage = HclBlock(&block).try_into().unwrap();
-        let expected = SpacialCoverage::Geonames(RefData {
+        let input: SpatialCoverage = HclBlock(&block).try_into().unwrap();
+        let expected = SpatialCoverage::Geonames(RefData {
             ref_id: "1234".to_string(),
             description: "A description".to_string(),
             url: "https://geonames.org/1234".parse().unwrap(),

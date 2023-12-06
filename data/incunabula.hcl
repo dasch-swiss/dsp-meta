@@ -25,6 +25,8 @@ project {
   start_date = "2008-06-01"
   end_date   = "2012-08-31"
 
+  status = "Finished"
+
   keyword {
     de = "Basel"
   }

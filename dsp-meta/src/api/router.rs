@@ -7,33 +7,40 @@ use axum::response::Response;
 use axum::routing::get;
 use axum::Router;
 use tower_http::classify::ServerErrorsFailureClass;
+use tower_http::services::{ServeDir, ServeFile};
 use tower_http::trace::TraceLayer;
 use tracing::{info_span, trace, Span};
 
 use crate::api::handler::{health, project_metadata_handler};
 use crate::app_state::AppState;
 
-/// Having a function that produces our app makes it easy to call it from tests
+/// Having a function that produces our router makes it easy to call it from tests
 /// without having to create an HTTP server.
-pub fn app(shared_state: Arc<AppState>) -> Router {
+pub fn router(shared_state: Arc<AppState>) -> Router {
     Router::new()
         .route(
-            "/projects",
+            "/api/projects",
             get(project_metadata_handler::get_all_project_metadata),
         )
         .route(
-            "/projects/:shortcode",
+            "/api/projects/:shortcode",
             get(project_metadata_handler::get_project_metadata_by_shortcode),
         )
         .route(
-            "/projects/:shortcode/rdf",
+            "/api/projects/:shortcode/rdf",
             get(project_metadata_handler::get_project_metadata_by_shortcode_as_rdf),
         )
         .route(
-            "/projects/count",
+            "/api/projects/count",
             get(project_metadata_handler::get_projects_count),
         )
-        .route("/health", get(health::health_handler))
+        .route("/api/health", get(health::health_handler))
+        .route("/api/version", get(shared_state.version))
+        .fallback_service(
+            ServeDir::new(shared_state.frontend_dir.as_str()).not_found_service(ServeFile::new(
+                format!("{}/index.html", shared_state.frontend_dir),
+            )),
+        )
         .with_state(shared_state)
         // See https://docs.rs/tower-http/latest/tower_http/trace/index.html for more details
         // on how to customize.
@@ -85,16 +92,18 @@ mod tests {
             project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new(
                 &data_dir.as_path(),
             )),
+            frontend_dir: "".to_string(),
+            version: "",
         });
 
-        let app = app(shared_state);
+        let router = router(shared_state);
 
         // `Router` implements `tower::Service<Request<Body>>` so we can
         // call it like any tower service, no need to run an HTTP server.
-        let response = app
+        let response = router
             .oneshot(
                 Request::builder()
-                    .uri("/health")
+                    .uri("/api/health")
                     .body(Body::empty())
                     .unwrap(),
             )
@@ -115,16 +124,18 @@ mod tests {
             project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new(
                 &data_dir.as_path(),
             )),
+            frontend_dir: "".to_string(),
+            version: "",
         });
 
-        let app = app(shared_state);
+        let router = router(shared_state);
 
         // `Router` implements `tower::Service<Request<Body>>` so we can
         // call it like any tower service, no need to run an HTTP server.
-        let response = app
+        let response = router
             .oneshot(
                 Request::builder()
-                    .uri("/projects/nonexistent_shortcode")
+                    .uri("/api/projects/nonexistent_shortcode")
                     .body(Body::empty())
                     .unwrap(),
             )
@@ -142,16 +153,18 @@ mod tests {
             project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new(
                 &data_dir.as_path(),
             )),
+            frontend_dir: "".to_string(),
+            version: "",
         });
 
-        let app = app(shared_state);
+        let router = router(shared_state);
 
         // `Router` implements `tower::Service<Request<Body>>` so we can
         // call it like any tower service, no need to run an HTTP server.
-        let response = app
+        let response = router
             .oneshot(
                 Request::builder()
-                    .uri("/projects/count")
+                    .uri("/api/projects/count")
                     .body(Body::empty())
                     .unwrap(),
             )
