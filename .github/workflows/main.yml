@@ -123,10 +123,10 @@ jobs:
           IMAGE_TAG: ${{ needs.publish_manifest.outputs.tag }}
           JENKINS_BASIC_AUTH_USER: ${{ secrets.JENKINS_BASIC_AUTH_USER }}
           JENKINS_BASIC_AUTH_PASS: ${{ secrets.JENKINS_BASIC_AUTH_PASS }}
-          JENKINS_META_DEV_WEBHOOK: ${{ secrets.JENKINS_META_DEV_WEBHOOK }}
+          JENKINS_UPDATE_RELEASE_WEBHOOK: ${{ secrets.JENKINS_UPDATE_RELEASE_WEBHOOK }}
         run: |
           curl -f -u "${JENKINS_BASIC_AUTH_USER}:${JENKINS_BASIC_AUTH_PASS}" \
-               -X POST "${JENKINS_META_DEV_WEBHOOK}" \
+               -X POST "${JENKINS_UPDATE_RELEASE_WEBHOOK}" \
                -d "Service=meta&Version=${IMAGE_TAG}"
 
   release-please:
