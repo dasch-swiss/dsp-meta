@@ -18,8 +18,8 @@ check:
 fix:
     just --fmt --unstable
 
-# Run all builds
-build: build-frontend
+# Run all rust builds
+build:
     cargo build
 
 # Build web-frontend
