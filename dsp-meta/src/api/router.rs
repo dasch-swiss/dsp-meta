@@ -37,8 +37,8 @@ pub fn router(shared_state: Arc<AppState>) -> Router {
         .route("/api/health", get(health::health_handler))
         .route("/api/version", get(shared_state.version))
         .fallback_service(
-            ServeDir::new(shared_state.frontend_dir.as_str()).not_found_service(ServeFile::new(
-                format!("{}/index.html", shared_state.frontend_dir),
+            ServeDir::new(shared_state.public_dir.as_str()).not_found_service(ServeFile::new(
+                format!("{}/index.html", shared_state.public_dir),
             )),
         )
         .with_state(shared_state)
@@ -92,7 +92,7 @@ mod tests {
             project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new(
                 &data_dir.as_path(),
             )),
-            frontend_dir: "".to_string(),
+            public_dir: "".to_string(),
             version: "",
         });
 
@@ -124,7 +124,7 @@ mod tests {
             project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new(
                 &data_dir.as_path(),
             )),
-            frontend_dir: "".to_string(),
+            public_dir: "".to_string(),
             version: "",
         });
 
@@ -153,7 +153,7 @@ mod tests {
             project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new(
                 &data_dir.as_path(),
             )),
-            frontend_dir: "".to_string(),
+            public_dir: "".to_string(),
             version: "",
         });
 
