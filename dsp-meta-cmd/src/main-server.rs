@@ -56,7 +56,7 @@ async fn main() {
 
     // run it with hyper on localhost:3000
     axum::Server::bind(&"0.0.0.0:3000".parse().unwrap())
-        .serve(dsp_meta::api::api::router(shared_state).into_make_service())
+        .serve(dsp_meta::api::router::router(shared_state).into_make_service())
         .await
         .unwrap();
 }

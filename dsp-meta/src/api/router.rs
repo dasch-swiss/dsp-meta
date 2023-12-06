@@ -92,6 +92,8 @@ mod tests {
             project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new(
                 &data_dir.as_path(),
             )),
+            frontend_dir: "".to_string(),
+            version: "",
         });
 
         let router = router(shared_state);
@@ -101,7 +103,7 @@ mod tests {
         let response = router
             .oneshot(
                 Request::builder()
-                    .uri("/health")
+                    .uri("/api/health")
                     .body(Body::empty())
                     .unwrap(),
             )
@@ -122,6 +124,8 @@ mod tests {
             project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new(
                 &data_dir.as_path(),
             )),
+            frontend_dir: "".to_string(),
+            version: "",
         });
 
         let router = router(shared_state);
@@ -131,7 +135,7 @@ mod tests {
         let response = router
             .oneshot(
                 Request::builder()
-                    .uri("/projects/nonexistent_shortcode")
+                    .uri("/api/projects/nonexistent_shortcode")
                     .body(Body::empty())
                     .unwrap(),
             )
@@ -149,6 +153,8 @@ mod tests {
             project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new(
                 &data_dir.as_path(),
             )),
+            frontend_dir: "".to_string(),
+            version: "",
         });
 
         let router = router(shared_state);
@@ -158,7 +164,7 @@ mod tests {
         let response = router
             .oneshot(
                 Request::builder()
-                    .uri("/projects/count")
+                    .uri("/api/projects/count")
                     .body(Body::empty())
                     .unwrap(),
             )

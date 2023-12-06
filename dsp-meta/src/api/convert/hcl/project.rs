@@ -148,6 +148,7 @@ mod tests {
                 how_to_cite = "Huinink, Johannes; Schröder, Carolin; Castiglioni, Laura; Feldhaus, Michael"
                 start_date  = "2009-04-01"
                 end_date    = "2012-03-31"
+                status      = "Ongoing"
                 contact_point = "project_organization"
             }
         );

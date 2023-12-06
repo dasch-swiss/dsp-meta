@@ -3,7 +3,7 @@ use dsp_domain::metadata::value::description::Description;
 use dsp_domain::metadata::value::discipline::Discipline;
 use dsp_domain::metadata::value::keyword::Keyword;
 use dsp_domain::metadata::value::publication::Publication;
-use dsp_domain::metadata::value::spatial_coverage::SpacialCoverage;
+use dsp_domain::metadata::value::spatial_coverage::SpatialCoverage;
 use dsp_domain::metadata::value::temporal_coverage::TemporalCoverage;
 use dsp_domain::metadata::value::url::Url;
 use tracing::warn;
@@ -16,7 +16,7 @@ const DESCRIPTION_BLOCK: &str = "description";
 const URL_BLOCK: &str = "url";
 const KEYWORD_BLOCK: &str = "keyword";
 const DISCIPLINE_BLOCK: &str = "discipline";
-const SPACIAL_COVERAGE_BLOCK: &str = "spatial_coverage";
+const SPATIAL_COVERAGE_BLOCK: &str = "spatial_coverage";
 const TEMPORAL_COVERAGE_BLOCK: &str = "temporal_coverage";
 const PUBLICATION_BLOCK: &str = "publication";
 
@@ -27,7 +27,7 @@ pub struct ExtractedProjectBlocks {
     pub url: Option<Url>,
     pub keywords: Vec<Keyword>,
     pub disciplines: Vec<Discipline>,
-    pub spacial_coverages: Vec<SpacialCoverage>,
+    pub spatial_coverages: Vec<SpatialCoverage>,
     pub temporal_coverages: Vec<TemporalCoverage>,
     pub publications: Vec<Publication>,
 }
@@ -41,7 +41,7 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
         let mut url: Option<Url> = None;
         let mut keywords: Vec<Keyword> = vec![];
         let mut disciplines: Vec<Discipline> = vec![];
-        let mut spacial_coverages: Vec<SpacialCoverage> = vec![];
+        let mut spatial_coverages: Vec<SpatialCoverage> = vec![];
         let mut temporal_coverages: Vec<TemporalCoverage> = vec![];
         let mut publications: Vec<Publication> = vec![];
 
@@ -66,7 +66,7 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
                 }
                 KEYWORD_BLOCK => keywords.push(HclBlock(block).try_into()?),
                 DISCIPLINE_BLOCK => disciplines.push(HclBlock(block).try_into()?),
-                SPACIAL_COVERAGE_BLOCK => spacial_coverages.push(HclBlock(block).try_into()?),
+                SPATIAL_COVERAGE_BLOCK => spatial_coverages.push(HclBlock(block).try_into()?),
                 TEMPORAL_COVERAGE_BLOCK => temporal_coverages.push(HclBlock(block).try_into()?),
                 PUBLICATION_BLOCK => publications.push(HclBlock(block).try_into()?),
                 _ => {
@@ -81,7 +81,7 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedProjectBlocks {
             url,
             keywords,
             disciplines,
-            spacial_coverages,
+            spatial_coverages,
             temporal_coverages,
             publications,
         })
@@ -220,9 +220,9 @@ mod tests {
     }
 
     #[test]
-    fn extract_spacial_coverages() {
+    fn extract_spatial_coverages() {
         let input1 = block!(
-            spacial_coverage geonames {
+            spatial_coverage geonames {
                 ref_id = "1234"
                 description = "A description"
                 url = "https://geonames.org/1234"
@@ -230,7 +230,7 @@ mod tests {
         );
         let blocks = vec![&input1];
         let result = ExtractedProjectBlocks::try_from(blocks).unwrap();
-        assert_eq!(result.spacial_coverages.len(), 1);
+        assert_eq!(result.spatial_coverages.len(), 1);
     }
 
     #[test]
