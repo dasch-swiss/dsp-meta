@@ -27,6 +27,9 @@ docker-publish: ## publish Docker image to Docker-Hub
 docker-run: ## compile and run app locally
 	docker run --rm -it -p 4200:4200 $(DOCKER_IMAGE)
 
+.PHONY: docker-image-tag
+docker-image-tag: ## prints the docker image tag
+	@echo $(BUILD_TAG)
 
 .PHONY: check
 check: ## run all checks
