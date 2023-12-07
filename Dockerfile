@@ -20,5 +20,8 @@ COPY --from=builder-rs /usr/local/cargo/bin/dsp-meta-server /usr/local/bin/dsp-m
 COPY --from=builder-node /dsp-meta/web-frontend/public /public
 ENV DSP_META_PUBLIC_DIR=/public
 
+# set logging level
+ENV DSP_META_LOG="info,hyper=info"
+
 EXPOSE 3000
 ENTRYPOINT ["dsp-meta-server"]

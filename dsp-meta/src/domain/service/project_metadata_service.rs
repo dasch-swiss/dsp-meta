@@ -17,7 +17,7 @@ where
     Repository: RepositoryContract<ProjectMetadata, ProjectInfo, Shortcode, DspMetaError>,
 {
     pub fn new(repo: Repository) -> Self {
-        trace!("Entering ProjectMetadataService::new()");
+        trace!("Init Service");
         Self { repo }
     }
 }

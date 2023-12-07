@@ -32,7 +32,7 @@ test:
 
 # Run dsp-meta-server
 serve:
-    export DSP_META_DATA_DIR=${PWD}/data && export DSP_META_PUBLIC_DIR=${PWD}/web-frontend/public && cargo run --bin dsp-meta-server
+    export DSP_META_DATA_DIR=${PWD}/data && export DSP_META_PUBLIC_DIR=${PWD}/web-frontend/public && export DSP_META_LOG=trace,hyper=info && cargo run --bin dsp-meta-server
 
 # Run dsp-meta-validator validating all hcl documents under ./data
 validate:

@@ -18,7 +18,7 @@ pub struct ProjectMetadataRepository {
 
 impl ProjectMetadataRepository {
     pub fn new<P: AsRef<Path>>(data_path: &P) -> Self {
-        trace!("Entering ProjectMetadataRepository::new");
+        trace!("Init Repository");
         let db: Arc<RwLock<HashMap<String, ProjectMetadata>>> =
             Arc::new(RwLock::new(HashMap::new()));
 
