@@ -1,9 +1,8 @@
 use std::sync::Arc;
 
 use axum::extract::{Path, State};
-use axum_macros::debug_handler;
 use dsp_domain::metadata::value::Shortcode;
-use tracing::trace;
+use tracing::{info_span, instrument, trace};
 
 use crate::api::convert::rdf::project_metadata::ProjectMetadataGraphWrapper;
 use crate::api::model::project_infos_dto::ProjectInfosDto;
@@ -17,7 +16,7 @@ use crate::error::DspMetaError;
 /// Get project metadata by shortcode
 ///
 /// TODO: Add error handling with correct status codes
-#[debug_handler]
+#[instrument]
 pub async fn get_project_metadata_by_shortcode(
     Path(shortcode): Path<String>,
     State(state): State<Arc<AppState>>,
@@ -31,11 +30,13 @@ pub async fn get_project_metadata_by_shortcode(
 
 /// GET /project_metadata/:shortcode/rdf
 /// Get project metadata by shortcode returned as an RDF string.
-#[debug_handler]
+
+#[instrument]
 pub async fn get_project_metadata_by_shortcode_as_rdf(
     Path(shortcode): Path<String>,
     State(state): State<Arc<AppState>>,
 ) -> Result<ProjectMetadataGraphDto, DspMetaError> {
+    info_span!("get project by shortcode as RDF");
     trace!("entered get_project_metadata_by_shortcode_as_rdf()");
     state
         .project_metadata_service
@@ -44,7 +45,7 @@ pub async fn get_project_metadata_by_shortcode_as_rdf(
         .map(ProjectMetadataGraphDto)
 }
 
-#[debug_handler]
+#[instrument]
 pub async fn get_all_project_metadata(
     State(state): State<Arc<AppState>>,
 ) -> Result<ProjectInfosDto, DspMetaError> {
@@ -55,7 +56,7 @@ pub async fn get_all_project_metadata(
         .map(ProjectInfosDto)
 }
 
-#[debug_handler]
+#[instrument]
 pub async fn get_projects_count(State(state): State<Arc<AppState>>) -> String {
     trace!("entered get_projects_count()");
     let count = state.project_metadata_service.count();
