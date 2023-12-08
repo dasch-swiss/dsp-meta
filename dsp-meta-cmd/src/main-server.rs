@@ -6,11 +6,12 @@ use dsp_meta::app_state::AppState;
 use dsp_meta::domain::service::project_metadata_service::ProjectMetadataService;
 use dsp_meta::repo::service::project_metadata_repository::ProjectMetadataRepository;
 use pid1::Pid1Settings;
-use tracing::{trace, Level};
-use tracing_subscriber::FmtSubscriber;
+use tracing::info;
+use tracing_subscriber::prelude::*;
+use tracing_subscriber::{fmt, EnvFilter};
 
-#[tokio::main]
-async fn main() {
+fn main() {
+    // Do the pid1 magic. Needs to be the first thing executed.
     Pid1Settings::new()
         .enable_log(true)
         .timeout(Duration::from_secs(2))
@@ -18,16 +19,24 @@ async fn main() {
         .expect("pid1 launch");
 
     // configure tracing library
-    let subscriber = FmtSubscriber::builder()
-        .with_max_level(Level::TRACE)
-        .finish();
+    tracing_subscriber::registry()
+        .with(fmt::layer())
+        .with(EnvFilter::from_env("DSP_META_LOG"))
+        .init();
 
-    tracing::subscriber::set_global_default(subscriber).expect("setting default subscriber failed");
+    // Create manually a tokio runtime (as opposed to using the macro)
+    tokio::runtime::Builder::new_multi_thread()
+        .enable_all()
+        .build()
+        .unwrap()
+        .block_on(init_server())
+}
 
-    trace!("Ivan was here!");
+async fn init_server() {
+    info!("Ivan was here!");
 
     const VERSION: &str = env!("CARGO_PKG_VERSION");
-    trace!("Version: {}", VERSION);
+    info!("Version: {}", VERSION);
 
     let settings = Config::builder()
         // Add in settings from the environment (with a prefix of APP)

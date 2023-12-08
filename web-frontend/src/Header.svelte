@@ -9,10 +9,10 @@
   let enteredString = '';
 
   const getEnv = () => {
-    if (window.location.host.includes('test')) {
-      return 'test.';
-    } else if (window.location.host.includes('staging')) {
-      return 'staging.';
+    if (window.location.host.includes('dev')) {
+      return 'dev.';
+    } else if (window.location.host.includes('stage')) {
+      return 'stage.';
     } else return '';
   }
 
@@ -46,8 +46,8 @@
     <div class="header-left">
       <Router>
         <Link to="/" class="regular-link">
-          <img class="logo s-inline-block" src="assets/icon/Fingerprint_Logo.svg" alt="DaSCH logo" />
-          <img class="icon-logo s-hidden" src="assets/icon/Fingerprint_Logo.svg" alt="DaSCH logo" />
+          <img class="logo s-inline-block" src="/assets/icon/Fingerprint_Logo.svg" alt="DaSCH logo" />
+          <img class="icon-logo s-hidden" src="/assets/icon/Fingerprint_Logo.svg" alt="DaSCH logo" />
         </Link>
       </Router>
       <Router>
@@ -86,8 +86,7 @@
   </div>
   <div class="menu" class:hidden={!showMenu}>
     <a class="menu-item" href="https://dasch.swiss/" target="_blank">DaSCH Website</a>
-    <a class="menu-item" href="{`https://admin.${getEnv()}dasch.swiss/`}" target="_blank">DSP-APP { getEnv() ? `(${getEnv().slice(0, -1)} server)` : ''}</a>
-    <a class="menu-item" href="{`https://app.${getEnv()}dasch.swiss/`}" target="_blank">DSP-Tangoh { getEnv() ? `(${getEnv().slice(0, -1)} server)` : ''}</a>
+    <a class="menu-item" href="{`https://app.${getEnv()}dasch.swiss/`}" target="_blank">DSP-APP { getEnv() ? `(${getEnv().slice(0, -1)} server)` : ''}</a>
     <a class="menu-item" href="https://docs.dasch.swiss/" target="_blank">Documentation</a>
   </div>
 </header>
