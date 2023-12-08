@@ -19,10 +19,20 @@ fn main() {
         .expect("pid1 launch");
 
     // configure tracing library
-    tracing_subscriber::registry()
-        .with(fmt::layer())
-        .with(EnvFilter::from_env("DSP_META_LOG"))
-        .init();
+    match option_env!("DSP_META_LOG_FMT") {
+        Some("json") => {
+            tracing_subscriber::registry()
+                .with(fmt::layer().event_format(fmt::format().json()))
+                .with(EnvFilter::from_env("DSP_META_LOG"))
+                .init();
+        }
+        _ => {
+            tracing_subscriber::registry()
+                .with(fmt::layer().event_format(fmt::format().compact()))
+                .with(EnvFilter::from_env("DSP_META_LOG"))
+                .init();
+        }
+    }
 
     // Create manually a tokio runtime (as opposed to using the macro)
     tokio::runtime::Builder::new_multi_thread()
