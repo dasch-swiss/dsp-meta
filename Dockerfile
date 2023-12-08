@@ -23,5 +23,8 @@ ENV DSP_META_PUBLIC_DIR=/public
 # set logging level
 ENV DSP_META_LOG="info,hyper=info"
 
+# set log output type
+ENV DSP_META_LOG_FMT="json"
+
 EXPOSE 3000
 ENTRYPOINT ["dsp-meta-server"]
