@@ -15,7 +15,7 @@
   let isDescriptionExpanded: boolean;
   let descriptionLinesNumber: number;
   let arePublicationsExpanded: boolean;
-  let isTestEnvironment: boolean = window.location.hostname === 'localhost' || window.location.hostname.startsWith('meta.test')
+  let isTestEnvironment: boolean = window.location.hostname === 'localhost' || window.location.hostname.startsWith('meta.dev')
 
   onMount(async () => {
     // wait with component creation for the data to be fetched
@@ -34,7 +34,7 @@
     const baseUrl = `${protocol}//${window.location.hostname}${port}/`;
     const projectID = window.location.pathname.split("/")[2];
 
-    const res = await fetch(`${baseUrl}api/v1/projects/${projectID}`);
+    const res = await fetch(`${baseUrl}api/projects/${projectID}`);
     const metadata: Metadata = await res.json();
 
     projectMetadata.set(metadata);

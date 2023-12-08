@@ -16,7 +16,7 @@ use crate::error::DspMetaError;
 /// Get project metadata by shortcode
 ///
 /// TODO: Add error handling with correct status codes
-#[instrument]
+#[instrument(skip(state))]
 pub async fn get_project_metadata_by_shortcode(
     Path(shortcode): Path<String>,
     State(state): State<Arc<AppState>>,
@@ -31,7 +31,7 @@ pub async fn get_project_metadata_by_shortcode(
 /// GET /project_metadata/:shortcode/rdf
 /// Get project metadata by shortcode returned as an RDF string.
 
-#[instrument]
+#[instrument(skip(state))]
 pub async fn get_project_metadata_by_shortcode_as_rdf(
     Path(shortcode): Path<String>,
     State(state): State<Arc<AppState>>,
@@ -45,7 +45,7 @@ pub async fn get_project_metadata_by_shortcode_as_rdf(
         .map(ProjectMetadataGraphDto)
 }
 
-#[instrument]
+#[instrument(skip(state))]
 pub async fn get_all_project_metadata(
     State(state): State<Arc<AppState>>,
 ) -> Result<ProjectInfosDto, DspMetaError> {
@@ -56,7 +56,7 @@ pub async fn get_all_project_metadata(
         .map(ProjectInfosDto)
 }
 
-#[instrument]
+#[instrument(skip(state))]
 pub async fn get_projects_count(State(state): State<Arc<AppState>>) -> String {
     trace!("entered get_projects_count()");
     let count = state.project_metadata_service.count();

@@ -5,11 +5,12 @@ use axum::body::Bytes;
 use axum::http::{HeaderMap, Request};
 use axum::response::Response;
 use axum::routing::get;
-use axum::Router;
+use axum::{http, Router};
+use log::info;
 use tower_http::classify::ServerErrorsFailureClass;
 use tower_http::services::{ServeDir, ServeFile};
 use tower_http::trace::TraceLayer;
-use tracing::{info_span, trace, Span};
+use tracing::{error, info_span, warn, Span};
 
 use crate::api::handler::{health, project_metadata_handler};
 use crate::app_state::AppState;
@@ -58,8 +59,14 @@ pub fn router(shared_state: Arc<AppState>) -> Router {
                 .on_request(|_request: &Request<_>, _span: &Span| ())
                 .on_response(|response: &Response, latency: Duration, span: &Span| {
                     span.record("status_code", response.status().as_u16());
-                    span.record("latency", latency.as_micros());
-                    trace!("response handled by server");
+                    span.record("latency", latency.as_millis());
+                    if response.status() >= http::StatusCode::INTERNAL_SERVER_ERROR {
+                        error!("response handled by server with 5xx");
+                    } else if response.status() >= http::StatusCode::BAD_REQUEST {
+                        warn!("response handled by server with 4xx")
+                    } else {
+                        info!("response handled by server");
+                    }
                 })
                 .on_body_chunk(|_chunk: &Bytes, _latency: Duration, _span: &Span| ())
                 .on_eos(

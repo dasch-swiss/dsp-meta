@@ -5,7 +5,7 @@
   let isTestEnvironment: boolean = window.location.hostname === 'localhost' || window.location.hostname.startsWith('meta.test')
 
   const truncateString = (s: string) => {
-    // TODO: can this be improved? 1. dynamic langth depending on space; 2. show full text on hover
+    // TODO: can this be improved? 1. dynamic length depending on space; 2. show full text on hover
     if (s.length > 35) {
       return `${s.slice(0, 35)}...`;
     } else return s;

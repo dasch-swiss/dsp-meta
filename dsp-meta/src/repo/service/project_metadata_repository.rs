@@ -4,7 +4,7 @@ use std::sync::{Arc, RwLock};
 
 use dsp_domain::metadata::entity::project_metadata::ProjectMetadata;
 use dsp_domain::metadata::value::Shortcode;
-use tracing::trace;
+use tracing::{instrument, trace};
 
 use crate::api::convert::hcl::hcl_body::HclBody;
 use crate::domain::model::project_info::ProjectInfo;
@@ -62,6 +62,7 @@ impl ProjectMetadataRepository {
 impl RepositoryContract<ProjectMetadata, ProjectInfo, Shortcode, DspMetaError>
     for ProjectMetadataRepository
 {
+    #[instrument(skip(self))]
     fn find_by_id(&self, id: &Shortcode) -> Result<Option<ProjectMetadata>, DspMetaError> {
         let db = self.db.read().unwrap();
         match db.get(id.0.as_str()) {
@@ -70,7 +71,9 @@ impl RepositoryContract<ProjectMetadata, ProjectInfo, Shortcode, DspMetaError>
         }
     }
 
+    #[instrument(skip(self))]
     fn find_all(&self) -> Result<Vec<ProjectInfo>, DspMetaError> {
+        trace!("repository: find_all");
         let mut result: Vec<ProjectInfo> = vec![];
         let db = self.db.read().unwrap();
 
