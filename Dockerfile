@@ -21,7 +21,7 @@ COPY --from=builder-node /dsp-meta/web-frontend/public /public
 ENV DSP_META_PUBLIC_DIR=/public
 
 # set logging level
-ENV DSP_META_LOG="info,hyper=info"
+ENV DSP_META_LOG_FILTER="info,hyper=info"
 
 # set log output type
 ENV DSP_META_LOG_FMT="json"
