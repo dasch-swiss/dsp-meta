@@ -1,3 +1,4 @@
+use std::env;
 use std::sync::Arc;
 use std::time::Duration;
 
@@ -18,18 +19,18 @@ fn main() {
         .launch()
         .expect("pid1 launch");
 
-    // configure tracing library
-    match option_env!("DSP_META_LOG_FMT") {
-        Some("json") => {
+    // configure tracing library at runtime
+    match env::var("DSP_META_LOG_FMT") {
+        Ok(value) if value.to_lowercase() == "json" => {
             tracing_subscriber::registry()
                 .with(fmt::layer().event_format(fmt::format().json()))
-                .with(EnvFilter::from_env("DSP_META_LOG"))
+                .with(EnvFilter::from_env("DSP_META_LOG_FILTER"))
                 .init();
         }
         _ => {
             tracing_subscriber::registry()
                 .with(fmt::layer().event_format(fmt::format().compact()))
-                .with(EnvFilter::from_env("DSP_META_LOG"))
+                .with(EnvFilter::from_env("DSP_META_LOG_FILTER"))
                 .init();
         }
     }
