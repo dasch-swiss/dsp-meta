@@ -31,6 +31,10 @@ http-body-util = "0.1.0"
 indicatif = "0.17.0" # prograss bars and spinners
 log = "0.4.20" # logging facade
 once_cell = "1.18.0"
+opentelemetry = { version = "0.21.0", features = ["logs", "metrics", "trace", "default"] }
+opentelemetry_sdk = { version = "0.21.1", features = ["logs", "metrics", "trace", "rt-tokio", "default"] }
+opentelemetry-stdout = { version = "0.2.0", features = ["logs", "metrics", "trace"] }
+opentelemetry-otlp = { version = "0.14.0", features = ["logs", "metrics", "trace", "default"] }
 pid1 = "0.1.1"
 serde = {version = "1", features = ["derive"]}
 serde_json = "1" # JSON serialization
@@ -40,6 +44,7 @@ tower = "0.4.13"
 tower-http = { version = "0.5.0", features = ["trace", "fs"] }
 hyper = "1.0.1"
 tracing = "0.1"
+tracing-opentelemetry = { version = "0.22.0", features = ["default", "metrics"] }
 tracing-subscriber = { version = "0.3", features = ["fmt", "registry", "std", "env-filter", "json"] }
 tracing-test = "0.2"
 url = { version = "2", features = ["serde"] }
