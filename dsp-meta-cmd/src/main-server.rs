@@ -7,6 +7,7 @@ use dsp_meta::app_state::AppState;
 use dsp_meta::domain::service::project_metadata_service::ProjectMetadataService;
 use dsp_meta::repo::service::project_metadata_repository::ProjectMetadataRepository;
 use pid1::Pid1Settings;
+use tokio::net::TcpListener;
 use tracing::info;
 use tracing_subscriber::prelude::*;
 use tracing_subscriber::{fmt, EnvFilter};
@@ -35,7 +36,7 @@ fn main() {
         }
     }
 
-    // Create manually a tokio runtime (as opposed to using the macro)
+    // Manually create a tokio runtime (as opposed to using the macro)
     tokio::runtime::Builder::new_multi_thread()
         .enable_all()
         .build()
@@ -72,11 +73,9 @@ async fn init_server() {
         version: VERSION,
     });
 
-    // build our application with a single route
-
-    // run it with hyper on localhost:3000
-    axum::Server::bind(&"0.0.0.0:3000".parse().unwrap())
-        .serve(dsp_meta::api::router::router(shared_state).into_make_service())
+    // start the server
+    let listener = TcpListener::bind("0.0.0.0:3000").await.unwrap();
+    axum::serve(listener, dsp_meta::api::router::router(shared_state))
         .await
         .unwrap();
 }
