@@ -84,7 +84,7 @@ mod tests {
 
     use axum::body::Body;
     use axum::http::{Request, StatusCode};
-    // use tower::Service; // for `call`
+    use http_body_util::BodyExt; // for `collect`
     use tower::ServiceExt; // for `oneshot` and `ready`
 
     use super::*;
@@ -119,7 +119,7 @@ mod tests {
 
         assert_eq!(response.status(), StatusCode::OK);
 
-        let body = hyper::body::to_bytes(response.into_body()).await.unwrap();
+        let body = response.into_body().collect().await.unwrap().to_bytes();
         assert_eq!(&body[..], b"healthy");
     }
 
@@ -180,7 +180,7 @@ mod tests {
 
         assert_eq!(response.status(), StatusCode::OK);
 
-        let body = hyper::body::to_bytes(response.into_body()).await.unwrap();
+        let body = response.into_body().collect().await.unwrap().to_bytes();
         assert_eq!(&body[..], b"3");
     }
 }
