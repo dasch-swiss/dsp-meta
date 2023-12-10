@@ -410,6 +410,7 @@ dependencies = [
  "config",
  "dsp-domain",
  "hcl-rs",
+ "http-body-util",
  "hyper",
  "log",
  "serde",
