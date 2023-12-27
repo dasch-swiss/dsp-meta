@@ -1217,6 +1217,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "serde-rdf"
+version = "0.1.0"
+dependencies = [
+ "serde",
+]
+
+[[package]]
 name = "serde_derive"
 version = "1.0.193"
 source = "registry+https://github.com/rust-lang/crates.io-index"
