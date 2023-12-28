@@ -43,6 +43,12 @@ impl Display for Error {
     }
 }
 
+impl From<io::Error> for Error {
+    fn from(value: io::Error) -> Self {
+        Error::Io(value)
+    }
+}
+
 impl std::error::Error for Error {}
 
 impl ser::Error for Error {

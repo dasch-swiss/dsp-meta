@@ -1,5 +1,11 @@
 //! Serialize a Rust data structure into RDF data.
 
+use std::io;
+
+use rio_api::formatter::TriplesFormatter;
+use rio_api::model::Literal::Typed;
+use rio_api::model::{BlankNode, NamedNode, Triple};
+use rio_turtle::TurtleFormatter;
 use serde::ser::{self, Serialize};
 
 use crate::error::{Error, Result};
@@ -10,19 +16,27 @@ struct Loc {
     clazz: String,
 }
 
-#[derive(Debug)]
-pub struct Serializer {
+pub struct Serializer<W: io::Write> {
     stack: Vec<Loc>,
     last_field: Option<String>,
     output: String,
+    formatter: TurtleFormatter<W>,
 }
 
-impl Serializer {
-    fn new() -> Self {
+impl<W> Serializer<W>
+where
+    W: io::Write,
+{
+    fn new(writer: W) -> Serializer<W> {
+        Serializer::with_formatter(TurtleFormatter::new(writer))
+    }
+
+    fn with_formatter(formatter: TurtleFormatter<W>) -> Serializer<W> {
         Serializer {
             stack: Vec::new(),
             last_field: None,
             output: String::new(),
+            formatter,
         }
     }
 }
@@ -36,13 +50,18 @@ pub fn to_string<T>(value: &T) -> Result<String>
 where
     T: ?Sized + Serialize,
 {
-    let mut serializer = Serializer::new();
-
+    let mut serializer = Serializer::new(Vec::default());
     value.serialize(&mut serializer)?;
-    Ok(serializer.output)
+    let bytes = serializer.formatter.finish()?;
+
+    // SAFETY: The `Formatter` never emits invalid UTF-8.
+    Ok(unsafe { String::from_utf8_unchecked(bytes) })
 }
 
-impl ser::Serializer for &mut Serializer {
+impl<W> ser::Serializer for &mut Serializer<W>
+where
+    W: io::Write,
+{
     // The output type produced by this `Serializer` during successful
     // serialization. Most serializers that produce text or binary output should
     // set `Ok = ()` and serialize into an `io::Write` or buffer contained
@@ -73,7 +92,21 @@ impl ser::Serializer for &mut Serializer {
         let head = &self.last_field;
         match head {
             None => return Err(Error::CannotSerializePrimitive("bool")),
-            Some(field_name) => self.output += &*format!("id + {field_name} + {v}^^xsd:boolean ."),
+            Some(field_name) => self.formatter.format(&Triple {
+                subject: BlankNode {
+                    id: field_name.as_str(),
+                }
+                .into(),
+                predicate: NamedNode {
+                    iri: "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                }
+                .into(),
+                object: Typed {
+                    value: v.to_string().as_str(),
+                    datatype: NamedNode { iri: "xsd:boolean" }.into(),
+                }
+                .into(),
+            })?,
         }
         Ok(())
     }
@@ -316,7 +349,7 @@ impl ser::Serializer for &mut Serializer {
 //
 // This impl is SerializeSeq so these methods are called after `serialize_seq`
 // is called on the Serializer.
-impl<'a> ser::SerializeSeq for &'a mut Serializer {
+impl<W: io::Write> ser::SerializeSeq for &mut Serializer<W> {
     // Must match the `Ok` type of the serializer.
     type Ok = ();
     // Must match the `Error` type of the serializer.
@@ -341,7 +374,7 @@ impl<'a> ser::SerializeSeq for &'a mut Serializer {
 }
 
 // Same thing but for tuples.
-impl<'a> ser::SerializeTuple for &'a mut Serializer {
+impl<W: io::Write> ser::SerializeTuple for &mut Serializer<W> {
     type Ok = ();
     type Error = Error;
 
@@ -362,7 +395,7 @@ impl<'a> ser::SerializeTuple for &'a mut Serializer {
 }
 
 // Same thing but for tuple structs.
-impl<'a> ser::SerializeTupleStruct for &'a mut Serializer {
+impl<W: io::Write> ser::SerializeTupleStruct for &mut Serializer<W> {
     type Ok = ();
     type Error = Error;
 
@@ -391,7 +424,7 @@ impl<'a> ser::SerializeTupleStruct for &'a mut Serializer {
 //
 // So the `end` method in this impl is responsible for closing both the `]` and
 // the `}`.
-impl<'a> ser::SerializeTupleVariant for &'a mut Serializer {
+impl<W: io::Write> ser::SerializeTupleVariant for &mut Serializer<W> {
     type Ok = ();
     type Error = Error;
 
@@ -419,7 +452,7 @@ impl<'a> ser::SerializeTupleVariant for &'a mut Serializer {
 // `serialize_entry` method allows serializers to optimize for the case where
 // key and value are both available simultaneously. In JSON it doesn't make a
 // difference so the default behavior for `serialize_entry` is fine.
-impl<'a> ser::SerializeMap for &'a mut Serializer {
+impl<W: io::Write> ser::SerializeMap for &mut Serializer<W> {
     type Ok = ();
     type Error = Error;
 
@@ -460,7 +493,7 @@ impl<'a> ser::SerializeMap for &'a mut Serializer {
 
 // Structs are like maps in which the keys are constrained to be compile-time
 // constant strings.
-impl<'a> ser::SerializeStruct for &'a mut Serializer {
+impl<W: io::Write> ser::SerializeStruct for &mut Serializer<W> {
     type Ok = ();
     type Error = Error;
 
@@ -484,7 +517,7 @@ impl<'a> ser::SerializeStruct for &'a mut Serializer {
 
 // Similar to `SerializeTupleVariant`, here the `end` method is responsible for
 // closing both of the curly braces opened by `serialize_struct_variant`.
-impl<'a> ser::SerializeStructVariant for &'a mut Serializer {
+impl<W: io::Write> ser::SerializeStructVariant for &mut Serializer<W> {
     type Ok = ();
     type Error = Error;
 

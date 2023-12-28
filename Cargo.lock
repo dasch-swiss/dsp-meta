@@ -1093,6 +1093,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "quick-xml"
+version = "0.28.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0ce5e73202a820a31f8a0ee32ada5e21029c81fd9e3ebf668a40832e4219d9d1"
+dependencies = [
+ "memchr",
+]
+
+[[package]]
 name = "quote"
 version = "1.0.33"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1158,6 +1167,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6ed96d73ad4e0de59e667b26c899930c90912cad3fec5f0291fc3171c90dacae"
 
 [[package]]
+name = "rio_api"
+version = "0.8.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1924fa1f0e6d851f9b73b3c569e607c368a0d92995d99d563ad7bf1414696603"
+
+[[package]]
 name = "rio_turtle"
 version = "0.6.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1165,7 +1180,30 @@ checksum = "1945ea5cf5f489bd2cbafeb705686abdc94edfa9dd88a63a25e8c5c0d38f9cc2"
 dependencies = [
  "oxilangtag",
  "oxiri",
- "rio_api",
+ "rio_api 0.6.2",
+]
+
+[[package]]
+name = "rio_turtle"
+version = "0.8.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5cec59971eafd99b9c7e3544bfcabafea81a7072ac51c9f46985ca0bd7ba6016"
+dependencies = [
+ "oxilangtag",
+ "oxiri",
+ "rio_api 0.8.4",
+]
+
+[[package]]
+name = "rio_xml"
+version = "0.8.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d2edda57b877119dc326c612ba822e3ca1ee22bfc86781a4e9dc0884756b58c3"
+dependencies = [
+ "oxilangtag",
+ "oxiri",
+ "quick-xml",
+ "rio_api 0.8.4",
 ]
 
 [[package]]
@@ -1217,13 +1255,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "serde-rdf"
-version = "0.1.0"
-dependencies = [
- "serde",
-]
-
-[[package]]
 name = "serde_derive"
 version = "1.0.193"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1252,6 +1283,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4beec8bce849d58d06238cb50db2e1c417cfeafa4c63f692b15c82b7c80f8335"
 dependencies = [
  "itoa",
+ "serde",
+]
+
+[[package]]
+name = "serde_rdf"
+version = "0.1.0"
+dependencies = [
+ "rio_api 0.8.4",
+ "rio_turtle 0.8.4",
+ "rio_xml",
  "serde",
 ]
 
@@ -1400,7 +1441,7 @@ version = "0.7.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fbdcd2f32812619d11e0c531ce35f6d2704fa354dec97ca4072872744d042311"
 dependencies = [
- "rio_api",
+ "rio_api 0.6.2",
  "sophia_api",
 ]
 
@@ -1429,8 +1470,8 @@ dependencies = [
  "lazy_static",
  "oxiri",
  "regex",
- "rio_api",
- "rio_turtle",
+ "rio_api 0.6.2",
+ "rio_turtle 0.6.2",
  "sophia_api",
  "sophia_indexed",
  "sophia_inmem",
