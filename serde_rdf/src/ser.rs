@@ -4,38 +4,91 @@ use std::io;
 
 use rio_api::formatter::TriplesFormatter;
 use rio_api::model::Literal::Typed;
-use rio_api::model::{BlankNode, NamedNode, Triple};
+use rio_api::model::{BlankNode, NamedNode, Subject, Triple};
 use rio_turtle::TurtleFormatter;
 use serde::ser::{self, Serialize};
 
 use crate::error::{Error, Result};
+use crate::structure::SerializerConfig;
+
+/// Serializer mapping configuration containing mappings aka instructions on how
+/// to serialize a type. There are three possible options:
+/// (1) one IRI: this denotes the name of the field containing the identifier. Further, it provides
+/// the prefix to the identifier used to build the IRI.
+/// (2) one Clazz: this denotes the name of the struct and to what RDF class it should be typed
+/// (3) one or more Property: this denotes the name of the field, it's property IRI, and the
+/// literal xsd:type (`XsdType`) it should be serialized into, if it is a literal, or (`Subject`)
+/// denoting that it is a struct that needs to be serialized as a separate subject.
+///
+/// Example:
+/// ```
+/// 
+/// let _config = vec!(
+///     Subject{
+///         name: "Project",
+///         subject_type: "https://ns.dasch.swiss/repository#Project",
+///         iri: "id",
+///         iri_prefix: "https://ark.dasch.swiss/ark:/72163/1/",
+///         properties: vec!(
+///             Property("name", "<https://ns.dasch.swiss/repository#hasName>"),
+///             Property("description", "<https://ns.dasch.swiss/repository#hasDescription>"),
+///             Property("shortcode", "<https://ns.dasch.swiss/repository#hasShortcode>"),
+///             Property("datasets", "<https://ns.dasch.swiss/repository#hasDataset>"),
+///         )
+///     },
+///     Subject{
+///         name: "Dataset",
+///         subject_type: "https://ns.dasch.swiss/repository#Dataset",
+///         iri: "id",
+///         iri_prefix: "https://ark.dasch.swiss/ark:/72163/1/",
+///         properties: vec!(
+///             Property("title", "<https://ns.dasch.swiss/repository#hasTitle>")
+///         )
+///     }
+/// );
+/// ```
 
 #[derive(Debug)]
 struct Loc {
     id: String,
     clazz: String,
 }
-
-pub struct Serializer<W: io::Write> {
+/// Need a structure inside the serializer to hold the components of triples as they are
+/// gathered:
+/// - one IRI field holding the IRI of the subject
+/// - one field with Vec holding tuples with the predicate and literal.
+///
+/// The struct that we want to serialize, needs to be prepared:
+/// - those fields of a struct that contain a Vec of literals need to be flattened `serde(flatten)`
+/// - those fields of a struct that contain a Vec of structs should **not** be flattened
+///  
+pub struct Serializer<'a, W: io::Write> {
     stack: Vec<Loc>,
-    last_field: Option<String>,
+    last_subject: Option<Subject<'a>>,
+    iri: String,
+    components: (String, String),
     output: String,
+    mapping: SerializerConfig,
     formatter: TurtleFormatter<W>,
 }
 
-impl<W> Serializer<W>
+impl<'a, W> Serializer<'a, W>
 where
     W: io::Write,
 {
-    fn new(writer: W) -> Serializer<W> {
-        Serializer::with_formatter(TurtleFormatter::new(writer))
+    fn new(mapping: SerializerConfig, writer: W) -> Serializer<'a, W> {
+        Serializer::with_formatter(mapping, TurtleFormatter::new(writer))
     }
 
-    fn with_formatter(formatter: TurtleFormatter<W>) -> Serializer<W> {
+    fn with_formatter(
+        mapping: SerializerConfig,
+        formatter: TurtleFormatter<W>,
+    ) -> Serializer<'a, W> {
         Serializer {
             stack: Vec::new(),
-            last_field: None,
+            last_subject: None,
             output: String::new(),
+            mapping,
             formatter,
         }
     }
@@ -46,11 +99,11 @@ where
 /// # Errors
 ///
 /// Serialization fails if the type cannot be represented as RDF.
-pub fn to_string<T>(value: &T) -> Result<String>
+pub fn to_string<T>(value: &T, config: SerializerConfig) -> Result<String>
 where
     T: ?Sized + Serialize,
 {
-    let mut serializer = Serializer::new(Vec::default());
+    let mut serializer = Serializer::new(config, Vec::default());
     value.serialize(&mut serializer)?;
     let bytes = serializer.formatter.finish()?;
 
@@ -89,7 +142,7 @@ where
     // of the primitive types of the data model and map it to JSON by appending
     // into the output string.
     fn serialize_bool(self, v: bool) -> Result<()> {
-        let head = &self.last_field;
+        let head = &self.last_struct;
         match head {
             None => return Err(Error::CannotSerializePrimitive("bool")),
             Some(field_name) => self.formatter.format(&Triple {
@@ -317,13 +370,11 @@ where
         Ok(self)
     }
 
-    // Structs look just like maps in JSON. In particular, JSON requires that we
-    // serialize the field names of the struct. Other formats may be able to
-    // omit the field names when serializing structs because the corresponding
-    // Deserialize implementation is required to know what the keys are without
-    // looking at the serialized data.
+    // Structs represent subjects, where the name is the "type".
     fn serialize_struct(self, name: &'static str, len: usize) -> Result<Self::SerializeStruct> {
-        self.serialize_map(Some(len))
+        println!("serialize_struct");
+        self.last_struct = Some(name.to_string());
+        Ok(self)
     }
 
     // Struct variants are represented in JSON as `{ NAME: { K: V, ... } }`.
@@ -501,6 +552,7 @@ impl<W: io::Write> ser::SerializeStruct for &mut Serializer<W> {
     where
         T: ?Sized + Serialize,
     {
+        println!("serialize_struct -> serialize_field");
         if !self.output.ends_with('{') {
             self.output += ",";
         }
@@ -548,14 +600,35 @@ mod tests {
     use crate::to_string;
 
     #[test]
-    fn test_struct() {
+    fn test_simple_struct() {
         #[derive(Serialize)]
         struct Test {
             id: String,
+            #[serde(rename = "https://example.com/test#hasName")]
+            name: String,
         }
 
         let test = Test {
             id: "id".to_string(),
+            name: "myname".to_string(),
+        };
+        let expected = r#"<id> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <Test> ."#;
+        assert_eq!(to_string(&test).unwrap(), expected);
+    }
+
+    #[test]
+    fn test_struct_with_literal_vec() {
+        #[derive(Serialize)]
+        struct Test {
+            id: String,
+            name: String,
+            keywords: Vec<String>,
+        }
+
+        let test = Test {
+            id: "id".to_string(),
+            name: "name of test".to_string(),
+            keywords: vec!["foo".to_string(), "bar".to_string(), "baz".to_string()],
         };
         let expected = r#"<id> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <Test> ."#;
         assert_eq!(to_string(&test).unwrap(), expected);

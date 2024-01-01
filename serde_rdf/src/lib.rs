@@ -1,6 +1,7 @@
 mod de;
 mod error;
 mod ser;
+mod structure;
 
 #[doc(inline)]
 pub use de::{from_str, Deserializer};
