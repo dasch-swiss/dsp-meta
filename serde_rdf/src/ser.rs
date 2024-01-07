@@ -4,7 +4,7 @@ use std::io;
 
 use rio_api::formatter::TriplesFormatter;
 use rio_api::model::Literal::Typed;
-use rio_api::model::{BlankNode, NamedNode, Subject, Triple};
+use rio_api::model::{BlankNode, NamedNode, Subject as RioSubject, Triple};
 use rio_turtle::TurtleFormatter;
 use serde::ser::{self, Serialize};
 
@@ -22,30 +22,34 @@ use crate::structure::SerializerConfig;
 ///
 /// Example:
 /// ```
-/// 
-/// let _config = vec!(
-///     Subject{
-///         name: "Project",
-///         subject_type: "https://ns.dasch.swiss/repository#Project",
-///         iri: "id",
-///         iri_prefix: "https://ark.dasch.swiss/ark:/72163/1/",
-///         properties: vec!(
-///             Property("name", "<https://ns.dasch.swiss/repository#hasName>"),
-///             Property("description", "<https://ns.dasch.swiss/repository#hasDescription>"),
-///             Property("shortcode", "<https://ns.dasch.swiss/repository#hasShortcode>"),
-///             Property("datasets", "<https://ns.dasch.swiss/repository#hasDataset>"),
-///         )
-///     },
-///     Subject{
-///         name: "Dataset",
-///         subject_type: "https://ns.dasch.swiss/repository#Dataset",
-///         iri: "id",
-///         iri_prefix: "https://ark.dasch.swiss/ark:/72163/1/",
-///         properties: vec!(
-///             Property("title", "<https://ns.dasch.swiss/repository#hasTitle>")
-///         )
-///     }
-/// );
+/// use std::collections::HashMap;
+/// use serde_rdf::{SerializerConfig, Subject, Property};
+/// let _config = SerializerConfig{
+///     base_iri: "".to_string(),
+///     namespaces: Default::default(),
+///     subjects: HashMap::from([
+///         ("Project".to_string(), Subject{
+///             struct_name: "Project".to_string(),
+///             rdf_type: "https://ns.dasch.swiss/repository#Project".to_string(),
+///             identifier_field: "id".to_string(),
+///             identifier_prefix: "https://ark.dasch.swiss/ark:/72163/1/".to_string(),
+///             properties: vec!(
+///                 Property{struct_field: "name".to_string(), rdf_property: "https://ns.dasch.swiss/repository#hasName".to_string()},
+///                 Property{struct_field: "description".to_string(), rdf_property: "https://ns.dasch.swiss/repository#hasDescription".to_string()},
+///                 Property{struct_field: "shortcode".to_string(), rdf_property: "https://ns.dasch.swiss/repository#hasShortcode".to_string()},
+///                 Property{struct_field: "datasets".to_string(), rdf_property: "https://ns.dasch.swiss/repository#hasDataset".to_string()},
+///             ),
+///         }),
+///         ("Dataset".to_string(), Subject{
+///             struct_name: "Dataset".to_string(),
+///             rdf_type: "https://ns.dasch.swiss/repository#Dataset".to_string(),
+///             identifier_field: "id".to_string(),
+///             identifier_prefix: "https://ark.dasch.swiss/ark:/72163/1/".to_string(),
+///             properties: vec!(
+///                 Property{struct_field: "title".to_string(), rdf_property: "https://ns.dasch.swiss/repository#hasTitle".to_string()}
+///             ),
+///         })])
+/// };
 /// ```
 
 #[derive(Debug)]
@@ -64,7 +68,7 @@ struct Loc {
 ///  
 pub struct Serializer<'a, W: io::Write> {
     stack: Vec<Loc>,
-    last_subject: Option<Subject<'a>>,
+    last_subject: Option<RioSubject<'a>>,
     iri: String,
     components: (String, String),
     output: String,

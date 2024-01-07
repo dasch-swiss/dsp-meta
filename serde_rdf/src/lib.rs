@@ -9,3 +9,5 @@ pub use de::{from_str, Deserializer};
 pub use error::{Error, Result};
 #[doc(inline)]
 pub use ser::{to_string, Serializer};
+#[doc(inline)]
+pub use structure::{Property, SerializerConfig, Subject};

@@ -6,20 +6,20 @@ pub enum Term {
 }
 
 pub struct Subject {
-    from_name: String,
-    subject_type: String,
-    identifier: String,
-    identifier_prefix: String,
-    properties: Vec<Property>,
+    pub struct_name: String,
+    pub rdf_type: String,
+    pub identifier_field: String,
+    pub identifier_prefix: String,
+    pub properties: Vec<Property>,
 }
 
 pub struct Property {
-    from_field: String,
-    into_fqdn: String,
+    pub struct_field: String,
+    pub rdf_property: String,
 }
 
 pub struct SerializerConfig {
-    base_iri: String,
-    namespaces: HashMap<String, String>,
-    subjects: Vec<Subject>,
+    pub base_iri: String,
+    pub namespaces: HashMap<String, String>,
+    pub subjects: HashMap<String, Subject>,
 }
