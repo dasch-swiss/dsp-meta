@@ -1255,6 +1255,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "serde-rdf"
+version = "0.1.0"
+dependencies = [
+ "rio_api 0.8.4",
+ "rio_turtle 0.8.4",
+ "rio_xml",
+ "serde",
+]
+
+[[package]]
 name = "serde_derive"
 version = "1.0.193"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1283,16 +1293,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4beec8bce849d58d06238cb50db2e1c417cfeafa4c63f692b15c82b7c80f8335"
 dependencies = [
  "itoa",
- "serde",
-]
-
-[[package]]
-name = "serde_rdf"
-version = "0.1.0"
-dependencies = [
- "rio_api 0.8.4",
- "rio_turtle 0.8.4",
- "rio_xml",
  "serde",
 ]
 

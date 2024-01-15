@@ -3,7 +3,7 @@ members = [
     "dsp-domain",
     "dsp-meta",
     "dsp-meta-cmd",
-    "serde_rdf"
+    "serde-rdf"
 ]
 resolver = "2"
 

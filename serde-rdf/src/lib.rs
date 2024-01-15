@@ -10,4 +10,4 @@ pub use error::{Error, Result};
 #[doc(inline)]
 pub use ser::{to_string, Serializer};
 #[doc(inline)]
-pub use structure::{Property, SerializerConfig, Subject};
+pub use structure::{PropertyConfig, SerializerConfig, SubjectConfig};

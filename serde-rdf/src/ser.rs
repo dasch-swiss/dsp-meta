@@ -4,7 +4,7 @@ use std::io;
 
 use rio_api::formatter::TriplesFormatter;
 use rio_api::model::Literal::Typed;
-use rio_api::model::{BlankNode, NamedNode, Subject as RioSubject, Triple};
+use rio_api::model::{BlankNode, NamedNode as RioNamedNode, Subject as RioSubject, Triple};
 use rio_turtle::TurtleFormatter;
 use serde::ser::{self, Serialize};
 
@@ -23,30 +23,30 @@ use crate::structure::SerializerConfig;
 /// Example:
 /// ```
 /// use std::collections::HashMap;
-/// use serde_rdf::{SerializerConfig, Subject, Property};
+/// use serde_rdf::{SerializerConfig, SubjectConfig, PropertyConfig};
 /// let _config = SerializerConfig{
 ///     base_iri: "".to_string(),
 ///     namespaces: Default::default(),
 ///     subjects: HashMap::from([
-///         ("Project".to_string(), Subject{
+///         ("Project".to_string(), SubjectConfig{
 ///             struct_name: "Project".to_string(),
 ///             rdf_type: "https://ns.dasch.swiss/repository#Project".to_string(),
 ///             identifier_field: "id".to_string(),
 ///             identifier_prefix: "https://ark.dasch.swiss/ark:/72163/1/".to_string(),
 ///             properties: vec!(
-///                 Property{struct_field: "name".to_string(), rdf_property: "https://ns.dasch.swiss/repository#hasName".to_string()},
-///                 Property{struct_field: "description".to_string(), rdf_property: "https://ns.dasch.swiss/repository#hasDescription".to_string()},
-///                 Property{struct_field: "shortcode".to_string(), rdf_property: "https://ns.dasch.swiss/repository#hasShortcode".to_string()},
-///                 Property{struct_field: "datasets".to_string(), rdf_property: "https://ns.dasch.swiss/repository#hasDataset".to_string()},
+///                 PropertyConfig{struct_field: "name".to_string(), rdf_property: "https://ns.dasch.swiss/repository#hasName".to_string()},
+///                 PropertyConfig{struct_field: "description".to_string(), rdf_property: "https://ns.dasch.swiss/repository#hasDescription".to_string()},
+///                 PropertyConfig{struct_field: "shortcode".to_string(), rdf_property: "https://ns.dasch.swiss/repository#hasShortcode".to_string()},
+///                 PropertyConfig{struct_field: "datasets".to_string(), rdf_property: "https://ns.dasch.swiss/repository#hasDataset".to_string()},
 ///             ),
 ///         }),
-///         ("Dataset".to_string(), Subject{
+///         ("Dataset".to_string(), SubjectConfig{
 ///             struct_name: "Dataset".to_string(),
 ///             rdf_type: "https://ns.dasch.swiss/repository#Dataset".to_string(),
 ///             identifier_field: "id".to_string(),
 ///             identifier_prefix: "https://ark.dasch.swiss/ark:/72163/1/".to_string(),
 ///             properties: vec!(
-///                 Property{struct_field: "title".to_string(), rdf_property: "https://ns.dasch.swiss/repository#hasTitle".to_string()}
+///                 PropertyConfig{struct_field: "title".to_string(), rdf_property: "https://ns.dasch.swiss/repository#hasTitle".to_string()}
 ///             ),
 ///         })])
 /// };
@@ -55,7 +55,7 @@ use crate::structure::SerializerConfig;
 #[derive(Debug)]
 struct Loc {
     id: String,
-    clazz: String,
+    type_name: String,
 }
 /// Need a structure inside the serializer to hold the components of triples as they are
 /// gathered:
@@ -68,9 +68,7 @@ struct Loc {
 ///  
 pub struct Serializer<'a, W: io::Write> {
     stack: Vec<Loc>,
-    last_subject: Option<RioSubject<'a>>,
-    iri: String,
-    components: (String, String),
+    last: Option<&'a str>,
     output: String,
     mapping: SerializerConfig,
     formatter: TurtleFormatter<W>,
@@ -90,7 +88,7 @@ where
     ) -> Serializer<'a, W> {
         Serializer {
             stack: Vec::new(),
-            last_subject: None,
+            last: None,
             output: String::new(),
             mapping,
             formatter,
@@ -115,7 +113,7 @@ where
     Ok(unsafe { String::from_utf8_unchecked(bytes) })
 }
 
-impl<W> ser::Serializer for &mut Serializer<W>
+impl<'a, W> ser::Serializer for &mut Serializer<'a, W>
 where
     W: io::Write,
 {
@@ -146,21 +144,18 @@ where
     // of the primitive types of the data model and map it to JSON by appending
     // into the output string.
     fn serialize_bool(self, v: bool) -> Result<()> {
-        let head = &self.last_struct;
+        let head = &self.last;
         match head {
             None => return Err(Error::CannotSerializePrimitive("bool")),
-            Some(field_name) => self.formatter.format(&Triple {
-                subject: BlankNode {
-                    id: field_name.as_str(),
-                }
-                .into(),
-                predicate: NamedNode {
+            Some(named_node) => self.formatter.format(&Triple {
+                subject: RioNamedNode { iri: named_node }.into(),
+                predicate: RioNamedNode {
                     iri: "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
                 }
                 .into(),
                 object: Typed {
                     value: v.to_string().as_str(),
-                    datatype: NamedNode { iri: "xsd:boolean" }.into(),
+                    datatype: RioNamedNode { iri: "xsd:boolean" }.into(),
                 }
                 .into(),
             })?,
@@ -377,7 +372,7 @@ where
     // Structs represent subjects, where the name is the "type".
     fn serialize_struct(self, name: &'static str, len: usize) -> Result<Self::SerializeStruct> {
         println!("serialize_struct");
-        self.last_struct = Some(name.to_string());
+        self.last = Some(name);
         Ok(self)
     }
 
@@ -404,7 +399,7 @@ where
 //
 // This impl is SerializeSeq so these methods are called after `serialize_seq`
 // is called on the Serializer.
-impl<W: io::Write> ser::SerializeSeq for &mut Serializer<W> {
+impl<'a, W: io::Write> ser::SerializeSeq for &mut Serializer<'a, W> {
     // Must match the `Ok` type of the serializer.
     type Ok = ();
     // Must match the `Error` type of the serializer.
@@ -429,7 +424,7 @@ impl<W: io::Write> ser::SerializeSeq for &mut Serializer<W> {
 }
 
 // Same thing but for tuples.
-impl<W: io::Write> ser::SerializeTuple for &mut Serializer<W> {
+impl<'a, W: io::Write> ser::SerializeTuple for &mut Serializer<'a, W> {
     type Ok = ();
     type Error = Error;
 
@@ -450,7 +445,7 @@ impl<W: io::Write> ser::SerializeTuple for &mut Serializer<W> {
 }
 
 // Same thing but for tuple structs.
-impl<W: io::Write> ser::SerializeTupleStruct for &mut Serializer<W> {
+impl<'a, W: io::Write> ser::SerializeTupleStruct for &mut Serializer<'a, W> {
     type Ok = ();
     type Error = Error;
 
@@ -479,7 +474,7 @@ impl<W: io::Write> ser::SerializeTupleStruct for &mut Serializer<W> {
 //
 // So the `end` method in this impl is responsible for closing both the `]` and
 // the `}`.
-impl<W: io::Write> ser::SerializeTupleVariant for &mut Serializer<W> {
+impl<'a, W: io::Write> ser::SerializeTupleVariant for &mut Serializer<'a, W> {
     type Ok = ();
     type Error = Error;
 
@@ -507,7 +502,7 @@ impl<W: io::Write> ser::SerializeTupleVariant for &mut Serializer<W> {
 // `serialize_entry` method allows serializers to optimize for the case where
 // key and value are both available simultaneously. In JSON it doesn't make a
 // difference so the default behavior for `serialize_entry` is fine.
-impl<W: io::Write> ser::SerializeMap for &mut Serializer<W> {
+impl<'a, W: io::Write> ser::SerializeMap for &mut Serializer<'a, W> {
     type Ok = ();
     type Error = Error;
 
@@ -548,7 +543,7 @@ impl<W: io::Write> ser::SerializeMap for &mut Serializer<W> {
 
 // Structs are like maps in which the keys are constrained to be compile-time
 // constant strings.
-impl<W: io::Write> ser::SerializeStruct for &mut Serializer<W> {
+impl<'a, W: io::Write> ser::SerializeStruct for &mut Serializer<'a, W> {
     type Ok = ();
     type Error = Error;
 
@@ -573,7 +568,7 @@ impl<W: io::Write> ser::SerializeStruct for &mut Serializer<W> {
 
 // Similar to `SerializeTupleVariant`, here the `end` method is responsible for
 // closing both of the curly braces opened by `serialize_struct_variant`.
-impl<W: io::Write> ser::SerializeStructVariant for &mut Serializer<W> {
+impl<'a, W: io::Write> ser::SerializeStructVariant for &mut Serializer<'a, W> {
     type Ok = ();
     type Error = Error;
 
