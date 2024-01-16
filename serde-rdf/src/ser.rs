@@ -4,7 +4,7 @@ use std::io;
 
 use rio_api::formatter::TriplesFormatter;
 use rio_api::model::Literal::Typed;
-use rio_api::model::{BlankNode, NamedNode as RioNamedNode, Subject as RioSubject, Triple};
+use rio_api::model::{NamedNode as RioNamedNode, Triple};
 use rio_turtle::TurtleFormatter;
 use serde::ser::{self, Serialize};
 
@@ -594,42 +594,38 @@ impl<'a, W: io::Write> ser::SerializeStructVariant for &mut Serializer<'a, W> {
 
 #[cfg(test)]
 mod tests {
+    use std::collections::HashMap;
+
     use serde::Serialize;
 
-    use crate::to_string;
+    use crate::{to_string, PropertyConfig, SerializerConfig, SubjectConfig};
 
     #[test]
     fn test_simple_struct() {
         #[derive(Serialize)]
         struct Test {
             id: String,
-            #[serde(rename = "https://example.com/test#hasName")]
-            name: String,
         }
 
-        let test = Test {
-            id: "id".to_string(),
-            name: "myname".to_string(),
+        let config = SerializerConfig {
+            base_iri: "".to_string(),
+            namespaces: Default::default(),
+            subjects: HashMap::from([(
+                "Test".to_string(),
+                SubjectConfig {
+                    struct_name: "Test".to_string(),
+                    rdf_type: "https://example.org/ns#Test".to_string(),
+                    identifier_field: "id".to_string(),
+                    identifier_prefix: "https://ark.dasch.swiss/ark:/72163/1/".to_string(),
+                    properties: Vec::new(),
+                },
+            )]),
         };
-        let expected = r#"<id> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <Test> ."#;
-        assert_eq!(to_string(&test).unwrap(), expected);
-    }
-
-    #[test]
-    fn test_struct_with_literal_vec() {
-        #[derive(Serialize)]
-        struct Test {
-            id: String,
-            name: String,
-            keywords: Vec<String>,
-        }
 
         let test = Test {
-            id: "id".to_string(),
-            name: "name of test".to_string(),
-            keywords: vec!["foo".to_string(), "bar".to_string(), "baz".to_string()],
+            id: "my-id".to_string(),
         };
-        let expected = r#"<id> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <Test> ."#;
-        assert_eq!(to_string(&test).unwrap(), expected);
+        let expected = r#"<https://ark.dasch.swiss/ark:/72163/1/my-id> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://example.org/ns#Test> ."#;
+        assert_eq!(to_string(&test, config).unwrap(), expected);
     }
 }

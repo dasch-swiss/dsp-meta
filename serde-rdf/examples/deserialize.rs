@@ -22,7 +22,7 @@ type Iri = String;
 #[derive(Debug, Deserialize)]
 pub struct LangString(pub HashMap<IsoCode, String>);
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Default, Deserialize, Hash, Eq, PartialEq)]
 pub enum IsoCode {
     #[default]
     DE, // German
