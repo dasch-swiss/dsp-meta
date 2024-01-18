@@ -1,9 +1,10 @@
+#![allow(unused_variables, unused_imports, dead_code)]
+
 //! Serialize a Rust data structure into RDF data.
 
 use std::io;
 
 use rio_api::formatter::TriplesFormatter;
-use rio_api::model::Literal::Typed;
 use rio_api::model::{NamedNode as RioNamedNode, Triple};
 use rio_turtle::TurtleFormatter;
 use serde::ser::{self, Serialize};
@@ -52,6 +53,40 @@ use crate::structure::SerializerConfig;
 /// };
 /// ```
 
+#[derive(Eq, PartialEq, Debug, Clone, Hash)]
+pub enum Literal<'a> {
+    /// A [simple literal](https://www.w3.org/TR/rdf11-concepts/#dfn-simple-literal) without datatype or language form.
+    Simple {
+        /// The [lexical form](https://www.w3.org/TR/rdf11-concepts/#dfn-lexical-form).
+        value: String,
+    },
+    /// A [language-tagged string](https://www.w3.org/TR/rdf11-concepts/#dfn-language-tagged-string)
+    LanguageTaggedString {
+        /// The [lexical form](https://www.w3.org/TR/rdf11-concepts/#dfn-lexical-form).
+        value: String,
+        /// The [language tag](https://www.w3.org/TR/rdf11-concepts/#dfn-language-tag).
+        language: String,
+    },
+    /// A literal with an explicit datatype
+    Typed {
+        /// The [lexical form](https://www.w3.org/TR/rdf11-concepts/#dfn-lexical-form).
+        value: String,
+        /// The [datatype IRI](https://www.w3.org/TR/rdf11-concepts/#dfn-datatype-iri).
+        datatype: RioNamedNode<'a>,
+    },
+}
+
+impl Literal<'_> {
+    /// Return the lexical form of the literal.
+    pub fn value(&self) -> &str {
+        match self {
+            Literal::Simple { value } => value,
+            Literal::LanguageTaggedString { value, .. } => value,
+            Literal::Typed { value, .. } => value,
+        }
+    }
+}
+
 #[derive(Debug)]
 struct Loc {
     id: String,
@@ -68,7 +103,9 @@ struct Loc {
 ///  
 pub struct Serializer<'a, W: io::Write> {
     stack: Vec<Loc>,
-    last: Option<&'a str>,
+    last_subject: &'a str,
+    last_key: &'a str,
+    last_literal: Option<Literal<'a>>,
     output: String,
     mapping: SerializerConfig,
     formatter: TurtleFormatter<W>,
@@ -88,7 +125,9 @@ where
     ) -> Serializer<'a, W> {
         Serializer {
             stack: Vec::new(),
-            last: None,
+            last_subject: "",
+            last_key: "",
+            last_literal: None,
             output: String::new(),
             mapping,
             formatter,
@@ -144,21 +183,18 @@ where
     // of the primitive types of the data model and map it to JSON by appending
     // into the output string.
     fn serialize_bool(self, v: bool) -> Result<()> {
-        let head = &self.last;
-        match head {
-            None => return Err(Error::CannotSerializePrimitive("bool")),
-            Some(named_node) => self.formatter.format(&Triple {
-                subject: RioNamedNode { iri: named_node }.into(),
-                predicate: RioNamedNode {
-                    iri: "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-                }
-                .into(),
-                object: Typed {
-                    value: v.to_string().as_str(),
-                    datatype: RioNamedNode { iri: "xsd:boolean" }.into(),
-                }
-                .into(),
-            })?,
+        use crate::ser::Literal::Typed;
+
+        if v {
+            self.last_literal = Some(Typed {
+                value: "true".to_owned(),
+                datatype: RioNamedNode { iri: "xsd:boolean" }.into(),
+            });
+        } else {
+            self.last_literal = Some(Typed {
+                value: "false".to_owned(),
+                datatype: RioNamedNode { iri: "xsd:boolean" }.into(),
+            });
         }
         Ok(())
     }
@@ -222,9 +258,15 @@ where
     // get the idea. For example it would emit invalid JSON if the input string
     // contains a '"' character.
     fn serialize_str(self, v: &str) -> Result<Self::Ok> {
-        self.output += "\"";
-        self.output += v;
-        self.output += "\"";
+        println!("serialize_str");
+
+        use crate::ser::Literal::Typed;
+
+        self.last_literal = Some(Typed {
+            value: v.to_owned(),
+            datatype: RioNamedNode { iri: "xsd:string" }.into(),
+        });
+
         Ok(())
     }
 
@@ -372,7 +414,8 @@ where
     // Structs represent subjects, where the name is the "type".
     fn serialize_struct(self, name: &'static str, len: usize) -> Result<Self::SerializeStruct> {
         println!("serialize_struct");
-        self.last = Some(name);
+        println!("name: {}", name);
+        self.last_subject = name;
         Ok(self)
     }
 
@@ -552,16 +595,46 @@ impl<'a, W: io::Write> ser::SerializeStruct for &mut Serializer<'a, W> {
         T: ?Sized + Serialize,
     {
         println!("serialize_struct -> serialize_field");
-        if !self.output.ends_with('{') {
-            self.output += ",";
+
+        value.serialize(&mut **self)?;
+
+        let subject = self.mapping.subjects.get(self.last_subject).unwrap();
+
+        if subject.identifier_field == key {
+            println!(
+                "serialize_struct -> serialize_field -> identifier_field: {}",
+                key
+            );
         }
-        key.serialize(&mut **self)?;
-        self.output += ":";
-        value.serialize(&mut **self)
+
+        let value = match self.last_literal.take() {
+            Some(v) => v,
+            None => {
+                return Err(Error::Message(format!(
+                    "serialize_struct -> serialize_field -> no value found for key: {}",
+                    key
+                )))
+            }
+        };
+
+        self.formatter.format(&Triple {
+            subject: RioNamedNode {
+                iri: format!("{}{}", &subject.identifier_prefix, value.value()).as_str(),
+            }
+            .into(),
+            predicate: RioNamedNode {
+                iri: "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            },
+            object: RioNamedNode {
+                iri: subject.rdf_type.as_str(),
+            }
+            .into(),
+        })?;
+        Ok(())
     }
 
     fn end(self) -> Result<()> {
-        self.output += "}";
+        println!("serialize_struct -> end");
         Ok(())
     }
 }
@@ -598,7 +671,7 @@ mod tests {
 
     use serde::Serialize;
 
-    use crate::{to_string, PropertyConfig, SerializerConfig, SubjectConfig};
+    use crate::{to_string, SerializerConfig, SubjectConfig};
 
     #[test]
     fn test_simple_struct() {
@@ -625,7 +698,7 @@ mod tests {
         let test = Test {
             id: "my-id".to_string(),
         };
-        let expected = r#"<https://ark.dasch.swiss/ark:/72163/1/my-id> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://example.org/ns#Test> ."#;
+        let expected = "<https://ark.dasch.swiss/ark:/72163/1/my-id> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://example.org/ns#Test> .\n";
         assert_eq!(to_string(&test, config).unwrap(), expected);
     }
 }

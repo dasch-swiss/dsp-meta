@@ -1,3 +1,5 @@
+#![allow(unused_variables, unused_imports, dead_code)]
+
 //! Deserialize RDF data to a Rust data structure.
 
 use serde::de::{self, Visitor};
