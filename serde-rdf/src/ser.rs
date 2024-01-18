@@ -188,12 +188,12 @@ where
         if v {
             self.last_literal = Some(Typed {
                 value: "true".to_owned(),
-                datatype: RioNamedNode { iri: "xsd:boolean" }.into(),
+                datatype: RioNamedNode { iri: "xsd:boolean" },
             });
         } else {
             self.last_literal = Some(Typed {
                 value: "false".to_owned(),
-                datatype: RioNamedNode { iri: "xsd:boolean" }.into(),
+                datatype: RioNamedNode { iri: "xsd:boolean" },
             });
         }
         Ok(())
@@ -264,7 +264,7 @@ where
 
         self.last_literal = Some(Typed {
             value: v.to_owned(),
-            datatype: RioNamedNode { iri: "xsd:string" }.into(),
+            datatype: RioNamedNode { iri: "xsd:string" },
         });
 
         Ok(())

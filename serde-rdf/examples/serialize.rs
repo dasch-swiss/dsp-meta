@@ -1,6 +1,7 @@
 use std::collections::HashMap;
 
 use serde::*;
+use serde_rdf::{SerializerConfig, SubjectConfig};
 
 #[derive(Debug, Serialize)]
 struct Project {
@@ -14,7 +15,6 @@ struct Project {
 #[derive(Debug, Serialize)]
 struct Dataset {
     id: Iri,
-    title: String,
 }
 
 type Iri = String;
@@ -46,18 +46,24 @@ fn main() {
 
     let dataset = Dataset {
         id: "dataset-0".to_string(),
-        title: "Hôtel de Musique Bern".to_string(),
     };
 
-    let project = Project {
-        id: "https://ark.dasch.swiss/ark:/72163/1/081C".to_string(),
-        name: "Hôtel de Musique Bern".to_string(),
-        description: LangString(name),
-        shortcode: "081C".to_string(),
-        datasets: vec![dataset],
+    let config = SerializerConfig {
+        base_iri: "".to_string(),
+        namespaces: Default::default(),
+        subjects: HashMap::from([(
+            "Dataset".to_string(),
+            SubjectConfig {
+                struct_name: "Dataset".to_string(),
+                rdf_type: "https://example.org/ns#Test".to_string(),
+                identifier_field: "id".to_string(),
+                identifier_prefix: "https://ark.dasch.swiss/ark:/72163/1/".to_string(),
+                properties: Vec::new(),
+            },
+        )]),
     };
 
-    let project_ttl = serde_rdf::to_string(&project).unwrap();
+    let project_ttl = serde_rdf::to_string(&dataset, config).unwrap();
 
     dbg!(project_ttl);
 }

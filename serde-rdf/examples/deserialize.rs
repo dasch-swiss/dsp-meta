@@ -1,3 +1,5 @@
+#![allow(unused_variables, unused_imports, dead_code)]
+
 use std::collections::HashMap;
 
 use serde::Deserialize;

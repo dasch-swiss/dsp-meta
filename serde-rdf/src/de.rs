@@ -17,7 +17,7 @@ impl Deserializer {
     /// # Errors
     ///
     /// An [`Error`][Error] is returned when the input is not valid HCL.
-    pub fn from_str(input: &str) -> Result<Self> {
+    pub fn from_raw_str(input: &str) -> Result<Self> {
         // FIXME: parse the input into a list of statements
         // let statements = parser::parse(input)?;
         Ok(Deserializer {
@@ -39,7 +39,7 @@ pub fn from_str<'de, T>(s: &'de str) -> Result<T>
 where
     T: de::Deserialize<'de>,
 {
-    let deserializer = Deserializer::from_str(s)?;
+    let deserializer = Deserializer::from_raw_str(s)?;
     T::deserialize(deserializer)
 }
 
