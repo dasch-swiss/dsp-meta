@@ -1,6 +1,8 @@
 use serde::Serialize;
 
+pub mod access;
 pub mod alternative_name;
+pub mod data_type;
 pub mod description;
 pub mod discipline;
 pub mod identifier;
@@ -54,3 +56,6 @@ pub struct ContactPoint(pub String);
 
 #[derive(Debug, Default, Clone, PartialEq, Serialize)]
 pub struct Title(pub String);
+
+#[derive(Debug, Default, Clone, PartialEq, Serialize)]
+pub struct DatePublished(pub u64);

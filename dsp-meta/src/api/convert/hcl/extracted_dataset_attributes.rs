@@ -1,7 +1,10 @@
 use std::cell::OnceCell;
 
+use dsp_domain::metadata::value::access::Access;
+use dsp_domain::metadata::value::data_type::DataType;
 use dsp_domain::metadata::value::identifier::DatasetId;
-use dsp_domain::metadata::value::{CreatedAt, CreatedBy, Title};
+use dsp_domain::metadata::value::status::Status;
+use dsp_domain::metadata::value::{CreatedAt, CreatedBy, DatePublished, HowToCite, Title};
 use hcl::Expression;
 use tracing::warn;
 
@@ -12,6 +15,11 @@ pub struct ExtractedDatasetAttributes {
     pub created_at: OnceCell<CreatedAt>,
     pub created_by: OnceCell<CreatedBy>,
     pub title: OnceCell<Title>,
+    pub status: OnceCell<Status>,
+    pub access_conditions: OnceCell<Access>,
+    pub how_to_cite: OnceCell<HowToCite>,
+    pub date_published: OnceCell<DatePublished>,
+    pub type_of_data: Vec<DataType>,
 }
 
 impl TryFrom<Vec<&hcl::Attribute>> for ExtractedDatasetAttributes {
@@ -22,6 +30,11 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedDatasetAttributes {
         let created_at: OnceCell<CreatedAt> = OnceCell::new();
         let created_by: OnceCell<CreatedBy> = OnceCell::new();
         let title: OnceCell<Title> = OnceCell::new();
+        let status: OnceCell<Status> = OnceCell::new();
+        let access_conditions: OnceCell<Access> = OnceCell::new();
+        let how_to_cite: OnceCell<HowToCite> = OnceCell::new();
+        let date_published: OnceCell<DatePublished> = OnceCell::new();
+        let mut type_of_data: Vec<DataType> = vec![];
 
         for attribute in attributes {
             match attribute.key() {
@@ -77,6 +90,84 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedDatasetAttributes {
                         )
                     })?;
                 }
+                "status" => {
+                    let extracted_status = match attribute.expr() {
+                        Expression::String(value) => Ok(Status::try_from(value.to_owned())?),
+                        _ => Err(DspMetaError::ParseDataset(
+                            "Parse error: status needs to be a string.".to_string(),
+                        )),
+                    }?;
+                    status.set(extracted_status).map_err(|_| {
+                        DspMetaError::ParseDataset(
+                            "Parse error: status needs to be unique.".to_string(),
+                        )
+                    })?;
+                }
+                "access_conditions" => {
+                    let extracted_access_conditions = match attribute.expr() {
+                        Expression::String(value) => Ok(Access::try_from(value.to_owned())?),
+                        _ => Err(DspMetaError::ParseDataset(
+                            "Parse error: access_conditions needs to be a string.".to_string(),
+                        )),
+                    }?;
+                    access_conditions
+                        .set(extracted_access_conditions)
+                        .map_err(|_| {
+                            DspMetaError::ParseDataset(
+                                "Parse error: access_conditions needs to be unique.".to_string(),
+                            )
+                        })?;
+                }
+                "how_to_cite" => {
+                    let extracted_how_to_cite = match attribute.expr() {
+                        Expression::String(value) => Ok(HowToCite(value.to_owned())),
+                        _ => Err(DspMetaError::ParseDataset(
+                            "Parse error: how_to_cite needs to be a string.".to_string(),
+                        )),
+                    }?;
+                    how_to_cite.set(extracted_how_to_cite).map_err(|_| {
+                        DspMetaError::ParseDataset(
+                            "Parse error: how_to_cite needs to be unique.".to_string(),
+                        )
+                    })?;
+                }
+                "date_published" => {
+                    let extracted_date_published = match attribute.expr() {
+                        Expression::Number(value) => Ok(DatePublished(value.as_u64().unwrap())),
+                        _ => Err(DspMetaError::ParseDataset(
+                            "Parse error: date_published needs to be a string.".to_string(),
+                        )),
+                    }?;
+                    date_published.set(extracted_date_published).map_err(|_| {
+                        DspMetaError::ParseDataset(
+                            "Parse error: date_published needs to be unique.".to_string(),
+                        )
+                    })?;
+                }
+                "type_of_data" => {
+                    type_of_data = match attribute.expr() {
+                        Expression::Array(values) => {
+                            let mut data_types = vec![];
+                            for value in values {
+                                match value {
+                                    Expression::String(value) => {
+                                        data_types.push(DataType::try_from(value.to_owned())?)
+                                    }
+                                    _ => {
+                                        return Err(DspMetaError::ParseDataset(
+                                            "Parse error: type_of_data value needs to be a string."
+                                                .to_string(),
+                                        ))
+                                    }
+                                }
+                            }
+                            Ok(data_types)
+                        }
+                        _ => Err(DspMetaError::ParseDataset(
+                            "Parse error: type_of_data needs to be a list of strings.".to_string(),
+                        )),
+                    }?;
+                }
                 _ => {
                     warn!("Parse error: unknown attribute '{}'.", attribute.key());
                 }
@@ -87,6 +178,11 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedDatasetAttributes {
             created_at,
             created_by,
             title,
+            status,
+            access_conditions,
+            how_to_cite,
+            date_published,
+            type_of_data,
         })
     }
 }
