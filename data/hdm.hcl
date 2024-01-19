@@ -1,6 +1,7 @@
 version = 1
 
 project {
+  id          = "http://ns.dasch.swiss/repository#dsp-081C-project"
   created_at  = 1630601274523025000
   created_by  = "dsp-metadata-gui"
   shortcode   = "081C"
@@ -101,9 +102,11 @@ project {
       en = "1766-1905"
       fr = "1766-1905"
   }
+  datasets = ["http://ns.dasch.swiss/repository#dsp-081C-dataset-000"]
 }
 
 dataset {
+  id                = "http://ns.dasch.swiss/repository#dsp-081C-dataset-000"
   created_at        = 1630601285266958000
   created_by        = "dsp-metadata-gui"
   title             = "Hôtel de Musique Bern"

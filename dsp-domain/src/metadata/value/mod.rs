@@ -3,6 +3,7 @@ use serde::Serialize;
 pub mod alternative_name;
 pub mod description;
 pub mod discipline;
+pub mod identifier;
 pub mod iso_code;
 pub mod keyword;
 pub mod lang_text_data;

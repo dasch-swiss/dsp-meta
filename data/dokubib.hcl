@@ -1,6 +1,7 @@
 version = 1
 
 project {
+  id          = "http://ns.dasch.swiss/repository#dsp-0804-project"
   created_at  = 1630601300976368000
   created_by  = "dsp-metadata-gui"
   shortcode   = "0804"
@@ -72,10 +73,14 @@ project {
 
   // reference to person or organization (0-1)
   contact_point = "gemeinde_st_moritz"
+
+  // reference to datasets (1-n)
+  datasets = ["http://ns.dasch.swiss/repository#dsp-0804-dataset-000"]
 }
 
 dataset {
-  created_at        = "1630601300976368000"
+  id                = "http://ns.dasch.swiss/repository#dsp-0804-dataset-000"
+  created_at        = 1630601300976368000
   created_by        = "dsp-metadata-gui"
   access_conditions = Restricted
   how_to_cite       = "Dokumentationsbibliothek St. Moritz"

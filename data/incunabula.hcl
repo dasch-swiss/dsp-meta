@@ -1,6 +1,7 @@
 version = 1
 
 project {
+  id         = "http://ns.dasch.swiss/repository#dsp-0803-project"
   created_at = 1637624150548721000
   created_by = "dsp-metadata-gui"
   shortcode  = "0803"
@@ -79,10 +80,12 @@ project {
   publication {
     text = "Schweizer Tobias, Development of a Topographical Transcription Method, in Clivaz Claire u. a. (ed.), ebook, auf der Plattform http://www.ppur.info/lire-demain.html, Lausanne, 671-680."
   }
+  datasets = ["http://ns.dasch.swiss/repository#dsp-0803-dataset-000"]
 }
 
 dataset {
-  created_at = "1637624150907146000"
+  id         = "http://ns.dasch.swiss/repository#dsp-0803-dataset-000"
+  created_at = 1637624150907146000
   created_by = "dsp-metadata-gui"
   title      = "Die Bilderfolgen der Basler Frühdrucke: Spätmittelalterliche Didaxe als Bild-Text-Lektüre"
   status     = Finished

@@ -20,7 +20,7 @@ fix:
 
 # Run all rust builds
 build:
-    cargo build
+    cargo build --all-targets
 
 # Build web-frontend
 build-frontend:
@@ -28,7 +28,7 @@ build-frontend:
 
 # Run all tests
 test:
-    cargo test
+    cargo test --all-targets
 
 # Run dsp-meta-server
 serve:

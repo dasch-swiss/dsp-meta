@@ -28,6 +28,10 @@ impl<'a> TryInto<Project> for HclBlock<'a> {
 
         let extracted_attributes = ExtractedProjectAttributes::try_from(attributes)?;
 
+        let id = extracted_attributes.id.ok_or_else(|| {
+            DspMetaError::ParseProject("Parse error: project needs to have an id.".to_string())
+        })?;
+
         let created_at = extracted_attributes.created_at.ok_or_else(|| {
             DspMetaError::ParseProject(
                 "Parse error: project needs to have a created_at value.".to_string(),
@@ -76,6 +80,8 @@ impl<'a> TryInto<Project> for HclBlock<'a> {
 
         let contact_point = extracted_attributes.contact_point;
 
+        let datasets = extracted_attributes.datasets;
+
         // extract the project blocks
         // alternative_names, description, url, keywords, disciplines, publications)
 
@@ -94,6 +100,7 @@ impl<'a> TryInto<Project> for HclBlock<'a> {
         let publications = vec![];
 
         let project = Project {
+            id,
             created_at,
             created_by,
             shortcode,
@@ -110,6 +117,7 @@ impl<'a> TryInto<Project> for HclBlock<'a> {
             keywords,
             disciplines,
             publications,
+            datasets,
         };
 
         Ok(project)
@@ -118,6 +126,7 @@ impl<'a> TryInto<Project> for HclBlock<'a> {
 
 #[cfg(test)]
 mod tests {
+    use dsp_domain::metadata::value::identifier::{DatasetId, ProjectId};
     use dsp_domain::metadata::value::{
         ContactPoint, CreatedAt, CreatedBy, EndDate, HowToCite, Name, Shortcode, StartDate,
         TeaserText,
@@ -132,6 +141,7 @@ mod tests {
     fn test_convert_project_block() {
         let input_project_block = block!(
             project {
+                id = "p1"
                 created_at = 1630601274523025000u64 // FIXME: is there a more readable way to write an i64?
                 created_by  = "dsp-metadata-gui"
                 shortcode = "0803"
@@ -150,9 +160,11 @@ mod tests {
                 end_date    = "2012-03-31"
                 status      = "Ongoing"
                 contact_point = "project_organization"
+                datasets = ["ds1", "ds2"]
             }
         );
         let project: Project = HclBlock(&input_project_block).try_into().unwrap();
+        assert_eq!(project.id, ProjectId(String::from("p1")));
         assert_eq!(project.created_at, CreatedAt(1630601274523025000));
         assert_eq!(
             project.created_by,
@@ -180,6 +192,10 @@ mod tests {
         assert_eq!(
             project.contact_point,
             Some(ContactPoint(String::from("project_organization")))
+        );
+        assert_eq!(
+            project.datasets,
+            vec![DatasetId("ds1".to_string()), DatasetId("ds2".to_string())]
         );
     }
 }

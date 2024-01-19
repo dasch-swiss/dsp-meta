@@ -1,3 +1,4 @@
+use dsp_domain::metadata::value::identifier::{DatasetId, ProjectId};
 use dsp_domain::metadata::value::status::Status;
 use dsp_domain::metadata::value::{
     ContactPoint, CreatedAt, CreatedBy, EndDate, HowToCite, Name, Shortcode, StartDate, TeaserText,
@@ -8,6 +9,7 @@ use tracing::warn;
 use crate::error::DspMetaError;
 
 pub struct ExtractedProjectAttributes {
+    pub id: Option<ProjectId>,
     pub created_at: Option<CreatedAt>,
     pub created_by: Option<CreatedBy>,
     pub shortcode: Option<Shortcode>,
@@ -18,12 +20,14 @@ pub struct ExtractedProjectAttributes {
     pub end_date: Option<EndDate>,
     pub status: Option<Status>,
     pub contact_point: Option<ContactPoint>,
+    pub datasets: Vec<DatasetId>,
 }
 
 impl TryFrom<Vec<&hcl::Attribute>> for ExtractedProjectAttributes {
     type Error = DspMetaError;
 
     fn try_from(attributes: Vec<&hcl::Attribute>) -> Result<Self, Self::Error> {
+        let mut id: Option<ProjectId> = None;
         let mut created_at: Option<CreatedAt> = None;
         let mut created_by: Option<CreatedBy> = None;
         let mut shortcode: Option<Shortcode> = None;
@@ -34,10 +38,19 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedProjectAttributes {
         let mut end_date: Option<EndDate> = None;
         let mut status: Option<Status> = None;
         let mut contact_point: Option<ContactPoint> = None;
+        let mut datasets: Vec<DatasetId> = vec![];
 
         // FIXME: throw error on duplicate attributes
         for attribute in attributes {
             match attribute.key() {
+                "id" => {
+                    id = match attribute.expr() {
+                        Expression::String(value) => Ok(Some(ProjectId(value.to_owned()))),
+                        _ => Err(DspMetaError::ParseProject(
+                            "Parse error: id needs to be a string.".to_string(),
+                        )),
+                    }?;
+                }
                 "created_at" => {
                     created_at = match attribute.expr() {
                         Expression::Number(value) => Ok(Some(CreatedAt(value.as_u64().unwrap()))), /* FIXME: get rid of unwrap */
@@ -118,12 +131,36 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedProjectAttributes {
                         )),
                     }?;
                 }
+                "datasets" => {
+                    datasets =
+                        match attribute.expr() {
+                            Expression::Array(values) => {
+                                let mut dataset_ids = vec![];
+                                for value in values {
+                                    match value {
+                                        Expression::String(value) => {
+                                            dataset_ids.push(DatasetId(value.to_owned()))
+                                        }
+                                        _ => return Err(DspMetaError::ParseProject(
+                                            "Parse error: datasets needs to be a list of strings."
+                                                .to_string(),
+                                        )),
+                                    }
+                                }
+                                Ok(dataset_ids)
+                            }
+                            _ => Err(DspMetaError::ParseProject(
+                                "Parse error: datasets needs to be a list of strings.".to_string(),
+                            )),
+                        }?;
+                }
                 _ => {
                     warn!("Parse error: unknown attribute '{}'.", attribute.key());
                 }
             }
         }
         Ok(ExtractedProjectAttributes {
+            id,
             created_at,
             created_by,
             shortcode,
@@ -134,6 +171,7 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedProjectAttributes {
             end_date,
             status,
             contact_point,
+            datasets,
         })
     }
 }
