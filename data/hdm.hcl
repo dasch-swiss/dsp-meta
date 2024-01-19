@@ -1,6 +1,7 @@
 version = 1
 
 project {
+  id          = "http://ns.dasch.swiss/repository#dsp-081C-project"
   created_at  = 1630601274523025000
   created_by  = "dsp-metadata-gui"
   shortcode   = "081C"
@@ -101,18 +102,19 @@ project {
       en = "1766-1905"
       fr = "1766-1905"
   }
+  datasets = ["http://ns.dasch.swiss/repository#dsp-081C-dataset-000"]
 }
 
 dataset {
+  id                = "http://ns.dasch.swiss/repository#dsp-081C-dataset-000"
   created_at        = 1630601285266958000
   created_by        = "dsp-metadata-gui"
   title             = "Hôtel de Musique Bern"
-  status            = Finished
-  access_conditions = Open
-  date_published    = "2015-04-01"
   how_to_cite       = "HdM-Bern"
-
-  type_of_data = [Text]
+  status            = "Finished"
+  access_conditions = "Open"
+  date_published    = 1630601285266958000
+  type_of_data      = ["Text"]
 
   abstract {
     en = "The database documents the events that took place in the Hôtel de Musique in Bern between 1766 and 1905. The repertoire was constituted by different kinds of spectacles like theatre plays, operas, ballets, concerts, dance parties, acrobatic performances, conferences or magicians. The list reconstructs the lifely and colourful theatre culture of Bern in the 19th Century."
@@ -124,23 +126,27 @@ dataset {
     fr = "Allemand"
   }
 
-  license "creative_commons" "https://creativecommons.org/licenses/by-nc/4.0" {
+  license {
+    type = "creative_commons"
+    href = "https://creativecommons.org/licenses/by-nc/4.0"
     date = "2021-09-02"
     text = "CC BY-NC 4.0"
   }
 
   // reference to person or organization
-  attribution "musik_unibe" {
+  attribution {
+    agent = "http://ns.dasch.swiss/repository#dsp-081C-organization-000" // reference to person or organization
     roles = [Author]
   }
 }
 
 grant {
   name   = "Ordinary Budget"
-  funder = "musik_unibe" // reference to organization
+  funder = "http://ns.dasch.swiss/repository#dsp-081C-organization-000" // reference to organization
 }
 
-organization "musik_unibe" {
+organization {
+  id         = "http://ns.dasch.swiss/repository#dsp-081C-organization-000"
   created_at = 1630601285796580000
   created_by = "dsp-metadata-gui"
   name       = "Institut für Musikwissenschaft der Universität Bern"

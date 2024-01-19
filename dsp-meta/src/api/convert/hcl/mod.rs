@@ -1,5 +1,6 @@
 mod dataset;
 mod dsp_meta_error;
+mod extracted_dataset_attributes;
 mod extracted_project_attributes;
 mod extracted_project_blocks;
 pub mod hcl_attribute;

@@ -3,6 +3,7 @@ use serde::Serialize;
 use crate::metadata::value::alternative_name::AlternativeName;
 use crate::metadata::value::description::Description;
 use crate::metadata::value::discipline::Discipline;
+use crate::metadata::value::identifier::{DatasetId, ProjectId};
 use crate::metadata::value::keyword::Keyword;
 use crate::metadata::value::publication::Publication;
 use crate::metadata::value::status::Status;
@@ -13,6 +14,7 @@ use crate::metadata::value::{
 
 #[derive(Debug, Default, Clone, PartialEq, Serialize)]
 pub struct Project {
+    pub id: ProjectId,
     pub created_at: CreatedAt,
     pub created_by: CreatedBy,
     pub shortcode: Shortcode,
@@ -29,4 +31,5 @@ pub struct Project {
     pub keywords: Vec<Keyword>,
     pub disciplines: Vec<Discipline>,
     pub publications: Vec<Publication>,
+    pub datasets: Vec<DatasetId>,
 }

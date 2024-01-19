@@ -14,14 +14,14 @@ impl<'a> TryInto<ProjectMetadata> for HclBody<'a> {
     /// Converts an `hcl::Body` into `ProjectMetadata` by consuming the
     /// input. This operation can fail.
     fn try_into(self) -> Result<ProjectMetadata, Self::Error> {
-        let mut version: Option<Version> = None;
-        let mut project: Option<Project> = None;
-        let mut datasets: Vec<Dataset> = vec![];
+        let mut maybe_version: Option<Version> = None;
+        let mut maybe_project: Option<Project> = None;
+        let mut maybe_datasets: Vec<Dataset> = vec![];
 
         let attributes: Vec<&hcl::Attribute> = self.0.attributes().collect();
         for attribute in attributes {
             match attribute.key() {
-                "version" => version = Some(HclAttribute(attribute).try_into()?),
+                "version" => maybe_version = Some(HclAttribute(attribute).try_into()?),
                 _ => {
                     continue;
                 }
@@ -32,29 +32,54 @@ impl<'a> TryInto<ProjectMetadata> for HclBody<'a> {
         for block in blocks {
             match block.identifier() {
                 "project" => {
-                    if project.is_some() {
+                    if maybe_project.is_some() {
                         return Err(DspMetaError::ParseProject(
                             "Only one project block allowed.".to_string(),
                         ));
                     } else {
-                        project = Some(HclBlock(block).try_into()?)
+                        maybe_project = Some(HclBlock(block).try_into()?)
                     }
                 }
-                "dataset" => datasets.push(HclBlock(block).try_into()?),
+                "dataset" => maybe_datasets.push(HclBlock(block).try_into()?),
                 _ => {
                     continue;
                 }
             }
         }
 
+        // Validate that the version is provided
+        let version = maybe_version.ok_or_else(|| {
+            DspMetaError::ParseVersion("Version attribute is not provided.".to_string())
+        })?;
+
+        // Validate that the project is provided
+        let project = maybe_project.ok_or_else(|| {
+            DspMetaError::ParseProject("Project block is not provided.".to_string())
+        })?;
+
+        // Validate that at least one dataset is provided
+        let datasets = if !maybe_datasets.is_empty() {
+            maybe_datasets
+        } else {
+            return Err(DspMetaError::ParseProject(
+                "At least one dataset block needs to be provided.".to_string(),
+            ));
+        };
+
+        // Validate that all referenced datasets exist
+        for dataset in &project.datasets {
+            if !datasets.iter().any(|d| d.id == *dataset) {
+                return Err(DspMetaError::ParseProject(format!(
+                    "Dataset with id '{:?}' referenced in project block does not exist.",
+                    dataset
+                )));
+            }
+        }
+
         let metadata = ProjectMetadata {
-            version: version.ok_or_else(|| {
-                DspMetaError::ParseVersion("Version attribute is not provided.".to_string())
-            })?,
-            project: project.ok_or_else(|| {
-                DspMetaError::ParseProject("Project block is not provided.".to_string())
-            })?,
-            datasets: Vec::new(),
+            version,
+            project,
+            datasets,
             grants: Vec::new(),
             organizations: Vec::new(),
             persons: Vec::new(),

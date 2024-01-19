@@ -1,6 +1,7 @@
 version = 1
 
 project {
+  id          = "http://ns.dasch.swiss/repository#dsp-0804-project"
   created_at  = 1630601300976368000
   created_by  = "dsp-metadata-gui"
   shortcode   = "0804"
@@ -72,16 +73,21 @@ project {
 
   // reference to person or organization (0-1)
   contact_point = "gemeinde_st_moritz"
+
+  // reference to datasets (1-n)
+  datasets = ["http://ns.dasch.swiss/repository#dsp-0804-dataset-000"]
 }
 
 dataset {
-  created_at        = "1630601300976368000"
+  id                = "http://ns.dasch.swiss/repository#dsp-0804-dataset-000"
+  created_at        = 1630601300976368000
   created_by        = "dsp-metadata-gui"
-  access_conditions = Restricted
-  how_to_cite       = "Dokumentationsbibliothek St. Moritz"
-  status            = Ongoing
   title             = "Dokumentationsbibliothek St. Moritz Bilddatenbank"
-  type_of_data      = [Image, Text]
+  how_to_cite       = "Dokumentationsbibliothek St. Moritz"
+  status            = "Ongoing"
+  access_conditions = "Restricted"
+  date_published    = 1630601300976368000
+  type_of_data      = ["Image", "Text"]
 
   abstract {
     en = "Bilddatenbank makes accessible the collection of historic photographs and other graphical representation of St. Moritz Dokumentationsbibliothek"
@@ -97,7 +103,8 @@ dataset {
     fr = "Allemand"
   }
 
-  attribution "biblio_stmoritz" {
+  attribution {
+    agent = "http://ns.dasch.swiss/repository#dsp-0804-organization-001"
     roles = [
       Creator,
       Publisher
@@ -111,10 +118,11 @@ dmp {
 
 grant {
   name   = "Ordinary Budget"
-  funder = "gemeinde_st_moritz" // reference to person or organization
+  funder = "http://ns.dasch.swiss/repository#dsp-0804-organization-000" // reference to person or organization
 }
 
-organization "gemeinde_st_moritz" {
+organization {
+  id         = "http://ns.dasch.swiss/repository#dsp-0804-organization-000"
   created_at = "1630601301506212000"
   created_by = "dsp-metadata-gui"
   name       = "Gemeinde St. Moritz"
@@ -128,6 +136,7 @@ organization "gemeinde_st_moritz" {
 }
 
 organization "biblio_stmoritz" {
+  id         = "http://ns.dasch.swiss/repository#dsp-0804-organization-001"
   created_at = "1630601301561696000"
   created_by = "dsp-metadata-gui"
   email      = "doku@biblio-stmoritz.ch"

@@ -3,21 +3,23 @@ use serde::Serialize;
 use crate::error::DspDomainError;
 
 #[derive(Clone, Debug, Default, PartialEq, Serialize)]
-pub enum Status {
+pub enum Access {
     #[default]
-    Ongoing,
-    Finished,
+    Open,
+    Restricted,
+    Closed,
 }
 
-impl TryFrom<String> for Status {
+impl TryFrom<String> for Access {
     type Error = DspDomainError;
 
     fn try_from(value: String) -> Result<Self, Self::Error> {
         match value.as_str() {
-            "Ongoing" => Ok(Status::Ongoing),
-            "Finished" => Ok(Status::Finished),
+            "Open" => Ok(Access::Open),
+            "Restricted" => Ok(Access::Restricted),
+            "Closed" => Ok(Access::Closed),
             _ => Err(DspDomainError::CreateValueObject(format!(
-                "Creating Status failed because provided value '{}' is not allowed.",
+                "Creating Access failed because provided value '{}' is not allowed.",
                 value
             ))),
         }

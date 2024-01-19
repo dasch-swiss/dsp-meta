@@ -1,12 +1,8 @@
-use serde::{Deserialize, Serialize};
+use serde::Serialize;
 
-#[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
+use crate::metadata::value::identifier::OrganizationId;
+
+#[derive(Debug, Clone, PartialEq, Serialize)]
 pub struct Organization {
-    id: String,
-}
-
-impl Organization {
-    pub fn new(id: &str) -> Self {
-        Self { id: id.to_string() }
-    }
+    pub id: OrganizationId,
 }
