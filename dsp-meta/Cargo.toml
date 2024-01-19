@@ -37,3 +37,7 @@ thiserror = "1.0.56"
 
 [dev-dependencies]
 assert_cmd = "2.0.12"
+
+[[test]]
+name = "integration_test"
+test = true

@@ -1,3 +1,3 @@
 pub(crate) mod axum;
-pub(crate) mod hcl;
+pub mod hcl;
 pub(crate) mod rdf;

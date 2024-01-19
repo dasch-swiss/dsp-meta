@@ -1,6 +1,7 @@
 version = 1
 
 project {
+  id         = "http://ns.dasch.swiss/repository#dsp-0803-project"
   created_at = 1637624150548721000
   created_by = "dsp-metadata-gui"
   shortcode  = "0803"
@@ -79,13 +80,19 @@ project {
   publication {
     text = "Schweizer Tobias, Development of a Topographical Transcription Method, in Clivaz Claire u. a. (ed.), ebook, auf der Plattform http://www.ppur.info/lire-demain.html, Lausanne, 671-680."
   }
+  datasets = ["http://ns.dasch.swiss/repository#dsp-0803-dataset-000"]
 }
 
 dataset {
-  created_at = "1637624150907146000"
-  created_by = "dsp-metadata-gui"
-  title      = "Die Bilderfolgen der Basler Frühdrucke: Spätmittelalterliche Didaxe als Bild-Text-Lektüre"
-  status     = Finished
+  id                = "http://ns.dasch.swiss/repository#dsp-0803-dataset-000"
+  created_at        = 1637624150907146000
+  created_by        = "dsp-metadata-gui"
+  title             = "Die Bilderfolgen der Basler Frühdrucke: Spätmittelalterliche Didaxe als Bild-Text-Lektüre"
+  how_to_cite       = "dokubib"
+  status            = "Finished"
+  access_conditions = "Open"
+  date_published    = 1630601285266958000
+  type_of_data      = ["Text", "Image"]
 
   abstract {
     en = "The interdisciplinary research project \"The image sequences of Basel's early prints: Late Medieval didactic didactics as an image-text reading\" combines a comprehensive art scholarly analysis of the links between images and texts in the illustrated incunabula in Basel with the digitization of the holdings of the University Library and the development of an electronic edition in the form of a new kind of Web-0.2 application. The project is carried out by Kunsthistorische Seminar of the University of Basel (Prof. Dr. B. Schellewald) and Digital Humanities Lab of the University of Basel (Prof. Dr. L. Rosenthaler).  The core of the digital edition consists of around twenty richly illustrated early prints from four different Basel officers. Many of them appeared in several editions before 1500, some of them in German and Latin at almost the same time. It is an extraordinarily varied production; in addition to the Mirror of Salvation, there is a novel, the Melusine, the travelogues of Jean de Mandeville, some prayer and edification books, theological writings, Lent sermons, the lives of Saints Fridolin and Meinrad, the famous ship of fools and the knight of Thurn.  The Internet publication makes the digitized corpus of these early prints usable for the scientific edition as well as for the exploration of images and texts through the possibilities of non-linear linking and commenting on the images and texts. Existing and emerging online editions can also be linked to it, which optimises the use of databases from other institutions with regard to our corpus."
@@ -114,6 +121,7 @@ dataset {
 }
 
 person "barbara_schellewald" {
+  id = "http://ns.dasch.swiss/repository#dsp-0803-person-000"
   created_at = "1637624150958979000"
   created_by = "dsp-metadata-gui"
 
@@ -128,6 +136,7 @@ person "barbara_schellewald" {
 }
 
 person "hannes_hug" {
+  id = "http://ns.dasch.swiss/repository#dsp-0803-person-001"
   created_at = "1637624150959055000"
   created_by = "dsp-metadata-gui"
 
@@ -142,6 +151,7 @@ person "hannes_hug" {
 }
 
 person "lukas_rosenthaler" {
+  id = "http://ns.dasch.swiss/repository#dsp-0803-person-002"
   created_at = "1637624150959124000"
   created_by = "dsp-metadata-gui"
 
@@ -156,6 +166,7 @@ person "lukas_rosenthaler" {
 }
 
 person "lothar_schmitt" {
+  id = "http://ns.dasch.swiss/repository#dsp-0803-person-003"
   created_at = "1637624150959191000"
   created_by = "dsp-metadata-gui"
 
@@ -171,6 +182,7 @@ person "lothar_schmitt" {
 }
 
 person "katrin_graf_lamei" {
+  id = "http://ns.dasch.swiss/repository#dsp-0803-person-004"
   created_at = "1637624150959244000"
   created_by = "dsp-metadata-gui"
 
@@ -189,18 +201,22 @@ person "katrin_graf_lamei" {
 }
 
 organization "kunst_seminar_unibas" {
+  id = "http://ns.dasch.swiss/repository#dsp-0803-organization-000"
   name = "Kunsthistorisches Seminar Universität Basel"
 }
 
 organization "ub_unibas" {
+  id = "http://ns.dasch.swiss/repository#dsp-0803-organization-001"
   name = "Universität Basel Universitätsbibliothek Sekretariat"
 }
 
 organization "dhlab_basel" {
+  id = "http://ns.dasch.swiss/repository#dsp-0803-organization-002"
   name = "Digital Humanities Lab Philosophisch-Historische Fakultät Universität Basel"
 }
 
 organization "snf" {
+  id = "http://ns.dasch.swiss/repository#dsp-0803-organization-003"
   name = "Swiss National Science Foundation (SNSF)"
 }
 

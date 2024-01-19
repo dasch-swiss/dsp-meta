@@ -1,12 +1,8 @@
-use serde::{Deserialize, Serialize};
+use serde::Serialize;
 
-#[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
+use crate::metadata::value::identifier::GrantId;
+
+#[derive(Debug, Clone, PartialEq, Serialize)]
 pub struct Grant {
-    id: String,
-}
-
-impl Grant {
-    pub fn new(id: &str) -> Self {
-        Self { id: id.to_string() }
-    }
+    pub id: GrantId,
 }
