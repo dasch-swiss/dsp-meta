@@ -11,15 +11,16 @@ use tracing::warn;
 use crate::error::DspMetaError;
 
 pub struct ExtractedDatasetAttributes {
-    pub id: OnceCell<DatasetId>,
-    pub created_at: OnceCell<CreatedAt>,
-    pub created_by: OnceCell<CreatedBy>,
-    pub title: OnceCell<Title>,
-    pub status: OnceCell<Status>,
-    pub access_conditions: OnceCell<Access>,
-    pub how_to_cite: OnceCell<HowToCite>,
-    pub date_published: OnceCell<DatePublished>,
-    pub type_of_data: Vec<DataType>,
+    pub id: OnceCell<DatasetId>,                 // (1)
+    pub created_at: OnceCell<CreatedAt>,         // (1)
+    pub created_by: OnceCell<CreatedBy>,         // (1)
+    pub title: OnceCell<Title>,                  // (1)
+    pub status: OnceCell<Status>,                // (1)
+    pub access_conditions: OnceCell<Access>,     // (1)
+    pub how_to_cite: OnceCell<HowToCite>,        // (1)
+    pub date_published: OnceCell<DatePublished>, // (0-1)
+    pub type_of_data: Vec<DataType>,             // (1-n)
+    pub alternative_titles: Vec<Title>,          // (0-n)
 }
 
 impl TryFrom<Vec<&hcl::Attribute>> for ExtractedDatasetAttributes {
@@ -35,6 +36,7 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedDatasetAttributes {
         let how_to_cite: OnceCell<HowToCite> = OnceCell::new();
         let date_published: OnceCell<DatePublished> = OnceCell::new();
         let mut type_of_data: Vec<DataType> = vec![];
+        let mut alternative_titles: Vec<Title> = vec![];
 
         for attribute in attributes {
             match attribute.key() {
@@ -168,6 +170,31 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedDatasetAttributes {
                         )),
                     }?;
                 }
+                "alternative_titles" => {
+                    alternative_titles = match attribute.expr() {
+                        Expression::Array(values) => {
+                            let mut titles = vec![];
+                            for value in values {
+                                match value {
+                                    Expression::String(value) => {
+                                        titles.push(Title(value.to_owned()))
+                                    }
+                                    _ => {
+                                        return Err(DspMetaError::ParseDataset(
+                                            "Parse error: alternative_titles value needs to be a string."
+                                                .to_string(),
+                                        ))
+                                    }
+                                }
+                            }
+                            Ok(titles)
+                        }
+                        _ => Err(DspMetaError::ParseDataset(
+                            "Parse error: alternative_titles needs to be a list of strings."
+                                .to_string(),
+                        )),
+                    }?;
+                }
                 _ => {
                     warn!("Parse error: unknown attribute '{}'.", attribute.key());
                 }
@@ -183,6 +210,7 @@ impl TryFrom<Vec<&hcl::Attribute>> for ExtractedDatasetAttributes {
             how_to_cite,
             date_published,
             type_of_data,
+            alternative_titles,
         })
     }
 }

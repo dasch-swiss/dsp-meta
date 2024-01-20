@@ -1,7 +1,9 @@
 use serde::Serialize;
 
+pub mod r#abstract;
 pub mod access;
 pub mod alternative_name;
+pub mod attribution;
 pub mod data_type;
 pub mod description;
 pub mod discipline;
@@ -9,6 +11,8 @@ pub mod identifier;
 pub mod iso_code;
 pub mod keyword;
 pub mod lang_text_data;
+pub mod language;
+pub mod license;
 pub mod publication;
 pub mod ref_data;
 pub mod simple_text_data;

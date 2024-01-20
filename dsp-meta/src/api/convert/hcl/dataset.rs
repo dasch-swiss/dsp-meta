@@ -1,6 +1,12 @@
 use dsp_domain::metadata::entity::dataset::Dataset;
+use dsp_domain::metadata::value::attribution::Attribution;
+use dsp_domain::metadata::value::language::Language;
+use dsp_domain::metadata::value::license::License;
+use dsp_domain::metadata::value::r#abstract::Abstract;
+use dsp_domain::metadata::value::url::Url;
 
 use crate::api::convert::hcl::extracted_dataset_attributes::ExtractedDatasetAttributes;
+use crate::api::convert::hcl::extracted_dataset_blocks::ExtractedDatasetBlocks;
 use crate::api::convert::hcl::hcl_block::HclBlock;
 use crate::error::DspMetaError;
 
@@ -20,7 +26,7 @@ impl<'a> TryInto<Dataset> for HclBlock<'a> {
 
         // extract the dataset attributes
         // id (1), created_at (1), created_by (1), title (1), status (1), access_conditions (1),
-        // how_to_cite (1), type_of_data (1-n), date_published (0-1), ,
+        // how_to_cite (1),  date_published (0-1), type_of_data (1-n),  alternative_titles (0-n),
 
         let attributes: Vec<&hcl::Attribute> = self.0.body.attributes().collect();
 
@@ -73,9 +79,14 @@ impl<'a> TryInto<Dataset> for HclBlock<'a> {
             ))
         }?;
 
+        let alternative_titles = extracted_attributes.alternative_titles;
+
         // extract the dataset blocks
         // abstracts (1-n), licenses (1-n), languages (1-n), attributions (1-n),
-        // alternative_titles (0-n), urls (0-n),
+        // urls (0-n),
+
+        let blocks: Vec<&hcl::Block> = self.0.body.blocks().collect();
+        let extracted_blocks = ExtractedDatasetBlocks::try_from(blocks)?;
 
         Ok(Dataset {
             id,
@@ -87,6 +98,12 @@ impl<'a> TryInto<Dataset> for HclBlock<'a> {
             how_to_cite,
             date_published,
             type_of_data,
+            alternative_titles,
+            abstracts: vec![Abstract::default()],
+            licenses: vec![License::default()],
+            languages: vec![Language::default()],
+            attributions: vec![Attribution::default()],
+            urls: vec![Url::default()],
         })
     }
 }
