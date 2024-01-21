@@ -116,7 +116,9 @@ impl<T> OntologyBuilder<T, NoOntologyInfo> {
 impl<T, S> OntologyBuilder<T, S> {
     fn add_class(mut self, clazz: OntologyClass) -> Result<OntologyBuilder<T, S>, DspDomainError> {
         if self.classes.contains_key(&clazz.id) {
-            return Err(DspDomainError::CreateDomainObject);
+            return Err(DspDomainError::CreateDomainObject(
+                "The ontology already contains a class with the same id.".to_string(),
+            ));
         }
         let id = clazz.id.clone();
         self.classes.insert(id, clazz);

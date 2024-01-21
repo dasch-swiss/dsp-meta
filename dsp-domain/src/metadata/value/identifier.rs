@@ -14,3 +14,6 @@ pub struct OrganizationId(pub String);
 
 #[derive(Debug, Default, Clone, PartialEq, Eq, Hash, Serialize)]
 pub struct PersonId(pub String);
+
+#[derive(Debug, Default, Clone, PartialEq, Eq, Hash, Serialize)]
+pub struct AgentId(pub String);

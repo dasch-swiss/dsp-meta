@@ -98,25 +98,43 @@ dataset {
     en = "The interdisciplinary research project \"The image sequences of Basel's early prints: Late Medieval didactic didactics as an image-text reading\" combines a comprehensive art scholarly analysis of the links between images and texts in the illustrated incunabula in Basel with the digitization of the holdings of the University Library and the development of an electronic edition in the form of a new kind of Web-0.2 application. The project is carried out by Kunsthistorische Seminar of the University of Basel (Prof. Dr. B. Schellewald) and Digital Humanities Lab of the University of Basel (Prof. Dr. L. Rosenthaler).  The core of the digital edition consists of around twenty richly illustrated early prints from four different Basel officers. Many of them appeared in several editions before 1500, some of them in German and Latin at almost the same time. It is an extraordinarily varied production; in addition to the Mirror of Salvation, there is a novel, the Melusine, the travelogues of Jean de Mandeville, some prayer and edification books, theological writings, Lent sermons, the lives of Saints Fridolin and Meinrad, the famous ship of fools and the knight of Thurn.  The Internet publication makes the digitized corpus of these early prints usable for the scientific edition as well as for the exploration of images and texts through the possibilities of non-linear linking and commenting on the images and texts. Existing and emerging online editions can also be linked to it, which optimises the use of databases from other institutions with regard to our corpus."
   }
 
+  license {
+    type  = "creative_commons"
+    href  = "https://creativecommons.org/licenses/by-nc/4.0"
+    date  = "2021-09-02"
+    label = "CC BY-NC 4.0"
+  }
+
+  language {
+    de = "Deutsch"
+    en = "German"
+    fr = "Allemand"
+  }
+
   // reference to person or organization
-  attribution "katrin_graf_lamei" {
-    roles = [Employee]
+  attribution  {
+    agent = "katrin_graf_lamei"
+    roles = ["Employee"]
   }
   // reference to person or organization
-  attribution "barbara_schellewald" {
-    roles = [Applicant]
+  attribution {
+    agent = "barbara_schellewald"
+    roles = ["Applicant"]
   }
   // reference to person or organization
-  attribution "lothar_schmidt" {
-    roles = [Employee]
+  attribution {
+    agent = "lothar_schmidt"
+    roles = ["Employee"]
   }
   // reference to person or organization
-  attribution "hannes_hug" {
-    roles = [Co-Applicant]
+  attribution {
+    agent = "hannes_hug"
+    roles = ["Co-Applicant"]
   }
   // reference to person or organization
-  attribution "lukas_rosenthaler" {
-    roles = [Co-Applicant]
+  attribution {
+    agent = "lukas_rosenthaler"
+    roles = ["Co-Applicant"]
   }
 }
 

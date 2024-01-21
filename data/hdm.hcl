@@ -120,23 +120,23 @@ dataset {
     en = "The database documents the events that took place in the Hôtel de Musique in Bern between 1766 and 1905. The repertoire was constituted by different kinds of spectacles like theatre plays, operas, ballets, concerts, dance parties, acrobatic performances, conferences or magicians. The list reconstructs the lifely and colourful theatre culture of Bern in the 19th Century."
   }
 
+  license {
+    type  = "creative_commons"
+    href  = "https://creativecommons.org/licenses/by-nc/4.0"
+    date  = "2021-09-02"
+    label = "CC BY-NC 4.0"
+  }
+
   language {
     de = "Deutsch"
     en = "German"
     fr = "Allemand"
   }
 
-  license {
-    type = "creative_commons"
-    href = "https://creativecommons.org/licenses/by-nc/4.0"
-    date = "2021-09-02"
-    text = "CC BY-NC 4.0"
-  }
-
   // reference to person or organization
   attribution {
     agent = "http://ns.dasch.swiss/repository#dsp-081C-organization-000" // reference to person or organization
-    roles = [Author]
+    roles = ["Author"]
   }
 }
 

@@ -12,5 +12,5 @@ pub enum DspDomainError {
     #[error("Error creating value object: `{0}`")]
     CreateValueObject(String),
     #[error("Error creating domain object.")]
-    CreateDomainObject,
+    CreateDomainObject(String),
 }

@@ -93,7 +93,7 @@ mod tests {
     use hcl::{block, Identifier};
     use tracing_test::traced_test;
 
-    use super::*;
+    use crate::api::convert::hcl::entity::project::extracted_project_blocks::ExtractedProjectBlocks;
 
     #[test]
     fn extract_alternative_names() {

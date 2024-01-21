@@ -1,6 +1,6 @@
 use serde::Serialize;
 
-/// Represents an HCL attribute which consists of an attribute key and a value expression.
+/// Represents an HCL block which consists of attribute keys and a value expressions.
 ///
 /// In HCL syntax this is represented as:
 ///
@@ -10,9 +10,6 @@ use serde::Serialize;
 ///   label = "text describing the link"
 /// }
 /// ```
-///
-/// Use [`Attribute::new`] to construct an [`Attribute`] from a value that is convertible to this
-/// crate's [`Expression`] type.
 #[derive(Clone, Debug, PartialEq, Eq, Serialize)]
 pub struct Url {
     pub href: url::Url,
