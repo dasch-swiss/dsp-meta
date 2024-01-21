@@ -1,7 +1,4 @@
 use dsp_domain::metadata::entity::dataset::Dataset;
-use dsp_domain::metadata::value::attribution::Attribution;
-use dsp_domain::metadata::value::language::Language;
-use dsp_domain::metadata::value::url::Url;
 use extracted_dataset_attributes::ExtractedDatasetAttributes;
 use extracted_dataset_blocks::ExtractedDatasetBlocks;
 

@@ -12,7 +12,6 @@ const ABSTRACT_BLOCK: &str = "abstract";
 const LICENSE_BLOCK: &str = "license";
 const LANGUAGE_BLOCK: &str = "language";
 const ATTRIBUTION_BLOCK: &str = "attribution";
-const ALTERNATIVE_TITLE_BLOCK: &str = "alternative_title";
 const URL_BLOCK: &str = "url";
 
 #[derive(Debug, Default, PartialEq)]

@@ -1,6 +1,5 @@
 use dsp_domain::metadata::value::attribution::Attribution;
 use dsp_domain::metadata::value::identifier::AgentId;
-use dsp_domain::metadata::value::license::License;
 use tracing::warn;
 
 use crate::api::convert::hcl::hcl_block::HclBlock;
@@ -126,7 +125,7 @@ mod tests {
             }
         );
 
-        let result: Result<License, DspMetaError> = HclBlock(&block).try_into();
+        let result: Result<Attribution, DspMetaError> = HclBlock(&block).try_into();
 
         assert!(result.is_err());
     }

@@ -162,7 +162,6 @@ mod tests {
     use hcl::block;
     use tracing_test::traced_test;
 
-    use super::*;
     use crate::api::convert::hcl::hcl_block::HclBlock;
 
     #[traced_test]
