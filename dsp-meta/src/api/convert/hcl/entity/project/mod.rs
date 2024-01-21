@@ -1,10 +1,13 @@
 use dsp_domain::metadata::entity::project::Project;
 use dsp_domain::metadata::value::url::Url;
+use extracted_project_attributes::ExtractedProjectAttributes;
+use extracted_project_blocks::ExtractedProjectBlocks;
 
-use crate::api::convert::hcl::extracted_project_attributes::ExtractedProjectAttributes;
-use crate::api::convert::hcl::extracted_project_blocks::ExtractedProjectBlocks;
 use crate::api::convert::hcl::hcl_block::HclBlock;
 use crate::error::DspMetaError;
+
+pub(crate) mod extracted_project_attributes;
+pub(crate) mod extracted_project_blocks;
 
 impl<'a> TryInto<Project> for HclBlock<'a> {
     type Error = DspMetaError;
@@ -126,6 +129,7 @@ impl<'a> TryInto<Project> for HclBlock<'a> {
 
 #[cfg(test)]
 mod tests {
+    use dsp_domain::metadata::entity::project::Project;
     use dsp_domain::metadata::value::identifier::{DatasetId, ProjectId};
     use dsp_domain::metadata::value::{
         ContactPoint, CreatedAt, CreatedBy, EndDate, HowToCite, Name, Shortcode, StartDate,
@@ -134,7 +138,7 @@ mod tests {
     use hcl::block;
     use tracing_test::traced_test;
 
-    use super::*;
+    use crate::api::convert::hcl::hcl_block::HclBlock;
 
     #[traced_test]
     #[test]

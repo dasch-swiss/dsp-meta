@@ -3,7 +3,6 @@ use dsp_domain::metadata::value::language::Language;
 use dsp_domain::metadata::value::license::License;
 use dsp_domain::metadata::value::r#abstract::Abstract;
 use dsp_domain::metadata::value::url::Url;
-use dsp_domain::metadata::value::Title;
 use tracing::warn;
 
 use crate::api::convert::hcl::hcl_block::HclBlock;
@@ -37,7 +36,7 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedDatasetBlocks {
 
         for block in blocks {
             match block.identifier.as_str() {
-                ABSTRACT_BLOCK => abstracts.push(HclBlock(block).try_into()?),
+                // ABSTRACT_BLOCK => abstracts.push(HclBlock(block).try_into()?),
                 // LICENSE_BLOCK => licenses.push(HclBlock(block).try_into()?),
                 // LANGUAGE_BLOCK => languages.push(HclBlock(block).try_into()?),
                 // ATTRIBUTION_BLOCK => attributions.push(HclBlock(block).try_into()?),
@@ -66,7 +65,7 @@ mod tests {
     use hcl::{block, Identifier};
     use tracing_test::traced_test;
 
-    use crate::api::convert::hcl::extracted_dataset_blocks::ExtractedDatasetBlocks;
+    use crate::api::convert::hcl::entity::dataset::extracted_dataset_blocks::ExtractedDatasetBlocks;
 
     #[test]
     fn extract_abstracts() {

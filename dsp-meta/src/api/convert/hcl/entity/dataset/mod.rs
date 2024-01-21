@@ -4,11 +4,14 @@ use dsp_domain::metadata::value::language::Language;
 use dsp_domain::metadata::value::license::License;
 use dsp_domain::metadata::value::r#abstract::Abstract;
 use dsp_domain::metadata::value::url::Url;
+use extracted_dataset_attributes::ExtractedDatasetAttributes;
+use extracted_dataset_blocks::ExtractedDatasetBlocks;
 
-use crate::api::convert::hcl::extracted_dataset_attributes::ExtractedDatasetAttributes;
-use crate::api::convert::hcl::extracted_dataset_blocks::ExtractedDatasetBlocks;
 use crate::api::convert::hcl::hcl_block::HclBlock;
 use crate::error::DspMetaError;
+
+pub(crate) mod extracted_dataset_attributes;
+pub(crate) mod extracted_dataset_blocks;
 
 impl<'a> TryInto<Dataset> for HclBlock<'a> {
     type Error = DspMetaError;
