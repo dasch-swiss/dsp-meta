@@ -11,11 +11,11 @@ pub struct Description(pub HashMap<IsoCode, String>);
 
 impl Default for Description {
     fn default() -> Self {
-        let mut map: HashMap<IsoCode, String> = HashMap::new();
-        map.insert(IsoCode::DE, String::from("Die Default-Beschreibung."));
-        map.insert(IsoCode::EN, String::from("The default description."));
-        map.insert(IsoCode::FR, String::from("Le standard description."));
-        Self(map)
+        Description(HashMap::from_iter([
+            (IsoCode::DE, String::from("Die Default-Beschreibung.")),
+            (IsoCode::EN, String::from("The default description.")),
+            (IsoCode::FR, String::from("Le standard description.")),
+        ]))
     }
 }
 

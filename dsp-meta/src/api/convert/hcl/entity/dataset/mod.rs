@@ -1,8 +1,6 @@
 use dsp_domain::metadata::entity::dataset::Dataset;
 use dsp_domain::metadata::value::attribution::Attribution;
 use dsp_domain::metadata::value::language::Language;
-use dsp_domain::metadata::value::license::License;
-use dsp_domain::metadata::value::r#abstract::Abstract;
 use dsp_domain::metadata::value::url::Url;
 use extracted_dataset_attributes::ExtractedDatasetAttributes;
 use extracted_dataset_blocks::ExtractedDatasetBlocks;
@@ -91,6 +89,39 @@ impl<'a> TryInto<Dataset> for HclBlock<'a> {
         let blocks: Vec<&hcl::Block> = self.0.body.blocks().collect();
         let extracted_blocks = ExtractedDatasetBlocks::try_from(blocks)?;
 
+        let abstracts = if !extracted_blocks.abstracts.is_empty() {
+            Ok(extracted_blocks.abstracts)
+        } else {
+            Err(DspMetaError::ParseDataset(
+                "Parse dataset: there needs to be at least one abstract.".to_string(),
+            ))
+        }?;
+
+        let licenses = if !extracted_blocks.licenses.is_empty() {
+            Ok(extracted_blocks.licenses)
+        } else {
+            Err(DspMetaError::ParseDataset(
+                "Parse dataset: there needs to be at least one license.".to_string(),
+            ))
+        }?;
+
+        let languages = if !extracted_blocks.languages.is_empty() {
+            Ok(extracted_blocks.languages)
+        } else {
+            Err(DspMetaError::ParseDataset(
+                "Parse dataset: there needs to be at least one language.".to_string(),
+            ))
+        }?;
+
+        let attributions = if !extracted_blocks.attributions.is_empty() {
+            Ok(extracted_blocks.attributions)
+        } else {
+            Err(DspMetaError::ParseDataset(
+                "Parse dataset: there needs to be at least one attribution.".to_string(),
+            ))
+        }?;
+        let urls = extracted_blocks.urls;
+
         Ok(Dataset {
             id,
             created_at,
@@ -102,11 +133,11 @@ impl<'a> TryInto<Dataset> for HclBlock<'a> {
             date_published,
             type_of_data,
             alternative_titles,
-            abstracts: vec![Abstract::default()],
-            licenses: vec![License::default()],
-            languages: vec![Language::default()],
-            attributions: vec![Attribution::default()],
-            urls: vec![Url::default()],
+            abstracts,
+            licenses,
+            languages,
+            attributions,
+            urls,
         })
     }
 }
@@ -137,6 +168,26 @@ mod tests {
                 access_conditions = "Open"
                 date_published    = 1630601274523025000u64
                 type_of_data      = ["Image", "Text"]
+                abstract {
+                    en = "The interdisciplinary research project \"The image sequences of Basel's early prints: Late Medieval didactic didactics as an image-text reading\" combines a comprehensive art scholarly analysis of the links between images and texts in the illustrated incunabula in Basel with the digitization of the holdings of the University Library and the development of an electronic edition in the form of a new kind of Web-0.2 application. The project is carried out by Kunsthistorische Seminar of the University of Basel (Prof. Dr. B. Schellewald) and Digital Humanities Lab of the University of Basel (Prof. Dr. L. Rosenthaler).  The core of the digital edition consists of around twenty richly illustrated early prints from four different Basel officers. Many of them appeared in several editions before 1500, some of them in German and Latin at almost the same time. It is an extraordinarily varied production; in addition to the Mirror of Salvation, there is a novel, the Melusine, the travelogues of Jean de Mandeville, some prayer and edification books, theological writings, Lent sermons, the lives of Saints Fridolin and Meinrad, the famous ship of fools and the knight of Thurn.  The Internet publication makes the digitized corpus of these early prints usable for the scientific edition as well as for the exploration of images and texts through the possibilities of non-linear linking and commenting on the images and texts. Existing and emerging online editions can also be linked to it, which optimises the use of databases from other institutions with regard to our corpus."
+                }
+                license {
+                    type  = "creative_commons"
+                    href  = "https://creativecommons.org/licenses/by-nc/4.0"
+                    date  = "2021-09-02"
+                    label = "CC BY-NC 4.0"
+                }
+                language {
+                    de = "Deutsch"
+                    en = "German"
+                    fr = "Allemand"
+                }
+
+                // reference to person or organization
+                attribution {
+                    agent = "http://ns.dasch.swiss/repository#dsp-081C-organization-000" // reference to person or organization
+                    roles = ["Author"]
+                }
             }
         );
         let dataset: Dataset = HclBlock(&input_dataset_block).try_into().unwrap();

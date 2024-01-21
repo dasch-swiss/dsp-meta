@@ -36,11 +36,11 @@ impl TryFrom<Vec<&hcl::Block>> for ExtractedDatasetBlocks {
 
         for block in blocks {
             match block.identifier.as_str() {
-                // ABSTRACT_BLOCK => abstracts.push(HclBlock(block).try_into()?),
-                // LICENSE_BLOCK => licenses.push(HclBlock(block).try_into()?),
-                // LANGUAGE_BLOCK => languages.push(HclBlock(block).try_into()?),
-                // ATTRIBUTION_BLOCK => attributions.push(HclBlock(block).try_into()?),
-                // URL_BLOCK => urls.push(HclBlock(block).try_into()?),
+                ABSTRACT_BLOCK => abstracts.push(HclBlock(block).try_into()?),
+                LICENSE_BLOCK => licenses.push(HclBlock(block).try_into()?),
+                LANGUAGE_BLOCK => languages.push(HclBlock(block).try_into()?),
+                ATTRIBUTION_BLOCK => attributions.push(HclBlock(block).try_into()?),
+                URL_BLOCK => urls.push(HclBlock(block).try_into()?),
                 _ => {
                     // catch all
                     warn!(

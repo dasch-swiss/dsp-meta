@@ -1,9 +1,12 @@
 mod r#abstract;
 mod alternative_name;
+mod attribution;
 mod description;
 mod discipline;
 mod keyword;
 mod lang_text_data;
+mod language;
+mod license;
 mod publication;
 mod ref_data;
 mod simple_text_data;

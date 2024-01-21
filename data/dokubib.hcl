@@ -93,6 +93,13 @@ dataset {
     en = "Bilddatenbank makes accessible the collection of historic photographs and other graphical representation of St. Moritz Dokumentationsbibliothek"
   }
 
+  license {
+    type  = "creative_commons"
+    href  = "https://creativecommons.org/licenses/by-nc/4.0"
+    date  = "2021-09-02"
+    label = "CC BY-NC 4.0"
+  }
+
   language {
     de = "Deutsch"
   }
@@ -106,8 +113,8 @@ dataset {
   attribution {
     agent = "http://ns.dasch.swiss/repository#dsp-0804-organization-001"
     roles = [
-      Creator,
-      Publisher
+      "Creator",
+      "Publisher"
     ]
   }
 }
