@@ -161,7 +161,7 @@ organization {
 
   url {
     href = "https://www.musik.unibe.ch"
-    description = "https://www.musik.unibe.ch"
+    label = "https://www.musik.unibe.ch"
   }
 
   address {

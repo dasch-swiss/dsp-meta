@@ -145,7 +145,14 @@ grant {
   created_at = "1637624150958979000"
   created_by = "dsp-metadata-gui"
   type = "Project funding"
-  funders = ["http://ns.dasch.swiss/repository#dsp-0803-organization-003"]
+  name   = "Project funding"
+  number = "120378"
+  funders = ["http://ns.dasch.swiss/repository#dsp-0803-organization-003"]  // reference to person or organization (1-n)
+
+  url {
+    href = "https://data.snf.ch/grants/grant/120378"
+    label = "https://data.snf.ch/grants/grant/120378"
+  }
 }
 
 person "barbara_schellewald" {
@@ -246,17 +253,4 @@ organization "dhlab_basel" {
 organization {
   id = "http://ns.dasch.swiss/repository#dsp-0803-organization-003"
   name = "Swiss National Science Foundation (SNSF)"
-}
-
-grant {
-  name   = "Project funding"
-  number = "120378"
-  // reference to person or organization (1-n)
-  funders = ["snf"]
-
-  url {
-    href = "https://data.snf.ch/grants/grant/120378"
-    description = "https://data.snf.ch/grants/grant/120378"
-  }
-
 }
