@@ -208,3 +208,21 @@ impl<'a> TryFrom<HclBlock<'a>> for ExtractedGrant {
         })
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use hcl::block;
+
+    use super::*;
+
+    #[test]
+    fn extract_id() {
+        let hcl = block!(
+            grant {
+                id = "grant-1"
+            }
+        );
+        let extracted = ExtractedGrant::try_from(HclBlock(&hcl)).unwrap();
+        assert_eq!(extracted.id, Some(GrantId("grant-1".to_string())));
+    }
+}
