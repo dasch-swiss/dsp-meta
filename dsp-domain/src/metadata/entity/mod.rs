@@ -1,5 +1,5 @@
 pub mod dataset;
-pub(crate) mod grant;
+pub mod grant;
 mod organization;
 mod person;
 pub mod project;

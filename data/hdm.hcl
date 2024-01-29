@@ -103,6 +103,9 @@ project {
       fr = "1766-1905"
   }
   datasets = ["http://ns.dasch.swiss/repository#dsp-081C-dataset-000"]
+
+  // reference to grants (0-n)
+  grants = ["http://ns.dasch.swiss/repository#dsp-081C-grant-000"]
 }
 
 dataset {
@@ -141,8 +144,12 @@ dataset {
 }
 
 grant {
-  name   = "Ordinary Budget"
-  funder = "http://ns.dasch.swiss/repository#dsp-081C-organization-000" // reference to organization
+  id         = "http://ns.dasch.swiss/repository#dsp-081C-grant-000"
+  created_at = 1630601285796580000
+  created_by = "dsp-metadata-gui"
+  type       = "funding"
+  name       = "Hôtel de Musique Bern"
+  funders    = ["http://ns.dasch.swiss/repository#dsp-081C-organization-000"]
 }
 
 organization {
@@ -154,7 +161,7 @@ organization {
 
   url {
     href = "https://www.musik.unibe.ch"
-    description = "https://www.musik.unibe.ch"
+    label = "https://www.musik.unibe.ch"
   }
 
   address {

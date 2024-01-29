@@ -81,6 +81,8 @@ project {
     text = "Schweizer Tobias, Development of a Topographical Transcription Method, in Clivaz Claire u. a. (ed.), ebook, auf der Plattform http://www.ppur.info/lire-demain.html, Lausanne, 671-680."
   }
   datasets = ["http://ns.dasch.swiss/repository#dsp-0803-dataset-000"]
+
+  grants = ["http://ns.dasch.swiss/repository#dsp-0803-grant-000"]
 }
 
 dataset {
@@ -135,6 +137,21 @@ dataset {
   attribution {
     agent = "lukas_rosenthaler"
     roles = ["Co-Applicant"]
+  }
+}
+
+grant {
+  id = "http://ns.dasch.swiss/repository#dsp-0803-grant-000"
+  created_at = "1637624150958979000"
+  created_by = "dsp-metadata-gui"
+  type = "Project funding"
+  name   = "Project funding"
+  number = "120378"
+  funders = ["http://ns.dasch.swiss/repository#dsp-0803-organization-003"]  // reference to person or organization (1-n)
+
+  url {
+    href = "https://data.snf.ch/grants/grant/120378"
+    label = "https://data.snf.ch/grants/grant/120378"
   }
 }
 
@@ -233,20 +250,7 @@ organization "dhlab_basel" {
   name = "Digital Humanities Lab Philosophisch-Historische Fakultät Universität Basel"
 }
 
-organization "snf" {
+organization {
   id = "http://ns.dasch.swiss/repository#dsp-0803-organization-003"
   name = "Swiss National Science Foundation (SNSF)"
-}
-
-grant {
-  name   = "Project funding"
-  number = "120378"
-  // reference to person or organization (1-n)
-  funders = ["snf"]
-
-  url {
-    href = "https://data.snf.ch/grants/grant/120378"
-    description = "https://data.snf.ch/grants/grant/120378"
-  }
-
 }
