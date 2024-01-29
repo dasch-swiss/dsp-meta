@@ -76,6 +76,9 @@ project {
 
   // reference to datasets (1-n)
   datasets = ["http://ns.dasch.swiss/repository#dsp-0804-dataset-000"]
+
+  // reference to grants (0-n)
+  grants = ["http://ns.dasch.swiss/repository#dsp-0804-grant-000"]
 }
 
 dataset {
@@ -124,8 +127,12 @@ dmp {
 }
 
 grant {
-  name   = "Ordinary Budget"
-  funder = "http://ns.dasch.swiss/repository#dsp-0804-organization-000" // reference to person or organization
+  id         = "http://ns.dasch.swiss/repository#dsp-0804-grant-000"
+  created_at = 1630601300976368000
+  created_by = "dsp-metadata-gui"
+  type       = "Funding"
+  name       = "Ordinary Budget"
+  funders    = ["http://ns.dasch.swiss/repository#dsp-0804-organization-000"] // reference to person or organization
 }
 
 organization {

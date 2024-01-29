@@ -7,6 +7,7 @@ pub mod attribution;
 pub mod data_type;
 pub mod description;
 pub mod discipline;
+pub mod funder;
 pub mod identifier;
 pub mod iso_code;
 pub mod keyword;
@@ -63,3 +64,9 @@ pub struct Title(pub String);
 
 #[derive(Debug, Default, Clone, PartialEq, Serialize)]
 pub struct DatePublished(pub u64);
+
+#[derive(Debug, Default, Clone, PartialEq, Serialize)]
+pub struct GrantType(pub String);
+
+#[derive(Debug, Default, Clone, PartialEq, Serialize)]
+pub struct GrantNumber(pub String);

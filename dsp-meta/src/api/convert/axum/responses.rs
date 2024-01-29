@@ -38,6 +38,11 @@ impl IntoResponse for DspMetaError {
                 format!("Something went wrong: {}", err),
             )
                 .into_response(),
+            DspMetaError::ParseGrant(err) => (
+                StatusCode::INTERNAL_SERVER_ERROR,
+                format!("Something went wrong: {}", err),
+            )
+                .into_response(),
             DspMetaError::CreateDomainObject(_) => {
                 (StatusCode::INTERNAL_SERVER_ERROR, "Something went wrong:").into_response()
             }

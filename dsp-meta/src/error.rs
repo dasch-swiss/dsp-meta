@@ -25,6 +25,8 @@ pub enum DspMetaError {
     ParseProject(String),
     #[error("Error parsing the dataset: `{0}`")]
     ParseDataset(String),
+    #[error("Error parsing the grant: `{0}`")]
+    ParseGrant(String),
     #[error("Error creating value object: `{0}`")]
     CreateValueObject(String),
     #[error("Error serializing to RDF: `{0}`")]
