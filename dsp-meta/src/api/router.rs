@@ -83,7 +83,7 @@ mod tests {
     use std::env;
 
     use axum::body::Body;
-    use axum::http::{Request, StatusCode};
+    use axum::http::StatusCode;
     use http_body_util::BodyExt; // for `collect`
     use tower::ServiceExt; // for `oneshot` and `ready`
 
