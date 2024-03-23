@@ -91,7 +91,7 @@ jobs:
 
   # Build, test for arm64
   build_arm64_buildjet:
-    runs-on: buildjet-8vcpu-ubuntu-2204-arm
+    runs-on: buildjet-16vcpu-ubuntu-2204-arm
     concurrency:
       group: ${{ github.ref }}-buildjet-arm64
       cancel-in-progress: true
