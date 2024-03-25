@@ -1,12 +1,12 @@
 # Basic
 max_width = 100
 # Imports
-group_imports = "StdExternalCrate"
-imports_granularity = "Module"
+# nightly group_imports = "StdExternalCrate"
+# nightly imports_granularity = "Module"
 reorder_imports = true
 # Comments
-comment_width = 100
-normalize_comments = true
-wrap_comments = true
+# nightly comment_width = 100
+# nightly normalize_comments = true
+# nightly wrap_comments = true
 # Consistency
 newline_style = "Unix"

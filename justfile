@@ -11,7 +11,7 @@ default:
 # Run all fmt and clippy checks
 check:
     just --check --fmt --unstable
-    cargo +nightly fmt --check
+    cargo fmt --check
     cargo clippy -- -D warnings
 
 # Fix justfile formating. Warning: will change existing file. Please first use check.
