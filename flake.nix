@@ -19,11 +19,12 @@
       {
         devShells.default = mkShell {
           buildInputs = [
+            iconv
             openssl
             pkg-config
             jq
             cargo-fuzz
-            rust-bin.stable.latest.default
+            rustup
           ];
 
           shellHook = ''
