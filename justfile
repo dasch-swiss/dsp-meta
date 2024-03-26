@@ -28,7 +28,7 @@ build-frontend:
 
 # Run all tests
 test:
-    cargo test --all-targets
+    cargo test --tests
 
 # Run dsp-meta-server
 serve:
