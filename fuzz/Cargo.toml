@@ -1,8 +1,8 @@
 [package]
-name = "dsp-domain-fuzz"
+name = "dsp-meta-fuzz"
 version = "0.0.0"
 publish = false
-edition.workspace = true
+edition = "2021"
 
 [package.metadata]
 cargo-fuzz = true
@@ -11,8 +11,12 @@ cargo-fuzz = true
 libfuzzer-sys = "0.4"
 dsp-domain = { path = "../dsp-domain", version = "0.1.3" }
 dsp-meta = { path = "../dsp-meta", version = "0.1.3" }
-hcl-rs.workspace = true
+hcl-rs = "0.16.7" # HCL converter
 unicode-normalization = "0.1"
+
+# Use independent workspace for fuzzers
+[workspace]
+members = ["."]
 
 [[bin]]
 name = "fuzz_project_metadata"
