@@ -28,7 +28,7 @@ concurrency:
 jobs:
   fmt:
     runs-on: ubuntu-latest
-    name: nightly / fmt
+    name: fmt / nightly
     steps:
       - uses: actions/checkout@v4
         with:
@@ -41,7 +41,7 @@ jobs:
         run: cargo fmt --check
   clippy:
     runs-on: ubuntu-latest
-    name: ${{ matrix.toolchain }} / clippy
+    name: clippy / ${{ matrix.toolchain }}
     permissions:
       contents: read
       checks: write
@@ -65,7 +65,7 @@ jobs:
     # https://doc.rust-lang.org/beta/unstable-book/language-features/doc-cfg.html which allows an
     # API be documented as only available in some specific platforms.
     runs-on: ubuntu-latest
-    name: nightly / doc
+    name: doc / nightly
     steps:
       - uses: actions/checkout@v4
         with:
