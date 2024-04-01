@@ -24,6 +24,7 @@
             pkg-config
             jq
             cargo-fuzz
+            cargo-nextest
             rustup
           ];
 

@@ -1,0 +1,107 @@
+name: publish
+
+on:
+  push:
+    branches:
+      - main
+  # This triggers for any tag or branch creation. We'll filter for tags in the job.
+  create:
+
+jobs:
+
+  # Build for release and publish amd64
+  publish_amd64:
+    if: github.ref == 'refs/heads/main' || (github.event_name == 'create' && startsWith(github.ref, 'refs/tags/'))
+    name: amd64
+    runs-on: buildjet-4vcpu-ubuntu-2204
+    concurrency:
+      group: ${{ github.ref }}-publish-amd64
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # gets additionally all tags which we need
+      - uses: extractions/setup-just@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+      - run: just docker-build-amd64
+      - name: Push image to Docker hub
+        run: just docker-push-amd64
+
+  # Run tests and publish arm64
+  publish_arm64:
+    if: github.ref == 'refs/heads/main' || (github.event_name == 'create' && startsWith(github.ref, 'refs/tags/'))
+    name: arm64
+    runs-on: buildjet-4vcpu-ubuntu-2204-arm
+    concurrency:
+      group: ${{ github.ref }}-publish-arm64
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # gets additionally all tags which we need
+      - uses: extractions/setup-just@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+      - run: just docker-build-arm64
+      - name: Push image to Docker hub
+        run: just docker-push-arm64
+
+  # publish manifest combining aarch64 and amd64 images
+  publish_manifest:
+    name: manifest
+    runs-on: ubuntu-latest
+    needs: [ publish_amd64, publish_arm64 ]
+    if: (github.ref_name == 'main' || startsWith(github.ref, 'refs/tags/dsp-meta-cmd'))
+    outputs:
+      tag: ${{ steps.output_docker_image_tag.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: extractions/setup-just@v1
+      - uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+      - name: Output docker image tag
+        id: output_docker_image_tag
+        run: echo "tag=$(just docker-image-tag | tr -d '\n')" >> "$GITHUB_OUTPUT"
+        shell: bash # Explicit for fail-fast behaviour
+      - run: just docker-publish-manifest
+
+  trigger-dev-deployment:
+    name: Trigger deployment to DEV
+    runs-on: ubuntu-latest
+    needs: publish_manifest
+    if: github.ref_name == 'main'
+    steps:
+      - name: Trigger deployment to DEV
+        env:
+          IMAGE_TAG: ${{ needs.publish_manifest.outputs.tag }}
+          JENKINS_BASIC_AUTH_USER: ${{ secrets.JENKINS_BASIC_AUTH_USER }}
+          JENKINS_BASIC_AUTH_PASS: ${{ secrets.JENKINS_BASIC_AUTH_PASS }}
+          JENKINS_UPDATE_RELEASE_WEBHOOK: ${{ secrets.JENKINS_UPDATE_RELEASE_WEBHOOK }}
+        run: |
+          curl -f -u "${JENKINS_BASIC_AUTH_USER}:${JENKINS_BASIC_AUTH_PASS}" \
+               -X POST "${JENKINS_UPDATE_RELEASE_WEBHOOK}" \
+               -d "Service=meta&Version=${IMAGE_TAG}"
+
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v4
+        with:
+          token: ${{ secrets.DASCHBOT_PAT }}
+          config-file: .github/release-please/config.json
+          manifest-file: .github/release-please/manifest.json
