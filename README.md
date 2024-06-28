@@ -6,14 +6,15 @@ We are using [Conventional Commit messages](https://www.conventionalcommits.org/
 
 The most important prefixes you should have in mind are:
 
-* `fix:` which represents bug fixes, and correlates to a [SemVer](https://semver.org/)
+- `fix:` which represents bug fixes, and correlates to a [SemVer](https://semver.org/)
   patch.
-* `feat:` which represents a new feature, and correlates to a SemVer minor.
-* `feat!:`,  or `fix!:`, `refactor!:`, etc., which represent a breaking change
+- `feat:` which represents a new feature, and correlates to a SemVer minor.
+- `feat!:`, or `fix!:`, `refactor!:`, etc., which represent a breaking change
   (indicated by the `!`) and will result in a SemVer major.
 
 This is the complete list of what is defined and if it is visible in the
 changelog:
+
 - 'feat' -> section: 'Features'
 - 'feature' -> section: 'Features'
 - 'fix' -> section: 'Bug Fixes'
@@ -26,10 +27,10 @@ changelog:
 - 'test' -> section: 'Tests', hidden: true
 - 'build' -> section: 'Build System', hidden: true
 - 'ci' -> section: 'Continuous Integration', hidden: true
-```
 
 ## 1 Usage
 
+```
 Flags:
 - `-h, --help`
 - `-v, --verbose`
@@ -38,26 +39,25 @@ Sub-commands:
 - `dsp-meta verify [file]`
   - [file]: provide the path to the `.toml` file
 - `dsp-meta convert`
-
-
-
-
+```
 
 ## HCL (HashiCorp Configuration Language) General Syntax
+
 The Metadata Domain Specific Configuration syntax is based on the HCL (HashiCorp Configuration Language) syntax,
 with a number of predefined domain specific named blocks. The following is a short introduction to the general syntax.
 
-
 ### Comments
+
 Comments in HCL begin with the "#" symbol and can be placed on their own line or at the end of a line. They are used to
 provide explanations or add context to the configuration.
-    
+
 ```hcl
 # This is a comment in HCL
 key = "value" # This is another comment
 ```
 
 ### Blocks
+
 HCL organizes configuration into blocks. Each block starts with the block type followed by a set of braces ({}) that
 enclose the block's contents. Blocks can be nested to represent hierarchical structures.
 
@@ -71,6 +71,7 @@ block_type {
 ```
 
 ### Multiple Blocks
+
 HCL allows you to define multiple blocks of the same type within a configuration. Each block instance is separated by a newline.
 
 ```hcl
@@ -84,6 +85,7 @@ block_type {
 ```
 
 ### Block Labels
+
 A block has a type (`resource` in this example). Each block type defines how many labels must follow the type keyword.
 The resource block type expects two labels, which are `aws_instance` and `example` in the example below. A particular
 block type may have any number of required labels, or it may require none as with the nested network_interface block
@@ -100,7 +102,8 @@ resource "aws_instance" "example" {
 ```
 
 ### Attributes
-Inside a block, you define attributes using the key-value syntax. The key and value are separated by an equal sign (=).
+
+Inside a block, you define attributes using the key-value syntax. The key and value are separated by an equal sign (`=`).
 Attributes define the properties or settings associated with the block.
 
 ```hcl
@@ -110,8 +113,9 @@ block_type {
 ```
 
 ### Strings
+
 HCL supports string values, which are enclosed in double quotes ("). Strings can contain alphanumeric characters,
-symbols, and spaces. To include a double quote within a string, you can escape it with a backslash (\).
+symbols, and spaces. To include a double quote within a string, you can escape it with a backslash (`\`).
 
 ```hcl
 message = "Hello, World!"
@@ -120,6 +124,7 @@ escaped_string = "This string contains \"quotes\"."
 ```
 
 ### Numbers
+
 HCL supports both integers and floating-point numbers. Numeric values are written without quotes.
 
 ```hcl
@@ -128,6 +133,7 @@ pi = 3.14159
 ```
 
 ### Booleans
+
 Boolean values are represented as either "true" or "false". They are not enclosed in quotes.
 
 ```hcl
@@ -136,6 +142,7 @@ debug = false
 ```
 
 ### Lists
+
 HCL supports lists, which are represented by square brackets ([]). Elements in a list are separated by commas. Lists
 can contain values of different types.
 
@@ -145,6 +152,7 @@ numbers = [1, 2, 3, 4, 5]
 ```
 
 ### Heredoc Syntax
+
 HCL supports heredoc syntax for multiline strings. It is enclosed in triple double quotes ("""). Heredocs preserve
 leading indentation and line breaks.
 
@@ -154,15 +162,16 @@ This is a multiline string.
 It can span multiple lines.
 """
 ```
+
 ## Metadata HCL: Domain Specific Configuration Language for DSP Metadata
 
 ### Style Conventions
+
 - All block types are lowercase
 - Indent two spaces for each level of nesting
 - When multiple arguments with single-line values appear on consecutive lines, align their equals signs (=)
 - When both arguments and blocks appear together inside a block body, place all of the arguments together at the top
-and then place nested blocks below them. Use one blank line to separate the arguments from the blocks.
-
+  and then place nested blocks below them. Use one blank line to separate the arguments from the blocks.
 
 ### Project
 
@@ -218,7 +227,7 @@ project {
     description = "Bern"
     url = "https://www.geonames.org/2661552"
   }
-  
+
   temporal_coverage periodo {
     ref_id = "https://n2t.net/ark:/99152/p06c6g3pvr5"
     description = "Under Mediation act, 1803-1814"
@@ -248,7 +257,6 @@ dataset {
   # Dataset specific attributes and blocks
 }
 ```
-
 
 ### Person
 
