@@ -31,6 +31,7 @@ struct Discipline {
 #[derive(Deserialize, Debug, PartialEq)]
 struct RefData {
     ref_id: String,
+    description: Option<String>,
 }
 
 #[derive(Deserialize, Debug, PartialEq)]
@@ -52,9 +53,11 @@ fn test_toml() {
         [[project.discipline]]
         [[project.discipline.skos]]
         ref_id = "foo"
+        description = "foo description"
 
         [[project.discipline.skos]]
         ref_id = "bar"
+        description = "bar description"
         
         [[project.discipline.text]]
         age = "old"
@@ -72,8 +75,8 @@ fn test_toml() {
 
         [[project.discipline]]
         skos = [
-            { ref_id = "foo" },
-            { ref_id = "bar" }
+            { ref_id = "foo", description = "foo description" },
+            { ref_id = "bar", description = "bar description" }
         ]
 
         [[project.discipline.text]]
@@ -104,9 +107,11 @@ fn test_toml() {
         skos: Some(vec![
             RefData {
                 ref_id: "foo".to_string(),
+                description: Some("foo description".to_string()),
             },
             RefData {
                 ref_id: "bar".to_string(),
+                description: Some("bar description".to_string()),
             },
         ]),
         snf: None,
