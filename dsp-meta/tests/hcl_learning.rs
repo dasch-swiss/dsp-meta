@@ -8,13 +8,16 @@ pub struct User {
 }
 
 #[derive(Deserialize, Debug, PartialEq)]
-pub enum Discipline {
-    skos(RefData),
-    snf(RefData),
+pub struct Discipline {
+    skos: Option<Skos>,
+    snf: Option<Snf>,
 }
 
 #[derive(Deserialize, Debug, PartialEq)]
-pub struct Disciplines(Vec<Discipline>);
+pub struct Skos(RefData);
+
+#[derive(Deserialize, Debug, PartialEq)]
+pub struct Snf(RefData);
 
 #[derive(Deserialize, Debug, PartialEq)]
 pub struct RefData {
@@ -50,13 +53,19 @@ fn test_hcl() {
     let body: Body = hcl::from_str(input).expect("Failed to parse");
 
     let metadata: ProjectMetadata = hcl::from_body(body).expect("Failed to parse");
+    let exp = Discipline {
+        skos: Some(Skos(RefData {
+            ref_id: "foo".to_string(),
+        })),
+        snf: Some(Snf(RefData {
+            ref_id: "bar".to_string(),
+        })),
+    };
     assert_eq!(
         metadata,
         ProjectMetadata {
             version: Version(1),
-            discipline: Discipline::skos(RefData {
-                ref_id: "foo".to_string()
-            }),
+            discipline: exp,
             user: User {
                 name: "John Doe".to_string(),
                 email: "john@doe.tld".to_string()
