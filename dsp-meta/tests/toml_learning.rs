@@ -1,6 +1,7 @@
 use std::collections::HashMap;
 
 use serde::Deserialize;
+use url::Url;
 
 #[derive(Deserialize, Debug, PartialEq)]
 struct ProjectMetadata {
@@ -32,6 +33,7 @@ struct Discipline {
 struct RefData {
     ref_id: String,
     description: Option<String>,
+    url: Option<Url>,
 }
 
 #[derive(Deserialize, Debug, PartialEq)]
@@ -54,6 +56,7 @@ fn test_toml() {
         [[project.discipline.skos]]
         ref_id = "foo"
         description = "foo description"
+        url = "http://example.com/foo"
 
         [[project.discipline.skos]]
         ref_id = "bar"
@@ -75,7 +78,7 @@ fn test_toml() {
 
         [[project.discipline]]
         skos = [
-            { ref_id = "foo", description = "foo description" },
+            { ref_id = "foo", description = "foo description", url = "http://example.com/foo" },
             { ref_id = "bar", description = "bar description" }
         ]
 
@@ -108,10 +111,12 @@ fn test_toml() {
             RefData {
                 ref_id: "foo".to_string(),
                 description: Some("foo description".to_string()),
+                url: Some(Url::parse("http://example.com/foo").unwrap()),
             },
             RefData {
                 ref_id: "bar".to_string(),
                 description: Some("bar description".to_string()),
+                url: None
             },
         ]),
         snf: None,
