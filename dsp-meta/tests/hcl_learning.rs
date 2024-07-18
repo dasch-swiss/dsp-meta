@@ -12,7 +12,7 @@ pub struct User {
 #[derive(Deserialize, Debug, PartialEq)]
 pub struct Discipline {
     skos: Option<Skos>,
-    snf: Option<Snf>,
+    snf: Vec<Snf>,
 }
 
 #[derive(Deserialize, Debug, PartialEq)]
@@ -49,7 +49,10 @@ fn test_hcl() {
             ref_id = "foo"
         }
         discipline snf {
-            ref_id = "bar"
+            ref_id = "snf1"
+        }
+        discipline snf {
+            ref_id = "snf2"
         }
         user {
             name = "John Doe"
@@ -72,9 +75,14 @@ fn test_hcl() {
         skos: Some(Skos(RefData {
             ref_id: "foo".to_string(),
         })),
-        snf: Some(Snf(RefData {
-            ref_id: "bar".to_string(),
-        })),
+        snf: vec![
+            Snf(RefData {
+                ref_id: "snf1".to_string(),
+            }),
+            Snf(RefData {
+                ref_id: "snf2".to_string(),
+            }),
+        ],
     };
 
     let mut exp_keywords = Vec::new();
