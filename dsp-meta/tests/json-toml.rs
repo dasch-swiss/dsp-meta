@@ -8,6 +8,7 @@ use nonempty::NonEmpty;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use valico::json_schema;
+use crate::TextOrUrl::{TextValue, UrlValue};
 
 mod timestamp_nanos_date_format {
     use chrono::{DateTime, Utc};
@@ -49,12 +50,12 @@ pub struct Metadata {
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct Project {
-    #[serde(rename = "__id")]
+    #[serde(rename(serialize = "id", deserialize = "__id"))]
     pub id: String,
-    #[serde(rename = "__createdAt")]
     #[serde(with = "timestamp_nanos_date_format")]
+    #[serde(rename(serialize = "createdAt", deserialize = "__createdAt"))]
     pub created_at: DateTime<Utc>,
-    #[serde(rename = "__createdBy")]
+    #[serde(rename(serialize = "createdBy", deserialize = "__createdBy"))]
     pub created_by: String,
     pub shortcode: String,
     pub name: String,
@@ -81,12 +82,12 @@ pub struct Project {
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct Dataset {
-    #[serde(rename = "__id")]
+    #[serde(rename(serialize = "id", deserialize = "__id"))]
     pub id: String,
-    #[serde(rename = "__createdAt")]
     #[serde(with = "timestamp_nanos_date_format")]
+    #[serde(rename(serialize = "createdAt", deserialize = "__createdAt"))]
     pub created_at: DateTime<Utc>,
-    #[serde(rename = "__createdBy")]
+    #[serde(rename(serialize = "createdBy", deserialize = "__createdBy"))]
     pub created_by: String,
     pub title: String,
     pub access_conditions: AccessCondition,
@@ -137,12 +138,12 @@ pub enum TypeOfData {
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct Person {
-    #[serde(rename = "__id")]
+    #[serde(rename(serialize = "id", deserialize = "__id"))]
     pub id: String,
-    #[serde(rename = "__createdAt")]
     #[serde(with = "timestamp_nanos_date_format")]
+    #[serde(rename(serialize = "createdAt", deserialize = "__createdAt"))]
     pub created_at: DateTime<Utc>,
-    #[serde(rename = "__createdBy")]
+    #[serde(rename(serialize = "createdBy", deserialize = "__createdBy"))]
     pub created_by: String,
     pub job_titles: NonEmpty<String>,
     pub given_names: NonEmpty<String>,
@@ -157,12 +158,12 @@ pub struct Person {
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct Organization {
-    #[serde(rename = "__id")]
+    #[serde(rename(serialize = "id", deserialize = "__id"))]
     pub id: String,
-    #[serde(rename = "__createdAt")]
     #[serde(with = "timestamp_nanos_date_format")]
+    #[serde(rename(serialize = "createdAt", deserialize = "__createdAt"))]
     pub created_at: DateTime<Utc>,
-    #[serde(rename = "__createdBy")]
+    #[serde(rename(serialize = "createdBy", deserialize = "__createdBy"))]
     pub created_by: String,
     pub name: String,
     pub url: Option<Url>,
@@ -175,12 +176,12 @@ pub struct Organization {
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct Grant {
-    #[serde(rename = "__id")]
+    #[serde(rename(serialize = "id", deserialize = "__id"))]
     pub id: String,
-    #[serde(rename = "__createdAt")]
     #[serde(with = "timestamp_nanos_date_format")]
+    #[serde(rename(serialize = "createdAt", deserialize = "__createdAt"))]
     pub created_at: DateTime<Utc>,
-    #[serde(rename = "__createdBy")]
+    #[serde(rename(serialize = "createdBy", deserialize = "__createdBy"))]
     pub created_by: String,
     pub funders: NonEmpty<String>,
     pub number: Option<String>,
@@ -197,7 +198,6 @@ pub struct Date(String);
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct Url {
-    pub r#type: String,
     pub url: String,
     pub text: Option<String>,
 }
@@ -238,8 +238,49 @@ pub struct License {
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 #[serde(untagged)]
 pub enum TextOrUrl {
-    Text(Text),
-    Url(Url),
+    TextValue(Text),
+    UrlValue(Url),
+}
+
+#[derive(Debug, Serialize, Deserialize, PartialEq)]
+pub struct Untagged {
+    text_or_url: NonEmpty<TextOrUrl>,
+}
+
+#[derive(Debug, Serialize, Deserialize, PartialEq)]
+pub struct P {
+    p: Untagged,
+}
+
+#[test]
+fn untagged_enum() {
+    let mut val =
+        NonEmpty::new(
+            UrlValue(Url {
+                url: "url".to_string(),
+                text: Some("text".to_string()),
+            }));
+    val.push(TextValue(Text([("en".to_string(), "English".to_string())].iter().cloned().collect())));
+    let un = P {
+        p: Untagged {
+            text_or_url: val
+        }
+    };
+    let foo = toml::to_string(&un).expect("To TOML");
+    println!("{}", foo);
+}
+
+#[test]
+fn test_as_toml() {
+    let path = "/Users/christian/git/dasch/dsp-meta/data/json/beol.json";
+    let contents = fs::read_to_string(path)
+        .expect("Should have been able to read the file");
+    let metadata = serde_json::from_str::<Metadata>(&*contents).expect("From JSON");
+    let foo = toml::to_string(&metadata).expect("To TOML");
+    println!("{}", foo);
+    println!();
+    let foo = serde_json::to_string(&metadata).expect("To JSON");
+    println!("{}", foo);
 }
 
 #[test]
