@@ -200,6 +200,28 @@ pub struct Date(String);
 pub struct Url {
     pub url: String,
     pub text: Option<String>,
+    #[serde(rename = "type")]
+    #[serde(default = "UrlType::default")]
+    pub url_type: UrlType,
+}
+
+#[derive(Debug, Serialize, Deserialize, PartialEq)]
+pub enum UrlType {
+    URL,
+    Geonames,
+    Pleiades,
+    Skos,
+    Periodo,
+    Chronontology,
+    GND,
+    VIAF,
+    Grid,
+    ORCID,
+    #[serde(rename = "Creative Commons")]
+    CreativeCommons,
+}
+impl UrlType {
+    fn default() -> Self { UrlType::URL }
 }
 
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
@@ -259,6 +281,7 @@ fn untagged_enum() {
             UrlValue(Url {
                 url: "url".to_string(),
                 text: Some("text".to_string()),
+                url_type: UrlType::URL,
             }));
     val.push(TextValue(Text([("en".to_string(), "English".to_string())].iter().cloned().collect())));
     let un = P {
