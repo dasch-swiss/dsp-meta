@@ -2,11 +2,40 @@ use std::collections::HashMap;
 use std::fs;
 use std::fs::File;
 use std::path::Path;
+
+use chrono::{DateTime, Utc};
 use nonempty::NonEmpty;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use valico::json_schema;
 
+mod timestamp_nanos_date_format {
+    use chrono::{DateTime, Utc};
+    use serde::{de, Deserialize, Deserializer, ser, Serializer};
+
+    pub fn serialize<S>(
+        date: &DateTime<Utc>,
+        serializer: S,
+    ) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        let ts_nanos = date.timestamp_nanos_opt()
+            .ok_or(ser::Error::custom(format!("date out of range: {}", date)))?;
+        serializer.serialize_str(&format!("{}", ts_nanos))
+    }
+    pub fn deserialize<'de, D>(
+        deserializer: D,
+    ) -> Result<DateTime<Utc>, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        let ts = String::deserialize(deserializer)?;
+        let ts_millis: i64 = ts.parse::<i64>()
+            .map_err(|e| de::Error::custom(format!("invalid timestamp: {} {}", ts, e)))?;
+        Ok(DateTime::from_timestamp_nanos(ts_millis))
+    }
+}
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct Metadata {
@@ -23,7 +52,8 @@ pub struct Project {
     #[serde(rename = "__id")]
     pub id: String,
     #[serde(rename = "__createdAt")]
-    pub created_at: String,
+    #[serde(with = "timestamp_nanos_date_format")]
+    pub created_at: DateTime<Utc>,
     #[serde(rename = "__createdBy")]
     pub created_by: String,
     pub shortcode: String,
@@ -54,7 +84,8 @@ pub struct Dataset {
     #[serde(rename = "__id")]
     pub id: String,
     #[serde(rename = "__createdAt")]
-    pub created_at: String,
+    #[serde(with = "timestamp_nanos_date_format")]
+    pub created_at: DateTime<Utc>,
     #[serde(rename = "__createdBy")]
     pub created_by: String,
     pub title: String,
@@ -81,7 +112,8 @@ pub struct Person {
     #[serde(rename = "__id")]
     pub id: String,
     #[serde(rename = "__createdAt")]
-    pub created_at: String,
+    #[serde(with = "timestamp_nanos_date_format")]
+    pub created_at: DateTime<Utc>,
     #[serde(rename = "__createdBy")]
     pub created_by: String,
     pub job_titles: NonEmpty<String>,
@@ -100,7 +132,8 @@ pub struct Organization {
     #[serde(rename = "__id")]
     pub id: String,
     #[serde(rename = "__createdAt")]
-    pub created_at: String,
+    #[serde(with = "timestamp_nanos_date_format")]
+    pub created_at: DateTime<Utc>,
     #[serde(rename = "__createdBy")]
     pub created_by: String,
     pub name: String,
@@ -117,7 +150,8 @@ pub struct Grant {
     #[serde(rename = "__id")]
     pub id: String,
     #[serde(rename = "__createdAt")]
-    pub created_at: String,
+    #[serde(with = "timestamp_nanos_date_format")]
+    pub created_at: DateTime<Utc>,
     #[serde(rename = "__createdBy")]
     pub created_by: String,
     pub funders: NonEmpty<String>,

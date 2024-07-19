@@ -21,6 +21,7 @@ axum = "0.7.2" # web framework
 axum-macros = "0.4.0"
 clap = { version = "4.5.4", features = ["derive"] } # command-line parser
 config = "0.13.1" # Layered configuration with strong support for 12-factor applications
+chrono = { version = "0.4.38", features = ["serde"] }
 dirs = "5.0.1" # provides platform-specific locations for storing user configuration
 hcl-rs = "0.16.7" # HCL converter
 http-body-util = "0.1.0"
@@ -39,11 +40,11 @@ tower-http = { version = "0.5.0", features = ["trace", "fs"] }
 hyper = "1.0.1"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = [
-  "fmt",
-  "registry",
-  "std",
-  "env-filter",
-  "json",
+    "fmt",
+    "registry",
+    "std",
+    "env-filter",
+    "json",
 ] }
 tracing-test = "0.2"
 url = { version = "2", features = ["serde"] }
