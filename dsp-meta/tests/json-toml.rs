@@ -74,9 +74,9 @@ pub struct Project {
     pub end_date: Option<Date>,
     pub contact_point: Option<String>,
     pub how_to_cite: String,
-    pub publications: Option<Vec<String>>,
-    pub grants: Option<Vec<String>>,
-    pub alternative_names: Option<Vec<Text>>,
+    pub publications: Option<NonEmpty<String>>,
+    pub grants: Option<NonEmpty<String>>,
+    pub alternative_names: Option<NonEmpty<Text>>,
 }
 
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
@@ -266,11 +266,12 @@ pub enum TextOrUrl {
 
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 pub struct Untagged {
-    text_or_url: NonEmpty<TextOrUrl>,
+    the_enum: NonEmpty<TextOrUrl>,
 }
 
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 pub struct P {
+    some_str: Option<String>,
     p: Untagged,
 }
 
@@ -279,15 +280,16 @@ fn untagged_enum() {
     let mut val =
         NonEmpty::new(
             UrlValue(Url {
-                url: "url".to_string(),
+                url: "http://example.com".to_string(),
                 text: Some("text".to_string()),
                 url_type: UrlType::URL,
             }));
     val.push(TextValue(Text([("en".to_string(), "English".to_string())].iter().cloned().collect())));
     let un = P {
+        some_str: None,
         p: Untagged {
-            text_or_url: val
-        }
+            the_enum: val
+        },
     };
     let foo = toml::to_string(&un).expect("To TOML");
     println!("{}", foo);
