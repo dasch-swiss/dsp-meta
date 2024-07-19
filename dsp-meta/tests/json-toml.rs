@@ -21,8 +21,6 @@ pub struct Metadata {
 pub struct Project {
     #[serde(rename = "__id")]
     pub id: String,
-    #[serde(rename = "__type")]
-    pub p_type: String,
     #[serde(rename = "__createdAt")]
     pub created_at: String,
     #[serde(rename = "__createdBy")]
@@ -62,8 +60,6 @@ pub struct Project {
 pub struct Dataset {
     #[serde(rename = "__id")]
     pub id: String,
-    #[serde(rename = "__type")]
-    pub d_type: String,
     #[serde(rename = "__createdAt")]
     pub created_at: String,
     #[serde(rename = "__createdBy")]
@@ -99,8 +95,6 @@ pub struct Dataset {
 pub struct Person {
     #[serde(rename = "__id")]
     pub id: String,
-    #[serde(rename = "__type")]
-    pub p_type: String,
     #[serde(rename = "__createdAt")]
     pub created_at: String,
     #[serde(rename = "__createdBy")]
@@ -128,8 +122,6 @@ pub struct Person {
 pub struct Organization {
     #[serde(rename = "__id")]
     pub id: String,
-    #[serde(rename = "__type")]
-    pub o_type: String,
     #[serde(rename = "__createdAt")]
     pub created_at: String,
     #[serde(rename = "__createdBy")]
@@ -155,8 +147,6 @@ pub struct Organization {
 pub struct Grant {
     #[serde(rename = "__id")]
     pub id: String,
-    #[serde(rename = "__type")]
-    pub g_type: String,
     #[serde(rename = "__createdAt")]
     pub created_at: String,
     #[serde(rename = "__createdBy")]
@@ -184,8 +174,6 @@ pub struct Date(String);
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct Url {
-    #[serde(rename = "__type")]
-    pub u_type: String,
     pub r#type: String,
     pub url: String,
     pub text: Option<String>,
@@ -194,8 +182,6 @@ pub struct Url {
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct Address {
-    #[serde(rename = "__type")]
-    pub a_type: String,
     pub street: String,
     pub postal_code: String,
     pub locality: String,
@@ -207,8 +193,6 @@ pub struct Address {
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct DataManagementPlan {
-    #[serde(rename = "__type")]
-    pub dmp_type: String,
     pub available: bool,
     pub url: Option<Url>,
 }
@@ -216,8 +200,6 @@ pub struct DataManagementPlan {
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct Attribution {
-    #[serde(rename = "__type")]
-    pub a_type: String,
     pub agent: String,
     pub roles: Vec<String>, // non-empty
 }
@@ -225,8 +207,6 @@ pub struct Attribution {
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct License {
-    #[serde(rename = "__type")]
-    pub l_type: String,
     pub license: Url,
     pub date: Date,
     pub details: Option<String>,
