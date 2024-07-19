@@ -2,6 +2,7 @@ use std::collections::HashMap;
 use std::fs;
 use std::fs::File;
 use std::path::Path;
+use nonempty::NonEmpty;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use valico::json_schema;
@@ -10,7 +11,7 @@ use valico::json_schema;
 #[serde(rename_all = "camelCase")]
 pub struct Metadata {
     pub project: Project,
-    pub datasets: Vec<Dataset>,
+    pub datasets: NonEmpty<Dataset>,
     pub persons: Option<Vec<Person>>,
     pub organizations: Option<Vec<Organization>>,
     pub grants: Option<Vec<Grant>>,
@@ -30,12 +31,12 @@ pub struct Project {
     pub description: Text,
     pub start_date: Date,
     pub teaser_text: String,
-    pub datasets: Vec<String>, // non empty
-    pub keywords: Vec<Text>, // non empty
-    pub disciplines: Vec<TextOrUrl>, // non empty
-    pub temporal_coverage: Vec<TextOrUrl>, // non empty
-    pub spatial_coverage: Vec<Url>, // non empty
-    pub funders: Vec<String>, // non empty
+    pub datasets: NonEmpty<String>,
+    pub keywords: NonEmpty<Text>,
+    pub disciplines: NonEmpty<TextOrUrl>,
+    pub temporal_coverage: NonEmpty<TextOrUrl>,
+    pub spatial_coverage: NonEmpty<Url>,
+    pub funders: NonEmpty<String>,
     pub url: Url,
     pub secondary_url: Option<Url>,
     pub data_management_plan: Option<DataManagementPlan>,
@@ -60,11 +61,11 @@ pub struct Dataset {
     pub access_conditions: String, // "enum": [ "open", "restricted", "closed" ]
     pub how_to_cite: String,
     pub status: String, // "enum": [ "In planning", "Ongoing", "On hold", "Finished" ]
-    pub abstracts: Vec<TextOrUrl>,
-    pub type_of_data: Vec<String>, // "enum": [ "XML", "Text", "Image", "Video", "Audio" ]
-    pub licenses: Vec<License>,
-    pub languages: Vec<Text>,
-    pub attributions: Vec<Attribution>, // non-empty
+    pub abstracts: NonEmpty<TextOrUrl>,
+    pub type_of_data: NonEmpty<String>, // "enum": [ "XML", "Text", "Image", "Video", "Audio" ]
+    pub licenses: NonEmpty<License>,
+    pub languages: NonEmpty<Text>,
+    pub attributions: NonEmpty<Attribution>, // non-empty
     pub alternative_titles: Option<Vec<Text>>,
     pub date_published: Option<Date>,
     pub date_created: Option<Date>,
@@ -83,10 +84,10 @@ pub struct Person {
     pub created_at: String,
     #[serde(rename = "__createdBy")]
     pub created_by: String,
-    pub job_titles: Vec<String>, // non empty
-    pub given_names: Vec<String>, // non empty
-    pub family_names: Vec<String>, // non empty
-    pub affiliation: Vec<String>, // non empty
+    pub job_titles: NonEmpty<String>,
+    pub given_names: NonEmpty<String>,
+    pub family_names: NonEmpty<String>,
+    pub affiliation: NonEmpty<String>,
     pub address: Option<Address>,
     pub email: Option<String>,
     pub secondary_email: Option<String>,
@@ -119,7 +120,7 @@ pub struct Grant {
     pub created_at: String,
     #[serde(rename = "__createdBy")]
     pub created_by: String,
-    pub funders: Vec<String>, // non empty
+    pub funders: NonEmpty<String>,
     pub number: Option<String>,
     pub name: Option<String>,
     pub url: Option<Url>,
@@ -161,7 +162,7 @@ pub struct DataManagementPlan {
 #[serde(rename_all = "camelCase")]
 pub struct Attribution {
     pub agent: String,
-    pub roles: Vec<String>, // non-empty
+    pub roles: NonEmpty<String>, // non-empty
 }
 
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
