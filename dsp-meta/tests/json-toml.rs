@@ -282,20 +282,17 @@ fn verify_all_json_files_in_directory_jsonschema(directory: &str) {
             let contents = fs::read_to_string(&path)
                 .expect("Should have been able to read the file");
             let metadata = serde_json::from_str::<Value>(&*contents).expect("parsed data as json");
-            let result = schema.validate(&metadata).is_valid();
+            let result = schema.validate(&metadata);
             let filename = file["/Users/christian/git/dasch/dsp-meta/data/json/".len()..].to_string();
-            match result {
-                true => {
-                    success = success + 1;
-                    valid.push(filename);
-                    println!("VALID\n") // println!("DATA:\n {:?}\n", data),
-                }
-                false => {
-                    error = error + 1;
-                    invalid.push(filename);
-                    println!("INVALID\n") // println!("DATA:\n {:?}\n", data),
-                }
-            };
+            if result.is_valid() {
+                success = success + 1;
+                valid.push(filename);
+                println!("VALID\n") // println!("DATA:\n {:?}\n", data),
+            } else {
+                error = error + 1;
+                invalid.push(filename);
+                println!("INVALID: {:?}\n", result) // println!("DATA:\n {:?}\n", data),
+            }
         }
     }
     println!("Success: {}, Error: {}, Total: {}", success, error, success + error);
