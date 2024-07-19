@@ -26,6 +26,7 @@ hyper.workspace = true
 log.workspace = true
 serde.workspace = true
 serde_json.workspace = true
+valico.workspace = true
 sophia = "0.7.2"
 tokio.workspace = true
 tower.workspace = true

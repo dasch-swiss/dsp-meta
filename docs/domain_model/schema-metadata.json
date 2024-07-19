@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://dasch.swiss/schema/schema-metadata.json",
   "title": "Metadata Schema",
   "description": "Schema definition of DSP metadata",

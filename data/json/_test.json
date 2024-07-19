@@ -1,0 +1,58 @@
+{
+    "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
+    "project": {
+        "__id": "0000_project",
+        "__type": "Project",
+        "__createdAt": "1630601349756338000",
+        "__createdBy": "manually",
+        "howToCite": "do not cite this",
+        "teaserText": "this is a project for testing purposes",
+        "datasets": [
+            "dataset_000",
+            "dataset_001"
+        ],
+        "contactPoint": "organization_000",
+        "disciplines": [
+            {
+                "__type": "URL",
+                "type": "Skos",
+                "url": "http://skos.um.es/unesco6/0000",
+                "text": "Nothingness"
+            }
+        ],
+        "funders": [
+            "organization_000"
+        ],
+        "keywords": [
+            {
+                "en": "test",
+                "de": "Test"
+            }
+        ],
+        "name": "",
+        "shortcode": "0000",
+        "spatialCoverage": [
+            {
+                "__type": "URL",
+                "type": "Geonames",
+                "url": "https://www.geonames.org/6255148",
+                "text": "Europe"
+            }
+        ],
+        "startDate": "2021-01-01",
+        "temporalCoverage": [
+            {
+                "en": "present"
+            }
+        ],
+        "url": {
+            "__type": "URL",
+            "type": "URL",
+            "url": "http://app.test.dasch.swiss",
+            "text": "app.test.dasch.swiss"
+        }
+    },
+    "datasets": [
+        {}
+    ]
+}
