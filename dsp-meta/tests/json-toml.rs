@@ -25,14 +25,6 @@ pub struct Project {
     pub created_at: String,
     #[serde(rename = "__createdBy")]
     pub created_by: String,
-    #[serde(rename = "__modifiedAt")]
-    pub modified_at: Option<String>,
-    #[serde(rename = "__modifiedBy")]
-    pub modified_by: Option<String>,
-    #[serde(rename = "__deletedAt")]
-    pub deleted_at: Option<String>,
-    #[serde(rename = "__deletedBy")]
-    pub deleted_by: Option<String>,
     pub shortcode: String,
     pub name: String,
     pub description: Text,
@@ -64,14 +56,6 @@ pub struct Dataset {
     pub created_at: String,
     #[serde(rename = "__createdBy")]
     pub created_by: String,
-    #[serde(rename = "__modifiedAt")]
-    pub modified_at: Option<String>,
-    #[serde(rename = "__modifiedBy")]
-    pub modified_by: Option<String>,
-    #[serde(rename = "__deletedAt")]
-    pub deleted_at: Option<String>,
-    #[serde(rename = "__deletedBy")]
-    pub deleted_by: Option<String>,
     pub title: String,
     pub access_conditions: String, // "enum": [ "open", "restricted", "closed" ]
     pub how_to_cite: String,
@@ -99,14 +83,6 @@ pub struct Person {
     pub created_at: String,
     #[serde(rename = "__createdBy")]
     pub created_by: String,
-    #[serde(rename = "__modifiedAt")]
-    pub modified_at: Option<String>,
-    #[serde(rename = "__modifiedBy")]
-    pub modified_by: Option<String>,
-    #[serde(rename = "__deletedAt")]
-    pub deleted_at: Option<String>,
-    #[serde(rename = "__deletedBy")]
-    pub deleted_by: Option<String>,
     pub job_titles: Vec<String>, // non empty
     pub given_names: Vec<String>, // non empty
     pub family_names: Vec<String>, // non empty
@@ -126,14 +102,6 @@ pub struct Organization {
     pub created_at: String,
     #[serde(rename = "__createdBy")]
     pub created_by: String,
-    #[serde(rename = "__modifiedAt")]
-    pub modified_at: Option<String>,
-    #[serde(rename = "__modifiedBy")]
-    pub modified_by: Option<String>,
-    #[serde(rename = "__deletedAt")]
-    pub deleted_at: Option<String>,
-    #[serde(rename = "__deletedBy")]
-    pub deleted_by: Option<String>,
     pub name: String,
     pub url: Option<Url>,
     pub address: Option<Address>,
@@ -151,14 +119,6 @@ pub struct Grant {
     pub created_at: String,
     #[serde(rename = "__createdBy")]
     pub created_by: String,
-    #[serde(rename = "__modifiedAt")]
-    pub modified_at: Option<String>,
-    #[serde(rename = "__modifiedBy")]
-    pub modified_by: Option<String>,
-    #[serde(rename = "__deletedAt")]
-    pub deleted_at: Option<String>,
-    #[serde(rename = "__deletedBy")]
-    pub deleted_by: Option<String>,
     pub funders: Vec<String>, // non empty
     pub number: Option<String>,
     pub name: Option<String>,
