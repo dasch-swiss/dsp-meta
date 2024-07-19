@@ -5,7 +5,7 @@
   let isTestEnvironment: boolean = window.location.hostname === 'localhost' || window.location.hostname.startsWith('meta.test')
 
   const truncateString = (s: string) => {
-    // TODO: can this be improved? 1. dynamic length depending on space; 2. show full text on hover
+    // TODO: can this be improved? 1. dynamic langth depending on space; 2. show full text on hover
     if (s.length > 35) {
       return `${s.slice(0, 35)}...`;
     } else return s;
@@ -150,7 +150,6 @@
       <div class=label>Funder</div>
       {#each $projectMetadata?.project.funders.map((o) => {return findObjectByID(o)}) as f}
           {#if f.__type === "Person"}
-            {console.log('person',f)}
             <!-- TODO: handle funding person - need to find example -->
             <!-- <div class=data>{findObjectById(f)?.givenName.split(";").join(" ")} {findObjectById(f)?.familyName}</div> -->
           {:else if f.__type === "Organization"}
