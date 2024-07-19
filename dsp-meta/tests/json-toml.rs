@@ -89,14 +89,14 @@ pub struct Dataset {
     #[serde(rename = "__createdBy")]
     pub created_by: String,
     pub title: String,
-    pub access_conditions: String, // "enum": [ "open", "restricted", "closed" ]
+    pub access_conditions: AccessCondition,
     pub how_to_cite: String,
-    pub status: String, // "enum": [ "In planning", "Ongoing", "On hold", "Finished" ]
+    pub status: Status,
     pub abstracts: NonEmpty<TextOrUrl>,
-    pub type_of_data: NonEmpty<String>, // "enum": [ "XML", "Text", "Image", "Video", "Audio" ]
+    pub type_of_data: NonEmpty<TypeOfData>,
     pub licenses: NonEmpty<License>,
     pub languages: NonEmpty<Text>,
-    pub attributions: NonEmpty<Attribution>, // non-empty
+    pub attributions: NonEmpty<Attribution>,
     pub alternative_titles: Option<Vec<Text>>,
     pub date_published: Option<Date>,
     pub date_created: Option<Date>,
@@ -104,6 +104,34 @@ pub struct Dataset {
     pub distribution: Option<Url>,
     pub urls: Option<Vec<Url>>,
     pub additional: Option<Vec<TextOrUrl>>,
+}
+
+#[derive(Debug, Serialize, Deserialize, PartialEq)]
+#[serde(rename_all = "lowercase")]
+pub enum AccessCondition {
+    Open,
+    Restricted,
+    Closed,
+}
+
+#[derive(Debug, Serialize, Deserialize, PartialEq)]
+pub enum Status {
+    #[serde(rename = "In planning")]
+    InPlanning,
+    #[serde(rename = "Ongoing")]
+    OnGoing,
+    #[serde(rename = "On hold")]
+    OnHold,
+    Finished,
+}
+
+#[derive(Debug, Serialize, Deserialize, PartialEq)]
+pub enum TypeOfData {
+    XML,
+    Text,
+    Image,
+    Video,
+    Audio,
 }
 
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
@@ -196,7 +224,7 @@ pub struct DataManagementPlan {
 #[serde(rename_all = "camelCase")]
 pub struct Attribution {
     pub agent: String,
-    pub roles: NonEmpty<String>, // non-empty
+    pub roles: NonEmpty<String>,
 }
 
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
