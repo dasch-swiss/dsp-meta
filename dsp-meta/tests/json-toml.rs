@@ -2,7 +2,6 @@ use std::collections::HashMap;
 use std::fs;
 use std::fs::File;
 use std::path::Path;
-
 use chrono::{DateTime, Utc};
 use nonempty::NonEmpty;
 use serde::{Deserialize, Serialize};
@@ -74,9 +73,15 @@ pub struct Project {
     pub end_date: Option<Date>,
     pub contact_point: Option<String>,
     pub how_to_cite: String,
-    pub publications: Option<NonEmpty<String>>,
+    pub publications: Option<NonEmpty<Publication>>,
     pub grants: Option<NonEmpty<String>>,
     pub alternative_names: Option<NonEmpty<Text>>,
+}
+
+#[derive(Debug, Serialize, Deserialize, PartialEq)]
+pub struct Publication {
+    pub text: String,
+    pub url: Option<NonEmpty<Url>>,
 }
 
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
@@ -219,6 +224,8 @@ pub enum UrlType {
     ORCID,
     #[serde(rename = "Creative Commons")]
     CreativeCommons,
+    DOI,
+    ARK,
 }
 impl UrlType {
     fn default() -> Self { UrlType::URL }
@@ -312,22 +319,39 @@ fn test_as_toml() {
 fn test_deserialization() {
     let paths = vec![
         "/Users/christian/git/dasch/dsp-meta/data/json/_bilddatenbank.json",
+        "/Users/christian/git/dasch/dsp-meta/data/json/fagottino.json",
         "/Users/christian/git/dasch/dsp-meta/data/json/roud.json",
         "/Users/christian/git/dasch/dsp-meta/data/json/limc.json",
         "/Users/christian/git/dasch/dsp-meta/data/json/posepi.json",
         "/Users/christian/git/dasch/dsp-meta/data/json/olympic.json",
         "/Users/christian/git/dasch/dsp-meta/data/json/dasch.json",
+        "/Users/christian/git/dasch/dsp-meta/data/json/igeoarchive.json",
         "/Users/christian/git/dasch/dsp-meta/data/json/mfmps.json",
+        "/Users/christian/git/dasch/dsp-meta/data/json/digitalagenda.json",
         "/Users/christian/git/dasch/dsp-meta/data/json/waldaucinema.json",
         "/Users/christian/git/dasch/dsp-meta/data/json/operativetv.json",
         "/Users/christian/git/dasch/dsp-meta/data/json/beol.json",
+        "/Users/christian/git/dasch/dsp-meta/data/json/lenzburg.json",
         "/Users/christian/git/dasch/dsp-meta/data/json/_dssl.json",
+        "/Users/christian/git/dasch/dsp-meta/data/json/reforme-geneve.json",
+        "/Users/christian/git/dasch/dsp-meta/data/json/awg.json",
+        "/Users/christian/git/dasch/dsp-meta/data/json/religious-speech.json",
+        "/Users/christian/git/dasch/dsp-meta/data/json/cache.json",
+        "/Users/christian/git/dasch/dsp-meta/data/json/stardom.json",
+        "/Users/christian/git/dasch/dsp-meta/data/json/prom_know.json",
         "/Users/christian/git/dasch/dsp-meta/data/json/mls.json",
+        "/Users/christian/git/dasch/dsp-meta/data/json/aura-effizienz.json",
+        "/Users/christian/git/dasch/dsp-meta/data/json/drawings.json",
+        "/Users/christian/git/dasch/dsp-meta/data/json/tdk.json",
         "/Users/christian/git/dasch/dsp-meta/data/json/societesavoie.json",
         "/Users/christian/git/dasch/dsp-meta/data/json/biz.json",
+        "/Users/christian/git/dasch/dsp-meta/data/json/big-data-in-agriculture.json",
+        "/Users/christian/git/dasch/dsp-meta/data/json/tds.json",
         "/Users/christian/git/dasch/dsp-meta/data/json/_rosetta.json",
+        "/Users/christian/git/dasch/dsp-meta/data/json/mark16.json",
         "/Users/christian/git/dasch/dsp-meta/data/json/hdm.json",
-    ].into_iter().map(|s| Path::new(s));
+        "/Users/christian/git/dasch/dsp-meta/data/json/globalgeschichte.json",
+    ].into_iter() .map(|s| Path::new(s));
     let mut success: usize = 0;
     let mut error: usize = 0;
 
