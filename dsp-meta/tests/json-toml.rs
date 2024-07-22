@@ -7,7 +7,6 @@ use nonempty::NonEmpty;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use valico::json_schema;
-use crate::TextOrUrl::{TextValue, UrlValue};
 
 mod timestamp_nanos_date_format {
     use chrono::{DateTime, Utc};
@@ -195,7 +194,10 @@ pub struct Grant {
 }
 
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
-pub struct Text(HashMap<String, String>);
+pub struct Text(HashMap<IsoCode, String>);
+
+#[derive(Debug, Serialize, Deserialize, Eq, PartialEq, Hash)]
+pub struct IsoCode(String);
 
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 pub struct Date(String);
@@ -269,37 +271,6 @@ pub struct License {
 pub enum TextOrUrl {
     TextValue(Text),
     UrlValue(Url),
-}
-
-#[derive(Debug, Serialize, Deserialize, PartialEq)]
-pub struct Untagged {
-    the_enum: NonEmpty<TextOrUrl>,
-}
-
-#[derive(Debug, Serialize, Deserialize, PartialEq)]
-pub struct P {
-    some_str: Option<String>,
-    p: Untagged,
-}
-
-#[test]
-fn untagged_enum() {
-    let mut val =
-        NonEmpty::new(
-            UrlValue(Url {
-                url: "http://example.com".to_string(),
-                text: Some("text".to_string()),
-                url_type: UrlType::URL,
-            }));
-    val.push(TextValue(Text([("en".to_string(), "English".to_string())].iter().cloned().collect())));
-    let un = P {
-        some_str: None,
-        p: Untagged {
-            the_enum: val
-        },
-    };
-    let foo = toml::to_string(&un).expect("To TOML");
-    println!("{}", foo);
 }
 
 #[test]
