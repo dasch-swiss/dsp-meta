@@ -48,12 +48,12 @@ pub struct Metadata {
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct Project {
-    #[serde(rename(serialize = "id", deserialize = "__id"))]
+    #[serde(rename = "__id")]
     pub id: String,
     #[serde(with = "timestamp_nanos_date_format")]
-    #[serde(rename(serialize = "createdAt", deserialize = "__createdAt"))]
+    #[serde(rename = "__createdAt")]
     pub created_at: DateTime<Utc>,
-    #[serde(rename(serialize = "createdBy", deserialize = "__createdBy"))]
+    #[serde(rename = "__createdBy")]
     pub created_by: String,
     pub shortcode: String,
     pub name: String,
@@ -86,12 +86,12 @@ pub struct Publication {
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct Dataset {
-    #[serde(rename(serialize = "id", deserialize = "__id"))]
+    #[serde(rename = "__id")]
     pub id: String,
     #[serde(with = "timestamp_nanos_date_format")]
-    #[serde(rename(serialize = "createdAt", deserialize = "__createdAt"))]
+    #[serde(rename = "__createdAt")]
     pub created_at: DateTime<Utc>,
-    #[serde(rename(serialize = "createdBy", deserialize = "__createdBy"))]
+    #[serde(rename = "__createdBy")]
     pub created_by: String,
     pub title: String,
     pub access_conditions: AccessCondition,
@@ -142,12 +142,12 @@ pub enum TypeOfData {
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct Person {
-    #[serde(rename(serialize = "id", deserialize = "__id"))]
+    #[serde(rename = "__id")]
     pub id: String,
     #[serde(with = "timestamp_nanos_date_format")]
-    #[serde(rename(serialize = "createdAt", deserialize = "__createdAt"))]
+    #[serde(rename = "__createdAt")]
     pub created_at: DateTime<Utc>,
-    #[serde(rename(serialize = "createdBy", deserialize = "__createdBy"))]
+    #[serde(rename = "__createdBy")]
     pub created_by: String,
     pub job_titles: NonEmpty<String>,
     pub given_names: NonEmpty<String>,
@@ -162,12 +162,12 @@ pub struct Person {
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct Organization {
-    #[serde(rename(serialize = "id", deserialize = "__id"))]
+    #[serde(rename = "__id")]
     pub id: String,
     #[serde(with = "timestamp_nanos_date_format")]
-    #[serde(rename(serialize = "createdAt", deserialize = "__createdAt"))]
+    #[serde(rename = "__createdAt")]
     pub created_at: DateTime<Utc>,
-    #[serde(rename(serialize = "createdBy", deserialize = "__createdBy"))]
+    #[serde(rename = "__createdBy")]
     pub created_by: String,
     pub name: String,
     pub url: Option<Url>,
@@ -180,12 +180,12 @@ pub struct Organization {
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct Grant {
-    #[serde(rename(serialize = "id", deserialize = "__id"))]
+    #[serde(rename = "__id")]
     pub id: String,
     #[serde(with = "timestamp_nanos_date_format")]
-    #[serde(rename(serialize = "createdAt", deserialize = "__createdAt"))]
+    #[serde(rename = "__createdAt")]
     pub created_at: DateTime<Utc>,
-    #[serde(rename(serialize = "createdBy", deserialize = "__createdBy"))]
+    #[serde(rename = "__createdBy")]
     pub created_by: String,
     pub funders: NonEmpty<String>,
     pub number: Option<String>,
@@ -274,16 +274,42 @@ pub enum TextOrUrl {
 }
 
 #[test]
-fn test_as_toml() {
-    let path = "/Users/christian/git/dasch/dsp-meta/data/json/beol.json";
+fn test_as_toml_and_yaml() {
+    let path = "/Users/christian/git/dasch/dsp-meta/data/examples/sgv.json";
     let contents = fs::read_to_string(path)
         .expect("Should have been able to read the file");
     let metadata = serde_json::from_str::<Metadata>(&*contents).expect("From JSON");
-    let foo = toml::to_string(&metadata).expect("To TOML");
-    println!("{}", foo);
+    let toml = toml::to_string(&metadata).expect("To TOML");
+    fs::write("/Users/christian/git/dasch/dsp-meta/data/examples/sgv.toml", &toml).expect("Write TOML");
+    println!("As TOML:");
+    println!("{}", toml);
     println!();
-    let foo = serde_json::to_string(&metadata).expect("To JSON");
-    println!("{}", foo);
+
+    let yaml = serde_yaml::to_string(&metadata).expect("To YAML");
+    fs::write("/Users/christian/git/dasch/dsp-meta/data/examples/sgv.yaml", &yaml).expect("Write YAML");
+    println!("As YAML:");
+    println!("{}", yaml);
+    println!("As YAML:");
+}
+
+#[test]
+fn test_json_and_yaml_serialization_are_equal() {
+    let path = "/Users/christian/git/dasch/dsp-meta/data/examples/sgv.json";
+    let contents_json = fs::read_to_string(path).expect("Read JSON");
+    let metadata_json = serde_json::from_str::<Metadata>(&*contents_json).expect("From JSON");
+    let contents_yaml = fs::read_to_string("/Users/christian/git/dasch/dsp-meta/data/examples/sgv.yaml").expect("Read YML");
+    let metadata_yaml = serde_yaml::from_str(&*contents_yaml).expect("From YAML");
+    assert_eq!(metadata_json, metadata_yaml);
+}
+
+#[test]
+fn test_json_and_toml_serialization_are_equal() {
+    let path = "/Users/christian/git/dasch/dsp-meta/data/examples/sgv.json";
+    let contents_json = fs::read_to_string(path).expect("Read JSON");
+    let metadata_json = serde_json::from_str::<Metadata>(&*contents_json).expect("From JSON");
+    let contents_toml = fs::read_to_string("/Users/christian/git/dasch/dsp-meta/data/examples/sgv.toml").expect("Read TOML");
+    let metadata_toml = toml::from_str::<Metadata>(&*contents_toml).expect("From TOML");
+    assert_eq!(metadata_json, metadata_toml);
 }
 
 #[test]
@@ -322,7 +348,7 @@ fn test_deserialization() {
         "/Users/christian/git/dasch/dsp-meta/data/json/mark16.json",
         "/Users/christian/git/dasch/dsp-meta/data/json/hdm.json",
         "/Users/christian/git/dasch/dsp-meta/data/json/globalgeschichte.json",
-    ].into_iter() .map(|s| Path::new(s));
+    ].into_iter().map(|s| Path::new(s));
     let mut success: usize = 0;
     let mut error: usize = 0;
 
