@@ -7,10 +7,10 @@ use dsp_meta::api::convert::serde::json_schema_validator::{validate_files, Schem
 
 #[test]
 fn test_json_and_yaml_serialization_are_equal() {
-    let mut path = data_dir();
-    path.push("json");
-    path.push("sgv.json");
-    let contents_json = fs::read_to_string(path).expect("Read JSON");
+    let mut sgv_json = data_dir();
+    sgv_json.push("json");
+    sgv_json.push("sgv.json");
+    let contents_json = fs::read_to_string(sgv_json).expect("Read JSON");
     let metadata_json = serde_json::from_str::<DraftMetadata>(&*contents_json).expect("From JSON");
     let contents_yaml = serde_yaml::to_string(&metadata_json).expect("To YAML");
     let metadata_yaml = serde_yaml::from_str(&*contents_yaml).expect("From YAML");
@@ -19,10 +19,10 @@ fn test_json_and_yaml_serialization_are_equal() {
 
 #[test]
 fn test_json_and_toml_serialization_are_equal() {
-    let mut path = data_dir();
-    path.push("json");
-    path.push("sgv.json");
-    let contents_json = fs::read_to_string(path).expect("Read JSON");
+    let mut sgv_json = data_dir();
+    sgv_json.push("json");
+    sgv_json.push("sgv.json");
+    let contents_json = fs::read_to_string(sgv_json).expect("Read JSON");
     let metadata_json = serde_json::from_str::<DraftMetadata>(&*contents_json).expect("From JSON");
     let contents_toml = toml::to_string(&metadata_json).expect("To TOML");
     let metadata_toml = toml::from_str::<DraftMetadata>(&*contents_toml).expect("From TOML");
@@ -31,11 +31,11 @@ fn test_json_and_toml_serialization_are_equal() {
 
 #[test]
 fn test_deserialization_all_json_data() {
-    let paths = collect_data_json_paths();
+    let json_file_paths = collect_data_json_paths();
     let mut success: usize = 0;
     let mut error: usize = 0;
 
-    for path in paths {
+    for path in json_file_paths {
         let path = path.as_path();
         println!("Checking {}:", path.to_str().get_or_insert(""));
         let contents = fs::read_to_string(path).expect("Should have been able to read the file");
@@ -60,9 +60,9 @@ fn test_deserialization_all_json_data() {
 }
 
 fn collect_data_json_paths() -> Vec<PathBuf> {
-    let mut current_dir = data_dir();
-    current_dir.push("json");
-    fs::read_dir(current_dir)
+    let mut json_dir = data_dir();
+    json_dir.push("json");
+    fs::read_dir(json_dir)
         .expect("Failed to read data_dir")
         .filter_map(|entry| {
             let entry = entry.ok()?;
