@@ -5,6 +5,7 @@ use tracing::info;
 
 use crate::api::convert::hcl::hcl_body::HclBody;
 use crate::error::DspMetaError;
+use crate::infrastructure::load_hcl_file_paths;
 
 /// Read project metadata from .hcl file.
 pub fn validate<P: AsRef<Path>>(project_path: &P) -> Result<(), DspMetaError> {
@@ -16,18 +17,9 @@ pub fn validate<P: AsRef<Path>>(project_path: &P) -> Result<(), DspMetaError> {
 }
 
 /// Read project metadata from folder containing .hcl files.
-pub fn validate_data<P: AsRef<Path>>(data_path: &P) -> Result<(), DspMetaError> {
+pub fn validate_data(data_path: &Path) -> Result<(), DspMetaError> {
     info!("Entering validate_data()");
-
-    // get paths of HCL files
-    let hcl_files = std::fs::read_dir(data_path)
-        .expect("read directory containing HCL files.")
-        .map(|res| res.map(|e| e.path()))
-        .collect::<Result<Vec<_>, std::io::Error>>()
-        .expect("collect all files into collection.");
-
-    // load into db
-    for file in hcl_files {
+    for file in load_hcl_file_paths(data_path) {
         info!("Validating {}", file.display());
         let input = std::fs::read_to_string(file)?;
         let body: hcl::Body = hcl::from_str(&input)?;
