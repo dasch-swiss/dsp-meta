@@ -14,7 +14,7 @@ check:
     cargo +nightly fmt --check
     cargo clippy -- -D warnings
 
-# format all rust code
+# Format all rust code
 fmt:
     cargo +nightly fmt
 
@@ -42,23 +42,23 @@ serve:
 validate:
     export DSP_META_DATA_DIR=${PWD}/data && cargo run --bin dsp-meta-validator
 
-# build linux/amd64 Docker image locally
+# Build linux/amd64 Docker image locally
 docker-build-amd64:
     docker buildx build --platform linux/amd64 -t {{ DOCKER_IMAGE }}-amd64 --load .
 
-# push previously build linux/amd64 image to Docker hub
+# Push previously build linux/amd64 image to Docker hub
 docker-push-amd64:
     docker push {{ DOCKER_IMAGE }}-amd64
 
-# build linux/arm64 Docker image locally
+# Build linux/arm64 Docker image locally
 docker-build-arm64:
     docker buildx build --platform linux/arm64 -t {{ DOCKER_IMAGE }}-arm64 --load .
 
-# push previously build linux/arm64 image to Docker hub
+# Push previously build linux/arm64 image to Docker hub
 docker-push-arm64:
     docker push {{ DOCKER_IMAGE }}-arm64
 
-# publish Docker manifest combining aarch64 and x86 published images
+# Publish Docker manifest combining aarch64 and x86 published images
 docker-publish-manifest:
     docker manifest create {{ DOCKER_IMAGE }} --amend {{ DOCKER_IMAGE }}-amd64 --amend {{ DOCKER_IMAGE }}-arm64
     docker manifest annotate --arch amd64 --os linux {{ DOCKER_IMAGE }} {{ DOCKER_IMAGE }}-amd64
@@ -66,6 +66,10 @@ docker-publish-manifest:
     docker manifest inspect {{ DOCKER_IMAGE }}
     docker manifest push {{ DOCKER_IMAGE }}
 
-# output the BUILD_TAG
+# Output the BUILD_TAG
 docker-image-tag:
     @echo {{ IMAGE_TAG }}
+
+# Watch for changes and run tests
+watch:
+    cargo watch -x test
