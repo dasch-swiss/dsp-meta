@@ -14,6 +14,13 @@ static DRAFT_SCHEMA: &str = include_str!("../../../../resources/schema-metadata-
 pub enum SchemaVersion {
     Draft
 }
+impl SchemaVersion {
+    fn schema_str(&self) -> &str {
+        match self {
+            Draft => DRAFT_SCHEMA
+        }
+    }
+}
 
 pub type Result<T> = core::result::Result<T, ValidationError>;
 #[derive(Debug)]
@@ -49,7 +56,7 @@ fn load_path_as_json(path: &Path) -> Result<Value> {
 }
 
 fn load_json_schema(schema_version: SchemaVersion, scope: &mut Scope) -> Result<ScopedSchema> {
-    let schema_str = match schema_version { Draft => { DRAFT_SCHEMA } };
+    let schema_str = schema_version.schema_str();
     let json = serde_json::from_str(schema_str).map_err(|e| NotAJsonFile(e))?;
     scope.compile_and_return(json, false).map_err(|e| { SchemaError(e) })
 }
