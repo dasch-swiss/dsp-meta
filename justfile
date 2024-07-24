@@ -14,6 +14,10 @@ check:
     cargo +nightly fmt --check
     cargo clippy -- -D warnings
 
+# format all rust code
+fmt:
+    cargo +nightly fmt
+
 # Fix justfile formating. Warning: will change existing file. Please first use check.
 fix:
     just --fmt --unstable

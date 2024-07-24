@@ -1,9 +1,9 @@
-use std::{env, fs};
 use std::path::{Path, PathBuf};
+use std::{env, fs};
 
 use api::convert::serde::draft_model::*;
 use dsp_meta::api;
-use dsp_meta::api::convert::serde::json_schema_validator::{SchemaVersion, validate_files};
+use dsp_meta::api::convert::serde::json_schema_validator::{validate_files, SchemaVersion};
 
 #[test]
 fn test_json_and_yaml_serialization_are_equal() {
@@ -38,8 +38,7 @@ fn test_deserialization_data() {
     for path in paths {
         let path = path.as_path();
         println!("Checking {}:", path.to_str().get_or_insert(""));
-        let contents =
-            fs::read_to_string(path).expect("Should have been able to read the file");
+        let contents = fs::read_to_string(path).expect("Should have been able to read the file");
         let metadata = serde_json::from_str::<DraftMetadata>(&*contents);
         match metadata {
             Ok(_data) => {
@@ -61,7 +60,10 @@ fn test_deserialization_data() {
 }
 
 fn collect_data_json_paths() -> Vec<PathBuf> {
-    let mut current_dir = env::current_dir().ok().and_then(|e| e.parent().map(|p| p.to_path_buf())).expect("Project root dir");
+    let mut current_dir = env::current_dir()
+        .ok()
+        .and_then(|e| e.parent().map(|p| p.to_path_buf()))
+        .expect("Project root dir");
     current_dir.push("data");
     current_dir.push("json");
     fs::read_dir(current_dir)

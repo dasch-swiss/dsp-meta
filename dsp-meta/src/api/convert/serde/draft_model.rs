@@ -1,6 +1,7 @@
+use std::collections::HashMap;
+
 use nonempty::NonEmpty;
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
 
 // This model corresponds to the json schema found in /data/schema-metadata-draft.json
 // These data structures are able to parse all json metadata found in /data/json/.*json
