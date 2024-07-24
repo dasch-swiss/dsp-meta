@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 
+use chrono::NaiveDate;
 use nonempty::NonEmpty;
 use serde::{Deserialize, Serialize};
 
@@ -167,7 +168,7 @@ pub struct DraftText(HashMap<DraftIsoCode, String>);
 pub struct DraftIsoCode(String);
 
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
-pub struct DraftDate(String);
+pub struct DraftDate(NaiveDate);
 
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
