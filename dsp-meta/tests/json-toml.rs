@@ -1,45 +1,18 @@
 use std::collections::HashMap;
 use std::fs;
 use std::fs::File;
-use std::path::Path;
-use chrono::{DateTime, Utc};
+use std::path::PathBuf;
+
 use nonempty::NonEmpty;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use valico::json_schema;
 
-mod timestamp_nanos_date_format {
-    use chrono::{DateTime, Utc};
-    use serde::{de, Deserialize, Deserializer, ser, Serializer};
-
-    pub fn serialize<S>(
-        date: &DateTime<Utc>,
-        serializer: S,
-    ) -> Result<S::Ok, S::Error>
-    where
-        S: Serializer,
-    {
-        let ts_nanos = date.timestamp_nanos_opt()
-            .ok_or(ser::Error::custom(format!("date out of range: {}", date)))?;
-        serializer.serialize_str(&format!("{}", ts_nanos))
-    }
-    pub fn deserialize<'de, D>(
-        deserializer: D,
-    ) -> Result<DateTime<Utc>, D::Error>
-    where
-        D: Deserializer<'de>,
-    {
-        let ts = String::deserialize(deserializer)?;
-        let ts_millis: i64 = ts.parse::<i64>()
-            .map_err(|e| de::Error::custom(format!("invalid timestamp: {} {}", ts, e)))?;
-        Ok(DateTime::from_timestamp_nanos(ts_millis))
-    }
-}
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct Metadata {
     pub project: Project,
-    pub datasets: NonEmpty<Dataset>,
+    pub datasets: Option<Vec<Dataset>>,
     pub persons: Option<Vec<Person>>,
     pub organizations: Option<Vec<Organization>>,
     pub grants: Option<Vec<Grant>>,
@@ -50,28 +23,27 @@ pub struct Metadata {
 pub struct Project {
     #[serde(rename = "__id")]
     pub id: String,
-    #[serde(with = "timestamp_nanos_date_format")]
     #[serde(rename = "__createdAt")]
-    pub created_at: DateTime<Utc>,
+    pub created_at: Option<String>,
     #[serde(rename = "__createdBy")]
-    pub created_by: String,
+    pub created_by: Option<String>,
     pub shortcode: String,
     pub name: String,
-    pub description: Text,
+    pub description: Option<Text>,
     pub start_date: Date,
     pub teaser_text: String,
     pub datasets: NonEmpty<String>,
     pub keywords: NonEmpty<Text>,
     pub disciplines: NonEmpty<TextOrUrl>,
-    pub temporal_coverage: NonEmpty<TextOrUrl>,
-    pub spatial_coverage: NonEmpty<Url>,
-    pub funders: NonEmpty<String>,
-    pub url: Url,
+    pub temporal_coverage: Option<NonEmpty<TextOrUrl>>,
+    pub spatial_coverage: Option<NonEmpty<Url>>,
+    pub funders: Option<NonEmpty<String>>,
+    pub url: Option<Url>,
     pub secondary_url: Option<Url>,
     pub data_management_plan: Option<DataManagementPlan>,
     pub end_date: Option<Date>,
     pub contact_point: Option<String>,
-    pub how_to_cite: String,
+    pub how_to_cite: Option<String>,
     pub publications: Option<NonEmpty<Publication>>,
     pub grants: Option<NonEmpty<String>>,
     pub alternative_names: Option<NonEmpty<Text>>,
@@ -88,27 +60,26 @@ pub struct Publication {
 pub struct Dataset {
     #[serde(rename = "__id")]
     pub id: String,
-    #[serde(with = "timestamp_nanos_date_format")]
     #[serde(rename = "__createdAt")]
-    pub created_at: DateTime<Utc>,
+    pub created_at: Option<String>,
     #[serde(rename = "__createdBy")]
-    pub created_by: String,
-    pub title: String,
-    pub access_conditions: AccessCondition,
-    pub how_to_cite: String,
-    pub status: Status,
-    pub abstracts: NonEmpty<TextOrUrl>,
-    pub type_of_data: NonEmpty<TypeOfData>,
-    pub licenses: NonEmpty<License>,
-    pub languages: NonEmpty<Text>,
-    pub attributions: NonEmpty<Attribution>,
+    pub created_by: Option<String>,
+    pub abstracts: Option<NonEmpty<TextOrUrl>>,
+    pub access_conditions: Option<AccessCondition>,
+    pub additional: Option<Vec<TextOrUrl>>,
     pub alternative_titles: Option<Vec<Text>>,
-    pub date_published: Option<Date>,
+    pub attributions: Option<NonEmpty<Attribution>>,
     pub date_created: Option<Date>,
     pub date_modified: Option<Date>,
+    pub date_published: Option<Date>,
     pub distribution: Option<Url>,
+    pub how_to_cite: Option<String>,
+    pub languages: Option<NonEmpty<Text>>,
+    pub licenses: Option<NonEmpty<License>>,
+    pub status: Option<Status>,
+    pub title: Option<String>,
+    pub type_of_data: Option<NonEmpty<TypeOfData>>,
     pub urls: Option<Vec<Url>>,
-    pub additional: Option<Vec<TextOrUrl>>,
 }
 
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
@@ -144,15 +115,14 @@ pub enum TypeOfData {
 pub struct Person {
     #[serde(rename = "__id")]
     pub id: String,
-    #[serde(with = "timestamp_nanos_date_format")]
     #[serde(rename = "__createdAt")]
-    pub created_at: DateTime<Utc>,
+    pub created_at: Option<String>,
     #[serde(rename = "__createdBy")]
-    pub created_by: String,
-    pub job_titles: NonEmpty<String>,
+    pub created_by: Option<String>,
+    pub job_titles: Option<NonEmpty<String>>,
     pub given_names: NonEmpty<String>,
     pub family_names: NonEmpty<String>,
-    pub affiliation: NonEmpty<String>,
+    pub affiliation: Option<NonEmpty<String>>,
     pub address: Option<Address>,
     pub email: Option<String>,
     pub secondary_email: Option<String>,
@@ -164,11 +134,10 @@ pub struct Person {
 pub struct Organization {
     #[serde(rename = "__id")]
     pub id: String,
-    #[serde(with = "timestamp_nanos_date_format")]
     #[serde(rename = "__createdAt")]
-    pub created_at: DateTime<Utc>,
+    pub created_at: Option<String>,
     #[serde(rename = "__createdBy")]
-    pub created_by: String,
+    pub created_by: Option<String>,
     pub name: String,
     pub url: Option<Url>,
     pub address: Option<Address>,
@@ -182,11 +151,10 @@ pub struct Organization {
 pub struct Grant {
     #[serde(rename = "__id")]
     pub id: String,
-    #[serde(with = "timestamp_nanos_date_format")]
     #[serde(rename = "__createdAt")]
-    pub created_at: DateTime<Utc>,
+    pub created_at: Option<String>,
     #[serde(rename = "__createdBy")]
-    pub created_by: String,
+    pub created_by: Option<String>,
     pub funders: NonEmpty<String>,
     pub number: Option<String>,
     pub name: Option<String>,
@@ -238,7 +206,7 @@ impl UrlType {
 pub struct Address {
     pub street: String,
     pub postal_code: String,
-    pub locality: String,
+    pub locality: Option<String>,
     pub country: String,
     pub canton: Option<String>,
     pub additional: Option<String>,
@@ -314,45 +282,24 @@ fn test_json_and_toml_serialization_are_equal() {
 
 #[test]
 fn test_deserialization() {
-    let paths = vec![
-        "/Users/christian/git/dasch/dsp-meta/data/json/_bilddatenbank.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/fagottino.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/roud.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/limc.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/posepi.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/olympic.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/dasch.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/igeoarchive.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/mfmps.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/digitalagenda.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/waldaucinema.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/operativetv.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/beol.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/lenzburg.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/_dssl.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/reforme-geneve.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/awg.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/religious-speech.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/cache.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/stardom.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/prom_know.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/mls.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/aura-effizienz.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/drawings.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/tdk.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/societesavoie.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/biz.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/big-data-in-agriculture.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/tds.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/_rosetta.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/mark16.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/hdm.json",
-        "/Users/christian/git/dasch/dsp-meta/data/json/globalgeschichte.json",
-    ].into_iter().map(|s| Path::new(s));
+    let paths = fs::read_dir("/Users/christian/git/dasch/dsp-meta/data/json")
+        .expect("Directory not found")
+        .filter_map(
+            |entry| {
+                let entry = entry.ok()?;
+                let path = entry.path();
+                if path.is_file() && path.extension().and_then(|s| s.to_str()) == Some("json") {
+                    Some(path)
+                } else {
+                    None
+                }
+            }
+        ).collect::<Vec<PathBuf>>();
     let mut success: usize = 0;
     let mut error: usize = 0;
 
     for path in paths {
+        let path = path.as_path();
         if path.extension().and_then(|s| s.to_str()) == Some("json") {
             println!("Checking {}:", path.to_str().get_or_insert(""));
             let contents = fs::read_to_string(path)
@@ -383,7 +330,7 @@ fn verify_all_json_files_in_directory_jsonschema(directory: &str) {
     let paths = fs::read_dir(directory).unwrap();
     let mut success: usize = 0;
     let mut error: usize = 0;
-    let json_schema: Value = serde_json::from_reader(File::open("/Users/christian/git/dasch/dsp-meta/docs/domain_model/schema-metadata.json").unwrap()).unwrap();
+    let json_schema: Value = serde_json::from_reader(File::open("/Users/christian/git/dasch/dsp-meta/data/schema-metadata-draft.json").unwrap()).unwrap();
     let mut scope = json_schema::Scope::new();
     let schema = scope.compile_and_return(json_schema, false).unwrap();
     let mut valid: Vec<String> = Vec::new();
