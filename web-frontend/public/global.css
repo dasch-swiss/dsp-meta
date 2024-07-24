@@ -49,9 +49,6 @@ a.email {
   color: var(--dasch-primary) !important;
   font-size: 0.85rem;
 }
-a:visited {
-  color: inherit;
-}
 /* disable fancy animation for certain links */
 .regular-link::before {
   background: none;

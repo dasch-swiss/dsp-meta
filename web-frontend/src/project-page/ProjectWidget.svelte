@@ -150,7 +150,6 @@
       <div class=label>Funder</div>
       {#each $projectMetadata?.project.funders.map((o) => {return findObjectByID(o)}) as f}
           {#if f.__type === "Person"}
-            {console.log('person',f)}
             <!-- TODO: handle funding person - need to find example -->
             <!-- <div class=data>{findObjectById(f)?.givenName.split(";").join(" ")} {findObjectById(f)?.familyName}</div> -->
           {:else if f.__type === "Organization"}
