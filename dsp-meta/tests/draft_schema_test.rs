@@ -22,7 +22,6 @@ fn test_json_and_toml_serialization_are_equal() {
     let mut path = data_dir();
     path.push("json");
     path.push("sgv.json");
-    println!("{:?}", path);
     let contents_json = fs::read_to_string(path).expect("Read JSON");
     let metadata_json = serde_json::from_str::<DraftMetadata>(&*contents_json).expect("From JSON");
     let contents_toml = toml::to_string(&metadata_json).expect("To TOML");
