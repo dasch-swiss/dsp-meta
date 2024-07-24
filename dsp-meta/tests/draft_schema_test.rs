@@ -11,7 +11,7 @@ use dsp_meta::api;
 fn test_json_and_yaml_serialization_are_equal() {
     let path = "/Users/christian/git/dasch/dsp-meta/data/examples/sgv.json";
     let contents_json = fs::read_to_string(path).expect("Read JSON");
-    let metadata_json = serde_json::from_str::<Metadata>(&*contents_json).expect("From JSON");
+    let metadata_json = serde_json::from_str::<DraftMetadata>(&*contents_json).expect("From JSON");
     let contents_yaml = fs::read_to_string("/Users/christian/git/dasch/dsp-meta/data/examples/sgv.yaml").expect("Read YML");
     let metadata_yaml = serde_yaml::from_str(&*contents_yaml).expect("From YAML");
     assert_eq!(metadata_json, metadata_yaml);
@@ -21,9 +21,9 @@ fn test_json_and_yaml_serialization_are_equal() {
 fn test_json_and_toml_serialization_are_equal() {
     let path = "/Users/christian/git/dasch/dsp-meta/data/examples/sgv.json";
     let contents_json = fs::read_to_string(path).expect("Read JSON");
-    let metadata_json = serde_json::from_str::<Metadata>(&*contents_json).expect("From JSON");
+    let metadata_json = serde_json::from_str::<DraftMetadata>(&*contents_json).expect("From JSON");
     let contents_toml = fs::read_to_string("/Users/christian/git/dasch/dsp-meta/data/examples/sgv.toml").expect("Read TOML");
-    let metadata_toml = toml::from_str::<Metadata>(&*contents_toml).expect("From TOML");
+    let metadata_toml = toml::from_str::<DraftMetadata>(&*contents_toml).expect("From TOML");
     assert_eq!(metadata_json, metadata_toml);
 }
 
@@ -51,7 +51,7 @@ fn test_deserialization_data() {
             println!("Checking {}:", path.to_str().get_or_insert(""));
             let contents = fs::read_to_string(path)
                 .expect("Should have been able to read the file");
-            let metadata = serde_json::from_str::<Metadata>(&*contents);
+            let metadata = serde_json::from_str::<DraftMetadata>(&*contents);
             match metadata {
                 Ok(_data) => {
                     success = success + 1;
