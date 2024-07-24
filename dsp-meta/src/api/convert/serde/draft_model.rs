@@ -3,7 +3,7 @@ use std::collections::HashMap;
 use nonempty::NonEmpty;
 use serde::{Deserialize, Serialize};
 
-// This model corresponds to the json schema found in /data/schema-metadata-draft.json
+// This model corresponds to the json schema found in resources/schema-metadata-draft.json
 // These data structures are able to parse all json metadata found in /data/json/.*json
 // We can use them to produce TOML or YAML files as well
 
