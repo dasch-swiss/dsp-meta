@@ -1,11 +1,9 @@
-use std::fs;
-use std::fs::File;
-use std::path::PathBuf;
+use std::{env, fs};
+use std::path::{Path, PathBuf};
 
 use api::convert::serde::draft_model::*;
 use dsp_meta::api;
-use serde_json::Value;
-use valico::json_schema;
+use dsp_meta::api::convert::serde::json_schema_validator::{SchemaVersion, validate_files};
 
 #[test]
 fn test_json_and_yaml_serialization_are_equal() {
@@ -33,8 +31,41 @@ fn test_json_and_toml_serialization_are_equal() {
 
 #[test]
 fn test_deserialization_data() {
-    let paths = fs::read_dir("/Users/christian/git/dasch/dsp-meta/data/json")
-        .expect("Directory not found")
+    let paths = collect_data_json_paths();
+    let mut success: usize = 0;
+    let mut error: usize = 0;
+
+    for path in paths {
+        let path = path.as_path();
+        println!("Checking {}:", path.to_str().get_or_insert(""));
+        let contents =
+            fs::read_to_string(path).expect("Should have been able to read the file");
+        let metadata = serde_json::from_str::<DraftMetadata>(&*contents);
+        match metadata {
+            Ok(_data) => {
+                success = success + 1;
+                println!("SUCCESS\n") // println!("DATA:\n {:?}\n", data),
+            }
+            Err(err) => {
+                error = error + 1;
+                println!("ERROR:\n {:?}\n", err)
+            }
+        };
+    }
+    println!(
+        "Success: {}, Error: {}, Total: {}",
+        success,
+        error,
+        success + error
+    )
+}
+
+fn collect_data_json_paths() -> Vec<PathBuf> {
+    let mut current_dir = env::current_dir().ok().and_then(|e| e.parent().map(|p| p.to_path_buf())).expect("Project root dir");
+    current_dir.push("data");
+    current_dir.push("json");
+    fs::read_dir(current_dir)
+        .expect("Failed to read data_dir")
         .filter_map(|entry| {
             let entry = entry.ok()?;
             let path = entry.path();
@@ -44,90 +75,17 @@ fn test_deserialization_data() {
                 None
             }
         })
-        .collect::<Vec<PathBuf>>();
-    let mut success: usize = 0;
-    let mut error: usize = 0;
-
-    for path in paths {
-        let path = path.as_path();
-        if path.extension().and_then(|s| s.to_str()) == Some("json") {
-            println!("Checking {}:", path.to_str().get_or_insert(""));
-            let contents =
-                fs::read_to_string(path).expect("Should have been able to read the file");
-            let metadata = serde_json::from_str::<DraftMetadata>(&*contents);
-            match metadata {
-                Ok(_data) => {
-                    success = success + 1;
-                    println!("SUCCESS\n") // println!("DATA:\n {:?}\n", data),
-                }
-                Err(err) => {
-                    error = error + 1;
-                    println!("ERROR:\n {:?}\n", err)
-                }
-            };
-        }
-    }
-    println!(
-        "Success: {}, Error: {}, Total: {}",
-        success,
-        error,
-        success + error
-    )
+        .collect::<Vec<PathBuf>>()
 }
 
 #[test]
 fn test_draft_json_schema() {
-    verify_all_json_files_in_directory_jsonschema("/Users/christian/git/dasch/dsp-meta/data/json/");
-    assert!(true)
-}
-
-fn verify_all_json_files_in_directory_jsonschema(directory: &str) {
-    let paths = fs::read_dir(directory).unwrap();
-    let mut success: usize = 0;
-    let mut error: usize = 0;
-    let json_schema: Value = serde_json::from_reader(
-        File::open("/Users/christian/git/dasch/dsp-meta/data/schema-metadata-draft.json").unwrap(),
-    )
-    .unwrap();
-    let mut scope = json_schema::Scope::new();
-    let schema = scope.compile_and_return(json_schema, false).unwrap();
-    let mut valid: Vec<String> = Vec::new();
-    let mut invalid: Vec<String> = Vec::new();
-
-    for path in paths {
-        let path = path.unwrap().path();
-        if path.extension().and_then(|s| s.to_str()) == Some("json") {
-            let file = (*path.to_str().get_or_insert("")).to_string();
-            println!("Checking {}:", file);
-            let contents =
-                fs::read_to_string(&path).expect("Should have been able to read the file");
-            let metadata = serde_json::from_str::<Value>(&*contents).expect("parsed data as json");
-            let result = schema.validate(&metadata);
-            let filename =
-                file["/Users/christian/git/dasch/dsp-meta/data/json/".len()..].to_string();
-            if result.is_valid() {
-                success = success + 1;
-                valid.push(filename);
-                println!("VALID\n") // println!("DATA:\n {:?}\n", data),
-            } else {
-                error = error + 1;
-                invalid.push(filename);
-                println!("INVALID: {:?}\n", result) // println!("DATA:\n {:?}\n", data),
-            }
-        }
+    let path_bufs = collect_data_json_paths();
+    let paths: Vec<&Path> = path_bufs.iter().map(|p| p.as_path()).collect();
+    let results = validate_files(paths, SchemaVersion::Draft).unwrap();
+    for (key, value) in &results {
+        println!("{:?}: {:?}", key, value);
     }
-    println!(
-        "Success: {}, Error: {}, Total: {}",
-        success,
-        error,
-        success + error
-    );
-    println!();
-
-    println!("VALID files:\n{}", valid.join("\n"));
-    println!();
-
-    println!("INVALID files:\n{}", invalid.join("\n"));
-
-    assert!(invalid.is_empty());
+    let failure_count = results.values().filter(|v| !v.is_valid()).count();
+    assert_eq!(failure_count, 0);
 }
