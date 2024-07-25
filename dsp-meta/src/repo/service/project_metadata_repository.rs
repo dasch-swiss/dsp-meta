@@ -2,7 +2,7 @@ use std::collections::HashMap;
 use std::fs::File;
 use std::path::Path;
 use std::sync::{Arc, RwLock};
-
+use log::info;
 use dsp_domain::metadata::value::Shortcode;
 use tracing::{instrument, trace};
 
@@ -18,11 +18,11 @@ pub struct ProjectMetadataRepository {
 
 impl ProjectMetadataRepository {
     pub fn new(data_path: &Path) -> Self {
-        trace!("Init Repository {:?}", data_path);
+        info!("Init Repository {:?}", data_path);
         let db: Arc<RwLock<HashMap<String, DraftMetadata>>> = Arc::new(RwLock::new(HashMap::new()));
 
         let file_paths = load_json_file_paths(data_path);
-        trace!("Found {} projects", file_paths.len());
+        info!("Found {} projects", file_paths.len());
 
         let mut known_shortcodes: Vec<String> = Vec::new();
         for file in file_paths {
