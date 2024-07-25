@@ -2,7 +2,7 @@ import os
 import json
 
 # List of ongoing shortcodes
-ongoing_shortcodes = {
+ongoing_shortcodes = [
 		"0102",
 		"0103",
 		"0105",
@@ -41,9 +41,10 @@ ongoing_shortcodes = {
 		"0849",
 		"084A",
 		"084E"
-},
+]
 
 def update_json_files(folder_path):
+    print (ongoing_shortcodes)
     # Iterate through all files in the given folder
     for filename in os.listdir(folder_path):
         # Check if the file is a JSON file
@@ -59,6 +60,8 @@ def update_json_files(folder_path):
                 shortcode = data["project"]["shortcode"]
 
                 # Determine the status based on the shortcode
+                print (shortcode)
+                print (shortcode in ongoing_shortcodes)
                 if shortcode in ongoing_shortcodes:
                     status = "ongoing"
                 else:
