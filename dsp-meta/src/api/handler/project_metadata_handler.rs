@@ -11,7 +11,7 @@ use crate::api::model::project_metadata_dto::{ProjectMetadataDto, ProjectMetadat
 use crate::api::model::project_metadata_graph_dto::ProjectMetadataGraphDto;
 use crate::app_state::AppState;
 use crate::domain::service::project_metadata_api_contract::ProjectMetadataApiContract;
-use crate::domain::service::repository_contract::Pagination;
+use crate::domain::service::repository_contract::{Filter, Pagination};
 use crate::error::DspMetaError;
 
 /// GET /project_metadata/:shortcode
@@ -54,10 +54,12 @@ pub async fn get_project_metadata_by_shortcode_as_rdf(
 pub async fn get_all_project_metadata(
     State(state): State<Arc<AppState>>,
     pagination: Option<Query<Pagination>>,
+    filter: Option<Query<Filter>>,
 ) -> Result<Response, DspMetaError> {
     trace!("entered get_all_project_metadata()");
     let Query(pagination) = pagination.unwrap_or_default();
-    let page = state.project_metadata_service.find(&pagination)?;
+    let Query(filter) = filter.unwrap_or_default();
+    let page = state.project_metadata_service.find(&filter, &pagination)?;
     let mut response = Json(
         page.data
             .into_iter()

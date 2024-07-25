@@ -6,8 +6,8 @@ use std::sync::{Arc, RwLock};
 use dsp_domain::metadata::value::Shortcode;
 use tracing::{instrument, trace};
 
-use crate::api::convert::serde::draft_model::DraftMetadata;
-use crate::domain::service::repository_contract::{Page, Pagination, RepositoryContract};
+use crate::api::convert::serde::draft_model::{DraftMetadata, DraftProjectStatus};
+use crate::domain::service::repository_contract::{Filter, Page, Pagination, RepositoryContract};
 use crate::error::DspMetaError;
 use crate::infrastructure::load_json_file_paths;
 
@@ -58,19 +58,46 @@ impl RepositoryContract<DraftMetadata, Shortcode, DspMetaError> for ProjectMetad
     }
 
     #[instrument(skip(self))]
-    fn find(&self, pagination: &Pagination) -> Result<Page<DraftMetadata>, DspMetaError> {
-        trace!("repository: find_all");
+    fn find(
+        &self,
+        filter: &Filter,
+        pagination: &Pagination,
+    ) -> Result<Page<DraftMetadata>, DspMetaError> {
         let db = self.db.read().unwrap();
+        let query_status: Option<Vec<DraftProjectStatus>> = match filter.filter.as_deref() {
+            Some("o") => Some(vec![DraftProjectStatus::Ongoing]),
+            Some("f") => Some(vec![DraftProjectStatus::Finished]),
+            Some("of") => Some(vec![
+                DraftProjectStatus::Ongoing,
+                DraftProjectStatus::Finished,
+            ]),
+            _ => None,
+        };
+
         let values = db
             .values()
+            .filter(|metadata| {
+                if let Some(query_status) = &query_status {
+                    let actual_status = &metadata.project.status.clone().unwrap_or_default();
+                    !query_status.contains(actual_status)
+                } else {
+                    true
+                }
+            })
+            .filter(|metadata| {
+                if let Some(query) = &filter.query {
+                    serde_json::to_string(metadata).unwrap().contains(query)
+                } else {
+                    true
+                }
+            }).cloned().collect::<Vec<DraftMetadata>>();
+        let total = values.len();
+        let data = values
+            .into_iter()
             .skip((pagination.page - 1) * pagination.limit)
-            .take(pagination.limit);
-        let result = values.cloned().collect();
-        let total = self.count()?;
-        Ok(Page {
-            data: result,
-            total,
-        })
+            .take(pagination.limit)
+            .collect::<Vec<DraftMetadata>>();
+        Ok(Page { data, total })
     }
 
     fn count(&self) -> Result<usize, DspMetaError> {

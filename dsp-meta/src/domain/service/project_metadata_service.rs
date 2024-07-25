@@ -3,7 +3,7 @@ use tracing::{instrument, trace};
 
 use crate::api::convert::serde::draft_model::DraftMetadata;
 use crate::domain::service::project_metadata_api_contract::ProjectMetadataApiContract;
-use crate::domain::service::repository_contract::{Page, Pagination, RepositoryContract};
+use crate::domain::service::repository_contract::{Filter, Page, Pagination, RepositoryContract};
 use crate::error::DspMetaError;
 
 #[derive(Debug, Clone)]
@@ -30,7 +30,11 @@ where
     }
 
     #[instrument(skip(self))]
-    fn find(&self, pagination: &Pagination) -> Result<Page<DraftMetadata>, DspMetaError> {
-        self.repo.find(pagination)
+    fn find(
+        &self,
+        filter: &Filter,
+        pagination: &Pagination,
+    ) -> Result<Page<DraftMetadata>, DspMetaError> {
+        self.repo.find(filter, pagination)
     }
 }

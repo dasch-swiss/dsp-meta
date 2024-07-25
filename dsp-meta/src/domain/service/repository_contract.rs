@@ -13,11 +13,18 @@ impl Default for Pagination {
     }
 }
 
+#[derive(Deserialize, Default, Debug)]
+pub struct Filter {
+    #[serde(rename = "q")]
+    pub query: Option<String>,
+    #[serde(rename = "filter")]
+    pub filter: Option<String>,
+}
+
 pub struct Page<T> {
     pub data: Vec<T>,
     pub total: usize,
 }
-
 /// The contract for the project metadata repository.
 /// It defines the methods that the repository must implement.
 /// The trait is generically typed for the entity type `Entity`, the id type `Id`, and
@@ -28,7 +35,7 @@ pub trait RepositoryContract<Entity, Id, Error> {
     fn find_by_id(&self, id: &Id) -> Result<Option<Entity>, Error>;
 
     /// Returns all entities.
-    fn find(&self, pagination: &Pagination) -> Result<Page<Entity>, Error>;
+    fn find(&self, filter: &Filter, pagination: &Pagination) -> Result<Page<Entity>, Error>;
 
     /// Returns the number of entities.
     fn count(&self) -> Result<usize, Error>;
