@@ -13,6 +13,11 @@ impl Default for Pagination {
     }
 }
 
+pub struct Page<T> {
+    pub data: Vec<T>,
+    pub total: usize,
+}
+
 /// The contract for the project metadata repository.
 /// It defines the methods that the repository must implement.
 /// The trait is generically typed for the entity type `Entity`, the id type `Id`, and
@@ -23,7 +28,7 @@ pub trait RepositoryContract<Entity, Id, Error> {
     fn find_by_id(&self, id: &Id) -> Result<Option<Entity>, Error>;
 
     /// Returns all entities.
-    fn find(&self, pagination: &Pagination) -> Result<Vec<Entity>, Error>;
+    fn find(&self, pagination: &Pagination) -> Result<Page<Entity>, Error>;
 
     /// Returns the number of entities.
     fn count(&self) -> Result<usize, Error>;

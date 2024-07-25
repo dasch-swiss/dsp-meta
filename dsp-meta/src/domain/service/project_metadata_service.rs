@@ -1,8 +1,9 @@
 use dsp_domain::metadata::value::Shortcode;
 use tracing::{instrument, trace};
+
 use crate::api::convert::serde::draft_model::DraftMetadata;
 use crate::domain::service::project_metadata_api_contract::ProjectMetadataApiContract;
-use crate::domain::service::repository_contract::{Pagination, RepositoryContract};
+use crate::domain::service::repository_contract::{Page, Pagination, RepositoryContract};
 use crate::error::DspMetaError;
 
 #[derive(Debug, Clone)]
@@ -29,12 +30,7 @@ where
     }
 
     #[instrument(skip(self))]
-    fn find_all(&self, pagination: &Pagination) -> Result<Vec<DraftMetadata>, DspMetaError> {
-        trace!("service: find_all");
+    fn find_all(&self, pagination: &Pagination) -> Result<Page<DraftMetadata>, DspMetaError> {
         self.repo.find(pagination)
-    }
-
-    fn count(&self) -> Result<usize, DspMetaError> {
-        self.repo.count()
     }
 }

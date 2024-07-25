@@ -3,12 +3,11 @@ use std::fs::File;
 use std::path::Path;
 use std::sync::{Arc, RwLock};
 
+use dsp_domain::metadata::value::Shortcode;
 use tracing::{instrument, trace};
 
-use dsp_domain::metadata::value::Shortcode;
-
 use crate::api::convert::serde::draft_model::DraftMetadata;
-use crate::domain::service::repository_contract::{Pagination, RepositoryContract};
+use crate::domain::service::repository_contract::{Page, Pagination, RepositoryContract};
 use crate::error::DspMetaError;
 use crate::infrastructure::load_json_file_paths;
 
@@ -20,13 +19,12 @@ pub struct ProjectMetadataRepository {
 impl ProjectMetadataRepository {
     pub fn new(data_path: &Path) -> Self {
         trace!("Init Repository {:?}", data_path);
-        let db: Arc<RwLock<HashMap<String, DraftMetadata>>> =
-            Arc::new(RwLock::new(HashMap::new()));
+        let db: Arc<RwLock<HashMap<String, DraftMetadata>>> = Arc::new(RwLock::new(HashMap::new()));
 
         let file_paths = load_json_file_paths(data_path);
         trace!("Found {} projects", file_paths.len());
 
-        let mut known_shortcodes:Vec<String> = Vec::new();
+        let mut known_shortcodes: Vec<String> = Vec::new();
         for file in file_paths {
             let file = File::open(file).expect("open file.");
             let entity: DraftMetadata = serde_json::from_reader(file).expect("parse file as JSON.");
@@ -60,14 +58,19 @@ impl RepositoryContract<DraftMetadata, Shortcode, DspMetaError> for ProjectMetad
     }
 
     #[instrument(skip(self))]
-    fn find(&self, pagination: &Pagination) -> Result<Vec<DraftMetadata>, DspMetaError> {
+    fn find(&self, pagination: &Pagination) -> Result<Page<DraftMetadata>, DspMetaError> {
         trace!("repository: find_all");
         let db = self.db.read().unwrap();
         let values = db
             .values()
             .skip((pagination.page - 1) * pagination.limit)
             .take(pagination.limit);
-        Ok(values.cloned().collect())
+        let result = values.cloned().collect();
+        let total = self.count()?;
+        Ok(Page {
+            data: result,
+            total,
+        })
     }
 
     fn count(&self) -> Result<usize, DspMetaError> {

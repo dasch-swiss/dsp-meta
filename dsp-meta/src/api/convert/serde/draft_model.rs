@@ -50,17 +50,13 @@ pub struct DraftProject {
     pub alternative_names: Option<NonEmpty<DraftText>>,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Default, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DraftProjectStatus {
+    #[default]
     #[serde(rename = "ongoing")]
     Ongoing,
     #[serde(rename = "finished")]
     Finished,
-}
-impl Default for DraftProjectStatus {
-    fn default() -> Self {
-        DraftProjectStatus::Ongoing
-    }
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]

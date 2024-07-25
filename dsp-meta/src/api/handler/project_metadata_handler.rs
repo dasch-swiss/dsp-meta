@@ -3,6 +3,7 @@ use std::sync::Arc;
 use axum::extract::{Path, Query, State};
 use axum::http::StatusCode;
 use axum::response::{IntoResponse, Response};
+use axum::Json;
 use dsp_domain::metadata::value::Shortcode;
 use tracing::{info_span, instrument, trace};
 
@@ -56,17 +57,17 @@ pub async fn get_all_project_metadata(
 ) -> Result<Response, DspMetaError> {
     trace!("entered get_all_project_metadata()");
     let Query(pagination) = pagination.unwrap_or_default();
-    let count = state.project_metadata_service.count()?;
-    let mut data = state
-        .project_metadata_service
-        .find_all(&pagination)
-        .map(|metadata| {
-            metadata
-                .into_iter()
-                .map(ProjectMetadataWithInfoDto::from)
-                .collect::<Vec<ProjectMetadataWithInfoDto>>()
-        })
-        .map(axum::Json).into_response();
-    data.headers_mut().insert("X-Total-Count", count.to_string().parse().unwrap());
-    Ok(data)
+    let page = state.project_metadata_service.find_all(&pagination)?;
+    let mut response = Json(
+        page.data
+            .into_iter()
+            .map(ProjectMetadataWithInfoDto::from)
+            .collect::<Vec<ProjectMetadataWithInfoDto>>(),
+    )
+    .into_response();
+    let count = page.total;
+    response
+        .headers_mut()
+        .insert("X-Total-Count", count.to_string().parse().unwrap());
+    Ok(response)
 }
