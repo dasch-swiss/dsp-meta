@@ -4,7 +4,7 @@ use std::{env, fs};
 use api::convert::serde::draft_model::*;
 use dsp_meta::api;
 use dsp_meta::api::convert::serde::json_schema_validator::{validate_files, SchemaVersion};
-use dsp_meta::infrastructure::load_data_json_paths;
+use dsp_meta::infrastructure::load_json_file_paths;
 
 #[test]
 fn test_json_and_yaml_serialization_are_equal() {
@@ -32,7 +32,7 @@ fn test_json_and_toml_serialization_are_equal() {
 
 #[test]
 fn test_deserialization_all_json_data() {
-    let json_file_paths = load_data_json_paths(&data_dir());
+    let json_file_paths = load_json_file_paths(&data_dir());
     let mut success: usize = 0;
     let mut error: usize = 0;
 
@@ -71,7 +71,7 @@ fn data_dir() -> PathBuf {
 
 #[test]
 fn test_draft_json_schema() {
-    let path_bufs = load_data_json_paths(&data_dir());
+    let path_bufs = load_json_file_paths(&data_dir());
     let paths: Vec<&Path> = path_bufs.iter().map(|p| p.as_path()).collect();
     let results = validate_files(paths, SchemaVersion::Draft).unwrap();
     for (key, value) in &results {

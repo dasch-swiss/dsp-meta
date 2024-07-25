@@ -5,7 +5,7 @@ pub fn load_hcl_file_paths(data_path: &Path) -> Vec<PathBuf> {
     find_files_by_extension_in_dir(data_path, "hcl")
 }
 
-pub fn load_data_json_paths(data_path: &Path) -> Vec<PathBuf> {
+pub fn load_json_file_paths(data_path: &Path) -> Vec<PathBuf> {
     let mut json_dir = PathBuf::from(data_path);
     json_dir.push("json");
     find_files_by_extension_in_dir(data_path, "json")
