@@ -3,6 +3,8 @@
     "project": {
         "__id": "http://ns.dasch.swiss/repository#dsp-woposs-project",
         "__type": "Project",
+        "__createdAt": "1676912016678070000",
+        "__createdBy": "dsp-metadata-gui",
         "howToCite": "The WoPoss modality corpus. University of Neuchâtel. SNSF. Distributed by DaSCH.",
         "teaserText": "The WoPoss project aims at reconstructing the evolution of modal meanings in Latin from the prehistory of the language up to the 7th century CE, through a linguistically annotated, diachronic corpus.",
         "datasets": [
@@ -288,6 +290,8 @@
         {
             "__id": "http://ns.dasch.swiss/repository#dsp-woposs-dataset-000",
             "__type": "Dataset",
+            "__createdAt": "1676912016678070000",
+            "__createdBy": "dsp-metadata-gui",
             "abstracts": [
                 {
                     "en": "A linguistically annotated diachronic corpus of the Latin language (3rd BCE – 7th CE). The corpus enables the investigation of modal meanings and constructions in the history of the Latin language. The texts have been annotated automatically. The modal passages have been manually annotated by the annotators of the WoPoss team (for a more precise responsibility description, see each file)."
@@ -389,6 +393,8 @@
         {
             "__id": "http://ns.dasch.swiss/repository#dsp-woposs-person-000",
             "__type": "Person",
+            "__createdAt": "1676912016678070000",
+            "__createdBy": "dsp-metadata-gui",
             "email": "francesca.delloro@unine.ch",
             "familyNames": [
                 "Dell’Oro"
@@ -414,6 +420,8 @@
         {
             "__id": "http://ns.dasch.swiss/repository#dsp-woposs-person-001",
             "__type": "Person",
+            "__createdAt": "1676912016678070000",
+            "__createdBy": "dsp-metadata-gui",
             "familyNames": [
                 "Bermúdez Sabel"
             ],
@@ -430,6 +438,8 @@
         {
             "__id": "http://ns.dasch.swiss/repository#dsp-woposs-person-002",
             "__type": "Person",
+            "__createdAt": "1676912016678070000",
+            "__createdBy": "dsp-metadata-gui",
             "familyNames": [
                 "Marongiu"
             ],
@@ -455,6 +465,8 @@
         {
             "__id": "http://ns.dasch.swiss/repository#dsp-woposs-person-003",
             "__type": "Person",
+            "__createdAt": "1676912016678070000",
+            "__createdBy": "dsp-metadata-gui",
             "familyNames": [
                 "Reymond"
             ],
@@ -471,6 +483,8 @@
         {
             "__id": "http://ns.dasch.swiss/repository#dsp-woposs-person-004",
             "__type": "Person",
+            "__createdAt": "1676912016678070000",
+            "__createdBy": "dsp-metadata-gui",
             "familyNames": [
                 "Graa"
             ],
@@ -487,6 +501,8 @@
         {
             "__id": "http://ns.dasch.swiss/repository#dsp-woposs-person-005",
             "__type": "Person",
+            "__createdAt": "1676912016678070000",
+            "__createdBy": "dsp-metadata-gui",
             "familyNames": [
                 "von Kaenel"
             ],
@@ -503,6 +519,8 @@
         {
             "__id": "http://ns.dasch.swiss/repository#dsp-woposs-person-006",
             "__type": "Person",
+            "__createdAt": "1676912016678070000",
+            "__createdBy": "dsp-metadata-gui",
             "familyNames": [
                 "Cappiello"
             ],
@@ -519,6 +537,8 @@
         {
             "__id": "http://ns.dasch.swiss/repository#dsp-woposs-person-007",
             "__type": "Person",
+            "__createdAt": "1676912016678070000",
+            "__createdBy": "dsp-metadata-gui",
             "familyNames": [
                 "Marquis"
             ],
@@ -537,6 +557,8 @@
         {
             "__id": "http://ns.dasch.swiss/repository#dsp-woposs-organization-002",
             "__type": "Organization",
+            "__createdAt": "1676912016678070000",
+            "__createdBy": "dsp-metadata-gui",
             "address": {
                 "__type": "Address",
                 "street": "",
@@ -555,6 +577,8 @@
         {
             "__id": "http://ns.dasch.swiss/repository#dsp-woposs-organization-001",
             "__type": "Organization",
+            "__createdAt": "1676912016678070000",
+            "__createdBy": "dsp-metadata-gui",
             "address": {
                 "__type": "Address",
                 "street": "Wildhainweg 3 Postfach",
@@ -574,6 +598,8 @@
         {
             "__id": "http://ns.dasch.swiss/repository#dsp-woposs-organization-000",
             "__type": "Organization",
+            "__createdAt": "1676912016678070000",
+            "__createdBy": "dsp-metadata-gui",
             "address": {
                 "__type": "Address",
                 "street": "",
@@ -594,6 +620,8 @@
         {
             "__id": "http://ns.dasch.swiss/repository#dsp-woposs-grant-000",
             "__type": "Grant",
+            "__createdAt": "1676912016678070000",
+            "__createdBy": "dsp-metadata-gui",
             "funders": [
                 "http://ns.dasch.swiss/repository#dsp-woposs-organization-001"
             ],
@@ -609,6 +637,8 @@
         {
             "__id": "http://ns.dasch.swiss/repository#dsp-woposs-grant-001",
             "__type": "Grant",
+            "__createdAt": "1676912016678070000",
+            "__createdBy": "dsp-metadata-gui",
             "funders": [
                 "http://ns.dasch.swiss/repository#dsp-woposs-organization-001"
             ],

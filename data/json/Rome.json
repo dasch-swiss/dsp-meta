@@ -384,6 +384,8 @@
         {
             "__id": "http://ns.dasch.swiss/repository#dsp-REMA-person-008",
             "__type": "Person",
+            "__createdAt": "1657709547134887000",
+            "__createdBy": "dsp-metadata-gui",
             "email": "Cassandre.Lejosne@unil.ch",
             "familyNames": [
                 "Cassandre"

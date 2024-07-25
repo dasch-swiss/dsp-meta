@@ -342,8 +342,10 @@
             "__createdBy": "dsp-metadata-gui",
             "address": {
                 "__type": "Address",
-                "street": "",
-                "postalCode": "",
+                "street": "University Rd",
+                "postalCode": "14113",
+                "additional": "PO Box 35091",
+                "locality": "Dar es Salaam",
                 "country": "Tanzania"
             },
             "name": "The University of Dar es Salaam"

@@ -74,8 +74,12 @@
             "howToCite": "Postkarten Russland (2023). [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/0811",
             "languages": [
                 {
-                    "en": "Russian",
-                    "en": "French",
+                    "en": "Russian"
+                },
+                {
+                    "en": "French"
+                },
+                {
                     "en": "German"
                 }
             ],

@@ -275,6 +275,8 @@
         {
             "__id": "http://ns.dasch.swiss/repository#dsp-0826-person-004",
             "__type": "Person",
+            "__createdAt": "1630601426850158000",
+            "__createdBy": "dsp-metadata-gui",
             "familyNames": [
                 "Tissaveerasingham"
             ],
@@ -291,6 +293,8 @@
         {
             "__id": "http://ns.dasch.swiss/repository#dsp-0826-person-005",
             "__type": "Person",
+            "__createdAt": "1630601426850158000",
+            "__createdBy": "dsp-metadata-gui",
             "familyNames": [
                 "Rosenthaler"
             ],
@@ -343,6 +347,8 @@
         {
             "__id": "http://ns.dasch.swiss/repository#dsp-0826-organization-002",
             "__type": "Organization",
+            "__createdAt": "1630601426881261000",
+            "__createdBy": "dsp-metadata-gui",
             "name": "Digital Humanities Lab, University of Basel",
             "url": {
                 "__type": "URL",

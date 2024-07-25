@@ -87,7 +87,26 @@
             }
         ],
         "shortcode": "082C",
-        "startDate": "2019-10-01"
+        "startDate": "2019-10-01",
+        "temporalCoverage": [
+            {
+                "en": "1949-1990"
+            }
+        ],
+        "spatialCoverage": [
+            {
+                "__type": "URL",
+                "type": "Geonames",
+                "url": "https://www.geonames.org/2921044/germany.html",
+                "text": "Germany"
+            },
+            {
+                "__type": "URL",
+                "type": "Geonames",
+                "url": "https://www.geonames.org/8354410/german-democratic-republic.html",
+                "text": "German Democratic Republic"
+            }
+        ]
     },
     "datasets": [
         {

@@ -59,7 +59,12 @@
         ],
         "name": "Canonicity, Obscenity, and the Making of Modern Chaucer (COMMode): An Investigation of the Transmission and Audiences of The Canterbury Tales from 1700 to 2020",
         "shortcode": "083B",
-        "startDate": "2020-01-01"
+        "startDate": "2020-01-01",
+        "temporalCoverage": [
+            {
+                "en": "1700 to 2020"
+            }
+        ]
     },
     "datasets": [
         {
@@ -72,6 +77,7 @@
                     "en": "More than 600 years after he lived and wrote, Chaucer continues to play an important role in how Anglophone culture determines its standards of censorship and toleration. His association with naughty good humour is so widespread that the word ‘Chaucerian’ may be used in popular discourse as a synonym for ‘bawdy in an acceptably Olde Englisshe way’. But how did this come to be, and how does this idea of Chaucer as a 'bawdy' poet sit alongside his canonical status? This project will recover the untold history of how Chaucer became both an icon of literary fame and an icon of obscenity by examining the evolution of his most famous text alongside the evolution of his reputation between the publication of John Dryden's Fables Ancient & Modern in 1700 and the present day. By uncovering this history, the proposed project aims to achieve a better understanding not only of Chaucerian reception throughout history, but of the relationship between literature and cultural determinations of what is permissible in language and in art."
                 }
             ],
+            "howToCite": "Canonicity, Obscenity, and the Making of Modern Chaucer (COMMode): An Investigation of the Transmission and Audiences of The Canterbury Tales from 1700 to 2020",
             "attributions": [
                 {
                     "__type": "Attribution",
@@ -95,7 +101,12 @@
                     ]
                 }
             ],
-            "title": "Canonicity, Obscenity, and the Making of Modern Chaucer (COMMode): An Investigation of the Transmission and Audiences of The Canterbury Tales from 1700 to 2020"
+            "title": "Canonicity, Obscenity, and the Making of Modern Chaucer (COMMode): An Investigation of the Transmission and Audiences of The Canterbury Tales from 1700 to 2020",
+            "languages": [
+                {
+                    "en": "English"
+                }
+            ]
         }
     ],
     "persons": [
@@ -166,6 +177,8 @@
         {
             "__id": "http://ns.dasch.swiss/repository#dsp-083B-organization-002",
             "__type": "Organization",
+            "__createdAt": "1643071265492344000",
+            "__createdBy": "dsp-metadata-gui",
             "name": "Swiss National Science Foundation (SNSF)"
         }
     ],
@@ -173,6 +186,8 @@
         {
             "__id": "http://ns.dasch.swiss/repository#dsp-083B-grant-001",
             "__type": "Grant",
+            "__createdAt": "1643071265492344000",
+            "__createdBy": "dsp-metadata-gui",
             "funders": [
                 "http://ns.dasch.swiss/repository#dsp-083B-organization-002"
             ],

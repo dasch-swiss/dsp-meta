@@ -75,6 +75,7 @@
         ],
         "name": "Bilddatenbank Geoarchäologie",
         "shortcode": "0838",
+        "status" : "finished",
         "spatialCoverage": [
             {
                 "__type": "URL",

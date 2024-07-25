@@ -28,6 +28,7 @@ pub struct DraftProject {
     #[serde(rename = "__createdBy")]
     pub created_by: Option<String>,
     pub shortcode: String,
+    pub status: Option<DraftProjectStatus>,
     pub name: String,
     pub description: Option<DraftText>,
     pub start_date: DraftDate,
@@ -47,6 +48,19 @@ pub struct DraftProject {
     pub publications: Option<NonEmpty<DraftPublication>>,
     pub grants: Option<NonEmpty<String>>,
     pub alternative_names: Option<NonEmpty<DraftText>>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+pub enum DraftProjectStatus {
+    #[serde(rename = "ongoing")]
+    Ongoing,
+    #[serde(rename = "finished")]
+    Finished,
+}
+impl Default for DraftProjectStatus {
+    fn default() -> Self {
+        DraftProjectStatus::Ongoing
+    }
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]

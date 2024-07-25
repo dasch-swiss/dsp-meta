@@ -77,7 +77,20 @@
       "text": "Discover Project Data"
     },
     "shortcode": "0803",
-    "startDate": "2008-06-01"
+    "startDate": "2008-06-01",
+    "temporalCoverage": [
+      {
+        "en": "Late Middle Ages"
+      }
+    ],
+    "spatialCoverage": [
+      {
+        "__type": "URL",
+        "type": "Geonames",
+        "url": "https://www.geonames.org/2661604/basel.html",
+        "text": "Basel"
+      }
+    ]
   },
   "datasets": [
     {

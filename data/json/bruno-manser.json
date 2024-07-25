@@ -7,7 +7,9 @@
     "__createdBy": "dsp-metadata-gui",
     "howToCite": "Bruno Manser/Bruno Manser Fonds",
     "teaserText": "Bruno Manser has left a variety of media in which he documented the nomadic life of the Penan. The project shows and annotates these documents.",
-    "datasets": ["http://ns.dasch.swiss/repository#dsp-0813-dataset-001"],
+    "datasets": [
+      "http://ns.dasch.swiss/repository#dsp-0813-dataset-001"
+    ],
     "alternativeNames": [
       {
         "en": "Annotating Bruno Manser's Diaries"
@@ -30,7 +32,9 @@
         "text": "Cultural anthropology"
       }
     ],
-    "funders": ["http://ns.dasch.swiss/repository#dsp-0813-organization-001"],
+    "funders": [
+      "http://ns.dasch.swiss/repository#dsp-0813-organization-001"
+    ],
     "keywords": [
       {
         "en": "Bruno Manser"
@@ -82,7 +86,19 @@
         "en": "1984 - 2000",
         "fr": "1984 - 2000"
       }
-    ]
+    ],
+    "url": {
+      "__type": "URL",
+      "type": "URL",
+      "url": "https://data.dasch.swiss/bmf/",
+      "text": "Discover Project Data"
+    },
+    "secondaryURL": {
+      "__type": "URL",
+      "type": "URL",
+      "url": "https://www.bmf.ch/",
+      "text": "External Project Website"
+    }
   },
   "datasets": [
     {
@@ -128,22 +144,32 @@
         {
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-0813-person-001",
-          "roles": ["Projektleiter"]
+          "roles": [
+            "Projektleiter"
+          ]
         },
         {
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-0813-person-002",
-          "roles": ["Author"]
+          "roles": [
+            "Author"
+          ]
         },
         {
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-0813-organization-001",
-          "roles": ["Editor"]
+          "roles": [
+            "Editor"
+          ]
         }
       ],
       "status": "Ongoing",
       "title": "Annotating Media of Bruno Manser",
-      "typeOfData": ["Image", "Video", "Text"]
+      "typeOfData": [
+        "Image",
+        "Video",
+        "Text"
+      ]
     }
   ],
   "persons": [
@@ -153,9 +179,15 @@
       "__createdAt": "1630601338954985000",
       "__createdBy": "dsp-metadata-gui",
       "email": "erwin.zbinden@bmf.ch",
-      "familyNames": ["Zbinden"],
-      "givenNames": ["Erwin"],
-      "jobTitles": ["Leiter Dokumentationsstelle"],
+      "familyNames": [
+        "Zbinden"
+      ],
+      "givenNames": [
+        "Erwin"
+      ],
+      "jobTitles": [
+        "Leiter Dokumentationsstelle"
+      ],
       "affiliation": [
         "http://ns.dasch.swiss/repository#dsp-0813-organization-001"
       ]
@@ -165,9 +197,15 @@
       "__type": "Person",
       "__createdAt": "1630601338955102000",
       "__createdBy": "dsp-metadata-gui",
-      "familyNames": ["Manser"],
-      "givenNames": ["Bruno"],
-      "jobTitles": ["Creator"],
+      "familyNames": [
+        "Manser"
+      ],
+      "givenNames": [
+        "Bruno"
+      ],
+      "jobTitles": [
+        "Creator"
+      ],
       "affiliation": [
         "http://ns.dasch.swiss/repository#dsp-0813-organization-001"
       ]
@@ -202,7 +240,9 @@
       "__type": "Grant",
       "__createdAt": "1630601338985837000",
       "__createdBy": "dsp-metadata-gui",
-      "funders": ["http://ns.dasch.swiss/repository#dsp-0813-organization-001"]
+      "funders": [
+        "http://ns.dasch.swiss/repository#dsp-0813-organization-001"
+      ]
     }
   ]
 }

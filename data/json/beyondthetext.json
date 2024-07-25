@@ -315,6 +315,7 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-083A-person-004",
       "__type": "Person",
+      "__createdAt": "1643068532484145000",
       "__createdBy": "dsp-metadata-gui",
       "familyNames": ["Heierli"],
       "givenNames": ["Sarah"],

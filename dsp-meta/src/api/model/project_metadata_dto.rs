@@ -2,7 +2,7 @@ use axum::http::StatusCode;
 use axum::response::{IntoResponse, Response};
 use axum::Json;
 use serde::Serialize;
-use crate::api::convert::serde::draft_model::DraftMetadata;
+use crate::api::convert::serde::draft_model::{DraftMetadata, DraftProjectStatus};
 
 #[derive(Debug, Clone, PartialEq, Serialize)]
 pub struct ProjectMetadataDto(pub DraftMetadata);
@@ -24,6 +24,7 @@ pub struct ProjectMetadataWithInfoDto {
     id: String,
     name: String,
     description: String,
+    status: DraftProjectStatus,
     metadata: ProjectMetadataDto,
 }
 
@@ -34,6 +35,7 @@ impl From<DraftMetadata> for ProjectMetadataWithInfoDto {
             id: project.shortcode,
             name: project.name,
             description: project.teaser_text,
+            status: project.status.unwrap_or_default(),
             metadata: ProjectMetadataDto(value.clone()),
         }
     }

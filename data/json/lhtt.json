@@ -73,7 +73,7 @@
                 "en": "10303 Ancient history and Classical studies"
             },
             {
-                "xx": "10402 Archaeology"
+                "en": "10402 Archaeology"
             }
         ],
         "funders": [
@@ -2151,8 +2151,8 @@
                 "__type": "Address",
                 "street": "Université Libre de Bruxelles, Avenue Franklin Roosevelt, 50",
                 "postalCode": "1050",
-                "locality": "Brussels, Belgium",
-                "country": "XX - Switzerland?"
+                "locality": "Brussels",
+                "country": "Belgium"
             },
             "name": "Free University of Brussels",
             "url": {
@@ -2212,8 +2212,8 @@
                 "__type": "Address",
                 "street": "Al-Geish Street",
                 "postalCode": "",
-                "locality": "Tanta, Egypt",
-                "country": "XX - Switzerland?"
+                "locality": "Tanta",
+                "country": "Egypt"
             },
             "email": "tanta_unv@unv.tanta.edu.eg",
             "name": "Tanta University",
@@ -2289,8 +2289,8 @@
                 "__type": "Address",
                 "street": "1, Gamaa Street",
                 "postalCode": "12613",
-                "locality": "Giza, Egypt",
-                "country": "XX - Switzerland?"
+                "locality": "Giza",
+                "country": "Egypt"
             },
             "name": "Cairo University",
             "url": {
