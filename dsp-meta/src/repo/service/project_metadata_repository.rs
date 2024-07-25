@@ -2,8 +2,9 @@ use std::collections::HashMap;
 use std::fs::File;
 use std::path::Path;
 use std::sync::{Arc, RwLock};
-use log::info;
+
 use dsp_domain::metadata::value::Shortcode;
+use log::info;
 use tracing::{instrument, trace};
 
 use crate::api::convert::serde::draft_model::{DraftMetadata, DraftProjectStatus};
@@ -90,7 +91,9 @@ impl RepositoryContract<DraftMetadata, Shortcode, DspMetaError> for ProjectMetad
                 } else {
                     true
                 }
-            }).cloned().collect::<Vec<DraftMetadata>>();
+            })
+            .cloned()
+            .collect::<Vec<DraftMetadata>>();
         let total = values.len();
         let data = values
             .into_iter()
