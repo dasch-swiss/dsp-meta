@@ -24,7 +24,7 @@ impl SchemaVersion {
 }
 
 pub type Result<T> = core::result::Result<T, ValidationError>;
-#[derive(Debug, Error )]
+#[derive(Debug, Error)]
 pub enum ValidationError {
     #[error("File not loaded: {0}")]
     FileNotLoaded(std::io::Error),
