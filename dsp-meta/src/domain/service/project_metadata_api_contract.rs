@@ -6,5 +6,5 @@ use crate::error::DspMetaError;
 
 pub trait ProjectMetadataApiContract {
     fn find_by_id(&self, id: Shortcode) -> Result<Option<DraftMetadata>, DspMetaError>;
-    fn find_all(&self, pagination: &Pagination) -> Result<Page<DraftMetadata>, DspMetaError>;
+    fn find(&self, pagination: &Pagination) -> Result<Page<DraftMetadata>, DspMetaError>;
 }

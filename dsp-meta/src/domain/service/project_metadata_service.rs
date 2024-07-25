@@ -30,7 +30,7 @@ where
     }
 
     #[instrument(skip(self))]
-    fn find_all(&self, pagination: &Pagination) -> Result<Page<DraftMetadata>, DspMetaError> {
+    fn find(&self, pagination: &Pagination) -> Result<Page<DraftMetadata>, DspMetaError> {
         self.repo.find(pagination)
     }
 }

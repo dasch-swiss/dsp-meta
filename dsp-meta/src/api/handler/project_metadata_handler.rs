@@ -57,7 +57,7 @@ pub async fn get_all_project_metadata(
 ) -> Result<Response, DspMetaError> {
     trace!("entered get_all_project_metadata()");
     let Query(pagination) = pagination.unwrap_or_default();
-    let page = state.project_metadata_service.find_all(&pagination)?;
+    let page = state.project_metadata_service.find(&pagination)?;
     let mut response = Json(
         page.data
             .into_iter()
