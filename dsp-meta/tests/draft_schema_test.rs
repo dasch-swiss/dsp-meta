@@ -33,21 +33,23 @@ fn test_json_and_toml_serialization_are_equal() {
 #[test]
 fn test_deserialization_all_json_data() {
     let json_file_paths = load_json_file_paths(&data_dir());
+    let nr_of_files = json_file_paths.len();
     let mut success: usize = 0;
     let mut error: usize = 0;
 
+    let mut deserialized: Vec<DraftMetadata> = Vec::new();
     for path in json_file_paths {
         let path = path.as_path();
-        println!("Checking {}:", path.to_str().get_or_insert(""));
         let contents = fs::read_to_string(path).expect("Should have been able to read the file");
         let metadata = serde_json::from_str::<DraftMetadata>(&*contents);
         match metadata {
             Ok(_data) => {
+                deserialized.push(_data);
                 success = success + 1;
-                println!("SUCCESS\n") // println!("DATA:\n {:?}\n", data),
             }
             Err(err) => {
                 error = error + 1;
+                println!("Checked {}:", path.to_str().get_or_insert(""));
                 println!("ERROR:\n {:?}\n", err)
             }
         };
@@ -57,7 +59,8 @@ fn test_deserialization_all_json_data() {
         success,
         error,
         success + error
-    )
+    );
+    assert_eq!(deserialized.len(), nr_of_files)
 }
 
 fn data_dir() -> PathBuf {
@@ -75,8 +78,10 @@ fn test_draft_json_schema() {
     let paths: Vec<&Path> = path_bufs.iter().map(|p| p.as_path()).collect();
     let results = validate_files(paths, SchemaVersion::Draft).unwrap();
     for (key, value) in &results {
-        println!("{:?}: {:?}", key, value);
+        if !value.is_valid() {
+            dbg!("{:?}: {:?}", key, value);
+        }
     }
-    let failure_count = results.values().filter(|v| !v.is_valid()).count();
-    assert_eq!(failure_count, 0);
+    let failures = results.values().filter(|v| !v.is_valid());
+    assert_eq!(failures.count(), 0);
 }

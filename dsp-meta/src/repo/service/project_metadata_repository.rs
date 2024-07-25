@@ -3,8 +3,9 @@ use std::fs::File;
 use std::path::Path;
 use std::sync::{Arc, RwLock};
 
-use dsp_domain::metadata::value::Shortcode;
 use tracing::{instrument, trace};
+
+use dsp_domain::metadata::value::Shortcode;
 
 use crate::api::convert::serde::draft_model::DraftMetadata;
 use crate::domain::service::repository_contract::{Pagination, RepositoryContract};
@@ -23,14 +24,25 @@ impl ProjectMetadataRepository {
             Arc::new(RwLock::new(HashMap::new()));
 
         let file_paths = load_json_file_paths(data_path);
-        trace!("found {:?}", file_paths);
+        trace!("Found {} projects", file_paths.len());
 
+        let mut known_shortcodes:Vec<String> = Vec::new();
         for file in file_paths {
-            trace!("Parsing {:?}", file);
             let file = File::open(file).expect("open file.");
             let entity: DraftMetadata = serde_json::from_reader(file).expect("parse file as JSON.");
             let mut db = db.write().unwrap();
+            let shortcode = entity.project.shortcode.to_owned();
+            if known_shortcodes.contains(&shortcode) {
+                panic!("Duplicate shortcode: {}", shortcode);
+            }
+            known_shortcodes.push(shortcode);
+
             db.insert(entity.project.shortcode.to_owned(), entity);
+        }
+
+        {
+            let count = db.read().unwrap();
+            trace!("Stored {} projects", count.values().len());
         }
 
         Self { db }
@@ -71,13 +83,13 @@ mod tests {
     use super::*;
 
     #[test]
-    fn successfully_store_project_metadata() {
+    fn successfully_load_metadata() {
         let data_dir = env::current_dir().unwrap().parent().unwrap().join("data");
         dbg!(&data_dir);
 
+        let files = load_json_file_paths(&data_dir);
         let repo = ProjectMetadataRepository::new(&data_dir.as_path());
-        let pagination = Pagination::default();
-        let result = repo.find(&pagination).unwrap();
-        assert_eq!(result.len(), 56);
+        let actual = repo.count().unwrap();
+        assert_eq!(actual, files.len());
     }
 }
