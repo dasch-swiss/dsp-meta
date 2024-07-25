@@ -7,8 +7,7 @@ use dsp_domain::metadata::value::Shortcode;
 use tracing::{instrument, trace};
 
 use crate::api::convert::hcl::hcl_body::HclBody;
-use crate::domain::model::project_info::ProjectInfo;
-use crate::domain::service::repository_contract::RepositoryContract;
+use crate::domain::service::repository_contract::{Pagination, RepositoryContract};
 use crate::error::DspMetaError;
 use crate::infrastructure::load_hcl_file_paths;
 
@@ -35,26 +34,9 @@ impl ProjectMetadataRepository {
 
         Self { db }
     }
-
-    fn _save(&self, entity: ProjectMetadata) -> Result<ProjectMetadata, DspMetaError> {
-        let mut db = self.db.write().unwrap();
-        db.insert(entity.project.shortcode.0.to_owned(), entity.clone());
-        Ok(entity)
-    }
-
-    fn _delete(&self, entity: ProjectMetadata) -> Result<(), DspMetaError> {
-        let mut db = self.db.write().unwrap();
-
-        match db.remove(entity.project.shortcode.0.as_str()) {
-            Some(_) => Ok(()),
-            None => Ok(()),
-        }
-    }
 }
 
-impl RepositoryContract<ProjectMetadata, ProjectInfo, Shortcode, DspMetaError>
-    for ProjectMetadataRepository
-{
+impl RepositoryContract<ProjectMetadata, Shortcode, DspMetaError> for ProjectMetadataRepository {
     #[instrument(skip(self))]
     fn find_by_id(&self, id: &Shortcode) -> Result<Option<ProjectMetadata>, DspMetaError> {
         let db = self.db.read().unwrap();
@@ -65,16 +47,14 @@ impl RepositoryContract<ProjectMetadata, ProjectInfo, Shortcode, DspMetaError>
     }
 
     #[instrument(skip(self))]
-    fn find_all(&self) -> Result<Vec<ProjectInfo>, DspMetaError> {
+    fn find(&self, pagination: &Pagination) -> Result<Vec<ProjectMetadata>, DspMetaError> {
         trace!("repository: find_all");
-        let mut result: Vec<ProjectInfo> = vec![];
         let db = self.db.read().unwrap();
-
-        for project_metadata in db.values() {
-            result.push(ProjectInfo::from(project_metadata.project.clone()));
-        }
-
-        Ok(result)
+        let values = db
+            .values()
+            .skip((pagination.page - 1) * pagination.limit)
+            .take(pagination.limit);
+        Ok(values.cloned().collect())
     }
 }
 
@@ -90,7 +70,8 @@ mod tests {
         dbg!(&data_dir);
 
         let repo = ProjectMetadataRepository::new(&data_dir.as_path());
-        let result = repo.count().unwrap();
-        assert_eq!(result, 3_usize);
+        let pagination = Pagination::default();
+        let result = repo.find(&pagination).unwrap();
+        assert_eq!(result.len(), 3);
     }
 }

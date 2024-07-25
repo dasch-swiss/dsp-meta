@@ -28,12 +28,16 @@ pub fn router(shared_state: Arc<AppState>) -> Router {
             get(project_metadata_handler::get_project_metadata_by_shortcode),
         )
         .route(
-            "/api/projects/:shortcode/rdf",
-            get(project_metadata_handler::get_project_metadata_by_shortcode_as_rdf),
+            "/api/v1/projects",
+            get(project_metadata_handler::get_all_project_metadata),
         )
         .route(
-            "/api/projects/count",
-            get(project_metadata_handler::get_projects_count),
+            "/api/v1/projects/:shortcode",
+            get(project_metadata_handler::get_project_metadata_by_shortcode),
+        )
+        .route(
+            "/api/projects/:shortcode/rdf",
+            get(project_metadata_handler::get_project_metadata_by_shortcode_as_rdf),
         )
         .route("/api/health", get(health::health_handler))
         .route("/api/version", get(shared_state.version))
@@ -150,37 +154,5 @@ mod tests {
             .unwrap();
 
         assert_eq!(response.status(), StatusCode::NOT_FOUND);
-    }
-
-    #[tokio::test]
-    async fn test_get_projects_count() {
-        let data_dir = env::current_dir().unwrap().parent().unwrap().join("data");
-
-        let shared_state = Arc::new(AppState {
-            project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new(
-                &data_dir.as_path(),
-            )),
-            public_dir: "".to_string(),
-            version: "",
-        });
-
-        let router = router(shared_state);
-
-        // `Router` implements `tower::Service<Request<Body>>` so we can
-        // call it like any tower service, no need to run an HTTP server.
-        let response = router
-            .oneshot(
-                Request::builder()
-                    .uri("/api/projects/count")
-                    .body(Body::empty())
-                    .unwrap(),
-            )
-            .await
-            .unwrap();
-
-        assert_eq!(response.status(), StatusCode::OK);
-
-        let body = response.into_body().collect().await.unwrap().to_bytes();
-        assert_eq!(&body[..], b"3");
     }
 }
