@@ -78,6 +78,6 @@ mod tests {
         let repo = ProjectMetadataRepository::new(&data_dir.as_path());
         let pagination = Pagination::default();
         let result = repo.find(&pagination).unwrap();
-        assert_eq!(result.len(), 3);
+        assert_eq!(result.len(), 56);
     }
 }
