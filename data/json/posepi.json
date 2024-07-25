@@ -93,7 +93,8 @@
             "type": "URL",
             "url": "https://app.dasch.swiss/project/OYPOsaE5TLeQjhRC4QTwgQ",
             "text": "Discover Project Data"
-        }
+        },
+        "status": "finished"
     },
     "datasets": [
         {
@@ -150,7 +151,6 @@
                         "Project Leader",
                         "Data Curator",
                         "Data Collector"
-                        
                     ]
                 },
                 {
@@ -170,14 +170,14 @@
                         "Researcher",
                         "Data Curator"
                     ]
-                },     
+                },
                 {
                     "__type": "Attribution",
                     "agent": "http://ns.dasch.swiss/repository#dsp-0120-person-003",
                     "roles": [
                         "Data Curator"
                     ]
-                },                
+                },
                 {
                     "__type": "Attribution",
                     "agent": "http://ns.dasch.swiss/repository#dsp-0120-person-004",

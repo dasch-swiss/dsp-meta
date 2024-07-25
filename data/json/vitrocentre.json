@@ -80,7 +80,8 @@
             "type": "URL",
             "url": "https://vitrosearch.ch/en",
             "text": "External Project Website"
-        }
+        },
+        "status": "finished"
     },
     "datasets": [
         {

@@ -82,14 +82,14 @@
             "type": "URL",
             "url": "https://app.dasch.swiss/project/v0B3nQt2Q-6aZiFGRe88KQ",
             "text": "Discover Project Data"
-
         },
         "secondaryURL": {
             "__type": "URL",
             "type": "URL",
             "url": "https://www.dasch.swiss/",
             "text": "Project Website"
-        }
+        },
+        "status": "finished"
     },
     "datasets": [
         {

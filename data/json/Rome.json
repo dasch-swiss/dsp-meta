@@ -115,7 +115,8 @@
             "type": "URL",
             "url": "https://app.dasch.swiss/project/0118",
             "text": "Discover Project Data"
-        }
+        },
+        "status": "finished"
     },
     "datasets": [
         {

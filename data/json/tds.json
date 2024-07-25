@@ -278,7 +278,8 @@
             "type": "URL",
             "url": "http://theatresdesociete.unil.ch/",
             "text": "External Project Website"
-        }
+        },
+        "status": "finished"
     },
     "datasets": [
         {

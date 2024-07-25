@@ -313,7 +313,8 @@
             "type": "URL",
             "url": "https://lhtt.philhist.unibas.ch/",
             "text": "External Project Website"
-        }
+        },
+        "status": "finished"
     },
     "datasets": [
         {

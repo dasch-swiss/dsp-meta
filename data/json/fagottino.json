@@ -74,7 +74,7 @@
             {
                 "text": "Agrell, Donna and Domínguez, Áurea, “Fagottini and tenoroons: small, forgotten giants”, The Double Reed 42/2 (2019), 57–68."
             },
-           {
+            {
                 "text": "Agrell, Donna and Domínguez, Áurea, “Small-sized bassoons from the eighteenth and nineteenth centuries under investigation”, Glareana 67/2 (2018), 58–74. Full text available: ",
                 "url": [
                     {
@@ -121,7 +121,8 @@
             "type": "URL",
             "url": "https://www.historical-bassoon.ch/",
             "text": "External Project Website"
-        }
+        },
+        "status": "finished"
     },
     "datasets": [
         {

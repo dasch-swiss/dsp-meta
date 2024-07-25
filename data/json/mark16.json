@@ -344,7 +344,8 @@
             "type": "URL",
             "url": "https://mark16.sib.swiss/",
             "text": "External Project Website"
-        }
+        },
+        "status": "finished"
     },
     "datasets": [
         {

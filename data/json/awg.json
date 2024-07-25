@@ -204,7 +204,8 @@
             "type": "URL",
             "url": "https://www.anton-webern.ch",
             "text": "External Project Website"
-        }
+        },
+        "status": "finished"
     },
     "datasets": [
         {

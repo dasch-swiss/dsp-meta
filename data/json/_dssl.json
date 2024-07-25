@@ -127,7 +127,8 @@
             "type": "URL",
             "url": "https://dssl.dasch.swiss",
             "text": "https://dssl.dasch.swiss"
-        }
+        },
+        "status": "finished"
     },
     "datasets": [
         {

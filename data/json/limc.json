@@ -123,7 +123,8 @@
             "type": "URL",
             "url": "https://weblimc.org/page/home/Basel",
             "text": "Project Website"
-        }
+        },
+        "status": "finished"
     },
     "datasets": [
         {

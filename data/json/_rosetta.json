@@ -81,7 +81,8 @@
             "type": "URL",
             "url": "http://app.test.dasch.swiss",
             "text": "app.test.dasch.swiss"
-        }
+        },
+        "status": "finished"
     },
     "datasets": [
         {

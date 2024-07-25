@@ -153,7 +153,8 @@
             "type": "URL",
             "url": "https://germanistik.philhist.unibas.ch/de/aura-und-effizienz",
             "text": "External Project Website"
-        }
+        },
+        "status": "finished"
     },
     "datasets": [
         {

@@ -184,7 +184,8 @@
             "type": "URL",
             "url": "https://ddd.unil.ch/",
             "text": "External Project Website"
-        }
+        },
+        "status": "finished"
     },
     "datasets": [
         {

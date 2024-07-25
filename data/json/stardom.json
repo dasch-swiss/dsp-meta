@@ -123,7 +123,8 @@
             "type": "URL",
             "url": "https://app.ls-prod-server.dasch.swiss/project/0107",
             "text": "Discover Project Data"
-        }
+        },
+        "status": "finished"
     },
     "datasets": [
         {
