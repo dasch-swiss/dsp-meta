@@ -42,9 +42,10 @@ pub fn router(shared_state: Arc<AppState>) -> Router {
         .route("/api/health", get(health::health_handler))
         .route("/api/version", get(shared_state.version))
         .fallback_service(
-            ServeDir::new(shared_state.public_dir.as_str()).not_found_service(ServeFile::new(
-                format!("{}/index.html", shared_state.public_dir),
-            )),
+            ServeDir::new(shared_state.public_dir.as_str()).fallback(ServeFile::new(format!(
+                "{}/index.html",
+                shared_state.public_dir
+            ))),
         )
         .with_state(shared_state)
         // See https://docs.rs/tower-http/latest/tower_http/trace/index.html for more details
