@@ -4,6 +4,7 @@ use std::{env, fs};
 use api::convert::serde::draft_model::*;
 use dsp_meta::api;
 use dsp_meta::api::convert::serde::json_schema_validator::{validate_files, SchemaVersion};
+use dsp_meta::infrastructure::load_data_json_paths;
 
 #[test]
 fn test_json_and_yaml_serialization_are_equal() {
@@ -31,7 +32,7 @@ fn test_json_and_toml_serialization_are_equal() {
 
 #[test]
 fn test_deserialization_all_json_data() {
-    let json_file_paths = collect_data_json_paths();
+    let json_file_paths = load_data_json_paths(&data_dir());
     let mut success: usize = 0;
     let mut error: usize = 0;
 
@@ -59,23 +60,6 @@ fn test_deserialization_all_json_data() {
     )
 }
 
-fn collect_data_json_paths() -> Vec<PathBuf> {
-    let mut json_dir = data_dir();
-    json_dir.push("json");
-    fs::read_dir(json_dir)
-        .expect("Failed to read data_dir")
-        .filter_map(|entry| {
-            let entry = entry.ok()?;
-            let path = entry.path();
-            if path.is_file() && path.extension().and_then(|s| s.to_str()) == Some("json") {
-                Some(path)
-            } else {
-                None
-            }
-        })
-        .collect::<Vec<PathBuf>>()
-}
-
 fn data_dir() -> PathBuf {
     let mut current_dir = env::current_dir()
         .ok()
@@ -87,7 +71,7 @@ fn data_dir() -> PathBuf {
 
 #[test]
 fn test_draft_json_schema() {
-    let path_bufs = collect_data_json_paths();
+    let path_bufs = load_data_json_paths(&data_dir());
     let paths: Vec<&Path> = path_bufs.iter().map(|p| p.as_path()).collect();
     let results = validate_files(paths, SchemaVersion::Draft).unwrap();
     for (key, value) in &results {

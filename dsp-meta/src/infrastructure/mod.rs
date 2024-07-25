@@ -1,13 +1,26 @@
+use std::fs;
 use std::path::{Path, PathBuf};
 
 pub fn load_hcl_file_paths(data_path: &Path) -> Vec<PathBuf> {
-    // get paths of HCL files
-    std::fs::read_dir(data_path)
-        .expect("read directory containing HCL files.")
+    find_files_by_extension_in_dir(data_path, "hcl")
+}
+
+pub fn load_data_json_paths(data_path: &Path) -> Vec<PathBuf> {
+    let mut json_dir = PathBuf::from(data_path);
+    json_dir.push("json");
+    find_files_by_extension_in_dir(data_path, "json")
+}
+
+fn find_files_by_extension_in_dir(dir: &Path, file_extension: &str) -> Vec<PathBuf> {
+    if !dir.is_dir() {
+        panic!("Directory does not exist.");
+    };
+    fs::read_dir(dir)
+        .expect("Unable to read directory.")
         .filter_map(|entry| {
             let entry = entry.ok()?;
             let path = entry.path();
-            if path.is_file() && path.extension().and_then(|s| s.to_str()) == Some("hcl") {
+            if path.is_file() && path.extension().and_then(|s| s.to_str()) == Some(file_extension) {
                 Some(path)
             } else {
                 None
