@@ -1,7 +1,6 @@
-use dsp_domain::metadata::entity::project_metadata::ProjectMetadata;
 use dsp_domain::metadata::value::Shortcode;
 use tracing::{instrument, trace};
-
+use crate::api::convert::serde::draft_model::DraftMetadata;
 use crate::domain::service::project_metadata_api_contract::ProjectMetadataApiContract;
 use crate::domain::service::repository_contract::{Pagination, RepositoryContract};
 use crate::error::DspMetaError;
@@ -13,7 +12,7 @@ pub struct ProjectMetadataService<Repository> {
 
 impl<Repository> ProjectMetadataService<Repository>
 where
-    Repository: RepositoryContract<ProjectMetadata, Shortcode, DspMetaError>,
+    Repository: RepositoryContract<DraftMetadata, Shortcode, DspMetaError>,
 {
     pub fn new(repo: Repository) -> Self {
         trace!("Init Service");
@@ -23,15 +22,19 @@ where
 
 impl<R> ProjectMetadataApiContract for ProjectMetadataService<R>
 where
-    R: RepositoryContract<ProjectMetadata, Shortcode, DspMetaError> + std::fmt::Debug,
+    R: RepositoryContract<DraftMetadata, Shortcode, DspMetaError> + std::fmt::Debug,
 {
-    fn find_by_id(&self, id: Shortcode) -> Result<Option<ProjectMetadata>, DspMetaError> {
+    fn find_by_id(&self, id: Shortcode) -> Result<Option<DraftMetadata>, DspMetaError> {
         self.repo.find_by_id(&id)
     }
 
     #[instrument(skip(self))]
-    fn find_all(&self, pagination: &Pagination) -> Result<Vec<ProjectMetadata>, DspMetaError> {
+    fn find_all(&self, pagination: &Pagination) -> Result<Vec<DraftMetadata>, DspMetaError> {
         trace!("service: find_all");
         self.repo.find(pagination)
+    }
+
+    fn count(&self) -> Result<usize, DspMetaError> {
+        self.repo.count()
     }
 }

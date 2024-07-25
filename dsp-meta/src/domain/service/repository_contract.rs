@@ -9,7 +9,7 @@ pub struct Pagination {
 }
 impl Default for Pagination {
     fn default() -> Self {
-        Pagination { page: 1, limit: 9 }
+        Pagination { page: 1, limit: usize::MAX }
     }
 }
 
@@ -24,4 +24,7 @@ pub trait RepositoryContract<Entity, Id, Error> {
 
     /// Returns all entities.
     fn find(&self, pagination: &Pagination) -> Result<Vec<Entity>, Error>;
+
+    /// Returns the number of entities.
+    fn count(&self) -> Result<usize, Error>;
 }

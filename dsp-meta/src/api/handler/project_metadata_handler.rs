@@ -6,7 +6,6 @@ use axum::response::{IntoResponse, Response};
 use dsp_domain::metadata::value::Shortcode;
 use tracing::{info_span, instrument, trace};
 
-use crate::api::convert::rdf::project_metadata::ProjectMetadataGraphWrapper;
 use crate::api::model::project_metadata_dto::{ProjectMetadataDto, ProjectMetadataWithInfoDto};
 use crate::api::model::project_metadata_graph_dto::ProjectMetadataGraphDto;
 use crate::app_state::AppState;
@@ -35,28 +34,30 @@ pub async fn get_project_metadata_by_shortcode(
 
 /// GET /project_metadata/:shortcode/rdf
 /// Get project metadata by shortcode returned as an RDF string.
-#[instrument(skip(state))]
+// #[instrument(skip(state))]
 pub async fn get_project_metadata_by_shortcode_as_rdf(
-    Path(shortcode): Path<String>,
-    State(state): State<Arc<AppState>>,
+    Path(_shortcode): Path<String>,
+    State(_state): State<Arc<AppState>>,
 ) -> Result<ProjectMetadataGraphDto, DspMetaError> {
     info_span!("get project by shortcode as RDF");
     trace!("entered get_project_metadata_by_shortcode_as_rdf()");
-    state
-        .project_metadata_service
-        .find_by_id(Shortcode(shortcode))
-        .map(|metadata| metadata.map(|m| ProjectMetadataGraphWrapper(m).into()))
-        .map(ProjectMetadataGraphDto)
+    todo!()
+    // state
+    //     .project_metadata_service
+    //     .find_by_id(Shortcode(shortcode))
+    //     .map(|metadata| metadata.map(|m| ProjectMetadataGraphWrapper(m).into()))
+    //     .map(ProjectMetadataGraphDto)
 }
 
 #[instrument(skip(state))]
 pub async fn get_all_project_metadata(
     State(state): State<Arc<AppState>>,
     pagination: Option<Query<Pagination>>,
-) -> Result<axum::Json<Vec<ProjectMetadataWithInfoDto>>, DspMetaError> {
+) -> Result<Response, DspMetaError> {
     trace!("entered get_all_project_metadata()");
     let Query(pagination) = pagination.unwrap_or_default();
-    state
+    let count = state.project_metadata_service.count()?;
+    let mut data = state
         .project_metadata_service
         .find_all(&pagination)
         .map(|metadata| {
@@ -65,5 +66,7 @@ pub async fn get_all_project_metadata(
                 .map(ProjectMetadataWithInfoDto::from)
                 .collect::<Vec<ProjectMetadataWithInfoDto>>()
         })
-        .map(axum::Json)
+        .map(axum::Json).into_response();
+    data.headers_mut().insert("X-Total-Count", count.to_string().parse().unwrap());
+    Ok(data)
 }
