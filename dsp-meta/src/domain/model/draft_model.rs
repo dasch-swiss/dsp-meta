@@ -24,6 +24,8 @@ pub struct DraftMetadata {
 #[skip_serializing_none]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
+#[serde(tag = "__type")]
+#[serde(rename = "Project")]
 pub struct DraftProject {
     #[serde(rename = "__id")]
     pub id: String,
@@ -100,6 +102,8 @@ pub struct DraftPublication {
 #[skip_serializing_none]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
+#[serde(tag = "__type")]
+#[serde(rename = "Dataset")]
 pub struct DraftDataset {
     #[serde(rename = "__id")]
     pub id: String,
@@ -156,6 +160,8 @@ pub enum DraftTypeOfData {
 #[skip_serializing_none]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
+#[serde(tag = "__type")]
+#[serde(rename = "Person")]
 pub struct DraftPerson {
     #[serde(rename = "__id")]
     pub id: String,
@@ -176,6 +182,8 @@ pub struct DraftPerson {
 #[skip_serializing_none]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
+#[serde(tag = "__type")]
+#[serde(rename = "Organization")]
 pub struct DraftOrganization {
     #[serde(rename = "__id")]
     pub id: String,
@@ -194,6 +202,8 @@ pub struct DraftOrganization {
 #[skip_serializing_none]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
+#[serde(tag = "__type")]
+#[serde(rename = "Grant")]
 pub struct DraftGrant {
     #[serde(rename = "__id")]
     pub id: String,
@@ -241,6 +251,8 @@ pub struct DraftDate(pub NaiveDate);
 #[skip_serializing_none]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
+#[serde(tag = "__type")]
+#[serde(rename = "URL")]
 pub struct DraftUrl {
     pub url: String,
     pub text: Option<String>,
@@ -275,6 +287,8 @@ impl DraftUrlType {
 #[skip_serializing_none]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
+#[serde(tag = "__type")]
+#[serde(rename = "Address")]
 pub struct DraftAddress {
     pub street: String,
     pub postal_code: String,
@@ -287,6 +301,8 @@ pub struct DraftAddress {
 #[skip_serializing_none]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
+#[serde(tag = "__type")]
+#[serde(rename = "DataManagementPlan")]
 pub struct DraftDataManagementPlan {
     pub available: bool,
     pub url: Option<DraftUrl>,
@@ -294,6 +310,8 @@ pub struct DraftDataManagementPlan {
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
+#[serde(tag = "__type")]
+#[serde(rename = "Attribution")]
 pub struct DraftAttribution {
     pub agent: String,
     pub roles: NonEmpty<String>,
@@ -302,6 +320,8 @@ pub struct DraftAttribution {
 #[skip_serializing_none]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
+#[serde(tag = "__type")]
+#[serde(rename = "License")]
 pub struct DraftLicense {
     pub license: DraftUrl,
     pub date: DraftDate,

@@ -4,7 +4,7 @@
   let version: string
 
   onMount(async () => {
-    await fetch(`${window.location.origin}/api/version`)
+    await fetch(`${window.location.origin}/version.txt`)
       .then(response => response.text())
       .then((data) => {
         version = data

@@ -38,7 +38,7 @@ export async function getProjectsMetadata(page: number, q?: string): Promise<voi
   console.log(baseUrl, route);
   navigate(`/${route}`);
 
-  await fetch(`${baseUrl}api/${route}`)
+  await fetch(`${baseUrl}api/v1/${route}`)
     .then(r => {
       const totalCount = parseInt(r.headers.get('X-Total-Count'));
       let totalPages = Math.floor(totalCount / baseResultsRange[1]);

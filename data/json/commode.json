@@ -1,205 +1,204 @@
 {
-    "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
-    "project": {
-        "__id": "http://ns.dasch.swiss/repository#dsp-083B-project",
-        "__type": "Project",
-        "__createdAt": "1643071264658547000",
-        "__createdBy": "dsp-metadata-gui",
-        "howToCite": "Canonicity, Obscenity, and the Making of Modern Chaucer (COMMode): An Investigation of the Transmission and Audiences of The Canterbury Tales from 1700 to 2020",
-        "teaserText": "This project will recover the untold history of how Chaucer became both an icon of literary fame and an icon of obscenity.",
-        "datasets": [
-            "http://ns.dasch.swiss/repository#dsp-083B-dataset-000"
-        ],
-        "description": {
-            "en": "More than 600 years after he lived and wrote, Chaucer continues to play an important role in how Anglophone culture determines its standards of censorship and toleration. His association with naughty good humour is so widespread that the word ‘Chaucerian’ may be used in popular discourse as a synonym for ‘bawdy in an acceptably Olde Englisshe way’. But how did this come to be, and how does this idea of Chaucer as a 'bawdy' poet sit alongside his canonical status? This project will recover the untold history of how Chaucer became both an icon of literary fame and an icon of obscenity by examining the evolution of his most famous text alongside the evolution of his reputation between the publication of John Dryden's Fables Ancient & Modern in 1700 and the present day. By uncovering this history, the proposed project aims to achieve a better understanding not only of Chaucerian reception throughout history, but of the relationship between literature and cultural determinations of what is permissible in language and in art."
-        },
-        "disciplines": [
-            {
-                "en": "10501 German and English languages and literature"
-            }
-        ],
-        "funders": [
-            "http://ns.dasch.swiss/repository#dsp-083B-organization-002"
-        ],
-        "grants": [
-            "http://ns.dasch.swiss/repository#dsp-083B-grant-001"
-        ],
-        "endDate": "2024-12-31",
-        "keywords": [
-            {
-                "en": "Adaptation"
-            },
-            {
-                "en": "Canonicity"
-            },
-            {
-                "en": "Censorship"
-            },
-            {
-                "en": "Chaucer"
-            },
-            {
-                "en": "History of the book"
-            },
-            {
-                "en": "Medievalism"
-            },
-            {
-                "en": "Modernization"
-            },
-            {
-                "en": "Obscenity"
-            },
-            {
-                "en": "Reception history"
-            },
-            {
-                "en": "Translation"
-            }
-        ],
-        "name": "Canonicity, Obscenity, and the Making of Modern Chaucer (COMMode): An Investigation of the Transmission and Audiences of The Canterbury Tales from 1700 to 2020",
-        "shortcode": "083B",
-        "startDate": "2020-01-01",
-        "temporalCoverage": [
-            {
-                "en": "1700 to 2020"
-            }
-        ],
-        "status": "ongoing"
-    },
+  "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
+  "project": {
+    "__id": "http://ns.dasch.swiss/repository#dsp-083B-project",
+    "__type": "Project",
+    "__createdAt": "1643071264658547000",
+    "__createdBy": "dsp-metadata-gui",
+    "howToCite": "Canonicity, Obscenity, and the Making of Modern Chaucer (COMMode): An Investigation of the Transmission and Audiences of The Canterbury Tales from 1700 to 2020",
+    "teaserText": "This project will recover the untold history of how Chaucer became both an icon of literary fame and an icon of obscenity.",
     "datasets": [
-        {
-            "__id": "http://ns.dasch.swiss/repository#dsp-083B-dataset-000",
-            "__type": "Dataset",
-            "__createdAt": "1643071265449797000",
-            "__createdBy": "dsp-metadata-gui",
-            "abstracts": [
-                {
-                    "en": "More than 600 years after he lived and wrote, Chaucer continues to play an important role in how Anglophone culture determines its standards of censorship and toleration. His association with naughty good humour is so widespread that the word ‘Chaucerian’ may be used in popular discourse as a synonym for ‘bawdy in an acceptably Olde Englisshe way’. But how did this come to be, and how does this idea of Chaucer as a 'bawdy' poet sit alongside his canonical status? This project will recover the untold history of how Chaucer became both an icon of literary fame and an icon of obscenity by examining the evolution of his most famous text alongside the evolution of his reputation between the publication of John Dryden's Fables Ancient & Modern in 1700 and the present day. By uncovering this history, the proposed project aims to achieve a better understanding not only of Chaucerian reception throughout history, but of the relationship between literature and cultural determinations of what is permissible in language and in art."
-                }
-            ],
-            "howToCite": "Canonicity, Obscenity, and the Making of Modern Chaucer (COMMode): An Investigation of the Transmission and Audiences of The Canterbury Tales from 1700 to 2020",
-            "attributions": [
-                {
-                    "__type": "Attribution",
-                    "agent": "http://ns.dasch.swiss/repository#dsp-083B-person-000",
-                    "roles": [
-                        "Applicant"
-                    ]
-                },
-                {
-                    "__type": "Attribution",
-                    "agent": "http://ns.dasch.swiss/repository#dsp-083B-person-001",
-                    "roles": [
-                        "Employee"
-                    ]
-                },
-                {
-                    "__type": "Attribution",
-                    "agent": "http://ns.dasch.swiss/repository#dsp-083B-person-002",
-                    "roles": [
-                        "Employee"
-                    ]
-                }
-            ],
-            "title": "Canonicity, Obscenity, and the Making of Modern Chaucer (COMMode): An Investigation of the Transmission and Audiences of The Canterbury Tales from 1700 to 2020",
-            "languages": [
-                {
-                    "en": "English"
-                }
-            ]
-        }
+      "http://ns.dasch.swiss/repository#dsp-083B-dataset-000"
     ],
-    "persons": [
-        {
-            "__id": "http://ns.dasch.swiss/repository#dsp-083B-person-000",
-            "__type": "Person",
-            "__createdAt": "1643071265492171000",
-            "__createdBy": "dsp-metadata-gui",
-            "familyNames": [
-                "Flannery"
-            ],
-            "givenNames": [
-                "Mary"
-            ],
-            "jobTitles": [
-                "Prof. Dr."
-            ],
-            "affiliation": [
-                "http://ns.dasch.swiss/repository#dsp-083B-organization-001"
-            ]
-        },
-        {
-            "__id": "http://ns.dasch.swiss/repository#dsp-083B-person-001",
-            "__type": "Person",
-            "__createdAt": "1643071265492231000",
-            "__createdBy": "dsp-metadata-gui",
-            "familyNames": [
-                "Brown"
-            ],
-            "givenNames": [
-                "Amy"
-            ],
-            "jobTitles": [
-                "Dr."
-            ],
-            "affiliation": [
-                "http://ns.dasch.swiss/repository#dsp-083B-organization-001"
-            ]
-        },
-        {
-            "__id": "http://ns.dasch.swiss/repository#dsp-083B-person-002",
-            "__type": "Person",
-            "__createdAt": "1643071265492287000",
-            "__createdBy": "dsp-metadata-gui",
-            "familyNames": [
-                "Haas Curtis"
-            ],
-            "givenNames": [
-                "Kristen"
-            ]
-        }
+    "description": {
+      "en": "More than 600 years after he lived and wrote, Chaucer continues to play an important role in how Anglophone culture determines its standards of censorship and toleration. His association with naughty good humour is so widespread that the word ‘Chaucerian’ may be used in popular discourse as a synonym for ‘bawdy in an acceptably Olde Englisshe way’. But how did this come to be, and how does this idea of Chaucer as a 'bawdy' poet sit alongside his canonical status? This project will recover the untold history of how Chaucer became both an icon of literary fame and an icon of obscenity by examining the evolution of his most famous text alongside the evolution of his reputation between the publication of John Dryden's Fables Ancient & Modern in 1700 and the present day. By uncovering this history, the proposed project aims to achieve a better understanding not only of Chaucerian reception throughout history, but of the relationship between literature and cultural determinations of what is permissible in language and in art."
+    },
+    "disciplines": [
+      {
+        "en": "10501 German and English languages and literature"
+      }
     ],
-    "organizations": [
-        {
-            "__id": "http://ns.dasch.swiss/repository#dsp-083B-organization-001",
-            "__type": "Organization",
-            "__createdAt": "1643071265492344000",
-            "__createdBy": "dsp-metadata-gui",
-            "address": {
-                "__type": "Address",
-                "street": "Länggassstrasse 49",
-                "postalCode": "3012",
-                "locality": "Bern",
-                "country": "Switzerland"
-            },
-            "name": "Department of English"
-        },
-        {
-            "__id": "http://ns.dasch.swiss/repository#dsp-083B-organization-002",
-            "__type": "Organization",
-            "__createdAt": "1643071265492344000",
-            "__createdBy": "dsp-metadata-gui",
-            "name": "Swiss National Science Foundation (SNSF)"
-        }
+    "funders": [
+      "http://ns.dasch.swiss/repository#dsp-083B-organization-002"
     ],
     "grants": [
-        {
-            "__id": "http://ns.dasch.swiss/repository#dsp-083B-grant-001",
-            "__type": "Grant",
-            "__createdAt": "1643071265492344000",
-            "__createdBy": "dsp-metadata-gui",
-            "funders": [
-                "http://ns.dasch.swiss/repository#dsp-083B-organization-002"
-            ],
-            "name": "Eccellenza",
-            "number": "181097",
-            "url": {
-                "__type": "URL",
-                "type": "URL",
-                "url": "https://data.snf.ch/grants/grant/181097",
-                "text": "https://data.snf.ch/grants/grant/181097"
-            }
-        }
+      "http://ns.dasch.swiss/repository#dsp-083B-grant-001"
+    ],
+    "endDate": "2024-12-31",
+    "keywords": [
+      {
+        "en": "Adaptation"
+      },
+      {
+        "en": "Canonicity"
+      },
+      {
+        "en": "Censorship"
+      },
+      {
+        "en": "Chaucer"
+      },
+      {
+        "en": "History of the book"
+      },
+      {
+        "en": "Medievalism"
+      },
+      {
+        "en": "Modernization"
+      },
+      {
+        "en": "Obscenity"
+      },
+      {
+        "en": "Reception history"
+      },
+      {
+        "en": "Translation"
+      }
+    ],
+    "name": "Canonicity, Obscenity, and the Making of Modern Chaucer (COMMode): An Investigation of the Transmission and Audiences of The Canterbury Tales from 1700 to 2020",
+    "shortcode": "083B",
+    "startDate": "2020-01-01",
+    "temporalCoverage": [
+      {
+        "en": "1700 to 2020"
+      }
     ]
+  },
+  "datasets": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-083B-dataset-000",
+      "__type": "Dataset",
+      "__createdAt": "1643071265449797000",
+      "__createdBy": "dsp-metadata-gui",
+      "abstracts": [
+        {
+          "en": "More than 600 years after he lived and wrote, Chaucer continues to play an important role in how Anglophone culture determines its standards of censorship and toleration. His association with naughty good humour is so widespread that the word ‘Chaucerian’ may be used in popular discourse as a synonym for ‘bawdy in an acceptably Olde Englisshe way’. But how did this come to be, and how does this idea of Chaucer as a 'bawdy' poet sit alongside his canonical status? This project will recover the untold history of how Chaucer became both an icon of literary fame and an icon of obscenity by examining the evolution of his most famous text alongside the evolution of his reputation between the publication of John Dryden's Fables Ancient & Modern in 1700 and the present day. By uncovering this history, the proposed project aims to achieve a better understanding not only of Chaucerian reception throughout history, but of the relationship between literature and cultural determinations of what is permissible in language and in art."
+        }
+      ],
+      "howToCite": "Canonicity, Obscenity, and the Making of Modern Chaucer (COMMode): An Investigation of the Transmission and Audiences of The Canterbury Tales from 1700 to 2020",
+      "attributions": [
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-083B-person-000",
+          "roles": [
+            "Applicant"
+          ]
+        },
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-083B-person-001",
+          "roles": [
+            "Employee"
+          ]
+        },
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-083B-person-002",
+          "roles": [
+            "Employee"
+          ]
+        }
+      ],
+      "title": "Canonicity, Obscenity, and the Making of Modern Chaucer (COMMode): An Investigation of the Transmission and Audiences of The Canterbury Tales from 1700 to 2020",
+      "languages": [
+        {
+          "en": "English"
+        }
+      ]
+    }
+  ],
+  "persons": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-083B-person-000",
+      "__type": "Person",
+      "__createdAt": "1643071265492171000",
+      "__createdBy": "dsp-metadata-gui",
+      "familyNames": [
+        "Flannery"
+      ],
+      "givenNames": [
+        "Mary"
+      ],
+      "jobTitles": [
+        "Prof. Dr."
+      ],
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-083B-organization-001"
+      ]
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-083B-person-001",
+      "__type": "Person",
+      "__createdAt": "1643071265492231000",
+      "__createdBy": "dsp-metadata-gui",
+      "familyNames": [
+        "Brown"
+      ],
+      "givenNames": [
+        "Amy"
+      ],
+      "jobTitles": [
+        "Dr."
+      ],
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-083B-organization-001"
+      ]
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-083B-person-002",
+      "__type": "Person",
+      "__createdAt": "1643071265492287000",
+      "__createdBy": "dsp-metadata-gui",
+      "familyNames": [
+        "Haas Curtis"
+      ],
+      "givenNames": [
+        "Kristen"
+      ]
+    }
+  ],
+  "organizations": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-083B-organization-001",
+      "__type": "Organization",
+      "__createdAt": "1643071265492344000",
+      "__createdBy": "dsp-metadata-gui",
+      "address": {
+        "__type": "Address",
+        "street": "Länggassstrasse 49",
+        "postalCode": "3012",
+        "locality": "Bern",
+        "country": "Switzerland"
+      },
+      "name": "Department of English"
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-083B-organization-002",
+      "__type": "Organization",
+      "__createdAt": "1643071265492344000",
+      "__createdBy": "dsp-metadata-gui",
+      "name": "Swiss National Science Foundation (SNSF)"
+    }
+  ],
+  "grants": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-083B-grant-001",
+      "__type": "Grant",
+      "__createdAt": "1643071265492344000",
+      "__createdBy": "dsp-metadata-gui",
+      "funders": [
+        "http://ns.dasch.swiss/repository#dsp-083B-organization-002"
+      ],
+      "name": "Eccellenza",
+      "number": "181097",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://data.snf.ch/grants/grant/181097",
+        "text": "https://data.snf.ch/grants/grant/181097"
+      }
+    }
+  ]
 }
