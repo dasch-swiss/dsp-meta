@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+use std::fs::File;
 use std::path::{Path, PathBuf};
 use std::{env, fs};
 
@@ -84,4 +86,27 @@ fn test_draft_json_schema() {
     }
     let failures = results.values().filter(|v| !v.is_valid());
     assert_eq!(failures.count(), 0);
+}
+
+#[test]
+fn test_unique_shortcode() {
+    let path_bufs = load_json_file_paths(&data_dir());
+    let mut shortcodes: HashMap<String, PathBuf> = HashMap::new();
+    for path_buf in path_bufs {
+        let path = path_buf.as_path();
+        let file = File::open(path).expect("Should have been able to open the file");
+        let metadata: DraftMetadata =
+            serde_json::from_reader(file).expect("Should have been able to deserialize the file");
+        let shortcode = metadata.project.shortcode;
+        if shortcodes.contains_key(&shortcode) {
+            let last_path = shortcodes.get(&shortcode).unwrap();
+            panic!(
+                "Shortcode {} is not unique!\nFound in files '{}' and '{}'. Please fix this.",
+                shortcode,
+                path.file_name().and_then(|os| os.to_str()).unwrap_or_default(),
+                last_path.file_name().and_then(|os| os.to_str()).unwrap_or_default()
+            );
+        }
+        shortcodes.insert(shortcode, path_buf);
+    }
 }
