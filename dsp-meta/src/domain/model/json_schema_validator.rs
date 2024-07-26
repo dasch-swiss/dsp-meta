@@ -7,10 +7,10 @@ use thiserror::Error;
 use valico::json_schema::schema::ScopedSchema;
 use valico::json_schema::{Scope, ValidationState};
 
-use crate::api::convert::serde::json_schema_validator::SchemaVersion::Draft;
-use crate::api::convert::serde::json_schema_validator::ValidationError::*;
+use crate::domain::model::json_schema_validator::SchemaVersion::Draft;
+use crate::domain::model::json_schema_validator::ValidationError::*;
 
-static DRAFT_SCHEMA: &str = include_str!("../../../../resources/schema-metadata-draft.json");
+static DRAFT_SCHEMA: &str = include_str!("../../../resources/schema-metadata-draft.json");
 
 pub enum SchemaVersion {
     Draft,

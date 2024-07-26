@@ -3,7 +3,7 @@ use axum::response::{IntoResponse, Response};
 use axum::Json;
 use serde::Serialize;
 
-use crate::api::convert::serde::draft_model::{DraftMetadata, DraftProjectStatus};
+use crate::domain::model::draft_model::{DraftMetadata, DraftProjectStatus};
 
 #[derive(Debug, Clone, PartialEq, Serialize)]
 pub struct ProjectMetadataDto(pub DraftMetadata);

@@ -3,9 +3,8 @@ use std::fs::File;
 use std::path::{Path, PathBuf};
 use std::{env, fs};
 
-use api::convert::serde::draft_model::*;
-use dsp_meta::api;
-use dsp_meta::api::convert::serde::json_schema_validator::{validate_files, SchemaVersion};
+use dsp_meta::domain::model::draft_model::*;
+use dsp_meta::domain::model::json_schema_validator::{validate_files, SchemaVersion};
 use dsp_meta::infrastructure::load_json_file_paths;
 
 #[test]

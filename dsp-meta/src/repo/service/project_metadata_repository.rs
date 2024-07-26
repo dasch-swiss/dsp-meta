@@ -7,7 +7,7 @@ use dsp_domain::metadata::value::Shortcode;
 use log::info;
 use tracing::{instrument, trace};
 
-use crate::api::convert::serde::draft_model::{DraftMetadata, DraftProjectStatus};
+use crate::domain::model::draft_model::{DraftMetadata, DraftProjectStatus};
 use crate::domain::service::repository_contract::{Filter, Page, Pagination, RepositoryContract};
 use crate::error::DspMetaError;
 use crate::infrastructure::load_json_file_paths;

@@ -1,6 +1,6 @@
 use dsp_domain::metadata::value::Shortcode;
 
-use crate::api::convert::serde::draft_model::DraftMetadata;
+use crate::domain::model::draft_model::DraftMetadata;
 use crate::domain::service::repository_contract::{Filter, Page, Pagination};
 use crate::error::DspMetaError;
 

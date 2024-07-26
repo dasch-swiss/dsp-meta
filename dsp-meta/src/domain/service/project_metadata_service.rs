@@ -1,7 +1,7 @@
 use dsp_domain::metadata::value::Shortcode;
 use tracing::{instrument, trace};
 
-use crate::api::convert::serde::draft_model::DraftMetadata;
+use crate::domain::model::draft_model::DraftMetadata;
 use crate::domain::service::project_metadata_api_contract::ProjectMetadataApiContract;
 use crate::domain::service::repository_contract::{Filter, Page, Pagination, RepositoryContract};
 use crate::error::DspMetaError;
