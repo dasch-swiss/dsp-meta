@@ -253,7 +253,8 @@
       "type": "URL",
       "url": "https://www.bildungsgeschichte.uzh.ch/",
       "text": "External Project Website"
-    }
+    },
+    "status": "finished"
   },
   "datasets": [
     {

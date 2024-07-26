@@ -111,7 +111,8 @@
       "type": "URL",
       "url": "https://app.ls-prod-server.dasch.swiss/project/0116",
       "text": "Discover Project Data"
-    }
+    },
+    "status": "ongoing"
   },
   "datasets": [
     {
