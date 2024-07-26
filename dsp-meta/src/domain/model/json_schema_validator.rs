@@ -3,12 +3,12 @@ use std::fs::File;
 use std::path::Path;
 
 use serde_json::Value;
-use thiserror::Error;
 use valico::json_schema::schema::ScopedSchema;
 use valico::json_schema::{Scope, ValidationState};
 
+use crate::domain::model::error::ValidationError::*;
+use crate::domain::model::error::*;
 use crate::domain::model::json_schema_validator::SchemaVersion::Draft;
-use crate::domain::model::json_schema_validator::ValidationError::*;
 
 static DRAFT_SCHEMA: &str = include_str!("../../../resources/schema-metadata-draft.json");
 
@@ -21,17 +21,6 @@ impl SchemaVersion {
             Draft => DRAFT_SCHEMA,
         }
     }
-}
-
-pub type Result<T> = core::result::Result<T, ValidationError>;
-#[derive(Debug, Error)]
-pub enum ValidationError {
-    #[error("File not loaded: {0}")]
-    FileNotLoaded(std::io::Error),
-    #[error("Schema is invalid: {0}")]
-    SchemaError(valico::json_schema::schema::SchemaError),
-    #[error("Error parsing file as json: {0}")]
-    NotAJsonFile(serde_json::Error),
 }
 
 pub fn validate_file(path: &Path, schema_version: SchemaVersion) -> Result<ValidationState> {
