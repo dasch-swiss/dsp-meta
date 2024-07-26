@@ -8,6 +8,7 @@ use axum::routing::get;
 use axum::{http, Router};
 use log::info;
 use tower_http::classify::ServerErrorsFailureClass;
+use tower_http::cors::{Any, CorsLayer};
 use tower_http::services::{ServeDir, ServeFile};
 use tower_http::trace::TraceLayer;
 use tracing::{error, info_span, warn, Span};
@@ -18,6 +19,11 @@ use crate::app_state::AppState;
 /// Having a function that produces our router makes it easy to call it from tests
 /// without having to create an HTTP server.
 pub fn router(shared_state: Arc<AppState>) -> Router {
+    let cors = CorsLayer::new()
+        .expose_headers(Any)
+        .allow_methods(Any)
+        .allow_headers(Any)
+        .allow_origin(Any);
     Router::new()
         .route(
             "/api/v1/projects",
@@ -38,6 +44,7 @@ pub fn router(shared_state: Arc<AppState>) -> Router {
         .with_state(shared_state)
         // See https://docs.rs/tower-http/latest/tower_http/trace/index.html for more details
         // on how to customize.
+        .layer(cors)
         .layer(
             TraceLayer::new_for_http()
                 .make_span_with(|request: &Request<_>| {
