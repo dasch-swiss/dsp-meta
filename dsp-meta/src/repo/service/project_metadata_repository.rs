@@ -19,7 +19,8 @@ pub struct ProjectMetadataRepository {
 impl ProjectMetadataRepository {
     pub fn new(data_path: &Path) -> Self {
         info!("Init Repository {:?}", data_path);
-        let db: Arc<RwLock<HashMap<Shortcode, DraftMetadata>>> = Arc::new(RwLock::new(HashMap::new()));
+        let db: Arc<RwLock<HashMap<Shortcode, DraftMetadata>>> =
+            Arc::new(RwLock::new(HashMap::new()));
 
         let file_paths = load_json_file_paths(data_path);
         info!("Found {} projects", file_paths.len());
