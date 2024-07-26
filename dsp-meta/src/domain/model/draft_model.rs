@@ -203,7 +203,8 @@ pub struct DraftGrant {
 pub struct DraftText(HashMap<DraftIsoCode, String>);
 
 #[derive(Debug, Clone, Serialize, Deserialize, Eq, PartialEq, Hash)]
-pub struct DraftIsoCode(pub String);
+#[serde(try_from = "String")]
+pub struct DraftIsoCode(String);
 impl DraftIsoCode {
     pub fn as_string(&self) -> String {
         self.0.to_string()
