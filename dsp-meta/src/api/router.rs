@@ -40,7 +40,7 @@ pub fn router(shared_state: Arc<AppState>) -> Router {
             get(project_metadata_handler::get_project_metadata_by_shortcode_as_rdf),
         )
         .route("/api/health", get(health::health_handler))
-        .route("/api/version", get(shared_state.version))
+        .route("/version.txt", get(shared_state.version))
         .fallback_service(
             ServeDir::new(shared_state.public_dir.as_str()).fallback(ServeFile::new(format!(
                 "{}/index.html",
