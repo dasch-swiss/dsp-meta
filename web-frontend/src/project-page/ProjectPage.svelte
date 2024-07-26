@@ -9,9 +9,9 @@
   import Snackbar from "../Snackbar.svelte";
   import { getText } from "../functions";
   import Loading from "../Loading.svelte";
+  import { isTestEnvironment} from '../store';
 
   const mobileResolution = window.innerWidth < 992;
-  const isTestEnvironment: boolean = window.location.hostname === 'localhost' || window.location.hostname.startsWith('meta.test');
   const descriptionLanguages = new Map<string, string>([
     // contains languages that are presented in provided descriptions, update if necessary
     ["ar", "Arabic"],
@@ -113,7 +113,7 @@
         <h1 class="title top-heading">
           {$projectMetadata?.project.name}
         </h1>
-      {:else if isTestEnvironment}
+      {:else if $isTestEnvironment}
         <div class="warning top-heading">Project Name missing</div>
       {/if}
       {#if $projectMetadata?.project.alternativeNames}
@@ -149,7 +149,7 @@
                 show {isDescriptionExpanded ? "less" : "more"}
               </div>
             {/if}
-          {:else if isTestEnvironment}
+          {:else if $isTestEnvironment}
             <div class="warning" id="description">Description missing</div>
           {/if}
         </div>

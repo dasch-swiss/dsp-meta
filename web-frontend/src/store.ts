@@ -1,14 +1,17 @@
-import {navigate} from 'svelte-routing';
-import {writable} from 'svelte/store';
-import type {PaginationData, Metadata, ProjectMetadata} from './interfaces';
+import { navigate } from 'svelte-routing';
+import { readable, writable } from 'svelte/store';
+import type { PaginationData, Metadata, ProjectMetadata } from './interfaces';
 
 export const pagination = writable({} as PaginationData);
 export const pagedResults = writable(undefined as ProjectMetadata[]);
 export const projectMetadata = writable(undefined as Metadata);
 export const query = writable('');
 export const previousRoute = writable('');
-export const handleSnackbar = writable({isSnackbar: false, message: ''});
-export const statusFilter = writable({showOngoing: true, showFinished: true})
+export const handleSnackbar = writable({ isSnackbar: false, message: '' });
+export const statusFilter = writable({ showOngoing: true, showFinished: true });
+export const isTestEnvironment = readable(
+  window.location.hostname === 'localhost' || window.location.hostname.startsWith('meta.test') || window.location.hostname.startsWith('meta.dev')
+);
 
 export async function getProjectsMetadata(page: number, q?: string): Promise<void> {
   // const baseUrl = process.env.BASE_URL;
@@ -22,7 +25,7 @@ export async function getProjectsMetadata(page: number, q?: string): Promise<voi
   if (q) {
     query.set(q);
     route = `projects?q=${q}&_page=${page}&_limit=${baseResultsRange[1]}`;
-    handleSnackbar.set({isSnackbar: true, message: `Displaying search results for query: ${q}`});
+    handleSnackbar.set({ isSnackbar: true, message: `Displaying search results for query: ${q}` });
   } else {
     query.set('');
     route = `projects?_page=${page}&_limit=${baseResultsRange[1]}`;
@@ -30,10 +33,10 @@ export async function getProjectsMetadata(page: number, q?: string): Promise<voi
 
   statusFilter.subscribe(f => {
     if (!f.showFinished || !f.showOngoing) {
-      const filter = `&filter=${!f.showOngoing ? 'o' : ''}${!f.showFinished ? 'f' : ''}`
-      route += filter
+      const filter = `&filter=${!f.showOngoing ? 'o' : ''}${!f.showFinished ? 'f' : ''}`;
+      route += filter;
     }
-  })
+  });
 
   console.log(baseUrl, route);
   navigate(`/${route}`);
@@ -44,9 +47,12 @@ export async function getProjectsMetadata(page: number, q?: string): Promise<voi
       let totalPages = Math.floor(totalCount / baseResultsRange[1]);
       if (!Number.isInteger(totalCount / baseResultsRange[1])) {
         totalPages++;
-      };
-      pagination.set({currentPage: page, currentResultsRange, totalCount, totalPages});
+      }
+      ;
+      pagination.set({ currentPage: page, currentResultsRange, totalCount, totalPages });
       return r.json();
     })
-    .then(data => {pagedResults.set(data), console.log(data)})
+    .then(data => {
+      pagedResults.set(data), console.log(data);
+    });
 }
