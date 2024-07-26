@@ -204,6 +204,27 @@ pub struct DraftText(HashMap<DraftIsoCode, String>);
 
 #[derive(Debug, Clone, Serialize, Deserialize, Eq, PartialEq, Hash)]
 pub struct DraftIsoCode(pub String);
+impl DraftIsoCode {
+    pub fn as_string(&self) -> String {
+        self.0.to_string()
+    }
+}
+impl TryFrom<String> for DraftIsoCode {
+    type Error = &'static str;
+    fn try_from(value: String) -> Result<Self, Self::Error> {
+        let regex: Regex = Regex::new(r"^[a-z]{2}$").expect("Valid regex");
+        if !regex.is_match(&value) {
+            Err("ISO code must be a 2 character lower case string")
+        } else {
+            Ok(DraftIsoCode(value))
+        }
+    }
+}
+#[test]
+fn test_try_from_draft_iso_code() {
+    assert!(DraftIsoCode::try_from("en".to_string()).is_ok());
+    assert!(DraftIsoCode::try_from("de_ch".to_string()).is_err());
+}
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct DraftDate(pub NaiveDate);
