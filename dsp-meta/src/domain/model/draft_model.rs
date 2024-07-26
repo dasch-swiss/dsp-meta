@@ -4,11 +4,13 @@ use chrono::NaiveDate;
 use nonempty::NonEmpty;
 use regex::Regex;
 use serde::{Deserialize, Serialize};
+use serde_with::skip_serializing_none;
 
 // This model corresponds to the json schema found in resources/schema-metadata-draft.json
 // These data structures are able to parse all json metadata found in /data/json/.*json
 // We can use them to produce TOML or YAML files as well
 
+#[skip_serializing_none]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct DraftMetadata {
@@ -19,6 +21,7 @@ pub struct DraftMetadata {
     pub grants: Option<Vec<DraftGrant>>,
 }
 
+#[skip_serializing_none]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct DraftProject {
@@ -87,12 +90,14 @@ pub enum DraftProjectStatus {
     Finished,
 }
 
+#[skip_serializing_none]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct DraftPublication {
     pub text: String,
     pub url: Option<NonEmpty<DraftUrl>>,
 }
 
+#[skip_serializing_none]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct DraftDataset {
@@ -148,6 +153,7 @@ pub enum DraftTypeOfData {
     Audio,
 }
 
+#[skip_serializing_none]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct DraftPerson {
@@ -167,6 +173,7 @@ pub struct DraftPerson {
     pub authority_refs: Option<Vec<DraftUrl>>,
 }
 
+#[skip_serializing_none]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct DraftOrganization {
@@ -184,6 +191,7 @@ pub struct DraftOrganization {
     pub authority_refs: Option<Vec<DraftUrl>>,
 }
 
+#[skip_serializing_none]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct DraftGrant {
@@ -230,6 +238,7 @@ fn test_try_from_draft_iso_code() {
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct DraftDate(pub NaiveDate);
 
+#[skip_serializing_none]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct DraftUrl {
@@ -263,6 +272,7 @@ impl DraftUrlType {
     }
 }
 
+#[skip_serializing_none]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct DraftAddress {
@@ -274,6 +284,7 @@ pub struct DraftAddress {
     pub additional: Option<String>,
 }
 
+#[skip_serializing_none]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct DraftDataManagementPlan {
@@ -288,6 +299,7 @@ pub struct DraftAttribution {
     pub roles: NonEmpty<String>,
 }
 
+#[skip_serializing_none]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct DraftLicense {

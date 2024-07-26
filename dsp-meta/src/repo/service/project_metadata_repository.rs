@@ -87,7 +87,10 @@ impl RepositoryContract<DraftMetadata, Shortcode, DspMetaError> for ProjectMetad
             })
             .filter(|metadata| {
                 if let Some(query) = &filter.query {
-                    serde_json::to_string(metadata).unwrap().contains(query)
+                    serde_json::to_string(metadata)
+                        .unwrap()
+                        .to_lowercase()
+                        .contains(&query.to_lowercase())
                 } else {
                     true
                 }
