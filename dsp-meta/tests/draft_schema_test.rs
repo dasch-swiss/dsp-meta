@@ -90,7 +90,7 @@ fn test_draft_json_schema() {
 #[test]
 fn test_unique_shortcode() {
     let path_bufs = load_json_file_paths(&data_dir());
-    let mut shortcodes: HashMap<String, PathBuf> = HashMap::new();
+    let mut shortcodes: HashMap<Shortcode, PathBuf> = HashMap::new();
     for path_buf in path_bufs {
         let path = path_buf.as_path();
         let file = File::open(path).expect("Should have been able to open the file");
@@ -100,7 +100,7 @@ fn test_unique_shortcode() {
         if shortcodes.contains_key(&shortcode) {
             let last_path = shortcodes.get(&shortcode).unwrap();
             panic!(
-                "Shortcode {} is not unique!\nFound in files '{}' and '{}'. Please fix this.",
+                "Shortcode {:?} is not unique!\nFound in files '{}' and '{}'. Please fix this.",
                 shortcode,
                 path.file_name()
                     .and_then(|os| os.to_str())

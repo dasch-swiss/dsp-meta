@@ -4,12 +4,12 @@ use axum::extract::{Path, Query, State};
 use axum::http::StatusCode;
 use axum::response::{IntoResponse, Response};
 use axum::Json;
-use dsp_domain::metadata::value::Shortcode;
 use tracing::{info_span, instrument, trace};
 
 use crate::api::model::project_metadata_dto::{ProjectMetadataDto, ProjectMetadataWithInfoDto};
 use crate::api::model::project_metadata_graph_dto::ProjectMetadataGraphDto;
 use crate::app_state::AppState;
+use crate::domain::model::draft_model::Shortcode;
 use crate::domain::service::project_metadata_api_contract::ProjectMetadataApiContract;
 use crate::domain::service::repository_contract::{Filter, Pagination};
 use crate::error::DspMetaError;
@@ -20,13 +20,13 @@ use crate::error::DspMetaError;
 /// TODO: Add error handling with correct status codes
 #[instrument(skip(state))]
 pub async fn get_project_metadata_by_shortcode(
-    Path(shortcode): Path<String>,
+    Path(shortcode): Path<Shortcode>,
     State(state): State<Arc<AppState>>,
 ) -> Result<Response, DspMetaError> {
     trace!("entered get_project_metadata_by_shortcode()");
     state
         .project_metadata_service
-        .find_by_id(Shortcode(shortcode))
+        .find_by_id(shortcode)
         .map(|option| match option {
             Some(metadata) => (StatusCode::OK, ProjectMetadataDto(metadata)).into_response(),
             None => (StatusCode::NOT_FOUND, "No project 9999 available").into_response(),

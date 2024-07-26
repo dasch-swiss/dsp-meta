@@ -27,7 +27,7 @@ pub struct DraftProject {
     pub created_at: Option<String>,
     #[serde(rename = "__createdBy")]
     pub created_by: Option<String>,
-    pub shortcode: String,
+    pub shortcode: Shortcode,
     pub status: Option<DraftProjectStatus>,
     pub name: String,
     pub description: Option<DraftText>,
@@ -49,6 +49,9 @@ pub struct DraftProject {
     pub grants: Option<NonEmpty<String>>,
     pub alternative_names: Option<NonEmpty<DraftText>>,
 }
+
+#[derive(Debug, Default, Clone, Serialize, Deserialize, PartialEq, Hash, Eq)]
+pub struct Shortcode(pub String);
 
 #[derive(Debug, Default, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DraftProjectStatus {
@@ -175,10 +178,10 @@ pub struct DraftGrant {
 pub struct DraftText(HashMap<DraftIsoCode, String>);
 
 #[derive(Debug, Clone, Serialize, Deserialize, Eq, PartialEq, Hash)]
-pub struct DraftIsoCode(String);
+pub struct DraftIsoCode(pub String);
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct DraftDate(NaiveDate);
+pub struct DraftDate(pub NaiveDate);
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]

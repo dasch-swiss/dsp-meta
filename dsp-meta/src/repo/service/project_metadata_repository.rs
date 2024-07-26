@@ -3,36 +3,35 @@ use std::fs::File;
 use std::path::Path;
 use std::sync::{Arc, RwLock};
 
-use dsp_domain::metadata::value::Shortcode;
 use log::info;
 use tracing::{instrument, trace};
 
-use crate::domain::model::draft_model::{DraftMetadata, DraftProjectStatus};
+use crate::domain::model::draft_model::*;
 use crate::domain::service::repository_contract::{Filter, Page, Pagination, RepositoryContract};
 use crate::error::DspMetaError;
 use crate::infrastructure::load_json_file_paths;
 
 #[derive(Debug, Default, Clone)]
 pub struct ProjectMetadataRepository {
-    db: Arc<RwLock<HashMap<String, DraftMetadata>>>,
+    db: Arc<RwLock<HashMap<Shortcode, DraftMetadata>>>,
 }
 
 impl ProjectMetadataRepository {
     pub fn new(data_path: &Path) -> Self {
         info!("Init Repository {:?}", data_path);
-        let db: Arc<RwLock<HashMap<String, DraftMetadata>>> = Arc::new(RwLock::new(HashMap::new()));
+        let db: Arc<RwLock<HashMap<Shortcode, DraftMetadata>>> = Arc::new(RwLock::new(HashMap::new()));
 
         let file_paths = load_json_file_paths(data_path);
         info!("Found {} projects", file_paths.len());
 
-        let mut known_shortcodes: Vec<String> = Vec::new();
+        let mut known_shortcodes: Vec<Shortcode> = Vec::new();
         for file in file_paths {
             let file = File::open(file).expect("open file.");
             let entity: DraftMetadata = serde_json::from_reader(file).expect("parse file as JSON.");
             let mut db = db.write().unwrap();
             let shortcode = entity.project.shortcode.to_owned();
             if known_shortcodes.contains(&shortcode) {
-                panic!("Duplicate shortcode: {}", shortcode);
+                panic!("Duplicate shortcode: {:?}", shortcode);
             }
             known_shortcodes.push(shortcode);
 
@@ -52,7 +51,7 @@ impl RepositoryContract<DraftMetadata, Shortcode, DspMetaError> for ProjectMetad
     #[instrument(skip(self))]
     fn find_by_id(&self, id: &Shortcode) -> Result<Option<DraftMetadata>, DspMetaError> {
         let db = self.db.read().unwrap();
-        match db.get(id.0.as_str()) {
+        match db.get(id) {
             Some(metadata) => Ok(Some(metadata.clone())),
             None => Ok(None),
         }
