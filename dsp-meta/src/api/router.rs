@@ -20,14 +20,6 @@ use crate::app_state::AppState;
 pub fn router(shared_state: Arc<AppState>) -> Router {
     Router::new()
         .route(
-            "/api/projects",
-            get(project_metadata_handler::get_all_project_metadata),
-        )
-        .route(
-            "/api/projects/:shortcode",
-            get(project_metadata_handler::get_project_metadata_by_shortcode),
-        )
-        .route(
             "/api/v1/projects",
             get(project_metadata_handler::get_all_project_metadata),
         )
@@ -35,11 +27,7 @@ pub fn router(shared_state: Arc<AppState>) -> Router {
             "/api/v1/projects/:shortcode",
             get(project_metadata_handler::get_project_metadata_by_shortcode),
         )
-        .route(
-            "/api/projects/:shortcode/rdf",
-            get(project_metadata_handler::get_project_metadata_by_shortcode_as_rdf),
-        )
-        .route("/api/health", get(health::health_handler))
+        .route("/health", get(health::health_handler))
         .route("/version.txt", get(shared_state.version))
         .fallback_service(
             ServeDir::new(shared_state.public_dir.as_str()).fallback(ServeFile::new(format!(
@@ -115,7 +103,7 @@ mod tests {
         let response = router
             .oneshot(
                 Request::builder()
-                    .uri("/api/health")
+                    .uri("/health")
                     .body(Body::empty())
                     .unwrap(),
             )

@@ -4,10 +4,9 @@ use axum::extract::{Path, Query, State};
 use axum::http::StatusCode;
 use axum::response::{IntoResponse, Response};
 use axum::Json;
-use tracing::{info_span, instrument, trace};
+use tracing::{instrument, trace};
 
 use crate::api::model::project_metadata_dto::{ProjectMetadataDto, ProjectMetadataWithInfoDto};
-use crate::api::model::project_metadata_graph_dto::ProjectMetadataGraphDto;
 use crate::app_state::AppState;
 use crate::domain::model::draft_model::Shortcode;
 use crate::domain::service::project_metadata_api_contract::ProjectMetadataApiContract;
@@ -31,23 +30,6 @@ pub async fn get_project_metadata_by_shortcode(
             Some(metadata) => (StatusCode::OK, ProjectMetadataDto(metadata)).into_response(),
             None => (StatusCode::NOT_FOUND, "No project 9999 available").into_response(),
         })
-}
-
-/// GET /project_metadata/:shortcode/rdf
-/// Get project metadata by shortcode returned as an RDF string.
-// #[instrument(skip(state))]
-pub async fn get_project_metadata_by_shortcode_as_rdf(
-    Path(_shortcode): Path<String>,
-    State(_state): State<Arc<AppState>>,
-) -> Result<ProjectMetadataGraphDto, DspMetaError> {
-    info_span!("get project by shortcode as RDF");
-    trace!("entered get_project_metadata_by_shortcode_as_rdf()");
-    todo!()
-    // state
-    //     .project_metadata_service
-    //     .find_by_id(Shortcode(shortcode))
-    //     .map(|metadata| metadata.map(|m| ProjectMetadataGraphWrapper(m).into()))
-    //     .map(ProjectMetadataGraphDto)
 }
 
 #[instrument(skip(state))]
