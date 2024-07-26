@@ -103,8 +103,13 @@ fn test_unique_shortcode() {
             panic!(
                 "Shortcode {} is not unique!\nFound in files '{}' and '{}'. Please fix this.",
                 shortcode,
-                path.file_name().and_then(|os| os.to_str()).unwrap_or_default(),
-                last_path.file_name().and_then(|os| os.to_str()).unwrap_or_default()
+                path.file_name()
+                    .and_then(|os| os.to_str())
+                    .unwrap_or_default(),
+                last_path
+                    .file_name()
+                    .and_then(|os| os.to_str())
+                    .unwrap_or_default()
             );
         }
         shortcodes.insert(shortcode, path_buf);
