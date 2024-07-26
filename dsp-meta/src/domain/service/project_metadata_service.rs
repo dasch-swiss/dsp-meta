@@ -24,8 +24,8 @@ impl<R> ProjectMetadataApiContract for ProjectMetadataService<R>
 where
     R: RepositoryContract<DraftMetadata, Shortcode, DspMetaError> + std::fmt::Debug,
 {
-    fn find_by_id(&self, id: Shortcode) -> Result<Option<DraftMetadata>, DspMetaError> {
-        self.repo.find_by_id(&id)
+    fn find_by_id(&self, id: &Shortcode) -> Result<Option<DraftMetadata>, DspMetaError> {
+        self.repo.find_by_id(id)
     }
 
     #[instrument(skip(self))]

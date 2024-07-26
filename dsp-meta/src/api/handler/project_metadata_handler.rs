@@ -25,10 +25,14 @@ pub async fn get_project_metadata_by_shortcode(
     trace!("entered get_project_metadata_by_shortcode()");
     state
         .project_metadata_service
-        .find_by_id(shortcode)
+        .find_by_id(&shortcode)
         .map(|option| match option {
             Some(metadata) => (StatusCode::OK, ProjectMetadataDto(metadata)).into_response(),
-            None => (StatusCode::NOT_FOUND, "No project 9999 available").into_response(),
+            None => (
+                StatusCode::NOT_FOUND,
+                format!("No project {} available", shortcode.as_string()),
+            )
+                .into_response(),
         })
 }
 
