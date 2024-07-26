@@ -10,6 +10,7 @@ use crate::api::convert::hcl::hcl_body::HclBody;
 use crate::domain::model::project_info::ProjectInfo;
 use crate::domain::service::repository_contract::RepositoryContract;
 use crate::error::DspMetaError;
+use crate::infrastructure::load_hcl_file_paths;
 
 #[derive(Debug, Default, Clone)]
 pub struct ProjectMetadataRepository {
@@ -17,20 +18,12 @@ pub struct ProjectMetadataRepository {
 }
 
 impl ProjectMetadataRepository {
-    pub fn new<P: AsRef<Path>>(data_path: &P) -> Self {
+    pub fn new(data_path: &Path) -> Self {
         trace!("Init Repository");
         let db: Arc<RwLock<HashMap<String, ProjectMetadata>>> =
             Arc::new(RwLock::new(HashMap::new()));
 
-        // get paths of HCL files
-        let hcl_files = std::fs::read_dir(data_path)
-            .expect("read directory containing HCL files.")
-            .map(|res| res.map(|e| e.path()))
-            .collect::<Result<Vec<_>, std::io::Error>>()
-            .expect("collect all files into collection.");
-
-        // load into db
-        for file in hcl_files {
+        for file in load_hcl_file_paths(data_path) {
             let input = std::fs::read_to_string(file).expect("read file.");
             let body: hcl::Body = hcl::from_str(&input).expect("parse file as HCL body.");
             let entity: ProjectMetadata = HclBody(&body)

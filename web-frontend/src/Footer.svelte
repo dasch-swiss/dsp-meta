@@ -17,7 +17,7 @@
     {#if version}
       <div class=version>{`Version: v${version}`}</div>
     {/if}
-    <div class=copyright>© 2021-2023 DaSCH</div>
+    <div class=copyright>© 2021-2024 DaSCH</div>
   </div>
 </footer>
 

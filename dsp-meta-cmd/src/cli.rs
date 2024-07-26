@@ -1,4 +1,4 @@
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 use clap::{Parser, Subcommand};
 use config::Config;
@@ -65,7 +65,7 @@ pub fn parse() -> Result<(), DspMetaError> {
                 .get::<String>("data_dir")
                 .unwrap_or("/data".to_string());
 
-            validate_data(&data_dir)
+            validate_data(Path::new(&data_dir))
         }
     }
 }

@@ -1,4 +1,5 @@
 use std::env;
+use std::path::Path;
 use std::sync::Arc;
 use std::time::Duration;
 
@@ -67,7 +68,7 @@ async fn init_server() {
 
     let shared_state = Arc::new(AppState {
         project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new(
-            &data_dir,
+            Path::new(&data_dir),
         )),
         public_dir,
         version: VERSION,

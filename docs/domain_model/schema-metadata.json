@@ -94,7 +94,9 @@
             "VIAF",
             "Grid",
             "ORCID",
-            "Creative Commons"
+            "Creative Commons",
+            "DOI",
+            "ARK"
           ],
           "default": "URL"
         },
@@ -264,7 +266,8 @@
           "type": "array",
           "items": {
             "description": "Citation form of a publication.",
-            "type": "string"
+            "type": "object",
+            "$ref": "#/definitions/publication"
           }
         },
         "grants": {
@@ -301,6 +304,28 @@
         "funders",
         "url",
         "howToCite"
+      ],
+      "additionalProperties": false
+    },
+    "publication": {
+      "type": "object",
+      "description": "A publication.",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "The citation form of the publication."
+        },
+        "url": {
+          "description": "The URLs of the publication, preferably PIDs like DOI or ARK.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/url"
+          }
+        }
+      },
+      "required": [
+        "text"
       ],
       "additionalProperties": false
     },
