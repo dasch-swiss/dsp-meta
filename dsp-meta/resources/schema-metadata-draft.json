@@ -15,7 +15,7 @@
     "datasets": {
       "description": "The datasets of the project",
       "type": "array",
-      "minItems": 1,
+      "minItems": 0,
       "items": {
         "type": "object",
         "$ref": "#/definitions/dataset"
@@ -289,21 +289,13 @@
       "required": [
         "__id",
         "__type",
-        "__createdAt",
-        "__createdBy",
         "shortcode",
         "name",
-        "description",
         "startDate",
         "teaserText",
         "datasets",
         "keywords",
-        "disciplines",
-        "temporalCoverage",
-        "spatialCoverage",
-        "funders",
-        "url",
-        "howToCite"
+        "disciplines"
       ],
       "additionalProperties": false
     },
@@ -390,8 +382,6 @@
       "required": [
         "__id",
         "__type",
-        "__createdAt",
-        "__createdBy",
         "funders"
       ],
       "additionalProperties": false
@@ -492,12 +482,8 @@
       "required": [
         "__id",
         "__type",
-        "__createdAt",
-        "__createdBy",
-        "jobTitles",
         "givenNames",
-        "familyNames",
-        "affiliation"
+        "familyNames"
       ],
       "additionalProperties": false
     },
@@ -663,18 +649,7 @@
       },
       "required": [
         "__id",
-        "__type",
-        "__createdAt",
-        "__createdBy",
-        "title",
-        "accessConditions",
-        "howToCite",
-        "status",
-        "abstracts",
-        "typeOfData",
-        "licenses",
-        "languages",
-        "attributions"
+        "__type"
       ],
       "additionalProperties": false
     },
@@ -749,8 +724,6 @@
       "required": [
         "__id",
         "__type",
-        "__createdAt",
-        "__createdBy",
         "name"
       ],
       "additionalProperties": false
@@ -792,7 +765,6 @@
         "__type",
         "street",
         "postalCode",
-        "locality",
         "country"
       ],
       "additionalProperties": false
