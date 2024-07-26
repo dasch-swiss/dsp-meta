@@ -29,6 +29,7 @@ serde_json.workspace = true
 serde_yaml.workspace = true
 nonempty.workspace = true
 valico.workspace = true
+regex.workspace = true
 sophia = "0.7.2"
 tokio.workspace = true
 tower.workspace = true

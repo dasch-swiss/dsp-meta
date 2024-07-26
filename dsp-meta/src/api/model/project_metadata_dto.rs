@@ -33,7 +33,7 @@ impl From<DraftMetadata> for ProjectMetadataWithInfoDto {
     fn from(value: DraftMetadata) -> Self {
         let project = value.project.clone();
         ProjectMetadataWithInfoDto {
-            id: project.shortcode.0,
+            id: project.shortcode.as_string(),
             name: project.name,
             description: project.teaser_text,
             status: project.status.unwrap_or_default(),

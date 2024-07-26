@@ -2,6 +2,7 @@ use std::collections::HashMap;
 
 use chrono::NaiveDate;
 use nonempty::NonEmpty;
+use regex::Regex;
 use serde::{Deserialize, Serialize};
 
 // This model corresponds to the json schema found in resources/schema-metadata-draft.json
@@ -51,7 +52,31 @@ pub struct DraftProject {
 }
 
 #[derive(Debug, Default, Clone, Serialize, Deserialize, PartialEq, Hash, Eq)]
-pub struct Shortcode(pub String);
+#[serde(try_from = "String")]
+pub struct Shortcode(String);
+impl Shortcode {
+    pub fn as_string(&self) -> String {
+        self.0.to_string()
+    }
+}
+impl TryFrom<String> for Shortcode {
+    type Error = &'static str;
+    fn try_from(value: String) -> Result<Self, Self::Error> {
+        let regex: Regex = Regex::new(r"^[A-F0-9]{4}$").expect("Valid regex");
+        let value = value.to_uppercase();
+        if !regex.is_match(&value) {
+            Err("Shortcode must be a 4 character hexadecimal string")
+        } else {
+            Ok(Shortcode(value))
+        }
+    }
+}
+#[test]
+fn test_try_from_shortcode() {
+    assert!(Shortcode::try_from("000F".to_string()).is_ok());
+    assert!(Shortcode::try_from("12345".to_string()).is_err());
+    assert!(Shortcode::try_from("000G".to_string()).is_err());
+}
 
 #[derive(Debug, Default, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DraftProjectStatus {

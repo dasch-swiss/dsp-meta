@@ -144,10 +144,11 @@ mod tests {
 
         // `Router` implements `tower::Service<Request<Body>>` so we can
         // call it like any tower service, no need to run an HTTP server.
+        let unknown_shortcode = "9999";
         let response = router
             .oneshot(
                 Request::builder()
-                    .uri("/api/projects/nonexistent_shortcode")
+                    .uri(format!("/api/projects/{}", unknown_shortcode))
                     .body(Body::empty())
                     .unwrap(),
             )
