@@ -1,6 +1,6 @@
 import { navigate } from 'svelte-routing';
 import { readable, writable } from 'svelte/store';
-import type { PaginationData, Metadata, ProjectMetadata } from './interfaces';
+import type { Metadata, PaginationData, ProjectMetadata } from './interfaces';
 
 export const pagination = writable({} as PaginationData);
 export const pagedResults = writable(undefined as ProjectMetadata[]);
@@ -9,15 +9,19 @@ export const query = writable('');
 export const previousRoute = writable('');
 export const handleSnackbar = writable({ isSnackbar: false, message: '' });
 export const statusFilter = writable({ showOngoing: true, showFinished: true });
+
 export const isTestEnvironment = readable(
-  window.location.hostname === 'localhost' || window.location.hostname.startsWith('meta.test') || window.location.hostname.startsWith('meta.dev')
+window.location.hostname === 'localhost' || window.location.hostname.startsWith('meta.test') || window.location.hostname.startsWith('meta.dev')
 );
+
+export function baseUrl() {
+  const protocol = window.location.protocol;
+  const port = protocol === 'https:' ? '' : ':3000';
+  return `${protocol}//${window.location.hostname}${port}`;
+}
 
 export async function getProjectsMetadata(page: number, q?: string): Promise<void> {
   // const baseUrl = process.env.BASE_URL;
-  const protocol = window.location.protocol;
-  const port = protocol === 'https:' ? '' : ':3000';
-  const baseUrl = `${protocol}//${window.location.hostname}${port}/`;
   const baseResultsRange = [1, 9];
   let route: string;
   let currentResultsRange = baseResultsRange.map(v => v + ((page - 1) * baseResultsRange[1]));
@@ -38,11 +42,11 @@ export async function getProjectsMetadata(page: number, q?: string): Promise<voi
     }
   });
 
-  console.log(baseUrl, route);
   navigate(`/${route}`);
 
-  await fetch(`${baseUrl}api/v1/${route}`)
+  await fetch(`${(baseUrl())}/api/v1/${route}`)
     .then(r => {
+      console.log("RESPONSE count header:", r.headers.get('X-Total-Count'));
       const totalCount = parseInt(r.headers.get('X-Total-Count'));
       let totalPages = Math.floor(totalCount / baseResultsRange[1]);
       if (!Number.isInteger(totalCount / baseResultsRange[1])) {

@@ -10,6 +10,7 @@
   import { getText } from "../functions";
   import Loading from "../Loading.svelte";
   import { isTestEnvironment} from '../store';
+  import { baseUrl } from "../store";
 
   const mobileResolution = window.innerWidth < 992;
   const descriptionLanguages = new Map<string, string>([
@@ -45,13 +46,9 @@
   });
 
   const getProjectMetadata = async () => {
-    const protocol = window.location.protocol;
-    // LATER: This probably should not be hard coded
-    const port = protocol === "https:" ? "" : ":3000";
-    const baseUrl = `${protocol}//${window.location.hostname}${port}/`;
     const projectID = window.location.pathname.split("/")[2];
 
-    const res = await fetch(`${baseUrl}api/v1/projects/${projectID}`);
+    const res = await fetch(`${baseUrl()}/api/v1/projects/${projectID}`);
     const metadata: Metadata = await res.json();
 
     projectMetadata.set(metadata);
