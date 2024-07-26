@@ -166,7 +166,7 @@
             "ongoing",
             "finished"
           ],
-          "default": "Ongoing"
+          "default": "ongoing"
         },
         "name": {
           "type": "string",
