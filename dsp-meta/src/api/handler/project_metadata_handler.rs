@@ -53,9 +53,8 @@ pub async fn get_all_project_metadata(
             .collect::<Vec<ProjectMetadataWithInfoDto>>(),
     )
     .into_response();
-    let count = page.total;
     response
         .headers_mut()
-        .insert("X-Total-Count", count.to_string().parse().unwrap());
+        .insert("X-Total-Count", page.total.to_string().parse().unwrap());
     Ok(response)
 }
