@@ -26,6 +26,7 @@
             cargo-fuzz
             cargo-nextest
             rustup
+            graphviz
           ];
 
           shellHook = ''
