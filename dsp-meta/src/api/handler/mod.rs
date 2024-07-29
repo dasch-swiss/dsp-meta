@@ -1,2 +1,4 @@
 pub mod health;
-pub mod project_metadata_handler;
+pub mod robots_txt;
+pub mod sitemap_xml;
+pub mod v1;
