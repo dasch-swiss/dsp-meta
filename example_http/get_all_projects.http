@@ -1,1 +1,4 @@
-GET http://0.0.0.0:3000/projects
+GET http://localhost:3000/api/v1/projects
+
+### With project status `q`, search filter `filter`, and with pagination `_page` and `_limit` query parameters
+GET http://localhost:3000/api/v1/projects?q=f&filter=database&_page=2&_limit=1
