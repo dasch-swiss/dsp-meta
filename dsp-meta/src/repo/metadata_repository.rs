@@ -4,20 +4,57 @@ use std::path::Path;
 use std::sync::{Arc, RwLock};
 
 use log::info;
+use serde::Deserialize;
 use tracing::{instrument, trace};
 
 use crate::domain::model::draft_model::*;
-use crate::domain::service::repository_contract::{Filter, Page, Pagination, RepositoryContract};
 use crate::error::DspMetaError;
 use crate::infrastructure::load_json_file_paths;
 
+#[derive(Deserialize, Debug)]
+pub struct Pagination {
+    #[serde(rename = "_page")]
+    pub page: usize,
+    #[serde(rename = "_limit")]
+    pub limit: usize,
+}
+impl Default for Pagination {
+    fn default() -> Self {
+        Pagination { page: 1, limit: 10 }
+    }
+}
+
+#[derive(Deserialize, Default, Debug)]
+pub struct Filter {
+    #[serde(rename = "q")]
+    pub query: Option<String>,
+    #[serde(rename = "filter")]
+    pub filter: Option<String>,
+}
+
+pub struct Page<T> {
+    pub data: Vec<T>,
+    pub total: usize,
+}
+
 #[derive(Debug, Default, Clone)]
-pub struct ProjectMetadataRepository {
+pub struct MetadataRepository {
     db: Arc<RwLock<HashMap<Shortcode, DraftMetadata>>>,
 }
 
-impl ProjectMetadataRepository {
-    pub fn new(data_path: &Path) -> Self {
+impl MetadataRepository {
+    pub fn for_test(metadata: Vec<DraftMetadata>) -> Self {
+        let db: Arc<RwLock<HashMap<Shortcode, DraftMetadata>>> =
+            Arc::new(RwLock::new(HashMap::new()));
+
+        for meta in metadata {
+            let mut db = db.write().unwrap();
+            db.insert(meta.project.shortcode.to_owned(), meta);
+        }
+
+        Self { db }
+    }
+    pub fn from_path(data_path: &Path) -> Self {
         info!("Init Repository {:?}", data_path);
         let db: Arc<RwLock<HashMap<Shortcode, DraftMetadata>>> =
             Arc::new(RwLock::new(HashMap::new()));
@@ -46,11 +83,9 @@ impl ProjectMetadataRepository {
 
         Self { db }
     }
-}
 
-impl RepositoryContract<DraftMetadata, Shortcode, DspMetaError> for ProjectMetadataRepository {
     #[instrument(skip(self))]
-    fn find_by_id(&self, id: &Shortcode) -> Result<Option<DraftMetadata>, DspMetaError> {
+    pub fn find_by_id(&self, id: &Shortcode) -> Result<Option<DraftMetadata>, DspMetaError> {
         let db = self.db.read().unwrap();
         match db.get(id) {
             Some(metadata) => Ok(Some(metadata.clone())),
@@ -59,7 +94,7 @@ impl RepositoryContract<DraftMetadata, Shortcode, DspMetaError> for ProjectMetad
     }
 
     #[instrument(skip(self))]
-    fn find(
+    pub fn find(
         &self,
         filter: &Filter,
         pagination: &Pagination,
@@ -106,13 +141,13 @@ impl RepositoryContract<DraftMetadata, Shortcode, DspMetaError> for ProjectMetad
         Ok(Page { data, total })
     }
 
-    fn find_all(&self) -> Result<Vec<DraftMetadata>, DspMetaError> {
+    pub fn find_all(&self) -> Result<Vec<DraftMetadata>, DspMetaError> {
         let db = self.db.read().unwrap();
         let v = db.iter().map(|(_, v)| v.clone()).collect();
         Ok(v)
     }
 
-    fn count(&self) -> Result<usize, DspMetaError> {
+    pub fn count(&self) -> Result<usize, DspMetaError> {
         let db = self.db.read().unwrap();
         Ok(db.len())
     }
@@ -125,13 +160,13 @@ mod tests {
     use super::*;
 
     #[test]
-    fn successfully_load_metadata() {
+    fn successfully_load_all_metadata_files() {
         let data_dir = env::current_dir().unwrap().parent().unwrap().join("data");
         dbg!(&data_dir);
 
         let files = load_json_file_paths(&data_dir);
-        let repo = ProjectMetadataRepository::new(&data_dir.as_path());
-        let actual = repo.count().unwrap();
+        let repo = MetadataRepository::from_path(&data_dir.as_path());
+        let actual = repo.count().expect("count");
         assert_eq!(actual, files.len());
     }
 }

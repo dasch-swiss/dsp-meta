@@ -6,7 +6,6 @@ use axum::response::Response;
 use tracing::instrument;
 
 use crate::app_state::AppState;
-use crate::domain::service::project_metadata_api_contract::ProjectMetadataApiContract;
 use crate::error::DspMetaError;
 
 #[instrument(skip(state))]

@@ -44,6 +44,8 @@ chrono.workspace = true
 
 [dev-dependencies]
 assert_cmd = "2.0.12"
+axum-test = "15.3.0"
+fake = "2.9.2"
 
 [[test]]
 name = "integration_test"

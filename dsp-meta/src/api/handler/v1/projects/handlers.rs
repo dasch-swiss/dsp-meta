@@ -11,9 +11,8 @@ use crate::api::handler::v1::projects::responses::{
 };
 use crate::app_state::AppState;
 use crate::domain::model::draft_model::Shortcode;
-use crate::domain::service::project_metadata_api_contract::ProjectMetadataApiContract;
-use crate::domain::service::repository_contract::{Filter, Pagination};
 use crate::error::DspMetaError;
+use crate::repo::metadata_repository::{Filter, Pagination};
 
 /// GET /project_metadata/:shortcode
 /// Get project metadata by shortcode

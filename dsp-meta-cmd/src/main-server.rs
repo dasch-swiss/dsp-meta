@@ -5,8 +5,8 @@ use std::time::Duration;
 
 use config::Config;
 use dsp_meta::app_state::AppState;
-use dsp_meta::domain::service::project_metadata_service::ProjectMetadataService;
-use dsp_meta::repo::service::project_metadata_repository::ProjectMetadataRepository;
+use dsp_meta::domain::service::metadata_service::MetadataService;
+use dsp_meta::repo::metadata_repository::MetadataRepository;
 use pid1::Pid1Settings;
 use tokio::net::TcpListener;
 use tracing::info;
@@ -70,9 +70,9 @@ async fn init_server() {
         .unwrap_or(Url::parse("https://meta.dasch.swiss").unwrap());
 
     let shared_state = Arc::new(AppState {
-        project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new(
-            Path::new(&data_dir),
-        )),
+        project_metadata_service: MetadataService::new(MetadataRepository::from_path(Path::new(
+            &data_dir,
+        ))),
         public_dir,
         version: VERSION,
         base_url,

@@ -93,15 +93,15 @@ mod tests {
 
     // for `oneshot` and `ready`
     use super::*;
-    use crate::domain::service::project_metadata_service::ProjectMetadataService;
-    use crate::repo::service::project_metadata_repository::ProjectMetadataRepository;
+    use crate::domain::service::metadata_service::MetadataService;
+    use crate::repo::metadata_repository::MetadataRepository;
 
     #[tokio::test]
     async fn test_health_route() {
         let data_dir = env::current_dir().unwrap().parent().unwrap().join("data");
 
         let shared_state = Arc::new(AppState {
-            project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new(
+            project_metadata_service: MetadataService::new(MetadataRepository::from_path(
                 &data_dir.as_path(),
             )),
             public_dir: "".to_string(),
@@ -134,7 +134,7 @@ mod tests {
         let data_dir = env::current_dir().unwrap().parent().unwrap().join("data");
 
         let shared_state = Arc::new(AppState {
-            project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new(
+            project_metadata_service: MetadataService::new(MetadataRepository::from_path(
                 &data_dir.as_path(),
             )),
             public_dir: "".to_string(),
