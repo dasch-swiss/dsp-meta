@@ -27,11 +27,11 @@ pub fn router(shared_state: Arc<AppState>) -> Router {
     Router::new()
         .route(
             "/api/v1/projects",
-            get(v1::projects::handler::get_by_page_and_filter),
+            get(v1::projects::handlers::get_by_page_and_filter),
         )
         .route(
             "/api/v1/projects/:shortcode",
-            get(v1::projects::handler::get_by_shortcode),
+            get(v1::projects::handlers::get_by_shortcode),
         )
         .route("/health", get(health::health))
         .route("/version.txt", get(shared_state.version))
