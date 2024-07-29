@@ -12,7 +12,7 @@
   $: document.title = 'DaSCH Metadata Browser';
 
   setTimeout(() => {
-    const noData = 'No data retrived. Please check the connection and retry.';
+    const noData = 'No data retrieved. Please check the connection and retry.';
     const noProject = 'No projects found.'
       message = $pagedResults && $pagedResults.length ? noData : noProject;
     }, 3000);
@@ -32,7 +32,7 @@
       // first page on main page arrival
       await getProjectsMetadata(1);
     } else {
-      // preserved on rehresh or manually entered query
+      // preserved on refresh or manually entered query
       await getProjectsMetadata(page, query);
     }
   });

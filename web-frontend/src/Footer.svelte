@@ -1,10 +1,11 @@
 <script lang="ts">
   import { onMount } from "svelte"
+  import {baseUrl} from './store';
 
   let version: string
 
   onMount(async () => {
-    await fetch(`${window.location.origin}/api/version`)
+    await fetch(`${baseUrl()}/version.txt`)
       .then(response => response.text())
       .then((data) => {
         version = data
@@ -17,7 +18,7 @@
     {#if version}
       <div class=version>{`Version: v${version}`}</div>
     {/if}
-    <div class=copyright>© 2021-2023 DaSCH</div>
+    <div class=copyright>© 2021-2024 DaSCH</div>
   </div>
 </footer>
 

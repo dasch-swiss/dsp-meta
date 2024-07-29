@@ -28,6 +28,7 @@ package Entities {
 
     -- Optional Fields --
     .. (0 - 1) ..
+    -ProjectStatus status
     -Date modifiedAt
     -UUID modifiedBy
     -Date deletedAt
@@ -78,7 +79,7 @@ package Entities {
     +String title
     +AccessConditions accessConditions
     +String howToCite
-    +Status status
+    +DatasetStatus status
 
     .. (1 - n) ..
     +MultiLanguageText|URL[] abstracts
@@ -344,6 +345,11 @@ package valueobject {
 
 package enums {
 
+  enum ProjectStatus {
+    Ongoing
+    Finished
+  }
+
   enum AccessConditions {
     Open
     Restricted
@@ -358,7 +364,7 @@ package enums {
     Audio
   }
 
-  enum Status {
+  enum DatasetStatus {
     In_planning
     Ongoing
     On_hold

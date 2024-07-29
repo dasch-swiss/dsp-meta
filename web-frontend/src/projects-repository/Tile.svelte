@@ -8,7 +8,7 @@
 
 <section>
   <div class="status">
-    <img src="assets/icon/{metadata.status === 'ongoing' ? 'Badge_Ongoing.svg' : 'Badge_Finished.svg'}" alt="Status {metadata.status}" />
+    <img src="/assets/icon/{metadata.status === 'ongoing' ? 'Badge_Ongoing.svg' : 'Badge_Finished.svg'}" alt="Status {metadata.status}" />
   </div>
   <div class=header>
     <h5>{ metadata.name }</h5>

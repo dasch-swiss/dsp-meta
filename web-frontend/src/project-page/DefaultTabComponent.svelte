@@ -3,12 +3,12 @@
   import { fade } from "svelte/transition";
   import { getText, findOrganizationByID, findObjectByID, copyHowToCite } from "../functions";
   import type { Dataset } from "../interfaces";
+  import { isTestEnvironment } from '../store';
 
   export let dataset: Dataset;
 
   let isAbstractExpanded: boolean;
   let abstractLinesNumber: number;
-  let isTestEnvironment: boolean = window.location.hostname === 'localhost' || window.location.hostname.startsWith('meta.test')
 
   const toggleExpand = () => {
     isAbstractExpanded = !isAbstractExpanded;
@@ -56,7 +56,7 @@
           <span class=label>Access</span>
           <span class=data>{dataset?.accessConditions}</span>
         </div>
-      {:else if isTestEnvironment}
+      {:else if $isTestEnvironment}
         <div>
           <span class=label>Access</span>
           <span class="warning data">access conditions missing</span>
@@ -69,7 +69,7 @@
           <span class=label>Status</span>
           <span class=data>{dataset?.status}</span>
         </div>
-      {:else if isTestEnvironment}
+      {:else if $isTestEnvironment}
         <div>
           <span class=label>Status</span>
           <span class="warning data">status missing</span>
@@ -102,7 +102,7 @@
           <span class=label>Type of Data</span>
           <span class=data>{dataset?.typeOfData.join(', ')}</span>
         </div>
-      {:else if isTestEnvironment}
+      {:else if $isTestEnvironment}
         <div>
           <span class=label>Type of Data</span>
           <span class="warning data">type of data missing</span>
@@ -122,7 +122,7 @@
           {/each}
         </div>
       {/if}
-      
+
     </div>
 
     <!-- License -->
@@ -140,7 +140,7 @@
           </div>
         {/each}
       </div>
-    {:else if isTestEnvironment}
+    {:else if $isTestEnvironment}
       <div>
         <span class=label>License</span>
         <span class="warning data">licenses missing</span>
@@ -155,7 +155,7 @@
           <span class=data>{dataset?.languages.map(l => {return getText(l)}).join(', ')}</span>
         </div>
       </div>
-    {:else if isTestEnvironment}
+    {:else if $isTestEnvironment}
       <div class=grid-wrapper style="grid-template-columns: repeat(1, 1fr)">
         <div>
           <span class=label>Languages</span>
@@ -178,7 +178,7 @@
         </span>
         <span id=how-to-cite class=data>{dataset?.howToCite}</span>
       </div>
-    {:else if isTestEnvironment}
+    {:else if $isTestEnvironment}
       <div class="property-row">
         <span class=label style="display:inline">How To Cite</span>
         <span class="warning data">how to cite missing</span>
@@ -202,7 +202,7 @@
       {#if abstractLinesNumber > 6}
         <div on:click={toggleExpand} class=expand-button>show {isAbstractExpanded ? "less" : "more"}</div>
       {/if}
-    {:else if isTestEnvironment}
+    {:else if $isTestEnvironment}
       <div>
         <span class=label>Abstract</span>
         <span class="warning data" id="abstract">abstract missing</span>
@@ -244,7 +244,7 @@
                 {/if}
                 {#if p.jobTitles && p.jobTitles[0]}
                   <div class="attribution-additional">{p.jobTitles[0]}</div>
-                {:else if isTestEnvironment}
+                {:else if $isTestEnvironment}
                   <dif class="warning">Job Title missing</dif>
                 {/if}
                 {#if p.email}
@@ -262,7 +262,7 @@
           </div>
         {/each}
       </div>
-    {:else if isTestEnvironment}
+    {:else if $isTestEnvironment}
       <span class=label>Attributions</span>
       <div class=grid-wrapper>
         <span class="warning data">attributions missing</span>

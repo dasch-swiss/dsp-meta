@@ -8,6 +8,7 @@ use axum::routing::get;
 use axum::{http, Router};
 use log::info;
 use tower_http::classify::ServerErrorsFailureClass;
+use tower_http::cors::{Any, CorsLayer};
 use tower_http::services::{ServeDir, ServeFile};
 use tower_http::trace::TraceLayer;
 use tracing::{error, info_span, warn, Span};
@@ -18,33 +19,32 @@ use crate::app_state::AppState;
 /// Having a function that produces our router makes it easy to call it from tests
 /// without having to create an HTTP server.
 pub fn router(shared_state: Arc<AppState>) -> Router {
+    let cors = CorsLayer::new()
+        .expose_headers(Any)
+        .allow_methods(Any)
+        .allow_headers(Any)
+        .allow_origin(Any);
     Router::new()
         .route(
-            "/api/projects",
+            "/api/v1/projects",
             get(project_metadata_handler::get_all_project_metadata),
         )
         .route(
-            "/api/projects/:shortcode",
+            "/api/v1/projects/:shortcode",
             get(project_metadata_handler::get_project_metadata_by_shortcode),
         )
-        .route(
-            "/api/projects/:shortcode/rdf",
-            get(project_metadata_handler::get_project_metadata_by_shortcode_as_rdf),
-        )
-        .route(
-            "/api/projects/count",
-            get(project_metadata_handler::get_projects_count),
-        )
-        .route("/api/health", get(health::health_handler))
-        .route("/api/version", get(shared_state.version))
+        .route("/health", get(health::health_handler))
+        .route("/version.txt", get(shared_state.version))
         .fallback_service(
-            ServeDir::new(shared_state.public_dir.as_str()).not_found_service(ServeFile::new(
-                format!("{}/index.html", shared_state.public_dir),
-            )),
+            ServeDir::new(shared_state.public_dir.as_str()).fallback(ServeFile::new(format!(
+                "{}/index.html",
+                shared_state.public_dir
+            ))),
         )
         .with_state(shared_state)
         // See https://docs.rs/tower-http/latest/tower_http/trace/index.html for more details
         // on how to customize.
+        .layer(cors)
         .layer(
             TraceLayer::new_for_http()
                 .make_span_with(|request: &Request<_>| {
@@ -110,7 +110,7 @@ mod tests {
         let response = router
             .oneshot(
                 Request::builder()
-                    .uri("/api/health")
+                    .uri("/health")
                     .body(Body::empty())
                     .unwrap(),
             )
@@ -139,10 +139,11 @@ mod tests {
 
         // `Router` implements `tower::Service<Request<Body>>` so we can
         // call it like any tower service, no need to run an HTTP server.
+        let unknown_shortcode = "9999";
         let response = router
             .oneshot(
                 Request::builder()
-                    .uri("/api/projects/nonexistent_shortcode")
+                    .uri(format!("/api/projects/{}", unknown_shortcode))
                     .body(Body::empty())
                     .unwrap(),
             )
@@ -150,37 +151,5 @@ mod tests {
             .unwrap();
 
         assert_eq!(response.status(), StatusCode::NOT_FOUND);
-    }
-
-    #[tokio::test]
-    async fn test_get_projects_count() {
-        let data_dir = env::current_dir().unwrap().parent().unwrap().join("data");
-
-        let shared_state = Arc::new(AppState {
-            project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new(
-                &data_dir.as_path(),
-            )),
-            public_dir: "".to_string(),
-            version: "",
-        });
-
-        let router = router(shared_state);
-
-        // `Router` implements `tower::Service<Request<Body>>` so we can
-        // call it like any tower service, no need to run an HTTP server.
-        let response = router
-            .oneshot(
-                Request::builder()
-                    .uri("/api/projects/count")
-                    .body(Body::empty())
-                    .unwrap(),
-            )
-            .await
-            .unwrap();
-
-        assert_eq!(response.status(), StatusCode::OK);
-
-        let body = response.into_body().collect().await.unwrap().to_bytes();
-        assert_eq!(&body[..], b"3");
     }
 }

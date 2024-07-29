@@ -9,17 +9,35 @@
   import Snackbar from "../Snackbar.svelte";
   import { getText } from "../functions";
   import Loading from "../Loading.svelte";
+  import { isTestEnvironment} from '../store';
+  import { baseUrl } from "../store";
 
   const mobileResolution = window.innerWidth < 992;
+  const descriptionLanguages = new Map<string, string>([
+    // contains languages that are presented in provided descriptions, update if necessary
+    ["ar", "Arabic"],
+    ["de", "German"],
+    ["en", "English"],
+    ["fr", "French"]
+  ]);
 
   let isDescriptionExpanded: boolean;
   let descriptionLinesNumber: number;
   let arePublicationsExpanded: boolean;
-  let isTestEnvironment: boolean = window.location.hostname === 'localhost' || window.location.hostname.startsWith('meta.dev')
+  let displayedDescriptionsLanguage: string = "";
+  let availableDescriptionsIso: string[] = [];
+
+  const getIso = (language: string): string => {
+    const lang = (availableDescriptionsIso.length === 1) ? availableDescriptionsIso[0] : language
+    return [...descriptionLanguages].find(([key, val]) => val === lang)[0]
+  }
 
   onMount(async () => {
     // wait with component creation for the data to be fetched
     await getProjectMetadata();
+    availableDescriptionsIso = Object.keys($projectMetadata?.project.description);
+    // initialize iso language to load => assumption is if more than 1 language is available English exists and set as default
+    displayedDescriptionsLanguage = availableDescriptionsIso.length === 1 ? availableDescriptionsIso[0] : "en"
   });
 
   onDestroy(() => {
@@ -28,13 +46,9 @@
   });
 
   const getProjectMetadata = async () => {
-    const protocol = window.location.protocol;
-    // LATER: This probably should not be hard coded
-    const port = protocol === "https:" ? "" : ":3000";
-    const baseUrl = `${protocol}//${window.location.hostname}${port}/`;
     const projectID = window.location.pathname.split("/")[2];
 
-    const res = await fetch(`${baseUrl}api/projects/${projectID}`);
+    const res = await fetch(`${baseUrl()}/api/v1/projects/${projectID}`);
     const metadata: Metadata = await res.json();
 
     projectMetadata.set(metadata);
@@ -56,18 +70,20 @@
   };
 
   const getDivHeight = () => {
-    let lineHeight: number;
-    let divHeight: number;
-    try {
-      const el = document.getElementById("description");
-      divHeight = el.scrollHeight;
-      lineHeight = parseInt(window.getComputedStyle(el).getPropertyValue('line-height'));
-    } catch (error) {
-      lineHeight = 20;
-      divHeight = 19;
-    }
-    descriptionLinesNumber = divHeight / lineHeight;
-    isDescriptionExpanded = descriptionLinesNumber > 6 ? false : true;
+    setTimeout(() => {
+      let lineHeight: number;
+      let divHeight: number;
+      try {
+        const el = document.getElementById("description");
+        divHeight = el.scrollHeight;
+        lineHeight = parseInt(window.getComputedStyle(el).getPropertyValue('line-height'));
+      } catch (error) {
+        lineHeight = 20;
+        divHeight = 19;
+      }
+      descriptionLinesNumber = divHeight / lineHeight;
+      isDescriptionExpanded = descriptionLinesNumber > 6 ? false : true;
+    }, 100);
   };
 </script>
 
@@ -94,7 +110,7 @@
         <h1 class="title top-heading">
           {$projectMetadata?.project.name}
         </h1>
-      {:else if isTestEnvironment}
+      {:else if $isTestEnvironment}
         <div class="warning top-heading">Project Name missing</div>
       {/if}
       {#if $projectMetadata?.project.alternativeNames}
@@ -113,16 +129,24 @@
         <!-- Description -->
         <div class="property-row">
           {#if $projectMetadata?.project.description && getText($projectMetadata?.project.description)}
-            <span class="label new-subtitle">Description</span>
+            <span class="label new-subtitle" style="display: block;">Description 
+              <span style={availableDescriptionsIso.length <= 1 ? "display: none" : "display: contents"}> in 
+                {#each Object.keys($projectMetadata?.project.description).map(k=> descriptionLanguages.get(k)) as l}
+                  <button class="language {availableDescriptionsIso.length > 1 && displayedDescriptionsLanguage === getIso(l) ? "active" : ""}" on:click={() => displayedDescriptionsLanguage = getIso(l)}>
+                    {l}
+                  </button>
+                {/each}
+              </span>
+            </span>
             <div id="description" class="data new-text {isDescriptionExpanded ? '' : 'description-short'}">
-              {getText($projectMetadata?.project.description)}
+              {$projectMetadata?.project.description[displayedDescriptionsLanguage]}
             </div>
             {#if descriptionLinesNumber > 6}
               <div on:click={toggleDescriptionExpand} class="expand-button">
                 show {isDescriptionExpanded ? "less" : "more"}
               </div>
             {/if}
-          {:else if isTestEnvironment}
+          {:else if $isTestEnvironment}
             <div class="warning" id="description">Description missing</div>
           {/if}
         </div>
@@ -133,9 +157,27 @@
             <span class="label new-subtitle">Publications</span>
             {#each $projectMetadata?.project.publications as p, i}
               {#if i > 1}
-                <span class={arePublicationsExpanded ? "data new-text" : "hidden"}>{p}</span>
+                <span class={arePublicationsExpanded ? "data new-text" : "hidden"}>{p.text}
+                  {#if p.url}
+                    {#each p.url as url, n}
+                      <a href={url.url} class="publication-link {arePublicationsExpanded ? "data" : "hidden"}" target=_>
+                        {url.text}
+                        {p.url.length > 0 && n < p.url.length - 1 ? "," : ""}
+                      </a>
+                    {/each}
+                  {/if}
+                </span>
               {:else}
-                <span class="data new-text">{p}</span>
+                <span class="data new-text">{p.text}
+                  {#if p.url}
+                    {#each p.url as url, n}
+                      <a href={url.url} class="publication-link {arePublicationsExpanded ? "data" : "hidden"}" target=_>
+                        {url.text}
+                        {p.url.length > 0 && n < p.url.length - 1 ? "," : ""}
+                      </a>
+                    {/each}
+                  {/if}
+                </span>
               {/if}
             {/each}
           </div>
@@ -258,6 +300,30 @@
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+  .publication-link {
+    display: contents;
+    color: var(--lead-colour);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  button.language {
+    width: 80px;
+    margin: 0 5px;
+    border: 1px solid var(--lead-colour);
+    background-color: #fff;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 0.25rem;
+    padding: 5px 10px;
+    color: var(--lead-colour);
+    box-shadow: var(--shadow-1);
+  }
+  button.language.active {
+    color: white;
+    background-color: var(--dasch-secondary);
+    border-color: #dee2e6 #dee2e6 #fff;
   }
 
   @supports (-moz-appearance: none) {
