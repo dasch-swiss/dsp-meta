@@ -34,8 +34,11 @@ pub trait RepositoryContract<Entity, Id, Error> {
     /// If the entity does not exist, `None` is returned.
     fn find_by_id(&self, id: &Id) -> Result<Option<Entity>, Error>;
 
-    /// Returns all entities.
+    /// Returns all entities with filter and pagination.
     fn find(&self, filter: &Filter, pagination: &Pagination) -> Result<Page<Entity>, Error>;
+
+    /// Returns all entities.
+    fn find_all(&self) -> Result<Vec<Entity>, Error>;
 
     /// Returns the number of entities.
     fn count(&self) -> Result<usize, Error>;

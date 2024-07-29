@@ -6,7 +6,9 @@ use axum::response::{IntoResponse, Response};
 use axum::Json;
 use tracing::{instrument, trace};
 
-use crate::api::model::project_metadata_dto::{ProjectMetadataDto, ProjectMetadataWithInfoDto};
+use crate::api::handler::v1::projects::responses::{
+    ProjectMetadataDto, ProjectMetadataWithInfoDto,
+};
 use crate::app_state::AppState;
 use crate::domain::model::draft_model::Shortcode;
 use crate::domain::service::project_metadata_api_contract::ProjectMetadataApiContract;
@@ -18,7 +20,7 @@ use crate::error::DspMetaError;
 ///
 /// TODO: Add error handling with correct status codes
 #[instrument(skip(state))]
-pub async fn get_project_metadata_by_shortcode(
+pub async fn get_by_shortcode(
     Path(shortcode): Path<Shortcode>,
     State(state): State<Arc<AppState>>,
 ) -> Result<Response, DspMetaError> {
@@ -37,7 +39,7 @@ pub async fn get_project_metadata_by_shortcode(
 }
 
 #[instrument(skip(state))]
-pub async fn get_all_project_metadata(
+pub async fn get_by_page_and_filter(
     State(state): State<Arc<AppState>>,
     pagination: Option<Query<Pagination>>,
     filter: Option<Query<Filter>>,

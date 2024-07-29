@@ -12,6 +12,7 @@ use tokio::net::TcpListener;
 use tracing::info;
 use tracing_subscriber::prelude::*;
 use tracing_subscriber::{fmt, EnvFilter};
+use url::Url;
 
 fn main() {
     // Do the pid1 magic. Needs to be the first thing executed.
@@ -64,12 +65,17 @@ async fn init_server() {
         .get::<String>("public_dir")
         .unwrap_or("/public".to_string());
 
+    let base_url = settings
+        .get::<Url>("base_url")
+        .unwrap_or(Url::parse("http://localhost:3000").unwrap());
+
     let shared_state = Arc::new(AppState {
         project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new(
             Path::new(&data_dir),
         )),
         public_dir,
         version: VERSION,
+        base_url,
     });
 
     // start the server
