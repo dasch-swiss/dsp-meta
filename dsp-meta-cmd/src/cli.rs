@@ -71,7 +71,10 @@ pub fn parse() -> Result<(), String> {
     match &cli.command {
         Some(Commands::Validate { project, schema }) => {
             let schema = schema.as_schema_version();
-            println!("Validating file {:?} against {:?} schema.", project, &schema);
+            println!(
+                "Validating file {:?} against {:?} schema.",
+                project, &schema
+            );
             println!();
             match validate_file(project, schema) {
                 Ok(state) => {

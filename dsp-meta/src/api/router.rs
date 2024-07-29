@@ -93,8 +93,8 @@ mod tests {
 
     // for `oneshot` and `ready`
     use super::*;
-    use crate::domain::metadata_service::MetadataService;
     use crate::domain::metadata_repository::MetadataRepository;
+    use crate::domain::metadata_service::MetadataService;
 
     #[tokio::test]
     async fn test_health_route() {

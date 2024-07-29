@@ -8,11 +8,11 @@ mod tests {
     use chrono::NaiveDate;
     use dsp_meta::api;
     use dsp_meta::app_state::AppState;
+    use dsp_meta::domain::metadata_repository::MetadataRepository;
+    use dsp_meta::domain::metadata_service::MetadataService;
     use dsp_meta::domain::model::draft_model::{
         DraftDate, DraftMetadata, DraftProject, DraftText, DraftTextOrUrl, Shortcode,
     };
-    use dsp_meta::domain::metadata_service::MetadataService;
-    use dsp_meta::domain::metadata_repository::MetadataRepository;
     use fake::{Fake, Faker};
     use nonempty::NonEmpty;
     use serde_json::Value;
