@@ -46,8 +46,6 @@ fn main() {
 }
 
 async fn init_server() {
-    info!("Ivan was here!");
-
     const VERSION: &str = env!("CARGO_PKG_VERSION");
     info!("Version: {}", VERSION);
 

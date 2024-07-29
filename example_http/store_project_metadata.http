@@ -1,6 +1,0 @@
-POST http://0.0.0.0:3000/projects
-Content-Type: application/hcl
-
-< ../data/incunabula.hcl
-
-###

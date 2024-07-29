@@ -7,7 +7,9 @@
     "__createdBy": "dsp-metadata-gui",
     "howToCite": "Beyond the Text (BT), University of Basel, 2026",
     "teaserText": "Philological and archaeological project exploring the emergence and evolution of the funerary literature of the Graeco-Roman Period",
-    "datasets": ["http://ns.dasch.swiss/repository#dsp-083A-dataset-000"],
+    "datasets": [
+      "http://ns.dasch.swiss/repository#dsp-083A-dataset-000"
+    ],
     "alternativeNames": [
       {
         "fr": "Au-delà du texte. Les nouvelles compositions funéraires d’époque gréco-romaine : textualités et archéologie à Thèbes"
@@ -28,8 +30,12 @@
       }
     ],
     "endDate": "2026-01-31",
-    "funders": ["http://ns.dasch.swiss/repository#dsp-083A-organization-000"],
-    "grants": ["http://ns.dasch.swiss/repository#dsp-083A-grant-000"],
+    "funders": [
+      "http://ns.dasch.swiss/repository#dsp-083A-organization-000"
+    ],
+    "grants": [
+      "http://ns.dasch.swiss/repository#dsp-083A-grant-000"
+    ],
     "keywords": [
       {
         "de": "Archäologie"
@@ -182,7 +188,8 @@
       "type": "URL",
       "url": "https://beyondthetext.ch/",
       "text": "External Project Website"
-    }
+    },
+    "status": "ongoing"
   },
   "datasets": [
     {
@@ -235,32 +242,45 @@
         {
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-083A-person-000",
-          "roles": ["Applicant"]
+          "roles": [
+            "Applicant"
+          ]
         },
         {
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-083A-person-001",
-          "roles": ["Contributor"]
+          "roles": [
+            "Contributor"
+          ]
         },
         {
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-083A-person-002",
-          "roles": ["Contributor"]
+          "roles": [
+            "Contributor"
+          ]
         },
         {
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-083A-person-003",
-          "roles": ["Contributor"]
+          "roles": [
+            "Contributor"
+          ]
         },
         {
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-083A-person-004",
-          "roles": ["Contributor"]
+          "roles": [
+            "Contributor"
+          ]
         }
       ],
       "status": "Ongoing",
       "title": "Beyond the Text. New Funerary Compositions from the Graeco-Roman Period: Textualities and Archaeology in Thebes",
-      "typeOfData": ["Image", "Text"]
+      "typeOfData": [
+        "Image",
+        "Text"
+      ]
     }
   ],
   "persons": [
@@ -270,9 +290,15 @@
       "__createdAt": "1643068532483838000",
       "__createdBy": "dsp-metadata-gui",
       "email": "sandrine.vuilleumier@unibas.ch",
-      "familyNames": ["Vuilleumier"],
-      "givenNames": ["Sandrine"],
-      "jobTitles": ["Prof. Dr."],
+      "familyNames": [
+        "Vuilleumier"
+      ],
+      "givenNames": [
+        "Sandrine"
+      ],
+      "jobTitles": [
+        "Prof. Dr."
+      ],
       "affiliation": [
         "http://ns.dasch.swiss/repository#dsp-083A-organization-001"
       ],
@@ -290,35 +316,60 @@
       "__type": "Person",
       "__createdAt": "1643068532484021000",
       "__createdBy": "dsp-metadata-gui",
-      "familyNames": ["Dogaer"],
-      "givenNames": ["Lauren"],
-      "jobTitles": ["PhD"]
+      "familyNames": [
+        "Dogaer"
+      ],
+      "givenNames": [
+        "Lauren"
+      ],
+      "jobTitles": [
+        "PhD"
+      ]
     },
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-083A-person-002",
       "__type": "Person",
       "__createdAt": "1643068532484084000",
       "__createdBy": "dsp-metadata-gui",
-      "familyNames": ["Fong"],
-      "givenNames": ["Cyprian"],
-      "jobTitles": ["PhD"]
+      "familyNames": [
+        "Fong"
+      ],
+      "givenNames": [
+        "Cyprian"
+      ],
+      "jobTitles": [
+        "PhD"
+      ]
     },
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-083A-person-003",
       "__type": "Person",
       "__createdAt": "1643068532484145000",
       "__createdBy": "dsp-metadata-gui",
-      "familyNames": ["Roth"],
-      "givenNames": ["Pascale"],
-      "jobTitles": ["HiWi"]
+      "familyNames": [
+        "Roth"
+      ],
+      "givenNames": [
+        "Pascale"
+      ],
+      "jobTitles": [
+        "HiWi"
+      ]
     },
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-083A-person-004",
       "__type": "Person",
+      "__createdAt": "1643068532484145000",
       "__createdBy": "dsp-metadata-gui",
-      "familyNames": ["Heierli"],
-      "givenNames": ["Sarah"],
-      "jobTitles": ["HiWi"]
+      "familyNames": [
+        "Heierli"
+      ],
+      "givenNames": [
+        "Sarah"
+      ],
+      "jobTitles": [
+        "HiWi"
+      ]
     }
   ],
   "organizations": [
@@ -350,7 +401,9 @@
       "__type": "Grant",
       "__createdAt": "1643068532565155000",
       "__createdBy": "dsp-metadata-gui",
-      "funders": ["http://ns.dasch.swiss/repository#dsp-083A-organization-000"],
+      "funders": [
+        "http://ns.dasch.swiss/repository#dsp-083A-organization-000"
+      ],
       "name": "PRIMA",
       "number": "193226",
       "url": {

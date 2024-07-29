@@ -6,7 +6,9 @@
     "__createdAt": "1637624150548721000",
     "__createdBy": "dsp-metadata-gui",
     "teaserText": "An art-scientific monograph of the richly illustrated early prints in Basel - the most important center of early letterpress printing in the territory of present-day Switzerland.",
-    "datasets": ["http://ns.dasch.swiss/repository#dsp-0803-dataset-000"],
+    "datasets": [
+      "http://ns.dasch.swiss/repository#dsp-0803-dataset-000"
+    ],
     "alternativeNames": [
       {
         "en": "Incunabula"
@@ -21,8 +23,12 @@
       }
     ],
     "endDate": "2012-08-31",
-    "funders": ["http://ns.dasch.swiss/repository#dsp-0803-organization-000"],
-    "grants": ["http://ns.dasch.swiss/repository#dsp-0803-grant-000"],
+    "funders": [
+      "http://ns.dasch.swiss/repository#dsp-0803-organization-000"
+    ],
+    "grants": [
+      "http://ns.dasch.swiss/repository#dsp-0803-grant-000"
+    ],
     "keywords": [
       {
         "de": "Basel"
@@ -77,7 +83,21 @@
       "text": "Discover Project Data"
     },
     "shortcode": "0803",
-    "startDate": "2008-06-01"
+    "startDate": "2008-06-01",
+    "temporalCoverage": [
+      {
+        "en": "Late Middle Ages"
+      }
+    ],
+    "spatialCoverage": [
+      {
+        "__type": "URL",
+        "type": "Geonames",
+        "url": "https://www.geonames.org/2661604/basel.html",
+        "text": "Basel"
+      }
+    ],
+    "status": "finished"
   },
   "datasets": [
     {
@@ -94,27 +114,37 @@
         {
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-0803-person-000",
-          "roles": ["Applicant"]
+          "roles": [
+            "Applicant"
+          ]
         },
         {
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-0803-person-001",
-          "roles": ["Co-applicant"]
+          "roles": [
+            "Co-applicant"
+          ]
         },
         {
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-0803-person-002",
-          "roles": ["Co-applicant"]
+          "roles": [
+            "Co-applicant"
+          ]
         },
         {
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-0803-person-003",
-          "roles": ["Employee"]
+          "roles": [
+            "Employee"
+          ]
         },
         {
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-0803-person-004",
-          "roles": ["Employee"]
+          "roles": [
+            "Employee"
+          ]
         }
       ],
       "status": "Finished",
@@ -127,8 +157,12 @@
       "__type": "Person",
       "__createdAt": "1637624150958979000",
       "__createdBy": "dsp-metadata-gui",
-      "familyNames": ["Schellewald"],
-      "givenNames": ["Barbara"],
+      "familyNames": [
+        "Schellewald"
+      ],
+      "givenNames": [
+        "Barbara"
+      ],
       "affiliation": [
         "http://ns.dasch.swiss/repository#dsp-0803-organization-001"
       ]
@@ -138,8 +172,12 @@
       "__type": "Person",
       "__createdAt": "1637624150959055000",
       "__createdBy": "dsp-metadata-gui",
-      "familyNames": ["Hug"],
-      "givenNames": ["Hannes"],
+      "familyNames": [
+        "Hug"
+      ],
+      "givenNames": [
+        "Hannes"
+      ],
       "affiliation": [
         "http://ns.dasch.swiss/repository#dsp-0803-organization-002"
       ]
@@ -149,8 +187,12 @@
       "__type": "Person",
       "__createdAt": "1637624150959124000",
       "__createdBy": "dsp-metadata-gui",
-      "familyNames": ["Rosenthaler"],
-      "givenNames": ["Lukas"],
+      "familyNames": [
+        "Rosenthaler"
+      ],
+      "givenNames": [
+        "Lukas"
+      ],
       "affiliation": [
         "http://ns.dasch.swiss/repository#dsp-0803-organization-003"
       ]
@@ -160,16 +202,24 @@
       "__type": "Person",
       "__createdAt": "1637624150959191000",
       "__createdBy": "dsp-metadata-gui",
-      "familyNames": ["Schmitt"],
-      "givenNames": ["Lothar"]
+      "familyNames": [
+        "Schmitt"
+      ],
+      "givenNames": [
+        "Lothar"
+      ]
     },
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0803-person-004",
       "__type": "Person",
       "__createdAt": "1637624150959244000",
       "__createdBy": "dsp-metadata-gui",
-      "familyNames": ["Graf Lamei"],
-      "givenNames": ["Katrin"]
+      "familyNames": [
+        "Graf Lamei"
+      ],
+      "givenNames": [
+        "Katrin"
+      ]
     }
   ],
   "organizations": [
@@ -208,7 +258,9 @@
       "__type": "Grant",
       "__createdAt": "1637624150959473000",
       "__createdBy": "dsp-metadata-gui",
-      "funders": ["http://ns.dasch.swiss/repository#dsp-0803-organization-000"],
+      "funders": [
+        "http://ns.dasch.swiss/repository#dsp-0803-organization-000"
+      ],
       "name": "Project funding",
       "number": "120378",
       "url": {

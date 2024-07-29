@@ -1,80 +1,114 @@
 use std::collections::HashMap;
+use std::fs::File;
 use std::path::Path;
 use std::sync::{Arc, RwLock};
 
-use dsp_domain::metadata::entity::project_metadata::ProjectMetadata;
-use dsp_domain::metadata::value::Shortcode;
+use log::info;
 use tracing::{instrument, trace};
 
-use crate::api::convert::hcl::hcl_body::HclBody;
-use crate::domain::model::project_info::ProjectInfo;
-use crate::domain::service::repository_contract::RepositoryContract;
+use crate::domain::model::draft_model::*;
+use crate::domain::service::repository_contract::{Filter, Page, Pagination, RepositoryContract};
 use crate::error::DspMetaError;
-use crate::infrastructure::load_hcl_file_paths;
+use crate::infrastructure::load_json_file_paths;
 
 #[derive(Debug, Default, Clone)]
 pub struct ProjectMetadataRepository {
-    db: Arc<RwLock<HashMap<String, ProjectMetadata>>>,
+    db: Arc<RwLock<HashMap<Shortcode, DraftMetadata>>>,
 }
 
 impl ProjectMetadataRepository {
     pub fn new(data_path: &Path) -> Self {
-        trace!("Init Repository");
-        let db: Arc<RwLock<HashMap<String, ProjectMetadata>>> =
+        info!("Init Repository {:?}", data_path);
+        let db: Arc<RwLock<HashMap<Shortcode, DraftMetadata>>> =
             Arc::new(RwLock::new(HashMap::new()));
 
-        for file in load_hcl_file_paths(data_path) {
-            let input = std::fs::read_to_string(file).expect("read file.");
-            let body: hcl::Body = hcl::from_str(&input).expect("parse file as HCL body.");
-            let entity: ProjectMetadata = HclBody(&body)
-                .try_into()
-                .expect("convert file into project metadata.");
+        let file_paths = load_json_file_paths(data_path);
+        info!("Found {} projects", file_paths.len());
+
+        let mut known_shortcodes: Vec<Shortcode> = Vec::new();
+        for file in file_paths {
+            let file = File::open(file).expect("open file.");
+            let entity: DraftMetadata = serde_json::from_reader(file).expect("parse file as JSON.");
             let mut db = db.write().unwrap();
-            db.insert(entity.project.shortcode.0.to_owned(), entity.clone());
+            let shortcode = entity.project.shortcode.to_owned();
+            if known_shortcodes.contains(&shortcode) {
+                panic!("Duplicate shortcode: {:?}", shortcode);
+            }
+            known_shortcodes.push(shortcode);
+
+            db.insert(entity.project.shortcode.to_owned(), entity);
+        }
+
+        {
+            let count = db.read().unwrap();
+            trace!("Stored {} projects", count.values().len());
         }
 
         Self { db }
     }
-
-    fn _save(&self, entity: ProjectMetadata) -> Result<ProjectMetadata, DspMetaError> {
-        let mut db = self.db.write().unwrap();
-        db.insert(entity.project.shortcode.0.to_owned(), entity.clone());
-        Ok(entity)
-    }
-
-    fn _delete(&self, entity: ProjectMetadata) -> Result<(), DspMetaError> {
-        let mut db = self.db.write().unwrap();
-
-        match db.remove(entity.project.shortcode.0.as_str()) {
-            Some(_) => Ok(()),
-            None => Ok(()),
-        }
-    }
 }
 
-impl RepositoryContract<ProjectMetadata, ProjectInfo, Shortcode, DspMetaError>
-    for ProjectMetadataRepository
-{
+impl RepositoryContract<DraftMetadata, Shortcode, DspMetaError> for ProjectMetadataRepository {
     #[instrument(skip(self))]
-    fn find_by_id(&self, id: &Shortcode) -> Result<Option<ProjectMetadata>, DspMetaError> {
+    fn find_by_id(&self, id: &Shortcode) -> Result<Option<DraftMetadata>, DspMetaError> {
         let db = self.db.read().unwrap();
-        match db.get(id.0.as_str()) {
+        match db.get(id) {
             Some(metadata) => Ok(Some(metadata.clone())),
             None => Ok(None),
         }
     }
 
     #[instrument(skip(self))]
-    fn find_all(&self) -> Result<Vec<ProjectInfo>, DspMetaError> {
-        trace!("repository: find_all");
-        let mut result: Vec<ProjectInfo> = vec![];
+    fn find(
+        &self,
+        filter: &Filter,
+        pagination: &Pagination,
+    ) -> Result<Page<DraftMetadata>, DspMetaError> {
         let db = self.db.read().unwrap();
+        let query_status: Option<Vec<DraftProjectStatus>> = match filter.filter.as_deref() {
+            Some("o") => Some(vec![DraftProjectStatus::Ongoing]),
+            Some("f") => Some(vec![DraftProjectStatus::Finished]),
+            Some("of") => Some(vec![
+                DraftProjectStatus::Ongoing,
+                DraftProjectStatus::Finished,
+            ]),
+            _ => None,
+        };
 
-        for project_metadata in db.values() {
-            result.push(ProjectInfo::from(project_metadata.project.clone()));
-        }
+        let values = db
+            .values()
+            .filter(|metadata| {
+                if let Some(query_status) = &query_status {
+                    let actual_status = &metadata.project.status.clone().unwrap_or_default();
+                    !query_status.contains(actual_status)
+                } else {
+                    true
+                }
+            })
+            .filter(|metadata| {
+                if let Some(query) = &filter.query {
+                    serde_json::to_string(metadata)
+                        .unwrap()
+                        .to_lowercase()
+                        .contains(&query.to_lowercase())
+                } else {
+                    true
+                }
+            })
+            .cloned()
+            .collect::<Vec<DraftMetadata>>();
+        let total = values.len();
+        let data = values
+            .into_iter()
+            .skip((pagination.page - 1) * pagination.limit)
+            .take(pagination.limit)
+            .collect::<Vec<DraftMetadata>>();
+        Ok(Page { data, total })
+    }
 
-        Ok(result)
+    fn count(&self) -> Result<usize, DspMetaError> {
+        let db = self.db.read().unwrap();
+        Ok(db.len())
     }
 }
 
@@ -85,12 +119,13 @@ mod tests {
     use super::*;
 
     #[test]
-    fn successfully_store_project_metadata() {
+    fn successfully_load_metadata() {
         let data_dir = env::current_dir().unwrap().parent().unwrap().join("data");
         dbg!(&data_dir);
 
+        let files = load_json_file_paths(&data_dir);
         let repo = ProjectMetadataRepository::new(&data_dir.as_path());
-        let result = repo.count().unwrap();
-        assert_eq!(result, 3_usize);
+        let actual = repo.count().unwrap();
+        assert_eq!(actual, files.len());
     }
 }
