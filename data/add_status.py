@@ -44,7 +44,7 @@ ongoing_shortcodes = [
 ]
 
 def update_json_files(folder_path):
-    print (ongoing_shortcodes)
+    print(ongoing_shortcodes)
     # Iterate through all files in the given folder
     for filename in os.listdir(folder_path):
         # Check if the file is a JSON file
