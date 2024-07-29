@@ -9,9 +9,10 @@
   import Snackbar from "../Snackbar.svelte";
   import { getText } from "../functions";
   import Loading from "../Loading.svelte";
+  import { isTestEnvironment} from '../store';
+  import { baseUrl } from "../store";
 
   const mobileResolution = window.innerWidth < 992;
-  const isTestEnvironment: boolean = window.location.hostname === 'localhost' || window.location.hostname.startsWith('meta.test');
   const descriptionLanguages = new Map<string, string>([
     // contains languages that are presented in provided descriptions, update if necessary
     ["ar", "Arabic"],
@@ -45,13 +46,9 @@
   });
 
   const getProjectMetadata = async () => {
-    const protocol = window.location.protocol;
-    // LATER: This probably should not be hard coded
-    const port = protocol === "https:" ? "" : ":3000";
-    const baseUrl = `${protocol}//${window.location.hostname}${port}/`;
     const projectID = window.location.pathname.split("/")[2];
 
-    const res = await fetch(`${baseUrl}api/v1/projects/${projectID}`);
+    const res = await fetch(`${baseUrl()}/api/v1/projects/${projectID}`);
     const metadata: Metadata = await res.json();
 
     projectMetadata.set(metadata);
@@ -113,7 +110,7 @@
         <h1 class="title top-heading">
           {$projectMetadata?.project.name}
         </h1>
-      {:else if isTestEnvironment}
+      {:else if $isTestEnvironment}
         <div class="warning top-heading">Project Name missing</div>
       {/if}
       {#if $projectMetadata?.project.alternativeNames}
@@ -149,7 +146,7 @@
                 show {isDescriptionExpanded ? "less" : "more"}
               </div>
             {/if}
-          {:else if isTestEnvironment}
+          {:else if $isTestEnvironment}
             <div class="warning" id="description">Description missing</div>
           {/if}
         </div>

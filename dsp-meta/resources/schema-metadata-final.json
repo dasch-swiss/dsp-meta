@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "https://dasch.swiss/schema/schema-metadata-draft.json",
+  "$id": "https://dasch.swiss/schema/schema-metadata.json",
   "title": "Metadata Schema",
   "description": "Schema definition of DSP metadata",
   "type": "object",
@@ -15,7 +15,7 @@
     "datasets": {
       "description": "The datasets of the project",
       "type": "array",
-      "minItems": 0,
+      "minItems": 1,
       "items": {
         "type": "object",
         "$ref": "#/definitions/dataset"
@@ -298,13 +298,21 @@
       "required": [
         "__id",
         "__type",
+        "__createdAt",
+        "__createdBy",
         "shortcode",
         "name",
+        "description",
         "startDate",
         "teaserText",
         "datasets",
         "keywords",
-        "disciplines"
+        "disciplines",
+        "temporalCoverage",
+        "spatialCoverage",
+        "funders",
+        "url",
+        "howToCite"
       ],
       "additionalProperties": false
     },
@@ -391,6 +399,8 @@
       "required": [
         "__id",
         "__type",
+        "__createdAt",
+        "__createdBy",
         "funders"
       ],
       "additionalProperties": false
@@ -491,8 +501,12 @@
       "required": [
         "__id",
         "__type",
+        "__createdAt",
+        "__createdBy",
+        "jobTitles",
         "givenNames",
-        "familyNames"
+        "familyNames",
+        "affiliation"
       ],
       "additionalProperties": false
     },
@@ -658,7 +672,18 @@
       },
       "required": [
         "__id",
-        "__type"
+        "__type",
+        "__createdAt",
+        "__createdBy",
+        "title",
+        "accessConditions",
+        "howToCite",
+        "status",
+        "abstracts",
+        "typeOfData",
+        "licenses",
+        "languages",
+        "attributions"
       ],
       "additionalProperties": false
     },
@@ -733,6 +758,8 @@
       "required": [
         "__id",
         "__type",
+        "__createdAt",
+        "__createdBy",
         "name"
       ],
       "additionalProperties": false
@@ -774,6 +801,7 @@
         "__type",
         "street",
         "postalCode",
+        "locality",
         "country"
       ],
       "additionalProperties": false

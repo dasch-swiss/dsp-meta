@@ -2,13 +2,16 @@ use std::collections::HashMap;
 
 use chrono::NaiveDate;
 use nonempty::NonEmpty;
+use regex::Regex;
 use serde::{Deserialize, Serialize};
+use serde_with::skip_serializing_none;
 
 // This model corresponds to the json schema found in resources/schema-metadata-draft.json
 // These data structures are able to parse all json metadata found in /data/json/.*json
 // We can use them to produce TOML or YAML files as well
 
-#[derive(Debug, Serialize, Deserialize, PartialEq)]
+#[skip_serializing_none]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct DraftMetadata {
     pub project: DraftProject,
@@ -18,8 +21,11 @@ pub struct DraftMetadata {
     pub grants: Option<Vec<DraftGrant>>,
 }
 
-#[derive(Debug, Serialize, Deserialize, PartialEq)]
+#[skip_serializing_none]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
+#[serde(tag = "__type")]
+#[serde(rename = "Project")]
 pub struct DraftProject {
     #[serde(rename = "__id")]
     pub id: String,
@@ -27,7 +33,8 @@ pub struct DraftProject {
     pub created_at: Option<String>,
     #[serde(rename = "__createdBy")]
     pub created_by: Option<String>,
-    pub shortcode: String,
+    pub shortcode: Shortcode,
+    pub status: Option<DraftProjectStatus>,
     pub name: String,
     pub description: Option<DraftText>,
     pub start_date: DraftDate,
@@ -49,14 +56,54 @@ pub struct DraftProject {
     pub alternative_names: Option<NonEmpty<DraftText>>,
 }
 
-#[derive(Debug, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Default, Clone, Serialize, Deserialize, PartialEq, Hash, Eq)]
+#[serde(try_from = "String")]
+pub struct Shortcode(String);
+impl Shortcode {
+    pub fn as_string(&self) -> String {
+        self.0.to_string()
+    }
+}
+impl TryFrom<String> for Shortcode {
+    type Error = &'static str;
+    fn try_from(value: String) -> Result<Self, Self::Error> {
+        let regex: Regex = Regex::new(r"^[A-F0-9]{4}$").expect("Valid regex");
+        let value = value.to_uppercase();
+        if !regex.is_match(&value) {
+            Err("Shortcode must be a 4 character hexadecimal string")
+        } else {
+            Ok(Shortcode(value))
+        }
+    }
+}
+#[test]
+fn test_try_from_shortcode() {
+    assert!(Shortcode::try_from("000F".to_string()).is_ok());
+    assert!(Shortcode::try_from("12345".to_string()).is_err());
+    assert!(Shortcode::try_from("000G".to_string()).is_err());
+}
+
+#[derive(Debug, Default, Clone, Serialize, Deserialize, PartialEq)]
+pub enum DraftProjectStatus {
+    #[default]
+    #[serde(rename = "ongoing")]
+    Ongoing,
+    #[serde(rename = "finished")]
+    Finished,
+}
+
+#[skip_serializing_none]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct DraftPublication {
     pub text: String,
     pub url: Option<NonEmpty<DraftUrl>>,
 }
 
-#[derive(Debug, Serialize, Deserialize, PartialEq)]
+#[skip_serializing_none]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
+#[serde(tag = "__type")]
+#[serde(rename = "Dataset")]
 pub struct DraftDataset {
     #[serde(rename = "__id")]
     pub id: String,
@@ -82,7 +129,7 @@ pub struct DraftDataset {
     pub urls: Option<Vec<DraftUrl>>,
 }
 
-#[derive(Debug, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "lowercase")]
 pub enum DraftAccessCondition {
     Open,
@@ -90,7 +137,7 @@ pub enum DraftAccessCondition {
     Closed,
 }
 
-#[derive(Debug, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DraftStatus {
     #[serde(rename = "In planning")]
     InPlanning,
@@ -101,7 +148,7 @@ pub enum DraftStatus {
     Finished,
 }
 
-#[derive(Debug, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DraftTypeOfData {
     XML,
     Text,
@@ -110,8 +157,11 @@ pub enum DraftTypeOfData {
     Audio,
 }
 
-#[derive(Debug, Serialize, Deserialize, PartialEq)]
+#[skip_serializing_none]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
+#[serde(tag = "__type")]
+#[serde(rename = "Person")]
 pub struct DraftPerson {
     #[serde(rename = "__id")]
     pub id: String,
@@ -129,8 +179,11 @@ pub struct DraftPerson {
     pub authority_refs: Option<Vec<DraftUrl>>,
 }
 
-#[derive(Debug, Serialize, Deserialize, PartialEq)]
+#[skip_serializing_none]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
+#[serde(tag = "__type")]
+#[serde(rename = "Organization")]
 pub struct DraftOrganization {
     #[serde(rename = "__id")]
     pub id: String,
@@ -146,8 +199,11 @@ pub struct DraftOrganization {
     pub authority_refs: Option<Vec<DraftUrl>>,
 }
 
-#[derive(Debug, Serialize, Deserialize, PartialEq)]
+#[skip_serializing_none]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
+#[serde(tag = "__type")]
+#[serde(rename = "Grant")]
 pub struct DraftGrant {
     #[serde(rename = "__id")]
     pub id: String,
@@ -161,17 +217,42 @@ pub struct DraftGrant {
     pub url: Option<DraftUrl>,
 }
 
-#[derive(Debug, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct DraftText(HashMap<DraftIsoCode, String>);
 
-#[derive(Debug, Serialize, Deserialize, Eq, PartialEq, Hash)]
+#[derive(Debug, Clone, Serialize, Deserialize, Eq, PartialEq, Hash)]
+#[serde(try_from = "String")]
 pub struct DraftIsoCode(String);
+impl DraftIsoCode {
+    pub fn as_string(&self) -> String {
+        self.0.to_string()
+    }
+}
+impl TryFrom<String> for DraftIsoCode {
+    type Error = &'static str;
+    fn try_from(value: String) -> Result<Self, Self::Error> {
+        let regex: Regex = Regex::new(r"^[a-z]{2}$").expect("Valid regex");
+        if !regex.is_match(&value) {
+            Err("ISO code must be a 2 character lower case string")
+        } else {
+            Ok(DraftIsoCode(value))
+        }
+    }
+}
+#[test]
+fn test_try_from_draft_iso_code() {
+    assert!(DraftIsoCode::try_from("en".to_string()).is_ok());
+    assert!(DraftIsoCode::try_from("de_ch".to_string()).is_err());
+}
 
-#[derive(Debug, Serialize, Deserialize, PartialEq)]
-pub struct DraftDate(NaiveDate);
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+pub struct DraftDate(pub NaiveDate);
 
-#[derive(Debug, Serialize, Deserialize, PartialEq)]
+#[skip_serializing_none]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
+#[serde(tag = "__type")]
+#[serde(rename = "URL")]
 pub struct DraftUrl {
     pub url: String,
     pub text: Option<String>,
@@ -180,7 +261,7 @@ pub struct DraftUrl {
     pub url_type: DraftUrlType,
 }
 
-#[derive(Debug, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DraftUrlType {
     URL,
     Geonames,
@@ -203,8 +284,11 @@ impl DraftUrlType {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize, PartialEq)]
+#[skip_serializing_none]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
+#[serde(tag = "__type")]
+#[serde(rename = "Address")]
 pub struct DraftAddress {
     pub street: String,
     pub postal_code: String,
@@ -214,29 +298,37 @@ pub struct DraftAddress {
     pub additional: Option<String>,
 }
 
-#[derive(Debug, Serialize, Deserialize, PartialEq)]
+#[skip_serializing_none]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
+#[serde(tag = "__type")]
+#[serde(rename = "DataManagementPlan")]
 pub struct DraftDataManagementPlan {
     pub available: bool,
     pub url: Option<DraftUrl>,
 }
 
-#[derive(Debug, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
+#[serde(tag = "__type")]
+#[serde(rename = "Attribution")]
 pub struct DraftAttribution {
     pub agent: String,
     pub roles: NonEmpty<String>,
 }
 
-#[derive(Debug, Serialize, Deserialize, PartialEq)]
+#[skip_serializing_none]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
+#[serde(tag = "__type")]
+#[serde(rename = "License")]
 pub struct DraftLicense {
     pub license: DraftUrl,
     pub date: DraftDate,
     pub details: Option<String>,
 }
 
-#[derive(Debug, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(untagged)]
 pub enum DraftTextOrUrl {
     TextValue(DraftText),

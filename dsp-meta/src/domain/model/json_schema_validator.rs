@@ -3,35 +3,27 @@ use std::fs::File;
 use std::path::Path;
 
 use serde_json::Value;
-use thiserror::Error;
 use valico::json_schema::schema::ScopedSchema;
 use valico::json_schema::{Scope, ValidationState};
 
-use crate::api::convert::serde::json_schema_validator::SchemaVersion::Draft;
-use crate::api::convert::serde::json_schema_validator::ValidationError::*;
+use crate::domain::model::error::ValidationError::*;
+use crate::domain::model::error::*;
 
-static DRAFT_SCHEMA: &str = include_str!("../../../../resources/schema-metadata-draft.json");
+static DRAFT_SCHEMA: &str = include_str!("../../../resources/schema-metadata-draft.json");
+static FINAL_SCHEMA: &str = include_str!("../../../resources/schema-metadata-final.json");
 
+#[derive(Debug, Clone, Copy, Eq, PartialEq)]
 pub enum SchemaVersion {
     Draft,
+    Final,
 }
 impl SchemaVersion {
     fn schema_str(&self) -> &str {
         match self {
-            Draft => DRAFT_SCHEMA,
+            SchemaVersion::Draft => DRAFT_SCHEMA,
+            SchemaVersion::Final => FINAL_SCHEMA,
         }
     }
-}
-
-pub type Result<T> = core::result::Result<T, ValidationError>;
-#[derive(Debug, Error)]
-pub enum ValidationError {
-    #[error("File not loaded: {0}")]
-    FileNotLoaded(std::io::Error),
-    #[error("Schema is invalid: {0}")]
-    SchemaError(valico::json_schema::schema::SchemaError),
-    #[error("Error parsing file as json: {0}")]
-    NotAJsonFile(serde_json::Error),
 }
 
 pub fn validate_file(path: &Path, schema_version: SchemaVersion) -> Result<ValidationState> {
@@ -50,8 +42,18 @@ pub fn validate_files(
     let mut results = HashMap::with_capacity(paths.len());
     for path in paths {
         let contents = load_path_as_json(path)?;
-        let state = schema.validate(&contents);
-        results.insert(path, state);
+        let project_status = contents
+            .get("project")
+            .and_then(|p| p.get("status"))
+            .and_then(|s| s.as_str());
+        // Always validate against Draft schema
+        // Only validate against Final schema if the project status is "finished"
+        if schema_version == SchemaVersion::Draft
+            || (schema_version == SchemaVersion::Final && (project_status == Some("finished")))
+        {
+            let state = schema.validate(&contents);
+            results.insert(path, state);
+        }
     }
     Ok(results)
 }
