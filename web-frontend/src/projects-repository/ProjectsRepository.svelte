@@ -51,7 +51,7 @@
   </div>
 {/if}
 
-<main in:fade="{{duration: 200}}">
+<main in:fade={{duration: 250}}>
   <div class=tile-container>
     {#if $pagedResults && $pagedResults.length}
       {#each $pagedResults as project}

@@ -28,6 +28,10 @@ where
         self.repo.find_by_id(id)
     }
 
+    fn find_all(&self) -> Result<Vec<DraftMetadata>, DspMetaError> {
+        self.repo.find_all()
+    }
+
     #[instrument(skip(self))]
     fn find(
         &self,

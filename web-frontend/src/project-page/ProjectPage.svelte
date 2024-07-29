@@ -94,7 +94,7 @@
 {/if}
 
 {#if $projectMetadata}
-  <div class="container" in:fade={{ duration: 200 }}>
+  <div class="container" in:fade={{duration: 250}}>
     {#if mobileResolution}
       <button on:click={() => history.back()} class=goback-button title="go back to the projects list" disabled={!$previousRoute && window.history.length <= 2}>
         <svg class=icon fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
