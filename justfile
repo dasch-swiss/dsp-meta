@@ -34,8 +34,16 @@ build-frontend:
 test:
     cargo test --tests
 
+# Clean all build artifacts
+clean:
+    cargo clean
+
 # Run dsp-meta-server
-serve:
+serve: build-frontend clean
+    export DSP_META_DATA_DIR=${PWD}/data && export DSP_META_PUBLIC_DIR=${PWD}/web-frontend/public && export DSP_META_LOG_FILTER=trace,hyper=info && cargo run --bin dsp-meta-server
+
+# Run dsp-meta-server and watch for changes in the Rust code
+serve-dev:
     export DSP_META_DATA_DIR=${PWD}/data && export DSP_META_PUBLIC_DIR=${PWD}/web-frontend/public && export DSP_META_LOG_FILTER=trace,hyper=info && cargo watch -x 'run --bin dsp-meta-server'
 
 # Run the frontend dev server
