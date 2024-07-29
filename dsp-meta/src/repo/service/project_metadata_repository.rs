@@ -106,6 +106,12 @@ impl RepositoryContract<DraftMetadata, Shortcode, DspMetaError> for ProjectMetad
         Ok(Page { data, total })
     }
 
+    fn find_all(&self) -> Result<Vec<DraftMetadata>, DspMetaError> {
+        let db = self.db.read().unwrap();
+        let v = db.iter().map(|(_, v)| v.clone()).collect();
+        Ok(v)
+    }
+
     fn count(&self) -> Result<usize, DspMetaError> {
         let db = self.db.read().unwrap();
         Ok(db.len())
