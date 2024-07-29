@@ -1,6 +1,6 @@
 use url::Url;
 
-use crate::domain::service::metadata_service::MetadataService;
+use crate::domain::metadata_service::MetadataService;
 
 #[derive(Debug, Clone)]
 pub struct AppState {

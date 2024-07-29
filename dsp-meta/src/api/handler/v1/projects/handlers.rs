@@ -12,7 +12,7 @@ use crate::api::handler::v1::projects::responses::{
 use crate::app_state::AppState;
 use crate::domain::model::draft_model::Shortcode;
 use crate::error::DspMetaError;
-use crate::repo::metadata_repository::{Filter, Pagination};
+use crate::domain::metadata_repository::{Filter, Pagination};
 
 /// GET /project_metadata/:shortcode
 /// Get project metadata by shortcode

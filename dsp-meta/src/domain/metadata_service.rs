@@ -2,7 +2,7 @@ use tracing::{instrument, trace};
 
 use crate::domain::model::draft_model::*;
 use crate::error::DspMetaError;
-use crate::repo::metadata_repository::{Filter, MetadataRepository, Page, Pagination};
+use crate::domain::metadata_repository::{Filter, MetadataRepository, Page, Pagination};
 
 #[derive(Debug, Clone)]
 pub struct MetadataService {

@@ -5,8 +5,8 @@ use std::time::Duration;
 
 use config::Config;
 use dsp_meta::app_state::AppState;
-use dsp_meta::domain::service::metadata_service::MetadataService;
-use dsp_meta::repo::metadata_repository::MetadataRepository;
+use dsp_meta::domain::metadata_service::MetadataService;
+use dsp_meta::domain::metadata_repository::MetadataRepository;
 use pid1::Pid1Settings;
 use tokio::net::TcpListener;
 use tracing::info;

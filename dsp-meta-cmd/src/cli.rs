@@ -1,11 +1,10 @@
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 use clap::{Parser, Subcommand};
-use config::Config;
-use dsp_meta::error::DspMetaError;
-use dsp_meta::operation::convert::convert;
-use dsp_meta::operation::validate::{validate, validate_data};
+use dsp_meta::domain::model::error::ValidationError;
+use dsp_meta::domain::model::json_schema_validator::{validate_file, SchemaVersion};
 use log::info;
+use serde::Serialize;
 
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
@@ -22,21 +21,40 @@ struct Cli {
 enum Commands {
     /// does testing thing
     Validate {
+        #[arg(short, long, default_value = "draft")]
+        schema: Schema,
         /// The required path to the project metadata file to operate on
         #[arg(short, long, value_name = "FILE")]
         project: PathBuf,
     },
-
-    Convert {
-        /// The required path to the source file
-        source: PathBuf,
-
-        /// The required path to the target file
-        target: PathBuf,
-    },
 }
 
-pub fn parse() -> Result<(), DspMetaError> {
+#[derive(clap::ValueEnum, Clone, Default, Debug, Serialize)]
+enum Schema {
+    #[default]
+    Draft,
+    Final,
+}
+impl Schema {
+    fn as_schema_version(&self) -> SchemaVersion {
+        match self {
+            Schema::Draft => SchemaVersion::Draft,
+            Schema::Final => SchemaVersion::Final,
+        }
+    }
+}
+impl TryFrom<String> for Schema {
+    type Error = String;
+    fn try_from(value: String) -> Result<Self, Self::Error> {
+        match value.to_lowercase().as_str() {
+            "draft" => Ok(Schema::Draft),
+            "final" => Ok(Schema::Final),
+            _ => Err("Invalid schema version".to_string()),
+        }
+    }
+}
+
+pub fn parse() -> Result<(), String> {
     let cli = Cli::parse();
 
     // You can see how many times a particular flag or argument occurred
@@ -51,21 +69,35 @@ pub fn parse() -> Result<(), DspMetaError> {
     // You can check for the existence of subcommands, and if found use their
     // matches just as you would the top level cmd
     match &cli.command {
-        Some(Commands::Validate { project }) => validate(project),
-        Some(Commands::Convert { source, target }) => convert(source, target),
-        None => {
-            let settings = Config::builder()
-                // Add in settings from the environment (with a prefix of APP)
-                // Eg.. `APP_DEBUG=1 ./target/app` would set the `debug` key
-                .add_source(config::Environment::with_prefix("DSP_META"))
-                .build()
-                .unwrap();
+        Some(Commands::Validate { project, schema }) => {
+            let schema = schema.as_schema_version();
+            println!("Validating file {:?} against {:?} schema.", project, &schema);
+            println!();
+            match validate_file(project, schema) {
+                Ok(state) => {
+                    if state.is_valid() {
+                        println!("Validation passed.");
+                        Ok(())
+                    } else {
+                        println!("ERRORS:");
+                        for error in state.errors {
+                            println!(" * {:?}", error)
+                        }
+                        println!();
+                        Err("Validation failed".to_string())
+                    }
+                }
+                Err(e) => match e {
+                    ValidationError::FileNotLoaded(_) => Err("File not found.".to_string()),
+                    ValidationError::SchemaError(_) => Err("Schema error.".to_string()),
+                    ValidationError::NotAJsonFile(_) => Err("Not a JSON file.".to_string()),
+                },
+            }
+        }
 
-            let data_dir = settings
-                .get::<String>("data_dir")
-                .unwrap_or("/data".to_string());
-
-            validate_data(Path::new(&data_dir))
+        _ => {
+            println!("No subcommand found");
+            Ok(())
         }
     }
 }

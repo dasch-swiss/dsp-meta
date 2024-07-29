@@ -11,8 +11,8 @@ mod tests {
     use dsp_meta::domain::model::draft_model::{
         DraftDate, DraftMetadata, DraftProject, DraftText, DraftTextOrUrl, Shortcode,
     };
-    use dsp_meta::domain::service::metadata_service::MetadataService;
-    use dsp_meta::repo::metadata_repository::MetadataRepository;
+    use dsp_meta::domain::metadata_service::MetadataService;
+    use dsp_meta::domain::metadata_repository::MetadataRepository;
     use fake::{Fake, Faker};
     use nonempty::NonEmpty;
     use serde_json::Value;
