@@ -46,13 +46,11 @@ export async function getProjectsMetadata(page: number, q?: string): Promise<voi
 
   await fetch(`${(baseUrl())}/api/v1/${route}`)
     .then(r => {
-      console.log("RESPONSE count header:", r.headers.get('X-Total-Count'));
       const totalCount = parseInt(r.headers.get('X-Total-Count'));
       let totalPages = Math.floor(totalCount / baseResultsRange[1]);
       if (!Number.isInteger(totalCount / baseResultsRange[1])) {
         totalPages++;
       }
-      ;
       pagination.set({ currentPage: page, currentResultsRange, totalCount, totalPages });
       return r.json();
     })
