@@ -49,7 +49,7 @@ export interface Project {
   endDate?: string;
   contactPoint?: string;
   secondaryURL?: URL;
-  publications?: string[];
+  publications?: Publications[];
   grants?: string[];
   alternativeNames?: Text[];
 }
@@ -155,4 +155,9 @@ export interface DataManagementPlan {
   __type: "DataManagementPlan";
   available?: boolean;
   url?: URL;
+}
+
+export interface Publications {
+  text: string;
+  url?: URL[];
 }
