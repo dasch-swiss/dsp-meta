@@ -26,7 +26,7 @@ dirs = "5.0.1" # provides platform-specific locations for storing user configura
 hcl-rs = "0.16.7" # HCL converter
 http-body-util = "0.1.0"
 indicatif = "0.17.0" # prograss bars and spinners
-log = "0.4.20" # logging facade
+log = "0.4.22" # logging facade
 once_cell = "1.19.0"
 pid1 = "0.1.1"
 serde = { version = "1", features = ["derive"] }
