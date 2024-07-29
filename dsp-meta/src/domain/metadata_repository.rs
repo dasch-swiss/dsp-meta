@@ -161,11 +161,7 @@ mod tests {
 
     #[test]
     fn successfully_load_all_metadata_files() {
-        let data_dir = env::current_dir()
-            .unwrap()
-            .parent()
-            .unwrap()
-            .join("../../../data");
+        let data_dir = env::current_dir().unwrap().parent().unwrap().join("data");
         dbg!(&data_dir);
 
         let files = load_json_file_paths(&data_dir);
