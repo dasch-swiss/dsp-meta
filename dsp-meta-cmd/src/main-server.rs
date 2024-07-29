@@ -75,7 +75,7 @@ async fn init_server() {
         )),
         public_dir,
         version: VERSION,
-        base_url
+        base_url,
     });
 
     // start the server

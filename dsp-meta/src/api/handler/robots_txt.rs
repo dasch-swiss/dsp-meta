@@ -9,7 +9,11 @@ use crate::error::DspMetaError;
 pub async fn robots_txt(
     State(state): State<Arc<AppState>>,
 ) -> Result<Response<String>, DspMetaError> {
-    let sitemap_xml = state.base_url.join( "sitemap.xml").expect("valid url").to_string();
+    let sitemap_xml = state
+        .base_url
+        .join("sitemap.xml")
+        .expect("valid url")
+        .to_string();
     let response = Response::builder()
         .status(StatusCode::OK)
         .header("Content-Type", "text/plain")

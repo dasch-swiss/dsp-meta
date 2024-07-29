@@ -5,7 +5,10 @@ use axum::http::StatusCode;
 use axum::response::{IntoResponse, Response};
 use axum::Json;
 use tracing::{instrument, trace};
-use crate::api::handler::v1::projects::responses::{ProjectMetadataDto, ProjectMetadataWithInfoDto};
+
+use crate::api::handler::v1::projects::responses::{
+    ProjectMetadataDto, ProjectMetadataWithInfoDto,
+};
 use crate::app_state::AppState;
 use crate::domain::model::draft_model::Shortcode;
 use crate::domain::service::project_metadata_api_contract::ProjectMetadataApiContract;
