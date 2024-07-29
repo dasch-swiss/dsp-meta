@@ -67,7 +67,7 @@ async fn init_server() {
 
     let base_url = settings
         .get::<Url>("base_url")
-        .unwrap_or(Url::parse("http://localhost:3000").unwrap());
+        .unwrap_or(Url::parse("https://meta.dasch.swiss").unwrap());
 
     let shared_state = Arc::new(AppState {
         project_metadata_service: ProjectMetadataService::new(ProjectMetadataRepository::new(
