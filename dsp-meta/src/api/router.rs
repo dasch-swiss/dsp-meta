@@ -101,7 +101,7 @@ mod tests {
         let data_dir = env::current_dir().unwrap().parent().unwrap().join("data");
 
         let shared_state = Arc::new(AppState {
-            project_metadata_service: MetadataService::new(MetadataRepository::from_path(
+            metadata_service: MetadataService::new(MetadataRepository::from_path(
                 &data_dir.as_path(),
             )),
             public_dir: "".to_string(),
@@ -134,7 +134,7 @@ mod tests {
         let data_dir = env::current_dir().unwrap().parent().unwrap().join("data");
 
         let shared_state = Arc::new(AppState {
-            project_metadata_service: MetadataService::new(MetadataRepository::from_path(
+            metadata_service: MetadataService::new(MetadataRepository::from_path(
                 &data_dir.as_path(),
             )),
             public_dir: "".to_string(),

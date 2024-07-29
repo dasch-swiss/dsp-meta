@@ -22,7 +22,7 @@ pub async fn sitemap_xml(
         )
         .as_str(),
     );
-    for meta in state.project_metadata_service.find_all()? {
+    for meta in state.metadata_service.find_all()? {
         let mut url = base_url.to_string() + "projects/";
         url.push_str(&meta.project.shortcode.as_string());
         let line = format!(

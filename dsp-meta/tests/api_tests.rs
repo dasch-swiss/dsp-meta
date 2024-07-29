@@ -21,7 +21,7 @@ mod tests {
     fn build_server(data: Vec<DraftMetadata>) -> TestServer {
         let meta_repo = MetadataRepository::for_test(data);
         let shared_state = Arc::new(AppState {
-            project_metadata_service: MetadataService::new(meta_repo),
+            metadata_service: MetadataService::new(meta_repo),
             public_dir: "/public".to_string(),
             version: "foo_version",
             base_url: Url::parse("http://localhost:3000").expect("Valid url"),

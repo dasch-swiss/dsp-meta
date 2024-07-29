@@ -25,7 +25,7 @@ pub async fn get_by_shortcode(
 ) -> Result<Response, DspMetaError> {
     trace!("entered get_project_metadata_by_shortcode()");
     state
-        .project_metadata_service
+        .metadata_service
         .find_by_id(&shortcode)
         .map(|option| match option {
             Some(metadata) => (StatusCode::OK, ProjectMetadataDto(metadata)).into_response(),
@@ -46,7 +46,7 @@ pub async fn get_by_page_and_filter(
     trace!("entered get_all_project_metadata()");
     let Query(pagination) = pagination.unwrap_or_default();
     let Query(filter) = filter.unwrap_or_default();
-    let page = state.project_metadata_service.find(&filter, &pagination)?;
+    let page = state.metadata_service.find(&filter, &pagination)?;
     let mut response = Json(
         page.data
             .into_iter()
