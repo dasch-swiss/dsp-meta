@@ -10,6 +10,8 @@ coverage:
       default:
         # Avoid false negatives
         threshold: 1%
+  github_checks:
+    annotations: false
 
 # Test files aren't important for coverage
 ignore:
