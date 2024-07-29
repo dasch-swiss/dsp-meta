@@ -8,17 +8,20 @@ use valico::json_schema::{Scope, ValidationState};
 
 use crate::domain::model::error::ValidationError::*;
 use crate::domain::model::error::*;
-use crate::domain::model::json_schema_validator::SchemaVersion::Draft;
 
 static DRAFT_SCHEMA: &str = include_str!("../../../resources/schema-metadata-draft.json");
+static FINAL_SCHEMA: &str = include_str!("../../../resources/schema-metadata-final.json");
 
+#[derive(Debug, Clone, Copy, Eq, PartialEq)]
 pub enum SchemaVersion {
     Draft,
+    Final,
 }
 impl SchemaVersion {
     fn schema_str(&self) -> &str {
         match self {
-            Draft => DRAFT_SCHEMA,
+            SchemaVersion::Draft => DRAFT_SCHEMA,
+            SchemaVersion::Final => FINAL_SCHEMA,
         }
     }
 }
@@ -39,8 +42,18 @@ pub fn validate_files(
     let mut results = HashMap::with_capacity(paths.len());
     for path in paths {
         let contents = load_path_as_json(path)?;
-        let state = schema.validate(&contents);
-        results.insert(path, state);
+        let project_status = contents
+            .get("project")
+            .and_then(|p| p.get("status"))
+            .and_then(|s| s.as_str());
+        // Always validate against Draft schema
+        // Only validate against Final schema if the project status is "finished"
+        if schema_version == SchemaVersion::Draft
+            || (schema_version == SchemaVersion::Final && (project_status == Some("finished")))
+        {
+            let state = schema.validate(&contents);
+            results.insert(path, state);
+        }
     }
     Ok(results)
 }

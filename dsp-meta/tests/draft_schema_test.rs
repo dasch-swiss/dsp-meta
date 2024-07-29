@@ -74,13 +74,30 @@ fn data_dir() -> PathBuf {
 }
 
 #[test]
-fn test_draft_json_schema() {
+fn test_all_json_validate_with_draft_json_schema() {
     let path_bufs = load_json_file_paths(&data_dir());
     let paths: Vec<&Path> = path_bufs.iter().map(|p| p.as_path()).collect();
+    let nr_files = paths.len();
     let results = validate_files(paths, SchemaVersion::Draft).unwrap();
     for (key, value) in &results {
         if !value.is_valid() {
-            dbg!("{:?}: {:?}", key, value);
+            dbg!("{:?}: {:?}", key, &value.errors);
+        }
+    }
+    let failures = results.values().filter(|v| !v.is_valid());
+    assert_eq!(failures.count(), 0);
+    assert_eq!(results.len(), nr_files);
+}
+
+#[ignore]
+#[test]
+fn test_finished_json_validate_with_final_json_schema() {
+    let path_bufs = load_json_file_paths(&data_dir());
+    let paths: Vec<&Path> = path_bufs.iter().map(|p| p.as_path()).collect();
+    let results = validate_files(paths, SchemaVersion::Final).unwrap();
+    for (key, value) in &results {
+        if !value.is_valid() {
+            dbg!("{:?}: {:?}", key, &value.errors);
         }
     }
     let failures = results.values().filter(|v| !v.is_valid());
