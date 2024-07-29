@@ -79,7 +79,7 @@ package Entities {
     +String title
     +AccessConditions accessConditions
     +String howToCite
-    +DatasetStatusstatus
+    +DatasetStatus status
 
     .. (1 - n) ..
     +MultiLanguageText|URL[] abstracts
