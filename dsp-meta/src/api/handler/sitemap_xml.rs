@@ -10,7 +10,7 @@ use crate::domain::service::project_metadata_api_contract::ProjectMetadataApiCon
 use crate::error::DspMetaError;
 
 #[instrument(skip(state))]
-pub async fn sitemap_xml_handler(
+pub async fn sitemap_xml(
     State(state): State<Arc<AppState>>,
 ) -> Result<Response<String>, DspMetaError> {
     let base_url = state.base_url.clone();

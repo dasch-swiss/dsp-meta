@@ -1,21 +1,19 @@
 use std::sync::Arc;
 use std::time::Duration;
 
-use axum::{http, Router};
 use axum::body::Bytes;
 use axum::http::{HeaderMap, Request};
 use axum::response::Response;
 use axum::routing::get;
+use axum::{http, Router};
 use log::info;
 use tower_http::classify::ServerErrorsFailureClass;
 use tower_http::cors::{Any, CorsLayer};
 use tower_http::services::{ServeDir, ServeFile};
 use tower_http::trace::TraceLayer;
-use tracing::{error, info_span, Span, warn};
+use tracing::{error, info_span, warn, Span};
 
-use crate::api::handler::{
-    health, project_metadata_handler, robots_txt_handler, sitemap_xml_handler,
-};
+use crate::api::handler::{health, robots_txt, sitemap_xml, v1};
 use crate::app_state::AppState;
 
 /// Having a function that produces our router makes it easy to call it from tests
@@ -29,16 +27,16 @@ pub fn router(shared_state: Arc<AppState>) -> Router {
     Router::new()
         .route(
             "/api/v1/projects",
-            get(project_metadata_handler::get_all_project_metadata),
+            get(v1::projects::handler::get_by_page_and_filter),
         )
         .route(
             "/api/v1/projects/:shortcode",
-            get(project_metadata_handler::get_project_metadata_by_shortcode),
+            get(v1::projects::handler::get_by_shortcode),
         )
-        .route("/health", get(health::health_handler))
+        .route("/health", get(health::health))
         .route("/version.txt", get(shared_state.version))
-        .route("/robots.txt", get(robots_txt_handler::robots_txt_handler))
-        .route("/sitemap.xml", get(sitemap_xml_handler::sitemap_xml_handler))
+        .route("/robots.txt", get(robots_txt::robots_txt))
+        .route("/sitemap.xml", get(sitemap_xml::sitemap_xml))
         .fallback_service(
             ServeDir::new(shared_state.public_dir.as_str()).fallback(ServeFile::new(format!(
                 "{}/index.html",
@@ -93,11 +91,10 @@ mod tests {
     use tower::ServiceExt;
     use url::Url;
 
-    use crate::domain::service::project_metadata_service::ProjectMetadataService;
-    use crate::repo::service::project_metadata_repository::ProjectMetadataRepository;
-
     // for `oneshot` and `ready`
     use super::*;
+    use crate::domain::service::project_metadata_service::ProjectMetadataService;
+    use crate::repo::service::project_metadata_repository::ProjectMetadataRepository;
 
     #[tokio::test]
     async fn test_health_route() {

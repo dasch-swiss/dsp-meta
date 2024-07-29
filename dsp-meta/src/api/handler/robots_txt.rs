@@ -6,7 +6,7 @@ use axum::http::{Response, StatusCode};
 use crate::app_state::AppState;
 use crate::error::DspMetaError;
 
-pub async fn robots_txt_handler(
+pub async fn robots_txt(
     State(state): State<Arc<AppState>>,
 ) -> Result<Response<String>, DspMetaError> {
     let sitemap_xml = state.base_url.join( "sitemap.xml").expect("valid url").to_string();
