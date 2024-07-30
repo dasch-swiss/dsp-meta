@@ -97,6 +97,7 @@
         "text": "Basel"
       }
     ],
+    "howToCite": "Die Bilderfolgen der Basler Frühdrucke: Spätmittelalterliche Didaxe als Bild-Text-Lektüre (2012) DaSCH. ark.dasch.swiss/ark:/72163/1/0803",
     "status": "finished"
   },
   "datasets": [
@@ -148,7 +149,34 @@
         }
       ],
       "status": "Finished",
-      "title": "Die Bilderfolgen der Basler Frühdrucke: Spätmittelalterliche Didaxe als Bild-Text-Lektüre"
+      "title": "Die Bilderfolgen der Basler Frühdrucke: Spätmittelalterliche Didaxe als Bild-Text-Lektüre",
+      "howToCite": "Die Bilderfolgen der Basler Frühdrucke: Spätmittelalterliche Didaxe als Bild-Text-Lektüre (2012). [Dataset]. DaSCH. ark.dasch.swiss/ark:/72163/1/0803",
+      "typeOfData": [
+        "Image"
+      ],
+      "licenses": [
+        {
+          "__type": "License",
+          "date": "2012-08-31",
+          "license": {
+            "__type": "URL",
+            "type": "Creative Commons",
+            "url": "https://creativecommons.org/licenses/by/4.0/",
+            "text": "CC BY 4.0"
+          }
+        }
+      ],
+      "accessConditions": "open",
+      "languages": [
+        {
+          "en": "German",
+          "de": "Deutsch"
+        },
+        {
+          "en": "Latin",
+          "de": "Latein"
+        }
+      ]
     }
   ],
   "persons": [
@@ -165,6 +193,9 @@
       ],
       "affiliation": [
         "http://ns.dasch.swiss/repository#dsp-0803-organization-001"
+      ],
+      "jobTitles": [
+        "Project Leader"
       ]
     },
     {
@@ -180,6 +211,9 @@
       ],
       "affiliation": [
         "http://ns.dasch.swiss/repository#dsp-0803-organization-002"
+      ],
+      "jobTitles": [
+        "Project Leader"
       ]
     },
     {
@@ -195,6 +229,9 @@
       ],
       "affiliation": [
         "http://ns.dasch.swiss/repository#dsp-0803-organization-003"
+      ],
+      "jobTitles": [
+        "Project Leader"
       ]
     },
     {
@@ -207,6 +244,12 @@
       ],
       "givenNames": [
         "Lothar"
+      ],
+      "jobTitles": [
+        "Data Collector"
+      ],
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-0803-organization-001"
       ]
     },
     {
@@ -219,6 +262,12 @@
       ],
       "givenNames": [
         "Katrin"
+      ],
+      "jobTitles": [
+        "Data Collector"
+      ],
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-0803-organization-001"
       ]
     }
   ],

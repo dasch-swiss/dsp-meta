@@ -89,7 +89,6 @@ fn test_all_json_validate_with_draft_json_schema() {
     assert_eq!(results.len(), nr_files);
 }
 
-#[ignore]
 #[test]
 fn test_finished_json_validate_with_final_json_schema() {
     let path_bufs = load_json_file_paths(&data_dir());

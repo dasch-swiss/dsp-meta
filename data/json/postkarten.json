@@ -58,6 +58,9 @@
       "url": "https://data.dasch.swiss/postcards/",
       "text": "Project Website"
     },
+    "funders": [
+      "http://ns.dasch.swiss/repository#dsp-0811-organization-000"
+    ],
     "status": "finished"
   },
   "datasets": [
@@ -100,6 +103,15 @@
       "title": "Postkarten aus dem Russländischen Reich: Die Sammlung Radzievsky",
       "typeOfData": [
         "Image"
+      ],
+      "attributions": [
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0811-person-001",
+          "roles": [
+            "Data Collector"
+          ]
+        }
       ]
     }
   ],
@@ -119,6 +131,24 @@
       ],
       "jobTitles": [
         "Professor für Osteuropäische Geschichte"
+      ],
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-0811-organization-000"
+      ]
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0811-person-001",
+      "__type": "Person",
+      "__createdAt": "1652361078368442000",
+      "__createdBy": "dsp-metadata-gui",
+      "familyNames": [
+        "Würsch"
+      ],
+      "givenNames": [
+        "Helen"
+      ],
+      "jobTitles": [
+        "Student"
       ],
       "affiliation": [
         "http://ns.dasch.swiss/repository#dsp-0811-organization-000"
