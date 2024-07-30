@@ -110,6 +110,14 @@
     "@rollup/pluginutils" "^3.1.0"
     resolve "^1.17.0"
 
+"@rollup/pluginutils@4", "@rollup/pluginutils@^4.1.0":
+  version "4.2.1"
+  resolved "https://registry.npmjs.org/@rollup/pluginutils/-/pluginutils-4.2.1.tgz"
+  integrity sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==
+  dependencies:
+    estree-walker "^2.0.1"
+    picomatch "^2.2.2"
+
 "@rollup/pluginutils@^3.1.0":
   version "3.1.0"
   resolved "https://registry.npmjs.org/@rollup/pluginutils/-/pluginutils-3.1.0.tgz"
@@ -117,22 +125,6 @@
   dependencies:
     "@types/estree" "0.0.39"
     estree-walker "^1.0.1"
-    picomatch "^2.2.2"
-
-"@rollup/pluginutils@^4.1.0":
-  version "4.2.1"
-  resolved "https://registry.npmjs.org/@rollup/pluginutils/-/pluginutils-4.2.1.tgz"
-  integrity sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==
-  dependencies:
-    estree-walker "^2.0.1"
-    picomatch "^2.2.2"
-
-"@rollup/pluginutils@4":
-  version "4.2.1"
-  resolved "https://registry.npmjs.org/@rollup/pluginutils/-/pluginutils-4.2.1.tgz"
-  integrity sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==
-  dependencies:
-    estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
 "@tsconfig/svelte@^1.0.0":
@@ -361,7 +353,7 @@ chalk@^4.0.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chokidar@^3.4.1, chokidar@^3.5.0, "chokidar@>=3.0.0 <4.0.0":
+"chokidar@>=3.0.0 <4.0.0", chokidar@^3.4.1, chokidar@^3.5.0:
   version "3.5.3"
   resolved "https://registry.npmjs.org/chokidar/-/chokidar-3.5.3.tgz"
   integrity sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==
@@ -390,15 +382,15 @@ color-convert@^2.0.1:
   dependencies:
     color-name "~1.1.4"
 
-color-name@~1.1.4:
-  version "1.1.4"
-  resolved "https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz"
-  integrity sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==
-
 color-name@1.1.3:
   version "1.1.3"
   resolved "https://registry.npmjs.org/color-name/-/color-name-1.1.3.tgz"
   integrity sha512-72fSenhMw2HZMTVHeCA9KCmpEIbzWiQsjN+BHcBbS9vr1mtt+vJjPdksIBNUmKAW8TFUDPJK5SUU3QhE9NEXDw==
+
+color-name@~1.1.4:
+  version "1.1.4"
+  resolved "https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz"
+  integrity sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==
 
 commander@^2.20.0:
   version "2.20.3"
@@ -716,7 +708,7 @@ prettier-plugin-svelte@^3.2.6:
   resolved "https://registry.npmjs.org/prettier-plugin-svelte/-/prettier-plugin-svelte-3.2.6.tgz"
   integrity sha512-Y1XWLw7vXUQQZmgv1JAEiLcErqUniAF2wO7QJsw8BVMvpLET2dI5WpEIEJx1r11iHVdSMzQxivyfrH9On9t2IQ==
 
-prettier@^3.0.0, prettier@^3.3.3:
+prettier@^3.3.3:
   version "3.3.3"
   resolved "https://registry.npmjs.org/prettier/-/prettier-3.3.3.tgz"
   integrity sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==
@@ -793,7 +785,7 @@ rollup-plugin-terser@^7.0.0:
     serialize-javascript "^4.0.0"
     terser "^5.0.0"
 
-"rollup@^1.20.0 || ^2.0.0", rollup@^1.20.0||^2.0.0, rollup@^2.0.0, rollup@^2.14.0, rollup@^2.3.4, rollup@^2.30.0, rollup@>=2.0.0, "rollup@1 || 2":
+rollup@^2.3.4:
   version "2.79.1"
   resolved "https://registry.npmjs.org/rollup/-/rollup-2.79.1.tgz"
   integrity sha512-uKxbd0IhMZOhjAiD5oAFp7BqvkA4Dv47qpOCtaNvng4HBwdbWtdOh8f5nZNuk2rp51PMGk3bzfWu5oayNEuYnw==
@@ -822,7 +814,7 @@ sander@^0.5.0:
     mkdirp "^0.5.1"
     rimraf "^2.5.2"
 
-sass@*, sass@^1.26.8:
+sass@*:
   version "1.69.5"
   resolved "https://registry.npmjs.org/sass/-/sass-1.69.5.tgz"
   integrity sha512-qg2+UCJibLr2LCVOt3OlPhr/dqVHWOa9XtZf2OjbLs/T4VPSJ00udtgJxH3neXZm+QqX8B+3cU7RaLqp1iVfcQ==
@@ -962,7 +954,7 @@ svelte-routing@^1.6.0:
   resolved "https://registry.npmjs.org/svelte-routing/-/svelte-routing-1.11.0.tgz"
   integrity sha512-/JlBAB6KxgM+Xl+4J/vOy4i4uYAJpWWbjh7vtRwsuu0MPl5B+ml+N/jCRkfjRa9ulODcS/G6PL8opyhczmrV8Q==
 
-svelte@^3.0.0, "svelte@^3.2.0 || ^4.0.0-next.0 || ^5.0.0-next.0", svelte@^3.23.0, svelte@^3.24.0, svelte@>=3.5.0:
+svelte@^3.0.0:
   version "3.59.2"
   resolved "https://registry.npmjs.org/svelte/-/svelte-3.59.2.tgz"
   integrity sha512-vzSyuGr3eEoAtT/A6bmajosJZIUWySzY2CzB3w2pgPvnkUjGqlDnsNnA0PMO+mMAhuyMul6C2uuZzY6ELSkzyA==
@@ -994,7 +986,7 @@ totalist@^1.0.0:
   resolved "https://registry.npmjs.org/totalist/-/totalist-1.1.0.tgz"
   integrity sha512-gduQwd1rOdDMGxFG1gEvhV88Oirdo2p+KjoYFU7k2g+i7n6AFFbDQ5kMPUsW0pNbfQsB/cwXvT1i4Bue0s9g5g==
 
-tslib@*, tslib@^2.0.0:
+tslib@^2.0.0:
   version "2.6.2"
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.6.2.tgz"
   integrity sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==
@@ -1004,7 +996,7 @@ typescript@*:
   resolved "https://registry.npmjs.org/typescript/-/typescript-5.3.2.tgz"
   integrity sha512-6l+RyNy7oAHDfxC4FzSJcz9vnjTKxrLpDG5M2Vu4SHRVNg6xzqZp6LYSR9zjqQTu8DU/f5xwxUdADOkbrIX2gQ==
 
-"typescript@^3.9.5 || ^4.0.0", typescript@^3.9.7, typescript@>=3.4.0:
+typescript@^3.9.7:
   version "3.9.10"
   resolved "https://registry.npmjs.org/typescript/-/typescript-3.9.10.tgz"
   integrity sha512-w6fIxVE/H1PkLKcCPsFqKE7Kv7QUwhU8qQY2MueZXWx5cPZdwFupLgKK3vntcK98BtNHZtAF4LA/yl2a7k8R6Q==
