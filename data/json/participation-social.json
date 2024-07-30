@@ -94,6 +94,12 @@
         "text": "Modern"
       }
     ],
+    "url": {
+      "__type": "URL",
+      "type": "URL",
+      "url": "https://ark.dasch.swiss/ark:/72163/1/083D",
+      "text": "Discover Project Metadata"
+    },
     "status": "finished"
   },
   "datasets": [
