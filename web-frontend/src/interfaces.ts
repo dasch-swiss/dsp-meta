@@ -28,7 +28,7 @@ export interface Metadata {
 }
 
 export interface Project {
-  __type: "Project";
+  __type: 'Project';
   __id: string;
   __createdAt: string;
   __createdBy: string;
@@ -55,7 +55,7 @@ export interface Project {
 }
 
 export interface Dataset {
-  __type: "Dataset";
+  __type: 'Dataset';
   __id: string;
   __createdAt: string;
   __createdBy: string;
@@ -78,20 +78,20 @@ export interface Dataset {
 }
 
 export interface License {
-  __type: "License";
+  __type: 'License';
   date: string;
   license: URL;
   details?: string;
 }
 
 export interface Attribution {
-  __type: "Attribution";
+  __type: 'Attribution';
   agent: string;
   roles: string[];
 }
 
 export interface Address {
-  __type: "Address";
+  __type: 'Address';
   street: string;
   additional?: string;
   postalCode: string;
@@ -101,7 +101,7 @@ export interface Address {
 }
 
 export interface Person {
-  __type: "Person";
+  __type: 'Person';
   __id: string;
   __createdAt: string;
   __createdBy: string;
@@ -116,19 +116,19 @@ export interface Person {
 }
 
 export interface URL {
-  __type: "URL";
+  __type: 'URL';
   text?: string;
   type: string;
   url: string;
 }
 
 export interface Text {
-  __type: "Text";
-  [lang: string]: string
+  __type: 'Text';
+  [lang: string]: string;
 }
 
 export interface Organization {
-  __type: "Organization";
+  __type: 'Organization';
   __id: string;
   __created: string;
   __modified: string;
@@ -141,7 +141,7 @@ export interface Organization {
 }
 
 export interface Grant {
-  __type: "Grant";
+  __type: 'Grant';
   __id: string;
   __created: string;
   __modified: string;
@@ -152,7 +152,7 @@ export interface Grant {
 }
 
 export interface DataManagementPlan {
-  __type: "DataManagementPlan";
+  __type: 'DataManagementPlan';
   available?: boolean;
   url?: URL;
 }
