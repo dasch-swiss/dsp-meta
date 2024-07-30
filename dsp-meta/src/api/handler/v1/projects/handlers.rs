@@ -10,9 +10,8 @@ use crate::api::handler::v1::projects::responses::{
     ProjectMetadataDto, ProjectMetadataWithInfoDto,
 };
 use crate::app_state::AppState;
+use crate::domain::metadata_repository::{Filter, Pagination};
 use crate::domain::model::draft_model::Shortcode;
-use crate::domain::service::project_metadata_api_contract::ProjectMetadataApiContract;
-use crate::domain::service::repository_contract::{Filter, Pagination};
 use crate::error::DspMetaError;
 
 /// GET /project_metadata/:shortcode
@@ -26,7 +25,7 @@ pub async fn get_by_shortcode(
 ) -> Result<Response, DspMetaError> {
     trace!("entered get_project_metadata_by_shortcode()");
     state
-        .project_metadata_service
+        .metadata_service
         .find_by_id(&shortcode)
         .map(|option| match option {
             Some(metadata) => (StatusCode::OK, ProjectMetadataDto(metadata)).into_response(),
@@ -47,7 +46,7 @@ pub async fn get_by_page_and_filter(
     trace!("entered get_all_project_metadata()");
     let Query(pagination) = pagination.unwrap_or_default();
     let Query(filter) = filter.unwrap_or_default();
-    let page = state.project_metadata_service.find(&filter, &pagination)?;
+    let page = state.metadata_service.find(&filter, &pagination)?;
     let mut response = Json(
         page.data
             .into_iter()

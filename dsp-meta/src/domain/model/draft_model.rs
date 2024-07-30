@@ -218,7 +218,7 @@ pub struct DraftGrant {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct DraftText(HashMap<DraftIsoCode, String>);
+pub struct DraftText(pub HashMap<DraftIsoCode, String>);
 
 #[derive(Debug, Clone, Serialize, Deserialize, Eq, PartialEq, Hash)]
 #[serde(try_from = "String")]
