@@ -1,24 +1,24 @@
 <script lang="ts">
-  import { onMount } from "svelte"
-  import {baseUrl} from './store';
+  import { onMount } from 'svelte';
+  import { baseUrl } from './store';
 
-  let version: string
+  let version: string;
 
   onMount(async () => {
     await fetch(`${baseUrl()}/version.txt`)
-      .then(response => response.text())
+      .then((response) => response.text())
       .then((data) => {
-        version = data
-      })
-  })
+        version = data;
+      });
+  });
 </script>
 
 <footer>
   <div class="footer-container">
     {#if version}
-      <div class=version>{`Version: v${version}`}</div>
+      <div class="version">{`Version: v${version}`}</div>
     {/if}
-    <div class=copyright>© 2021-2024 DaSCH</div>
+    <div class="copyright">© 2021-2024 DaSCH</div>
   </div>
 </footer>
 
@@ -42,21 +42,23 @@
     font-size: 0.75rem;
     line-height: 14px;
   }
-  @media screen and (min-width: 768px){
+  @media screen and (min-width: 768px) {
     footer {
       position: sticky;
       bottom: 0px;
       z-index: 1;
     }
-    .version{padding-left: 12px;}
+    .version {
+      padding-left: 12px;
+    }
     .copyright {
       padding-left: 200px;
     }
   }
   @media screen and (min-width: 1200px) {
-  .footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
   }
-}
 </style>

@@ -1,7 +1,9 @@
 {
-    "singleQuote": true,
-    "svelteAllowShorthand": true,
-    "allowShorthand": true,
-    "svelteBracketNewLine": false,
-    "svelteStrictMode": false
+  "plugins": ["prettier-plugin-svelte"],
+  "overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }],
+  "singleQuote": true,
+  "svelteAllowShorthand": true,
+  "allowShorthand": true,
+  "svelteBracketNewLine": false,
+  "svelteStrictMode": false
 }

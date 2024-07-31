@@ -11,7 +11,9 @@ export const handleSnackbar = writable({ isSnackbar: false, message: '' });
 export const statusFilter = writable({ showOngoing: true, showFinished: true });
 
 export const isTestEnvironment = readable(
-window.location.hostname === 'localhost' || window.location.hostname.startsWith('meta.test') || window.location.hostname.startsWith('meta.dev')
+  window.location.hostname === 'localhost' ||
+    window.location.hostname.startsWith('meta.test') ||
+    window.location.hostname.startsWith('meta.dev'),
 );
 
 export function baseUrl() {
@@ -20,22 +22,30 @@ export function baseUrl() {
   return `${protocol}//${window.location.hostname}${port}`;
 }
 
-export async function getProjectsMetadata(page: number, q?: string): Promise<void> {
+export async function getProjectsMetadata(
+  page: number,
+  q?: string,
+): Promise<void> {
   // const baseUrl = process.env.BASE_URL;
   const baseResultsRange = [1, 9];
   let route: string;
-  let currentResultsRange = baseResultsRange.map(v => v + ((page - 1) * baseResultsRange[1]));
+  let currentResultsRange = baseResultsRange.map(
+    (v) => v + (page - 1) * baseResultsRange[1],
+  );
 
   if (q) {
     query.set(q);
     route = `projects?q=${q}&_page=${page}&_limit=${baseResultsRange[1]}`;
-    handleSnackbar.set({ isSnackbar: true, message: `Displaying search results for query: ${q}` });
+    handleSnackbar.set({
+      isSnackbar: true,
+      message: `Displaying search results for query: ${q}`,
+    });
   } else {
     query.set('');
     route = `projects?_page=${page}&_limit=${baseResultsRange[1]}`;
   }
 
-  statusFilter.subscribe(f => {
+  statusFilter.subscribe((f) => {
     if (!f.showFinished || !f.showOngoing) {
       const filter = `&filter=${!f.showOngoing ? 'o' : ''}${!f.showFinished ? 'f' : ''}`;
       route += filter;
@@ -44,17 +54,22 @@ export async function getProjectsMetadata(page: number, q?: string): Promise<voi
 
   navigate(`/${route}`);
 
-  await fetch(`${(baseUrl())}/api/v1/${route}`)
-    .then(r => {
+  await fetch(`${baseUrl()}/api/v1/${route}`)
+    .then((r) => {
       const totalCount = parseInt(r.headers.get('X-Total-Count'));
       let totalPages = Math.floor(totalCount / baseResultsRange[1]);
       if (!Number.isInteger(totalCount / baseResultsRange[1])) {
         totalPages++;
       }
-      pagination.set({ currentPage: page, currentResultsRange, totalCount, totalPages });
+      pagination.set({
+        currentPage: page,
+        currentResultsRange,
+        totalCount,
+        totalPages,
+      });
       return r.json();
     })
-    .then(data => {
+    .then((data) => {
       pagedResults.set(data), console.log(data);
     });
 }

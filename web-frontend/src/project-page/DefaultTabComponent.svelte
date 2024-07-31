@@ -1,8 +1,13 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-  import { fade } from "svelte/transition";
-  import { getText, findOrganizationByID, findObjectByID, copyHowToCite } from "../functions";
-  import type { Dataset } from "../interfaces";
+  import { onMount } from 'svelte';
+  import { fade } from 'svelte/transition';
+  import {
+    getText,
+    findOrganizationByID,
+    findObjectByID,
+    copyHowToCite,
+  } from '../functions';
+  import type { Dataset } from '../interfaces';
   import { isTestEnvironment } from '../store';
 
   export let dataset: Dataset;
@@ -18,9 +23,11 @@
     let lineHeight: number;
     let divHeight: number;
     try {
-      const el = document.getElementById("abstract");
+      const el = document.getElementById('abstract');
       divHeight = el.scrollHeight;
-      lineHeight = parseInt(window.getComputedStyle(el).getPropertyValue('line-height'));
+      lineHeight = parseInt(
+        window.getComputedStyle(el).getPropertyValue('line-height'),
+      );
     } catch (error) {
       lineHeight = 20;
       divHeight = 19;
@@ -31,40 +38,46 @@
 
   const truncateString = (s: string) => {
     const browserWidth = window.innerWidth;
-    if (browserWidth < 992 && s.length > ((browserWidth - 100) / 8)) {
+    if (browserWidth < 992 && s.length > (browserWidth - 100) / 8) {
       return `${s.substring(0, (browserWidth - 100) / 8)}...`;
-    } else if (browserWidth >= 992 && s.length > (browserWidth / 17)) {
-      return `${s.substring(0, (browserWidth / 17))}...`;
+    } else if (browserWidth >= 992 && s.length > browserWidth / 17) {
+      return `${s.substring(0, browserWidth / 17)}...`;
     } else return s;
   };
 </script>
 
-<div id=dataset in:fade={{duration: 200}}>
+<div id="dataset" in:fade={{ duration: 200 }}>
   {#if dataset}
     <!-- Alternative titles -->
     {#if dataset?.alternativeTitles}
       <div>
-        <span class=label>Alternative Title</span>
-        <span class=data>{dataset?.alternativeTitles.map((t => {return getText(t)})).join(', ')}</span>
+        <span class="label">Alternative Title</span>
+        <span class="data"
+          >{dataset?.alternativeTitles
+            .map((t) => {
+              return getText(t);
+            })
+            .join(', ')}</span
+        >
       </div>
     {/if}
 
-    <div class=grid-wrapper>
+    <div class="grid-wrapper">
       <!-- Access conditions -->
       {#if dataset?.accessConditions}
         <div>
-          <span class=label>Access</span>
-          <span class=data>{dataset?.accessConditions}</span>
+          <span class="label">Access</span>
+          <span class="data">{dataset?.accessConditions}</span>
         </div>
       {:else if $isTestEnvironment}
         <div>
-          <span class=label>Access</span>
+          <span class="label">Access</span>
           <span class="warning data">access conditions missing</span>
         </div>
       {/if}
 
       <!-- Status -->
-    <!--   {#if dataset?.status}
+      <!--   {#if dataset?.status}
         <div>
           <span class=label>Status</span>
           <span class=data>{dataset?.status}</span>
@@ -79,32 +92,32 @@
       <!-- Dates -->
       {#if dataset.dateCreated}
         <div>
-          <span class=label>Date Created</span>
-          <span class=data>{dataset?.dateCreated}</span>
+          <span class="label">Date Created</span>
+          <span class="data">{dataset?.dateCreated}</span>
         </div>
       {/if}
       {#if dataset.datePublished}
         <div>
-          <span class=label>Date Published</span>
-          <span class=data>{dataset?.datePublished}</span>
+          <span class="label">Date Published</span>
+          <span class="data">{dataset?.datePublished}</span>
         </div>
       {/if}
       {#if dataset.dateModified}
         <div>
-          <span class=label>Date Modified</span>
-          <span class=data>{dataset?.dateModified}</span>
+          <span class="label">Date Modified</span>
+          <span class="data">{dataset?.dateModified}</span>
         </div>
       {/if}
 
       <!-- Type of Data -->
       {#if dataset?.typeOfData}
         <div>
-          <span class=label>Type of Data</span>
-          <span class=data>{dataset?.typeOfData.join(', ')}</span>
+          <span class="label">Type of Data</span>
+          <span class="data">{dataset?.typeOfData.join(', ')}</span>
         </div>
       {:else if $isTestEnvironment}
         <div>
-          <span class=label>Type of Data</span>
+          <span class="label">Type of Data</span>
           <span class="warning data">type of data missing</span>
         </div>
       {/if}
@@ -112,27 +125,28 @@
       <!-- Additional -->
       {#if dataset?.additional}
         <div style="grid-column-start: 1;grid-column-end: 3;">
-          <span class=label>Additional documentation</span>
+          <span class="label">Additional documentation</span>
           {#each dataset?.additional as d}
-            {#if d.__type === "URL"}
-              <a class="data" href={d.url} target=_>{truncateString(d.text)}</a>
+            {#if d.__type === 'URL'}
+              <a class="data" href={d.url} target="_"
+                >{truncateString(d.text)}</a
+              >
             {:else}
-              <span class=data>{getText(d)}</span>
+              <span class="data">{getText(d)}</span>
             {/if}
           {/each}
         </div>
       {/if}
-
     </div>
 
     <!-- License -->
     <!-- TODO: check how this looks with multiple licenses -->
     {#if dataset?.licenses}
       <div>
-        <span class=label>License</span>
+        <span class="label">License</span>
         {#each dataset?.licenses as l}
-          <div class=data>
-            <a href={l.license.url} target=_>{l.license.text}</a>
+          <div class="data">
+            <a href={l.license.url} target="_">{l.license.text}</a>
             {#if l.details}
               <div>{l.details}</div>
             {/if}
@@ -142,45 +156,65 @@
       </div>
     {:else if $isTestEnvironment}
       <div>
-        <span class=label>License</span>
+        <span class="label">License</span>
         <span class="warning data">licenses missing</span>
       </div>
     {/if}
 
     <!-- Languages -->
     {#if dataset?.languages}
-      <div class=grid-wrapper style="grid-template-columns: repeat(1, 1fr)">
+      <div class="grid-wrapper" style="grid-template-columns: repeat(1, 1fr)">
         <div>
-          <span class=label>Languages</span>
-          <span class=data>{dataset?.languages.map(l => {return getText(l)}).join(', ')}</span>
+          <span class="label">Languages</span>
+          <span class="data"
+            >{dataset?.languages
+              .map((l) => {
+                return getText(l);
+              })
+              .join(', ')}</span
+          >
         </div>
       </div>
     {:else if $isTestEnvironment}
-      <div class=grid-wrapper style="grid-template-columns: repeat(1, 1fr)">
+      <div class="grid-wrapper" style="grid-template-columns: repeat(1, 1fr)">
         <div>
-          <span class=label>Languages</span>
+          <span class="label">Languages</span>
           <span class="warning data">languages missing</span>
         </div>
       </div>
     {/if}
 
-
     <!-- How To Cite -->
     {#if dataset?.howToCite}
       <div class="property-row">
-        <span class=label style="display:inline">
+        <span class="label" style="display:inline">
           How To Cite
           {#if dataset?.howToCite}
-            <button on:click={copyHowToCite} title="copy citation to the clipboard">
-              <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+            <button
+              on:click={copyHowToCite}
+              title="copy citation to the clipboard"
+            >
+              <svg
+                class="icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                ></path></svg
+              >
             </button>
           {/if}
         </span>
-        <span id=how-to-cite class=data>{dataset?.howToCite}</span>
+        <span id="how-to-cite" class="data">{dataset?.howToCite}</span>
       </div>
     {:else if $isTestEnvironment}
       <div class="property-row">
-        <span class=label style="display:inline">How To Cite</span>
+        <span class="label" style="display:inline">How To Cite</span>
         <span class="warning data">how to cite missing</span>
       </div>
     {/if}
@@ -188,11 +222,18 @@
     <!-- Abstract -->
     {#if dataset?.abstracts}
       <div>
-        <span class=label>Abstract</span>
-        <div id=abstract class="data {isAbstractExpanded ? '' : 'abstract-short'}">
+        <span class="label">Abstract</span>
+        <div
+          id="abstract"
+          class="data {isAbstractExpanded ? '' : 'abstract-short'}"
+        >
           {#each dataset?.abstracts as a}
-            {#if a.__type === "URL"}
-              <div><a class="data" href={a.url} target=_>{truncateString(a.text)}</a></div>
+            {#if a.__type === 'URL'}
+              <div>
+                <a class="data" href={a.url} target="_"
+                  >{truncateString(a.text)}</a
+                >
+              </div>
             {:else}
               <div>{getText(a)}</div>
             {/if}
@@ -200,23 +241,29 @@
         </div>
       </div>
       {#if abstractLinesNumber > 6}
-        <div on:click={toggleExpand} class=expand-button>show {isAbstractExpanded ? "less" : "more"}</div>
+        <div on:click={toggleExpand} class="expand-button">
+          show {isAbstractExpanded ? 'less' : 'more'}
+        </div>
       {/if}
     {:else if $isTestEnvironment}
       <div>
-        <span class=label>Abstract</span>
+        <span class="label">Abstract</span>
         <span class="warning data" id="abstract">abstract missing</span>
       </div>
     {/if}
 
-      <!-- URLs -->
-      {#if dataset?.urls}
-      <div class=grid-wrapper style="grid-template-columns: repeat(1, 1fr)">
+    <!-- URLs -->
+    {#if dataset?.urls}
+      <div class="grid-wrapper" style="grid-template-columns: repeat(1, 1fr)">
         <div>
-          <span class=label>Additional Links</span>
+          <span class="label">Additional Links</span>
           {#each dataset?.urls as u}
             {#if u.__type === 'URL'}
-              <div><a class="data" href={u.url} target=_>{truncateString(u.text)}</a></div>
+              <div>
+                <a class="data" href={u.url} target="_"
+                  >{truncateString(u.text)}</a
+                >
+              </div>
             {/if}
           {/each}
         </div>
@@ -225,20 +272,30 @@
 
     <!-- Attribution -->
     {#if dataset?.attributions}
-      <span class=label>Attributions</span>
-      <div class=grid-wrapper>
+      <span class="label">Attributions</span>
+      <div class="grid-wrapper">
         {#each dataset?.attributions as a}
           <div class="attributions data">
-            <div class=role>{a.roles.join(", ")}</div>
+            <div class="role">{a.roles.join(', ')}</div>
             {#each [findObjectByID(a.agent)] as p}
               {#if p.__type === 'Person'}
                 {#if p.authorityRefs}
-                  <a href={p.authorityRefs[0].url} target=_ class="attribution-name-link">{p.givenNames.join(" ")} {p.familyNames.join(" ")}</a>
+                  <a
+                    href={p.authorityRefs[0].url}
+                    target="_"
+                    class="attribution-name-link"
+                    >{p.givenNames.join(' ')} {p.familyNames.join(' ')}</a
+                  >
                 {:else}
-                  <div class="attribution-name">{p.givenNames.join(" ")} {p.familyNames.join(" ")}</div>
+                  <div class="attribution-name">
+                    {p.givenNames.join(' ')}
+                    {p.familyNames.join(' ')}
+                  </div>
                 {/if}
                 {#if p.affiliation}
-                  {#each p.affiliation.map(o => {return findOrganizationByID(o)}) as org}
+                  {#each p.affiliation.map((o) => {
+                    return findOrganizationByID(o);
+                  }) as org}
                     <div class="attribution-additional">{org.name}</div>
                   {/each}
                 {/if}
@@ -248,14 +305,16 @@
                   <dif class="warning">Job Title missing</dif>
                 {/if}
                 {#if p.email}
-                  <a class=email href="mailto:{p.email}">{p.email}</a>
+                  <a class="email" href="mailto:{p.email}">{p.email}</a>
                 {/if}
               {:else if p.__type === 'Organization'}
                 {#if p.url}
-                  <a href={p.url.url} target=_ class="attribution-name-link">{p.name}</a>
+                  <a href={p.url.url} target="_" class="attribution-name-link"
+                    >{p.name}</a
+                  >
                 {/if}
                 {#if p.email}
-                  <a class=email href="mailto:{p.email}">{p.email}</a>
+                  <a class="email" href="mailto:{p.email}">{p.email}</a>
                 {/if}
               {/if}
             {/each}
@@ -263,17 +322,18 @@
         {/each}
       </div>
     {:else if $isTestEnvironment}
-      <span class=label>Attributions</span>
-      <div class=grid-wrapper>
+      <span class="label">Attributions</span>
+      <div class="grid-wrapper">
         <span class="warning data">attributions missing</span>
       </div>
     {/if}
-
   {/if}
 </div>
 
 <style>
-  a {color: var(--lead-colour);}
+  a {
+    color: var(--lead-colour);
+  }
   button {
     border: none;
     background-color: inherit;

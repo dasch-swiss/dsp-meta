@@ -10,6 +10,8 @@
     "@types/cors": "^2.8.9",
     "@types/express": "^4.17.11",
     "@types/node": "^14.14.25",
+    "prettier": "^3.3.3",
+    "prettier-plugin-svelte": "^3.2.6",
     "rollup": "^2.3.4",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-livereload": "^2.0.0",
@@ -25,7 +27,8 @@
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public -s",
-    "validate": "svelte-check"
+    "validate": "svelte-check",
+    "fmt": "prettier --write ."
   },
   "dependencies": {
     "sirv-cli": "^1.0.0",
