@@ -18,7 +18,7 @@
   })
 </script>
 
-<div transition:fade={{duration: 400}}>
+<div in:fade={{duration: 400}}>
   {$handleSnackbar.message}
 </div>
 
