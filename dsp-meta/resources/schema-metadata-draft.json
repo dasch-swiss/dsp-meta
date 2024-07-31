@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "https://dasch.swiss/schema/schema-metadata-draft.json",
   "title": "Metadata Draft Schema",
-  "description": "Schema definition of DSP metadata for projects which are not yet published.",
+  "description": "Schema definition of DSP metadata for projects which are not yet complete.",
   "type": "object",
   "properties": {
     "$schema": {
