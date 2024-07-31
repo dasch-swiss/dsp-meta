@@ -17,6 +17,7 @@
     }
   });
 </script>
+
 <div in:fade={{ duration: 400 }}>
   {$handleSnackbar.message}
 </div>
