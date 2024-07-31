@@ -77,7 +77,13 @@
         "text": "18th and 19th Centuries"
       }
     ],
-    "status": "ongoing"
+    "url": {
+      "__type": "URL",
+      "type": "URL",
+      "url": "https://delille.philhist.unibas.ch/dokuwiki/doku.php?id=start",
+      "text": "Discover Project Data"
+    },
+    "status": "finished"
   },
   "datasets": [
     {
