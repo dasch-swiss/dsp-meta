@@ -23,7 +23,7 @@
             openssl
             pkg-config
             jq
-            cargo-fuzz
+            cargo-watch
             cargo-nextest
             rustup
             graphviz
