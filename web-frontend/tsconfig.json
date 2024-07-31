@@ -1,25 +1,21 @@
 {
-    "compilerOptions": {
-        "lib": ["es5", "es6", "dom"],
-        "importsNotUsedAsValues": "error",	
-        "isolatedModules": true,
-        "strict": false,
-        "baseUrl": ".",
-        "noImplicitAny": true,
-        "noImplicitThis": true,
-        "preserveConstEnums": true,
-        "removeComments": true,
-        "sourceMap": true,
-        "types": [
-            "node",
-            "express",
-            "svelte"
-        ],
-        "skipLibCheck": true,
-        "experimentalDecorators": true,
-        "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true
-    },
-    "exclude": ["bazel-*", "node_modules", "__sapper__/*", "public/*"]
+  "compilerOptions": {
+    "lib": ["es5", "es6", "dom"],
+    "importsNotUsedAsValues": "error",
+    "isolatedModules": true,
+    "strict": false,
+    "baseUrl": ".",
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "preserveConstEnums": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "types": ["node", "express", "svelte"],
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "exclude": ["bazel-*", "node_modules", "__sapper__/*", "public/*"]
 }

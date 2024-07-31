@@ -2,25 +2,26 @@
 
 :root {
   --dasch-primary: #336790;
-  --dasch-secondary: #74A2CF;
+  --dasch-secondary: #74a2cf;
   --dasch-third: #112230;
-  --dasch-hover: #A3C0FF;
+  --dasch-hover: #a3c0ff;
   --dasch-text: #3f3f40;
   --text-darker: #282828;
   --dasch-grey-2: #dddede;
   --dasch-grey-3: #f1f1f1;
   --cl-background: #ccc;
   --cl-background-light: #ddd;
-  
+
   --cl-transparent-light: rgba(255, 255, 255, 0.3);
 
   --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --shadow-2: 0px 2px 4px -1px rgba(0,0,0,0.3);
+  --shadow-2: 0px 2px 4px -1px rgba(0, 0, 0, 0.3);
 
   --lead-colour: var(--dasch-primary);
 }
 
-html, body {
+html,
+body {
   position: relative;
   width: 100%;
   height: 100%;
@@ -80,13 +81,15 @@ button:disabled {
 .hidden {
   display: none;
 }
-.row, .property-row {
+.row,
+.property-row {
   display: flex;
   flex-direction: column;
   /* flex-wrap: wrap; */
   width: 100%;
 }
-.label, .data {
+.label,
+.data {
   display: flex;
   flex-direction: column;
   flex-basis: 100%;
@@ -130,20 +133,25 @@ button:disabled {
   letter-spacing: 0.8px;
   padding: 0 8px;
 }
-.new-text, .new-link, .data, .abstract {
+.new-text,
+.new-link,
+.data,
+.abstract {
   font-size: 1rem;
   line-height: 1.25;
 }
 .new-link {
   color: var(--lead-colour);
 }
-.new-label, .label {
+.new-label,
+.label {
   font-size: 1rem;
   font-family: robotobold;
   color: var(--dasch-text);
   padding: 0;
 }
-.new-keyword, .keyword {
+.new-keyword,
+.keyword {
   font-family: robotolight;
   font-size: 1rem;
   line-height: 1.25;
@@ -155,7 +163,8 @@ button:disabled {
 }
 /* media queries */
 @media screen and (max-width: 991px) {
-  input:focus, button:focus {
+  input:focus,
+  button:focus {
     outline: none;
   }
 }
@@ -166,7 +175,9 @@ button:disabled {
   .xs-hidden {
     display: none !important;
   }
-  .top-heading {font-size: 2.5rem;}
+  .top-heading {
+    font-size: 2.5rem;
+  }
 }
 @media screen and (min-width: 768px) {
   .s-inline-block {
@@ -184,7 +195,7 @@ button:disabled {
     display: none !important;
   }
 }
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1200px) {
   .l-inline-block {
     display: inline-block !important;
   }
@@ -192,7 +203,7 @@ button:disabled {
     display: none !important;
   }
 }
-@media screen and (min-width: 1280px){
+@media screen and (min-width: 1280px) {
   .xl-inline-block {
     display: inline-block !important;
   }

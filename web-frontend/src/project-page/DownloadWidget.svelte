@@ -1,4 +1,4 @@
-<h3 class=widget-heading>Download metadata</h3>
+<h3 class="widget-heading">Download metadata</h3>
 <button>JSON</button>
 <button>JSON-LD</button>
 <button>XML</button>

@@ -1,18 +1,21 @@
 <script lang="ts">
-  import DefaultTabComponent from "./DefaultTabComponent.svelte";
-  import type { Dataset } from "../interfaces";
+  import DefaultTabComponent from './DefaultTabComponent.svelte';
+  import type { Dataset } from '../interfaces';
 
   export let datasets = [] as Dataset[];
   export let activeTabValue = 0;
 
-  const handleTabsBrowsing = (tabValue: number) => () => (activeTabValue = tabValue);
+  const handleTabsBrowsing = (tabValue: number) => () =>
+    (activeTabValue = tabValue);
 </script>
 
 <ul>
   {#each datasets as dataset, i}
     <li class={activeTabValue === i ? 'active' : ''}>
       {#if datasets.length > 1 && activeTabValue !== i}
-        <span on:click={handleTabsBrowsing(i)} title={dataset.title}>{`${dataset.title.substring(0,12)}...`}</span>
+        <span on:click={handleTabsBrowsing(i)} title={dataset.title}
+          >{`${dataset.title.substring(0, 12)}...`}</span
+        >
       {:else}
         <span on:click={handleTabsBrowsing(i)}>{dataset.title}</span>
       {/if}
@@ -21,19 +24,18 @@
 </ul>
 {#each datasets as dataset, i}
   {#if activeTabValue === i}
-    <div class=box>
-      <svelte:component this={DefaultTabComponent} dataset={dataset} />
+    <div class="box">
+      <svelte:component this={DefaultTabComponent} {dataset} />
     </div>
   {/if}
 {/each}
-
 
 <style>
   .box {
     margin-bottom: 10px;
     padding: 0 10px;
     border: 1px solid #dee2e6;
-    border-radius: 0 0 .5rem .5rem;
+    border-radius: 0 0 0.5rem 0.5rem;
     border-top: 0;
     overflow-wrap: break-word;
     box-shadow: var(--shadow-2);
