@@ -1,43 +1,51 @@
 <script lang="ts">
-  import type { Metadata } from "../interfaces";
-  import { onDestroy, onMount, tick } from "svelte";
-  import { handleSnackbar, previousRoute, projectMetadata } from "../store";
-  import ProjectWidget from "./ProjectWidget.svelte";
+  import type { Metadata } from '../interfaces';
+  import { onDestroy, onMount, tick } from 'svelte';
+  import { handleSnackbar, previousRoute, projectMetadata } from '../store';
+  import ProjectWidget from './ProjectWidget.svelte';
   // import DownloadWidget from "./DownloadWidget.svelte";  // LATER: bring back with download widget
-  import Tab from "./Tab.svelte";
-  import { fade } from "svelte/transition";
-  import Snackbar from "../Snackbar.svelte";
-  import { getText } from "../functions";
-  import Loading from "../Loading.svelte";
-  import { isTestEnvironment} from '../store';
-  import { baseUrl } from "../store";
+  import Tab from './Tab.svelte';
+  import { fade } from 'svelte/transition';
+  import Snackbar from '../Snackbar.svelte';
+  import { getText } from '../functions';
+  import Loading from '../Loading.svelte';
+  import { isTestEnvironment } from '../store';
+  import { baseUrl } from '../store';
 
   const mobileResolution = window.innerWidth < 992;
   const descriptionLanguages = new Map<string, string>([
     // contains languages that are presented in provided descriptions, update if necessary
-    ["ar", "Arabic"],
-    ["de", "German"],
-    ["en", "English"],
-    ["fr", "French"]
+    ['ar', 'Arabic'],
+    ['de', 'German'],
+    ['en', 'English'],
+    ['fr', 'French'],
   ]);
 
   let isDescriptionExpanded: boolean;
   let descriptionLinesNumber: number;
   let arePublicationsExpanded: boolean;
-  let displayedDescriptionsLanguage: string = "";
+  let displayedDescriptionsLanguage: string = '';
   let availableDescriptionsIso: string[] = [];
 
   const getIso = (language: string): string => {
-    const lang = (availableDescriptionsIso.length === 1) ? availableDescriptionsIso[0] : language
-    return [...descriptionLanguages].find(([key, val]) => val === lang)[0]
-  }
+    const lang =
+      availableDescriptionsIso.length === 1
+        ? availableDescriptionsIso[0]
+        : language;
+    return [...descriptionLanguages].find(([key, val]) => val === lang)[0];
+  };
 
   onMount(async () => {
     // wait with component creation for the data to be fetched
     await getProjectMetadata();
-    availableDescriptionsIso = Object.keys($projectMetadata?.project.description);
+    availableDescriptionsIso = Object.keys(
+      $projectMetadata?.project.description,
+    );
     // initialize iso language to load => assumption is if more than 1 language is available English exists and set as default
-    displayedDescriptionsLanguage = availableDescriptionsIso.length === 1 ? availableDescriptionsIso[0] : "en"
+    displayedDescriptionsLanguage =
+      availableDescriptionsIso.length === 1
+        ? availableDescriptionsIso[0]
+        : 'en';
   });
 
   onDestroy(() => {
@@ -46,7 +54,7 @@
   });
 
   const getProjectMetadata = async () => {
-    const projectID = window.location.pathname.split("/")[2];
+    const projectID = window.location.pathname.split('/')[2];
 
     const res = await fetch(`${baseUrl()}/api/v1/projects/${projectID}`);
     const metadata: Metadata = await res.json();
@@ -74,9 +82,11 @@
       let lineHeight: number;
       let divHeight: number;
       try {
-        const el = document.getElementById("description");
+        const el = document.getElementById('description');
         divHeight = el.scrollHeight;
-        lineHeight = parseInt(window.getComputedStyle(el).getPropertyValue('line-height'));
+        lineHeight = parseInt(
+          window.getComputedStyle(el).getPropertyValue('line-height'),
+        );
       } catch (error) {
         lineHeight = 20;
         divHeight = 19;
@@ -94,18 +104,34 @@
 {/if}
 
 {#if $projectMetadata}
-  <div class="container" in:fade={{duration: 250}}>
+  <div class="container" in:fade={{ duration: 250 }}>
     {#if mobileResolution}
-      <button on:click={() => history.back()} class=goback-button title="go back to the projects list" disabled={!$previousRoute && window.history.length <= 2}>
-        <svg class=icon fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      <button
+        on:click={() => history.back()}
+        class="goback-button"
+        title="go back to the projects list"
+        disabled={!$previousRoute && window.history.length <= 2}
+      >
+        <svg
+          class="icon"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 19l-7-7m0 0l7-7m-7 7h18"
+          />
         </svg>
-        <span class=button-label>Go Back</span>
+        <span class="button-label">Go Back</span>
       </button>
     {/if}
 
     <!-- Project name and alternative names -->
-    <div class=row style="flex-wrap: wrap">
+    <div class="row" style="flex-wrap: wrap">
       {#if $projectMetadata?.project.name}
         <h1 class="title top-heading">
           {$projectMetadata?.project.name}
@@ -114,36 +140,59 @@
         <div class="warning top-heading">Project Name missing</div>
       {/if}
       {#if $projectMetadata?.project.alternativeNames}
-        <div class=row>
+        <div class="row">
           <h4 class="title new-title">
             Also known as:&nbsp;
             <span style="font-style: italic">
-              {$projectMetadata?.project.alternativeNames.map((t) => {return getText(t)}).join(", ")}
+              {$projectMetadata?.project.alternativeNames
+                .map((t) => {
+                  return getText(t);
+                })
+                .join(', ')}
             </span>
           </h4>
         </div>
       {/if}
     </div>
-    <div class=row>
+    <div class="row">
       <div class="column-left">
         <!-- Description -->
         <div class="property-row">
           {#if $projectMetadata?.project.description && getText($projectMetadata?.project.description)}
-            <span class="label new-subtitle" style="display: block;">Description 
-              <span style={availableDescriptionsIso.length <= 1 ? "display: none" : "display: contents"}> in 
-                {#each Object.keys($projectMetadata?.project.description).map(k=> descriptionLanguages.get(k)) as l}
-                  <button class="language {availableDescriptionsIso.length > 1 && displayedDescriptionsLanguage === getIso(l) ? "active" : ""}" on:click={() => displayedDescriptionsLanguage = getIso(l)}>
+            <span class="label new-subtitle" style="display: block;"
+              >Description
+              <span
+                style={availableDescriptionsIso.length <= 1
+                  ? 'display: none'
+                  : 'display: contents'}
+              >
+                in
+                {#each Object.keys($projectMetadata?.project.description).map( (k) => descriptionLanguages.get(k), ) as l}
+                  <button
+                    class="language {availableDescriptionsIso.length > 1 &&
+                    displayedDescriptionsLanguage === getIso(l)
+                      ? 'active'
+                      : ''}"
+                    on:click={() => (displayedDescriptionsLanguage = getIso(l))}
+                  >
                     {l}
                   </button>
                 {/each}
               </span>
             </span>
-            <div id="description" class="data new-text {isDescriptionExpanded ? '' : 'description-short'}">
-              {$projectMetadata?.project.description[displayedDescriptionsLanguage]}
+            <div
+              id="description"
+              class="data new-text {isDescriptionExpanded
+                ? ''
+                : 'description-short'}"
+            >
+              {$projectMetadata?.project.description[
+                displayedDescriptionsLanguage
+              ]}
             </div>
             {#if descriptionLinesNumber > 6}
               <div on:click={toggleDescriptionExpand} class="expand-button">
-                show {isDescriptionExpanded ? "less" : "more"}
+                show {isDescriptionExpanded ? 'less' : 'more'}
               </div>
             {/if}
           {:else if $isTestEnvironment}
@@ -157,23 +206,38 @@
             <span class="label new-subtitle">Publications</span>
             {#each $projectMetadata?.project.publications as p, i}
               {#if i > 1}
-                <span class={arePublicationsExpanded ? "data new-text" : "hidden"}>{p.text}
+                <span
+                  class={arePublicationsExpanded ? 'data new-text' : 'hidden'}
+                  >{p.text}
                   {#if p.url}
                     {#each p.url as url, n}
-                      <a href={url.url} class="publication-link {arePublicationsExpanded ? "data" : "hidden"}" target=_>
+                      <a
+                        href={url.url}
+                        class="publication-link {arePublicationsExpanded
+                          ? 'data'
+                          : 'hidden'}"
+                        target="_"
+                      >
                         {url.text}
-                        {p.url.length > 0 && n < p.url.length - 1 ? "," : ""}
+                        {p.url.length > 0 && n < p.url.length - 1 ? ',' : ''}
                       </a>
                     {/each}
                   {/if}
                 </span>
               {:else}
-                <span class="data new-text">{p.text}
+                <span class="data new-text"
+                  >{p.text}
                   {#if p.url}
                     {#each p.url as url, n}
-                      <a href={url.url} class="publication-link {arePublicationsExpanded ? "data" : "hidden"}" target=_>
+                      <a
+                        href={url.url}
+                        class="publication-link {arePublicationsExpanded
+                          ? 'data'
+                          : 'hidden'}"
+                        target="_"
+                      >
                         {url.text}
-                        {p.url.length > 0 && n < p.url.length - 1 ? "," : ""}
+                        {p.url.length > 0 && n < p.url.length - 1 ? ',' : ''}
                       </a>
                     {/each}
                   {/if}
@@ -183,7 +247,7 @@
           </div>
           {#if $projectMetadata?.project.publications.length > 2}
             <div on:click={togglePublicationExpand} class="expand-button">
-              show {arePublicationsExpanded ? "less" : "more"}
+              show {arePublicationsExpanded ? 'less' : 'more'}
             </div>
           {/if}
         {/if}
@@ -193,20 +257,52 @@
         </div>
 
         {#if !mobileResolution}
-          <button on:click={() => window.scrollTo({ top: 0, left: 0, behavior: "smooth" })} class="gototop-button" title="Get back to the top">
-            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          <button
+            on:click={() =>
+              window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
+            class="gototop-button"
+            title="Get back to the top"
+          >
+            <svg
+              class="icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 10l7-7m0 0l7 7m-7-7v18"
+              />
             </svg>
           </button>
         {/if}
       </div>
       <div class="column-right">
         {#if !mobileResolution}
-          <button on:click={() => history.back()} class="goback-button" title="go back to the projects list" disabled={!$previousRoute && window.history.length <= 2}>
-            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          <button
+            on:click={() => history.back()}
+            class="goback-button"
+            title="go back to the projects list"
+            disabled={!$previousRoute && window.history.length <= 2}
+          >
+            <svg
+              class="icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              />
             </svg>
-            <span class=button-label>Go Back</span>
+            <span class="button-label">Go Back</span>
           </button>
         {/if}
 
@@ -220,9 +316,26 @@
           </div> -->
 
         {#if mobileResolution}
-          <button on:click={() => {window.scrollTo({ top: 0, left: 0, behavior: "smooth" })}} class="gototop-button m-hidden" title="Get back to the top">
-            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          <button
+            on:click={() => {
+              window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+            }}
+            class="gototop-button m-hidden"
+            title="Get back to the top"
+          >
+            <svg
+              class="icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 10l7-7m0 0l7 7m-7-7v18"
+              />
             </svg>
           </button>
         {/if}
@@ -327,17 +440,34 @@
   }
 
   @supports (-moz-appearance: none) {
-    button.gototop-button {margin-bottom: 40px;}
+    button.gototop-button {
+      margin-bottom: 40px;
+    }
   }
   @media screen and (min-width: 992px) {
-    .container {padding: 0 40px}
-    .column-left, .column-right {padding: 20px;}
-    .column-left {min-width: 52vw;}
-    .column-right {min-width: 30vw;}
-    .row {flex-direction: row;}
+    .container {
+      padding: 0 40px;
+    }
+    .column-left,
+    .column-right {
+      padding: 20px;
+    }
+    .column-left {
+      min-width: 52vw;
+    }
+    .column-right {
+      min-width: 30vw;
+    }
+    .row {
+      flex-direction: row;
+    }
   }
   @media screen and (min-width: 1200px) {
-    .column-left {min-width: 688px;}
-    .column-right {min-width: 352px;}
+    .column-left {
+      min-width: 688px;
+    }
+    .column-right {
+      min-width: 352px;
+    }
   }
 </style>
