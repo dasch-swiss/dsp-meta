@@ -134,7 +134,6 @@
           "type": "string",
           "description": "The status of the dataset.",
           "enum": [
-            "ongoing",
             "finished"
           ],
           "default": "ongoing"
@@ -269,6 +268,7 @@
       "required": [
         "__type",
         "shortcode",
+        "status",
         "name",
         "description",
         "startDate",
