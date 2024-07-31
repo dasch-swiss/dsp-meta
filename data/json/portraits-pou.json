@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0827-project",
     "__type": "Project",
-    "__createdAt": "1651843028915508000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Portraits of Unbelonging (POU), 2021, DaSCH. ark.dasch.swiss/ark:/72163/1/0827",
     "teaserText": "How do photography and statecraft intersect in the making and unmaking of citizens?  How and why did photography become a new media for unmaking subjects in late 19th c Ottoman empire?",
     "datasets": [
@@ -100,8 +97,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0827-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1651843031869757000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "en": "The dataset lists all individuals who left the Ottoman empire through the terk-i tabiiyet process based on documents in the Ottoman archives in Istanbul. These Ottoman Armenians were permitted to leave on the condition that they expatriate and never return, hence these photographs that predate passport photographs by a decade or more are bureaucratic documents of exclusion, taken as part of unmaking these individuals as Ottoman subjects. Hence, they are portraits of unbelonging. This dataset lists every glass negative that must have existed at some point with the names of all individuals whose likeness would have been captured in the negative.  Moreover, it charts the circulation of all bureaucratic documents pertaining to the terk-I tabiiyet process."
@@ -160,8 +155,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0827-person-000",
       "__type": "Person",
-      "__createdAt": "1651843032375487000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Department of Anthropology, Ruth Adams Building, 131 George St",
@@ -197,15 +190,11 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0827-organization-001",
       "__type": "Organization",
-      "__createdAt": "1651843032411107000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "Rutgers University"
     },
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0827-organization-000",
       "__type": "Organization",
-      "__createdAt": "1651843032411168000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Claridenstrasse 26",
@@ -226,8 +215,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0827-grant-000",
       "__type": "Grant",
-      "__createdAt": "1651843032485509000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0827-organization-000"
       ]

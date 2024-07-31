@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "https://dasch.swiss/schema/schema-metadata-draft.json",
-  "title": "Metadata Schema",
-  "description": "Schema definition of DSP metadata",
+  "title": "Metadata Draft Schema",
+  "description": "Schema definition of DSP metadata for projects which are not yet published.",
   "type": "object",
   "properties": {
     "$schema": {
@@ -47,7 +47,6 @@
     }
   },
   "required": [
-    "$schema",
     "project",
     "datasets"
   ],
@@ -121,38 +120,10 @@
       "description": "A project on the DSP",
       "type": "object",
       "properties": {
-        "__id": {
-          "type": "string",
-          "description": "Identifier of the project"
-        },
         "__type": {
           "type": "string",
           "description": "Type of this object",
           "const": "Project"
-        },
-        "__createdAt": {
-          "type": "string",
-          "description": "Creation date of this object"
-        },
-        "__createdBy": {
-          "type": "string",
-          "description": "ID of the user who created this object"
-        },
-        "__modifiedAt": {
-          "type": "string",
-          "description": "Last modification date of this object"
-        },
-        "__modifiedBy": {
-          "type": "string",
-          "description": "ID of the user who last modified this object"
-        },
-        "__deletedAt": {
-          "type": "string",
-          "description": "Deletion date of this object"
-        },
-        "__deletedBy": {
-          "type": "string",
-          "description": "ID of the user who deleted this object"
         },
         "shortcode": {
           "type": "string",
@@ -296,7 +267,6 @@
         }
       },
       "required": [
-        "__id",
         "__type",
         "shortcode",
         "name",
@@ -342,30 +312,6 @@
           "type": "string",
           "const": "Grant"
         },
-        "__createdAt": {
-          "type": "string",
-          "description": "Creation date of this object"
-        },
-        "__createdBy": {
-          "type": "string",
-          "description": "ID of the user who created this object"
-        },
-        "__modifiedAt": {
-          "type": "string",
-          "description": "Last modification date of this object"
-        },
-        "__modifiedBy": {
-          "type": "string",
-          "description": "ID of the user who last modified this object"
-        },
-        "__deletedAt": {
-          "type": "string",
-          "description": "Deletion date of this object"
-        },
-        "__deletedBy": {
-          "type": "string",
-          "description": "ID of the user who deleted this object"
-        },
         "funders": {
           "description": "Legal bodies funding the grant.",
           "type": "array",
@@ -406,30 +352,6 @@
         "__type": {
           "type": "string",
           "const": "Person"
-        },
-        "__createdAt": {
-          "type": "string",
-          "description": "Creation date of this object"
-        },
-        "__createdBy": {
-          "type": "string",
-          "description": "ID of the user who created this object"
-        },
-        "__modifiedAt": {
-          "type": "string",
-          "description": "Last modification date of this object"
-        },
-        "__modifiedBy": {
-          "type": "string",
-          "description": "ID of the user who last modified this object"
-        },
-        "__deletedAt": {
-          "type": "string",
-          "description": "Deletion date of this object"
-        },
-        "__deletedBy": {
-          "type": "string",
-          "description": "ID of the user who deleted this object"
         },
         "jobTitles": {
           "type": "array",
@@ -507,30 +429,6 @@
         "__type": {
           "type": "string",
           "const": "Dataset"
-        },
-        "__createdAt": {
-          "type": "string",
-          "description": "Creation date of this object"
-        },
-        "__createdBy": {
-          "type": "string",
-          "description": "ID of the user who created this object"
-        },
-        "__modifiedAt": {
-          "type": "string",
-          "description": "Last modification date of this object"
-        },
-        "__modifiedBy": {
-          "type": "string",
-          "description": "ID of the user who last modified this object"
-        },
-        "__deletedAt": {
-          "type": "string",
-          "description": "Deletion date of this object"
-        },
-        "__deletedBy": {
-          "type": "string",
-          "description": "ID of the user who deleted this object"
         },
         "title": {
           "type": "string",
@@ -673,30 +571,6 @@
         "__type": {
           "type": "string",
           "const": "Organization"
-        },
-        "__createdAt": {
-          "type": "string",
-          "description": "Creation date of this object"
-        },
-        "__createdBy": {
-          "type": "string",
-          "description": "ID of the user who created this object"
-        },
-        "__modifiedAt": {
-          "type": "string",
-          "description": "Last modification date of this object"
-        },
-        "__modifiedBy": {
-          "type": "string",
-          "description": "ID of the user who last modified this object"
-        },
-        "__deletedAt": {
-          "type": "string",
-          "description": "Deletion date of this object"
-        },
-        "__deletedBy": {
-          "type": "string",
-          "description": "ID of the user who deleted this object"
         },
         "name": {
           "type": "string",

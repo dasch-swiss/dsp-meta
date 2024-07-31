@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0804-project",
     "__type": "Project",
-    "__createdAt": "1630601297599944000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Dokumentationsbibliothek St. Moritz",
     "teaserText": "Bibliothek St. Moritz Dokumentation is the local history archive of the community of St. Moritz, Switzerland.",
     "datasets": [
@@ -81,8 +78,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0804-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1630601300976368000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "en": "Bilddatenbank makes accessible the collection of historic photographs and other graphical representation of St. Moritz Dokumentationsbibliothek"
@@ -119,8 +114,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0804-organization-001",
       "__type": "Organization",
-      "__createdAt": "1630601301506212000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "",
@@ -133,8 +126,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0804-organization-000",
       "__type": "Organization",
-      "__createdAt": "1630601301561696000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Plazza da Scoula 14",

@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0114-project",
     "__type": "Project",
-    "__createdAt": "1630601387381347000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Clastres, P., Carpentier, F., Klima, H., Défayes, F., Metzger, C., Rivoal, M., 2020, Les membres du Comité international olympique (CIO) de 1894 à 1972 [database]. DaSCH https://ark.dasch.swiss/ark:/72163/1/0114.",
     "teaserText": "Ce projet reconstituera les trajectoires familiales, professionnelles, sociales et politiques des 213 membres du CIO cooptés avant 1972.",
     "datasets": [
@@ -93,8 +90,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0114-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1630601392553111000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "fr": "Si la ville de Lausanne a une existence à l'échelle-monde, c'est largement dû à son statut de capitale du sport international. Mais qui sont vraiment les membres du Comité international olympique (CIO) installé sur les bords du Léman depuis 1915 ? De quelle élite transnationale sont-ils le nom ? Constitué en Sorbonne en 1894, le CIO a été doté par son fondateur, le baron français Pierre de Coubertin (1863-1937), d'un système de valeurs qui mêle la culture chevaleresque des aristocraties européennes, l'humanisme de la Renaissance plutôt que celui des Lumières, l'hygiénisme social, l'éducation britannique au struggleforlife, le dogme élitaire de l'amateurisme, et le liberal pacifism transatlantique du second XIXe siècle. Que ce corpus de valeurs ait survécu jusqu'à nos jours s'explique par le principe de cooptation qui prévaut dès l'origine pour le recrutement des membres du CIO. Cela tient également au règlement adopté en 1908 qui stipule que ses membres représentent le CIO dans leurs pays respectifs, et non l'inverse. Au croisement de l'histoire, des sciences politiques, et de la sociologie des élites, notre projet vise donc à connaître les facteurs socio-culturels, économiques et politiques qui ont prévalu dans le self recruitment des 300 membres cooptés avant la mutation commerciale du CIO dans les années 1970-1980. Nous allons reconstituer leurs trajectoires familiales et professionnelles, identifier leurs formes de sociabilité et leurs pratiques culturelles, préciser leurs orientations idéologiques et leurs engagements politiques, et dessiner leurs réseaux. La méthode prosopographique, ou « biographie collective », est accompagnée par l'utilisation d’une base de données comprenant quelque 300 notices biographiques, qui sont mises en ligne à destination des chercheurs et du grand public."
@@ -184,8 +179,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0114-person-003",
       "__type": "Person",
-      "__createdAt": "1630601393129250000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "fabien.def@gmail.com",
       "familyNames": [
         "Défayes"
@@ -203,8 +196,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0114-person-004",
       "__type": "Person",
-      "__createdAt": "1630601393129355000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "christophe.metzger@unil.ch",
       "familyNames": [
         "Metzger"
@@ -222,8 +213,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0114-person-005",
       "__type": "Person",
-      "__createdAt": "1630601393129455000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "marion.rivoal@unil.ch",
       "familyNames": [
         "Rivoal"
@@ -249,8 +238,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0114-person-000",
       "__type": "Person",
-      "__createdAt": "1630601393129631000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "patrick.clastres@unil.ch",
       "familyNames": [
         "Clastres"
@@ -276,8 +263,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0114-person-001",
       "__type": "Person",
-      "__createdAt": "1630601393129801000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "florence.carpentier@unil.ch",
       "familyNames": [
         "Carpentier"
@@ -304,8 +289,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0114-person-002",
       "__type": "Person",
-      "__createdAt": "1630601393129990000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "helena.klima@unil.ch",
       "familyNames": [
         "Klima"
@@ -325,8 +308,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0114-organization-000",
       "__type": "Organization",
-      "__createdAt": "1630601393130109000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Wildhainweg 3 Postfach",
@@ -346,8 +327,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0114-organization-001",
       "__type": "Organization",
-      "__createdAt": "1630601393580272000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Unicentre",
@@ -368,8 +347,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0114-grant-000",
       "__type": "Grant",
-      "__createdAt": "1630601393841176000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0114-organization-000"
       ],

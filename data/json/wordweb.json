@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0826-project",
     "__type": "Project",
-    "__createdAt": "1630601420326707000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "WordWeb/IDEM (2021), DaSCH. ark.dasch.swiss/ark:/72163/1/0826",
     "teaserText": "WordWeb/IDEM offers an innovative digital database for representing intertextuality in the drama of Shakespeare’s time.",
     "datasets": [
@@ -109,8 +106,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0826-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1630601424457656000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "en": "4500 extracts from plays and other texts written no later than 1688, mostly in English"
@@ -222,8 +217,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0826-person-002",
       "__type": "Person",
-      "__createdAt": "1630601426850032000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Heeg"
       ],
@@ -240,8 +233,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0826-person-003",
       "__type": "Person",
-      "__createdAt": "1630601426850096000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Reitzner Elliot"
       ],
@@ -258,8 +249,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0826-person-001",
       "__type": "Person",
-      "__createdAt": "1630601426850158000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Hohl Trillini"
       ],
@@ -276,8 +265,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0826-person-004",
       "__type": "Person",
-      "__createdAt": "1630601426850158000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Tissaveerasingham"
       ],
@@ -294,8 +281,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0826-person-005",
       "__type": "Person",
-      "__createdAt": "1630601426850158000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Rosenthaler"
       ],
@@ -314,8 +299,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0826-organization-000",
       "__type": "Organization",
-      "__createdAt": "1630601426850234000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Wildhainweg 3, Postfach",
@@ -335,8 +318,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0826-organization-001",
       "__type": "Organization",
-      "__createdAt": "1630601426881261000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "University of Basel",
       "url": {
         "__type": "URL",
@@ -348,8 +329,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0826-organization-002",
       "__type": "Organization",
-      "__createdAt": "1630601426881261000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "Digital Humanities Lab, University of Basel",
       "url": {
         "__type": "URL",
@@ -363,8 +342,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0826-grant-000",
       "__type": "Grant",
-      "__createdAt": "1630601426881466000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0826-organization-000"
       ],

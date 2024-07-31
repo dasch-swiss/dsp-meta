@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0105-project",
     "__type": "Project",
-    "__createdAt": "1630601291043795000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Brandt, P.-Y., Serbaeva O.,  Cocco, Ch., Dessart, G., Dandarova Robert, Z., Rivoal, M.,  2019, Dessins de dieux [database] (DaSCH), https://ark.dasch.swiss/ark:/72163/1/0105.",
     "teaserText": "Fondé sur plusieurs centaines de dessins dans diverses régions du monde, ce projet étudie l’évolution de la représentation de Dieu ou d’autres êtres surnaturels chez des enfants et des adolescents.",
     "datasets": [
@@ -191,8 +188,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0105-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1630601296848631000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "fr": "Au cours des dernières décennies l’étude du concept de dieu (ainsi que l’image et la représentation) est devenu l’un des principaux domaines de recherche en psychologie de la religion. Cette question a été abordée au travers de différentes approches psychologiques : la psychologie développementale cognitive, les théories de la relation d’objet, la psychologie cognitive, les théories des attributions et la théorie d’attachement. En dépit des progrès réalisés, la compréhension de ce phénomène très complexe reste toujours limitée. Selon de nombreux chercheurs une des raisons importantes est celle des méthodes utilisées qui, de façon globale, se basent sur des méthodes verbales: des questionnaires, des entretiens, des listes d’adjectifs pour décrire dieu, des associations libres, etc.  Le projet Dessins de dieux, dirigé par le professeur Pierre-Yves Brandt, vise à contribuer à une compréhension ultérieure de l’origine du concept de dieu et son développement chez les enfants. La technique de dessin, critiquée par certains chercheurs, se présente comme un outil opportun pour effectuer une étude à fois développementale et cross-culturelle. Elle est même plus efficace pour mettre en lumière la place et la fonction des images dans le processus de l’acquisition et de l’intériorisation de certains concepts religieux, ainsi que pour révéler des contradictions et des difficultés de l’acquisition de l’idée de dieu par des enfants. L’absence de telles études entrave les progrès de nos savoirs dans ce domaine.  La base de données Dessins de dieux a été créée pour stocker des données de cette recherche et les rendre accessibles non seulement aux chercheurs affiliés au projet mais aussi au grand public qui s’intéresse à cette problématique. Une première collection de 143 dessins a été récoltée en 2003-2004 au Japon. Actuellement, la base de données contient plus de 7100 dessins recueillis au Japon, en Roumanie, en Russie, en Suisse, aux États-Unis, en Iran, au Népal et aux Pays-Bas ; elle continue à s’agrandir.  Nous espérons que cette recherche intéressera les chercheurs d’autres pays afin que cette base de données s’enrichisse de dessins issus d’autres traditions confessionnelles et culturelles."
@@ -305,8 +300,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0105-person-001",
       "__type": "Person",
-      "__createdAt": "1630601297440339000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "dominique.vinck@unil.ch",
       "familyNames": [
         "Vinck"
@@ -339,8 +332,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0105-person-002",
       "__type": "Person",
-      "__createdAt": "1630601297440516000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "zhargalma.dandarova@unil.ch",
       "familyNames": [
         "Dandarova-Robert"
@@ -373,8 +364,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0105-person-003",
       "__type": "Person",
-      "__createdAt": "1630601297440691000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "frederic.darbellay@unige.ch",
       "familyNames": [
         "Darbellay"
@@ -407,8 +396,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0105-person-007",
       "__type": "Person",
-      "__createdAt": "1630601297440866000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "loic.jaouen@unil.ch",
       "familyNames": [
         "Jaouen"
@@ -426,8 +413,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0105-person-008",
       "__type": "Person",
-      "__createdAt": "1630601297440970000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "marion.rivoal@unil.ch",
       "familyNames": [
         "Rivoal"
@@ -453,8 +438,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0105-person-000",
       "__type": "Person",
-      "__createdAt": "1630601297442178000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "pierre-yves.brandt@unil.ch",
       "familyNames": [
         "Brandt"
@@ -487,8 +470,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0105-person-005",
       "__type": "Person",
-      "__createdAt": "1630601297442369000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "christelle.cocco@unil.ch",
       "familyNames": [
         "Cocco"
@@ -521,8 +502,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0105-person-004",
       "__type": "Person",
-      "__createdAt": "1630601297442551000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "olga.serbaeva@aoi.uzh.ch",
       "secondaryEmail": "olga.serbaeva@unil.ch",
       "familyNames": [
@@ -548,8 +527,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0105-person-006",
       "__type": "Person",
-      "__createdAt": "1630601297442673000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "gregory.dessart@unil.ch",
       "familyNames": [
         "Dessart"
@@ -584,8 +561,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0105-organization-002",
       "__type": "Organization",
-      "__createdAt": "1630601297442885000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "24 rue du Général-Dufour",
@@ -604,8 +579,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0105-organization-000",
       "__type": "Organization",
-      "__createdAt": "1630601297473452000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Wildhainweg 3 Postfach",
@@ -625,8 +598,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0105-organization-001",
       "__type": "Organization",
-      "__createdAt": "1630601297504715000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Unicentre",
@@ -647,8 +618,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0105-grant-000",
       "__type": "Grant",
-      "__createdAt": "1630601297538098000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0105-organization-000"
       ],

@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0103-project",
     "__type": "Project",
-    "__createdAt": "1630601393923029000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Ponzetto, V., Ruimi, J., Hodroge, A., Fièvre, P., Baumann, F., Hugentobler, Th., Schuwey, Ch., Rivoal, M., 2018, Théâtres de société [database] (DaSCH), https://ark.dasch.swiss/ark:/72163/1/0103.",
     "teaserText": "Théâtre de société is defined as a theater that is mainly or totally amateur, non-profit, practiced in private homes. The project concerns the study of this form of theater.",
     "datasets": [
@@ -285,8 +282,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0103-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1630601401809363000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "fr": "Répertoire numérique des spectacles joués sur les scènes de société en France et en Suisse Romande au XVIIIe et au XIXe siècle, consultable selon les critères suivants : lieu de la représentation, date de la représentation, auteur ou titre de la pièce jouée, intervenant. Pour les intervenants, les résultats obtenus précisent le rôle : comédien/comédienne (avec le nom du personnage joué), propriétaire des lieux, commanditaire, organisateur du spectacle, spectateur. Pour chaque représentation sont indiquées les sources documentaires, imprimées ou manuscrites, dont sont issues les données. Des extraits significatifs de ces sources sont transcrits dans les notices d’accompagnement."
@@ -399,8 +394,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0103-person-007",
       "__type": "Person",
-      "__createdAt": "1630601402242973000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "loic.jaouen@unil.ch",
       "familyNames": [
         "Jaouen"
@@ -418,8 +411,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0103-person-008",
       "__type": "Person",
-      "__createdAt": "1630601402243082000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "marion.rivoal@unil.ch",
       "familyNames": [
         "Rivoal"
@@ -437,8 +428,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0103-person-001",
       "__type": "Person",
-      "__createdAt": "1630601402243184000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "jennifer.ruimi@unil.ch",
       "familyNames": [
         "Ruimi"
@@ -465,8 +454,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0103-person-002",
       "__type": "Person",
-      "__createdAt": "1630601402243362000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "aline.hodroge@unil.ch",
       "familyNames": [
         "Hodroge"
@@ -484,8 +471,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0103-person-003",
       "__type": "Person",
-      "__createdAt": "1630601402243464000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "thibault.hugentobler@unil.ch",
       "familyNames": [
         "Hugentobler"
@@ -503,8 +488,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0103-person-004",
       "__type": "Person",
-      "__createdAt": "1630601402243563000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Baumann"
       ],
@@ -521,8 +504,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0103-person-005",
       "__type": "Person",
-      "__createdAt": "1630601402243652000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "paul.fievre@gmail.com",
       "familyNames": [
         "Fièvre"
@@ -540,8 +521,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0103-person-006",
       "__type": "Person",
-      "__createdAt": "1630601402243752000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "christophe.schuwey@yale.edu",
       "familyNames": [
         "Schuwey"
@@ -567,8 +546,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0103-person-000",
       "__type": "Person",
-      "__createdAt": "1630601402243924000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Rue des Allobroges 31",
@@ -603,8 +580,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0103-organization-001",
       "__type": "Organization",
-      "__createdAt": "1630601402274947000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Wildhainweg 3 Postfach",
@@ -618,8 +593,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0103-organization-000",
       "__type": "Organization",
-      "__createdAt": "1630601402307071000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "Université de Lausanne"
     }
   ],
@@ -627,8 +600,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0103-grant-000",
       "__type": "Grant",
-      "__createdAt": "1630601402307195000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0103-organization-001"
       ],
@@ -644,8 +615,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0103-grant-001",
       "__type": "Grant",
-      "__createdAt": "1630601402307409000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0103-organization-001"
       ],

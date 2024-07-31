@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0106-project",
     "__type": "Project",
-    "__createdAt": "1689255422634382000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Berton, M., Murtas, E., Tinguely, R., Rivoal, M., Jaouen, L., 2023, Cinéma et psychiatrie en Suisse : les collections Waldau [database] (DaSCH), http://ark.dasch.swiss/ark:/72163/1/0106.",
     "teaserText": "Comment les psychiatres et neurologues suisses se sont-ils emparés, au XXe siècle, du médium filmique dans leur pratique de médecins, d’enseignants et de chercheurs ?",
     "datasets": [
@@ -133,8 +130,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0106-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1689255423435395000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "fr": "La base de données vise principalement à rendre accessibles les archives papiers du Musée suisse de la psychiatrie (Berne) relatives à Ernst Grünthal (1894-1972), le psychiatre responsable de la majorité du corpus filmique (correspondant à la classe « Film ») analysé dans le projet – plus d’une centaine de courts et moyens métrages 16 mm montrant des patientes et des patients qui souffrent de troubles psychiques ou neurologiques (dépression, alcoolisme, schizophrénie, démence sénile, troubles mnésiques, troubles du langage, maladie de Parkinson, chorée de Huntington, etc.). Majoritairement en allemand, ces documents (regroupés sous la classe « [Archive papier] ») sont de nature très variée : articles scientifiques, correspondance, notes manuscrites, brochures, papillons, tapuscrits, planches didactiques, documents administratifs. Le modèle de données permet, outre la description des films, de renseigner l’implication des médecins (« Personnel soignant ») dans leur réalisation et fournit des informations sur les personnes (« Patient », « Personnel soignant »), les institutions (« Institutions », « Personne morale »), les dates, les lieux d’archivage, les objets (équipement médical par exemple regroupé sous la classe « Objet »). Les données collectées permettent de reconstituer le réseau de pratiques filmiques initiées par des psychiatres et des neurologues en Suisse, avec plusieurs centres névralgiques : Berne, Bâle, Zurich, Lausanne et Genève. Quelques noms de médecins se distinguent au sein de ce réseau : Ernst Grünthal, Theodor H. Spoerri, Hans Heimann, Michele Risso, Giorgio Pilleri, Maurice Rémy, Walter Rudolf Hess, Karl Kleist, Gustav E. Störring. \r La structure de la base de données a été définie pour permettre une exploration du corpus (en trouvant, par exemple, tous les documents relatifs à un médecin, une maladie ou à un médicament), les recoupements avec des données non filmiques et les comparaisons avec des productions connexes. À plus long terme, la base de données peut constituer un outil utile pour de futures recherches conduites par des chercheuses et chercheurs en histoire des sciences, histoire de la psychiatrie et histoire de la médecine, ainsi qu’à des praticiennes et praticiens dans le secteur de la santé mentale. \r Le modèle de données (classes, propriétés, vocabulaires contrôlés) a été élaboré à partir des documents. Les professions médicales et les pathologies ont été établies sur la base du thésaurus du MeSH : https://mesh.inserm.fr/FrenchMesh/index.htm)"
@@ -223,8 +218,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0106-person-000",
       "__type": "Person",
-      "__createdAt": "1689255423702028000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "Mireille.Berton@unil.ch",
       "familyNames": [
         "Berton"
@@ -250,8 +243,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0106-person-001",
       "__type": "Person",
-      "__createdAt": "1689255423701843000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "Elodie.Murtas@unil.ch",
       "familyNames": [
         "Murtas"
@@ -269,8 +260,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0106-person-002",
       "__type": "Person",
-      "__createdAt": "1689255423701884000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "Raphael.Tinguely@unil.ch",
       "familyNames": [
         "Tinguely"
@@ -288,8 +277,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0106-person-003",
       "__type": "Person",
-      "__createdAt": "1689255423701922000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "Marion.rivoal@unil.ch",
       "familyNames": [
         "Rivoal"
@@ -315,8 +302,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0106-person-004",
       "__type": "Person",
-      "__createdAt": "1689255423701985000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "loic.jaouen@unil.ch",
       "familyNames": [
         "Jaouen"
@@ -336,8 +321,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0106-organization-001",
       "__type": "Organization",
-      "__createdAt": "1689255423702091000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Wildhainweg 3",
@@ -357,8 +340,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0106-organization-000",
       "__type": "Organization",
-      "__createdAt": "1689255423765155000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "",
@@ -379,8 +360,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0106-grant-000",
       "__type": "Grant",
-      "__createdAt": "1689255423848986000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0106-organization-001"
       ],

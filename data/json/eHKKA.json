@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-083C-project",
     "__type": "Project",
-    "__createdAt": "1658837460816710000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Morgenthaler et al., historisch-kritsche Kellerausgabe online, 1996-2013",
     "teaserText": "Gottfried Keller (1819-1890) gehört zu den grossen Autoren des Realismus. Die eHKKA ediert Kellers Gesamtwerk: Seine Romane, Novellen, Gedichte, Tagebücher und Briefe.",
     "datasets": [
@@ -93,8 +90,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-083C-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1658837462051680000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "de": "Eine online-Edition der Historisch-Kritischen Kellerausgabe"
@@ -142,8 +137,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-083C-person-001",
       "__type": "Person",
-      "__createdAt": "1658837462207965000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Amrein"
       ],
@@ -161,8 +154,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-083C-person-000",
       "__type": "Person",
-      "__createdAt": "1658837462208018000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Morgenthaler"
       ],
@@ -180,8 +171,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-083C-person-002",
       "__type": "Person",
-      "__createdAt": "1658837462208065000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Grob"
       ],
@@ -198,8 +187,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-083C-person-003",
       "__type": "Person",
-      "__createdAt": "1658837462208103000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "dom.muller@bluewin.ch",
       "familyNames": [
         "Müller"
@@ -220,8 +207,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-083C-organization-001",
       "__type": "Organization",
-      "__createdAt": "1658837462208169000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Wildhainweg 3, Postfach",
@@ -234,8 +219,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-083C-organization-006",
       "__type": "Organization",
-      "__createdAt": "1658837462261695000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "24 rue du Général-Dufour",
@@ -248,8 +231,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-083C-organization-005",
       "__type": "Organization",
-      "__createdAt": "1658837462308236000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Schönberggasse 9",
@@ -262,8 +243,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-083C-organization-000",
       "__type": "Organization",
-      "__createdAt": "1658837462388956000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "c/o Pestalozzi Rechtsanwälte, Löwenstrasse 1",
@@ -279,8 +258,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-083C-grant-000",
       "__type": "Grant",
-      "__createdAt": "1658837462427587000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-083C-organization-001"
       ],

@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0846-project",
     "__type": "Project",
-    "__createdAt": "1686169801639341000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Jael Bollag, Katharina Wolf, Hubert Thüring (2018-2023). Aura und Effizienz [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/0846.",
     "teaserText": "Das Projekt untersucht die diskursiven und praktischen Wechselwirkungen zwischen Materialisierung und Spiritualisierung in der deutschsprachigen Literatur der 1920-30er Jahre.",
     "datasets": [
@@ -160,8 +157,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0846-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1686169805380009000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "de": "Seminar: „Effizienz. Leistung und Literatur (1900-1930)“, Power Point mit Text, Bild, Audios, exportiert als mp4-Dateien. Vorlesung: „Arbeit. Praktiken und Ökonomien des Alltags in der Literatur 1900-1945“, Word-Datei als pdf und PPP-Datei als pdf."
@@ -218,8 +213,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0846-person-001",
       "__type": "Person",
-      "__createdAt": "1686169805666932000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Bollag"
       ],
@@ -236,8 +229,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0846-person-000",
       "__type": "Person",
-      "__createdAt": "1686169805667000000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "hubert.thuering@unibas.ch",
       "familyNames": [
         "Thüring"
@@ -265,8 +256,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0846-organization-001",
       "__type": "Organization",
-      "__createdAt": "1686169805667069000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Wildhainweg 3",
@@ -286,8 +275,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0846-organization-000",
       "__type": "Organization",
-      "__createdAt": "1686169806007833000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Nadelberg 4",
@@ -303,8 +290,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0846-grant-000",
       "__type": "Grant",
-      "__createdAt": "1686169806088744000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0846-organization-001"
       ],

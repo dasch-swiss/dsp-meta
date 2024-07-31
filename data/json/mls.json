@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0807-project",
     "__type": "Project",
-    "__createdAt": "1652110085345616000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "AutorIn: Artikelname. MLS, Datum der Abfrage.",
     "teaserText": "Das MLS stellt fundierte Information über die AkteurInnen, Institutionen, Orte, Objekte und Phänomene zur Verfügung, die für die Musikgeschichte Schweiz über alle Sparten und Stile relevant sind.",
     "datasets": [
@@ -204,8 +201,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0807-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1652110098666692000",
-      "__createdBy": "dsp-metadata-gui",
       "accessConditions": "open",
       "dateCreated": "2016-01-01",
       "datePublished": "2020-02-13",
@@ -308,8 +303,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0807-person-000",
       "__type": "Person",
-      "__createdAt": "1652110098765174000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Mittelstr. 43",
@@ -342,8 +335,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0807-person-002",
       "__type": "Person",
-      "__createdAt": "1652110099009862000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Hubacherweg 15",
@@ -368,8 +359,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0807-person-001",
       "__type": "Person",
-      "__createdAt": "1652110099044591000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Mittelstr. 43",
@@ -404,8 +393,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0807-organization-004",
       "__type": "Organization",
-      "__createdAt": "1652110099082418000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Mittelstrasse 43",
@@ -418,8 +405,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0807-organization-001",
       "__type": "Organization",
-      "__createdAt": "1652110099118664000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Mittelstr. 43",
@@ -439,8 +424,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0807-organization-003",
       "__type": "Organization",
-      "__createdAt": "1652110099168417000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Gönhardweg 32",
@@ -453,8 +436,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0807-organization-002",
       "__type": "Organization",
-      "__createdAt": "1652110099252625000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Laupenstrasse 7",
@@ -468,8 +449,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0807-organization-000",
       "__type": "Organization",
-      "__createdAt": "1652110099286727000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Hubacherweg 15",
@@ -485,8 +464,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0807-grant-000",
       "__type": "Grant",
-      "__createdAt": "1652110099320913000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0807-organization-002"
       ],
