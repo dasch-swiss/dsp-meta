@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "https://ns.dasch.swiss/repository#dsp-0845-project",
     "__type": "Project",
-    "__createdAt": "1683277023430876000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Agrell, Donna, Domínguez, Áurea, Graziadio, Giovanni Battista, Matthews, Zoë, Viola, Letizia, Plath, Niko, Simian, Ricardo (2023). Fagottino project research articles and documents [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/0845",
     "teaserText": "The organological and musicological aspects of small-sized bassoons from the 18th and 19th centuries were the focus of a research team in Basel from 2017–2023.",
     "datasets": [
@@ -128,8 +125,6 @@
     {
       "__id": "https://ns.dasch.swiss/repository#dsp-0845-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1683277024525030000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "en": "The dataset contains basic data and images of 62 fagottini and tenoroons as well as several articles, including an instrument catalogue of small bassoons covering the key questions addressed during the research project. Furthermore, the dataset contains 3D models of six 3D-CT scanned historical fagottino and tenoroon (FT6; FT30; FT40: FT42; FT44; FT50). Each such Zip file includes the round-bore version, the corrected bore version, and the keys of each instrument. The files are in STL format."
@@ -227,8 +222,6 @@
     {
       "__id": "https://ns.dasch.swiss/repository#dsp-0845-person-001",
       "__type": "Person",
-      "__createdAt": "1683277024743622000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "donna.agrell@fhnw.ch",
       "familyNames": [
         "Agrell"
@@ -246,8 +239,6 @@
     {
       "__id": "https://ns.dasch.swiss/repository#dsp-0845-person-002",
       "__type": "Person",
-      "__createdAt": "1683277024743664000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "aurea.dominguez@fhnw.ch",
       "secondaryEmail": "aureadominguez@gmail.com",
       "familyNames": [
@@ -274,8 +265,6 @@
     {
       "__id": "https://ns.dasch.swiss/repository#dsp-0845-person-003",
       "__type": "Person",
-      "__createdAt": "1683277024743733000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "zoe.matthews@fhnw.ch",
       "familyNames": [
         "Matthews"
@@ -293,8 +282,6 @@
     {
       "__id": "https://ns.dasch.swiss/repository#dsp-0845-person-004",
       "__type": "Person",
-      "__createdAt": "1683277024743769000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "letizia.viola@fhnw.ch",
       "familyNames": [
         "Viola"
@@ -312,8 +299,6 @@
     {
       "__id": "https://ns.dasch.swiss/repository#dsp-0845-person-005",
       "__type": "Person",
-      "__createdAt": "1683277024743803000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "giovannibattista.graziadio@fhnw.ch",
       "familyNames": [
         "Graziadio"
@@ -332,8 +317,6 @@
     {
       "__id": "https://ns.dasch.swiss/repository#dsp-0845-person-000",
       "__type": "Person",
-      "__createdAt": "1683277024743838000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "thomas.drescher@fhnw.ch",
       "familyNames": [
         "Drescher"
@@ -353,8 +336,6 @@
     {
       "__id": "https://ns.dasch.swiss/repository#dsp-0845-organization-001",
       "__type": "Organization",
-      "__createdAt": "1683277024743877000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Wildhainweg 3",
@@ -373,8 +354,6 @@
     {
       "__id": "https://ns.dasch.swiss/repository#dsp-0845-organization-000",
       "__type": "Organization",
-      "__createdAt": "1683277024798388000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Leonhardsstrasse 6, Postfach",
@@ -396,8 +375,6 @@
     {
       "__id": "https://ns.dasch.swiss/repository#dsp-0845-grant-000",
       "__type": "Grant",
-      "__createdAt": "1683277024858973000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "https://ns.dasch.swiss/repository#dsp-0845-organization-001"
       ],
@@ -413,8 +390,6 @@
     {
       "__id": "https://ns.dasch.swiss/repository#dsp-0845-grant-001",
       "__type": "Grant",
-      "__createdAt": "1683277024858973000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "https://ns.dasch.swiss/repository#dsp-0845-organization-001"
       ],

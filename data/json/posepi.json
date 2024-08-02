@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0120-project",
     "__type": "Project",
-    "__createdAt": "1714468073822719000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Jacquin, J., Keck, A., Robin, C., Roh, S., Rivoal, M. (2024). Marqueurs épistémiques et évidentiels du français identifiés et annotés dans un corpus d'interactions relevant de débats politiques et de réunions d’entreprise [Projet FNS 188924, POSEPI] [base de données] (DaSCH), http://ark.dasch.swiss/ark:/72163/1/0120",
     "teaserText": "A systematic and multimodal study of French epistemic and evidential markers as emerging in various professional/institutional settings documented by “natural“ video-recorded data.",
     "datasets": [
@@ -100,8 +97,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0120-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1714468079571147000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "fr": "La base de données consiste en près de 4000 marqueurs épistémiques et évidentiels du français identifiés, extraits et annotés à partir d’un corpus d’interactions verbales relevant de débats politiques et de réunions d’entreprise. Chaque token est annoté au niveau morpho-syntaxique, énonciatif, interactionnel et multimodal. \r La base de données est organisée autour de 7 classes, dont la principale, “Marqueur”, renvoie à un “Lemme”, à une éventuelle portée ainsi qu’à une typologie de gestes (“Mimogestualité”). Les classes “Evènement” et “Participant” précisent le contexte dans lequel sont relevés ces marqueurs et qualifient les rôles des participants. \r Les données primaires à partir desquelles les marqueurs ont été identifiés, extraits et annotés sont consultables ici: http://clapi.icar.cnrs.fr/Posepi/. \r La base de données a été constituée dans le cadre du projet FNS \"Prendre une position épistémique dans l’interaction. Les marqueurs du savoir, du non-savoir et du doute en français\" [188924, POSEPI]."
@@ -197,8 +192,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0120-person-000",
       "__type": "Person",
-      "__createdAt": "1714468079876204000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Sciences du Langage et de l’Information\r Université de Lausanne\r Anthropole — bureau 3134",
@@ -231,8 +224,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0120-person-002",
       "__type": "Person",
-      "__createdAt": "1714468079836485000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Sciences du Langage et de l’Information\r Université de Lausanne\r Anthropole",
@@ -257,8 +248,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0120-person-001",
       "__type": "Person",
-      "__createdAt": "1714468079776762000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Sciences du Langage et de l’Information\r Université de Lausanne\r Anthropole",
@@ -283,8 +272,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0120-person-003",
       "__type": "Person",
-      "__createdAt": "1714468079776560000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "marion.rivoal@unil.ch",
       "familyNames": [
         "Rivoal"
@@ -310,8 +297,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0120-person-004",
       "__type": "Person",
-      "__createdAt": "1714468079776689000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "loic.jaouen@unil.ch",
       "familyNames": [
         "Jaouen"
@@ -331,8 +316,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0120-organization-001",
       "__type": "Organization",
-      "__createdAt": "1714468079920073000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Wildhainweg 3",
@@ -352,8 +335,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0120-organization-000",
       "__type": "Organization",
-      "__createdAt": "1714468079960004000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Unicentre",
@@ -374,8 +355,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0120-grant-000",
       "__type": "Grant",
-      "__createdAt": "1714468080004458000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0120-organization-001"
       ],

@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0828-project",
     "__type": "Project",
-    "__createdAt": "1710880820150551000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Lucien Criblez, Lea Hägi, Stefan Kessler, Christina Rothen and Thomas Ruoss (2024). Forschungsinfrastruktur «Bildung in Zahlen» [Datenbank]. DaSCH, https://ark.dasch.swiss/ark:/72163/1/0828.",
     "teaserText": "Annotated historical statistics on the development and use of cantonal education programmes and the vocational education and training system in Switzerland in the 19th and 20th centuries.",
     "datasets": [
@@ -260,8 +257,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1710880825087252000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "en": "The infrastructure comprises (1) annotated historical long-term education statistics series (data on teachers, students in training, educational qualifications, school organization and school operations), (2) contextual documentation of this data, (3) graphics and chronicles of school structure development and (4) short biographies of cantonal education directors."
@@ -463,8 +458,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-person-001",
       "__type": "Person",
-      "__createdAt": "1710880825416898000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Hägi"
       ],
@@ -481,8 +474,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-person-002",
       "__type": "Person",
-      "__createdAt": "1710880825416939000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Kessler"
       ],
@@ -507,8 +498,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-person-003",
       "__type": "Person",
-      "__createdAt": "1710880825416999000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Rothen"
       ],
@@ -525,8 +514,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-person-004",
       "__type": "Person",
-      "__createdAt": "1710880825417032000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Ruoss"
       ],
@@ -551,8 +538,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-person-005",
       "__type": "Person",
-      "__createdAt": "1710880825417086000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Bertschinger"
       ],
@@ -569,8 +554,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-person-006",
       "__type": "Person",
-      "__createdAt": "1710880825417119000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Erb"
       ],
@@ -587,8 +570,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-person-007",
       "__type": "Person",
-      "__createdAt": "1710880825417151000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Flury"
       ],
@@ -605,8 +586,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-person-008",
       "__type": "Person",
-      "__createdAt": "1710880825417183000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Gebauer"
       ],
@@ -623,8 +602,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-person-009",
       "__type": "Person",
-      "__createdAt": "1710880825417215000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Giudici"
       ],
@@ -649,8 +626,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-person-010",
       "__type": "Person",
-      "__createdAt": "1710880825417271000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Haymoz"
       ],
@@ -667,8 +642,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-person-011",
       "__type": "Person",
-      "__createdAt": "1710880825417304000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Heinzer"
       ],
@@ -685,8 +658,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-person-012",
       "__type": "Person",
-      "__createdAt": "1710880825417336000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Lehner-Loosli"
       ],
@@ -703,8 +674,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-person-013",
       "__type": "Person",
-      "__createdAt": "1710880825417368000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Mazzarella"
       ],
@@ -721,8 +690,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-person-014",
       "__type": "Person",
-      "__createdAt": "1710880825417399000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Merz"
       ],
@@ -739,8 +706,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-person-015",
       "__type": "Person",
-      "__createdAt": "1710880825417430000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Pfiffner"
       ],
@@ -757,8 +722,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-person-016",
       "__type": "Person",
-      "__createdAt": "1710880825417462000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Probst-Schellenberg"
       ],
@@ -775,8 +738,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-person-017",
       "__type": "Person",
-      "__createdAt": "1710880825417494000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Sibilia"
       ],
@@ -793,8 +754,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-person-018",
       "__type": "Person",
-      "__createdAt": "1710880825417526000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Ullmann"
       ],
@@ -811,8 +770,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-person-019",
       "__type": "Person",
-      "__createdAt": "1710880825417558000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "de Vries"
       ],
@@ -830,8 +787,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-person-000",
       "__type": "Person",
-      "__createdAt": "1710880825417590000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "lcriblez@ife.uzh.ch",
       "familyNames": [
         "Criblez"
@@ -859,8 +814,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-organization-001",
       "__type": "Organization",
-      "__createdAt": "1710880825417676000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "Swiss National Science Foundation (SNSF)",
       "url": {
         "__type": "URL",
@@ -872,8 +825,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-organization-000",
       "__type": "Organization",
-      "__createdAt": "1710880825417708000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Freiestrasse 36",
@@ -894,8 +845,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-grant-000",
       "__type": "Grant",
-      "__createdAt": "1710880825472607000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0828-organization-001"
       ],
@@ -911,8 +860,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-grant-001",
       "__type": "Grant",
-      "__createdAt": "1710880825472665000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0828-organization-001"
       ],
@@ -928,8 +875,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-grant-002",
       "__type": "Grant",
-      "__createdAt": "1710880825472716000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0828-organization-001"
       ],
@@ -945,8 +890,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0828-grant-003",
       "__type": "Grant",
-      "__createdAt": "1710880825472738000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0828-organization-001"
       ],

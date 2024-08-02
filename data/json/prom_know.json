@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0117-project",
     "__type": "Project",
-    "__createdAt": "1692889740948937000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "R. Sigrist, 2023, Base de données sur les savants de la période 1700-1870 [base de données], Swiss National Data and Service Center for the Humanities (DaSCH), http://ark.dasch.swiss/ark:/72163/1/0117.",
     "teaserText": "The professionalization of science is often conceptualized as the exclusion of amateurs. We show on the contrary that this became only through the development of scientific culture and networks.",
     "datasets": [
@@ -205,8 +202,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0117-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1692889749305688000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "fr": "Cette base de données inclut 11'121 savants reconnus qui étaient âgés de 20 ans et plus entre 1700 et 1870. Est défini comme « savant reconnu » tout individu affilié pour ses travaux scientifiques à l’une au moins des six principales académies de l’époque concernée (Royal Society de Londres ; académies de Paris, Berlin, Stockholm, St-Pétersbourg et Bologne), ou recensé dans le Historical Catalogue of Scientists and Scientific Books publié en 1984 par Robert M. Gascoigne.\r La partie librement accessible de cette base de données (initialement crée en FileMaker Pro), a été migrée dans un modèle relationnel en SQL. Elle inclut une partie des données biographiques, relationnelles et bibliographiques collectées dans le cadre de deux projets FNS successifs, données qui concernent notamment les astronomes, les physiciens, les chimistes et les botanistes européens et nord-américains. Ces données sont plus complètes pour le groupe des « grands savants » (1/4 de l’échantillon environ), ce groupe étant défini comme l’ensemble des individus ayant bénéficié d’affiliations multiples aux six principales académies de la période 1700-1870, ou inclus dans le Dictionary of Scientific Biography édité entre 1970 et 1980 sous la direction de Charles C. Gillispie.\r Le modèle de données repose sur les classes suivantes : « Savant » (informations biographiques et relatives à la carrière des savants) ; « Champ » (principales disciplines dans lesquels ces savants se sont illustrés) ; « Correspondance » (recension de la correspondance qu’ont entretenue ces savants entre eux) et « Lien » (typologie des relations de travail qui se sont nouées entre ces savants)."
@@ -284,8 +279,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0117-person-001",
       "__type": "Person",
-      "__createdAt": "1692889751059747000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "sigrist.rene@bluewin.ch",
       "familyNames": [
         "Sigrist"
@@ -303,8 +296,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0117-person-002",
       "__type": "Person",
-      "__createdAt": "1692889751059843000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "christelle.cocco@unil.ch",
       "familyNames": [
         "Cocco"
@@ -330,8 +321,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0117-person-003",
       "__type": "Person",
-      "__createdAt": "1692889751059981000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "marion.rivoal@unil.ch",
       "familyNames": [
         "Rivoal"
@@ -357,8 +346,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0117-person-000",
       "__type": "Person",
-      "__createdAt": "1692889751060112000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "dominique.vinck@unil.ch",
       "familyNames": [
         "Vinck"
@@ -386,8 +373,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0117-organization-001",
       "__type": "Organization",
-      "__createdAt": "1692889751060256000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Wildhainweg 3",
@@ -407,8 +392,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0117-organization-000",
       "__type": "Organization",
-      "__createdAt": "1692889751184352000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Unicentre",
@@ -429,8 +412,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0117-grant-000",
       "__type": "Grant",
-      "__createdAt": "1692889751270521000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0117-organization-001"
       ],

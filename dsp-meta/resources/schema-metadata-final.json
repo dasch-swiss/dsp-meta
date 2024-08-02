@@ -47,7 +47,6 @@
     }
   },
   "required": [
-    "$schema",
     "project",
     "datasets"
   ],
@@ -121,38 +120,10 @@
       "description": "A project on the DSP",
       "type": "object",
       "properties": {
-        "__id": {
-          "type": "string",
-          "description": "Identifier of the project"
-        },
         "__type": {
           "type": "string",
           "description": "Type of this object",
           "const": "Project"
-        },
-        "__createdAt": {
-          "type": "string",
-          "description": "Creation date of this object"
-        },
-        "__createdBy": {
-          "type": "string",
-          "description": "ID of the user who created this object"
-        },
-        "__modifiedAt": {
-          "type": "string",
-          "description": "Last modification date of this object"
-        },
-        "__modifiedBy": {
-          "type": "string",
-          "description": "ID of the user who last modified this object"
-        },
-        "__deletedAt": {
-          "type": "string",
-          "description": "Deletion date of this object"
-        },
-        "__deletedBy": {
-          "type": "string",
-          "description": "ID of the user who deleted this object"
         },
         "shortcode": {
           "type": "string",
@@ -163,7 +134,6 @@
           "type": "string",
           "description": "The status of the dataset.",
           "enum": [
-            "ongoing",
             "finished"
           ],
           "default": "ongoing"
@@ -296,11 +266,9 @@
         }
       },
       "required": [
-        "__id",
         "__type",
-        "__createdAt",
-        "__createdBy",
         "shortcode",
+        "status",
         "name",
         "description",
         "startDate",
@@ -350,30 +318,6 @@
           "type": "string",
           "const": "Grant"
         },
-        "__createdAt": {
-          "type": "string",
-          "description": "Creation date of this object"
-        },
-        "__createdBy": {
-          "type": "string",
-          "description": "ID of the user who created this object"
-        },
-        "__modifiedAt": {
-          "type": "string",
-          "description": "Last modification date of this object"
-        },
-        "__modifiedBy": {
-          "type": "string",
-          "description": "ID of the user who last modified this object"
-        },
-        "__deletedAt": {
-          "type": "string",
-          "description": "Deletion date of this object"
-        },
-        "__deletedBy": {
-          "type": "string",
-          "description": "ID of the user who deleted this object"
-        },
         "funders": {
           "description": "Legal bodies funding the grant.",
           "type": "array",
@@ -399,8 +343,6 @@
       "required": [
         "__id",
         "__type",
-        "__createdAt",
-        "__createdBy",
         "funders"
       ],
       "additionalProperties": false
@@ -416,30 +358,6 @@
         "__type": {
           "type": "string",
           "const": "Person"
-        },
-        "__createdAt": {
-          "type": "string",
-          "description": "Creation date of this object"
-        },
-        "__createdBy": {
-          "type": "string",
-          "description": "ID of the user who created this object"
-        },
-        "__modifiedAt": {
-          "type": "string",
-          "description": "Last modification date of this object"
-        },
-        "__modifiedBy": {
-          "type": "string",
-          "description": "ID of the user who last modified this object"
-        },
-        "__deletedAt": {
-          "type": "string",
-          "description": "Deletion date of this object"
-        },
-        "__deletedBy": {
-          "type": "string",
-          "description": "ID of the user who deleted this object"
         },
         "jobTitles": {
           "type": "array",
@@ -501,8 +419,6 @@
       "required": [
         "__id",
         "__type",
-        "__createdAt",
-        "__createdBy",
         "givenNames",
         "familyNames"
       ],
@@ -519,30 +435,6 @@
         "__type": {
           "type": "string",
           "const": "Dataset"
-        },
-        "__createdAt": {
-          "type": "string",
-          "description": "Creation date of this object"
-        },
-        "__createdBy": {
-          "type": "string",
-          "description": "ID of the user who created this object"
-        },
-        "__modifiedAt": {
-          "type": "string",
-          "description": "Last modification date of this object"
-        },
-        "__modifiedBy": {
-          "type": "string",
-          "description": "ID of the user who last modified this object"
-        },
-        "__deletedAt": {
-          "type": "string",
-          "description": "Deletion date of this object"
-        },
-        "__deletedBy": {
-          "type": "string",
-          "description": "ID of the user who deleted this object"
         },
         "title": {
           "type": "string",
@@ -671,8 +563,6 @@
       "required": [
         "__id",
         "__type",
-        "__createdAt",
-        "__createdBy",
         "title",
         "accessConditions",
         "howToCite",
@@ -696,30 +586,6 @@
         "__type": {
           "type": "string",
           "const": "Organization"
-        },
-        "__createdAt": {
-          "type": "string",
-          "description": "Creation date of this object"
-        },
-        "__createdBy": {
-          "type": "string",
-          "description": "ID of the user who created this object"
-        },
-        "__modifiedAt": {
-          "type": "string",
-          "description": "Last modification date of this object"
-        },
-        "__modifiedBy": {
-          "type": "string",
-          "description": "ID of the user who last modified this object"
-        },
-        "__deletedAt": {
-          "type": "string",
-          "description": "Deletion date of this object"
-        },
-        "__deletedBy": {
-          "type": "string",
-          "description": "ID of the user who deleted this object"
         },
         "name": {
           "type": "string",
@@ -756,8 +622,6 @@
       "required": [
         "__id",
         "__type",
-        "__createdAt",
-        "__createdBy",
         "name"
       ],
       "additionalProperties": false

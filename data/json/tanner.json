@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0102-project",
     "__type": "Project",
-    "__createdAt": "1662621516859596000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Boillat, A., Annen, V, Modoux, J., Jaouen, L., Rivoal, M., 2022, « Le scénario chez Alain Tanner : discours et pratiques » [base de données] (DaSCH), https://ark.dasch.swiss/ark:/72163/1/0102.",
     "teaserText": "Ce projet étudie, dans une perspective narratologique/genre studies, la genèse des scénarios des films d’Alain Tanner, ainsi que les discours sur cette question tenus par le cinéaste.",
     "datasets": [
@@ -121,8 +118,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0102-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1662621519947394000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "fr": "La base de données est organisée autour 1) des pièces d’archives (= PIECE) issues du Fonds Alain Tanner de la Cinémathèque suisse (CS), numérisées professionnellement par cette institution, ou du Fonds « Bernard Comment » des Archives littéraires suisses (ALS, Berne) ; 2) d’archives audio et audiovisuelles de la RTS (retranscription) et 3) d’entretiens audio avec des collaborateurs/trices de Tanner réalisés par les membres du projet.\r \r L’ontologie est conçue autour des classes suivantes : FILM (19 films d’Alain Tanner), PERSONNE (collaborateurs/trices associé-e-s aux instances de la classe FILM avec désignation de leur fonction ou personnes mentionnées dans les archives), PIECE (avec les sous-classes Scénario ; Production ; Promotion ; Correspondance ; Réception critique ; Entretien) et PAGE, dont les différentes instances sont constitutives des PIECES.\r \r La classe PAGE est celle qui comporte le plus de propriétés : 7 textes formatés, 5 booléens et 3 vocabulaires contrôlés."
@@ -206,8 +201,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0102-person-001",
       "__type": "Person",
-      "__createdAt": "1662621520697509000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Quartier UNIL-Chamberonne, Bâtiment Anthropole, Bureau : 4163.1",
@@ -232,8 +225,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0102-person-002",
       "__type": "Person",
-      "__createdAt": "1662621520934186000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Quartier UNIL-Chamberonne, Bâtiment Anthropole, Bureau : 4163.1",
@@ -258,8 +249,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0102-person-003",
       "__type": "Person",
-      "__createdAt": "1662621520993057000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "marion.rivoal@unil.ch",
       "familyNames": [
         "Rivoal"
@@ -285,8 +274,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0102-person-004",
       "__type": "Person",
-      "__createdAt": "1662621520993391000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "loic.jaouen@unil.ch",
       "familyNames": [
         "Jaouen"
@@ -304,8 +291,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0102-person-000",
       "__type": "Person",
-      "__createdAt": "1662621520993539000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Université de Lausanne, Bâtiment Anthopole, Bureau 4170",
@@ -340,8 +325,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0102-organization-001",
       "__type": "Organization",
-      "__createdAt": "1662621521055260000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Wildhainweg 3",
@@ -361,8 +344,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0102-organization-000",
       "__type": "Organization",
-      "__createdAt": "1662621521178371000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Unicentre",
@@ -383,8 +364,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0102-grant-000",
       "__type": "Grant",
-      "__createdAt": "1662621521237617000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0102-organization-001"
       ],

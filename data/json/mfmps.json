@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0116-project",
     "__type": "Project",
-    "__createdAt": "1630601362921053000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Terrier Aliferis, L., Acosta, L., Ciardo, S., Rivoal, M., 2020, MedFrameS [database] (DaSCH), https://ark.dasch.swiss/ark:/72163/1/0116.",
     "teaserText": "This project aims to valorise and better comprehend the various elements surrounding monumental statues of church portals, namely pedestals, canopies, and niches.",
     "datasets": [
@@ -118,8 +115,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0116-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1630601369626079000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "en": "The database regroups the portals of monuments included in the project’s corpus. It is structured by building, and gives access to the photographs as well as the bibliographic and descriptive data of each edifice. The photographs of each portal are presented from general to particular, going from the embrasures to the statues, and to their surrounding elements (pedestals, canopies, capitals). This database is conceived as a working tool allowing for typological groupings to be made between buildings, as well as to conduct comparative analyses. Consequently, the research results can be verified and the data reused to other ends if desired."
@@ -197,8 +192,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0116-person-003",
       "__type": "Person",
-      "__createdAt": "1630601370209263000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "marion.rivoal@unil.ch",
       "familyNames": [
         "Rivoal"
@@ -216,8 +209,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0116-person-001",
       "__type": "Person",
-      "__createdAt": "1630601370209363000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "laura.acosta@unine.ch",
       "familyNames": [
         "Acosta"
@@ -235,8 +226,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0116-person-002",
       "__type": "Person",
-      "__createdAt": "1630601370209457000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "sabrina.ciardo@gmail.com",
       "familyNames": [
         "Ciardo"
@@ -254,8 +243,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0116-person-000",
       "__type": "Person",
-      "__createdAt": "1630601370209549000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Université de Neuchâtel - Faculté des lettres et sciences humaines - Institut d’histoire de l’art et de muséologie - Espace Tilo-Frey 1",
@@ -290,8 +277,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0116-organization-001",
       "__type": "Organization",
-      "__createdAt": "1630601370241650000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Unicentre",
@@ -310,8 +295,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0116-organization-002",
       "__type": "Organization",
-      "__createdAt": "1630601370274356000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Wildhainweg 3 Postfach",
@@ -331,8 +314,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0116-organization-000",
       "__type": "Organization",
-      "__createdAt": "1630601370329363000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Avenue du 1er-Mars 26",
@@ -353,8 +334,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0116-grant-000",
       "__type": "Grant",
-      "__createdAt": "1630601370362185000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0116-organization-002"
       ],

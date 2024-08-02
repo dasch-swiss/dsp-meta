@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0101-project",
     "__type": "Project",
-    "__createdAt": "1630601286237202000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Gonzalez, Ph., Roca Escoda, M., Stavo Debauge, J., Evequoz, Y., Ben Amor, S., Rivoal, M., 2019, Embarras de la parole religieuse [base de données] (DaSCH), https://ark.dasch.swiss/ark:/72163/1/0101.",
     "teaserText": "Ce projet étudie les mobilisations religieuses sur des questions de genre et de sexualités et comment elles transforment les règles d’interlocution des espaces publics sécularisés et la parole des acteurs religieux.",
     "datasets": [
@@ -140,8 +137,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0101-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1630601290310908000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "en": "The ontology of the project comprises 15 distinct classes, 68 properties, mainly describing sequences (Sequence) from radio broadcasts (Program), and listing for each sequence the speakers (Intervention, Actor, Nationality), the title in which they intervene (Quality, Institution) and their origin (Place).  The subjects (Gender and Religion) covered by the programs are informed at the program level, then explained at the sequence level, using different concepts related to current events: Event, Common Name or Movement, Phenomenon or controversial subject, Person in the news, Place. 10 controlled vocabularies with 104 entries ensure the quality control of the data entered. The controlled vocabulary Controversial issues' trajectory includes 31 entries. Finally, transcriptions (Transcription) are associated with certain sequences."
@@ -245,8 +240,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0101-person-004",
       "__type": "Person",
-      "__createdAt": "1630601290905167000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Ben Amor"
       ],
@@ -263,8 +256,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0101-person-005",
       "__type": "Person",
-      "__createdAt": "1630601290905261000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "christelle.cocco@unil.ch",
       "familyNames": [
         "Cocco"
@@ -290,8 +281,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0101-person-006",
       "__type": "Person",
-      "__createdAt": "1630601290905455000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "loic.jaouen@unil.ch",
       "familyNames": [
         "Jaouen"
@@ -309,8 +298,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0101-person-007",
       "__type": "Person",
-      "__createdAt": "1630601290905567000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "marion.rivoal@unil.ch",
       "familyNames": [
         "Rivoal"
@@ -336,8 +323,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0101-person-001",
       "__type": "Person",
-      "__createdAt": "1630601290905754000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "marta.rocaescoda@unil.ch",
       "familyNames": [
         "Roca Escoda"
@@ -363,8 +348,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0101-person-003",
       "__type": "Person",
-      "__createdAt": "1630601290905939000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Evequoz"
       ],
@@ -381,8 +364,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0101-person-000",
       "__type": "Person",
-      "__createdAt": "1630601290906026000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "philippe.gonzalez@unil.ch",
       "familyNames": [
         "Gonzalez"
@@ -400,8 +381,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0101-person-002",
       "__type": "Person",
-      "__createdAt": "1630601290906134000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "joan.stavo-debauge@epfl.ch",
       "familyNames": [
         "Stavo Debauge"
@@ -421,8 +400,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0101-organization-001",
       "__type": "Organization",
-      "__createdAt": "1630601290906261000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Wildhainweg 3 Postfach",
@@ -442,8 +419,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0101-organization-000",
       "__type": "Organization",
-      "__createdAt": "1630601290938137000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Unicentre",
@@ -464,8 +439,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0101-grant-000",
       "__type": "Grant",
-      "__createdAt": "1630601290970747000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0101-organization-001"
       ],

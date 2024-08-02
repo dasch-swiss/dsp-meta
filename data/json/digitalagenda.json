@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0848-project",
     "__type": "Project",
-    "__createdAt": "1688420236109645000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Guerrero Cantarell, Rosalía, Carmen Flury, Fabian Grütter and Michael Geiss (2023). Education and the European Digital Agenda: Switzerland, Germany and Sweden after 1970. DaSCH, https://ark.dasch.swiss/ark:/72163/1/0848.",
     "teaserText": "This database documents the educational implications of technological change in information and communication technologies (ICT) between 1970 and 2000, focusing on political initiatives in Europe.",
     "datasets": [
@@ -261,8 +258,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0848-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1688420239457488000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "en": "The dataset maps political initiatives and actors involved in education in the context of digital change during the period 1970–2000 in four political entities: Germany (FRG, GDR and unified Germany), Sweden, Switzerland, and Europe (European Communities [EC]/European Union [EU]). It consists of two sub-datasets:\r 1.\tThe first sub-dataset contains information on the various political initiatives that were undertaken in these political entities to address the challenges posed by digital change in education. \r 2.\tThe second sub-dataset includes information on the actors and platforms that played a role in the framing of these initiatives.\r Together, these two sub-datasets aim to provide an overview of the political initiatives and actors involved in addressing the challenges of digital change in education in Germany, Sweden, Switzerland, and the EC/EU. The database can be used to analyse and compare the different approaches taken by these political entities and to identify key stakeholders."
@@ -344,8 +339,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0848-person-000",
       "__type": "Person",
-      "__createdAt": "1688420240396596000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Lagerstrasse 2",
@@ -378,8 +371,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0848-person-001",
       "__type": "Person",
-      "__createdAt": "1688420240477342000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "carmen.flury@gmx.net",
       "familyNames": [
         "Flury"
@@ -405,8 +396,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0848-person-002",
       "__type": "Person",
-      "__createdAt": "1688420240477806000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "rgc0403@gmail.com",
       "familyNames": [
         "Guerrero Cantarell"
@@ -432,8 +421,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0848-person-003",
       "__type": "Person",
-      "__createdAt": "1688420240478263000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Lagerstrasse 2",
@@ -468,8 +455,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0848-organization-001",
       "__type": "Organization",
-      "__createdAt": "1688420240545901000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Wildhainweg 3",
@@ -489,8 +474,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0848-organization-000",
       "__type": "Organization",
-      "__createdAt": "1688420240608457000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Lagerstrasse 2",
@@ -512,8 +495,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0848-grant-000",
       "__type": "Grant",
-      "__createdAt": "1688420240673920000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0848-organization-001"
       ],

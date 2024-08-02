@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0803-project",
     "__type": "Project",
-    "__createdAt": "1637624150548721000",
-    "__createdBy": "dsp-metadata-gui",
     "teaserText": "An art-scientific monograph of the richly illustrated early prints in Basel - the most important center of early letterpress printing in the territory of present-day Switzerland.",
     "datasets": [
       "http://ns.dasch.swiss/repository#dsp-0803-dataset-000"
@@ -104,8 +101,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0803-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1637624150907146000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "en": "The interdisciplinary research project \"The image sequences of Basel's early prints: Late Medieval didactic didactics as an image-text reading\" combines a comprehensive art scholarly analysis of the links between images and texts in the illustrated incunabula in Basel with the digitization of the holdings of the University Library and the development of an electronic edition in the form of a new kind of Web-0.2 application. The project is carried out by Kunsthistorische Seminar of the University of Basel (Prof. B. Schellewald) and Digital Humanities Lab of the University of Basel (Prof. Dr. L. Rosenthaler).  The core of the digital edition consists of around twenty richly illustrated early prints from four different Basel officers. Many of them appeared in several editions before 1500, some of them in German and Latin at almost the same time. It is an extraordinarily varied production; in addition to the Mirror of Salvation, there is a novel, the Melusine, the travelogues of Jean de Mandeville, some prayer and edification books, theological writings, Lent sermons, the lives of Saints Fridolin and Meinrad, the famous ship of fools and the knight of Thurn.  The Internet publication makes the digitized corpus of these early prints usable for the scientific edition as well as for the exploration of images and texts through the possibilities of non-linear linking and commenting on the images and texts. Existing and emerging online editions can also be linked to it, which optimises the use of databases from other institutions with regard to our corpus."
@@ -183,8 +178,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0803-person-000",
       "__type": "Person",
-      "__createdAt": "1637624150958979000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Schellewald"
       ],
@@ -201,8 +194,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0803-person-001",
       "__type": "Person",
-      "__createdAt": "1637624150959055000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Hug"
       ],
@@ -219,8 +210,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0803-person-002",
       "__type": "Person",
-      "__createdAt": "1637624150959124000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Rosenthaler"
       ],
@@ -237,8 +226,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0803-person-003",
       "__type": "Person",
-      "__createdAt": "1637624150959191000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Schmitt"
       ],
@@ -255,8 +242,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0803-person-004",
       "__type": "Person",
-      "__createdAt": "1637624150959244000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Graf Lamei"
       ],
@@ -275,29 +260,21 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0803-organization-001",
       "__type": "Organization",
-      "__createdAt": "1637624150959319000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "Kunsthistorisches Seminar Universität Basel"
     },
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0803-organization-002",
       "__type": "Organization",
-      "__createdAt": "1637624150959357000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "Universität Basel Universitätsbibliothek Sekretariat"
     },
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0803-organization-003",
       "__type": "Organization",
-      "__createdAt": "1637624150959391000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "Digital Humanities Lab Philosophisch-Historische Fakultät Universität Basel"
     },
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0803-organization-000",
       "__type": "Organization",
-      "__createdAt": "1637624150959423000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "Swiss National Science Foundation (SNSF)"
     }
   ],
@@ -305,8 +282,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0803-grant-000",
       "__type": "Grant",
-      "__createdAt": "1637624150959473000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0803-organization-000"
       ],
