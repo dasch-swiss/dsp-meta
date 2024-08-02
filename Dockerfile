@@ -1,14 +1,14 @@
-FROM rust:1-slim-bookworm AS builder-rs
+FROM rust:1-slim-bullseye AS builder-rs
 WORKDIR /dsp-meta
 COPY . .
 RUN cargo install --path ./dsp-meta-cmd
 
-FROM node:21-bookworm-slim AS builder-node
+FROM node:21-bullseye-slim AS builder-node
 WORKDIR /dsp-meta
 COPY . .
 RUN cd web-frontend && yarn install && yarn run build
 
-FROM debian:bookworm-slim AS runtime
+FROM debian:bullseye-slim AS runtime
 # add data
 COPY ./data /data
 
