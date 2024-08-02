@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-082A-project",
     "__type": "Project",
-    "__createdAt": "1637624172046946000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Schweizerisches Volksliedarchiv, Tonbandsammlung Folkfestival auf der Lenzburg",
     "teaserText": "Folk music enthusiasts gathered between 1972 and 1980 at the picturesque Lenzburg Castle. Discover the audio heritage of the legendary Lenzburg Folk Festival",
     "datasets": [
@@ -128,8 +125,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-082A-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1637624174200462000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "en": "The collection consists of cassette tapes and magnetic tapes. They were recorded during the concerts at the festival (1972–1980). The metadata entail the original archival number (tape numbers), song titles, duration, band names and artist names as well as further information such as song incipits."
@@ -207,8 +202,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-082A-person-000",
       "__type": "Person",
-      "__createdAt": "1637624174341791000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "johannes.mueske@zpkm.uni-freiburg.de",
       "familyNames": [
         "Müske"
@@ -226,8 +219,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-082A-person-001",
       "__type": "Person",
-      "__createdAt": "1637624174341947000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "senta.bindschaedler@unibas.ch",
       "familyNames": [
         "Bindschädler"
@@ -245,8 +236,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-082A-person-002",
       "__type": "Person",
-      "__createdAt": "1637624174342092000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Hostettler"
       ],
@@ -263,8 +252,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-082A-person-003",
       "__type": "Person",
-      "__createdAt": "1637624174342206000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Ackermann"
       ],
@@ -283,15 +270,11 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-082A-organization-002",
       "__type": "Organization",
-      "__createdAt": "1637624174342347000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "Lenzburg Folk Festival Organizing Committee (association terminated)"
     },
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-082A-organization-001",
       "__type": "Organization",
-      "__createdAt": "1637624174342399000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Bümplizstrasse 192",
@@ -311,8 +294,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-082A-organization-000",
       "__type": "Organization",
-      "__createdAt": "1637624174419582000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Rheinsprung 9",
@@ -334,8 +315,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-082A-grant-000",
       "__type": "Grant",
-      "__createdAt": "1637624174547831000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-082A-organization-001"
       ],

@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0838-project",
     "__type": "Project",
-    "__createdAt": "1705921790665346000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Brönnimann, D., Lo Russo, S., Pümpin, Ch., Ismail-Meyer, K., Devos, Y., Kübler, S., Rentzel, Ph. (2024). I-GEOARCHive [Database]. DaSCH. http://ark.dasch.swiss/ark:/72163/1/0838",
     "teaserText": "I-GEOARCHive provides geoarchaeological data and images (profile photos, thin section scans, microscope photos, layer descriptions, mortar and ceramic samples, etc.) from various archaeological sites.",
     "datasets": [
@@ -160,8 +157,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0838-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1705921793467731000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "en": "The geoarchaeological collection of  IPAS (Integrative Prehistory and Archaeological Science) at the University of Basel and of  AMGC (Archaeology, Environmental Changes & Geo-Chemistry) at the Vrije Universiteit Brussel includes block and sediment samples of soils and archaeological deposits as well as rocks, flints, ceramics and mortar samples. The I-GEOARCHive image database of thin section scans and microphotographs makes the collection digitally accessible to research and teaching. The freely accessible I-GEOARCHive database enables users to keyword, analyse, publish and archive geoarchaeological samples. Furthermore, micromorphological observations are linked to the thin section scans and thus to the block samples and profiles. This cross-linking enables multidimensional publication and archiving of micromorphological image data and their relation to original archaeological features."
@@ -264,8 +259,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0838-person-001",
       "__type": "Person",
-      "__createdAt": "1705921793896479000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "sarah.lorusso@unibas.ch",
       "familyNames": [
         "Lo Russo"
@@ -292,8 +285,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0838-person-002",
       "__type": "Person",
-      "__createdAt": "1705921793896674000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "Yannick.George.Devos@vub.be",
       "familyNames": [
         "Devos"
@@ -319,8 +310,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0838-person-003",
       "__type": "Person",
-      "__createdAt": "1705921793896825000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "christine.puempin@unibas.ch",
       "familyNames": [
         "Pümpin"
@@ -346,8 +335,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0838-person-004",
       "__type": "Person",
-      "__createdAt": "1705921793896973000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "k.ismail-meyer@unibas.ch",
       "familyNames": [
         "Ismail-Meyer"
@@ -373,8 +360,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0838-person-005",
       "__type": "Person",
-      "__createdAt": "1705921793897119000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "simon.kuebler@unibas.ch",
       "familyNames": [
         "Kübler"
@@ -392,8 +377,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0838-person-006",
       "__type": "Person",
-      "__createdAt": "1705921793897217000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "philippe.rentzel@unibas.ch",
       "familyNames": [
         "Rentzel"
@@ -419,8 +402,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0838-person-000",
       "__type": "Person",
-      "__createdAt": "1705921793897353000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "david.broennimann@unibas.ch",
       "familyNames": [
         "Brönnimann"
@@ -448,8 +429,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0838-organization-001",
       "__type": "Organization",
-      "__createdAt": "1705921793897492000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Pleinlaan 2",
@@ -468,8 +447,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0838-organization-002",
       "__type": "Organization",
-      "__createdAt": "1705921794147440000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Wildhainweg 3",
@@ -489,8 +466,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0838-organization-003",
       "__type": "Organization",
-      "__createdAt": "1705921794254555000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "HOEK 38, Leuvenseweg 38",
@@ -509,8 +484,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0838-organization-000",
       "__type": "Organization",
-      "__createdAt": "1705921794364741000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Spalenring 145",
@@ -531,8 +504,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0838-grant-000",
       "__type": "Grant",
-      "__createdAt": "1705921794475675000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0838-organization-002"
       ],
@@ -548,8 +519,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0838-grant-001",
       "__type": "Grant",
-      "__createdAt": "1705921794475962000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0838-organization-003"
       ],

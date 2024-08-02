@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-080C-project",
     "__type": "Project",
-    "__createdAt": "1660774161591770000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Fotoarchiv Kunsthalle Basel (2023). [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/080C",
     "teaserText": "Kunsthalle Basel is Switzerland’s oldest active art museum displaying contemporary art.",
     "datasets": [
@@ -86,8 +83,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1660774162388016000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "en": "Kunsthalle Basel is Switzerland’s oldest active art museum displaying contemporary art. The Photo Archive of Kunsthalle Basel documents the Kunsthalle’s exhibitions from the last century with well over 20,000 photographs. The archive offers a freely accessible insight into the exhibitions, their publications and the works shown. Please be aware that the images are protected by copyright. This database is continuously updated and expanded."
@@ -169,8 +164,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-person-000",
       "__type": "Person",
-      "__createdAt": "1660774162388636000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Ficco"
       ],
@@ -187,8 +180,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-person-001",
       "__type": "Person",
-      "__createdAt": "1660774162388720000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Schmeling"
       ],
@@ -202,8 +193,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-person-002",
       "__type": "Person",
-      "__createdAt": "1660774162388794000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Berger"
       ],
@@ -217,8 +206,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-person-003",
       "__type": "Person",
-      "__createdAt": "1660774162388864000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Zollinger"
       ],
@@ -231,78 +218,56 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-organization-001",
       "__type": "Organization",
-      "__createdAt": "1660774162388942000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "Bundesamt für Kultur"
     },
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-organization-002",
       "__type": "Organization",
-      "__createdAt": "1660774162388979000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "UBS Kulturstiftung"
     },
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-organization-003",
       "__type": "Organization",
-      "__createdAt": "1660774162389014000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "Kulturelles BL"
     },
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-organization-004",
       "__type": "Organization",
-      "__createdAt": "1660774162389047000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "FMB (Freiwilliger Museumsverein Basel)"
     },
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-organization-005",
       "__type": "Organization",
-      "__createdAt": "1660774162389086000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "Ernst Göhner Stiftung"
     },
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-organization-006",
       "__type": "Organization",
-      "__createdAt": "1660774162389143000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "Sulger Stiftung"
     },
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-organization-007",
       "__type": "Organization",
-      "__createdAt": "1660774162389197000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "Sophie und Karl Binding Stiftung"
     },
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-organization-008",
       "__type": "Organization",
-      "__createdAt": "1660774162389249000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "Gerda Henkel Stiftung"
     },
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-organization-009",
       "__type": "Organization",
-      "__createdAt": "1660774162389288000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "Camille Graeser Stiftung"
     },
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-organization-010",
       "__type": "Organization",
-      "__createdAt": "1660774162389322000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "Beisheim Stiftung"
     },
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-organization-000",
       "__type": "Organization",
-      "__createdAt": "1660774162389355000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "Basler Kunstverein"
     }
   ],
@@ -310,8 +275,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-grant-000",
       "__type": "Grant",
-      "__createdAt": "1660774162389411000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-080C-organization-001"
       ],
@@ -326,8 +289,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-grant-001",
       "__type": "Grant",
-      "__createdAt": "1660774162389522000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-080C-organization-002"
       ],
@@ -342,8 +303,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-grant-002",
       "__type": "Grant",
-      "__createdAt": "1660774162389630000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-080C-organization-003"
       ],
@@ -358,8 +317,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-grant-003",
       "__type": "Grant",
-      "__createdAt": "1660774162389735000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-080C-organization-004"
       ],
@@ -374,8 +331,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-grant-004",
       "__type": "Grant",
-      "__createdAt": "1660774162389839000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-080C-organization-005"
       ],
@@ -390,8 +345,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-grant-005",
       "__type": "Grant",
-      "__createdAt": "1660774162389945000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-080C-organization-006"
       ],
@@ -406,8 +359,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-grant-006",
       "__type": "Grant",
-      "__createdAt": "1660774162390053000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-080C-organization-007"
       ],
@@ -422,8 +373,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-grant-007",
       "__type": "Grant",
-      "__createdAt": "1660774162390172000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-080C-organization-008"
       ],
@@ -438,8 +387,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-grant-008",
       "__type": "Grant",
-      "__createdAt": "1660774162390276000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-080C-organization-009"
       ],
@@ -454,8 +401,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-grant-009",
       "__type": "Grant",
-      "__createdAt": "1660774162390377000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-080C-organization-010"
       ],

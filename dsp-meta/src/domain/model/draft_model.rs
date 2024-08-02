@@ -27,12 +27,6 @@ pub struct DraftMetadata {
 #[serde(tag = "__type")]
 #[serde(rename = "Project")]
 pub struct DraftProject {
-    #[serde(rename = "__id")]
-    pub id: String,
-    #[serde(rename = "__createdAt")]
-    pub created_at: Option<String>,
-    #[serde(rename = "__createdBy")]
-    pub created_by: Option<String>,
     pub shortcode: Shortcode,
     pub status: Option<DraftProjectStatus>,
     pub name: String,
@@ -107,10 +101,6 @@ pub struct DraftPublication {
 pub struct DraftDataset {
     #[serde(rename = "__id")]
     pub id: String,
-    #[serde(rename = "__createdAt")]
-    pub created_at: Option<String>,
-    #[serde(rename = "__createdBy")]
-    pub created_by: Option<String>,
     pub abstracts: Option<NonEmpty<DraftTextOrUrl>>,
     pub access_conditions: Option<DraftAccessCondition>,
     pub additional: Option<Vec<DraftTextOrUrl>>,
@@ -165,10 +155,6 @@ pub enum DraftTypeOfData {
 pub struct DraftPerson {
     #[serde(rename = "__id")]
     pub id: String,
-    #[serde(rename = "__createdAt")]
-    pub created_at: Option<String>,
-    #[serde(rename = "__createdBy")]
-    pub created_by: Option<String>,
     pub job_titles: Option<NonEmpty<String>>,
     pub given_names: NonEmpty<String>,
     pub family_names: NonEmpty<String>,
@@ -187,10 +173,6 @@ pub struct DraftPerson {
 pub struct DraftOrganization {
     #[serde(rename = "__id")]
     pub id: String,
-    #[serde(rename = "__createdAt")]
-    pub created_at: Option<String>,
-    #[serde(rename = "__createdBy")]
-    pub created_by: Option<String>,
     pub name: String,
     pub url: Option<DraftUrl>,
     pub address: Option<DraftAddress>,
@@ -207,10 +189,6 @@ pub struct DraftOrganization {
 pub struct DraftGrant {
     #[serde(rename = "__id")]
     pub id: String,
-    #[serde(rename = "__createdAt")]
-    pub created_at: Option<String>,
-    #[serde(rename = "__createdBy")]
-    pub created_by: Option<String>,
     pub funders: NonEmpty<String>,
     pub number: Option<String>,
     pub name: Option<String>,

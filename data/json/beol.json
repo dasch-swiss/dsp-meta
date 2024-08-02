@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0801-project",
     "__type": "Project",
-    "__createdAt": "1630601412179086000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Bernoulli-Euler Online (BEOL), 2019, DaSCH. https://beol.dasch.swiss",
     "teaserText": "The project Bernoulli-Euler Online (BEOL) focuses on the mathematics influenced by the Bernoulli dynasty and Leonhard Euler and presents these materials to the public and researchers.",
     "datasets": [
@@ -142,8 +139,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0801-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1630601418280016000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "__type": "URL",
@@ -215,8 +210,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0801-dataset-001",
       "__type": "Dataset",
-      "__createdAt": "1630601418365017000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "__type": "URL",
@@ -278,8 +271,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0801-dataset-002",
       "__type": "Dataset",
-      "__createdAt": "1630601418882265000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "en": "Edition of Jacob Bernoulli's Scientific Notebook (Meditationes)."
@@ -341,8 +332,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0801-dataset-003",
       "__type": "Dataset",
-      "__createdAt": "1630601419755717000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "__type": "URL",
@@ -418,8 +407,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0801-person-001",
       "__type": "Person",
-      "__createdAt": "1630601420163858000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Lemmermeyer"
       ],
@@ -436,8 +423,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0801-person-002",
       "__type": "Person",
-      "__createdAt": "1630601420163929000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "fritz.nagel@unibas.ch",
       "familyNames": [
         "Nagel"
@@ -455,8 +440,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0801-person-003",
       "__type": "Person",
-      "__createdAt": "1630601420164011000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "sulamith.gehr@unibas.ch",
       "familyNames": [
         "Gehr"
@@ -474,8 +457,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0801-person-004",
       "__type": "Person",
-      "__createdAt": "1630601420164092000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Gilan"
       ],
@@ -492,8 +473,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0801-person-005",
       "__type": "Person",
-      "__createdAt": "1630601420164156000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Hug"
       ],
@@ -510,8 +489,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0801-person-000",
       "__type": "Person",
-      "__createdAt": "1630601420164221000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "martin.mattmueller@unibas.ch",
       "familyNames": [
         "Mattmüller"
@@ -531,8 +508,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0801-organization-000",
       "__type": "Organization",
-      "__createdAt": "1630601420164329000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Wildhainweg 3, Postfach",
@@ -552,8 +527,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0801-organization-002",
       "__type": "Organization",
-      "__createdAt": "1630601420195745000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Haus der Akademien, Postfach",
@@ -573,8 +546,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0801-organization-003",
       "__type": "Organization",
-      "__createdAt": "1630601420228994000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Universitätsbibliothek, Schönbeinstrasse 18-20",
@@ -596,8 +567,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0801-grant-000",
       "__type": "Grant",
-      "__createdAt": "1630601420262951000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0801-organization-000"
       ],
@@ -613,8 +582,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0801-grant-001",
       "__type": "Grant",
-      "__createdAt": "1630601420263165000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0801-organization-002"
       ]

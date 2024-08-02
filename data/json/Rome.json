@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-REMA-project",
     "__type": "Project",
-    "__createdAt": "1657709544615698000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Croci, C., Quadri, I, Gianandrea, M., Romano, S., Tosti, E., Chiaraella, M., Ventura, D., Rivoal, M., 2022, Rome in the Early Middle Ages: Arts and Culture [database] (DaSCH), https://ark.dasch.swiss/ark:/72163/1/0118",
     "teaserText": "The project addresses the visual culture of the city of Rome (Vth-XIth ct.) by means of an interdisciplinary approach (art history, architecture, archaeology archaeometry, liturgy, epigraphy).",
     "datasets": [
@@ -122,8 +119,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-REMA-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1657709546374431000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "en": "The ontology of the database comprises three main classes, making it possible to describe paintings and mosaics in the buildings where they are found. The class “Oggetto” (i.e.: mosaic, painting) falls under the class “Cappella” and/or the class “Edificio”. Each of these three classes contains properties (custom controlled vocabularies and text fields), making it possible to characterize the building, chapel, paintings or mosaic using names, location, description, state of preservation, analysis, dating, patrons, inscriptions, sources, critical commentary, bibliography. Illustrations can be added to the three main categories using two further classes, ‘Illustrazioni’ and ‘Illustrazioni ad accesso limitato’, whose properties (also text fields and controlled vocabularies) include information on the type of image and photograph credits."
@@ -232,8 +227,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-REMA-person-001",
       "__type": "Person",
-      "__createdAt": "1657709547134209000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "Irene.Quadri@unil.ch",
       "familyNames": [
         "Quadri"
@@ -251,8 +244,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-REMA-person-002",
       "__type": "Person",
-      "__createdAt": "1657709547134310000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "Marion.Rivoal@unil.ch",
       "familyNames": [
         "Rivoal"
@@ -270,8 +261,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-REMA-person-003",
       "__type": "Person",
-      "__createdAt": "1657709547134410000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "mariaelena.chiarella@unil.ch",
       "familyNames": [
         "Chiarella"
@@ -289,8 +278,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-REMA-person-004",
       "__type": "Person",
-      "__createdAt": "1657709547134507000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "Eleonora.tosti@unil.ch",
       "familyNames": [
         "Tosti"
@@ -308,8 +295,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-REMA-person-005",
       "__type": "Person",
-      "__createdAt": "1657709547134588000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "Serena.Romano@unil.ch",
       "familyNames": [
         "Romano"
@@ -327,8 +312,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-REMA-person-006",
       "__type": "Person",
-      "__createdAt": "1657709547134672000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "Manuela.Gianandrea@unil.ch",
       "familyNames": [
         "Gianandrea"
@@ -347,8 +330,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-REMA-person-007",
       "__type": "Person",
-      "__createdAt": "1657709547134778000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "mimmoventura74@gmail.com",
       "familyNames": [
         "Ventura"
@@ -366,8 +347,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-REMA-person-000",
       "__type": "Person",
-      "__createdAt": "1657709547134887000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "Chiara.Croci@unil.ch",
       "familyNames": [
         "Croci"
@@ -385,8 +364,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-REMA-person-008",
       "__type": "Person",
-      "__createdAt": "1657709547134887000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "Cassandre.Lejosne@unil.ch",
       "familyNames": [
         "Cassandre"
@@ -406,8 +383,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-REMA-organization-002",
       "__type": "Organization",
-      "__createdAt": "1657709547135008000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "",
@@ -420,8 +395,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-REMA-organization-001",
       "__type": "Organization",
-      "__createdAt": "1657709547222387000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Wildhainweg 3 Postfach",
@@ -441,8 +414,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-REMA-organization-000",
       "__type": "Organization",
-      "__createdAt": "1657709547268009000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Unicentre",
@@ -463,8 +434,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-REMA-grant-000",
       "__type": "Grant",
-      "__createdAt": "1657709547313726000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-REMA-organization-001"
       ],

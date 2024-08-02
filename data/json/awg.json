@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0806-project",
     "__type": "Project",
-    "__createdAt": "1630601301674969000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "See https://www.anton-webern.ch/index.php?id=85",
     "teaserText": "The Anton Webern Gesamtausgabe (AWG) is a critical-historical edition which aims to make Webern’s entire oeuvre accessible to musical scholarship and practice in a scholarly form.",
     "datasets": [
@@ -211,8 +208,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0806-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1630601309235590000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "en": "The Anton Webern Gesamtausgabe (AWG) is a critical-historical edition of Anton Webern’s oeuvre. This edition makes his work freely accessible to the public in a form that is academically appropriate and serves musical practice. The edition includes not only the works that Webern himself brought to print, but also currently unpublished variants of his works, as well as compositions unpublished during his lifetime, fragments, sketches and arrangements. The AWG will be published in hybrid form. The printed volumes will be published by Universal Edition, Vienna, while the components and databases accessible online will be presented in a dedicated web application, as well as within the generic web application developed by DaSCH - Swiss National Data and Service Center for the Humanities with the aim of securing direct long-term access to the data. The AWG is also working on a documentation of the composer's biography, as well as the history of the creation, publication and performance of his works. To achieve this, information of various kinds has been archived and linked in the database, reflecting a chronology that describes Webern’s private and professional life in detail. The documentation of the development of his works is verified by references to material evidence (e.g. correspondence as archived in the letters section). Furthermore, brief, keyword-based information on relevant persons serves to provide a better overview of the composer’s contacts and social environment."
@@ -302,8 +297,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0806-person-001",
       "__type": "Person",
-      "__createdAt": "1630601309721380000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Münsterplatz 4",
@@ -339,8 +332,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0806-person-000",
       "__type": "Person",
-      "__createdAt": "1630601309753367000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Petersgraben 27/29",
@@ -376,8 +367,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0806-person-003",
       "__type": "Person",
-      "__createdAt": "1630601309786974000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Petersgraben 27/29",
@@ -411,8 +400,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0806-person-004",
       "__type": "Person",
-      "__createdAt": "1630601309820423000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Petersgraben 27/29",
@@ -446,8 +433,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0806-person-005",
       "__type": "Person",
-      "__createdAt": "1630601309852943000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Petersgraben 27/29",
@@ -481,8 +466,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0806-person-002",
       "__type": "Person",
-      "__createdAt": "1630601309885202000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Petersgraben 27/29",
@@ -519,8 +502,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0806-organization-002",
       "__type": "Organization",
-      "__createdAt": "1630601309917803000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Münsterplatz 4",
@@ -540,8 +521,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0806-organization-004",
       "__type": "Organization",
-      "__createdAt": "1630601309950441000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Laupenstrasse 7 (Postfach)",
@@ -561,8 +540,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0806-organization-005",
       "__type": "Organization",
-      "__createdAt": "1630601309983770000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Landis + Gyr-Strasse 1",
@@ -582,8 +559,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0806-organization-001",
       "__type": "Organization",
-      "__createdAt": "1630601310016567000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Petersgraben 27/29",
@@ -603,8 +578,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0806-organization-003",
       "__type": "Organization",
-      "__createdAt": "1630601310049769000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Wildhainweg 3 (Postfach)",
@@ -624,8 +597,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0806-organization-000",
       "__type": "Organization",
-      "__createdAt": "1630601310082589000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Petersgraben 27/29",
@@ -647,8 +618,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0806-grant-000",
       "__type": "Grant",
-      "__createdAt": "1630601310115281000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0806-organization-004"
       ],
@@ -657,8 +626,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0806-grant-001",
       "__type": "Grant",
-      "__createdAt": "1630601310115368000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0806-organization-003"
       ],
@@ -674,8 +641,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0806-grant-002",
       "__type": "Grant",
-      "__createdAt": "1630601310115574000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0806-organization-003"
       ],
@@ -691,8 +656,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0806-grant-003",
       "__type": "Grant",
-      "__createdAt": "1630601310115774000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0806-organization-003"
       ],
@@ -708,8 +671,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0806-grant-004",
       "__type": "Grant",
-      "__createdAt": "1630601310115969000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0806-organization-003"
       ],
@@ -725,8 +686,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0806-grant-005",
       "__type": "Grant",
-      "__createdAt": "1630601310116164000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0806-organization-003"
       ],
@@ -742,8 +701,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0806-grant-006",
       "__type": "Grant",
-      "__createdAt": "1630601310116358000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0806-organization-005"
       ],
@@ -759,8 +716,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0806-grant-007",
       "__type": "Grant",
-      "__createdAt": "1630601310116553000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0806-organization-005"
       ],
