@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.0](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v0.1.0...dsp-meta-v0.2.0) (2024-08-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* Backport schema changes (DEV-3953) ([#169](https://github.com/dasch-swiss/dsp-meta/issues/169))
+
+### Features
+
+* Backport schema changes (DEV-3953) ([#169](https://github.com/dasch-swiss/dsp-meta/issues/169)) ([04ed3c4](https://github.com/dasch-swiss/dsp-meta/commit/04ed3c4a15f24eb1dbc8909d3a212c4570ca0a40))
+
 ## [0.1.0](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v0.1.4...dsp-meta-v0.1.0) (2024-07-31)
 
 
