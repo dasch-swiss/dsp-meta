@@ -8,7 +8,7 @@ WORKDIR /dsp-meta
 COPY . .
 RUN cd web-frontend && yarn install && yarn run build
 
-FROM debian:bookworm-slim AS runtime
+FROM debian:bullseye-slim AS runtime
 # add data
 COPY ./data /data
 
