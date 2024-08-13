@@ -2,12 +2,38 @@
   "release-type": "rust",
   "bump-minor-pre-major": true,
   "bump-patch-for-minor-pre-major": true,
-  "plugins": ["cargo-workspace", "sentence-case",
+  "changelog-sections": [
+    {
+      "type": "feat",
+      "section": "Enhancements",
+      "hidden": false
+    },
+    {
+      "type": "fix",
+      "section": "Bug Fixes",
+      "hidden": false
+    },
+    {
+      "type": "chore",
+      "section": "Maintenance",
+      "hidden": false
+    },
+    {
+      "type": "docs",
+      "section": "Documentation",
+      "hidden": false
+    }
+  ],
+  "plugins": [
+    "cargo-workspace",
+    "sentence-case",
     {
       "type": "linked-versions",
       "groupName": "dsp-meta",
       "components": [
-        "dsp-domain", "dsp-meta", "dsp-meta-cmd"
+        "dsp-domain",
+        "dsp-meta",
+        "dsp-meta-cmd"
       ]
     }
   ],
