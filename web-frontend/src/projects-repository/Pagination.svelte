@@ -1,6 +1,11 @@
 <script lang="ts">
   import { navigate } from 'svelte-routing';
-  import { getProjectsMetadata, pagedResults, pagination, query } from '../store';
+  import {
+    getProjectsMetadata,
+    pagedResults,
+    pagination,
+    query,
+  } from '../store';
 
   let handlePagination = (event: MouseEvent) => {
     const id = (event.target as HTMLElement).id;
@@ -13,16 +18,18 @@
     } else {
       $pagination.currentPage = Number(id);
     }
-    
+
     document.querySelector('.active').classList.remove('active');
-    document.getElementById(($pagination.currentPage).toString()).classList.add('active');
+    document
+      .getElementById($pagination.currentPage.toString())
+      .classList.add('active');
 
     navigate(`projects?_page=${$pagination.currentPage}&_limit=9`);
 
     getProjectsMetadata($pagination.currentPage, $query);
 
-    window.scrollTo(0,0);
-  }
+    window.scrollTo(0, 0);
+  };
 </script>
 
 <div class={pagedResults ? 'pagination-container' : 'hidden'}>
@@ -32,7 +39,11 @@
         Showing
         <span>{$pagination.currentResultsRange[0]}</span>
         to
-        <span>{$pagination.currentResultsRange[1] > $pagination.totalCount ? $pagination.totalCount : $pagination.currentResultsRange[1]}</span>
+        <span
+          >{$pagination.currentResultsRange[1] > $pagination.totalCount
+            ? $pagination.totalCount
+            : $pagination.currentResultsRange[1]}</span
+        >
         of
         <span>{$pagination.totalCount}</span>
         <!-- results
@@ -46,11 +57,29 @@
     </div>
   </div>
   <div class="pagination">
-    <button on:click={handlePagination} class="arrow" id="first" title="First Page" disabled={$pagination.currentPage === 1}>&laquo;</button>
+    <button
+      on:click={handlePagination}
+      class="arrow"
+      id="first"
+      title="First Page"
+      disabled={$pagination.currentPage === 1}>&laquo;</button
+    >
     {#each Array($pagination.totalPages) as _, i}
-      <button on:click={handlePagination} id={(i + 1).toString()} class={i + 1 === $pagination.currentPage ? 'active' : ''}>{i + 1}</button>
+      <button
+        on:click={handlePagination}
+        id={(i + 1).toString()}
+        class={i + 1 === $pagination.currentPage ? 'active' : ''}
+        >{i + 1}</button
+      >
     {/each}
-    <button on:click={handlePagination} class="arrow" id="last" title="Last Page" disabled={$pagination.currentPage === $pagination.totalPages}>&raquo;</button>
+    <button
+      on:click={handlePagination}
+      class="arrow"
+      id="last"
+      title="Last Page"
+      disabled={$pagination.currentPage === $pagination.totalPages}
+      >&raquo;</button
+    >
   </div>
 </div>
 
@@ -80,7 +109,8 @@
     color: white;
     border: 1px solid var(--dasch-primary);
   }
-  button:hover:not(.active), button:hover:not:disabled {
+  button:hover:not(.active),
+  button:hover:not:disabled {
     background-color: var(--dasch-hover);
   }
   button:first-child {

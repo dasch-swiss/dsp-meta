@@ -17,6 +17,7 @@ check:
 # Format all rust code
 fmt:
     cargo +nightly fmt
+    cd web-frontend && yarn fmt
 
 # Fix justfile formating. Warning: will change existing file. Please first use check.
 fix:

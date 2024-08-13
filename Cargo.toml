@@ -20,7 +20,7 @@ anyhow = "1"
 async-trait = "0.1.81"
 axum = "0.7.2" # web framework
 axum-macros = "0.4.0"
-clap = { version = "4.5.4", features = ["derive"] } # command-line parser
+clap = { version = "4.5.15", features = ["derive"] } # command-line parser
 config = "0.13.1" # Layered configuration with strong support for 12-factor applications
 chrono = { version = "0.4.38", features = ["serde"] }
 dirs = "5.0.1" # provides platform-specific locations for storing user configuration
@@ -41,7 +41,7 @@ tokio-test = "0.4.2"
 tower = "0.4.13"
 tower-http = { version = "0.5.0", features = ["trace", "fs", "cors"] }
 hyper = "1.4.1"
-regex = "1.5.4"
+regex = "1.10.6"
 thiserror = "1.0.56"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = [
@@ -53,4 +53,4 @@ tracing-subscriber = { version = "0.3", features = [
 ] }
 tracing-test = "0.2"
 url = { version = "2", features = ["serde"] }
-toml = "0.8.15"
+toml = "0.8.19"

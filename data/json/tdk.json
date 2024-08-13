@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0805-project",
     "__type": "Project",
-    "__createdAt": "1632994712053707000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "University of Basel Kings’ Valley Project Online (UBKVP), 2021, DaSCH. ark.dasch.swiss/ark:/72163/1/0805",
     "teaserText": "Assessment of tombs in the Kings’ Valley used for burials of royal family and entourage (ca. 1350 BCE), looted (ca. 1000 BCE), and reused for burials of members of priestly families (ca. 800–700 BCE).",
     "datasets": [
@@ -190,8 +187,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0805-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1632994714934162000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "en": "Archaeological Project exploring undecorated tombs in the Valley of the Kings, Egypt"
@@ -249,8 +244,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0805-person-000",
       "__type": "Person",
-      "__createdAt": "1632994715658432000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Petersgraben 51",
@@ -291,8 +284,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0805-organization-000",
       "__type": "Organization",
-      "__createdAt": "1632994715913900000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "University of Basel",
       "url": {
         "__type": "URL",
@@ -304,8 +295,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0805-organization-001",
       "__type": "Organization",
-      "__createdAt": "1632994715914050000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "Swiss National Science Foundation (SNSF)",
       "url": {
         "__type": "URL",
@@ -319,8 +308,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0805-grant-000",
       "__type": "Grant",
-      "__createdAt": "1632994715914219000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0805-organization-001"
       ],

@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { onDestroy, onMount } from "svelte";
+  import { onDestroy, onMount } from 'svelte';
   import { fade } from 'svelte/transition';
-  import { handleSnackbar } from "./store";
+  import { handleSnackbar } from './store';
 
   onMount(() => {
-    if($handleSnackbar.isSnackbar) {
+    if ($handleSnackbar.isSnackbar) {
       setTimeout(() => {
         $handleSnackbar.isSnackbar = false;
       }, 3000);
@@ -15,10 +15,10 @@
     if ($handleSnackbar.isSnackbar) {
       $handleSnackbar.isSnackbar = false;
     }
-  })
+  });
 </script>
 
-<div transition:fade={{duration: 400}}>
+<div in:fade={{ duration: 400 }}>
   {$handleSnackbar.message}
 </div>
 

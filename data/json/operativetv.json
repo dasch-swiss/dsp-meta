@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0849-project",
     "__type": "Project",
-    "__createdAt": "1702979871566629000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Weber, Anne-Katrin; Cronjäger, Lisa; Sandoz, Marie; Scheiwiller, Sébastien (2024). Operative TV [Database]. DaSCH",
     "teaserText": "The SNSF PRIMA project “Operative TV: Audiovisual Closed-Circuits from the Military to the Classroom, 1930s-1990s” studies the uses of TV in industrial, medical, educational and military contexts.",
     "datasets": [
@@ -126,8 +123,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0849-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1702979875988464000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "en": "The aim of the database is to inform researchers about relevant archives centers / collections / folders for writing a history of useful and closed-circuit television in Western Europe and the United States. \n \n The database offers a view of the archives collected by the Operative TV project and give access to some of them. But the database also contributes to locate and identify archival material for further research. For example, the visitors might find in the database our description of a collection or a folder that don’t exist elsewhere. They will then be able to investigate this collection further.\r \r Finally, the database give access to the outputs of the Operative TV project.\r \r The database is organised as follow:\n \n \n  A.\tResources\n \n  The database is designed around four main interrelated categories (resources): \r •\tArchive Documents in PDF format;\r •\tArchive Folders to which documents belong;\r •\tArchive Fonds to which folders belong; \r •\tArchive Centers or Libraries that hold collections. \r \r A fifth category (resource) named Journals / grey literature includes published archival sources.\r \r A sixth category (resource) includes the scientific Outputs of the Operative TV project.\r \r B.\tThesaurus\r \r While the categories/resources mentioned above bring essentially together \"places\" where archives and archival documents can be found, the Controlled Vocabularies allows a thematic approach to the Documents, Folders and archival Collections, with two exceptions.\r \r \r •\tControlled Vocabularies with thematic approach:\r Useful Television; Function of Television; Technical Dispositif; Users; Operators of Television\r à In each case, there are multiple choices\r \r •\tControlled Vocabularies relating to where the Archives Centers are situated:\r Countries; Cities\r à In each case, there are multiple choices"
@@ -201,8 +196,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0849-person-001",
       "__type": "Person",
-      "__createdAt": "1702979876338923000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "lisa.cronjager@unil.ch",
       "familyNames": [
         "Cronjäger"
@@ -228,8 +221,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0849-person-002",
       "__type": "Person",
-      "__createdAt": "1702979876338998000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "sebastien.scheiwiller@unil.ch",
       "familyNames": [
         "Scheiwiller"
@@ -247,8 +238,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0849-person-003",
       "__type": "Person",
-      "__createdAt": "1702979876339048000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "marie.sandoz@unil.ch",
       "familyNames": [
         "Sandoz"
@@ -274,8 +263,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0849-person-000",
       "__type": "Person",
-      "__createdAt": "1702979876339114000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "anne-katrin.weber@unil.ch",
       "secondaryEmail": "annekatrin.weber@unibas.ch",
       "familyNames": [
@@ -304,8 +291,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0849-organization-001",
       "__type": "Organization",
-      "__createdAt": "1702979876339189000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Wildhainweg 3",
@@ -318,8 +303,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0849-organization-000",
       "__type": "Organization",
-      "__createdAt": "1702979876410717000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Université de Lausanne",
@@ -334,8 +317,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0849-grant-000",
       "__type": "Grant",
-      "__createdAt": "1702979876449642000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0849-organization-001"
       ],

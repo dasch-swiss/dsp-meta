@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0112-project",
     "__type": "Project",
-    "__createdAt": "1630601323747283000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Maggetti, D., Jacquier Kaempfer, C., Spadini, E., Pellegrino, B., Burri, J., Lacord, R., Peterman, S., Christen, A., Jaouen, L., Rivoal, M., 2020, Gustave Roud, oeuvres [database] (DaSCH), https://ark.dasch.swiss/ark:/72163/1/0112.",
     "teaserText": "This database is the accompaniment of the critical edition of Gustave Roud’s work. It hosts the digital facsimiles of Gustave Roud’s archive, which includes manuscripts and printed materials.",
     "datasets": [
@@ -106,8 +103,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0112-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1630601330472953000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "en": "The dataset includes information about Roud’s publications (complete bibliographic records, facsimiles) and about the materials in his archive at the University of Lausanne (document descriptions, facsimiles). Each work has attached a critical text and a genetic network; the latter links publications and archival materials. The dataset also includes information about persons, places and artistic works (music, literature, visual arts) mentioned in the texts, and short essays about Roud’s artistic production."
@@ -230,8 +225,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0112-person-001",
       "__type": "Person",
-      "__createdAt": "1630601331609680000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "claire.jaquier@unine.ch",
       "familyNames": [
         "Jaquier Kaempfer"
@@ -249,8 +242,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0112-person-007",
       "__type": "Person",
-      "__createdAt": "1630601331609789000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "loic.jaouen@unil.ch",
       "familyNames": [
         "Jaouen"
@@ -268,8 +259,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0112-person-008",
       "__type": "Person",
-      "__createdAt": "1630601331609894000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "marion.rivoal@unil.ch",
       "familyNames": [
         "Rivoal"
@@ -295,8 +284,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0112-person-000",
       "__type": "Person",
-      "__createdAt": "1630601331610070000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "daniel.maggetti@unil.ch",
       "familyNames": [
         "Maggetti"
@@ -314,8 +301,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0112-person-003",
       "__type": "Person",
-      "__createdAt": "1630601331610172000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "bruno.pellegrino@unil.ch",
       "familyNames": [
         "Pellegrino"
@@ -334,8 +319,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0112-person-004",
       "__type": "Person",
-      "__createdAt": "1630601331610280000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "alessio.christen@unil.ch",
       "familyNames": [
         "Christen"
@@ -354,8 +337,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0112-person-005",
       "__type": "Person",
-      "__createdAt": "1630601331610400000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "julien.burri@unil.ch",
       "familyNames": [
         "Burry"
@@ -374,8 +355,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0112-person-006",
       "__type": "Person",
-      "__createdAt": "1630601331610503000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Lacord"
       ],
@@ -393,8 +372,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0112-person-002",
       "__type": "Person",
-      "__createdAt": "1630601331610586000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "elena.spadini@unil.ch",
       "familyNames": [
         "Spadini"
@@ -423,8 +400,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0112-organization-002",
       "__type": "Organization",
-      "__createdAt": "1630601331610778000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Avenue du 1er-Mars 26",
@@ -443,8 +418,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0112-organization-001",
       "__type": "Organization",
-      "__createdAt": "1630601331813643000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Wildhainweg 3 Postfach",
@@ -464,8 +437,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0112-organization-000",
       "__type": "Organization",
-      "__createdAt": "1630601331846768000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Unicentre",
@@ -486,8 +457,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0112-grant-000",
       "__type": "Grant",
-      "__createdAt": "1630601331880177000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0112-organization-001"
       ],

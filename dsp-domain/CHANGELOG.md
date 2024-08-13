@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.0](https://github.com/dasch-swiss/dsp-meta/compare/dsp-domain-v0.1.4...dsp-domain-v0.1.0) (2024-07-31)
+
+
+### Miscellaneous Chores
+
+* **dsp-domain:** Synchronize dsp-meta versions
+
 ## [0.1.4](https://github.com/dasch-swiss/dsp-meta/compare/dsp-domain-v0.1.3...dsp-domain-v0.1.4) (2024-07-30)
 
 

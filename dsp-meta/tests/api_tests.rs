@@ -133,13 +133,9 @@ mod tests {
     }
 
     fn test_data(shortcode: &str) -> DraftMetadata {
-        let fake_id = "https://example.com/".to_string() + Faker.fake::<String>().as_str();
         let fake_name = Faker.fake::<String>();
         let expected: DraftMetadata = DraftMetadata {
             project: DraftProject {
-                id: fake_id,
-                created_at: None,
-                created_by: None,
                 shortcode: Shortcode::try_from(shortcode.to_string()).expect("Valid shortcode"),
                 status: None,
                 name: fake_name,

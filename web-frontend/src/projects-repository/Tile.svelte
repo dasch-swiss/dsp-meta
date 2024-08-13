@@ -3,18 +3,22 @@
   import type { ProjectMetadata } from '../interfaces';
 
   export let metadata: ProjectMetadata;
-
 </script>
 
 <section>
   <div class="status">
-    <img src="/assets/icon/{metadata.status === 'ongoing' ? 'Badge_Ongoing.svg' : 'Badge_Finished.svg'}" alt="Status {metadata.status}" />
+    <img
+      src="/assets/icon/{metadata.status === 'ongoing'
+        ? 'Badge_Ongoing.svg'
+        : 'Badge_Finished.svg'}"
+      alt="Status {metadata.status}"
+    />
   </div>
-  <div class=header>
-    <h5>{ metadata.name }</h5>
+  <div class="header">
+    <h5>{metadata.name}</h5>
   </div>
-  <div class=content>{ metadata.description }</div>
-  <div class=footer>
+  <div class="content">{metadata.description}</div>
+  <div class="footer">
     <Router>
       <Link to={`/projects/${metadata.id}`} class="read-more regular-link">
         Read more
@@ -34,14 +38,14 @@
     float: left;
     box-shadow: var(--shadow-2);
   }
-  .header{
+  .header {
     font-family: 'robotomedium';
     height: 30px;
     padding-top: 10px;
   }
   .header h5 {
     text-overflow: ellipsis;
-    overflow: hidden; 
+    overflow: hidden;
     white-space: nowrap;
     margin: 0;
   }

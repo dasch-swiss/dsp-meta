@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0107-project",
     "__type": "Project",
-    "__createdAt": "1630601357396935000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Boillat, A., Chedaleux, D., Rohner, J., Cordonier, L., Gaillard, A., Jaouen, L., Rivoal, M., 2018, Personnage et vedettariat au prisme du genre [database] (DaSCH), https://ark.dasch.swiss/ark:/72163/1/0107.",
     "teaserText": "This project studies the mechanisms of the construction of genre representations in the French cinematographic production of the 1940s.",
     "datasets": [
@@ -130,8 +127,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0107-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1630601362329335000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "en": "The ontology of the project comprises 15 distinct classes, 68 properties, mainly describing archive documents (Piece) divided into 7 distinct categories (contractual and legal documents, personal correspondence, published articles, documents related to the organisation of work, script documents, personal documents, documents related to promotion), and listing, for each piece, the natural or legal persons concerned by the writing of the document and, for each page of document, the persons, works and film projects mentioned.\r Some images (pages) are annotated (regions of interest)."
@@ -229,8 +224,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0107-person-003",
       "__type": "Person",
-      "__createdAt": "1630601362789215000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "laure.cordonier@unil.ch",
       "familyNames": [
         "Cordonier"
@@ -248,8 +241,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0107-person-004",
       "__type": "Person",
-      "__createdAt": "1630601362789324000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Gaillard"
       ],
@@ -266,8 +257,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0107-person-005",
       "__type": "Person",
-      "__createdAt": "1630601362789404000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "loic.jaouen@unil.ch",
       "familyNames": [
         "Jaouen"
@@ -285,8 +274,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0107-person-006",
       "__type": "Person",
-      "__createdAt": "1630601362789498000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "marion.rivoal@unil.ch",
       "familyNames": [
         "Rivoal"
@@ -312,8 +299,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0107-person-000",
       "__type": "Person",
-      "__createdAt": "1630601362789663000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "alain.boillat@unil.ch",
       "familyNames": [
         "Boillat"
@@ -339,8 +324,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0107-person-001",
       "__type": "Person",
-      "__createdAt": "1630601362789825000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "delphine.chedaleux@utc.fr",
       "familyNames": [
         "Chedaleux"
@@ -366,8 +349,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0107-person-002",
       "__type": "Person",
-      "__createdAt": "1630601362789987000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "jeanne.rohner@unil.ch",
       "familyNames": [
         "Rohner"
@@ -395,8 +376,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0107-organization-001",
       "__type": "Organization",
-      "__createdAt": "1630601362790240000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Wildhainweg 3 Postfach",
@@ -416,8 +395,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0107-organization-000",
       "__type": "Organization",
-      "__createdAt": "1630601362822081000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Unicentre",
@@ -438,8 +415,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0107-grant-000",
       "__type": "Grant",
-      "__createdAt": "1630601362854993000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0107-organization-001"
       ],

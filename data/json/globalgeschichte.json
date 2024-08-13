@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-084A-project",
     "__type": "Project",
-    "__createdAt": "1708507426682276000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Marti, P., Studer, D., Affolter, S. (2024). Globalgeschichtliche Perspektiven im Schweizer Geschichtsunterricht [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/084A",
     "teaserText": "Das Forschungsprojekt liefert empirische Ergebnisse auf breiter Basis zu Potentialen von globalgeschichtlichen Perspektiven im Geschichtsunterricht.",
     "datasets": [
@@ -99,8 +96,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-084A-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1708507428483747000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "de": "Das Dataset beinhaltet im Projekt erhobene Daten aus Lehrer:innen- und Schüler:innenperspektive: Transkripte der «Stimulated Recall»-Interviews, Transkripte der Eingangsinterviews, soziodemographische Angaben, Fragebögen der Schüler:innen sowie die Dokumentation der entsprechenden Erhebungsinstrumente."
@@ -161,8 +156,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-084A-person-001",
       "__type": "Person",
-      "__createdAt": "1708507428914087000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "dominic.studer@fhnw.ch",
       "familyNames": [
         "Studer"
@@ -188,8 +181,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-084A-person-002",
       "__type": "Person",
-      "__createdAt": "1708507428914211000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "simon.affolter@fhnw.ch",
       "familyNames": [
         "Affolter"
@@ -215,8 +206,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-084A-person-000",
       "__type": "Person",
-      "__createdAt": "1708507428914311000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "philipp.marti@fhnw.ch",
       "familyNames": [
         "Marti"
@@ -236,8 +225,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-084A-organization-001",
       "__type": "Organization",
-      "__createdAt": "1708507428914394000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "Swiss National Science Foundation (SNSF)",
       "url": {
         "__type": "URL",
@@ -249,8 +236,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-084A-organization-000",
       "__type": "Organization",
-      "__createdAt": "1708507428914445000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "Pädagogische Hochschule der Fachhochschule Nordwestschweiz",
       "url": {
         "__type": "URL",
@@ -264,8 +249,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-084A-grant-000",
       "__type": "Grant",
-      "__createdAt": "1708507428914504000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-084A-organization-001"
       ],

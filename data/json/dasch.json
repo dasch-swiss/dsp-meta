@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0810-project",
     "__type": "Project",
-    "__createdAt": "1683104677473432000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "DaSCH (2023). Swiss National Data and Service Center for the Humanities [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/0810",
     "teaserText": "This project contains material about DaSCH and events organised by DaSCH. All documents are made available in the original language of the presentations.",
     "datasets": [
@@ -95,8 +92,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0810-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1683104679793121000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "en": "This dataset contains material (visuals, slides, posters, videos, tutorials, reports) prepared by members of DaSCH as well as material contributed by researchers at events organised by DaSCH."
@@ -162,8 +157,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0810-organization-001",
       "__type": "Organization",
-      "__createdAt": "1683104680084167000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Gewerbestrasse 24",
@@ -183,8 +176,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0810-organization-000",
       "__type": "Organization",
-      "__createdAt": "1683104680460976000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Wildhainweg 3",
@@ -205,8 +196,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0810-grant-000",
       "__type": "Grant",
-      "__createdAt": "1683104680602203000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0810-organization-000"
       ],

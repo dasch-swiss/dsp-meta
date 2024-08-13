@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-0820-project",
     "__type": "Project",
-    "__createdAt": "1701867504599403000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Life Histories of Theban Tombs (2023). DaSCH. https://ark.dasch.swiss/ark:/72163/1/0820",
     "teaserText": "LHTT focuses on a cluster of tombs in the Theban Necropolis (Egypt). It investigates the evolution of the hillside and explores the history of the tombs from early 2nd mill. BCE to 20th c. CE.",
     "datasets": [
@@ -320,8 +317,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1701867517625102000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "en": "AU1000 – AU1080 from Debris Hill (above K555)"
@@ -780,8 +775,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-001",
       "__type": "Person",
-      "__createdAt": "1701867518199872000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "frank.ruehli@iem.uzh.ch",
       "familyNames": [
         "Rühli"
@@ -810,8 +803,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-002",
       "__type": "Person",
-      "__createdAt": "1701867518199944000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "andrea.gnirs@unibas.ch",
       "familyNames": [
         "Loprieno-Gnirs"
@@ -837,8 +828,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-003",
       "__type": "Person",
-      "__createdAt": "1701867518200002000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Heeb"
       ],
@@ -863,8 +852,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-004",
       "__type": "Person",
-      "__createdAt": "1701867518200050000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "a.loprieno@unibas.ch",
       "familyNames": [
         "Loprieno"
@@ -890,8 +877,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-005",
       "__type": "Person",
-      "__createdAt": "1701867518200106000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Turck"
       ],
@@ -916,8 +901,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-006",
       "__type": "Person",
-      "__createdAt": "1701867518200155000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Wieser"
       ],
@@ -942,8 +925,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-007",
       "__type": "Person",
-      "__createdAt": "1701867518200202000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Ziegler"
       ],
@@ -968,8 +949,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-008",
       "__type": "Person",
-      "__createdAt": "1701867518200255000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "‘Abd el-Monem"
       ],
@@ -986,8 +965,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-009",
       "__type": "Person",
-      "__createdAt": "1701867518200285000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Ahmed"
       ],
@@ -1004,8 +981,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-010",
       "__type": "Person",
-      "__createdAt": "1701867518200313000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Aeschlimann-Langer"
       ],
@@ -1030,8 +1005,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-011",
       "__type": "Person",
-      "__createdAt": "1701867518200360000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Arpagaus"
       ],
@@ -1048,8 +1021,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-012",
       "__type": "Person",
-      "__createdAt": "1701867518200388000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Bächli"
       ],
@@ -1074,8 +1045,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-013",
       "__type": "Person",
-      "__createdAt": "1701867518200446000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Barahona-Mendieta"
       ],
@@ -1100,8 +1069,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-014",
       "__type": "Person",
-      "__createdAt": "1701867518200495000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Böni"
       ],
@@ -1126,8 +1093,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-015",
       "__type": "Person",
-      "__createdAt": "1701867518200543000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Bruderer"
       ],
@@ -1152,8 +1117,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-016",
       "__type": "Person",
-      "__createdAt": "1701867518200592000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Colldeweih"
       ],
@@ -1178,8 +1141,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-017",
       "__type": "Person",
-      "__createdAt": "1701867518200668000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "alexis.dendoncker@unibas.ch",
       "familyNames": [
         "Den Doncker"
@@ -1205,8 +1166,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-018",
       "__type": "Person",
-      "__createdAt": "1701867518200727000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Díaz-Iglesias"
       ],
@@ -1231,8 +1190,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-019",
       "__type": "Person",
-      "__createdAt": "1701867518200777000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Droux"
       ],
@@ -1257,8 +1214,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-020",
       "__type": "Person",
-      "__createdAt": "1701867518200825000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Fetler"
       ],
@@ -1284,8 +1239,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-021",
       "__type": "Person",
-      "__createdAt": "1701867518200880000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Freijo"
       ],
@@ -1302,8 +1255,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-022",
       "__type": "Person",
-      "__createdAt": "1701867518200974000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Friedli"
       ],
@@ -1328,8 +1279,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-023",
       "__type": "Person",
-      "__createdAt": "1701867518201038000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Gieben"
       ],
@@ -1354,8 +1303,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-024",
       "__type": "Person",
-      "__createdAt": "1701867518201088000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Gojcic"
       ],
@@ -1380,8 +1327,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-025",
       "__type": "Person",
-      "__createdAt": "1701867518201142000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "El-Hadidi"
       ],
@@ -1406,8 +1351,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-026",
       "__type": "Person",
-      "__createdAt": "1701867518201192000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Hamdy"
       ],
@@ -1432,8 +1375,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-027",
       "__type": "Person",
-      "__createdAt": "1701867518201242000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Hunkeler"
       ],
@@ -1459,8 +1400,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-028",
       "__type": "Person",
-      "__createdAt": "1701867518201294000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Ibrahim"
       ],
@@ -1477,8 +1416,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-029",
       "__type": "Person",
-      "__createdAt": "1701867518201323000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Jacquat-Bertossa"
       ],
@@ -1503,8 +1440,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-030",
       "__type": "Person",
-      "__createdAt": "1701867518201372000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "matjaz.kacicnik@amis.net",
       "familyNames": [
         "Kačičnik"
@@ -1522,8 +1457,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-031",
       "__type": "Person",
-      "__createdAt": "1701867518201414000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Klemm"
       ],
@@ -1548,8 +1481,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-032",
       "__type": "Person",
-      "__createdAt": "1701867518201466000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Kozieradzka-Ogunmakin"
       ],
@@ -1575,8 +1506,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-033",
       "__type": "Person",
-      "__createdAt": "1701867518201518000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Kurmann"
       ],
@@ -1601,8 +1530,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-034",
       "__type": "Person",
-      "__createdAt": "1701867518201566000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Lopez"
       ],
@@ -1619,8 +1546,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-035",
       "__type": "Person",
-      "__createdAt": "1701867518201595000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Marty"
       ],
@@ -1645,8 +1570,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-036",
       "__type": "Person",
-      "__createdAt": "1701867518201642000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Meyer"
       ],
@@ -1671,8 +1594,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-037",
       "__type": "Person",
-      "__createdAt": "1701867518201691000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Mohamed"
       ],
@@ -1689,8 +1610,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-038",
       "__type": "Person",
-      "__createdAt": "1701867518201720000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Müller"
       ],
@@ -1716,8 +1635,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-039",
       "__type": "Person",
-      "__createdAt": "1701867518201771000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Nutz"
       ],
@@ -1742,8 +1659,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-040",
       "__type": "Person",
-      "__createdAt": "1701867518201819000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Osman"
       ],
@@ -1760,8 +1675,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-041",
       "__type": "Person",
-      "__createdAt": "1701867518201849000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Paksi"
       ],
@@ -1779,8 +1692,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-042",
       "__type": "Person",
-      "__createdAt": "1701867518201882000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Peintner"
       ],
@@ -1797,8 +1708,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-043",
       "__type": "Person",
-      "__createdAt": "1701867518201922000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Powroznik"
       ],
@@ -1824,8 +1733,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-044",
       "__type": "Person",
-      "__createdAt": "1701867518201973000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Reinhard"
       ],
@@ -1850,8 +1757,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-045",
       "__type": "Person",
-      "__createdAt": "1701867518202022000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Richner"
       ],
@@ -1869,8 +1774,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-046",
       "__type": "Person",
-      "__createdAt": "1701867518202053000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Sartori"
       ],
@@ -1895,8 +1798,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-047",
       "__type": "Person",
-      "__createdAt": "1701867518202100000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Schönhütte"
       ],
@@ -1914,8 +1815,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-048",
       "__type": "Person",
-      "__createdAt": "1701867518202136000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Seiler"
       ],
@@ -1932,8 +1831,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-049",
       "__type": "Person",
-      "__createdAt": "1701867518202165000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Seiler"
       ],
@@ -1959,8 +1856,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-050",
       "__type": "Person",
-      "__createdAt": "1701867518202217000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Studer"
       ],
@@ -1985,8 +1880,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-051",
       "__type": "Person",
-      "__createdAt": "1701867518202265000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Unter"
       ],
@@ -2012,8 +1905,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-052",
       "__type": "Person",
-      "__createdAt": "1701867518202316000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Veldmeijer"
       ],
@@ -2039,8 +1930,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-053",
       "__type": "Person",
-      "__createdAt": "1701867518202366000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "noemi.villars@unibas.ch",
       "familyNames": [
         "Villars"
@@ -2066,8 +1955,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-054",
       "__type": "Person",
-      "__createdAt": "1701867518202422000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Wolter"
       ],
@@ -2084,8 +1971,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-055",
       "__type": "Person",
-      "__createdAt": "1701867518202458000",
-      "__createdBy": "dsp-metadata-gui",
       "familyNames": [
         "Zalunardo"
       ],
@@ -2110,8 +1995,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-person-000",
       "__type": "Person",
-      "__createdAt": "1701867518202506000",
-      "__createdBy": "dsp-metadata-gui",
       "email": "s.bickel@unibas.ch",
       "familyNames": [
         "Bickel"
@@ -2139,15 +2022,11 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-organization-006",
       "__type": "Organization",
-      "__createdAt": "1701867518202572000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "Center for Human and Social Sciences, Madrid"
     },
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-organization-007",
       "__type": "Organization",
-      "__createdAt": "1701867518202589000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Université Libre de Bruxelles, Avenue Franklin Roosevelt, 50",
@@ -2166,8 +2045,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-organization-009",
       "__type": "Organization",
-      "__createdAt": "1701867593277577000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Basler Münster, Münsterplatz, 9",
@@ -2187,8 +2064,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-organization-010",
       "__type": "Organization",
-      "__createdAt": "1701867593387831000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "24, rue du Général-Dufour",
@@ -2207,8 +2082,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-organization-011",
       "__type": "Organization",
-      "__createdAt": "1701867593615143000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Al-Geish Street",
@@ -2228,8 +2101,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-organization-012",
       "__type": "Organization",
-      "__createdAt": "1701867593761878000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Dufourstrasse 25",
@@ -2242,8 +2113,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-organization-013",
       "__type": "Organization",
-      "__createdAt": "1701867593846851000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Generalsekretariat SLSA, Museum Rietberg Zürich, Gablerstrasse 15",
@@ -2263,8 +2132,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-organization-000",
       "__type": "Organization",
-      "__createdAt": "1701867593969349000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Wildhainweg 3",
@@ -2284,8 +2151,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-organization-008",
       "__type": "Organization",
-      "__createdAt": "1701867594065533000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "1, Gamaa Street",
@@ -2304,8 +2169,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-organization-004",
       "__type": "Organization",
-      "__createdAt": "1701867594218736000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Pfingstweidstrasse 96",
@@ -2325,8 +2188,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-organization-005",
       "__type": "Organization",
-      "__createdAt": "1701867594318522000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Rämistrasse 71",
@@ -2345,8 +2206,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-organization-002",
       "__type": "Organization",
-      "__createdAt": "1701867669466652000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Universität Zürich, Winterthurerstrasse 190",
@@ -2366,8 +2225,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-organization-003",
       "__type": "Organization",
-      "__createdAt": "1701867669565270000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Rämistrasse 101",
@@ -2386,15 +2243,11 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-organization-014",
       "__type": "Organization",
-      "__createdAt": "1701867669643206000",
-      "__createdBy": "dsp-metadata-gui",
       "name": "Other"
     },
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-organization-001",
       "__type": "Organization",
-      "__createdAt": "1701867669643249000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Petersgraben 51",
@@ -2415,8 +2268,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0820-grant-000",
       "__type": "Grant",
-      "__createdAt": "1701867669723269000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0820-organization-000"
       ],

@@ -1,4 +1,4 @@
-<script lang='ts'>
+<script lang="ts">
   import Tile from './Tile.svelte';
   import Category from './Category.svelte';
   import { onMount } from 'svelte';
@@ -13,19 +13,19 @@
 
   setTimeout(() => {
     const noData = 'No data retrieved. Please check the connection and retry.';
-    const noProject = 'No projects found.'
-      message = $pagedResults && $pagedResults.length ? noData : noProject;
-    }, 3000);
-  
+    const noProject = 'No projects found.';
+    message = $pagedResults && $pagedResults.length ? noData : noProject;
+  }, 3000);
+
   onMount(async () => {
     // TODO: add preventing go back button to get back out of domain
 
-    // get searchUri and 
+    // get searchUri and
     const searchUri = window.location.search;
     const params = new URLSearchParams(searchUri);
     const page = Number(params.get('_page'));
     const query = params.get('q');
-    console.log(searchUri, query, page, params.get('_limit'),);
+    console.log(searchUri, query, page, params.get('_limit'));
 
     // load projects
     if (!$pagedResults && !searchUri) {
@@ -36,7 +36,6 @@
       await getProjectsMetadata(page, query);
     }
   });
-  
 </script>
 
 <nav>
@@ -51,12 +50,12 @@
   </div>
 {/if}
 
-<main in:fade={{duration: 250}}>
-  <div class=tile-container>
+<main in:fade={{ duration: 250 }}>
+  <div class="tile-container">
     {#if $pagedResults && $pagedResults.length}
       {#each $pagedResults as project}
         <!-- LATER: remove actual metadata content from BE response on /projects endpoint, and see what that would break -->
-        <Tile metadata={project}/>
+        <Tile metadata={project} />
       {/each}
     {:else}
       <p>{message}</p>
@@ -68,45 +67,48 @@
 </main>
 
 <style>
-* {
-  box-sizing: border-box;
-}
+  * {
+    box-sizing: border-box;
+  }
 
-nav, main {
-  width: fit-content;
-  min-height: auto;
-}
-nav {
-  padding: 0;
-}
-.category-container {
-  max-width: 210px;
-}
-main {
-  padding: 0, 0, 10px, 10px;
-}
-.tile-container {
-  padding: 10px 5px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  max-width: 1200px;
-}
-@media screen and (min-width: 992px) {
-
+  nav,
+  main {
+    width: fit-content;
+    min-height: auto;
+  }
   nav {
-    padding: 10px 0;
+    padding: 0;
+  }
+  .category-container {
+    max-width: 210px;
+  }
+  main {
+    padding: 0, 0, 10px, 10px;
   }
   .tile-container {
-    min-width: 742px;
+    padding: 10px 5px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    max-width: 1200px;
   }
-}
-@media screen and (min-width: 1200px) {
-  .tile-container {
-    min-width: 940px;
+  @media screen and (min-width: 992px) {
+    nav {
+      padding: 10px 0;
+    }
+    .tile-container {
+      min-width: 742px;
+    }
   }
-}
-@media screen and (min-width: 768px) and (max-width: 1023px) { }
-@media screen and (min-width: 1024px) and (max-width: 1365px) { }
-@media screen and (min-width: 1366px) {}
+  @media screen and (min-width: 1200px) {
+    .tile-container {
+      min-width: 940px;
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  }
+  @media screen and (min-width: 1024px) and (max-width: 1365px) {
+  }
+  @media screen and (min-width: 1366px) {
+  }
 </style>

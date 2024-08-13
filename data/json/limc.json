@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
-    "__id": "http://ns.dasch.swiss/repository#dsp-080E-project",
     "__type": "Project",
-    "__createdAt": "1630601343620252000",
-    "__createdBy": "dsp-metadata-gui",
     "howToCite": "Digital LIMC (2021): Digital LIMC, DaSCH. https://weblimc.org/page/home/Basel",
     "teaserText": "Digital LIMC contains what we know about the iconography of Greek, Etruscan and Roman mythology, both in ancient Greek, Etruscan and Roman art as well as in neighbouring Mediterranean cultures.",
     "datasets": [
@@ -130,8 +127,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080E-dataset-000",
       "__type": "Dataset",
-      "__createdAt": "1630601348061335000",
-      "__createdBy": "dsp-metadata-gui",
       "abstracts": [
         {
           "en": "Digital LIMC makes accessible what we know about the iconography of Greek, Etruscan and Roman mythology in ancient Greek, Etruscan and Roman art as well as in the one of the neighbouring civilisations of the Mediterranean, to all people interested in classical antiquity. It contains basic information about more than 55’000 archaeological objects (e.g. vases, sculpture, gems, mosaics) which were assembled in the course of the preparation of the printed books of the LIMC and the ThesCRA from about 1970 onward. Short keyword type object descriptions and links to other research projects or museum databases will be added continuously as far as funds permit. The images of the objects are accessible online if the owning institution has given us permission for diffusion."
@@ -204,8 +199,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080E-organization-001",
       "__type": "Organization",
-      "__createdAt": "1630601349504279000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "14, Avenue de Grande Bretagne, \"Le George V\" 4eme étage",
@@ -225,8 +218,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080E-organization-005",
       "__type": "Organization",
-      "__createdAt": "1630601349533108000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Petersgraben 51",
@@ -246,8 +237,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080E-organization-000",
       "__type": "Organization",
-      "__createdAt": "1630601349564122000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Effingerstrasse 15, Postfach",
@@ -266,8 +255,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080E-organization-002",
       "__type": "Organization",
-      "__createdAt": "1630601349597412000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Artherstrasse 19",
@@ -286,8 +273,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080E-organization-003",
       "__type": "Organization",
-      "__createdAt": "1630601349630750000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "St. Jakobs-Strasse 7",
@@ -306,8 +291,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080E-organization-004",
       "__type": "Organization",
-      "__createdAt": "1630601349664009000",
-      "__createdBy": "dsp-metadata-gui",
       "address": {
         "__type": "Address",
         "street": "Rennweg 50",
@@ -329,8 +312,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080E-grant-000",
       "__type": "Grant",
-      "__createdAt": "1630601349697306000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-080E-organization-000"
       ]
@@ -338,8 +319,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080E-grant-001",
       "__type": "Grant",
-      "__createdAt": "1630601349697370000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-080E-organization-001"
       ],
@@ -354,8 +333,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080E-grant-002",
       "__type": "Grant",
-      "__createdAt": "1630601349697556000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-080E-organization-002"
       ],
@@ -371,8 +348,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080E-grant-003",
       "__type": "Grant",
-      "__createdAt": "1630601349697653000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-080E-organization-003"
       ],
@@ -388,8 +363,6 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080E-grant-004",
       "__type": "Grant",
-      "__createdAt": "1630601349697727000",
-      "__createdBy": "dsp-metadata-gui",
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-080E-organization-004"
       ],
