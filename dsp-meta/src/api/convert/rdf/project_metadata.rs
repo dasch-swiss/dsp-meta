@@ -1,18 +1,17 @@
 use dsp_domain::metadata::entity::project_metadata::ProjectMetadata;
-use sophia::graph::inmem::LightGraph;
-use sophia::graph::*;
-use sophia::iri::IriBox;
-use sophia::ns::Namespace;
-use sophia::prefix::PrefixBox;
-use sophia::serializer::turtle::{TurtleConfig, TurtleSerializer};
-use sophia::serializer::*;
+use sophia::api::ns::Namespace;
+use sophia::api::prefix::{Prefix, PrefixMapPair};
+use sophia::api::prelude::Stringifier;
+use sophia::api::serializer::TripleSerializer;
+use sophia::inmem::graph::LightGraph;
+use sophia::iri::Iri;
+use sophia::turtle::serializer::turtle::{TurtleConfig, TurtleSerializer};
 use tracing::trace;
 
 use crate::api::convert::rdf::constance::{
     DSP_NAMESPACE_STRING, PROV_NAMESPACE_STRING, SCHEMA_NAMESPACE_STRING, XSD_NAMESPACE_STRING,
 };
 use crate::api::convert::rdf::project::ProjectGraphDto;
-
 pub struct ProjectMetadataGraph {
     graph: LightGraph,
 }
@@ -79,41 +78,41 @@ impl ProjectMetadataGraph {
     ///             sdo:url "https://admin.dasch.swiss/project/081C" ] .
     /// ```
     pub fn to_turtle_string(&self) -> String {
-        let prefix_map = vec![
+        let prefix_map: Vec<PrefixMapPair> = vec![
             (
-                PrefixBox::new_unchecked("dsp".into()),
-                IriBox::new_unchecked("http://ns.dasch.swiss/repository#".into()),
+                Prefix::new_unchecked("dsp".into()),
+                Iri::new_unchecked("http://ns.dasch.swiss/repository#".into()),
             ),
             (
-                PrefixBox::new_unchecked("prov".into()),
-                IriBox::new_unchecked("http://www.w3.org/ns/prov#".into()),
+                Prefix::new_unchecked("prov".into()),
+                Iri::new_unchecked("http://www.w3.org/ns/prov#".into()),
             ),
             (
-                PrefixBox::new_unchecked("sdo".into()),
-                IriBox::new_unchecked("https://schema.org/".into()),
+                Prefix::new_unchecked("sdo".into()),
+                Iri::new_unchecked("https://schema.org/".into()),
             ),
             (
-                PrefixBox::new_unchecked("rdf".into()),
-                IriBox::new_unchecked("http://www.w3.org/1999/02/22-rdf-syntax-ns#".into()),
+                Prefix::new_unchecked("rdf".into()),
+                Iri::new_unchecked("http://www.w3.org/1999/02/22-rdf-syntax-ns#".into()),
             ),
             (
-                PrefixBox::new_unchecked("rdfs".into()),
-                IriBox::new_unchecked("http://www.w3.org/2000/01/rdf-schema#".into()),
+                Prefix::new_unchecked("rdfs".into()),
+                Iri::new_unchecked("http://www.w3.org/2000/01/rdf-schema#".into()),
             ),
             (
-                PrefixBox::new_unchecked("xsd".into()),
-                IriBox::new_unchecked("http://www.w3.org/2001/XMLSchema#".into()),
+                Prefix::new_unchecked("xsd".into()),
+                Iri::new_unchecked("http://www.w3.org/2001/XMLSchema#".into()),
             ),
         ];
 
         let config = TurtleConfig::new()
             .with_pretty(true)
             .with_own_prefix_map(prefix_map);
-        let out = TurtleSerializer::new_stringifier_with_config(config)
+        let mut serializer = TurtleSerializer::new_stringifier_with_config(config);
+        let out = serializer
             .serialize_graph(&self.graph)
             .expect("Error serializing graph to turtle.")
             .to_string();
-
         out
     }
 }
@@ -138,14 +137,7 @@ impl From<ProjectMetadataGraphWrapper> for ProjectMetadataGraph {
 
         let _xsd = Namespace::new_unchecked(XSD_NAMESPACE_STRING);
 
-        let mut graph: LightGraph = LightGraph::new();
-
-        let project_graph = ProjectGraphDto(value.0.project).to_graph();
-
-        graph
-            .insert_all(project_graph.triples())
-            .expect("insert of project triples into project metadata graph failed");
-
+        let graph = ProjectGraphDto(value.0.project).to_graph();
         let result = ProjectMetadataGraph { graph };
 
         trace!("The resulting graph\n{}", result.to_turtle_string());
