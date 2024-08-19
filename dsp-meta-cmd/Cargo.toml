@@ -34,7 +34,7 @@ tracing-test.workspace = true
 url.workspace = true
 
 [dev-dependencies]
-assert_cmd = "2.0.12"
+assert_cmd = "2.0.16"
 
 [[bin]]
 name = "dsp-meta-server"
