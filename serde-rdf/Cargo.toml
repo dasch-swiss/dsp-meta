@@ -15,7 +15,7 @@ authors.workspace = true
 [dependencies]
 serde.workspace = true
 rio_api = { version = "0.8.5", features = [] }
-rio_turtle = { version = "0.8.4", features = [] }
+rio_turtle = { version = "0.8.5", features = [] }
 rio_xml = { version = "0.8.5", features = [] }
 
 [[example]]
