@@ -44,7 +44,6 @@
       "type": "linked-versions",
       "groupName": "meta",
       "components": [
-        ".",
         "dsp-domain",
         "dsp-meta",
         "dsp-meta-cmd"
