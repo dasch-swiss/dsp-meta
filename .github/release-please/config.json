@@ -63,7 +63,7 @@
       "component": "dsp-meta",
       "release-type": "rust"
     },
-    "dsp-meta-cli": {
+    "dsp-meta-cmd": {
       "component": "dsp-meta-cmd",
       "release-type": "rust"
     }
