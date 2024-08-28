@@ -51,9 +51,6 @@
     }
   ],
   "packages": {
-    ".": {
-      "release-type": "rust"
-    },
     "dsp-domain": {
       "component": "dsp-domain",
       "release-type": "rust"
