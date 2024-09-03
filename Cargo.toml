@@ -16,7 +16,7 @@ async-trait = "0.1.81"
 axum = "0.7.2" # web framework
 axum-macros = "0.4.0"
 clap = { version = "4.5.16", features = ["derive"] } # command-line parser
-config = "0.13.4" # Layered configuration with strong support for 12-factor applications
+config = "0.14.0" # Layered configuration with strong support for 12-factor applications
 chrono = { version = "0.4.38", features = ["serde"] }
 dirs = "5.0.1" # provides platform-specific locations for storing user configuration
 http-body-util = "0.1.0"
