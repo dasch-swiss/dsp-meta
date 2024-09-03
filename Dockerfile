@@ -1,7 +1,7 @@
 FROM rust:1-slim-bookworm AS builder-rs
 WORKDIR /dsp-meta
 COPY . .
-RUN cargo install --path ./dsp-meta-cmd
+RUN cargo install --path ./
 
 FROM node:21-bookworm-slim AS builder-node
 WORKDIR /dsp-meta

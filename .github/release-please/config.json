@@ -1,7 +1,5 @@
 {
   "release-type": "rust",
-  "bump-minor-pre-major": true,
-  "bump-patch-for-minor-pre-major": true,
   "changelog-sections": [
     {
       "type": "feat",
@@ -52,17 +50,13 @@
     }
   ],
   "packages": {
-    "dsp-domain": {
-      "component": "dsp-domain",
-      "release-type": "rust"
-    },
-    "dsp-meta": {
-      "component": "dsp-meta",
-      "release-type": "rust"
-    },
-    "dsp-meta-cmd": {
-      "component": "dsp-meta-cmd",
-      "release-type": "rust"
+    ".": {
+      "changelog-path": "CHANGELOG.md",
+      "release-type": "rust",
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": true,
+      "draft": true,
+      "prerelease": false
     }
   },
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"

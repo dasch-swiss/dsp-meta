@@ -1,5 +1,5 @@
 DOCKER_REPO := "daschswiss/dsp-meta-server"
-CARGO_VERSION := `cargo metadata --format-version=1 --no-deps | jq --raw-output '.packages[] | select(.name == "dsp-meta-cmd") | .version'`
+CARGO_VERSION := `cargo metadata --format-version=1 --no-deps | jq --raw-output '.packages[].version'`
 COMMIT_HASH := `git log --pretty=format:'%h' -n 1`
 IMAGE_TAG := CARGO_VERSION + "-" + COMMIT_HASH
 DOCKER_IMAGE := DOCKER_REPO + ":" + IMAGE_TAG
@@ -50,10 +50,6 @@ serve-dev:
 # Run the frontend dev server
 serve-frontend:
     cd web-frontend && yarn run dev
-
-# Run dsp-meta-validator validating all hcl documents under ./data
-validate:
-    export DSP_META_DATA_DIR=${PWD}/data && cargo run --bin dsp-meta-validator
 
 # Build linux/amd64 Docker image locally
 docker-build-amd64:
