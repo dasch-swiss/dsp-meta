@@ -52,7 +52,6 @@ assert_cmd = "2.0.16"
 axum-test = "15.3.0"
 fake = "2.9.2"
 
-
 [[bin]]
 name = "dsp-meta-server"
 path = "src/main-server.rs"
