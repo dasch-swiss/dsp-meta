@@ -4,6 +4,14 @@
 
 
 
+## [2.2.0](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-cmd-v2.1.0...dsp-meta-cmd-v2.2.0) (2024-09-03)
+
+
+### Maintenance
+
+* Force release 2.1.0 ([ba11ab5](https://github.com/dasch-swiss/dsp-meta/commit/ba11ab500b66e3d7d75c15c61a1819a6b5eaa167))
+* Force release 2.2.0 ([d5d098d](https://github.com/dasch-swiss/dsp-meta/commit/d5d098d24cb35ce7fdfc9100f11b49a2e4d86a19))
+
 ## [2.1.0](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-cmd-v2.0.3...dsp-meta-cmd-v2.1.0) (2024-08-28)
 
 
