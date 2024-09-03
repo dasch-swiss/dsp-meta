@@ -30,6 +30,11 @@
       "type": "data",
       "section": "Project Data",
       "hidden": false
+    },
+    {
+      "type": "refactor",
+      "section": "Maintenance",
+      "hidden": false
     }
   ],
   "plugins": [
