@@ -65,10 +65,7 @@ fn test_deserialization_all_json_data() {
 }
 
 fn data_dir() -> PathBuf {
-    let mut current_dir = env::current_dir()
-        .ok()
-        .and_then(|e| e.parent().map(|p| p.to_path_buf()))
-        .expect("Project root dir");
+    let mut current_dir = env::current_dir().expect("Project root dir");
     current_dir.push("data");
     current_dir
 }

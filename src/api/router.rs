@@ -98,7 +98,7 @@ mod tests {
 
     #[tokio::test]
     async fn test_health_route() {
-        let data_dir = env::current_dir().unwrap().parent().unwrap().join("data");
+        let data_dir = env::current_dir().unwrap().join("data");
 
         let shared_state = Arc::new(AppState {
             metadata_service: MetadataService::new(MetadataRepository::from_path(
@@ -131,7 +131,7 @@ mod tests {
 
     #[tokio::test]
     async fn test_not_found_project() {
-        let data_dir = env::current_dir().unwrap().parent().unwrap().join("data");
+        let data_dir = env::current_dir().unwrap().join("data");
 
         let shared_state = Arc::new(AppState {
             metadata_service: MetadataService::new(MetadataRepository::from_path(
