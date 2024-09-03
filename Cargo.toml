@@ -19,7 +19,6 @@ clap = { version = "4.5.16", features = ["derive"] } # command-line parser
 config = "0.13.1" # Layered configuration with strong support for 12-factor applications
 chrono = { version = "0.4.38", features = ["serde"] }
 dirs = "5.0.1" # provides platform-specific locations for storing user configuration
-hcl-rs = "0.16.7" # HCL converter
 http-body-util = "0.1.0"
 indicatif = "0.17.0" # prograss bars and spinners
 log = "0.4.22" # logging facade
@@ -28,7 +27,6 @@ pid1 = "0.1.1"
 serde = { version = "1", features = ["derive"] }
 serde_with = "3.9.0"
 serde_json = "1" # JSON serialization
-serde_yaml = "0.9"
 nonempty = { version = "0.10.0", features = ["serialize"] }
 valico = "4.0.0"
 tokio = { version = "1", features = ["rt", "macros", "rt-multi-thread"] }
@@ -48,7 +46,6 @@ tracing-subscriber = { version = "0.3", features = [
 ] }
 tracing-test = "0.2"
 url = { version = "2", features = ["serde"] }
-toml = "0.8.19"
 
 [dev-dependencies]
 assert_cmd = "2.0.16"
