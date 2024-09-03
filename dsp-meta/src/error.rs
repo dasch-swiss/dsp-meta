@@ -1,6 +1,5 @@
 use std::io;
 
-use dsp_domain::error::DspDomainError;
 use serde::Serialize;
 use serde_json::Error;
 use thiserror::Error;
@@ -42,15 +41,6 @@ pub enum DspMetaError {
 impl From<io::Error> for DspMetaError {
     fn from(error: io::Error) -> Self {
         DspMetaError::IO(error.to_string())
-    }
-}
-
-impl From<DspDomainError> for DspMetaError {
-    fn from(value: DspDomainError) -> Self {
-        match value {
-            DspDomainError::CreateValueObject(err) => DspMetaError::CreateValueObject(err),
-            DspDomainError::CreateDomainObject(err) => DspMetaError::CreateDomainObject(err),
-        }
     }
 }
 

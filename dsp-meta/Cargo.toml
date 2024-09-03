@@ -13,7 +13,6 @@ authors.workspace = true
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-dsp-domain = { path = "../dsp-domain" }
 anyhow.workspace = true
 axum.workspace = true
 axum-macros.workspace = true
@@ -46,7 +45,3 @@ chrono.workspace = true
 assert_cmd = "2.0.16"
 axum-test = "15.3.0"
 fake = "2.9.2"
-
-[[test]]
-name = "integration_test"
-test = true
