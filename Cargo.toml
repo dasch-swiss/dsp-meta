@@ -1,21 +1,16 @@
-[workspace]
-members = ["dsp-meta", "dsp-meta-cmd", "serde-rdf"]
-resolver = "2"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[workspace.package]
-version = "2.0.3"
+[package]
+name = "dsp-meta"
+version = "2.1.0"
 edition = "2021"
 license = "MIT OR Apache-2.0"
 homepage = "https://github.com/dasch-swiss/dsp-meta"
 repository = "https://github.com/dasch-swiss/dsp-meta"
 documentation = "https://github.com/dasch-swiss/dsp-meta"
 readme = "README.md"
-description = "The DSP Metadata Command Line Tool providing transformation, validation and serving of research project's metadata."
+description = "DSP-META is a service that provides metadata for the Digital and Semantic Publishing Platform (DSP)."
 authors = ["DaSCH - Swiss National Data and Service Center for the Humanities"]
 
-[workspace.dependencies]
+[dependencies]
 anyhow = "1"
 async-trait = "0.1.81"
 axum = "0.7.2" # web framework
@@ -54,3 +49,17 @@ tracing-subscriber = { version = "0.3", features = [
 tracing-test = "0.2"
 url = { version = "2", features = ["serde"] }
 toml = "0.8.19"
+
+[dev-dependencies]
+assert_cmd = "2.0.16"
+axum-test = "15.3.0"
+fake = "2.9.2"
+
+
+[[bin]]
+name = "dsp-meta-server"
+path = "src/main-server.rs"
+
+[[bin]]
+name = "dsp-meta-validator"
+path = "src/main-validator.rs"
