@@ -1,5 +1,56 @@
 # Changelog
 
+## 2.2.1 (2024-09-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* Backport schema changes (DEV-3953) ([#169](https://github.com/dasch-swiss/dsp-meta/issues/169))
+
+### Features
+
+* add and serve old frontend ([#92](https://github.com/dasch-swiss/dsp-meta/issues/92)) ([00fd892](https://github.com/dasch-swiss/dsp-meta/commit/00fd892d4d1553e29c274d83c6bdc06b0e249253))
+* add and serve old frontend ([#93](https://github.com/dasch-swiss/dsp-meta/issues/93)) ([3058175](https://github.com/dasch-swiss/dsp-meta/commit/30581753c734a26acf262619709280d35fe97d5b))
+* add axum to implement the API layer and adapter to the core layer ([#46](https://github.com/dasch-swiss/dsp-meta/issues/46)) ([6fa767e](https://github.com/dasch-swiss/dsp-meta/commit/6fa767e00910dc081862616c3a90cbc8c6f56cc9))
+* add conversion of project - spacial_coverage ([#40](https://github.com/dasch-swiss/dsp-meta/issues/40)) ([a306f49](https://github.com/dasch-swiss/dsp-meta/commit/a306f490d4509e29b70882a0caea0bc68d78ace2))
+* add conversion of project (ongoing) ([#24](https://github.com/dasch-swiss/dsp-meta/issues/24)) ([bbd3424](https://github.com/dasch-swiss/dsp-meta/commit/bbd34246bbb5edd56eccd482dcb19128f7e01902))
+* add convert project - temporal_coverage ([#41](https://github.com/dasch-swiss/dsp-meta/issues/41)) ([e837063](https://github.com/dasch-swiss/dsp-meta/commit/e837063465cc302f633f34c6bf7329633edc6429))
+* Add draft json schema validation and serde model ([#144](https://github.com/dasch-swiss/dsp-meta/issues/144)) ([df7948b](https://github.com/dasch-swiss/dsp-meta/commit/df7948b1fc5a411f064dbaa9657875405a551706))
+* add grant domain model and deserialization ([#121](https://github.com/dasch-swiss/dsp-meta/issues/121)) ([f4a6162](https://github.com/dasch-swiss/dsp-meta/commit/f4a61623b3b640f8a8b1bd85969ea01ab9b3b056))
+* add HCL examples, domain model and parsing of HCL (ongoing) ([#22](https://github.com/dasch-swiss/dsp-meta/issues/22)) ([1ac6eb1](https://github.com/dasch-swiss/dsp-meta/commit/1ac6eb1ad1adf616807359c1666ecf13983736f4))
+* add project serialization to rdf (ongoing) ([#52](https://github.com/dasch-swiss/dsp-meta/issues/52)) ([16f8557](https://github.com/dasch-swiss/dsp-meta/commit/16f85572dc357f46fa8cdb1ea1607e644fd833f5))
+* add project serialization to rdf (ongoing) ([#62](https://github.com/dasch-swiss/dsp-meta/issues/62)) ([2e7d33c](https://github.com/dasch-swiss/dsp-meta/commit/2e7d33cebf7633f63dcfbd904913faf547363d68))
+* Add robots.txt and sitemap.xml (DEV-3931) ([#152](https://github.com/dasch-swiss/dsp-meta/issues/152)) ([6dceb9e](https://github.com/dasch-swiss/dsp-meta/commit/6dceb9e32776f1678bfb10c144b87d1bba25c0ea))
+* add serialization to JSON (ongoing) ([#69](https://github.com/dasch-swiss/dsp-meta/issues/69)) ([fc9481f](https://github.com/dasch-swiss/dsp-meta/commit/fc9481f6abc0ab80bcf3c9e3c634789785fa089d))
+* adding 0853 to (new) metadata browser ([#196](https://github.com/dasch-swiss/dsp-meta/issues/196)) ([b913612](https://github.com/dasch-swiss/dsp-meta/commit/b913612dc8bbc7633771f8231d4b08a62bcfefaf))
+* Backport schema changes (DEV-3953) ([#169](https://github.com/dasch-swiss/dsp-meta/issues/169)) ([04ed3c4](https://github.com/dasch-swiss/dsp-meta/commit/04ed3c4a15f24eb1dbc8909d3a212c4570ca0a40))
+* convert project - publication ([#42](https://github.com/dasch-swiss/dsp-meta/issues/42)) ([598c906](https://github.com/dasch-swiss/dsp-meta/commit/598c906f1dc5d64baaa86b72f54c9dfea74aa483))
+* **deploy:** update dev release for meta on commits to main (INFRA-481) ([#90](https://github.com/dasch-swiss/dsp-meta/issues/90)) ([d88a924](https://github.com/dasch-swiss/dsp-meta/commit/d88a9249d39053128cf6e08b963afaaac622a8d1))
+* **dsp-domain:** add ontology domain model ([#61](https://github.com/dasch-swiss/dsp-meta/issues/61)) ([c80cd83](https://github.com/dasch-swiss/dsp-meta/commit/c80cd83a5b9b749a00c84a5da5a1b4af606dbdc9))
+* **dsp-meta:** Load data at startup from disk and server through api ([#70](https://github.com/dasch-swiss/dsp-meta/issues/70)) ([f82fb5a](https://github.com/dasch-swiss/dsp-meta/commit/f82fb5a1e11db731cea14c9b62458a23abb1cdbf))
+* expose validation command ([#88](https://github.com/dasch-swiss/dsp-meta/issues/88)) ([aa6dd91](https://github.com/dasch-swiss/dsp-meta/commit/aa6dd91f6b654b5770521735387c93d52fa50f66))
+* extend dataset domain model ([#85](https://github.com/dasch-swiss/dsp-meta/issues/85)) ([f564ff6](https://github.com/dasch-swiss/dsp-meta/commit/f564ff6a5dedd2a4a4e464c568b7acb2eba15033))
+* extend dataset domain model ([#86](https://github.com/dasch-swiss/dsp-meta/issues/86)) ([7b03f56](https://github.com/dasch-swiss/dsp-meta/commit/7b03f56d146dde00349b9b97cdbddb7eb8b88557))
+* extend dataset domain model and a bit of deserialization (ongoing) ([#113](https://github.com/dasch-swiss/dsp-meta/issues/113)) ([070a729](https://github.com/dasch-swiss/dsp-meta/commit/070a7290a65a266e8d9c7284b7af3733c64cd490))
+* extend dataset domain model and deserialization (ongoing) ([#115](https://github.com/dasch-swiss/dsp-meta/issues/115)) ([4264c72](https://github.com/dasch-swiss/dsp-meta/commit/4264c721cd80c889175331263b591a94c999b465))
+* Make service work with json (DEV-3930) ([#146](https://github.com/dasch-swiss/dsp-meta/issues/146)) ([184c710](https://github.com/dasch-swiss/dsp-meta/commit/184c71031595885389cd045375213b81ac09b00b))
+* serde-rdf (ongoing) ([#105](https://github.com/dasch-swiss/dsp-meta/issues/105)) ([3bfa474](https://github.com/dasch-swiss/dsp-meta/commit/3bfa474f4fc9c07e241d34663bbae87b4d4e4fbe))
+
+
+### Bug Fixes
+
+* **deploy:** update and set env vars in deploy action (INFRA-481) ([#91](https://github.com/dasch-swiss/dsp-meta/issues/91)) ([cd130ee](https://github.com/dasch-swiss/dsp-meta/commit/cd130ee99e48eeaef4359b52f10819cda76a5df4))
+* Using search DEV 3950 ([#166](https://github.com/dasch-swiss/dsp-meta/issues/166)) ([3af5d97](https://github.com/dasch-swiss/dsp-meta/commit/3af5d972107f1d9c53344cbbcf0fec942c632634))
+
+
+### Miscellaneous Chores
+
+* force release 2.0.3 ([c622a06](https://github.com/dasch-swiss/dsp-meta/commit/c622a06c8f4e04d99d8f0b23cf46e7d2c0209805))
+* force release 2.1.0 ([fc6a297](https://github.com/dasch-swiss/dsp-meta/commit/fc6a297805dda80e656ec923a0ccc37348813830))
+* Force release 2.1.0 ([ba11ab5](https://github.com/dasch-swiss/dsp-meta/commit/ba11ab500b66e3d7d75c15c61a1819a6b5eaa167))
+* Force release 2.2.0 ([d5d098d](https://github.com/dasch-swiss/dsp-meta/commit/d5d098d24cb35ce7fdfc9100f11b49a2e4d86a19))
+* release 2.2.1 ([372c229](https://github.com/dasch-swiss/dsp-meta/commit/372c2296b293008b16b5f7573b5abe02072ead7a))
+
 ## [2.2.0](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.1.0...dsp-meta-v2.2.0) (2024-09-03)
 
 
