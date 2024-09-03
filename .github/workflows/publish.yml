@@ -104,3 +104,5 @@ jobs:
         with:
           token: ${{ secrets.DASCHBOT_PAT }}
           release-type: rust
+          config-file: .github/release-please/config.json
+          manifest-file: .github/release-please/manifest.json
