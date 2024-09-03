@@ -7,7 +7,6 @@ use dsp_meta::domain::model::draft_model::*;
 use dsp_meta::domain::model::json_schema_validator::{validate_files, SchemaVersion};
 use dsp_meta::infrastructure::load_json_file_paths;
 
-
 #[test]
 fn test_deserialization_all_json_data() {
     let json_file_paths = load_json_file_paths(&data_dir());
