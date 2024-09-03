@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.2.3](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.2.2...dsp-meta-v2.2.3) (2024-09-03)
+
+
+### Maintenance
+
+* **deps:** Bump config to 0.14.0 ([#219](https://github.com/dasch-swiss/dsp-meta/issues/219)) ([b0d6055](https://github.com/dasch-swiss/dsp-meta/commit/b0d605529b137dffd9767700261681e9c640c021))
+* Publish releases immediately ([#220](https://github.com/dasch-swiss/dsp-meta/issues/220)) ([81a4155](https://github.com/dasch-swiss/dsp-meta/commit/81a415500c5422b008e7edf80aa3a7bed957b5c5))
+
 ## [2.2.2](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.2.1...dsp-meta-v2.2.2) (2024-09-03)
 
 
