@@ -37,9 +37,7 @@
       "hidden": false
     }
   ],
-  "plugins": [
-    "sentence-case",
-  ],
+  "plugins": ["sentence-case"],
   "packages": {
     ".": {
       "changelog-path": "CHANGELOG.md",
@@ -52,4 +50,3 @@
   },
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
 }
-
