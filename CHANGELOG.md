@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.2.2](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.2.1...dsp-meta-v2.2.2) (2024-09-03)
+
+
+### Maintenance
+
+* **deps:** Bump tower and config versions ([#213](https://github.com/dasch-swiss/dsp-meta/issues/213)) ([3657048](https://github.com/dasch-swiss/dsp-meta/commit/3657048f4d4ea315fcdb3523b89a7d9ac4105f11))
+* **main:** Release dsp-meta 2.2.1 ([#215](https://github.com/dasch-swiss/dsp-meta/issues/215)) ([5b8d64e](https://github.com/dasch-swiss/dsp-meta/commit/5b8d64ef0138683fe354f5a932993357acc30a58))
+* Remove changelog duplication ([#217](https://github.com/dasch-swiss/dsp-meta/issues/217)) ([3c71e89](https://github.com/dasch-swiss/dsp-meta/commit/3c71e894d8422f03cc24c7c61634279f2aca34d9))
+
 ## [2.2.1](https://github.com/dasch-swiss/dsp-meta/releases/tag/untagged-728191730a7b4eb0fe5e) (2024-09-03)
 
 
