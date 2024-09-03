@@ -7,7 +7,7 @@ homepage = "https://github.com/dasch-swiss/dsp-meta"
 repository = "https://github.com/dasch-swiss/dsp-meta"
 documentation = "https://github.com/dasch-swiss/dsp-meta"
 readme = "README.md"
-description = "DSP-META is a service that provides metadata for the Digital and Semantic Publishing Platform (DSP)."
+description = "DSP-META is a service that provides metadata for the DaSCH Service Platform (DSP)."
 authors = ["DaSCH - Swiss National Data and Service Center for the Humanities"]
 
 [dependencies]
