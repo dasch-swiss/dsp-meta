@@ -78,7 +78,7 @@ async fn init_server() {
 
     // start the server
     let listener = TcpListener::bind("0.0.0.0:3000").await.unwrap();
-    dbg!("Starting up on http://0.0.0.0:3000");
+    dbg!("Starting up: http://localhost:3000");
     axum::serve(listener, dsp_meta::api::router::router(shared_state))
         .await
         .unwrap();
