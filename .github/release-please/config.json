@@ -42,9 +42,7 @@
     ".": {
       "changelog-path": "CHANGELOG.md",
       "release-type": "rust",
-      "bump-minor-pre-major": true,
-      "bump-patch-for-minor-pre-major": true,
-      "draft": true,
+      "draft": false,
       "prerelease": false
     }
   },
