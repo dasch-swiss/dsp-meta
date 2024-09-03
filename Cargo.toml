@@ -1,6 +1,6 @@
 [package]
 name = "dsp-meta"
-version = "2.2.0"
+version = "2.2.1"
 edition = "2021"
 license = "MIT OR Apache-2.0"
 homepage = "https://github.com/dasch-swiss/dsp-meta"
@@ -38,11 +38,11 @@ regex = "1.10.6"
 thiserror = "1.0.56"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = [
-    "fmt",
-    "registry",
-    "std",
-    "env-filter",
-    "json",
+  "fmt",
+  "registry",
+  "std",
+  "env-filter",
+  "json",
 ] }
 tracing-test = "0.2"
 url = { version = "2", features = ["serde"] }
@@ -59,3 +59,4 @@ path = "src/main-server.rs"
 [[bin]]
 name = "dsp-meta-validator"
 path = "src/main-validator.rs"
+
