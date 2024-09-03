@@ -562,30 +562,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "75b325c5dbd37f80359721ad39aca5a29fb04c89279657cffdda8736d0c0b9d2"
 
 [[package]]
-name = "dsp-domain"
-version = "2.1.0"
-dependencies = [
- "anyhow",
- "assert_cmd",
- "axum",
- "axum-macros",
- "clap",
- "hcl-rs",
- "hyper",
- "log",
- "serde",
- "serde_json",
- "thiserror",
- "tokio",
- "tower",
- "tower-http",
- "tracing",
- "tracing-subscriber",
- "tracing-test",
- "url",
-]
-
-[[package]]
 name = "dsp-meta"
 version = "2.1.0"
 dependencies = [
@@ -597,7 +573,6 @@ dependencies = [
  "chrono",
  "clap",
  "config",
- "dsp-domain",
  "fake",
  "hcl-rs",
  "http-body-util",

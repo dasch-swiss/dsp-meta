@@ -1,5 +1,5 @@
 [workspace]
-members = ["dsp-domain", "dsp-meta", "dsp-meta-cmd", "serde-rdf"]
+members = ["dsp-meta", "dsp-meta-cmd", "serde-rdf"]
 resolver = "2"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
