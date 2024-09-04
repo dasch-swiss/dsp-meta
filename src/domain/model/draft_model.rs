@@ -80,9 +80,9 @@ fn test_try_from_shortcode() {
 #[derive(Debug, Default, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DraftProjectStatus {
     #[default]
-    #[serde(rename = "ongoing")]
+    #[serde(rename = "Ongoing")]
     Ongoing,
-    #[serde(rename = "finished")]
+    #[serde(rename = "Finished")]
     Finished,
 }
 
