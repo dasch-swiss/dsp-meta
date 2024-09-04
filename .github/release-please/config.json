@@ -3,48 +3,39 @@
   "changelog-sections": [
     {
       "type": "build",
-      "section": "Maintenances",
-      "hidden": false
+      "section": "Maintenances"
     },
     {
       "type": "chore",
-      "section": "Maintenances",
-      "hidden": false
+      "section": "Maintenances"
     },
     {
       "type": "docs",
-      "section": "Documentation",
-      "hidden": false
+      "section": "Documentation"
     },
     {
       "type": "feat",
-      "section": "Enhancements",
-      "hidden": false
+      "section": "Enhancements"
     },
     {
       "type": "fix",
-      "section": "Bug Fixes",
-      "hidden": false
+      "section": "Bug Fixes"
     },
     {
       "type": "perf",
-      "section": "Performance Improvements",
-      "hidden": false
+      "section": "Performance Improvements"
     },
     {
       "type": "refactor",
-      "section": "Maintenances",
-      "hidden": false
+      "section": "Maintenances"
     },
     {
       "type": "test",
-      "section": "Tests",
-      "hidden": false
+      "section": "Tests"
     },
     {
       "type": "style",
-      "section": "Styles",
-      "hidden": false
+      "section": "Styles"
     }
   ],
   "plugins": [
