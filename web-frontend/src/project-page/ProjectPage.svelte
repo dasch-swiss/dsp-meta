@@ -1,7 +1,12 @@
 <script lang="ts">
   import type { Metadata } from '../interfaces';
   import { onDestroy, onMount, tick } from 'svelte';
-  import { handleSnackbar, isTestEnvironment, previousRoute, projectMetadata } from '../store';
+  import {
+    handleSnackbar,
+    isTestEnvironment,
+    previousRoute,
+    projectMetadata,
+  } from '../store';
   import ProjectWidget from './ProjectWidget.svelte';
   // import DownloadWidget from "./DownloadWidget.svelte";  // LATER: bring back with download widget
   import Tab from './Tab.svelte';
