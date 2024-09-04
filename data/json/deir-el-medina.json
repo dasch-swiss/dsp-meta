@@ -2,6 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
   "project": {
     "__type": "Project",
+    "status": "ongoing",
     "howToCite": "Deir el-Medina Hieroglyph Palaeography (2028). DaSCH. https://ark.dasch.swiss/ark:/72163/1/0853",
     "teaserText": "An online palaeography of hieroglyphs from the Ptolemaic temple of Deir el-Medina",
     "datasets": [

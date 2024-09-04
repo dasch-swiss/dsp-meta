@@ -136,8 +136,7 @@
           "enum": [
             "ongoing",
             "finished"
-          ],
-          "default": "ongoing"
+          ]
         },
         "name": {
           "type": "string",
@@ -268,13 +267,14 @@
       },
       "required": [
         "__type",
-        "shortcode",
-        "name",
-        "startDate",
-        "teaserText",
         "datasets",
+        "disciplines",
         "keywords",
-        "disciplines"
+        "name",
+        "shortcode",
+        "startDate",
+        "status",
+        "teaserText"
       ],
       "additionalProperties": false
     },
