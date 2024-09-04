@@ -1,7 +1,8 @@
 DOCKER_REPO := "daschswiss/dsp-meta-server"
 CARGO_VERSION := `cargo metadata --format-version=1 --no-deps | jq --raw-output '.packages[].version'`
 COMMIT_HASH := `git log --pretty=format:'%h' -n 1`
-IMAGE_TAG := CARGO_VERSION + "-" + COMMIT_HASH
+GIT_TAG := `git describe --tags --exact-match 2>/dev/null || true`
+IMAGE_TAG := if GIT_TAG == "" { CARGO_VERSION + "-" + COMMIT_HASH } else { GIT_TAG }
 DOCKER_IMAGE := DOCKER_REPO + ":" + IMAGE_TAG
 
 # List all recipies
