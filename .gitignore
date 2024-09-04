@@ -3,6 +3,8 @@
 /**/target
 .DS_Store
 /**/node_modules
+web-frontend/.yarn/install-state.gz
+
 
 
 # Added by cargo
