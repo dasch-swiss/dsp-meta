@@ -1717,12 +1717,12 @@ __metadata:
     rollup-plugin-svelte: "npm:^7.1.5"
     rollup-plugin-terser: "npm:^7.0.0"
     sirv-cli: "npm:^1.0.0"
-    svelte: "npm:^3.0.0"
+    svelte: "npm:^3.59.2"
     svelte-check: "npm:^1.0.0"
     svelte-preprocess: "npm:^4.0.0"
     svelte-routing: "npm:^1.6.0"
     tslib: "npm:^2.0.0"
-    typescript: "npm:^5.5"
+    typescript: "npm:^3.9.7"
   languageName: unknown
   linkType: soft
 
@@ -2098,7 +2098,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte@npm:^3.0.0":
+"svelte@npm:^3.59.2":
   version: 3.59.2
   resolution: "svelte@npm:3.59.2"
   checksum: 10c0/3482d020b291c6784e372315d63e3ab5530b8389adbd739a369d69ec995929276ebbc1cbdf8e5382c9dd887a55ec655702769de85836270e1a4a0ab3e0247b34
@@ -2163,7 +2163,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:*, typescript@npm:^5.5":
+"typescript@npm:*":
   version: 5.5.4
   resolution: "typescript@npm:5.5.4"
   bin:
@@ -2173,13 +2173,33 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A*#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^5.5#optional!builtin<compat/typescript>":
+"typescript@npm:^3.9.7":
+  version: 3.9.10
+  resolution: "typescript@npm:3.9.10"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10c0/863cc06070fa18a0f9c6a83265fb4922a8b51bf6f2c6760fb0b73865305ce617ea4bc6477381f9f4b7c3a8cb4a455b054f5469e6e41307733fe6a2bd9aae82f8
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@npm%3A*#optional!builtin<compat/typescript>":
   version: 5.5.4
   resolution: "typescript@patch:typescript@npm%3A5.5.4#optional!builtin<compat/typescript>::version=5.5.4&hash=379a07"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 10c0/73409d7b9196a5a1217b3aaad929bf76294d3ce7d6e9766dd880ece296ee91cf7d7db6b16c6c6c630ee5096eccde726c0ef17c7dfa52b01a243e57ae1f09ef07
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@npm%3A^3.9.7#optional!builtin<compat/typescript>":
+  version: 3.9.10
+  resolution: "typescript@patch:typescript@npm%3A3.9.10#optional!builtin<compat/typescript>::version=3.9.10&hash=3bd3d3"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10c0/9041fb3886e7d6a560f985227b8c941d17a750f2edccb5f9b3a15a2480574654d9be803ad4a14aabcc2f2553c4d272a25fd698a7c42692f03f66b009fb46883c
   languageName: node
   linkType: hard
 
