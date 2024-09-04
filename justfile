@@ -67,7 +67,7 @@ docker-build-arm64:
 docker-push-arm64:
     docker push {{ DOCKER_IMAGE }}-arm64
 
-# Publish Docker manifest combining arch64 and x86 published images
+# Publish Docker manifest combining aarch64 and x86 published images
 docker-publish-manifest:
     docker manifest create {{ DOCKER_IMAGE }} --amend {{ DOCKER_IMAGE }}-amd64 --amend {{ DOCKER_IMAGE }}-arm64
     docker manifest annotate --arch amd64 --os linux {{ DOCKER_IMAGE }} {{ DOCKER_IMAGE }}-amd64
