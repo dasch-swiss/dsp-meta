@@ -4,7 +4,7 @@ COMMIT_HASH := `git log --pretty=format:'%h' -n 1`
 IMAGE_TAG := CARGO_VERSION + "-" + COMMIT_HASH
 DOCKER_IMAGE := DOCKER_REPO + ":" + IMAGE_TAG
 
-# List all recipies
+# List all recipes
 default:
     just --list --unsorted
 
@@ -19,7 +19,7 @@ fmt:
     cargo +nightly fmt
     cd web-frontend && yarn fmt
 
-# Fix justfile formating. Warning: will change existing file. Please first use check.
+# Fix justfile formatting. Warning: will change existing file. Please first use check.
 fix:
     just --fmt --unstable
 
@@ -39,11 +39,11 @@ test:
 clean:
     cargo clean
 
-# Run dsp-meta
+# Run dsp-meta image
 serve: build-frontend clean
     export DSP_META_DATA_DIR=${PWD}/data && export DSP_META_PUBLIC_DIR=${PWD}/web-frontend/public && export DSP_META_LOG_FILTER=trace,hyper=info && cargo run --bin dsp-meta
 
-# Run dsp-meta and watch for changes in the Rust code
+# Run dsp-meta image and watch for changes in the Rust code
 serve-dev:
     export DSP_META_DATA_DIR=${PWD}/data && export DSP_META_PUBLIC_DIR=${PWD}/web-frontend/public && export DSP_META_LOG_FILTER=trace,hyper=info && cargo watch -x 'run --bin dsp-meta'
 
@@ -67,7 +67,7 @@ docker-build-arm64:
 docker-push-arm64:
     docker push {{ DOCKER_IMAGE }}-arm64
 
-# Publish Docker manifest combining aarch64 and x86 published images
+# Publish Docker manifest combining arch64 and x86 published images
 docker-publish-manifest:
     docker manifest create {{ DOCKER_IMAGE }} --amend {{ DOCKER_IMAGE }}-amd64 --amend {{ DOCKER_IMAGE }}-arm64
     docker manifest annotate --arch amd64 --os linux {{ DOCKER_IMAGE }} {{ DOCKER_IMAGE }}-amd64
