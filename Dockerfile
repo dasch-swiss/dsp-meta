@@ -15,7 +15,7 @@ COPY ./data /data
 # don't forget to set the env variable needed by the server
 ENV DSP_META_DATA_DIR=/data
 
-COPY --from=builder-rs /usr/local/cargo/bin/dsp-meta-server /usr/local/bin/dsp-meta-server
+COPY --from=builder-rs /usr/local/cargo/bin/dsp-meta /usr/local/bin/dsp-meta
 
 COPY --from=builder-node /dsp-meta/web-frontend/public /public
 ENV DSP_META_PUBLIC_DIR=/public
@@ -27,4 +27,4 @@ ENV DSP_META_LOG_FILTER="info,hyper=info"
 ENV DSP_META_LOG_FMT="json"
 
 EXPOSE 3000
-ENTRYPOINT ["dsp-meta-server"]
+ENTRYPOINT ["dsp-meta"]

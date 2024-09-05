@@ -132,12 +132,11 @@
         },
         "status": {
           "type": "string",
-          "description": "The status of the dataset.",
+          "description": "The status of the Project.",
           "enum": [
-            "ongoing",
-            "finished"
-          ],
-          "default": "ongoing"
+            "Ongoing",
+            "Finished"
+          ]
         },
         "name": {
           "type": "string",
@@ -268,13 +267,14 @@
       },
       "required": [
         "__type",
-        "shortcode",
-        "name",
-        "startDate",
-        "teaserText",
         "datasets",
+        "disciplines",
         "keywords",
-        "disciplines"
+        "name",
+        "shortcode",
+        "startDate",
+        "status",
+        "teaserText"
       ],
       "additionalProperties": false
     },

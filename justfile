@@ -1,10 +1,11 @@
-DOCKER_REPO := "daschswiss/dsp-meta-server"
+DOCKER_REPO := "daschswiss/dsp-meta"
 CARGO_VERSION := `cargo metadata --format-version=1 --no-deps | jq --raw-output '.packages[].version'`
 COMMIT_HASH := `git log --pretty=format:'%h' -n 1`
-IMAGE_TAG := CARGO_VERSION + "-" + COMMIT_HASH
+GIT_TAG := `git describe --tags --exact-match 2>/dev/null || true`
+IMAGE_TAG := if GIT_TAG == "" { CARGO_VERSION + "-" + COMMIT_HASH } else { GIT_TAG }
 DOCKER_IMAGE := DOCKER_REPO + ":" + IMAGE_TAG
 
-# List all recipies
+# List all recipes
 default:
     just --list --unsorted
 
@@ -19,7 +20,7 @@ fmt:
     cargo +nightly fmt
     cd web-frontend && yarn fmt
 
-# Fix justfile formating. Warning: will change existing file. Please first use check.
+# Fix justfile formatting. Warning: will change existing file. Please first use check.
 fix:
     just --fmt --unstable
 
@@ -39,13 +40,13 @@ test:
 clean:
     cargo clean
 
-# Run dsp-meta-server
+# Run dsp-meta image
 serve: build-frontend clean
-    export DSP_META_DATA_DIR=${PWD}/data && export DSP_META_PUBLIC_DIR=${PWD}/web-frontend/public && export DSP_META_LOG_FILTER=trace,hyper=info && cargo run --bin dsp-meta-server
+    export DSP_META_DATA_DIR=${PWD}/data && export DSP_META_PUBLIC_DIR=${PWD}/web-frontend/public && export DSP_META_LOG_FILTER=trace,hyper=info && cargo run --bin dsp-meta
 
-# Run dsp-meta-server and watch for changes in the Rust code
+# Run dsp-meta image and watch for changes in the Rust code
 serve-dev:
-    export DSP_META_DATA_DIR=${PWD}/data && export DSP_META_PUBLIC_DIR=${PWD}/web-frontend/public && export DSP_META_LOG_FILTER=trace,hyper=info && cargo watch -x 'run --bin dsp-meta-server'
+    export DSP_META_DATA_DIR=${PWD}/data && export DSP_META_PUBLIC_DIR=${PWD}/web-frontend/public && export DSP_META_LOG_FILTER=trace,hyper=info && cargo watch -x 'run --bin dsp-meta'
 
 # Run the frontend dev server
 serve-frontend:

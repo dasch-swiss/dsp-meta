@@ -12,21 +12,19 @@ The most important prefixes you should have in mind are:
 - `feat!:`, or `fix!:`, `refactor!:`, etc., which represent a breaking change
   (indicated by the `!`) and will result in a SemVer major.
 
-This is the complete list of what is defined and if it is visible in the
-changelog:
+Here is the complete list of prefixes used in this repository with
+corresponding sections in the changelog:
 
-- 'feat' -> section: 'Features'
-- 'feature' -> section: 'Features'
+- 'build' -> section: 'Maintenances'
+- 'chore' -> section: 'Maintenances'
+- 'data' -> section: 'Project Data'
+- 'docs' -> section: 'Documentation'
+- 'feat' -> section: 'Enhancements'
 - 'fix' -> section: 'Bug Fixes'
 - 'perf' -> section: 'Performance Improvements'
-- 'revert' -> section: 'Reverts'
-- 'docs' -> section: 'Documentation', hidden: true
-- 'style' -> section: 'Styles', hidden: true
-- 'chore' -> section: 'Miscellaneous Chores', hidden: true
-- 'refactor' -> section: 'Code Refactoring', hidden: true
-- 'test' -> section: 'Tests', hidden: true
-- 'build' -> section: 'Build System', hidden: true
-- 'ci' -> section: 'Continuous Integration', hidden: true
+- 'refactor' -> section: 'Maintenances'
+- 'test' -> section: 'Tests'
+- 'style' -> section: 'Styles'
 
 ## 1 Usage
 
