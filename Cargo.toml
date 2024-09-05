@@ -53,7 +53,7 @@ axum-test = "15.6.0"
 fake = "2.9.2"
 
 [[bin]]
-name = "dsp-meta-server"
+name = "dsp-meta"
 path = "src/main-server.rs"
 
 [[bin]]
