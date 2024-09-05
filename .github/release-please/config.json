@@ -2,42 +2,45 @@
   "release-type": "rust",
   "changelog-sections": [
     {
-      "type": "feat",
-      "section": "Enhancements",
-      "hidden": false
-    },
-    {
-      "type": "fix",
-      "section": "Bug Fixes",
-      "hidden": false
+      "type": "build",
+      "section": "Maintenances"
     },
     {
       "type": "chore",
-      "section": "Maintenance",
-      "hidden": false
-    },
-    {
-      "type": "build",
-      "section": "Maintenance",
-      "hidden": false
+      "section": "Maintenances"
     },
     {
       "type": "docs",
-      "section": "Documentation",
-      "hidden": false
+      "section": "Documentation"
     },
     {
-      "type": "data",
-      "section": "Project Data",
-      "hidden": false
+      "type": "feat",
+      "section": "Enhancements"
+    },
+    {
+      "type": "fix",
+      "section": "Bug Fixes"
+    },
+    {
+      "type": "perf",
+      "section": "Performance Improvements"
     },
     {
       "type": "refactor",
-      "section": "Maintenance",
-      "hidden": false
+      "section": "Maintenances"
+    },
+    {
+      "type": "test",
+      "section": "Tests"
+    },
+    {
+      "type": "style",
+      "section": "Styles"
     }
   ],
-  "plugins": ["sentence-case"],
+  "plugins": [
+    "sentence-case"
+  ],
   "packages": {
     ".": {
       "changelog-path": "CHANGELOG.md",
