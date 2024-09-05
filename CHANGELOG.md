@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.2.5](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.2.4...dsp-meta-v2.2.5) (2024-09-05)
+
+
+### Maintenances
+
+* Make release PRs drafts ([#229](https://github.com/dasch-swiss/dsp-meta/issues/229)) ([36c630d](https://github.com/dasch-swiss/dsp-meta/commit/36c630d4a7c2b80b3c564ce852f7041224248216))
+* Use CARGO_VERSION for tagging released docker images instead of git tag (DEV-4076) ([#228](https://github.com/dasch-swiss/dsp-meta/issues/228)) ([c335bb4](https://github.com/dasch-swiss/dsp-meta/commit/c335bb48a708ed7350ee4c465401c60488ac090d))
+
 ## [2.2.4](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.2.3...dsp-meta-v2.2.4) (2024-09-05)
 
 
