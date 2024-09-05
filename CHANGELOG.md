@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.2.4](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.2.3...dsp-meta-v2.2.4) (2024-09-05)
+
+
+### Maintenances
+
+* Add more commit prefixes and update README file ([#227](https://github.com/dasch-swiss/dsp-meta/issues/227)) ([704a44b](https://github.com/dasch-swiss/dsp-meta/commit/704a44bb80d85c90810a9ed826535645ff1ae3d8))
+* **deps:** Update dependencies ([#221](https://github.com/dasch-swiss/dsp-meta/issues/221)) ([75a6c9e](https://github.com/dasch-swiss/dsp-meta/commit/75a6c9ed41a015d1836243b82ce2850f1270f30c))
+* Rename dsp-meta Docker image (DEV-4077) ([#224](https://github.com/dasch-swiss/dsp-meta/issues/224)) ([3852be6](https://github.com/dasch-swiss/dsp-meta/commit/3852be6a3f3d4a73c12bb4bb2bdda65453180032))
+* Use cargo version for publishing images from release tags (DEV-4076) ([#225](https://github.com/dasch-swiss/dsp-meta/issues/225)) ([374389b](https://github.com/dasch-swiss/dsp-meta/commit/374389b4f74c2df594d37a6cb9120ec16d70fd9f))
+
 ## [2.2.3](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.2.2...dsp-meta-v2.2.3) (2024-09-03)
 
 
