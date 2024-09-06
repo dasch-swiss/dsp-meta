@@ -1,5 +1,6 @@
 {
   "release-type": "rust",
+  "draft-pull-request": true,
   "changelog-sections": [
     {
       "type": "build",
@@ -44,9 +45,7 @@
   "packages": {
     ".": {
       "changelog-path": "CHANGELOG.md",
-      "release-type": "rust",
-      "draft": false,
-      "prerelease": false
+      "release-type": "rust"
     }
   },
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
