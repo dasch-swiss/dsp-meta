@@ -16,17 +16,10 @@ export const isTestEnvironment = readable(
     window.location.hostname.startsWith('meta.dev'),
 );
 
-export function baseUrl() {
-  const protocol = window.location.protocol;
-  const port = protocol === 'https:' ? '' : ':3000';
-  return `${protocol}//${window.location.hostname}${port}`;
-}
-
 export async function getProjectsMetadata(
   page: number,
   q?: string,
 ): Promise<void> {
-  // const baseUrl = process.env.BASE_URL;
   const baseResultsRange = [1, 9];
   let route: string;
   let currentResultsRange = baseResultsRange.map(
@@ -54,7 +47,7 @@ export async function getProjectsMetadata(
 
   navigate(`/${route}`);
 
-  await fetch(`${baseUrl()}/api/v1/${route}`)
+  await fetch(`/api/v1/${route}`)
     .then((r) => {
       const totalCount = parseInt(r.headers.get('X-Total-Count'));
       let totalPages = Math.floor(totalCount / baseResultsRange[1]);
