@@ -1,7 +1,12 @@
 <script lang="ts">
   import type { Metadata } from '../interfaces';
   import { onDestroy, onMount, tick } from 'svelte';
-  import { handleSnackbar, previousRoute, projectMetadata } from '../store';
+  import {
+    handleSnackbar,
+    isTestEnvironment,
+    previousRoute,
+    projectMetadata,
+  } from '../store';
   import ProjectWidget from './ProjectWidget.svelte';
   // import DownloadWidget from "./DownloadWidget.svelte";  // LATER: bring back with download widget
   import Tab from './Tab.svelte';
@@ -9,8 +14,6 @@
   import Snackbar from '../Snackbar.svelte';
   import { getText } from '../functions';
   import Loading from '../Loading.svelte';
-  import { isTestEnvironment } from '../store';
-  import { baseUrl } from '../store';
 
   const mobileResolution = window.innerWidth < 992;
   const descriptionLanguages = new Map<string, string>([
@@ -56,7 +59,7 @@
   const getProjectMetadata = async () => {
     const projectID = window.location.pathname.split('/')[2];
 
-    const res = await fetch(`${baseUrl()}/api/v1/projects/${projectID}`);
+    const res = await fetch(`/api/v1/projects/${projectID}`);
     const metadata: Metadata = await res.json();
 
     projectMetadata.set(metadata);

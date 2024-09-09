@@ -1,11 +1,10 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { baseUrl } from './store';
 
   let version: string;
 
   onMount(async () => {
-    await fetch(`${baseUrl()}/version.txt`)
+    await fetch(`/version.txt`)
       .then((response) => response.text())
       .then((data) => {
         version = data;
