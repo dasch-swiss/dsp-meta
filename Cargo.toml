@@ -15,7 +15,7 @@ anyhow = "1"
 async-trait = "0.1.82"
 axum = "0.7.5" # web framework
 axum-macros = "0.4.1"
-clap = { version = "4.5.16", features = ["derive"] } # command-line parser
+clap = { version = "4.5.17", features = ["derive"] } # command-line parser
 config = "0.14.0" # Layered configuration with strong support for 12-factor applications
 chrono = { version = "0.4.38", features = ["serde"] }
 dirs = "5.0.1" # provides platform-specific locations for storing user configuration
@@ -49,7 +49,7 @@ url = { version = "2", features = ["serde"] }
 
 [dev-dependencies]
 assert_cmd = "2.0.16"
-axum-test = "15.6.0"
+axum-test = "15.7.1"
 fake = "2.9.2"
 
 [[bin]]
