@@ -1,272 +1,361 @@
 {
-  "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
-  "project": {
-    "__type": "Project",
-    "howToCite": "Morgenthaler et al., historisch-kritsche Kellerausgabe online, 1996-2013",
-    "teaserText": "Gottfried Keller (1819-1890) gehört zu den grossen Autoren des Realismus. Die eHKKA ediert Kellers Gesamtwerk: Seine Romane, Novellen, Gedichte, Tagebücher und Briefe.",
+    "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
+    "project": {
+        "__type": "Project",
+        "howToCite": "eHKKA. Distributed by DaSCH. https://ark.dasch.swiss/ark:/72163/1/083C",
+        "teaserText": "Gottfried Keller (1819–1890) gehört zu den großen Autoren des 19. Jahrhunderts. Die HKKA bringt sein Werk erstmals vollständig zur Darstellung und macht es auch online in seinen textgenetischen Zusammenhängen verstehbar.",
+        "datasets": [
+            "http://ns.dasch.swiss/repository#dsp-083C-dataset-000"
+        ],
+        "alternativeNames": [
+            {
+                "de": "HKKA"
+            }
+        ],
+        "contactPoint": "http://ns.dasch.swiss/repository#dsp-083C-person-003",
+        "description": {
+            "de": "Die Historisch-Kritische Gottfried Keller-Ausgabe (HKKA) markiert einen Meilenstein in der Editionsphilologie. Sie ist sowohl in Buchform als auch digital zugänglich. Ihr innovatives Potential liegt in der Nutzung und Ergänzung der beiden Medien mit ihren je spezifischen Möglichkeiten der Datenerschließung und deren Darstellbarkeit begründet. Das maßgeblich von den Universitäten Basel und Zürich getragene Projekt startete 1991. Begleitend zur Printversion (abgeschlossen 2013) erschien die Edition in digitaler Form. Als Grundlage dafür diente eine eigens für die HKKA entwickelte Software. Auf dieser Basis entstand in der Folge die eHKKA. Mit dem Ziel einer längerfristigen Sicherung der Daten sowie eines erleichterten Zugriffs darauf wurde die eHKKA in Zusammenarbeit mit dem DaSCH weiterentwickelt. Sie ist in dieser neuen und aktualisierten Form jetzt online verfügbar. Forschung und Lehre profitieren davon ebenso wie eine literarisch und kulturell interessierte Öffentlichkeit."
+        },
+        "disciplines": [
+            {
+                "de": "10301 Allgemeine Geschichte"
+            },
+            {
+                "de": "10302 Schweizer Geschichte"
+            },
+            {
+                "de": "10501 Sprach- und Literaturwissenschaft (Germanistik)"
+            }
+        ],
+        "endDate": "2013-07-31",
+        "funders": [
+            "http://ns.dasch.swiss/repository#dsp-083C-organization-000"
+        ],
+        "grants": [
+            "http://ns.dasch.swiss/repository#dsp-083C-grant-000"
+        ],
+        "keywords": [
+            {
+                "en": "19th Century"
+            },
+            {
+                "en": "Arts"
+            },
+            {
+                "en": "German Literature"
+            },
+            {
+                "en": "History"
+            },
+            {
+                "en": "Politics"
+            },
+            {
+                "en": "Swiss Literature"
+            }
+        ],
+        "name": "Historisch-Kritische Gottfried Keller-Ausgabe (HKKA)",
+        "publications": [
+            {
+                "text": " Gottfried Keller. Sämtliche Werke. Historisch-Kritische Ausgabe. Hg. von Walter Morgenthaler (Leitung), Ursula Amrein (1994–1997), Thomas Binder (1991–2012), Karl Grob (2000–2012), Peter Stocker (1997–2012) und Peter Villwock (1996–2003). 32 Bde. Basel/Frankfurt a.M.: Stroemfeld / Zürich: Neue Zürcher Zeitung 1996–2013."
+            }
+        ],
+        "shortcode": "083C",
+        "spatialCoverage": [
+            {
+                "__type": "URL",
+                "type": "Geonames",
+                "url": "https://www.geonames.org/2921044",
+                "text": "Germany"
+            },
+            {
+                "__type": "URL",
+                "type": "Geonames",
+                "url": "https://www.geonames.org/2658434",
+                "text": "Switzerland"
+            },
+            {
+                "__type": "URL",
+                "type": "Geonames",
+                "url": "https://www.geonames.org/6255148",
+                "text": "Europe"
+            }
+        ],
+        "startDate": "1991-04-01",
+        "temporalCoverage": [
+            {
+                "__type": "URL",
+                "type": "Chronontology",
+                "url": "http://chronontology.dainst.org/period/5C8DINGE1IXb",
+                "text": "19th Century"
+            }
+        ],
+        "url": {
+            "__type": "URL",
+            "type": "URL",
+            "url": "http://www.ehkka.ch",
+            "text": "External Project Website"
+        }
+    },
     "datasets": [
-      "http://ns.dasch.swiss/repository#dsp-083C-dataset-000"
-    ],
-    "alternativeNames": [
-      {
-        "de": "HKKA"
-      }
-    ],
-    "contactPoint": "http://ns.dasch.swiss/repository#dsp-083C-person-003",
-    "description": {
-      "de": "Die HKKA war ein Meilenstein der computergestützten Editonsphilologie. Sie dokumentiert nicht nur die Entstehungs- und Publikationsgeschichte der von Keller veröffentlichten Werke, sondern präsentiert erstmals ohne willkürliche Selektion den gesamten literarischen Nachlass. Nach Abschluss der Buchausgabe soll die Ausgabe nun auch in benutzerfreundlicher Art auf dem Netzt zugänglich gemacht werden."
-    },
-    "disciplines": [
-      {
-        "de": "10302 Schweizer Geschichte"
-      },
-      {
-        "de": "10501 Sprach- und Literaturwissenschaft"
-      }
-    ],
-    "endDate": "2013-07-31",
-    "funders": [
-      "http://ns.dasch.swiss/repository#dsp-083C-organization-000"
-    ],
-    "grants": [
-      "http://ns.dasch.swiss/repository#dsp-083C-grant-000"
-    ],
-    "keywords": [
-      {
-        "en": "Arts"
-      },
-      {
-        "en": "German Literature"
-      },
-      {
-        "en": "History"
-      },
-      {
-        "en": "Politics"
-      },
-      {
-        "en": "Swiss Literature"
-      }
-    ],
-    "name": "Historische-Kritische Gottfried Keller Ausgabe (HKKA)",
-    "publications": [
-      {
-        "text": "Gottfried Keller: Sämtliche Werke. Historisch-Kritische Ausgabe. Herausgegeben unter der Leitung von Walter Morgenthaler im Auftrag der Stiftung Historisch-Kritische Gottfried Keller-Ausgabe. 32 Bände. Frankfurt a. M., Basel und Zürich 1996-2013."
-      }
-    ],
-    "shortcode": "083C",
-    "spatialCoverage": [
-      {
-        "__type": "URL",
-        "type": "Geonames",
-        "url": "https://www.geonames.org/2921044/federal-republic-of-germany.html",
-        "text": "Germany"
-      },
-      {
-        "__type": "URL",
-        "type": "Geonames",
-        "url": "https://www.geonames.org/2658434/switzerland.html",
-        "text": "Switzerland"
-      }
-    ],
-    "startDate": "1991-04-01",
-    "temporalCoverage": [
-      {
-        "__type": "URL",
-        "type": "Chronontology",
-        "url": "http://chronontology.dainst.org/period/5C8DINGE1IXb",
-        "text": "19th Century"
-      }
-    ],
-    "url": {
-      "__type": "URL",
-      "type": "URL",
-      "url": "https://www.ehkka.ch/ehkka/",
-      "text": "External Project Website"
-    },
-    "status": "Ongoing"
-  },
-  "datasets": [
-    {
-      "__id": "http://ns.dasch.swiss/repository#dsp-083C-dataset-000",
-      "__type": "Dataset",
-      "abstracts": [
         {
-          "de": "Eine online-Edition der Historisch-Kritischen Kellerausgabe"
+            "__id": "http://ns.dasch.swiss/repository#dsp-083C-dataset-000",
+            "__type": "Dataset",
+            "abstracts": [
+                {
+                    "de": "Die eHKKA entstand bereits in den 1990er Jahren. Sie wurde nach Abschluss der Printedition 2013 weiterentwickelt und online zur Verfügung gestellt. Sie basiert wesentlich auf dem Datenbestand der HKKA. Um die längerfristige Speicherung der Daten sicherzustellen und neue Nutzungsmöglichkeiten zu etablieren, wurde die eHKKA in Kooperation mit dem DaSCH technisch überarbeitet und ist neu online zugänglich.\r Die HKKA inkl. die elektronische Version der eHKKA setzt neue Standards in der Editionsphilologie und bildet die unabdingbare Grundlage der aktuellen wissenschaftlichen Auseinandersetzung mit Gottfried Keller. Anders als die bisher vorliegenden Editionen macht sie Kellers Werk erstmals in seinem vollen Umfang zugänglich. Sie umfasst die zu Lebzeiten veröffentlichten Arbeiten (Romane, Novellen, Lyrik, Publizistik) und erschließt die bislang nur lückenhaft erfassten Nachlassmaterialien (Studien-, Notiz- und Schreibbücher, darunter das Tagebuch sowie das Traumbuch, Dramenprojekte, Erzählfragmente sowie weitere Paralipomena). Hinzu kommen Briefe sowie zeitgenössische Rezensionen, die Kellers Werk in seinen entstehungs- und rezeptionsgeschichtlichen Zusammenhängen verorten. Als historisch-kritische Ausgabe dokumentiert die HKKA Kellers Werk in textgenetischer Darstellung, verzeichnet mithin sämtliche Stufen von ersten Entwürfen bis hin zu den verschiedenen und auch mehrfach überarbeiteten Drucken zu Lebzeiten. Zu den Pluspunkten der Edition gehören mit der Präsentation sämtlicher Textzeugen die erstmalige integrale Wiedergabe der Studien-, Notiz- und Schreibbücher, die Faksimilierung der Handschriften sowie die Parallelität von gedruckter Buchausgabe und elektronischer Version.\r Letztere erlaubt einen raschen Zugriff auf Textzeugen, Varianten, Kommentare, Quellentexte und Paralipomena. Gegenüber der Printversion zeichnet sie sich weiter dadurch aus, dass sie die umfangreiche Korrespondenz, Rezensionen sowie Quellentexte nicht bloß ausschnittweise und damit selektiv wiedergibt, sondern die genannten Materialien in kompletter Form integriert."
+                }
+            ],
+            "accessConditions": "open",
+            "datePublished": "2024-09-09",
+            "howToCite": "eHKKA. Distributed by DaSCH. https://ark.dasch.swiss/ark:/72163/1/083C",
+            "languages": [
+                {
+                    "de": "Deutsch",
+                    "en": "German",
+                    "fr": "allemand"
+                }
+            ],
+            "licenses": [
+                {
+                    "__type": "License",
+                    "date": "2024-09-09",
+                    "license": {
+                        "__type": "URL",
+                        "type": "URL",
+                        "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+                        "text": "CC BY-NC-ND 4.0"
+                    }
+                },
+                {
+                    "__type": "License",
+                    "date": "2024-09-09",
+                    "license": {
+                        "__type": "URL",
+                        "type": "URL",
+                        "url": "https://creativecommons.org/licenses/by-nc/4.0/",
+                        "text": "CC BY-NC 4.0"
+                    }
+                },
+                {
+                    "__type": "License",
+                    "date": "2024-09-09",
+                    "license": {
+                        "__type": "URL",
+                        "type": "URL",
+                        "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+                        "text": "CC BY-NC-SA 4.0"
+                    }
+                }
+            ],
+            "attributions": [
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-083C-person-003",
+                    "roles": [
+                        "Präsident Stiftungsrat (seit 2016, Ausschuss HKKA digital/online)",
+                        "Beratung"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-083C-person-000",
+                    "roles": [
+                        "Projektleitung",
+                        "Programmierung",
+                        "Mitglied Herausgeberteam"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-083C-person-001",
+                    "roles": [
+                        "Stellvertrende Projekleitung",
+                        "Stiftungsrat HKKA (seit 2012; Ausschuss HKKA digital/online)",
+                        "Mitglied Herausgeberteam (1994–1997)"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-083C-person-002",
+                    "roles": [
+                        "Mitglied Herausgeberteam (2000–2012)",
+                        "Programmierung eHKKA"
+                    ]
+                }
+            ],
+            "status": "Finished",
+            "title": "Dataset of eHKKA",
+            "typeOfData": [
+                "Image",
+                "Text",
+                "XML"
+            ]
         }
-      ],
-      "alternativeTitles": [
+    ],
+    "persons": [
         {
-          "de": "eHKKA"
-        }
-      ],
-      "accessConditions": "open",
-      "datePublished": "1996-01-01",
-      "howToCite": "Morgenthaler et al., historisch-kritsche Kellerausgabe online, 1996-2013.",
-      "languages": [
-        {
-          "de": "Deutsch"
-        }
-      ],
-      "attributions": [
-        {
-          "__type": "Attribution",
-          "agent": "http://ns.dasch.swiss/repository#dsp-083C-person-000",
-          "roles": [
-            "1991-2012: Vollberuflicher Mitarbeiter der HKKA  Initiant des Projekts und Leiter des Herausgeberteams"
-          ]
+            "__id": "http://ns.dasch.swiss/repository#dsp-083C-person-002",
+            "__type": "Person",
+            "email": "kgrob@mus.ch",
+            "familyNames": [
+                "Grob"
+            ],
+            "givenNames": [
+                "Karl"
+            ],
+            "jobTitles": [
+                "Dr. phil."
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-083C-organization-000"
+            ]
         },
         {
-          "__type": "Attribution",
-          "agent": "http://ns.dasch.swiss/repository#dsp-083C-person-002",
-          "roles": [
-            "2000-2013 Vollberuflicher Mitarbeiter der HKKA 2000-2013 Mitglied des Herausgeberteams, zuständig für EDV  "
-          ]
+            "__id": "http://ns.dasch.swiss/repository#dsp-083C-person-000",
+            "__type": "Person",
+            "email": "info@wmorgenthaler.ch",
+            "familyNames": [
+                "Morgenthaler"
+            ],
+            "givenNames": [
+                "Walter"
+            ],
+            "jobTitles": [
+                "Dr. phil."
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-083C-organization-000"
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-083C-person-001",
+            "__type": "Person",
+            "email": "ursula-amrein@sunrise.ch",
+            "familyNames": [
+                "Amrein"
+            ],
+            "givenNames": [
+                "Ursula"
+            ],
+            "jobTitles": [
+                "Prof. Dr."
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-083C-organization-000",
+                "http://ns.dasch.swiss/repository#dsp-083C-organization-001",
+                "http://ns.dasch.swiss/repository#dsp-083C-organization-002"
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-083C-person-003",
+            "__type": "Person",
+            "email": "dom.muller@bluewin.ch",
+            "familyNames": [
+                "Müller"
+            ],
+            "givenNames": [
+                "Dominik"
+            ],
+            "jobTitles": [
+                "Dr. phil."
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-083C-organization-000"
+            ]
         }
-      ],
-      "status": "Finished",
-      "title": "Historisch-Kritische Kellerausgabe online",
-      "typeOfData": [
-        "Image",
-        "Text",
-        "XML"
-      ]
-    }
-  ],
-  "persons": [
-    {
-      "__id": "http://ns.dasch.swiss/repository#dsp-083C-person-001",
-      "__type": "Person",
-      "familyNames": [
-        "Amrein"
-      ],
-      "givenNames": [
-        "Ursula"
-      ],
-      "jobTitles": [
-        "Prof. Dr. phil."
-      ],
-      "affiliation": [
-        "http://ns.dasch.swiss/repository#dsp-083C-organization-000",
-        "http://ns.dasch.swiss/repository#dsp-083C-organization-005"
-      ]
-    },
-    {
-      "__id": "http://ns.dasch.swiss/repository#dsp-083C-person-000",
-      "__type": "Person",
-      "familyNames": [
-        "Morgenthaler"
-      ],
-      "givenNames": [
-        "Walter"
-      ],
-      "jobTitles": [
-        "Dr. phil."
-      ],
-      "affiliation": [
-        "http://ns.dasch.swiss/repository#dsp-083C-organization-000",
-        "http://ns.dasch.swiss/repository#dsp-083C-organization-005"
-      ]
-    },
-    {
-      "__id": "http://ns.dasch.swiss/repository#dsp-083C-person-002",
-      "__type": "Person",
-      "familyNames": [
-        "Grob"
-      ],
-      "givenNames": [
-        "Karl"
-      ],
-      "jobTitles": [
-        "Dr. phil."
-      ],
-      "affiliation": [
-        "http://ns.dasch.swiss/repository#dsp-083C-organization-000"
-      ]
-    },
-    {
-      "__id": "http://ns.dasch.swiss/repository#dsp-083C-person-003",
-      "__type": "Person",
-      "email": "dom.muller@bluewin.ch",
-      "familyNames": [
-        "Müller"
-      ],
-      "givenNames": [
-        "Dominik"
-      ],
-      "jobTitles": [
-        "Dr. phil."
-      ],
-      "affiliation": [
-        "http://ns.dasch.swiss/repository#dsp-083C-organization-000",
-        "http://ns.dasch.swiss/repository#dsp-083C-organization-006"
-      ]
-    }
-  ],
-  "organizations": [
-    {
-      "__id": "http://ns.dasch.swiss/repository#dsp-083C-organization-001",
-      "__type": "Organization",
-      "address": {
-        "__type": "Address",
-        "street": "Wildhainweg 3, Postfach",
-        "postalCode": "3001",
-        "locality": "Bern",
-        "country": "Switzerland"
-      },
-      "name": "Swiss National Science Foundation (SNSF)"
-    },
-    {
-      "__id": "http://ns.dasch.swiss/repository#dsp-083C-organization-006",
-      "__type": "Organization",
-      "address": {
-        "__type": "Address",
-        "street": "24 rue du Général-Dufour",
-        "postalCode": "1211",
-        "locality": "Genève 4",
-        "country": "Switzerland"
-      },
-      "name": "Université de Genève, Départemet de langue et de littérature allemandes, Faculté des Lettres"
-    },
-    {
-      "__id": "http://ns.dasch.swiss/repository#dsp-083C-organization-005",
-      "__type": "Organization",
-      "address": {
-        "__type": "Address",
-        "street": "Schönberggasse 9",
-        "postalCode": "8001",
-        "locality": "Zürich",
-        "country": "Switzerland"
-      },
-      "name": "Deutsches Seminar, Universität Zürich"
-    },
-    {
-      "__id": "http://ns.dasch.swiss/repository#dsp-083C-organization-000",
-      "__type": "Organization",
-      "address": {
-        "__type": "Address",
-        "street": "c/o Pestalozzi Rechtsanwälte, Löwenstrasse 1",
-        "postalCode": "8000",
-        "locality": "Zürich",
-        "country": "Switzerland"
-      },
-      "email": "dom.muller@bluewin.ch",
-      "name": "Stiftung für eine Historisch-Kritische Gottfried Keller-Ausgabe"
-    }
-  ],
-  "grants": [
-    {
-      "__id": "http://ns.dasch.swiss/repository#dsp-083C-grant-000",
-      "__type": "Grant",
-      "funders": [
-        "http://ns.dasch.swiss/repository#dsp-083C-organization-001"
-      ],
-      "url": {
-        "__type": "URL",
-        "type": "URL",
-        "url": "https://www.snf.ch/de",
-        "text": "https://www.snf.ch/de"
-      }
-    }
-  ]
+    ],
+    "organizations": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-083C-organization-001",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Gottfried Keller-Gesellschaft, c/o Prof. Dr. Ursula Amrein, Ceresstrasse 25",
+                "postalCode": "8008",
+                "locality": "Zürich",
+                "country": "Switzerland"
+            },
+            "email": "ursula-amrein@sunrise.ch",
+            "name": "Gottfried Keller-Gesellschaft Zürich",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://gottfriedkeller-gesellschaft.ch",
+                "text": "https://gottfriedkeller-gesellschaft.ch"
+            }
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-083C-organization-002",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Prof. Dr. Ursula Amrein, Deutsches Seminar, Universität Zürich, Schönberggasse 9",
+                "postalCode": "8001",
+                "locality": "Zürich",
+                "country": "Switzerland"
+            },
+            "email": "ursula.amrein@ds.uzh.ch",
+            "name": "Deutsches Seminar, Universität Zürich",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://www.ds.uzh.ch/apps/p/amrein",
+                "text": "https://www.ds.uzh.ch/apps/p/amrein"
+            }
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-083C-organization-003",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Wildhainweg 3",
+                "postalCode": "3001",
+                "locality": "Bern",
+                "country": "Switzerland"
+            },
+            "email": "desk@snf.ch",
+            "name": "Swiss National Science Foundation (SNSF)",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "http://www.snf.ch",
+                "text": "http://www.snf.ch"
+            }
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-083C-organization-004",
+            "__type": "Organization",
+            "name": "Kanton Zürich"
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-083C-organization-000",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Stiftung für eine Historisch-Kritische Gottfried Keller-Ausgabe, c/o Pestalozzi Rechtsanwälte, Dr. iur. Michael Lips, Feldeggstrasse 4",
+                "postalCode": "8008",
+                "locality": "Zürich",
+                "country": "Switzerland"
+            },
+            "email": "dom.muller@bluewin.ch",
+            "name": "Stiftung für eine Historisch-Kritische Gottfried Keller-Ausgabe",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "http://www.gottfriedkeller.ch/hkka/statuten.php",
+                "text": "www.gottfriedkeller.ch/hkka/statuten.php"
+            }
+        }
+    ],
+    "grants": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-083C-grant-000",
+            "__type": "Grant",
+            "funders": [
+                "http://ns.dasch.swiss/repository#dsp-083C-organization-003",
+                "http://ns.dasch.swiss/repository#dsp-083C-organization-004"
+            ]
+        }
+    ]
 }
