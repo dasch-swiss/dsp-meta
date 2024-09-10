@@ -28,9 +28,11 @@ updates:
        backend-dependencies:
           applies-to: version-updates
           patterns:
-            - "*" 
+            - "*"
     ignore:
       # These are peer deps of Cargo and should not be automatically bumped
       - dependency-name: "semver"
       - dependency-name: "crates-io"
+      # Ignore major updates for all dependencies
+      - dependency-name: "*"
         update-types: ["version-update:semver-major"]
