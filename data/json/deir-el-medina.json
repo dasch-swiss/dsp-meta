@@ -25,16 +25,13 @@
         "en": "10303 Ancient History and Classical studies"
       },
       {
-        "en": "Egyptology"
-      },
-      {
-        "en": "Egyptian History"
+        "__type": "URL",
+        "type": "Skos",
+        "url": "http://skos.um.es/unescothes/C01302",
+        "text": "Egyptology"
       },
       {
         "en": "10402 Archaeology"
-      },
-      {
-        "en": "Egyptian Archaeology"
       }
     ],
     "endDate": "2027-12-31",
@@ -134,7 +131,7 @@
       "__type": "URL",
       "type": "URL",
       "url": "https://beyondthetext.ch/deir-el-medina",
-      "text": "External project website"
+      "text": "External Project Website"
     }
   },
   "datasets": [
@@ -187,7 +184,7 @@
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-0853-person-000",
           "roles": [
-            "ProjectLeader",
+            "Project Leader",
             "Creator"
           ]
         },
@@ -195,8 +192,9 @@
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-0853-person-001",
           "roles": [
-            "Epigrapher",
-            "Creator"
+            "Project Member",
+            "Creator",
+            "Epigrapher"
           ]
         }
       ],
