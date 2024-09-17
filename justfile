@@ -83,3 +83,31 @@ docker-image-tag:
 # Watch for changes and run tests
 watch:
     cargo watch -x test
+
+# Generate the OpenApi in {{openapiDir}} yml from the tapir endpoints
+docs-openapi-generate:
+    echo "Not implemented."
+
+docs-install-requirements:
+    python -m pip install --upgrade pip
+    pip3 install -r docs/requirements.txt
+
+docs-clean:
+    rm -rf site/
+
+docs-build-dependent: docs-openapi-generate
+    # make -C docs graphvizfigures
+    echo "Not implemented."
+
+docs-serve: docs-build-dependent
+    mkdocs serve
+
+docs-build: docs-build-dependent
+    mkdocs build --strict
+
+markdownlint:
+    docker run \
+    -v $PWD:/workdir ghcr.io/igorshubovych/markdownlint-cli:latest \
+    --config .markdownlint.yml \
+    --disable MD013 MD040 -- \
+    "docs/**/*.md"
