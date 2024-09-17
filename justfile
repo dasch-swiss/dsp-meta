@@ -96,7 +96,6 @@ docs-clean:
     rm -rf site/
 
 docs-build-dependent: docs-openapi-generate
-    # make -C docs graphvizfigures
     echo "Not implemented."
 
 docs-serve: docs-build-dependent
