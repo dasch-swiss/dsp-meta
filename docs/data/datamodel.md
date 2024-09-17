@@ -1,5 +1,8 @@
 # Data Model
 
-Lorem ipsum.
+Documentation for the data model.
 
-<!-- TODO: Add content -->
+!!! info
+
+    More documentation will be added soon.
+
