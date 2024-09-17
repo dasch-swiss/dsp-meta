@@ -13,16 +13,13 @@ you can visit the [DSP Metadata Browser](https://meta.dasch.swiss).
 If you are interested in re-using our metadata, you can find extensive documentation here.
 <!-- TODO: link -->
 
-The metadata itself can be found here <!-- TODO: Link --> 
-or requested over the API as described here.
-<!-- TODO: Link -->
+The metadata itself can be found [here](https://github.com/dasch-swiss/dsp-meta/tree/main/data/json)
+or requested over the API as described [here](data/api.md).
 
 ### Adding Metadata
 
-For adding metadata, please see here.
-<!-- TODO: Link -->
+For adding metadata, please see [here](adding-metadata.md).
 
-## Service Documentation
+## Code Documentation
 
-For documentation on the code of the DSP Metadata Browser, please see here.
-<!-- TODO: Link -->
+For documentation on the code of the DSP Metadata Browser, please see [here](code/overview.md).
