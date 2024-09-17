@@ -248,6 +248,12 @@
     "url": {
       "__type": "URL",
       "type": "URL",
+      "url": "https://app.dasch.swiss/project/w0ViRJuOQwy6az9amUg-gw",
+      "text": "Discover Project Data"
+    },
+    "secondaryURL": {
+      "__type": "URL",
+      "type": "URL",
       "url": "https://www.bildungsgeschichte.uzh.ch/",
       "text": "External Project Website"
     },
