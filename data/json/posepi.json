@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
+  "$schema": "../../resources/schema-metadata-final.json",
   "project": {
     "__type": "Project",
     "howToCite": "Jacquin, J., Keck, A., Robin, C., Roh, S., Rivoal, M. (2024). Marqueurs épistémiques et évidentiels du français identifiés et annotés dans un corpus d'interactions relevant de débats politiques et de réunions d’entreprise [Projet FNS 188924, POSEPI] [base de données] (DaSCH), http://ark.dasch.swiss/ark:/72163/1/0120",

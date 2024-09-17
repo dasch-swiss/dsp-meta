@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
+  "$schema": "../../resources/schema-metadata-final.json",
   "project": {
     "__type": "Project",
     "howToCite": "Agrell, Donna, Domínguez, Áurea, Graziadio, Giovanni Battista, Matthews, Zoë, Viola, Letizia, Plath, Niko, Simian, Ricardo (2023). Fagottino project research articles and documents [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/0845",

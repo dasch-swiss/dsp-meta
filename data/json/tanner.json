@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
+  "$schema": "../../resources/schema-metadata-draft.json",
   "project": {
     "__type": "Project",
     "howToCite": "Boillat, A., Annen, V, Modoux, J., Jaouen, L., Rivoal, M., 2022, « Le scénario chez Alain Tanner : discours et pratiques » [base de données] (DaSCH), https://ark.dasch.swiss/ark:/72163/1/0102.",

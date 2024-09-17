@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
+  "$schema": "../../resources/schema-metadata-final.json",
   "project": {
     "__type": "Project",
     "howToCite": "R. Sigrist, 2023, Base de données sur les savants de la période 1700-1870 [base de données], Swiss National Data and Service Center for the Humanities (DaSCH), http://ark.dasch.swiss/ark:/72163/1/0117.",
