@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
+  "$schema": "../../resources/schema-metadata-final.json",
   "project": {
     "__type": "Project",
     "howToCite": "Gonzalez, Ph., Roca Escoda, M., Stavo Debauge, J., Evequoz, Y., Ben Amor, S., Rivoal, M., 2019, Embarras de la parole religieuse [base de données] (DaSCH), https://ark.dasch.swiss/ark:/72163/1/0101.",
