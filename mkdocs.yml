@@ -1,8 +1,13 @@
 site_name: DSP-META
 
 nav:
-    - Introduction:
-          - DSP-META: index.md
+    - DSP-META: index.md
+    - Metadata Datamodel: model/datamodel.md
+    - Adding Metadata: adding-metadata.md
+    - Code Documentation:
+          - Overview: code/overview.md
+          - Front End: code/front-end.md
+          - Back End: code/back-end.md
 
 plugins:
     - include-markdown
