@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
+  "$schema": "../../resources/schema-metadata-draft.json",
   "project": {
     "__type": "Project",
     "teaserText": "It aims to apply decolonial methods and to mobilize practice-based approaches to engage in the critical analysis of case studies of art practices from socialist geographies of the Cold War period.",
