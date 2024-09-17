@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
+  "$schema": "../../resources/schema-metadata-draft.json",
   "project": {
     "__type": "Project",
     "howToCite": "Nitsche, M., Schobinger, J., Scheller, J., Thyroff, J., Weber, T. (2024). Historische Lernprozesse erforschen – Research of Learning Processes in History (RicH) [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/084E",

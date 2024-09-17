@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
+  "$schema": "../../resources/schema-metadata-draft.json",
   "project": {
     "__type": "Project",
     "howToCite": "Holler, T.; Baptista Wilhelm, L; Von Kerssenbrock-Krosigk, G.: Healing Arts. Representations and Practices of Medical Knowledge in Art and Literature (9th-12th centuries) [database]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/083E",
