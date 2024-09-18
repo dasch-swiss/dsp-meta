@@ -1,6 +1,6 @@
 # Adding Metadata
 
-To add metadata to the DSP-META repository,
+To add metadata to the [DSP-META repository](https://github.com/dasch-swiss/dsp-meta),
 simply add the metadata JSON file to the folder `data/json/` in the repository.
 
 The JSON file must conform to the schema of the metadata:
