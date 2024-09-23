@@ -13,9 +13,9 @@ authors = ["DaSCH - Swiss National Data and Service Center for the Humanities"]
 [dependencies]
 anyhow = "1"
 async-trait = "0.1.82"
-axum = "0.7.5" # web framework
-axum-macros = "0.4.1"
-clap = { version = "4.5.17", features = ["derive"] } # command-line parser
+axum = "0.7.6" # web framework
+axum-macros = "0.4.2"
+clap = { version = "4.5.18", features = ["derive"] } # command-line parser
 config = "0.14.0" # Layered configuration with strong support for 12-factor applications
 chrono = { version = "0.4.38", features = ["serde"] }
 dirs = "5.0.1" # provides platform-specific locations for storing user configuration
@@ -32,10 +32,10 @@ valico = "4.0.0"
 tokio = { version = "1", features = ["rt", "macros", "rt-multi-thread"] }
 tokio-test = "0.4.4"
 tower = "0.5.1"
-tower-http = { version = "0.5.2", features = ["trace", "fs", "cors"] }
+tower-http = { version = "0.6.0", features = ["trace", "fs", "cors"] }
 hyper = "1.4.1"
 regex = "1.10.6"
-thiserror = "1.0.63"
+thiserror = "1.0.64"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = [
   "fmt",
@@ -49,7 +49,7 @@ url = { version = "2", features = ["serde"] }
 
 [dev-dependencies]
 assert_cmd = "2.0.16"
-axum-test = "15.7.1"
+axum-test = "15.7.3"
 fake = "2.9.2"
 
 [[bin]]
