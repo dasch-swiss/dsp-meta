@@ -6,7 +6,7 @@ RUN cargo install --path ./
 FROM node:21-bookworm-slim AS builder-node
 WORKDIR /dsp-meta
 COPY . .
-RUN cd web-frontend && yarn install && yarn run build
+RUN cd web-frontend && yarn install && yarn build --bundleConfigAsCjs
 
 FROM debian:bookworm-slim AS runtime
 # add data
