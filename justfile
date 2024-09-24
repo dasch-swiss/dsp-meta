@@ -30,7 +30,7 @@ build:
 
 # Build web-frontend
 build-frontend:
-    cd web-frontend && yarn install && yarn build --bundleConfigAsCjs
+    cd web-frontend && yarn install && yarn run build --bundleConfigAsCjs
 
 # Run all tests
 test:
