@@ -6,7 +6,7 @@
 # - hack: check combinations of feature flags
 # - msrv: check that the msrv specified in the crate is correct
 
-name: check
+name: check-docs
 
 permissions:
   contents: read
