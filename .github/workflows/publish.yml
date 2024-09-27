@@ -96,6 +96,17 @@ jobs:
                -X POST "${JENKINS_UPDATE_RELEASE_WEBHOOK}" \
                -d "Service=meta&Version=${IMAGE_TAG}"
 
+  send-chat-notification:
+    name: Send google chat notification
+    needs: [trigger-dev-deployment]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release' && startsWith(github.ref, 'refs/tags')
+    steps:
+      - name: Send notification to google chat room "DSP releases"
+        uses: lakto/google-chat-action@main
+        with:
+          url: ${{ secrets.GOOGLE_CHAT_DSP_RELEASES_WEBHOOK_URL }}
+
   release-please:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
