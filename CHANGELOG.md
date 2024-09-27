@@ -1,5 +1,45 @@
 # Changelog
 
+## [2.3.0](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.2.5...dsp-meta-v2.3.0) (2024-09-25)
+
+
+### Maintenances
+
+* Add bundleConfigAsCjs flag to run script ([#253](https://github.com/dasch-swiss/dsp-meta/issues/253)) ([5f0a7e4](https://github.com/dasch-swiss/dsp-meta/commit/5f0a7e4c38629e7a6e49fb946162955e0bf505c5))
+* Bring back data prefix ([#240](https://github.com/dasch-swiss/dsp-meta/issues/240)) ([23bc706](https://github.com/dasch-swiss/dsp-meta/commit/23bc706470f18a34215a9227e687eac475b45493))
+* Change output format to Universal Module Definition ([#252](https://github.com/dasch-swiss/dsp-meta/issues/252)) ([27c7e21](https://github.com/dasch-swiss/dsp-meta/commit/27c7e216c07be0ace30b2aa3c5513688c3e1bec9))
+* **deps:** Bump anyhow from 1.0.86 to 1.0.87 ([#231](https://github.com/dasch-swiss/dsp-meta/issues/231)) ([0252803](https://github.com/dasch-swiss/dsp-meta/commit/025280389e068db2b30187e244ad233ee2e8d8c5))
+* **deps:** Bump axum-test from 15.6.0 to 15.7.1 ([#235](https://github.com/dasch-swiss/dsp-meta/issues/235)) ([0e965ca](https://github.com/dasch-swiss/dsp-meta/commit/0e965ca00b60a127ed1699bf5f8b2c51a22cdb81))
+* **deps:** Bump clap from 4.5.16 to 4.5.17 ([#234](https://github.com/dasch-swiss/dsp-meta/issues/234)) ([e9ba3f7](https://github.com/dasch-swiss/dsp-meta/commit/e9ba3f796442c16e9e9df48a422c59a4d8dcd2ee))
+* **deps:** Bump serde from 1.0.209 to 1.0.210 ([#232](https://github.com/dasch-swiss/dsp-meta/issues/232)) ([01936a6](https://github.com/dasch-swiss/dsp-meta/commit/01936a64ecc038c7215430a9dbb5d70fd809834c))
+* **deps:** Bump serde_json from 1.0.127 to 1.0.128 ([#233](https://github.com/dasch-swiss/dsp-meta/issues/233)) ([f2784f6](https://github.com/dasch-swiss/dsp-meta/commit/f2784f6b801b5902835019a1ba74beaab51053f0))
+* **deps:** Bump the backend-dependencies group with 6 updates ([#249](https://github.com/dasch-swiss/dsp-meta/issues/249)) ([d564f5a](https://github.com/dasch-swiss/dsp-meta/commit/d564f5a8dcc2f97619dad3764a917f117dde8979))
+* **deps:** Bump the backend-dependencies group: tower-http, axum-test ([#255](https://github.com/dasch-swiss/dsp-meta/issues/255)) ([47c999b](https://github.com/dasch-swiss/dsp-meta/commit/47c999b9e76668dbe38ef3d899813ab8e0cc8c58))
+* **deps:** Bump the backend-dependencies: anyhow, once_cell ([#243](https://github.com/dasch-swiss/dsp-meta/issues/243)) ([1612194](https://github.com/dasch-swiss/dsp-meta/commit/1612194aa01443aebcbabc78fff3fa57ac243c01))
+* **deps:** Bump tower from 0.5.0 to 0.5.1 in the backend-dependencies group ([#238](https://github.com/dasch-swiss/dsp-meta/issues/238)) ([127ca9a](https://github.com/dasch-swiss/dsp-meta/commit/127ca9a31c0984ce4872237dd36f5db91be12d16))
+* Fix failing build because of yanked dependency ([#246](https://github.com/dasch-swiss/dsp-meta/issues/246)) ([babd5be](https://github.com/dasch-swiss/dsp-meta/commit/babd5be28822fe861101695d670c54281dd9470b))
+* Improve  dependencies update ([#237](https://github.com/dasch-swiss/dsp-meta/issues/237)) ([487b2d5](https://github.com/dasch-swiss/dsp-meta/commit/487b2d55af13c130028b0e3f91ff26ca3fdcb0da))
+* Include scope in Dependabot commits ([#244](https://github.com/dasch-swiss/dsp-meta/issues/244)) ([56aaa1b](https://github.com/dasch-swiss/dsp-meta/commit/56aaa1b033854ce6061bfcddc5f356ac4c7a8476))
+* Resolve naming conflict of CI runs ([#254](https://github.com/dasch-swiss/dsp-meta/issues/254)) ([77469e6](https://github.com/dasch-swiss/dsp-meta/commit/77469e624187b96e331f7c89c71024b3afb00f23))
+* Update JS dependencies ([#223](https://github.com/dasch-swiss/dsp-meta/issues/223)) ([20a9325](https://github.com/dasch-swiss/dsp-meta/commit/20a9325cad8dc4883985e09b8bd655825841bfb7))
+
+
+### Project Data
+
+* Add link from dsp app to meta biz ([#248](https://github.com/dasch-swiss/dsp-meta/issues/248)) ([d252766](https://github.com/dasch-swiss/dsp-meta/commit/d252766298a3152a690424b960bbf1c8f8d7448f))
+* Update Deir el-Medina ([#241](https://github.com/dasch-swiss/dsp-meta/issues/241)) ([4fb32bd](https://github.com/dasch-swiss/dsp-meta/commit/4fb32bddb01e52f7de282aa4b3cd4737c6fc2ba3))
+* Use relative paths to link data to schema ([#245](https://github.com/dasch-swiss/dsp-meta/issues/245)) ([f892307](https://github.com/dasch-swiss/dsp-meta/commit/f8923077b1bbb9cccf973cee8984720280233a71))
+
+
+### Documentation
+
+* Set up documentation with MkDocs (DEV-4134) ([#247](https://github.com/dasch-swiss/dsp-meta/issues/247)) ([03de295](https://github.com/dasch-swiss/dsp-meta/commit/03de2953eec17c6421b5053e346e130c3f6d3d36))
+
+
+### Enhancements
+
+* Raise the default for pagination limit at the projects endpoint to 100 (DEV-4095) ([#242](https://github.com/dasch-swiss/dsp-meta/issues/242)) ([522b1ad](https://github.com/dasch-swiss/dsp-meta/commit/522b1addb19e696a2bdea12600cce2799652c7d3))
+
 ## [2.2.5](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.2.4...dsp-meta-v2.2.5) (2024-09-05)
 
 
