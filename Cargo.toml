@@ -13,7 +13,7 @@ authors = ["DaSCH - Swiss National Data and Service Center for the Humanities"]
 [dependencies]
 anyhow = "1"
 async-trait = "0.1.83"
-axum = "0.7.6" # web framework
+axum = "0.7.7" # web framework
 axum-macros = "0.4.2"
 clap = { version = "4.5.18", features = ["derive"] } # command-line parser
 config = "0.14.0" # Layered configuration with strong support for 12-factor applications
@@ -22,7 +22,7 @@ dirs = "5.0.1" # provides platform-specific locations for storing user configura
 http-body-util = "0.1.0"
 indicatif = "0.17.8" # prograss bars and spinners
 log = "0.4.22" # logging facade
-once_cell = "1.19.0"
+once_cell = "1.20.1"
 pid1 = "0.1.1"
 serde = { version = "1", features = ["derive"] }
 serde_with = "3.9.0"
@@ -34,7 +34,7 @@ tokio-test = "0.4.4"
 tower = "0.5.1"
 tower-http = { version = "0.6.1", features = ["trace", "fs", "cors"] }
 hyper = "1.4.1"
-regex = "1.10.6"
+regex = "1.11.0"
 thiserror = "1.0.64"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = [
