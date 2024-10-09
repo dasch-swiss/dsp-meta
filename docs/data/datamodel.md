@@ -317,6 +317,14 @@ erDiagram
     }
 ```
 
+
+## Legacy docs
+
+The legacy documentation can be found [here](https://github.com/dasch-swiss/dsp-meta-svc/tree/main/docs/services/metadata).
+This includes thoughts on mappings to external aggregators 
+and on RDF representation of the metadata.
+
+
 ## Issues/Questions
 
 - access conditions on datasets not current state
