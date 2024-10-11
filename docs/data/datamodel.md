@@ -142,7 +142,7 @@ but are identified by their position in the hierarchy.
 
 #### lang_string
 
-Object with a language tag as key and a string as value.
+Object with a language ISO code as key and a string as value.
 
 ```json
 {
@@ -152,12 +152,12 @@ Object with a language tag as key and a string as value.
 ```
 
 
-#### date
+#### Date
 
 String with the format `YYYY-MM-DD`.
 
 
-#### url
+#### URL
 
 An object representing a URL. 
 Depending on the `type` field,
@@ -174,7 +174,7 @@ or a reference to a resource in an external authority file.
 | `text`   | string | 0-1         |                                                                                                                                             |
 
 
-#### dmp (Data Management Plan)
+#### Data Management Plan (`dmp`)
 
 | Field      | Type    | Cardinality | Restrictions                 |
 | ---------- | ------- | ----------- | ---------------------------- |
@@ -183,7 +183,7 @@ or a reference to a resource in an external authority file.
 | `url`      | url     | 0-1         |                              |
 
 
-#### publication
+#### Publication
 
 | Field  | Type   | Cardinality | Restrictions |
 | ------ | ------ | ----------- | ------------ |
@@ -191,7 +191,7 @@ or a reference to a resource in an external authority file.
 | `url`  | url    | 0-1         |              |
 
 
-#### address
+#### Address
 
 | Field        | Type   | Cardinality | Restrictions      |
 | ------------ | ------ | ----------- | ----------------- |
@@ -204,7 +204,7 @@ or a reference to a resource in an external authority file.
 | `additional` | string | 0-1         |                   |
 
 
-#### license
+#### License
 
 | Field     | Type   | Cardinality | Restrictions      |
 | --------- | ------ | ----------- | ----------------- |
@@ -214,7 +214,7 @@ or a reference to a resource in an external authority file.
 | `details` | string | 0-1         |                   |
 
 
-#### attribution
+#### Attribution
 
 | Field    | Type   | Cardinality | Restrictions          |
 | -------- | ------ | ----------- | --------------------- |
