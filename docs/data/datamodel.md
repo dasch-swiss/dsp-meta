@@ -140,9 +140,9 @@ but are identified by their position in the hierarchy.
 
 ### Value Types
 
-#### lang_string
+#### String with Language Tag (`lang_string`)
 
-Object with a language ISO code as key and a string as value.
+Object with an ISO language code as key and a string as value.
 
 ```json
 {
@@ -162,7 +162,7 @@ String with the format `YYYY-MM-DD`.
 An object representing a URL. 
 Depending on the `type` field,
 the URL may be a generic URL
-or a more specific link, like P PID
+or a more specific link, like a PID
 or a reference to a resource in an external authority file.
 
 
@@ -323,11 +323,3 @@ erDiagram
 The legacy documentation can be found [here](https://github.com/dasch-swiss/dsp-meta-svc/tree/main/docs/services/metadata).
 This includes thoughts on mappings to external aggregators 
 and on RDF representation of the metadata.
-
-
-## Issues/Questions
-
-- access conditions on datasets not current state
-- status on datasets not aligned with project status
-- typeOfData on datasets is a weird list of options
-- does dataset need all the date fields?
