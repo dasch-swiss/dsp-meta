@@ -1523,13 +1523,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-svelte@npm:^3.2.6":
-  version: 3.2.6
-  resolution: "prettier-plugin-svelte@npm:3.2.6"
+"prettier-plugin-svelte@npm:^3.2.7":
+  version: 3.2.7
+  resolution: "prettier-plugin-svelte@npm:3.2.7"
   peerDependencies:
     prettier: ^3.0.0
     svelte: ^3.2.0 || ^4.0.0-next.0 || ^5.0.0-next.0
-  checksum: 10c0/d7e89e03bf6c6c36b0062302bd8b80c345059be9d01927cfdc63ee44b6ac7bb5cf952f5f4aa087de1bd614521abcd7ee1e395509fc1236be4dd66c3b41ce5586
+  checksum: 10c0/0f3b7cbbedd17983eecea4006dbe3069cc138fc2dc985ccffde4914e86640586b5db896802c1cdb5764c99c8c30fca0377c5872edc1b5a9099544296c545e7bc
   languageName: node
   linkType: hard
 
@@ -1682,9 +1682,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup@npm:^2.3.4":
-  version: 2.79.1
-  resolution: "rollup@npm:2.79.1"
+"rollup@npm:^3.29.5":
+  version: 3.29.5
+  resolution: "rollup@npm:3.29.5"
   dependencies:
     fsevents: "npm:~2.3.2"
   dependenciesMeta:
@@ -1692,7 +1692,7 @@ __metadata:
       optional: true
   bin:
     rollup: dist/bin/rollup
-  checksum: 10c0/421418687f5dcd7324f4387f203c6bfc7118b7ace789e30f5da022471c43e037a76f5fd93837052754eeeae798a4fb266ac05ccee1e594406d912a59af98dde9
+  checksum: 10c0/a1fa26f21f0d6cf93b6d05ea284ad5854905b585f28a14c27d439b0f9b859cba13ea25f376303d86770e59b4686bedc52b4706e57442514f0414c6fd3c5b8e71
   languageName: node
   linkType: hard
 
@@ -1710,8 +1710,8 @@ __metadata:
     "@types/express": "npm:^4.17.11"
     "@types/node": "npm:^14.14.25"
     prettier: "npm:^3.3.3"
-    prettier-plugin-svelte: "npm:^3.2.6"
-    rollup: "npm:^2.3.4"
+    prettier-plugin-svelte: "npm:^3.2.7"
+    rollup: "npm:^3.29.5"
     rollup-plugin-css-only: "npm:^3.1.0"
     rollup-plugin-livereload: "npm:^2.0.0"
     rollup-plugin-svelte: "npm:^7.1.5"

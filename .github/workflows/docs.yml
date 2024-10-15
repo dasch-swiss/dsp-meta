@@ -1,0 +1,57 @@
+# This workflow runs whenever a PR is opened or updated, or a commit is pushed to main. It runs
+# several checks:
+# - fmt: checks that the code is formatted according to rustfmt
+# - clippy: checks that the code does not contain any clippy warnings
+# - doc: checks that the code can be documented without errors
+# - hack: check combinations of feature flags
+# - msrv: check that the msrv specified in the crate is correct
+
+name: check-docs
+
+permissions:
+  contents: read
+
+# This configuration allows maintainers of this repo to create a branch and pull request based on
+# the new branch. Restricting the push trigger to the main branch ensures that the PR only gets
+# built once.
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+# If new code is pushed to a PR branch, then cancel in progress workflows for that PR. Ensures that
+# we don't waste CI time, and returns results quicker https://github.com/jonhoo/rust-ci-conf/pull/5
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  markdownlint:
+      runs-on: ubuntu-latest
+      name: Check with markdownlint
+      steps:
+          - name: Checkout source
+            uses: actions/checkout@v4
+          - name: Install Just
+            uses: extractions/setup-just@v2
+          - name: Install requirements (pip, npm, apt)
+            run: |
+              just docs-install-requirements
+              npm install --global typedoc
+          - name: markdownlint
+            run: just markdownlint
+
+  build-docs:
+    runs-on: ubuntu-latest
+    name: Build Docs
+    steps:
+        - name: Checkout source
+          uses: actions/checkout@v4
+        - name: Install Just
+          uses: extractions/setup-just@v2
+        - name: Install requirements (pip, npm, apt)
+          run: |
+            just docs-install-requirements
+            npm install --global typedoc
+        - name: Build docs
+          run: just docs-build
