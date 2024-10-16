@@ -316,7 +316,7 @@
                     "roles": [
                         "Researcher"
                     ]
-                }
+                },
                 {
                     "__type": "Attribution",
                     "agent": "http://ns.dasch.swiss/repository#dsp-084C-person-006",
