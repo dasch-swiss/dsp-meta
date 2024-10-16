@@ -2,7 +2,7 @@
     "$schema": "../../resources/schema-metadata-final.json",
     "project": {
         "__type": "Project",
-        "howToCite": "XX - new property on project level",
+        "howToCite": "Corpus Cosmatorum (2024) Die Kirchen der Stadt Rom im Mittelalter (1050–1300). DaSCH. https://ark.dasch.swiss/ark:/72163/1/084C.",
         "teaserText": "Each Roman church that was affected by building work in the High Middle Ages is presented in alphabetical order, including its architecture (with associated annexes) and its liturgical furnishing",
         "datasets": [
             "http://ns.dasch.swiss/repository#dsp-084C-dataset-000"
@@ -37,8 +37,8 @@
             "http://ns.dasch.swiss/repository#dsp-084C-grant-002",
             "http://ns.dasch.swiss/repository#dsp-084C-grant-003",
             "http://ns.dasch.swiss/repository#dsp-084C-grant-004",
-            "http://ns.dasch.swiss/repository#dsp-084C-grant-005",
             "http://ns.dasch.swiss/repository#dsp-084C-grant-006",
+            "http://ns.dasch.swiss/repository#dsp-084C-grant-005",
             "http://ns.dasch.swiss/repository#dsp-084C-grant-007",
             "http://ns.dasch.swiss/repository#dsp-084C-grant-008"
         ],
@@ -155,31 +155,31 @@
                 "en": "Spolia"
             },
             {
-                "en": "cosmatesque pavements"
+                "en": "Cosmatesque pavements"
             },
             {
-                "en": "liturgical furnishing"
+                "en": "Liturgical furnishing"
             },
             {
-                "de": "liturgische Ausstattung"
+                "de": "Liturgische Ausstattung"
             }
         ],
         "name": "The Churches of Rome in the Middle Ages, 1050-1300. Liturgical Furnishing and Architecture (Corpus Cosmatorum II)",
         "publications": [
             {
-                "text": " Die Kirchen der Stadt Rom im Mittelalter 1050–1300, Bd. 4: Kirchen M–O (Corpus Cosmatorum II), hg. von D. Mondini, C. Jäggi, P. C. Claussen, mit Beiträgen von P. C. Claussen, C. Jäggi, A. Klein, G. Pollio, A. Racz, M. Schmitz, D. Senekovic, A. Yorck von Wartenburg, Stuttgart 2020."
+                "text": " P. C. Claussen, Die Kirchen der Stadt Rom im Mittelalter 1050–1300, Bd. 1: Kirchen A–F (Corpus Cosmatorum II) (Forschungen zur Kunstgeschichte und Christlichen Archäologie 20), Stuttgart 2002."
             },
             {
-                "text": " Die Kirchen der Stadt Rom im Mittelalter 1050–1300, Bd. 5: S. Maria in Aracoeli, S. Maria Maggiore, S. Maria in Trastevere (Corpus Cosmatorum II), hg. von D. Mondini, C. Jäggi, P. C. Claussen, mit Beiträgen von P. C. Claussen, D. Kinney, D. Mondini, Stuttgart 2024."
+                "text": " P. C. Claussen, Die Kirchen der Stadt Rom im Mittelalter 1050–1300, Bd. 2: S. Giovanni in Laterano, mit einem Beitrag von Darko Senekovic über S. Giovanni in Fonte (Corpus Cosmatorum II) (Forschungen zur Kunstgeschichte und Christlichen Archäologie 21), Stuttgart 2008."
             },
             {
                 "text": " P. C. Claussen, D. Mondini, D. Senekovic, Die Kirchen der Stadt Rom im Mittelalter 1050–1300, Bd. 3: Kirchen G–L (Corpus Cosmatorum II) (Forschungen zur Kunstgeschichte und Christlichen Archäologie 22), Stuttgart 2010."
             },
             {
-                "text": " P. C. Claussen, Die Kirchen der Stadt Rom im Mittelalter 1050–1300, Bd. 1: Kirchen A–F (Corpus Cosmatorum II) (Forschungen zur Kunstgeschichte und Christlichen Archäologie 20), Stuttgart 2002."
+                "text": " Die Kirchen der Stadt Rom im Mittelalter 1050–1300, Bd. 4: Kirchen M–O (Corpus Cosmatorum II), hg. von D. Mondini, C. Jäggi, P. C. Claussen, mit Beiträgen von P. C. Claussen, C. Jäggi, A. Klein, G. Pollio, A. Racz, M. Schmitz, D. Senekovic, A. Yorck von Wartenburg, Stuttgart 2020."
             },
             {
-                "text": " P. C. Claussen, Die Kirchen der Stadt Rom im Mittelalter 1050–1300, Bd. 2: S. Giovanni in Laterano, mit einem Beitrag von Darko Senekovic über S. Giovanni in Fonte (Corpus Cosmatorum II) (Forschungen zur Kunstgeschichte und Christlichen Archäologie 21), Stuttgart 2008."
+                "text": " Die Kirchen der Stadt Rom im Mittelalter 1050–1300, Bd. 5: S. Maria in Aracoeli, S. Maria Maggiore, S. Maria in Trastevere (Corpus Cosmatorum II), hg. von D. Mondini, C. Jäggi, P. C. Claussen, mit Beiträgen von P. C. Claussen, D. Kinney, D. Mondini, Stuttgart 2024."
             }
         ],
         "shortcode": "084C",
@@ -225,18 +225,19 @@
             "accessConditions": "open",
             "dateCreated": "2015-01-01",
             "datePublished": "2024-10-01",
+            "howToCite": "Corpus Cosmatorum (2024) Die Kirchen der Stadt Rom im Mittelalter (1050–1300). DaSCH. https://ark.dasch.swiss/ark:/72163/1/084C.",
             "additional": [
                 {
                     "__type": "URL",
                     "type": "URL",
                     "url": "https://search.usi.ch/en/projects/2164/the-churches-of-rome-in-the-middle-ages-1050-1300-liturgical-furnishing-and-architecture-corpus-cosmatorum-ii",
-                    "text": "The Churches of Rome in the Middle Ages 1050-1300. Liturgical Furnishing and Architecture (Corpus Cosmatorum II)"
+                    "text": "The Churches of Rome in the Middle Ages 1050-1300 (Corpus Cosmatorum II)."
                 },
                 {
                     "__type": "URL",
                     "type": "URL",
                     "url": "https://search.usi.ch/en/projects/3091/the-churches-of-rome-in-the-middle-ages-1050-1300-a-digital-platform-for-corpus-cosmatorum-ii-corpcos-ii",
-                    "text": "DigCorpCos - The Churches of Rome in the Middle Ages, 1050-1300 A digital platform for Corpus Cosmatorum II (CorpCos II)"
+                    "text": "DigCorpCos - The Churches of Rome in the Middle Ages, 1050-1300 (Corpus Cosmatorum II)."
                 },
                 {
                     "__type": "URL",
@@ -406,20 +407,6 @@
                     "agent": "http://ns.dasch.swiss/repository#dsp-084C-person-018",
                     "roles": [
                         "Data Curator"
-                    ]
-                },
-                {
-                    "__type": "Attribution",
-                    "agent": "http://ns.dasch.swiss/repository#dsp-084C-person-019",
-                    "roles": [
-                        "other"
-                    ]
-                },
-                {
-                    "__type": "Attribution",
-                    "agent": "http://ns.dasch.swiss/repository#dsp-084C-person-020",
-                    "roles": [
-                        "other"
                     ]
                 }
             ],
@@ -756,26 +743,6 @@
             ]
         },
         {
-            "__id": "http://ns.dasch.swiss/repository#dsp-084C-person-019",
-            "__type": "Person",
-            "familyNames": [
-                "Canepa"
-            ],
-            "givenNames": [
-                "Alberto"
-            ]
-        },
-        {
-            "__id": "http://ns.dasch.swiss/repository#dsp-084C-person-020",
-            "__type": "Person",
-            "familyNames": [
-                "Angelucci"
-            ],
-            "givenNames": [
-                "Leonardo"
-            ]
-        },
-        {
             "__id": "http://ns.dasch.swiss/repository#dsp-084C-person-000",
             "__type": "Person",
             "address": {
@@ -954,21 +921,6 @@
             }
         },
         {
-            "__id": "http://ns.dasch.swiss/repository#dsp-084C-grant-005",
-            "__type": "Grant",
-            "funders": [
-                "http://ns.dasch.swiss/repository#dsp-084C-organization-000"
-            ],
-            "name": "Research infrastructure",
-            "number": "170405",
-            "url": {
-                "__type": "URL",
-                "type": "URL",
-                "url": "https://data.snf.ch/grants/grant/170405",
-                "text": "https://data.snf.ch/grants/grant/170405"
-            }
-        },
-        {
             "__id": "http://ns.dasch.swiss/repository#dsp-084C-grant-006",
             "__type": "Grant",
             "funders": [
@@ -984,11 +936,34 @@
             }
         },
         {
+            "__id": "http://ns.dasch.swiss/repository#dsp-084C-grant-005",
+            "__type": "Grant",
+            "funders": [
+                "http://ns.dasch.swiss/repository#dsp-084C-organization-000"
+            ],
+            "name": "Research infrastructure",
+            "number": "170405",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://data.snf.ch/grants/grant/170405",
+                "text": "https://data.snf.ch/grants/grant/170405"
+            }
+        },
+        {
             "__id": "http://ns.dasch.swiss/repository#dsp-084C-grant-007",
             "__type": "Grant",
             "funders": [
                 "http://ns.dasch.swiss/repository#dsp-084C-organization-000"
-            ]
+            ],
+            "name": "Research infrastructure",
+            "number": "198148",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://data.snf.ch/grants/grant/198148",
+                "text": "https://data.snf.ch/grants/grant/198148"
+            }
         },
         {
             "__id": "http://ns.dasch.swiss/repository#dsp-084C-grant-008",
