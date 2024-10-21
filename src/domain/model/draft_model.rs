@@ -40,6 +40,7 @@ pub struct DraftProject {
     pub spatial_coverage: Option<NonEmpty<DraftUrl>>,
     pub funders: Option<NonEmpty<String>>,
     pub url: Option<DraftUrl>,
+    #[serde(rename= "secondaryURL")]
     pub secondary_url: Option<DraftUrl>,
     pub data_management_plan: Option<DraftDataManagementPlan>,
     pub end_date: Option<DraftDate>,
