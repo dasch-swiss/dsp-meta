@@ -1,5 +1,36 @@
 # Changelog
 
+## [2.3.1](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.0...dsp-meta-v2.3.1) (2024-10-21)
+
+
+### Maintenances
+
+* Add Google space notifications ([#259](https://github.com/dasch-swiss/dsp-meta/issues/259)) ([ab0c594](https://github.com/dasch-swiss/dsp-meta/commit/ab0c594ac0d61f711e23df9ad1bf0b802c5e7ccb))
+* **deps-dev:** Bump prettier-plugin-svelte from 3.2.6 to 3.2.7 in /web-frontend in the frontend-dependencies group ([#257](https://github.com/dasch-swiss/dsp-meta/issues/257)) ([0745435](https://github.com/dasch-swiss/dsp-meta/commit/07454354c11927d58b235d15372f02925e2d7052))
+* **deps:** Bump clap from 4.5.19 to 4.5.20 in the backend-dependencies group ([#265](https://github.com/dasch-swiss/dsp-meta/issues/265)) ([f214bad](https://github.com/dasch-swiss/dsp-meta/commit/f214bade54063c2c16167442619622315a181129))
+* **deps:** Bump the backend-dependencies group with 2 updates ([#258](https://github.com/dasch-swiss/dsp-meta/issues/258)) ([ba0db14](https://github.com/dasch-swiss/dsp-meta/commit/ba0db14048ca6753fa21141a69d6c2aaed164a8b))
+* **deps:** Bump the backend-dependencies group with 3 updates ([#260](https://github.com/dasch-swiss/dsp-meta/issues/260)) ([a832190](https://github.com/dasch-swiss/dsp-meta/commit/a8321902afe6461fd362073d18d9bedf69bedf19))
+* **deps:** Bump the backend-dependencies group with 3 updates ([#262](https://github.com/dasch-swiss/dsp-meta/issues/262)) ([f53811f](https://github.com/dasch-swiss/dsp-meta/commit/f53811f639d721c5d7d675f1aa671e5be9f8a17a))
+* **deps:** Bump the backend-dependencies group with 3 updates ([#268](https://github.com/dasch-swiss/dsp-meta/issues/268)) ([58edf4b](https://github.com/dasch-swiss/dsp-meta/commit/58edf4bd2fe1c95226b2261fe7d06178e7943adb))
+* Fix Dependabot prefix ([#251](https://github.com/dasch-swiss/dsp-meta/issues/251)) ([9783e60](https://github.com/dasch-swiss/dsp-meta/commit/9783e60f5fb84f5a46a2da13e2a40e5a4188fe93))
+* Remove packageManager ([#266](https://github.com/dasch-swiss/dsp-meta/issues/266)) ([838d766](https://github.com/dasch-swiss/dsp-meta/commit/838d766f02dd1e9519047fa3f5e400c0ddddbb0b))
+
+
+### Project Data
+
+* Add dsp app link from limc to meta ([#270](https://github.com/dasch-swiss/dsp-meta/issues/270)) ([da61d8f](https://github.com/dasch-swiss/dsp-meta/commit/da61d8f96eccd06d224232fc2dfc0058c743ba35))
+* Add metadata kirchen-rom ([#267](https://github.com/dasch-swiss/dsp-meta/issues/267)) ([63cce29](https://github.com/dasch-swiss/dsp-meta/commit/63cce294ba96632a2c327e1d8fbb99ab30365a1e))
+
+
+### Documentation
+
+* Add up-to-date documentation and remove legacy documentation (DEV-4229) ([#263](https://github.com/dasch-swiss/dsp-meta/issues/263)) ([88b2234](https://github.com/dasch-swiss/dsp-meta/commit/88b22346180db079880455a57d629a9b7d2d4e1c))
+
+
+### Bug Fixes
+
+* Display the secondaryURL (DEV-4253) ([#269](https://github.com/dasch-swiss/dsp-meta/issues/269)) ([20d9c05](https://github.com/dasch-swiss/dsp-meta/commit/20d9c0532ad198960cb683f79661b7bca8510a86))
+
 ## [2.3.0](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.2.5...dsp-meta-v2.3.0) (2024-09-25)
 
 
