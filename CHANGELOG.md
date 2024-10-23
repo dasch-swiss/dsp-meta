@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.2](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.1...dsp-meta-v2.3.2) (2024-10-23)
+
+
+### Documentation
+
+* Publish docs to the repo's github pages ([#264](https://github.com/dasch-swiss/dsp-meta/issues/264)) ([a832f91](https://github.com/dasch-swiss/dsp-meta/commit/a832f91bb75e6b7441a28758d26b924f89b435c7))
+
 ## [2.3.1](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.0...dsp-meta-v2.3.1) (2024-10-21)
 
 
