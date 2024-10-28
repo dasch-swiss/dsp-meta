@@ -16,7 +16,7 @@ async-trait = "0.1.83"
 axum = "0.7.7" # web framework
 axum-macros = "0.4.2"
 clap = { version = "4.5.20", features = ["derive"] } # command-line parser
-config = "0.14.0" # Layered configuration with strong support for 12-factor applications
+config = "0.14.1" # Layered configuration with strong support for 12-factor applications
 chrono = { version = "0.4.38", features = ["serde"] }
 dirs = "5.0.1" # provides platform-specific locations for storing user configuration
 http-body-util = "0.1.0"
@@ -34,8 +34,8 @@ tokio-test = "0.4.4"
 tower = "0.5.1"
 tower-http = { version = "0.6.1", features = ["trace", "fs", "cors"] }
 hyper = "1.5.0"
-regex = "1.11.0"
-thiserror = "1.0.64"
+regex = "1.11.1"
+thiserror = "1.0.65"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = [
   "fmt",
