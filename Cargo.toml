@@ -35,7 +35,7 @@ tower = "0.5.1"
 tower-http = { version = "0.6.1", features = ["trace", "fs", "cors"] }
 hyper = "1.5.0"
 regex = "1.11.1"
-thiserror = "1.0.65"
+thiserror = "1.0.67"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = [
   "fmt",
