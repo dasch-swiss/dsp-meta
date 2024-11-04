@@ -4,7 +4,7 @@ nav:
     - DSP-META: index.md
     - Consuming Metadata:
           - Metadata API: data/api.md
-          - Data Model: data/datamodel.md
+          - Current Data Model: data/current-datamodel.md
     - Adding Metadata: adding-metadata.md
     - Code Documentation:
           - Overview: code/overview.md
@@ -33,8 +33,8 @@ theme:
               name: Switch to light mode
     features:
         - search.suggest
-        - navigation.tabs
-        - navigation.sections
+        # - navigation.tabs
+        # - navigation.sections
 
 markdown_extensions:
     - admonition
