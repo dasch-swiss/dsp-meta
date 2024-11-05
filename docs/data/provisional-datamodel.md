@@ -596,6 +596,6 @@ erDiagram
 - add/remove entities and properties accordingly
 
 
-### Mapping Old -> New
+### Mapping Old -> New
 
 TODO: Add mapping from old to new model.
