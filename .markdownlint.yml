@@ -30,8 +30,6 @@ MD013:
     # Stern length checking
     stern: false
 
-MD018: false
-
 # MD033/no-inline-html - Inline HTML
 MD033:
     allowed_elements: [br, center]
