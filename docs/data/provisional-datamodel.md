@@ -104,6 +104,7 @@ but are identified by their position in the hierarchy.
 
 | Field                    | Type                | Cardinality | Restrictions                                                 | Remarks            |
 | ------------------------ | ------------------- | ----------- | ------------------------------------------------------------ | ------------------ |
+| `__id`                   | string              | 1           |                                                              |                    |
 | `__type`                 | string              | 1           | Literal 'CompoundProject'                                    |                    |
 | `name`                   | string              | 1           |                                                              |                    |
 | `url`                    | url                 | 1           |                                                              |                    |
@@ -448,6 +449,7 @@ erDiagram
     person ||--|{ organization : affiliations
 
     compoundProject {
+        string __id "1"
         string __type "1; Literal 'CompoundProject'"
         string name "1"
         url url "1"
@@ -598,4 +600,134 @@ erDiagram
 
 ### Mapping (Old to New)
 
-TODO: Add mapping from old to new model.
+#### Compound Project
+
+- `compoundProject.__id` : new
+- `compoundProject.__type` : new
+- `compoundProject.name`: new
+- `compoundProject.url`: new
+- `compoundProject.howToCite`: new
+- `compoundProject.description`: new
+- `compoundProject.contactPoint`: new
+- `compoundProject.keywords`: new
+- `compoundProject.disciplines`: new
+- `compoundProject.temporalCoverage`: new
+- `compoundProject.spatialCoverage`: new
+- `compoundProject.funders`: new
+- `compoundProject.publications`: new
+- `compoundProject.grants`: new
+- `compoundProject.alternativeNames`: new
+- `compoundProject.consistingInstitutions`: new
+
+This entity is new and does not have a direct mapping from the old model. 
+All values need to be defined and added manually.
+
+#### Project
+
+- `project.__type`: unchanged
+- `project.shortcode`: unchanged
+- `project.status`: unchanged
+- `project.name`: unchanged
+- `project.description`: unchanged
+- `project.startDate`: unchanged
+- `project.teaserText`: unchanged
+- `project.url`: unchanged
+- `project.howToCite`: unchanged
+- `project.datasets`: unchanged
+- `project.keywords`: unchanged
+- `project.disciplines`: unchanged
+- `project.temporalCoverage`: unchanged
+- `project.spatialCoverage`: unchanged
+- `project.funders`: unchanged
+- `project.endDate`: unchanged
+- `project.secondaryURL`: unchanged
+- `project.dataManagementPlan`: unchanged
+- `project.contactPoint`: unchanged
+- `project.publications`: unchanged
+- `project.grants`: inlined from top level to project
+- `project.alternativeNames`: unchanged
+
+#### Dataset
+
+- `dataset.__id`: unchanged
+- `dataset.__type`: unchanged
+- `dataset.title`: unchanged
+- `dataset.accessConditions`: unchanged
+- `dataset.howToCite`: unchanged
+- `dataset.status`: unchanged
+- `dataset.abstract`: unchanged
+- `dataset.typeOfData`: unchanged
+- `dataset.licenses`: unchanged
+- `dataset.copyright`: newly added
+- `dataset.languages`: unchanged
+- `dataset.attributions`: unchanged
+- `dataset.datePublished`: unchanged
+- `dataset.dateCreated`: unchanged
+- `dataset.dateModified`: unchanged
+- `dataset.distribution`: unchanged
+- `dataset.alternativeTitles`: unchanged
+- `dataset.urls`: unchanged
+- `dataset.additional`: unchanged
+
+#### Collection
+
+- `collection.__id`: new
+- `collection.__type`: new
+- `collection.name`: new
+- `collection.accessConditions`: new
+- `collection.provenance`: new
+- `collection.datePublished`: new
+- `collection.dateCreated`: new
+- `collection.dateModified`: new
+- `collection.distribution`: new
+- `collection.records`: new
+- `collection.collections`: new
+- `collection.alternativeNames`: new
+- `collection.keywords`: new
+- `collection.urls`: new
+- `collection.additional`: new
+- `collection.description`: new
+- `collection.typeOfData`: new
+- `collection.licenses`: new
+- `collection.copyright`: new
+- `collection.languages`: new
+- `collection.attributions`: new
+
+#### Record
+
+- `record.__id`: new
+- `record.__type`: new
+- `record.pid`: new
+- `record.label`: new
+- `record.accessConditions`: new
+- `record.license`: new
+- `record.attribution`: new
+- `record.provenance`: new
+- `record.datePublished`: new
+- `record.dateCreated`: new
+- `record.dateModified`: new
+- `record.typeOfData`: new
+
+#### Person
+
+- `person.__id`: unchanged
+- `person.__type`: unchanged
+- `person.givenNames`: unchanged
+- `person.familyNames`: unchanged
+- `person.jobTitles`: unchanged
+- `person.affiliations`: unchanged
+- `person.address`: unchanged
+- `person.email`: unchanged
+- `person.secondaryEmail`: unchanged
+- `person.authorityRefs`: unchanged
+
+#### Organization
+
+- `organization.__id`: unchanged
+- `organization.__type`: unchanged
+- `organization.name`: unchanged
+- `organization.url`: unchanged
+- `organization.address`: unchanged
+- `organization.email`: unchanged
+- `organization.alternativeName`: unchanged
+- `organization.authorityRefs`: unchanged
