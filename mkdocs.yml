@@ -5,6 +5,7 @@ nav:
     - Consuming Metadata:
           - Metadata API: data/api.md
           - Current Data Model: data/current-datamodel.md
+          - Provisional Data Model: data/provisional-datamodel.md
     - Adding Metadata: adding-metadata.md
     - Code Documentation:
           - Overview: code/overview.md
