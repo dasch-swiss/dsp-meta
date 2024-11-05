@@ -1,7 +1,7 @@
 # Config file for https://github.com/igorshubovych/markdownlint-cli
 
 # MD007/ul-indent - Unordered list indentation
-MD007:
+MD007: 
     # Whether to indent the first level of the list
     start_indented: false
     # By how many spaces every next level must be indented. The default of 2 is not compatible with mkdocs!
@@ -14,7 +14,7 @@ MD009: false
 MD012: false
 
 # MD013/line-length - Line length
-MD013:
+MD013: 
     line_length: 120
     heading_line_length: 120
     code_block_line_length: 120
@@ -31,7 +31,7 @@ MD013:
     stern: false
 
 # MD033/no-inline-html - Inline HTML
-MD033:
+MD033: 
     allowed_elements: [br, center]
 
 # MD041/first-line-heading/first-line-h1 - First line in a file should be a top-level heading
