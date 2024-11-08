@@ -118,7 +118,13 @@
     "url": {
       "__type": "URL",
       "type": "URL",
-      "url": "https://weblimc.org/page/home/Basel",
+      "url": "https://app.dasch.swiss/project/BRwvcfLLT72IN-fXzQkrdQ",
+      "text": "Discover Project Data"
+    },
+    "secondaryURL": {
+      "__type": "URL",
+      "type": "URL",
+      "url": "https://weblimc.org",
       "text": "Project Website"
     },
     "status": "Ongoing"
