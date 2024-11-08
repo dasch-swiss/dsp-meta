@@ -92,6 +92,12 @@
         "en": "1st century A.D. – 21st century A.D."
       }
     ],
+    "url": {
+      "__type": "URL",
+      "type": "URL",
+      "url": "https://app.dasch.swiss/project/91_Qg-ubQl-1wf3ZfqVjjg",
+      "text": "Discover Project Data"
+    },
     "status": "Ongoing"
   },
   "datasets": [
