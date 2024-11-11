@@ -1,5 +1,26 @@
 # Changelog
 
+## [2.3.2](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.1...dsp-meta-v2.3.2) (2024-11-11)
+
+
+### Maintenances
+
+* **deps-dev:** Bump tslib from 2.8.0 to 2.8.1 in /web-frontend in the frontend-dependencies group ([#274](https://github.com/dasch-swiss/dsp-meta/issues/274)) ([1059adb](https://github.com/dasch-swiss/dsp-meta/commit/1059adbe8af8068795561360ab4a97bfcd688735))
+* **deps:** Bump the backend-dependencies group with 3 updates ([#273](https://github.com/dasch-swiss/dsp-meta/issues/273)) ([08166b3](https://github.com/dasch-swiss/dsp-meta/commit/08166b3d7620492c535420ae353e624b9195ddd5))
+* **deps:** Bump the backend-dependencies group with 4 updates ([#277](https://github.com/dasch-swiss/dsp-meta/issues/277)) ([101405e](https://github.com/dasch-swiss/dsp-meta/commit/101405e8632e9f68c069d64de285260df86924f3))
+* **deps:** Bump the backend-dependencies group with 6 updates ([#272](https://github.com/dasch-swiss/dsp-meta/issues/272)) ([0cf8446](https://github.com/dasch-swiss/dsp-meta/commit/0cf844670407f39568e2998dbf3e837797843fc1))
+
+
+### Project Data
+
+* Add rich project link ([#276](https://github.com/dasch-swiss/dsp-meta/issues/276)) ([660d926](https://github.com/dasch-swiss/dsp-meta/commit/660d926c5e480119922509a629732e88b817daa0))
+
+
+### Documentation
+
+* Add working copy of the data model for elaborating the next model version  (DEV-4307) ([#275](https://github.com/dasch-swiss/dsp-meta/issues/275)) ([dcfb211](https://github.com/dasch-swiss/dsp-meta/commit/dcfb2111561d76313952f9ef83d81563b84237c3))
+* Publish docs to the repo's github pages ([#264](https://github.com/dasch-swiss/dsp-meta/issues/264)) ([a832f91](https://github.com/dasch-swiss/dsp-meta/commit/a832f91bb75e6b7441a28758d26b924f89b435c7))
+
 ## [2.3.1](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.0...dsp-meta-v2.3.1) (2024-10-21)
 
 
