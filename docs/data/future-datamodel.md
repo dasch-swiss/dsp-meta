@@ -38,7 +38,7 @@ The metadata model is a hierarchical structure of metadata elements.
 flowchart TD
     hyper-project[Umbrella Project] -->|1-n| project[Research Project]
     project -->|1-n| dataset[Dataset]
-    dataset -->|1-n| record[Record /<br/>Resource]
+    dataset -->|1-n| record[Record]
     project -->|0-n| collection[Collection]
     collection --> collection
     hyper-project -->|0-n| collection
@@ -69,7 +69,7 @@ flowchart TD
   or groupings of records based on a specific research question within a project.  
   A `Collection` is part of at least 1 `Research Project`, `Umbrella Project` or `Collection`, 
   but can be part of multiple. It may either contain 0-n `Collections` or 1-n `Records`.
-- A `Record` is a single resource within a `Dataset`.  
+- A `Record` is a single entry within a `Dataset`.  
   It represents a single entity, and the smallest unit that can meaningfully have an identifier. 
   It maps to a `knora-base:Resource` (DSP-API) or an `Asset` (SIPI/Ingest) in the DSP.  
   A `Record` is part of exactly 1 `Dataset` and may be part of 0-n `Collections`. 
@@ -117,12 +117,15 @@ but are identified by their position in the hierarchy.
     that is: "open", "restricted", "embargo", "metadata only".)  
     If so, this should be added on each level, I suppose.
 
+!!! answer
+     Yes, as COAR indicates, https://vocabularies.coar-repositories.org/access_rights/    
+
 
 ## Types
 
 ### Entity Types
 
-#### Unbrella Project
+#### Umbrella Project
 
 | Field                  | Type          | Card. | Restrictions                                                 |
 | ---------------------- | ------------- | ----- | ------------------------------------------------------------ |
@@ -154,9 +157,15 @@ but are identified by their position in the hierarchy.
     - Supporting Organization  
     - Institutional Partner
 
+!!! answer
+    We don't need `institutionalPartner` since contactPoint can be an organziation or a person.    
+
 !!! question
     How do we capture the time aspect of the data provenance and genesis in this context? Should this be here?  
     Concretely, an umbrella project is often like a "timeline" of projects, or the "history" of a series of projects.
+
+!!! answer
+    We don't need this information here on this level. The umbrella project needs to know what projects are under it and then it's a matter of displaying the timeline.
 
 To make the model of this entity as flexible as possible,
 most of the fields are optional.
@@ -195,17 +204,32 @@ most of the fields are optional.
     do we want to have it on project level as well?  
     In any case, it should be computed from the datasets/records.
 
+!!! answer
+    Since we have copyright/license on a record level, everything above should be a computed field and then it's a matter of displaying it.
+
 !!! question
     Do we still need funders if we have grants?
+
+!!! answer
+    No, we don't need funders.
 
 !!! question
     What about projects that do not have funding?
 
+!!! answer
+    Then it's self-funded.
+
 !!! question
     Do we want my proposed `attributions` field n project?
 
+!!! answer
+    Yes, but it should be a computed field.
+
 !!! question
     Should we have an `abstract` field in the project, like we used to have in the dataset?
+
+!!! answer
+    We should only have it in the project but not in the dataset anymore.
 
 
 #### Dataset
@@ -235,11 +259,17 @@ most of the fields are optional.
     If we store it on the dataset level, 
     how do we deal with datasets that contain records with different licenses?
 
+!!! answer
+    We compute it and when there are different licenses then we display those.
+
 !!! question
     Do we need to store the language on the dataset level, 
     or can we compute it from the records?  
     If we store it on the dataset level, 
     how do we deal with datasets that contain records in different languages?
+
+!!! answer
+    We compute it and when there are different languages then we display those.
 
 !!! question
     Do we need to store the attribution on the dataset level, 
@@ -247,20 +277,32 @@ most of the fields are optional.
     If we store it on the dataset level, 
     how do we deal with datasets that contain records with different attributions?
 
+!!! answer
+    We compute it and when there are different attributions then we display those. We need to keep in mind that we don't inlcude us in these computations.
+
 !!! question
     Do we need a reference to the records in the dataset?
+
+!!! answer
+    At the moment no. Unsure. Tbd.
 
 !!! question
     Does `dateCreated` suffice here? There were more date properties in the old model.
 
-Data sets arefor internal use, 
-they serve to partition the data into manageable chunks. 
-This is done both by type of data (RDF vs. assets), and by size.
+!!! answer
+    What is the meaning of `dateCreated` in this context?
 
-In some cases, there may be a "logical" grouping consisting a dataset, 
-e.g. if data is digitized in a batch and there is a temporal separation between the batches.  
-In these cases, the project may make use of the descriptive metadata of the dataset. 
-But normally, the dataset is just a technical entity, and should not carry semantic information.
+~~Datasets are for internal use,~~ 
+~~they serve to partition the data into manageable chunks. ~~
+~~This is done both by type of data (RDF vs. assets), and by size.~~
+
+~~In some cases, there may be a "logical" grouping consisting a dataset,~~ 
+~~e.g. if data is digitized in a batch and there is a temporal separation between the batches. ~~ 
+~~In these cases, the project may make use of the descriptive metadata of the dataset. ~~
+~~But normally, the dataset is just a technical entity, and should not carry semantic information.~~
+
+A project can have more than one dataset if it's the project's wish and if it provides meaningful grouping of the records e.g., 2 researchers worked one one part of the data and the 2 other researchers on the other part of the data, EKWS digitizing different boxes and each box becomes a dataset. 
+A record can only be part of one dataset.
 
 #### Collection
 
