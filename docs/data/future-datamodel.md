@@ -1,4 +1,4 @@
-# Provisional Data Model
+# Future Data Model
 
 !!! warning
     This document does _not_ represent the current state of the metadata model.  
@@ -14,6 +14,21 @@
     while remaining compatible with the current implementation,
     should be created alongside this model.
 
+The enhancements to the DSP metadata model are thoughtfully designed to better accommodate
+the inherent complexity of humanities projects, while still being flexible enough to
+support simpler project structures.
+    
+One of the key improvements is the introduction of an additional hierarchical level above
+the research project, which we refer to as the umbrella project. This allows for a more
+accurate representation of overarching initiatives that span multiple research projects
+over extended periods. Additionally, we have implemented collections and subcollections
+to facilitate more precise referencing and organization of different parts of the data.
+    
+By expanding our metadata model in this way, we aim to provide a more robust framework
+that supports the integrity and longevity of humanities research data. This evolution
+reflects our commitment to capturing the rich, nuanced histories of research projects
+with greater accuracy and detail.
+    
 ## Overview
 
 The metadata model is a hierarchical structure of metadata elements. 
