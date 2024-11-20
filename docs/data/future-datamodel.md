@@ -330,6 +330,9 @@ A record can only be part of one dataset.
 !!! question
     Do we need a reference to the records in the collection?
 
+!!! answer
+    Yes, we would need that.
+
 
 #### Record
 
@@ -352,9 +355,14 @@ A record can only be part of one dataset.
 !!! question
     How granular do we want to be with the metadata on the record level?
 
+!!! answer
+    We don't need provenance because it's covered in attributions.
+
 !!! question
     If we have copyright, what is the purpose of attribution?
 
+!!! answer
+    Copyright doesn't have anything to do with attribution. Attribution is who did something with the data. Copyright is person/organization who holds the right to this record and can give others the permission to do something with this record aka license.
 
 #### Person
 
@@ -424,6 +432,9 @@ or a reference to a resource in an external authority file.
 !!! question
     can we model different types of URLs in a more sensible way?
 
+!!! answer
+    In the mid-term we should untangle this mess of URLs, ARKs, Geonames etc.
+
 
 #### Data Management Plan (`dmp`)
 
@@ -439,6 +450,9 @@ or a reference to a resource in an external authority file.
     Could it be a string? 
     Is "available" useful information? 
     How do we ensure that either `available` or `url` is set?
+
+!!! answer
+    If we cannot upload the DMP or provide a reference to a published, then we don't need this.
 
 
 #### Publication
@@ -477,13 +491,16 @@ or a reference to a resource in an external authority file.
     What is the purpose of `date` here? 
     How does it relate to a copyright statement?
 
+!!! answer
+    License are depending on dates. It doesn't relate to a copyright statement.
+
 
 #### Attribution
 
 | Field    | Type   | Cardinality | Restrictions              | Remark                      |
 | -------- | ------ | ----------- | ------------------------- | --------------------------- |
 | `__type` | string | 1           | Literal 'Attribution'     |                             |
-| `agent`  | id     | 1           | Person or Organization ID | Or can this only be person? |
+| `agent`  | id     | 1           | Person or Organization ID | Or can this only be person? -> No |
 | `roles`  | string | 1-n         |                           |                             |
 
 
