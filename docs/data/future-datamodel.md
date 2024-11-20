@@ -238,14 +238,18 @@ most of the fields are optional.
 | -------------- | ------------- | ----------- | ------------------------------------------------ | ------------------------------------------------------- |
 | `__id`         | string        | 1           |                                                  |                                                         |
 | `__type`       | string        | 1           | Literal "Dataset"                                |                                                         |
-| `title`        | string        | 1           |                                                  | may be auto-generated?                                  |
-| `typeOfData`   | string[]      | 1-n         | Literal "XML", "Text", "Image", "Video", "Audio" | does this still make sense? should it be cardinality 1? |
+| `title`        | string        | 1           |                                                  | may be auto-generated? -> No                                  |
+| `typeOfData`   | string[]      | 1-n         | Literal "XML", "Text", "Image", "Video", "Audio" | does this still make sense? should it be cardinality 1? -> This does still make sense but it should be computed. And the cardinality needs to be 1-n |
 | `licenses`     | license[]     | 1-n         |                                                  | should be computed from the records                     |
-| `copyright`    | string[]      | 1-n         |                                                  | computed along with license                             |
-| `attributions` | attribution[] | 1-n         |                                                  | can this be computed?                                   |
-| `howToCite`    | string        | 0-1         |                                                  | still wanted?                                           |
+| `copyright`    | string[]      | 1-n         |                                                  | computed along with license -> should be computed from the records                             |
+| `attributions` | attribution[] | 1-n         |                                                  | can this be computed? -> Yes                                   |
+| `howToCite`    | string        | 0-1         |                                                  | still wanted? -> A generated field along with the ARK.                                           |
 | `description`  | lang_string   | 0-1         |                                                  |                                                         |
-| `dateCreated`  | date          | 0-1         |                                                  |                                                         |
+| `dateCreated`  | date          | 0-1         |                                                  |                             
+                            |
+
+!!! question
+    Are PIDs missing for umbrella-project, dataset and collection? Are generated how-to-cites missing for them as well?
 
 !!! note
     If we think of a dataset as something internal, 
@@ -312,19 +316,19 @@ A record can only be part of one dataset.
 | `__type`           | string            | 1           | Literal 'Collection'                             |                                                          |
 | `name`             | string            | 1           |                                                  |                                                          |
 | `description`      | string / url      | 1-n         |                                                  |                                                          |
-| `typeOfData`       | string[]          | 1-n         | Literal "XML", "Text", "Image", "Video", "Audio" | copied from dataset; does this still make sense?         |
+| `typeOfData`       | string[]          | 1-n         | Literal "XML", "Text", "Image", "Video", "Audio" | copied from dataset; does this still make sense? -> Maybe not.         |
 | `licenses`         | license[]         | 1-n         |                                                  | copied from dataset; should be computed from the records |
-| `copyright`        | string[]          | 1-n         |                                                  | computed along with license                              |
-| `languages`        | lang_string[]     | 1-n         |                                                  | copied from dataset; does this make sense?               |
-| `attributions`     | attribution[]     | 1-n         |                                                  | copied from dataset; can this be calculated?             |
-| `provenance`       | string            | 0-1         |                                                  |                                                          |
-| `distribution`     | url               | 0-1         |                                                  | copied from dataset; does this make sense?               |
+| `copyright`        | string[]          | 1-n         |                                                  | computed along with license -> should be computed from the records                              |
+| `languages`        | lang_string[]     | 1-n -> computed         |                                                  | copied from dataset; does this make sense?               |
+| `attributions`     | attribution[]     | 1-n         |                                                  | copied from dataset; can this be calculated? -> Yes             |
+| `provenance`       | string            | 0-1         |                                                |   -> not needed                                                         |
+| `distribution`     | url               | 0-1         |                                                  | copied from dataset; does this make sense? -> not needed               |
 | `records`          | id[]              | 0-n         | Record IDs                                       | can be 0 in case it points to a collection               |
 | `collections`      | id[]              | 0-n         | Collection IDs                                   |                                                          |
 | `alternativeNames` | lang_string[]     | 0-n         |                                                  |                                                          |
-| `keywords`         | lang_string[]     | 0-n         |                                                  | does this make sense?                                    |
+| `keywords`         | lang_string[]     | 0-n         |                                                  | does this make sense? -> Interesting for the search.                                    |
 | `urls`             | url[]             | 0-n         |                                                  | copied from dataset;                                     |
-| `additional`       | lang_string / url | 0-n         |                                                  | copied from dataset;                                     |
+| `additional`       | lang_string / url | 0-n         |                                                  | copied from dataset;  -> Probably not needed.                                   |
 
 
 !!! question
@@ -342,15 +346,15 @@ A record can only be part of one dataset.
 | `__type`           | string      | 1           | Literal 'Record'                                 |                                                          |
 | `pid`              | id          | 1           |                                                  | or `ARK`?                                                |
 | `label`            | lang_string | 1           |                                                  | do we want this, or does it go too far?                  |
-| `accessConditions` | string      | 1           | Literal "open", "restricted" or "closed"         | copied from dataset; change to proper terms              |
+| `accessConditions` | string      | 1           | Literal "open", "restricted" or "closed"         | copied from dataset; change to proper terms -> open, restricted, embargoed, metadata-only             |
 | `license`          | license     | 1           |                                                  | copied from dataset; should be computed from the records |
 | `copyright`        | string      | 1           |                                                  | computed along with license                              |
-| `attribution`      | attribution | 1           |                                                  | do we want this, or does it go too far?                  |
-| `provenance`       | string      | 0-1         |                                                  | do we want this, or does it go too far?                  |
-| `datePublished`    | date        | 0-1         |                                                  | copied from dataset; do they make sense?                 |
-| `dateCreated`      | date        | 0-1         |                                                  | copied from dataset; do they make sense?                 |
-| `dateModified`     | date        | 0-1         |                                                  | copied from dataset; do they make sense?                 |
-| `typeOfData`       | string      | 0-1         | Literal "XML", "Text", "Image", "Video", "Audio" | copied from dataset; wanted? what values?                |
+| `attribution`      | attribution | 1           |                                                  | do we want this, or does it go too far? -> Yes                 |
+| `provenance`       | string      | 0-1         |                                                  | do we want this, or does it go too far? -> No                 |
+| `datePublished`    | date        | 0-1         |                                                  | copied from dataset; do they make sense? -> Yes                |
+| `dateCreated`      | date        | 0-1         |                                                  | copied from dataset; do they make sense?  -> Yes               |
+| `dateModified`     | date        | 0-1         |                                                  | copied from dataset; do they make sense?   -> Yes              |
+| `typeOfData`       | string      | 0-1         | Literal "XML", "Text", "Image", "Video", "Audio" | copied from dataset; wanted? what values?    -> Yes, type is computed           |
 
 !!! question
     How granular do we want to be with the metadata on the record level?
