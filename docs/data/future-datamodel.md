@@ -129,6 +129,7 @@ but are identified by their position in the hierarchy.
 
 | Field                  | Type          | Card. | Restrictions                                                 |
 | ---------------------- | ------------- | ----- | ------------------------------------------------------------ |
+| `pid`              | id          | 1           |                                                  | or `ARK`? -> probably use `pid`                                                |
 | `__id`                 | string        | 1     |                                                              |
 | `__type`               | string        | 1     | Literal 'UmbrellaProject'                                    |
 | `name`                 | string        | 1     |                                                              |
@@ -175,6 +176,7 @@ most of the fields are optional.
 
 | Field                | Type                | Cardinality | Restrictions                                                 |
 | -------------------- | ------------------- | ----------- | ------------------------------------------------------------ |
+| `pid`              | id          | 1           |                                                  | or `ARK`? -> probably use `pid`                                                |
 | `__type`             | string              | 1           | Literal "Project"                                            |
 | `shortcode`          | string              | 1           | 4 char hexadecimal                                           |
 | `status`             | string              | 1           | Literal "Ongoing" or "Finished"                              |
@@ -202,10 +204,10 @@ most of the fields are optional.
 !!! question
     If we can have copyright/license on dataset level,
     do we want to have it on project level as well?  
-    In any case, it should be computed from the datasets/records.
+
 
 !!! answer
-    Since we have copyright/license on a record level, everything above should be a computed field and then it's a matter of displaying it.
+    Since we have copyright/license on a record level, everything above should be a computed field if available and optionally added manually. And then it's a matter of displaying it.
 
 !!! question
     Do we still need funders if we have grants?
@@ -223,7 +225,7 @@ most of the fields are optional.
     Do we want my proposed `attributions` field n project?
 
 !!! answer
-    Yes, but it should be a computed field.
+    Yes, but it should be a computed field if available and optionally added manually.
 
 !!! question
     Should we have an `abstract` field in the project, like we used to have in the dataset?
@@ -236,13 +238,14 @@ most of the fields are optional.
 
 | Field          | Type          | Cardinality | Restrictions                                     | Remarks                                                 |
 | -------------- | ------------- | ----------- | ------------------------------------------------ | ------------------------------------------------------- |
+| `pid`              | id          | 1           |                                                  | or `ARK`? -> probably use `pid`                                                |
 | `__id`         | string        | 1           |                                                  |                                                         |
 | `__type`       | string        | 1           | Literal "Dataset"                                |                                                         |
 | `title`        | string        | 1           |                                                  | may be auto-generated? -> No                                  |
-| `typeOfData`   | string[]      | 1-n         | Literal "XML", "Text", "Image", "Video", "Audio" | does this still make sense? should it be cardinality 1? -> This does still make sense but it should be computed. And the cardinality needs to be 1-n |
-| `licenses`     | license[]     | 1-n         |                                                  | should be computed from the records                     |
-| `copyright`    | string[]      | 1-n         |                                                  | computed along with license -> should be computed from the records                             |
-| `attributions` | attribution[] | 1-n         |                                                  | can this be computed? -> Yes                                   |
+| `typeOfData`   | string[]      | 1-n         | Literal "XML", "Text", "Image", "Video", "Audio" | does this still make sense? should it be cardinality 1? -> This does still make sense but it should be computed if available and optionally added manually. And the cardinality needs to be 1-n |
+| `licenses`     | license[]     | 1-n         |                                                  | should be computed from the records if available and optionally added manually.                     |
+| `copyright`    | string[]      | 1-n         |                                                  | computed along with license -> should be computed from the records if available and optionally added manually.                             |
+| `attributions` | attribution[] | 1-n         |                                                  | can this be computed? -> Yes, if available and optionally added manually.                                  |
 | `howToCite`    | string        | 0-1         |                                                  | still wanted? -> A generated field along with the ARK.                                           |
 | `description`  | lang_string   | 0-1         |                                                  |                                                         |
 | `dateCreated`  | date          | 0-1         |                                                  |                             
@@ -251,11 +254,14 @@ most of the fields are optional.
 !!! question
     Are PIDs missing for umbrella-project, dataset and collection? Are generated how-to-cites missing for them as well?
 
+!!! answer
+    Yes, we need PIDs for all levels (umbrella-project, dataset and collection).
+
 !!! note
     If we think of a dataset as something internal, 
     we should limit the metadata to what is necessary for the system to work.  
     Additionally, we may want to have some minimal descriptive metadata for the dataset, 
-    (like for the use case that a project once a year grabs a box of achrival material and digitizes it). 
+    (like for the use case that a project once a year grabs a box of archival material and digitizes it). 
 
 !!! question
     Do we need to store the license on the dataset level, 
@@ -264,7 +270,7 @@ most of the fields are optional.
     how do we deal with datasets that contain records with different licenses?
 
 !!! answer
-    We compute it and when there are different licenses then we display those.
+    We compute it if available and optionally added manually. And when there are different licenses then we display those.
 
 !!! question
     Do we need to store the language on the dataset level, 
@@ -273,7 +279,7 @@ most of the fields are optional.
     how do we deal with datasets that contain records in different languages?
 
 !!! answer
-    We compute it and when there are different languages then we display those.
+    We compute it if available and optionally added manually. And when there are different languages then we display those.
 
 !!! question
     Do we need to store the attribution on the dataset level, 
@@ -282,7 +288,7 @@ most of the fields are optional.
     how do we deal with datasets that contain records with different attributions?
 
 !!! answer
-    We compute it and when there are different attributions then we display those. We need to keep in mind that we don't inlcude us in these computations.
+    We compute it if available and optionally added manually. And when there are different attributions then we display those. We need to keep in mind that we don't inlcude us in these computations.
 
 !!! question
     Do we need a reference to the records in the dataset?
@@ -296,14 +302,9 @@ most of the fields are optional.
 !!! answer
     What is the meaning of `dateCreated` in this context?
 
-~~Datasets are for internal use,~~ 
-~~they serve to partition the data into manageable chunks. ~~
-~~This is done both by type of data (RDF vs. assets), and by size.~~
+~~Datasets are for internal use,they serve to partition the data into manageable chunks. This is done both by type of data (RDF vs. assets), and by size.~~
 
-~~In some cases, there may be a "logical" grouping consisting a dataset,~~ 
-~~e.g. if data is digitized in a batch and there is a temporal separation between the batches. ~~ 
-~~In these cases, the project may make use of the descriptive metadata of the dataset. ~~
-~~But normally, the dataset is just a technical entity, and should not carry semantic information.~~
+~~In some cases, there may be a "logical" grouping consisting a dataset, e.g. if data is digitized in a batch and there is a temporal separation between the batches. In these cases, the project may make use of the descriptive metadata of the dataset. But normally, the dataset is just a technical entity, and should not carry semantic information.~~
 
 A project can have more than one dataset if it's the project's wish and if it provides meaningful grouping of the records e.g., 2 researchers worked one one part of the data and the 2 other researchers on the other part of the data, EKWS digitizing different boxes and each box becomes a dataset. 
 A record can only be part of one dataset.
@@ -312,16 +313,17 @@ A record can only be part of one dataset.
 
 | Field              | Type              | Cardinality | Restrictions                                     | Remarks                                                  |
 | ------------------ | ----------------- | ----------- | ------------------------------------------------ | -------------------------------------------------------- |
+| `pid`              | id          | 1           |                                                  | or `ARK`? -> probably use `pid`                                                |
 | `__id`             | string            | 1           |                                                  |                                                          |
 | `__type`           | string            | 1           | Literal 'Collection'                             |                                                          |
 | `name`             | string            | 1           |                                                  |                                                          |
 | `description`      | string / url      | 1-n         |                                                  |                                                          |
 | `typeOfData`       | string[]          | 1-n         | Literal "XML", "Text", "Image", "Video", "Audio" | copied from dataset; does this still make sense? -> Maybe not.         |
-| `licenses`         | license[]         | 1-n         |                                                  | copied from dataset; should be computed from the records |
-| `copyright`        | string[]          | 1-n         |                                                  | computed along with license -> should be computed from the records                              |
-| `languages`        | lang_string[]     | 1-n -> computed         |                                                  | copied from dataset; does this make sense?               |
-| `attributions`     | attribution[]     | 1-n         |                                                  | copied from dataset; can this be calculated? -> Yes             |
-| `provenance`       | string            | 0-1         |                                                |   -> not needed                                                         |
+| `licenses`         | license[]         | 1-n         |                                                  | copied from dataset; should be computed from the records if available and optionally added manually. |
+| `copyright`        | string[]          | 1-n         |                                                  | computed along with license -> should be computed from the records if available and optionally added manually.                              |
+| `languages`        | lang_string[]     | 1-n         |                                                  | copied from dataset; does this make sense? -> computed if available and optionally added manually.               |
+| `attributions`     | attribution[]     | 1-n         |                                                  | copied from dataset; can this be calculated? -> Yes, if available and optionally added manually.             |
+| `provenance`       | string            | 0-1         |                                                |   -> needed, see: https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_source.html#dc-source                                                         |
 | `distribution`     | url               | 0-1         |                                                  | copied from dataset; does this make sense? -> not needed               |
 | `records`          | id[]              | 0-n         | Record IDs                                       | can be 0 in case it points to a collection               |
 | `collections`      | id[]              | 0-n         | Collection IDs                                   |                                                          |
@@ -344,23 +346,27 @@ A record can only be part of one dataset.
 | ------------------ | ----------- | ----------- | ------------------------------------------------ | -------------------------------------------------------- |
 | `__id`             | string      | 1           |                                                  |                                                          |
 | `__type`           | string      | 1           | Literal 'Record'                                 |                                                          |
-| `pid`              | id          | 1           |                                                  | or `ARK`?                                                |
-| `label`            | lang_string | 1           |                                                  | do we want this, or does it go too far?                  |
-| `accessConditions` | string      | 1           | Literal "open", "restricted" or "closed"         | copied from dataset; change to proper terms -> open, restricted, embargoed, metadata-only             |
-| `license`          | license     | 1           |                                                  | copied from dataset; should be computed from the records |
-| `copyright`        | string      | 1           |                                                  | computed along with license                              |
+| `pid`              | id          | 1           |                                                  | or `ARK`? -> probably use `pid`                                                |
+| `label`            | lang_string | 1           |                                                  | do we want this, or does it go too far? -> We want to keep it because it's the "name" of the record. But we can think about renaming it.                 |
+| `accessConditions` | string      | 1           | Literal "open", "restricted" or "closed"         | copied from dataset; change to proper terms -> open, restricted, embargoed, metadata-only and renaming  `accessConditions` to `rights` to be in line with openAIRE.           |
+| `embargoPeriodDate`          | date     | 0-1           |                                                  | -> needs to be added to be in line with openAIRE, e.g., ```<datacite:dates> <datacite:date dateType="Accepted">2011-12-01</datacite:date> <datacite:date dateType="Available">2012-12-01</datacite:date> </datacite:dates>``` |
+| `publisher`          | string     | 1           |                                                  | should be DaSCH |
+| `license`          | license     | 1           |                                                  | copied from dataset; should be computed from the records -> No, you have to indicate the license here. Computation is not possible. |
+| `copyright`        | string      | 1           |                                                  | computed along with license -> -> No, you have to indicate the copyright here. Computation is not possible.                             |
 | `attribution`      | attribution | 1           |                                                  | do we want this, or does it go too far? -> Yes                 |
-| `provenance`       | string      | 0-1         |                                                  | do we want this, or does it go too far? -> No                 |
+| `provenance`       | string      | 0-1         |                                                  | do we want this, or does it go too far? -> Yes, https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_source.html#dc-source                 |
 | `datePublished`    | date        | 0-1         |                                                  | copied from dataset; do they make sense? -> Yes                |
 | `dateCreated`      | date        | 0-1         |                                                  | copied from dataset; do they make sense?  -> Yes               |
 | `dateModified`     | date        | 0-1         |                                                  | copied from dataset; do they make sense?   -> Yes              |
-| `typeOfData`       | string      | 0-1         | Literal "XML", "Text", "Image", "Video", "Audio" | copied from dataset; wanted? what values?    -> Yes, type is computed           |
+| `typeOfData`       | string      | 0-1         | Literal "XML", "Text", "Image", "Video", "Audio" | copied from dataset; wanted? what values?    -> Yes, type is computed and should represent: https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_publicationtype.html#aire-resourcetype          |
+| `size`       | string      | 0-1         |  | needs to be added, see: https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_size.html#dci-size         |
+| `audience`       | string      | 0-n         |  | needs to be added, see: https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_audience.html#dct-audience         |
 
 !!! question
     How granular do we want to be with the metadata on the record level?
 
 !!! answer
-    We don't need provenance because it's covered in attributions.
+    We need provenance, see: https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_source.html#dc-source
 
 !!! question
     If we have copyright, what is the purpose of attribution?
