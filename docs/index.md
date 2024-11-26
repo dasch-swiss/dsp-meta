@@ -14,19 +14,20 @@ Many of these projects receive funding from various grants and different funders
 Additionally, the researchers involved in creating and reusing the data may change over time, reflecting
 the evolving nature of academic collaboration.
 
-Understanding the complex history of research data is crucial for transparency, reproducibility,
-and future scholarship. The DSP metadata model is designed to accommodate this complexity by meticulously
-recording the provenance of data. It tracks:
-	•	Funding Sources: Documenting the multiple grants and funders that have supported the project over time.
-	•	Research Personnel: Keeping a record of all researchers who have contributed to or utilized the data,
-	acknowledging the shifts in team composition.
-	•	Data Lifecycle: Outlining how the data was created, modified, and reused, providing a comprehensive
-	view of its evolution.
+Understanding the complex history of research data is crucial for transparency, reproducibility, and future scholarship.
+The DSP metadata model is designed to accommodate this complexity by meticulously recording the provenance of data. It
+tracks:
 
-By capturing this rich contextual information, we aim to provide a robust framework that supports the integrity
-and longevity of humanities research data. Whether you are a researcher contributing new data or a scholar
-exploring existing datasets, this documentation will guide you through our metadata practices and help you
-understand the stories behind the data.
+- Funding Sources: Documenting the multiple grants and funders that have supported the project over time.
+- Research Personnel: Keeping a record of all researchers who have contributed to or utilized the data, acknowledging
+  the shifts in team composition.
+- Data Lifecycle: Outlining how the data was created, modified, and reused, providing a comprehensive view of its
+  evolution.
+
+By capturing this rich contextual information, we aim to provide a robust framework that supports the integrity and
+longevity of humanities research data. Whether you are a researcher contributing new data or a scholar exploring
+existing datasets, this documentation will guide you through our metadata practices and help you understand the stories
+behind the data.
 
 ### Consuming Metadata
 
