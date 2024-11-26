@@ -99,6 +99,7 @@ but it is always part of one of the top-level elements.
 Such elements do not have an identifier, 
 but are identified by their position in the hierarchy.
 
+
 | Field             | Type            | Cardinality |
 | ----------------- | --------------- | ----------- |
 | `$schema`         | string          | 0-1         |
@@ -323,7 +324,7 @@ A record can only be part of one dataset.
 | `copyright`        | string[]          | 1-n         |                                                  | computed along with license -> should be computed from the records if available and optionally added manually.                              |
 | `languages`        | lang_string[]     | 1-n         |                                                  | copied from dataset; does this make sense? -> computed if available and optionally added manually.               |
 | `attributions`     | attribution[]     | 1-n         |                                                  | copied from dataset; can this be calculated? -> Yes, if available and optionally added manually.             |
-| `provenance`       | string            | 0-1         |                                                |   -> needed, see: https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_source.html#dc-source                                                         |
+| `provenance`       | string            | 0-1         |                                                |   -> needed, see: [openAIRE Guidelines](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_source.html#dc-source)                                                         |
 | `distribution`     | url               | 0-1         |                                                  | copied from dataset; does this make sense? -> not needed               |
 | `records`          | id[]              | 0-n         | Record IDs                                       | can be 0 in case it points to a collection               |
 | `collections`      | id[]              | 0-n         | Collection IDs                                   |                                                          |
