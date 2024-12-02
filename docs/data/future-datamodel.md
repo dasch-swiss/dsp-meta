@@ -1,18 +1,18 @@
-m# Future Data Model
+# Future Data Model
 
 !!! warning
-This document does _not_ represent the current state of the metadata model.  
-It is a working document for planned upcoming changes to the metadata model.
+    This document does _not_ represent the current state of the metadata model.  
+    It is a working document for planned upcoming changes to the metadata model.
 
 !!! note
-This model is an idealized version of the metadata model.
-With the current implementation that is entirely separate from the DSP,
-it is not feasible to implement metadata on the record level.  
-Such a system may be implemented in the archive in the future,
-but for now, we will keep the metadata on the dataset level.  
-A separate, simplified model for applying some of these changes,
-while remaining compatible with the current implementation,
-should be created alongside this model.
+    This model is an idealized version of the metadata model.
+    With the current implementation that is entirely separate from the DSP,
+    it is not feasible to implement metadata on the record level.  
+    Such a system may be implemented in the archive in the future,
+    but for now, we will keep the metadata on the dataset level.  
+    A separate, simplified model for applying some of these changes,
+    while remaining compatible with the current implementation,
+    should be created alongside this model.
 
 The enhancements to the DSP metadata model are thoughtfully designed to better accommodate
 the inherent complexity of humanities projects, while still being flexible enough to
@@ -22,7 +22,8 @@ One of the key improvements is the introduction of an additional hierarchical le
 the research project, which we refer to as the umbrella project. This allows for a more
 accurate representation of overarching initiatives that span multiple research projects
 over extended periods. Additionally, we have implemented collections and subcollections
-to facilitate more precise referencing and organization of different parts of the data.
+to facilitate more precise referencing and organization of different parts of the data,
+additionally enabling projects to retain and represent historical groupings of data.
 
 By expanding our metadata model in this way, we aim to provide a more robust framework
 that supports the integrity and longevity of humanities research data. This evolution
@@ -57,18 +58,20 @@ flowchart TD
   multiple funding rounds and a longer lifetime are possible.  
   A `Research Project` is part of 0-1 `Umbrella Project`,
   it has 1-n `Datasets` and 0-n `Collections`.
-- A `Dataset` is a collection of `Records` within a `Research Project`.  
-  It is mostly meant for system-internal and technical use,
-  and should not have particular semantics or a "historical meaning" in the context of the project.  
-  A `Dataset` is part of exactly 1 `Research Project`
-  and contains 1-n `Records`.
-- A `Collection` is also a collection of `Records` within a `Research Project`.  
+- A `Dataset` is a descrete segmentation of the `Records` of a `Research Project`.  
+  It is a logical grouping of `Records`, and may be based on the type of data,
+  or any other distinctive feature of the `Records`.
+  Many projects will have only 1 `Dataset`, but multiple are possible.  
+  A `Dataset` is part of exactly 1 `Research Project` and contains 1-n `Records`.
+- A `Collection` is also a grouping of `Records` within a `Research Project`.  
   It is meant for semantic grouping of `Records` within a `Research Project`,
   and may have a "historical meaning" in the context of the project.  
   Examples may be physical collections such as p person's "Nachlass" in an archive,
   or groupings of records based on a specific research question within a project.  
   A `Collection` is part of at least 1 `Research Project`, `Umbrella Project` or `Collection`,
-  but can be part of multiple. It may either contain 0-n `Collections` or 1-n `Records`.
+  but can be part of multiple. It may either contain 0-n `Collections` or 1-n `Records`.  
+  By allowing nested collections, and records to be part of multiple collections, 
+  collections can be used to represent relationships or changes in the data over time.
 - A `Record` is a single entry within a `Dataset`.  
   It represents a single entity, and the smallest unit that can meaningfully have an identifier.
   It maps to a `knora-base:Resource` (DSP-API) or an `Asset` (SIPI/Ingest) in the DSP.  
@@ -99,7 +102,7 @@ Such elements do not have an identifier,
 but are identified by their position in the hierarchy.
 
 | Field             | Type            | Cardinality |
-|-------------------|-----------------|-------------|
+| ----------------- | --------------- | ----------- |
 | `$schema`         | string          | 0-1         |
 | `umbrellaProject` | umbrellaProject | 0-1         |
 | `project`         | project         | 1           |
@@ -109,14 +112,7 @@ but are identified by their position in the hierarchy.
 | `persons`         | person[]        | 0-n         |
 | `organizations`   | organization[]  | 0-n         |
 
-!!! question
-Do we consider "permissions" as metadata?  
-(Not as they are in the DSP, but as they will be in the archive;
-that is: "open", "restricted", "embargo", "metadata only".)  
-If so, this should be added on each level, I suppose.
 
-!!! answer
-Yes, as COAR indicates, [COAR Access Rights](https://vocabularies.coar-repositories.org/access_rights/)
 
 ## Types
 
@@ -124,187 +120,102 @@ Yes, as COAR indicates, [COAR Access Rights](https://vocabularies.coar-repositor
 
 #### Umbrella Project
 
-| Field                  | Type          | Card. | Restrictions                                                 |
-|------------------------|---------------|-------|--------------------------------------------------------------|
-| `pid`                  | id            | 1     | or `ARK`? -> probably use `pid`                              |
-| `__id`                 | string        | 1     |                                                              |
-| `__type`               | string        | 1     | Literal 'UmbrellaProject'                                    |
-| `name`                 | string        | 1     |                                                              |
-| `projects`             | id[]          | 1-n   | String containing the identifier of a project                |
-| `description`          | lang_string   | 0-1   |                                                              |
-| `alternativeNames`     | lang_string[] | 0-n   |                                                              |
-| `url`                  | url           | 0-1   |                                                              |
-| `contactPoint`         | id            | 0-1   | String containing the identifier of a person or organization |
-| `institutionalPartner` | id[]          | 0-n   | String containing the identifier of an organization          |
+| Field              | Type          | Card. | Restrictions                                                   |
+| ------------------ | ------------- | ----- | -------------------------------------------------------------- |
+| `__id`             | string        | 1     |                                                                |
+| `__type`           | string        | 1     | Literal 'UmbrellaProject'                                      |
+| `pid`              | id            | 1     |                                                                |
+| `name`             | string        | 1     |                                                                |
+| `projects`         | id[]          | 1-n   | String containing the identifier of a project                  |
+| `description`      | lang_string   | 0-1   |                                                                |
+| `url`              | url           | 0-1   |                                                                |
+| `alternativeNames` | lang_string[] | 0-n   |                                                                |
+| `contactPoint`     | id[]          | 0-n   | Strings containing the identifiers of a person or organization |
 
 !!! question
-This opens up the questions of how to deal with multiple projects in a umbrella project.
-We probably want to keep one entry per project,
-so this leaves us with either duplicating the umbrella project metadata for each project,
-or having umbrella project metadata separately and only linking it from the project.
-The latter seems preferable,
-but then the question arises who gets to edit the umbrella project metadata.  
-For a first implementation, we could simply duplicate the metadata for each project,
-and later factor it out.
+    This opens up the questions of how to deal with multiple projects in a umbrella project.
+    We probably want to keep one entry per project,
+    so this leaves us with either duplicating the umbrella project metadata for each project,
+    or having umbrella project metadata separately and only linking it from the project.
+    The latter seems preferable,
+    but then the question arises who gets to edit the umbrella project metadata.  
+    For a first implementation, we could simply duplicate the metadata for each project,
+    and later factor it out.
 
 !!! question
-what is the best name for `institutionalPartner`?  
-AI suggested:
-
-- Affiliated Institution
-- Associated Body
-- Supporting Organization
-- Institutional Partner
-
-!!! answer
-We don't need `institutionalPartner` since contactPoint can be an organziation or a person.
-
-!!! question
-How do we capture the time aspect of the data provenance and genesis in this context? Should this be here?  
-Concretely, an umbrella project is often like a "timeline" of projects, or the "history" of a series of projects.
-
-!!! answer
-We don't need this information here on this level. The umbrella project needs to know what projects are under it and
-then it's a matter of displaying the timeline.
+    do we need `howToCite` for the umbrella project?
 
 To make the model of this entity as flexible as possible,
 most of the fields are optional.
 
 #### Project
 
-| Field                | Type                | Cardinality | Restrictions                                                 |
-|----------------------|---------------------|-------------|--------------------------------------------------------------|
-| `pid`                | id                  | 1           | or `ARK`? -> probably use `pid`                              |
-| `__type`             | string              | 1           | Literal "Project"                                            |
-| `shortcode`          | string              | 1           | 4 char hexadecimal                                           |
-| `status`             | string              | 1           | Literal "Ongoing" or "Finished"                              |
-| `name`               | string              | 1           |                                                              |
-| `description`        | lang_string         | 1           |                                                              |
-| `startDate`          | date                | 1           | String of format "YYYY-MM-DD"                                |
-| `teaserText`         | string              | 1           |                                                              |
-| `url`                | url                 | 1           |                                                              |
-| `howToCite`          | string              | 1           |                                                              |
-| `datasets`           | id[]                | 1-n         | String containing the identifier of a dataset                |
-| `keywords`           | lang_string[]       | 1-n         |                                                              |
-| `disciplines`        | lang_string / url[] | 1-n         |                                                              |
-| `temporalCoverage`   | lang_string / url[] | 1-n         |                                                              |
-| `spatialCoverage`    | url[]               | 1-n         |                                                              |
-| `funders`            | id[]                | 1-n         | String containing the identifier of a person or organization |
-| `attributions`       | attribution[]       | 1-n         |                                                              |
-| `endDate`            | date                | 0-1         | String of format "YYYY-MM-DD"                                |
-| `secondaryURL`       | url                 | 0-1         |                                                              |
-| `dataManagementPlan` | dmp                 | 0-1         |                                                              |
-| `contactPoint`       | id                  | 0-1         | String containing the identifier of a person or organization |
-| `publications`       | publication[]       | 0-n         |                                                              |
-| `grants`             | grant[]             | 0-n         |                                                              |
-| `alternativeNames`   | lang_string[]       | 0-n         |                                                              |
+| Field                | Type                | Cardinality | Restrictions                                                                                                                                             |
+| -------------------- | ------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `__type`             | string              | 1           | Literal "Project"                                                                                                                                        |
+| `pid`                | id                  | 1           |                                                                                                                                                          |
+| `shortcode`          | string              | 1           | 4 char hexadecimal                                                                                                                                       |
+| `status`             | string              | 1           | Literal "Ongoing" or "Finished"                                                                                                                          |
+| `name`               | string              | 1           |                                                                                                                                                          |
+| `description`        | lang_string         | 1           |                                                                                                                                                          |
+| `startDate`          | date                | 1           | String of format "YYYY-MM-DD"                                                                                                                            |
+| `teaserText`         | string              | 1           |                                                                                                                                                          |
+| `url`                | url                 | 1           |                                                                                                                                                          |
+| `howToCite`          | string              | 1           |                                                                                                                                                          |
+| `permissions`        | string              | 1           | Literal "open", "restricted", "embargo" or "metadata only", according to [COAR Access Rights](https://vocabularies.coar-repositories.org/access_rights/) |
+| `datasets`           | id[]                | 1-n         | String containing the identifier of a dataset                                                                                                            |
+| `keywords`           | lang_string[]       | 1-n         |                                                                                                                                                          |
+| `disciplines`        | lang_string / url[] | 1-n         |                                                                                                                                                          |
+| `temporalCoverage`   | lang_string / url[] | 1-n         |                                                                                                                                                          |
+| `spatialCoverage`    | url[]               | 1-n         |                                                                                                                                                          |
+| `attributions`       | attribution[]       | 1-n         | computed from the records if available and optionally added manually                                                                                     |
+| `licenses`           | license[]           | 1-n         | computed from the records if available and optionally added manually                                                                                     |
+| `copyright`          | string[]            | 1-n         | computed from the records if available and optionally added manually                                                                                     |
+| `abstract`           | lang_string         | 0-1         |                                                                                                                                                          |
+| `endDate`            | date                | 0-1         | String of format "YYYY-MM-DD"                                                                                                                            |
+| `secondaryURL`       | url                 | 0-1         |                                                                                                                                                          |
+| `dataManagementPlan` | dmp                 | 0-1         |                                                                                                                                                          |
+| `contactPoint`       | id                  | 0-1         | String containing the identifier of a person or organization                                                                                             |
+| `publications`       | publication[]       | 0-n         |                                                                                                                                                          |
+| `grants`             | grant[]             | 0-n         |                                                                                                                                                          |
+| `alternativeNames`   | lang_string[]       | 0-n         |                                                                                                                                                          |
 
 !!! question
-If we can have copyright/license on dataset level,
-do we want to have it on project level as well?
+    Do permissions need to be a complex object?
+    Embargo probably needs the date when it ends.
 
-!!! answer
-Since we have copyright/license on a record level, everything above should be a computed field if available and
-optionally added manually. And then it's a matter of displaying it.
-
-!!! question
-Do we still need funders if we have grants?
-
-!!! answer
-No, we don't need funders.
-
-!!! question
-What about projects that do not have funding?
-
-!!! answer
-Then it's self-funded.
-
-!!! question
-Do we want my proposed `attributions` field n project?
-
-!!! answer
-Yes, but it should be a computed field if available and optionally added manually.
-
-!!! question
-Should we have an `abstract` field in the project, like we used to have in the dataset?
-
-!!! answer
-We should only have it in the project but not in the dataset anymore.
 
 #### Dataset
 
-| Field          | Type          | Cardinality | Restrictions                                     | Remarks                                                                                                                                                                                         |
-|----------------|---------------|-------------|--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `pid`          | id            | 1           |                                                  | or `ARK`? -> probably use `pid`                                                                                                                                                                 |
-| `__id`         | string        | 1           |                                                  |                                                                                                                                                                                                 |
-| `__type`       | string        | 1           | Literal "Dataset"                                |                                                                                                                                                                                                 |
-| `title`        | string        | 1           |                                                  | may be auto-generated? -> No                                                                                                                                                                    |
-| `typeOfData`   | string[]      | 1-n         | Literal "XML", "Text", "Image", "Video", "Audio" | does this still make sense? should it be cardinality 1? -> This does still make sense but it should be computed if available and optionally added manually. And the cardinality needs to be 1-n |
-| `licenses`     | license[]     | 1-n         |                                                  | should be computed from the records if available and optionally added manually.                                                                                                                 |
-| `copyright`    | string[]      | 1-n         |                                                  | computed along with license -> should be computed from the records if available and optionally added manually.                                                                                  |
-| `attributions` | attribution[] | 1-n         |                                                  | can this be computed? -> Yes, if available and optionally added manually.                                                                                                                       |
-| `howToCite`    | string        | 0-1         |                                                  | still wanted? -> A generated field along with the ARK.                                                                                                                                          |
-| `description`  | lang_string   | 0-1         |                                                  |                                                                                                                                                                                                 |
-| `dateCreated`  | date          | 0-1         |                                                  |                                                                                                                                                                                                 |
+| Field          | Type          | Cardinality | Restrictions                                     | Remarks                                                              |
+| -------------- | ------------- | ----------- | ------------------------------------------------ | -------------------------------------------------------------------- |
+| `__id`         | string        | 1           |                                                  |                                                                      |
+| `__type`       | string        | 1           | Literal "Dataset"                                |                                                                      |
+| `pid`          | id            | 1           |                                                  |                                                                      |
+| `title`        | string        | 1           |                                                  |                                                                      |
+| `typeOfData`   | string[]      | 1-n         | Literal "XML", "Text", "Image", "Video", "Audio" | computed from the records if available and optionally added manually |
+| `licenses`     | license[]     | 1-n         |                                                  | computed from the records if available and optionally added manually |
+| `copyright`    | string[]      | 1-n         |                                                  | computed from the records if available and optionally added manually |
+| `attributions` | attribution[] | 1-n         |                                                  | computed from the records if available and optionally added manually |
+| `howToCite`    | string        | 0-1         |                                                  | A generated field along with the ARK.                                |
+| `description`  | lang_string   | 0-1         |                                                  |                                                                      |
+| `dateCreated`  | date          | 0-1         |                                                  |                                                                      |
 
 !!! question
-Are PIDs missing for umbrella-project, dataset and collection? Are generated how-to-cites missing for them as well?
-
-!!! answer
-Yes, we need PIDs for all levels (umbrella-project, dataset and collection).
-
-!!! note
-If we think of a dataset as something internal,
-we should limit the metadata to what is necessary for the system to work.  
-Additionally, we may want to have some minimal descriptive metadata for the dataset,
-(like for the use case that a project once a year grabs a box of archival material and digitizes it).
+    If `howToCite` is generated, should the cardinality be 1?
 
 !!! question
-Do we need to store the license on the dataset level,
-or can we compute it from the records?  
-If we store it on the dataset level,
-how do we deal with datasets that contain records with different licenses?
+    In the old model, we had `languages` on the dataset level. Do we still need this?
 
-!!! answer
-We compute it if available and optionally added manually. And when there are different licenses then we display those.
 
 !!! question
-Do we need to store the language on the dataset level,
-or can we compute it from the records?  
-If we store it on the dataset level,
-how do we deal with datasets that contain records in different languages?
-
-!!! answer
-We compute it if available and optionally added manually. And when there are different languages then we display those.
+    In the long term, do we need a reference to the records in the dataset? (Not for now.)
 
 !!! question
-Do we need to store the attribution on the dataset level,
-or can we compute it from the records?  
-If we store it on the dataset level,
-how do we deal with datasets that contain records with different attributions?
+    Does `dateCreated` suffice here? There were more date properties in the old model.
 
 !!! answer
-We compute it if available and optionally added manually. And when there are different attributions then we display
-those. We need to keep in mind that we don't inlcude us in these computations.
-
-!!! question
-Do we need a reference to the records in the dataset?
-
-!!! answer
-At the moment no. Unsure. Tbd.
-
-!!! question
-Does `dateCreated` suffice here? There were more date properties in the old model.
-
-!!! answer
-What is the meaning of `dateCreated` in this context?
-
-~~Datasets are for internal use,they serve to partition the data into manageable chunks. This is done both by type of
-data (RDF vs. assets), and by size.~~
-
-~~In some cases, there may be a "logical" grouping consisting a dataset, e.g. if data is digitized in a batch and there
-is a temporal separation between the batches. In these cases, the project may make use of the descriptive metadata of
-the dataset. But normally, the dataset is just a technical entity, and should not carry semantic information.~~
+    What is the meaning of `dateCreated` in this context?
 
 A project can have more than one dataset if it's the project's wish and if it provides meaningful grouping of the
 records e.g., 2 researchers worked one one part of the data and the 2 other researchers on the other part of the data,
@@ -313,37 +224,36 @@ A record can only be part of one dataset.
 
 #### Collection
 
-| Field              | Type              | Cardinality | Restrictions                                     | Remarks                                                                                                                                                    |
-|--------------------|-------------------|-------------|--------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `pid`              | id                | 1           |                                                  | or `ARK`? -> probably use `pid`                                                                                                                            |
-| `__id`             | string            | 1           |                                                  |                                                                                                                                                            |
-| `__type`           | string            | 1           | Literal 'Collection'                             |                                                                                                                                                            |
-| `name`             | string            | 1           |                                                  |                                                                                                                                                            |
-| `description`      | string / url      | 1-n         |                                                  |                                                                                                                                                            |
-| `typeOfData`       | string[]          | 1-n         | Literal "XML", "Text", "Image", "Video", "Audio" | copied from dataset; does this still make sense? -> Maybe not.                                                                                             |
-| `licenses`         | license[]         | 1-n         |                                                  | copied from dataset; should be computed from the records if available and optionally added manually.                                                       |
-| `copyright`        | string[]          | 1-n         |                                                  | computed along with license -> should be computed from the records if available and optionally added manually.                                             |
-| `languages`        | lang_string[]     | 1-n         |                                                  | copied from dataset; does this make sense? -> computed if available and optionally added manually.                                                         |
-| `attributions`     | attribution[]     | 1-n         |                                                  | copied from dataset; can this be calculated? -> Yes, if available and optionally added manually.                                                           |
-| `provenance`       | string            | 0-1         |                                                  | -> needed, see: [openAIRE Guidelines](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_source.html#dc-source) |
-| `distribution`     | url               | 0-1         |                                                  | copied from dataset; does this make sense? -> not needed                                                                                                   |
-| `records`          | id[]              | 0-n         | Record IDs                                       | can be 0 in case it points to a collection                                                                                                                 |
-| `collections`      | id[]              | 0-n         | Collection IDs                                   |                                                                                                                                                            |
-| `alternativeNames` | lang_string[]     | 0-n         |                                                  |                                                                                                                                                            |
-| `keywords`         | lang_string[]     | 0-n         |                                                  | does this make sense? -> Interesting for the search.                                                                                                       |
-| `urls`             | url[]             | 0-n         |                                                  | copied from dataset;                                                                                                                                       |
-| `additional`       | lang_string / url | 0-n         |                                                  | copied from dataset;  -> Probably not needed.                                                                                                              |
+| Field              | Type              | Cardinality | Restrictions                                     | Remarks                                                                                                                                         |
+| ------------------ | ----------------- | ----------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `__id`             | string            | 1           |                                                  |                                                                                                                                                 |
+| `__type`           | string            | 1           | Literal 'Collection'                             |                                                                                                                                                 |
+| `pid`              | id                | 1           |                                                  |                                                                                                                                                 |
+| `name`             | string            | 1           |                                                  |                                                                                                                                                 |
+| `description`      | string / url      | 1-n         |                                                  |                                                                                                                                                 |
+| `typeOfData`       | string[]          | 1-n         | Literal "XML", "Text", "Image", "Video", "Audio" | copied from dataset; does this still make sense? -> Maybe not.  -> should it be optional? or removed?                                           |
+| `licenses`         | license[]         | 1-n         |                                                  | computed from the records if available and optionally added manually                                                                            |
+| `copyright`        | string[]          | 1-n         |                                                  | computed from the records if available and optionally added manually                                                                            |
+| `languages`        | lang_string[]     | 1-n         |                                                  | copied from dataset; does this make sense? -> computed if available and optionally added manually.   -> ?                                       |
+| `attributions`     | attribution[]     | 1-n         |                                                  | computed from the records if available and optionally added manually                                                                            |
+| `provenance`       | string            | 0-1         |                                                  | see: [openAIRE Guidelines](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_source.html#dc-source) |
+| `records`          | id[]              | 0-n         | Record IDs                                       | can be 0 in case it points to a collection                                                                                                      |
+| `collections`      | id[]              | 0-n         | Collection IDs                                   |                                                                                                                                                 |
+| `alternativeNames` | lang_string[]     | 0-n         |                                                  |                                                                                                                                                 |
+| `keywords`         | lang_string[]     | 0-n         |                                                  | does this make sense? -> Interesting for the search.                                                                                            |
+| `urls`             | url[]             | 0-n         |                                                  | copied from dataset;                                                                                                                            |
+| `additional`       | lang_string / url | 0-n         |                                                  | copied from dataset;  -> Probably not needed.                                                                                                   |
+
+!!! note
+    In the long term (not for now), we need to reference the records in the collection.
 
 !!! question
-Do we need a reference to the records in the collection?
-
-!!! answer
-Yes, we would need that.
+    Is it correct, that collections are completely unuseable, as long as we don't have metadata on the record level?
 
 #### Record
 
 | Field               | Type        | Cardinality | Restrictions                                     | Remarks                                                                                                                                                                                                                                                    |
-|---------------------|-------------|-------------|--------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ------------------- | ----------- | ----------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `__id`              | string      | 1           |                                                  |                                                                                                                                                                                                                                                            |
 | `__type`            | string      | 1           | Literal 'Record'                                 |                                                                                                                                                                                                                                                            |
 | `pid`               | id          | 1           |                                                  | or `ARK`? -> probably use `pid`                                                                                                                                                                                                                            |
@@ -380,7 +290,7 @@ record aka license.
 #### Person
 
 | Field            | Type     | Cardinality | Restrictions                           | Remarks |
-|------------------|----------|-------------|----------------------------------------|---------|
+| ---------------- | -------- | ----------- | -------------------------------------- | ------- |
 | `__id`           | string   | 1           |                                        |         |
 | `__type`         | string   | 1           | Literal 'Person'                       |         |
 | `givenNames`     | string[] | 1-n         |                                        |         |
@@ -395,7 +305,7 @@ record aka license.
 #### Organization
 
 | Field             | Type        | Cardinality | Restrictions                           | Remarks |
-|-------------------|-------------|-------------|----------------------------------------|---------|
+| ----------------- | ----------- | ----------- | -------------------------------------- | ------- |
 | `__id`            | string      | 1           |                                        |         |
 | `__type`          | string      | 1           | Literal 'Organization'                 |         |
 | `name`            | string      | 1           |                                        |         |
@@ -431,7 +341,7 @@ or a more specific link, like a PID
 or a reference to a resource in an external authority file.
 
 | Field    | Type   | Cardinality | Restrictions                                                                                                                                |
-|----------|--------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| -------- | ------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | `__type` | string | 1           | Literal 'URL'                                                                                                                               |
 | `type`   | string | 1           | Literal 'URL', 'Geonames', 'Pleiades', 'Skos', 'Periodo', 'Chronontology', 'GND', 'VIAF', 'Grid', 'ORCID', 'Creative Commons', 'DOI', 'ARK' |
 | `url`    | string | 1           |                                                                                                                                             |
@@ -446,7 +356,7 @@ In the mid-term we should untangle this mess of URLs, ARKs, Geonames etc.
 #### Data Management Plan (`dmp`)
 
 | Field       | Type    | Cardinality | Restrictions                 |
-|-------------|---------|-------------|------------------------------|
+| ----------- | ------- | ----------- | ---------------------------- |
 | `__type`    | string  | 1           | Literal 'DataManagementPlan' |
 | `available` | boolean | 0-1         |                              |
 | `url`       | url     | 0-1         |                              |
@@ -463,14 +373,14 @@ If we cannot upload the DMP or provide a reference to a published, then we don't
 #### Publication
 
 | Field  | Type   | Cardinality | Restrictions |
-|--------|--------|-------------|--------------|
+| ------ | ------ | ----------- | ------------ |
 | `text` | string | 1           |              |
 | `url`  | url    | 0-1         |              |
 
 #### Address
 
 | Field        | Type   | Cardinality | Restrictions      |
-|--------------|--------|-------------|-------------------|
+| ------------ | ------ | ----------- | ----------------- |
 | `__type`     | string | 1           | Literal 'Address' |
 | `street`     | string | 1           |                   |
 | `postalCode` | string | 1           |                   |
@@ -482,7 +392,7 @@ If we cannot upload the DMP or provide a reference to a published, then we don't
 #### License
 
 | Field     | Type   | Cardinality | Restrictions      |
-|-----------|--------|-------------|-------------------|
+| --------- | ------ | ----------- | ----------------- |
 | `__type`  | string | 1           | Literal 'License' |
 | `license` | url    | 1           |                   |
 | `date`    | date   | 1           |                   |
@@ -500,7 +410,7 @@ License are depending on dates. It doesn't relate to a copyright statement.
 #### Attribution
 
 | Field    | Type   | Cardinality | Restrictions              | Remark                            |
-|----------|--------|-------------|---------------------------|-----------------------------------|
+| -------- | ------ | ----------- | ------------------------- | --------------------------------- |
 | `__type` | string | 1           | Literal 'Attribution'     |                                   |
 | `agent`  | id     | 1           | Person or Organization ID | Or can this only be person? -> No |
 | `roles`  | string | 1-n         |                           |                                   |
@@ -508,7 +418,7 @@ License are depending on dates. It doesn't relate to a copyright statement.
 #### Grant
 
 | Field     | Type   | Cardinality | Restrictions               |
-|-----------|--------|-------------|----------------------------|
+| --------- | ------ | ----------- | -------------------------- |
 | `__type`  | string | 1           | Literal 'Grant'            |
 | `funders` | id[]   | 1-n         | Person or Organization IDs |
 | `number`  | string | 0-1         |                            |
@@ -648,21 +558,40 @@ erDiagram
     }
 ```
 
+## Notes
+
+- [ ] Permissions: open, restricted, embargo, metadata only
+<!-- !!! question
+    Do we consider "permissions" as metadata?  
+    (Not as they are in the DSP, but as they will be in the archive;
+    that is: "open", "restricted", "embargo", "metadata only".)  
+    If so, this should be added on each level, I suppose.
+
+!!! answer
+    Yes, as COAR indicates, [COAR Access Rights](https://vocabularies.coar-repositories.org/access_rights/) -->
+- [ ] ...
+
 ## Change Log
 
 - Make `Grant` a value type and remove it from the top level.
 - Added entity `umbrellaProject` to the top level.
 - Added entity `collection` to the top level.
 - Added entity `record` to the top level.
+- Added `pid` to `project`.
+- Added `attributions` to `project`.
+- Added `licenses` to `project`.
+- Added `copyright` to `project`.
+- Added `abstract` to `project`.
 - Added `copyright` to `dataset`.
 - Changed type of `abstract`/`description` in `dataset` to `lang_string`.
 - Changed cardinality of `abstract`/`description` in `dataset` to 1.
 - Changed cardinality of `howToCite` in `dataset` to 0-1.
 - Changed cardinality of `description` in `dataset` to 0-1.
+- Removed `funders` from `project`.
 - Removed `accessConditions` from `dataset`.
 - Removed `status` from `dataset`.
 - Renamed `abstract` to `description` in `dataset`.
-- Removed `languages` from `dataset`.
+- Removed `languages` from `dataset`. (?)
 - Removed `datePublished`, and `dateModified` from `dataset`.
 - Removed `distribution` from `dataset`.
 - Removed `additional` from `dataset`.
