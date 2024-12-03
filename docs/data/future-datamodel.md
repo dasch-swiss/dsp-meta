@@ -184,6 +184,10 @@ most of the fields are optional.
     Do permissions need to be a complex object?
     Embargo probably needs the date when it ends.
 
+!!! question
+    `permissions` should be renamed to `rights` or `accessRights` 
+    (datacite uses `rights` and openAIRE and COAR use `accessRights`).
+
 
 #### Dataset
 
@@ -217,6 +221,9 @@ most of the fields are optional.
 !!! answer
     What is the meaning of `dateCreated` in this context?
 
+!!! question
+    Should `rights`/`accessRights` be added?
+
 A project can have more than one dataset if it's the project's wish and if it provides meaningful grouping of the
 records e.g., 2 researchers worked one one part of the data and the 2 other researchers on the other part of the data,
 EKWS digitizing different boxes and each box becomes a dataset.
@@ -224,25 +231,24 @@ A record can only be part of one dataset.
 
 #### Collection
 
-| Field              | Type              | Cardinality | Restrictions                                     | Remarks                                                                                                                                         |
-| ------------------ | ----------------- | ----------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `__id`             | string            | 1           |                                                  |                                                                                                                                                 |
-| `__type`           | string            | 1           | Literal 'Collection'                             |                                                                                                                                                 |
-| `pid`              | id                | 1           |                                                  |                                                                                                                                                 |
-| `name`             | string            | 1           |                                                  |                                                                                                                                                 |
-| `description`      | string / url      | 1-n         |                                                  |                                                                                                                                                 |
-| `typeOfData`       | string[]          | 1-n         | Literal "XML", "Text", "Image", "Video", "Audio" | copied from dataset; does this still make sense? -> Maybe not.  -> should it be optional? or removed?                                           |
-| `licenses`         | license[]         | 1-n         |                                                  | computed from the records if available and optionally added manually                                                                            |
-| `copyright`        | string[]          | 1-n         |                                                  | computed from the records if available and optionally added manually                                                                            |
-| `languages`        | lang_string[]     | 1-n         |                                                  | copied from dataset; does this make sense? -> computed if available and optionally added manually.   -> ?                                       |
-| `attributions`     | attribution[]     | 1-n         |                                                  | computed from the records if available and optionally added manually                                                                            |
-| `provenance`       | string            | 0-1         |                                                  | see: [openAIRE Guidelines](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_source.html#dc-source) |
-| `records`          | id[]              | 0-n         | Record IDs                                       | can be 0 in case it points to a collection                                                                                                      |
-| `collections`      | id[]              | 0-n         | Collection IDs                                   |                                                                                                                                                 |
-| `alternativeNames` | lang_string[]     | 0-n         |                                                  |                                                                                                                                                 |
-| `keywords`         | lang_string[]     | 0-n         |                                                  | does this make sense? -> Interesting for the search.                                                                                            |
-| `urls`             | url[]             | 0-n         |                                                  | copied from dataset;                                                                                                                            |
-| `additional`       | lang_string / url | 0-n         |                                                  | copied from dataset;  -> Probably not needed.                                                                                                   |
+| Field              | Type          | Cardinality | Restrictions                                     | Remarks                                                                                                                                         |
+| ------------------ | ------------- | ----------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `__id`             | string        | 1           |                                                  |                                                                                                                                                 |
+| `__type`           | string        | 1           | Literal 'Collection'                             |                                                                                                                                                 |
+| `pid`              | id            | 1           |                                                  |                                                                                                                                                 |
+| `name`             | string        | 1           |                                                  |                                                                                                                                                 |
+| `description`      | string / url  | 1-n         |                                                  |                                                                                                                                                 |
+| `typeOfData`       | string[]      | 1-n         | Literal "XML", "Text", "Image", "Video", "Audio" | copied from dataset; does this still make sense? -> Maybe not.  -> should it be optional? or removed?                                           |
+| `licenses`         | license[]     | 1-n         |                                                  | computed from the records if available and optionally added manually                                                                            |
+| `copyright`        | string[]      | 1-n         |                                                  | computed from the records if available and optionally added manually                                                                            |
+| `languages`        | lang_string[] | 1-n         |                                                  | copied from dataset; does this make sense? -> computed if available and optionally added manually.   -> ?                                       |
+| `attributions`     | attribution[] | 1-n         |                                                  | computed from the records if available and optionally added manually                                                                            |
+| `provenance`       | string        | 0-1         |                                                  | see: [openAIRE Guidelines](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_source.html#dc-source) |
+| `records`          | id[]          | 0-n         | Record IDs                                       | can be 0 in case it points to a collection                                                                                                      |
+| `collections`      | id[]          | 0-n         | Collection IDs                                   |                                                                                                                                                 |
+| `alternativeNames` | lang_string[] | 0-n         |                                                  |                                                                                                                                                 |
+| `keywords`         | lang_string[] | 0-n         |                                                  |                                                                                                                                                 |
+| `urls`             | url[]         | 0-n         |                                                  |                                                                                                                                                 |
 
 !!! note
     In the long term (not for now), we need to reference the records in the collection.
@@ -250,42 +256,44 @@ A record can only be part of one dataset.
 !!! question
     Is it correct, that collections are completely unuseable, as long as we don't have metadata on the record level?
 
+!!! question
+    Should `rights`/`accessRights` be added?
+
 #### Record
 
-| Field               | Type        | Cardinality | Restrictions                                     | Remarks                                                                                                                                                                                                                                                    |
-| ------------------- | ----------- | ----------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `__id`              | string      | 1           |                                                  |                                                                                                                                                                                                                                                            |
-| `__type`            | string      | 1           | Literal 'Record'                                 |                                                                                                                                                                                                                                                            |
-| `pid`               | id          | 1           |                                                  | or `ARK`? -> probably use `pid`                                                                                                                                                                                                                            |
-| `label`             | lang_string | 1           |                                                  | do we want this, or does it go too far? -> We want to keep it because it's the "name" of the record. But we can think about renaming it.                                                                                                                   |
-| `accessConditions`  | string      | 1           | Literal "open", "restricted" or "closed"         | copied from dataset; change to proper terms -> open, restricted, embargoed, metadata-only and renaming  `accessConditions` to `rights` to be in line with openAIRE.                                                                                        |
-| `embargoPeriodDate` | date        | 0-1         |                                                  | -> needs to be added to be in line with openAIRE, e.g., ```<datacite:dates> <datacite:date dateType="Accepted">2011-12-01</datacite:date> <datacite:date dateType="Available">2012-12-01</datacite:date> </datacite:dates>```                              |
-| `publisher`         | string      | 1           |                                                  | should be DaSCH                                                                                                                                                                                                                                            |
-| `license`           | license     | 1           |                                                  | copied from dataset; should be computed from the records -> No, you have to indicate the license here. Computation is not possible.                                                                                                                        |
-| `copyright`         | string      | 1           |                                                  | computed along with license -> -> No, you have to indicate the copyright here. Computation is not possible.                                                                                                                                                |
-| `attribution`       | attribution | 1           |                                                  | do we want this, or does it go too far? -> Yes                                                                                                                                                                                                             |
-| `provenance`        | string      | 0-1         |                                                  | do we want this, or does it go too far? -> Yes, [openAIRE data-source](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_source.html#dc-source)                                                                |
-| `datePublished`     | date        | 0-1         |                                                  | copied from dataset; do they make sense? -> Yes                                                                                                                                                                                                            |
-| `dateCreated`       | date        | 0-1         |                                                  | copied from dataset; do they make sense?  -> Yes                                                                                                                                                                                                           |
-| `dateModified`      | date        | 0-1         |                                                  | copied from dataset; do they make sense?   -> Yes                                                                                                                                                                                                          |
-| `typeOfData`        | string      | 0-1         | Literal "XML", "Text", "Image", "Video", "Audio" | copied from dataset; wanted? what values?    -> Yes, type is computed and should represent: [openAIRE Resource Type](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_publicationtype.html#aire-resourcetype) |
-| `size`              | string      | 0-1         |                                                  | needs to be added, see: [openAIRE Size](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_size.html#dci-size)                                                                                                  |
-| `audience`          | string      | 0-n         |                                                  | needs to be added, see: [openAIRE Audience](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_audience.html#dct-audience)                                                                                      |
+| Field               | Type        | Cardinality | Restrictions                                               | Remarks                                                                                                                                                                                                                                                    |
+| ------------------- | ----------- | ----------- | ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `__id`              | string      | 1           |                                                            |                                                                                                                                                                                                                                                            |
+| `__type`            | string      | 1           | Literal 'Record'                                           |                                                                                                                                                                                                                                                            |
+| `pid`               | id          | 1           |                                                            |                                                                                                                                                                                                                                                            |
+| `label`             | lang_string | 1           |                                                            | do we want this, or does it go too far? -> We want to keep it because it's the "name" of the record. But we can think about renaming it.                                                                                                                   |
+| `accessConditions`  | string      | 1           | Literal "open", "restricted", "embargo" or "metadata only" | copied from dataset; change to proper terms -> open, restricted, embargoed, metadata-only and renaming  `accessConditions` to `rights` to be in line with openAIRE.                                                                                        |
+| `embargoPeriodDate` | date        | 0-1         |                                                            | -> needs to be added to be in line with openAIRE, e.g., ```<datacite:dates> <datacite:date dateType="Accepted">2011-12-01</datacite:date> <datacite:date dateType="Available">2012-12-01</datacite:date> </datacite:dates>```                              |
+| `publisher`         | string      | 1           |                                                            | should be DaSCH                                                                                                                                                                                                                                            |
+| `license`           | license     | 1           |                                                            | copied from dataset; should be computed from the records -> No, you have to indicate the license here. Computation is not possible.                                                                                                                        |
+| `copyright`         | string      | 1           |                                                            | computed along with license -> -> No, you have to indicate the copyright here. Computation is not possible.                                                                                                                                                |
+| `attribution`       | attribution | 1           |                                                            | do we want this, or does it go too far? -> Yes                                                                                                                                                                                                             |
+| `provenance`        | string      | 0-1         |                                                            | do we want this, or does it go too far? -> Yes, [openAIRE data-source](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_source.html#dc-source)                                                                |
+| `datePublished`     | date        | 0-1         |                                                            | copied from dataset; do they make sense? -> Yes                                                                                                                                                                                                            |
+| `dateCreated`       | date        | 0-1         |                                                            | copied from dataset; do they make sense?  -> Yes                                                                                                                                                                                                           |
+| `dateModified`      | date        | 0-1         |                                                            | copied from dataset; do they make sense?   -> Yes                                                                                                                                                                                                          |
+| `typeOfData`        | string      | 0-1         | Literal "XML", "Text", "Image", "Video", "Audio"           | copied from dataset; wanted? what values?    -> Yes, type is computed and should represent: [openAIRE Resource Type](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_publicationtype.html#aire-resourcetype) |
+| `size`              | string      | 0-1         |                                                            | needs to be added, see: [openAIRE Size](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_size.html#dci-size)                                                                                                  |
+| `audience`          | string      | 0-n         |                                                            | needs to be added, see: [openAIRE Audience](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_audience.html#dct-audience)                                                                                      |
 
 !!! question
-How granular do we want to be with the metadata on the record level?
-
-!!! answer
-We need provenance,
-see: [openAIRE Source](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_source.html#dc-source)
+    rename `accessConditions` to `rights` or `accessRights`?
 
 !!! question
-If we have copyright, what is the purpose of attribution?
+    How granular do we want to be with the metadata on the record level?
 
 !!! answer
-Copyright doesn't have anything to do with attribution. Attribution is who did something with the data. Copyright is
-person/organization who holds the right to this record and can give others the permission to do something with this
-record aka license.
+    We need provenance,
+    see: [openAIRE Source](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_source.html#dc-source)
+
+!!! question
+    Not sure what to make of that.
+
 
 #### Person
 
@@ -427,6 +435,8 @@ License are depending on dates. It doesn't relate to a copyright statement.
 
 ## Entity-Relationship Diagram
 
+<!-- ERD needs to be updated (once finalized) -->
+
 ```mermaid
 erDiagram
     umbrellaProject |o--|{ project : projects
@@ -558,19 +568,6 @@ erDiagram
     }
 ```
 
-## Notes
-
-- [ ] Permissions: open, restricted, embargo, metadata only
-<!-- !!! question
-    Do we consider "permissions" as metadata?  
-    (Not as they are in the DSP, but as they will be in the archive;
-    that is: "open", "restricted", "embargo", "metadata only".)  
-    If so, this should be added on each level, I suppose.
-
-!!! answer
-    Yes, as COAR indicates, [COAR Access Rights](https://vocabularies.coar-repositories.org/access_rights/) -->
-- [ ] ...
-
 ## Change Log
 
 - Make `Grant` a value type and remove it from the top level.
@@ -597,3 +594,4 @@ erDiagram
 - Removed `additional` from `dataset`.
 - Removed `alternativeTitles` from `dataset`.
 - Removed `urls` from `dataset`.
+- Changed options of `rights` etc. to "open", "restricted", "embargo", "metadata only".
