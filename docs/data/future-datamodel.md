@@ -355,11 +355,8 @@ or a reference to a resource in an external authority file.
 | `url`    | string | 1           |                                                                                                                                             |
 | `text`   | string | 0-1         |                                                                                                                                             |
 
-!!! question
-can we model different types of URLs in a more sensible way?
-
-!!! answer
-In the mid-term we should untangle this mess of URLs, ARKs, Geonames etc.
+!!! note
+    Long term, we should reconsider the `type` field options.
 
 #### Data Management Plan (`dmp`)
 
@@ -370,13 +367,16 @@ In the mid-term we should untangle this mess of URLs, ARKs, Geonames etc.
 | `url`       | url     | 0-1         |                              |
 
 !!! question
-Does the model for `Data Management Plan` still make sense?
-Could it be a string?
-Is "available" useful information?
-How do we ensure that either `available` or `url` is set?
+    Does the model for `Data Management Plan` still make sense?
+    Could it be a string?
+    Is "available" useful information?
+    How do we ensure that either `available` or `url` is set?
 
 !!! answer
-If we cannot upload the DMP or provide a reference to a published, then we don't need this.
+    If we cannot upload the DMP or provide a reference to a published, then we don't need this.
+
+!!! question
+    Should we then just turn DMP into an optional string/url field?
 
 #### Publication
 
@@ -407,13 +407,11 @@ If we cannot upload the DMP or provide a reference to a published, then we don't
 | `details` | string | 0-1         |                   |
 
 !!! question
-Is this model up to date with our current understanding of licenses?
-Is `details` ever used?
-What is the purpose of `date` here?
-How does it relate to a copyright statement?
+    Is this model up to date with our current understanding of licenses?
+    Is `details` ever used?
 
-!!! answer
-License are depending on dates. It doesn't relate to a copyright statement.
+!!! question
+    Should we have a similar model for copyright?
 
 #### Attribution
 
