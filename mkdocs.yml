@@ -2,7 +2,7 @@ site_name: DSP-META
 
 nav:
     - DSP-META: index.md
-    - Consuming Metadata:
+    - Metadata:
           - Metadata API: data/api.md
           - Current Data Model: data/current-datamodel.md
           - Future Data Model: data/future-datamodel.md
