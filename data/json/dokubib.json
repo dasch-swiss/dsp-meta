@@ -26,13 +26,22 @@
         "en": "Historic photograph"
       },
       {
+        "de": "Historisches Foto"
+      },
+      {
         "en": "Local history"
       },
       {
-        "en": "St. Moritz"
+        "de": "Ortsgeschichte"
       },
       {
-        "fr": "Touristic development"
+        "de": "St. Moritz"
+      },
+      {
+        "en": "Touristic development"
+      },
+      {
+        "de": "Touristische Entwicklung"
       }
     ],
     "name": "Bilddatenbank Bibliothek St. Moritz",
