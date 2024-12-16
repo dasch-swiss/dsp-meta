@@ -26,13 +26,22 @@
         "en": "Historic photograph"
       },
       {
+        "de": "Historisches Foto"
+      },
+      {
         "en": "Local history"
       },
       {
-        "en": "St. Moritz"
+        "de": "Ortsgeschichte"
       },
       {
-        "fr": "Touristic development"
+        "de": "St. Moritz"
+      },
+      {
+        "en": "Touristic development"
+      },
+      {
+        "de": "Touristische Entwicklung"
       }
     ],
     "name": "Bilddatenbank Bibliothek St. Moritz",
@@ -69,7 +78,13 @@
     "url": {
       "__type": "URL",
       "type": "URL",
-      "url": "https://data.dasch.swiss/dokubib/",
+      "url": "https://app.dasch.swiss/project/ZjLtCB-rRpG-NglRpxy1dg",
+      "text": "Discover Project Data"
+    },
+    "secondaryURL": {
+      "__type": "URL",
+      "type": "URL",
+      "url": "https://www.biblio-stmoritz.ch/dokumentationsbibliothek",
       "text": "Project Website"
     },
     "status": "Ongoing"
@@ -90,6 +105,18 @@
           "de": "Deutsch",
           "en": "German",
           "fr": "allemand"
+        }
+      ],
+      "licenses": [
+        {
+          "__type": "License",
+          "date": "2024-12-10",
+          "license": {
+            "__type": "URL",
+            "type": "Creative Commons",
+            "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+            "text": "CC BY-NC-ND 4.0"
+          }
         }
       ],
       "attributions": [
