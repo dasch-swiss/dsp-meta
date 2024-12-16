@@ -2,7 +2,7 @@
   "$schema": "../../resources/schema-metadata-draft.json",
   "project": {
     "__type": "Project",
-    "howToCite": "Digital LIMC (2021): Digital LIMC, DaSCH. https://weblimc.org/page/home/Basel",
+    "howToCite": "Digital LIMC (2021): Digital LIMC [database], DaSCH. https://ark.dasch.swiss/ark:/72163/1/080E.",
     "teaserText": "Digital LIMC contains what we know about the iconography of Greek, Etruscan and Roman mythology, both in ancient Greek, Etruscan and Roman art as well as in neighbouring Mediterranean cultures.",
     "datasets": [
       "http://ns.dasch.swiss/repository#dsp-080E-dataset-000"
@@ -146,7 +146,7 @@
       "accessConditions": "open",
       "dateCreated": "2014-06-02",
       "datePublished": "2016-12-20",
-      "howToCite": "Digital LIMC (2021): Digital LIMC, DaSCH. https://weblimc.org/page/home/Basel",
+      "howToCite": "Digital LIMC (2021): Digital LIMC [database], DaSCH. https://ark.dasch.swiss/ark:/72163/1/080E.",
       "languages": [
         {
           "en": "English",
