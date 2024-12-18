@@ -101,17 +101,17 @@ but it is always part of one of the top-level elements.
 Such elements do not have an identifier,
 but are identified by their position in the hierarchy.
 
-| Field             | Type            | Cardinality |
-| ----------------- | --------------- | ----------- |
-| `$schema`         | string          | 0-1         |
-| `umbrellaProject` | umbrellaProject | 0-1         |
-| `project`         | project         | 1           |
-| `datasets`        | dataset[]       | 1-n         |
-| `collections`     | collection[]    | 0-n         |
-| `records`         | record[]        | 0-n         |
-| `persons`         | person[]        | 0-n         |
-| `organizations`   | organization[]  | 0-n         |
+| Field             | Type            | Archival Cardinality | In-progress Cardinality |
+| ----------------- | --------------- | -------------------- | ----------------------- |
+| `umbrellaProject` | umbrellaProject | 0-1                  | 0-1                     |
+| `project`         | project         | 1 / 1-n              | 1 / 0-1                 |
+| `datasets`        | dataset[]       | 1-n                  | 0-n                     |
+| `collections`     | collection[]    | 0-n                  | 0-n                     |
+| `records`         | record[]        | 1-n                  | 0-n                     |
+| `persons`         | person[]        | 0-n                  | 0-n                     |
+| `organizations`   | organization[]  | 0-n                  | 0-n                     |
 
+<!-- TODO: update text to clarify cards of project -->
 
 
 ## Types
@@ -122,63 +122,55 @@ but are identified by their position in the hierarchy.
 
 | Field              | Type          | Card. | Restrictions                                                   |
 | ------------------ | ------------- | ----- | -------------------------------------------------------------- |
-| `__id`             | string        | 1     |                                                                |
-| `__type`           | string        | 1     | Literal 'UmbrellaProject'                                      |
 | `pid`              | id            | 1     |                                                                |
 | `name`             | string        | 1     |                                                                |
 | `projects`         | id[]          | 1-n   | String containing the identifier of a project                  |
 | `description`      | lang_string   | 0-1   |                                                                |
 | `url`              | url           | 0-1   |                                                                |
+| `hotToCite`        | string        | 0-1   |                                                                |
 | `alternativeNames` | lang_string[] | 0-n   |                                                                |
 | `contactPoint`     | id[]          | 0-n   | Strings containing the identifiers of a person or organization |
 
-!!! question
-    This opens up the questions of how to deal with multiple projects in a umbrella project.
-    We probably want to keep one entry per project,
-    so this leaves us with either duplicating the umbrella project metadata for each project,
-    or having umbrella project metadata separately and only linking it from the project.
-    The latter seems preferable,
-    but then the question arises who gets to edit the umbrella project metadata.  
-    For a first implementation, we could simply duplicate the metadata for each project,
-    and later factor it out.
+<!-- TODO: Project Cluster instead of umbrella project -->
+<!-- TODO: project can be part of multiple clusters -->
+<!-- TODO: can clusters have clusters? probably -->
 
-!!! question
-    do we need `howToCite` for the umbrella project?
+<!-- TODO: multiple attributions? -->
+<!-- TODO: align with copyright/license stuff -->
 
 To make the model of this entity as flexible as possible,
 most of the fields are optional.
 
 #### Project
 
-| Field                | Type                | Cardinality | Restrictions                                                                                                                                             |
-| -------------------- | ------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `__type`             | string              | 1           | Literal "Project"                                                                                                                                        |
-| `pid`                | id                  | 1           |                                                                                                                                                          |
-| `shortcode`          | string              | 1           | 4 char hexadecimal                                                                                                                                       |
-| `status`             | string              | 1           | Literal "Ongoing" or "Finished"                                                                                                                          |
-| `name`               | string              | 1           |                                                                                                                                                          |
-| `description`        | lang_string         | 1           |                                                                                                                                                          |
-| `startDate`          | date                | 1           | String of format "YYYY-MM-DD"                                                                                                                            |
-| `teaserText`         | string              | 1           |                                                                                                                                                          |
-| `url`                | url                 | 1           |                                                                                                                                                          |
-| `howToCite`          | string              | 1           |                                                                                                                                                          |
-| `permissions`        | string              | 1           | Literal "open", "restricted", "embargo" or "metadata only", according to [COAR Access Rights](https://vocabularies.coar-repositories.org/access_rights/) |
-| `datasets`           | id[]                | 1-n         | String containing the identifier of a dataset                                                                                                            |
-| `keywords`           | lang_string[]       | 1-n         |                                                                                                                                                          |
-| `disciplines`        | lang_string / url[] | 1-n         |                                                                                                                                                          |
-| `temporalCoverage`   | lang_string / url[] | 1-n         |                                                                                                                                                          |
-| `spatialCoverage`    | url[]               | 1-n         |                                                                                                                                                          |
-| `attributions`       | attribution[]       | 1-n         | computed from the records if available and optionally added manually                                                                                     |
-| `licenses`           | license[]           | 1-n         | computed from the records if available and optionally added manually                                                                                     |
-| `copyright`          | string[]            | 1-n         | computed from the records if available and optionally added manually                                                                                     |
-| `abstract`           | lang_string         | 0-1         |                                                                                                                                                          |
-| `endDate`            | date                | 0-1         | String of format "YYYY-MM-DD"                                                                                                                            |
-| `secondaryURL`       | url                 | 0-1         |                                                                                                                                                          |
-| `dataManagementPlan` | dmp                 | 0-1         |                                                                                                                                                          |
-| `contactPoint`       | id                  | 0-1         | String containing the identifier of a person or organization                                                                                             |
-| `publications`       | publication[]       | 0-n         |                                                                                                                                                          |
-| `grants`             | grant[]             | 0-n         |                                                                                                                                                          |
-| `alternativeNames`   | lang_string[]       | 0-n         |                                                                                                                                                          |
+| Field                | Type                | Card. | WIP Card. | Restrictions                                                                                                                                             |
+| -------------------- | ------------------- | ----- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pid`                | id                  | 1     | 1         |                                                                                                                                                          |
+| `shortcode`          | string              | 1     | 1         | 4 char hexadecimal                                                                                                                                       |
+| `status`             | string              | 1     | 1         | Literal "Ongoing" or "Finished"                                                                                                                          |
+| `name`               | string              | 1     | 1         |                                                                                                                                                          |
+| `description`        | lang_string         | 1     | 1         |                                                                                                                                                          |
+| `startDate`          | date                | 1     | 1         | String of format "YYYY-MM-DD"                                                                                                                            |
+| `teaserText`         | string              | 1     | 1         |                                                                                                                                                          |
+| `url`                | url                 | 1     | 1         |                                                                                                                                                          |
+| `howToCite`          | string              | 1     | 1         |                                                                                                                                                          |
+| `permissions`        | string              | 1     | 1         | Literal "open", "restricted", "embargo" or "metadata only", according to [COAR Access Rights](https://vocabularies.coar-repositories.org/access_rights/) |
+| `datasets`           | id[]                | 1-n   | 1-n       | String containing the identifier of a dataset                                                                                                            |
+| `keywords`           | lang_string[]       | 1-n   | 1-n       |                                                                                                                                                          |
+| `disciplines`        | lang_string / url[] | 1-n   | 1-n       |                                                                                                                                                          |
+| `temporalCoverage`   | lang_string / url[] | 1-n   | 1-n       |                                                                                                                                                          |
+| `spatialCoverage`    | url[]               | 1-n   | 1-n       |                                                                                                                                                          |
+| `attributions`       | attribution[]       | 1-n   | 1-n       | computed from the records if available and optionally added manually                                                                                     |
+| `licenses`           | license[]           | 1-n   | 1-n       | computed from the records if available and optionally added manually                                                                                     |
+| `copyright`          | string[]            | 1-n   | 1-n       | computed from the records if available and optionally added manually                                                                                     |
+| `abstract`           | lang_string         | 0-1   | 0-1       |                                                                                                                                                          |
+| `endDate`            | date                | 0-1   | 0-1       | String of format "YYYY-MM-DD"                                                                                                                            |
+| `secondaryURL`       | url                 | 0-1   | 0-1       |                                                                                                                                                          |
+| `dataManagementPlan` | dmp                 | 0-1   | 0-1       |                                                                                                                                                          |
+| `contactPoint`       | id                  | 0-1   | 0-1       | String containing the identifier of a person or organization                                                                                             |
+| `publications`       | publication[]       | 0-n   | 0-n       |                                                                                                                                                          |
+| `grants`             | grant[]             | 0-n   | 0-n       |                                                                                                                                                          |
+| `alternativeNames`   | lang_string[]       | 0-n   | 0-n       |                                                                                                                                                          |
 
 !!! question
     Do permissions need to be a complex object?
