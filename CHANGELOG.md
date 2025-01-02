@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.3.4](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.3...dsp-meta-v2.3.4) (2025-01-02)
+
+
+### Maintenances
+
+* **deps:** Bump the backend-dependencies group across 1 directory with 9 updates ([#293](https://github.com/dasch-swiss/dsp-meta/issues/293)) ([71717ac](https://github.com/dasch-swiss/dsp-meta/commit/71717ac28577c024423e6ddbfbd2e8be47a875d4))
+* Update Copyright 2025 ([#295](https://github.com/dasch-swiss/dsp-meta/issues/295)) ([b9d046c](https://github.com/dasch-swiss/dsp-meta/commit/b9d046c03c4804af69d379af1cc92c79063bbfb2))
+
 ## [2.3.3](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.2...dsp-meta-v2.3.3) (2024-12-16)
 
 
