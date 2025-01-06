@@ -12,9 +12,9 @@ authors = ["DaSCH - Swiss National Data and Service Center for the Humanities"]
 
 [dependencies]
 anyhow = "1"
-async-trait = "0.1.83"
-axum = "0.7.9" # web framework
-axum-macros = "0.4.2"
+async-trait = "0.1.84"
+axum = "0.8.1" # web framework
+axum-macros = "0.5.0"
 clap = { version = "4.5.23", features = ["derive"] } # command-line parser
 config = "0.15.4" # Layered configuration with strong support for 12-factor applications
 chrono = { version = "0.4.39", features = ["serde"] }
