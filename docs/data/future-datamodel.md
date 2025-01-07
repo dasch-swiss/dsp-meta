@@ -19,7 +19,7 @@ the inherent complexity of humanities projects, while still being flexible enoug
 support simpler project structures.
 
 One of the key improvements is the introduction of an additional hierarchical level above
-the research project, which we refer to as the umbrella project. This allows for a more
+the research project, which we refer to as a project cluster. This allows for a more
 accurate representation of overarching initiatives that span multiple research projects
 over extended periods. Additionally, we have implemented collections and subcollections
 to facilitate more precise referencing and organization of different parts of the data,
@@ -30,6 +30,13 @@ that supports the integrity and longevity of humanities research data. This evol
 reflects our commitment to capturing the rich, nuanced histories of research projects
 with greater accuracy and detail.
 
+!!! note
+    For each property, two cardinalities are given:  
+    1. The archival cardinality, referring to the cardinality of the property 
+    once the entity is finished/finalized for archival.  
+    2. The in-progress cardinality, referring to the cardinality of the property
+    while the entity is still in progress.
+
 ## Overview
 
 The metadata model is a hierarchical structure of metadata elements.
@@ -37,16 +44,17 @@ The metadata model is a hierarchical structure of metadata elements.
 ```mermaid
 
 flowchart TD
-    hyper-project[Umbrella Project] -->|1-n| project[Research Project]
+    projectCluster[ProjectCluster] -->|0-n| project[Research Project]
+    projectCluster -->|0-n| projectCluster
     project -->|1-n| dataset[Dataset]
     dataset -->|1-n| record[Record]
     project -->|0-n| collection[Collection]
+    projectCluster -->|0-n| collection
     collection --> collection
-    hyper-project -->|0-n| collection
     collection --> record
 ```
 
-- A `Umbrella Project` is optional and collects one or more `Research Projects`.  
+- A `Project Cluster` collects `Research Projects` or nested `Project Clusters`.  
   It is typically of institutional nature,
   not directly tied to a specific funding grant,
   and may be long-lived.  
@@ -56,7 +64,7 @@ flowchart TD
   It is typically tied to a specific funding grant,
   and hence has a limited lifetime of ~3-5 years;
   multiple funding rounds and a longer lifetime are possible.  
-  A `Research Project` is part of 0-1 `Umbrella Project`,
+  A `Research Project` is part of 0-n `Project Clusters`,
   it has 1-n `Datasets` and 0-n `Collections`.
 - A `Dataset` is a descrete segmentation of the `Records` of a `Research Project`.  
   It is a logical grouping of `Records`, and may be based on the type of data,
@@ -68,7 +76,7 @@ flowchart TD
   and may have a "historical meaning" in the context of the project.  
   Examples may be physical collections such as p person's "Nachlass" in an archive,
   or groupings of records based on a specific research question within a project.  
-  A `Collection` is part of at least 1 `Research Project`, `Umbrella Project` or `Collection`,
+  A `Collection` is part of at least 1 `Research Project`, `Project Cluster` or `Collection`,
   but can be part of multiple. It may either contain 0-n `Collections` or 1-n `Records`.  
   By allowing nested collections, and records to be part of multiple collections, 
   collections can be used to represent relationships or changes in the data over time.
@@ -85,7 +93,7 @@ and may be related to various entities within the hierarchy.
 
 A set of metadata consists of the following top-level elements:
 
-- Umbrella Project
+- Project Cluster
 - Project
 - Dataset
 - Collection
@@ -96,29 +104,26 @@ A set of metadata consists of the following top-level elements:
 Each of these elements is an entity identified by a unique identifier.
 Other elements can refer to these entities by their identifier.
 
-Any other metadata element may itself be a complex object,
+Any other metadata element may itself be a complex object as presented in data,
 but it is always part of one of the top-level elements.
 Such elements do not have an identifier,
 but are identified by their position in the hierarchy.
 
-| Field             | Type            | Archival Cardinality | In-progress Cardinality |
-| ----------------- | --------------- | -------------------- | ----------------------- |
-| `umbrellaProject` | umbrellaProject | 0-1                  | 0-1                     |
-| `project`         | project         | 1 / 1-n              | 1 / 0-1                 |
-| `datasets`        | dataset[]       | 1-n                  | 0-n                     |
-| `collections`     | collection[]    | 0-n                  | 0-n                     |
-| `records`         | record[]        | 1-n                  | 0-n                     |
-| `persons`         | person[]        | 0-n                  | 0-n                     |
-| `organizations`   | organization[]  | 0-n                  | 0-n                     |
-
-<!-- TODO: update text to clarify cards of project -->
-
+| Field            | Type           | Archival Cardinality | In-progress Cardinality |
+| ---------------- | -------------- | -------------------- | ----------------------- |
+| `projectCluster` | projectCluster | 0-1                  | 0-1                     |
+| `project`        | project        | 1 / 1-n              | 1 / 0-1                 |
+| `datasets`       | dataset[]      | 1-n                  | 0-n                     |
+| `collections`    | collection[]   | 0-n                  | 0-n                     |
+| `records`        | record[]       | 1-n                  | 0-n                     |
+| `persons`        | person[]       | 0-n                  | 0-n                     |
+| `organizations`  | organization[] | 0-n                  | 0-n                     |
 
 ## Types
 
 ### Entity Types
 
-#### Umbrella Project
+#### Project Cluster
 
 | Field              | Type          | Card. | Restrictions                                                   |
 | ------------------ | ------------- | ----- | -------------------------------------------------------------- |
@@ -130,10 +135,6 @@ but are identified by their position in the hierarchy.
 | `hotToCite`        | string        | 0-1   |                                                                |
 | `alternativeNames` | lang_string[] | 0-n   |                                                                |
 | `contactPoint`     | id[]          | 0-n   | Strings containing the identifiers of a person or organization |
-
-<!-- TODO: Project Cluster instead of umbrella project -->
-<!-- TODO: project can be part of multiple clusters -->
-<!-- TODO: can clusters have clusters? probably -->
 
 <!-- TODO: multiple attributions? -->
 <!-- TODO: align with copyright/license stuff -->
@@ -429,7 +430,7 @@ or a reference to a resource in an external authority file.
 
 ```mermaid
 erDiagram
-    umbrellaProject |o--|{ project : projects
+    projectCluster |o--|{ project : projects
     project ||--|{ dataset : datasets
     project ||--|| person : contactPoint
     project ||--|| organization : contactPoint
@@ -441,9 +442,8 @@ erDiagram
     collection |o--o{ record : records
     person ||--|{ organization : affiliations
 
-    umbrellaProject {
+    projectCluster {
         string __id "1"
-        string __type "1; Literal 'UmbrellaProject'"
         string name "1"
         id[] projects "1-n; Project IDs"
         lang_string description "0-1"
@@ -561,7 +561,7 @@ erDiagram
 ## Change Log
 
 - Make `Grant` a value type and remove it from the top level.
-- Added entity `umbrellaProject` to the top level.
+- Added entity `projectCluster` to the top level.
 - Added entity `collection` to the top level.
 - Added entity `record` to the top level.
 - Added `pid` to `project`.

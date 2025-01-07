@@ -3,7 +3,21 @@
 The dsp-meta repository contains the code of the [DSP Metadata Browser](https://meta.dasch.swiss),
 as well all metadata from projects deposited on the DaSCH Service Platform (DSP).
 
-## DSP Metadata
+## Metadata in DSP
+
+Alongside primary data, DSP contains metadata that conceptually falls into three categories:
+
+- Firstly, research projects can generate domain specific metadata themselves 
+  within the bounds of the project's data model, 
+  e.g. descriptions of images, editorial annotations, etc.
+- Secondly, the DSP maintains a set of technical metadata, which is system-internal only.
+- Thirdly, the DSP maintains a set of domain agnostic metadata that is shared across all projects. 
+  This metadata is always present and openly accessible - independent of the project's access rights - 
+  to ensure findability and reusability of the data.
+  
+It is this third category that is of interest here. 
+
+## Metadata on Research Data
 
 This documentation provides an overview of the metadata model used by the DSP to manage and describe
 research data in the humanities. Our vision is to fully capture the provenance of research data—detailing
