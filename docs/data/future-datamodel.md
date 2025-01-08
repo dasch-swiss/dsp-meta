@@ -31,11 +31,14 @@ reflects our commitment to capturing the rich, nuanced histories of research pro
 with greater accuracy and detail.
 
 !!! note
-    For each property, two cardinalities are given:  
-    1. The archival cardinality, referring to the cardinality of the property 
+    For each property, two cardinalities are given:
+
+    - The archival cardinality, referring to the cardinality of the property 
     once the entity is finished/finalized for archival.  
-    2. The in-progress cardinality, referring to the cardinality of the property
+    - The in-progress cardinality, referring to the cardinality of the property
     while the entity is still in progress.
+
+    If only one cardinality is given, it applies to both stages.
 
 ## Overview
 
@@ -129,80 +132,72 @@ but are identified by their position in the hierarchy.
 | ------------------ | ------------- | ----- | -------------------------------------------------------------- |
 | `pid`              | id            | 1     |                                                                |
 | `name`             | string        | 1     |                                                                |
-| `projects`         | id[]          | 1-n   | String containing the identifier of a project                  |
+| `projects`         | id[]          | 0-n   | String containing the identifier of a project                  |
+| `projectClusters`  | id[]          | 0-n   | String containing the identifier of a project cluster          |
 | `description`      | lang_string   | 0-1   |                                                                |
 | `url`              | url           | 0-1   |                                                                |
 | `hotToCite`        | string        | 0-1   |                                                                |
 | `alternativeNames` | lang_string[] | 0-n   |                                                                |
 | `contactPoint`     | id[]          | 0-n   | Strings containing the identifiers of a person or organization |
 
-<!-- TODO: multiple attributions? -->
-<!-- TODO: align with copyright/license stuff -->
+<!-- TODO: check copyright/license stuff -->
 
 To make the model of this entity as flexible as possible,
 most of the fields are optional.
 
+<!-- TODO: update cardinalities to span both archival and in-progress stages -->
+
 #### Project
 
-| Field                | Type                | Card. | WIP Card. | Restrictions                                                                                                                                             |
-| -------------------- | ------------------- | ----- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pid`                | id                  | 1     | 1         |                                                                                                                                                          |
-| `shortcode`          | string              | 1     | 1         | 4 char hexadecimal                                                                                                                                       |
-| `status`             | string              | 1     | 1         | Literal "Ongoing" or "Finished"                                                                                                                          |
-| `name`               | string              | 1     | 1         |                                                                                                                                                          |
-| `description`        | lang_string         | 1     | 1         |                                                                                                                                                          |
-| `startDate`          | date                | 1     | 1         | String of format "YYYY-MM-DD"                                                                                                                            |
-| `teaserText`         | string              | 1     | 1         |                                                                                                                                                          |
-| `url`                | url                 | 1     | 1         |                                                                                                                                                          |
-| `howToCite`          | string              | 1     | 1         |                                                                                                                                                          |
-| `permissions`        | string              | 1     | 1         | Literal "open", "restricted", "embargo" or "metadata only", according to [COAR Access Rights](https://vocabularies.coar-repositories.org/access_rights/) |
-| `datasets`           | id[]                | 1-n   | 1-n       | String containing the identifier of a dataset                                                                                                            |
-| `keywords`           | lang_string[]       | 1-n   | 1-n       |                                                                                                                                                          |
-| `disciplines`        | lang_string / url[] | 1-n   | 1-n       |                                                                                                                                                          |
-| `temporalCoverage`   | lang_string / url[] | 1-n   | 1-n       |                                                                                                                                                          |
-| `spatialCoverage`    | url[]               | 1-n   | 1-n       |                                                                                                                                                          |
-| `attributions`       | attribution[]       | 1-n   | 1-n       | computed from the records if available and optionally added manually                                                                                     |
-| `licenses`           | license[]           | 1-n   | 1-n       | computed from the records if available and optionally added manually                                                                                     |
-| `copyright`          | string[]            | 1-n   | 1-n       | computed from the records if available and optionally added manually                                                                                     |
-| `abstract`           | lang_string         | 0-1   | 0-1       |                                                                                                                                                          |
-| `endDate`            | date                | 0-1   | 0-1       | String of format "YYYY-MM-DD"                                                                                                                            |
-| `secondaryURL`       | url                 | 0-1   | 0-1       |                                                                                                                                                          |
-| `dataManagementPlan` | dmp                 | 0-1   | 0-1       |                                                                                                                                                          |
-| `contactPoint`       | id                  | 0-1   | 0-1       | String containing the identifier of a person or organization                                                                                             |
-| `publications`       | publication[]       | 0-n   | 0-n       |                                                                                                                                                          |
-| `grants`             | grant[]             | 0-n   | 0-n       |                                                                                                                                                          |
-| `alternativeNames`   | lang_string[]       | 0-n   | 0-n       |                                                                                                                                                          |
+| Field                | Type                | Card. | WIP Card. | Restrictions                                                                                                                                               |
+| -------------------- | ------------------- | ----- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pid`                | id                  | 1     | 1         |                                                                                                                                                            |
+| `shortcode`          | string              | 1     | 1         | 4 char hexadecimal                                                                                                                                         |
+| `status`             | string              | 1     | 1         | Literal "Ongoing" or "Finished"                                                                                                                            |
+| `name`               | string              | 1     | 1         |                                                                                                                                                            |
+| `description`        | lang_string         | 1     | 1         |                                                                                                                                                            |
+| `startDate`          | date                | 1     | 1         | String of format "YYYY-MM-DD"                                                                                                                              |
+| `teaserText`         | string              | 1     | 1         |                                                                                                                                                            |
+| `url`                | url                 | 1     | 1         |                                                                                                                                                            |
+| `howToCite`          | string              | 1     | 1         |                                                                                                                                                            |
+| `accessRights`       | accessRights        | 1     | 1         | Literal "open", "restricted", "embargoed" or "metadata only", according to [COAR Access Rights](https://vocabularies.coar-repositories.org/access_rights/) |
+| `datasets`           | id[]                | 1-n   | 1-n       | String containing the identifier of a dataset                                                                                                              |
+| `keywords`           | lang_string[]       | 1-n   | 1-n       |                                                                                                                                                            |
+| `disciplines`        | lang_string / url[] | 1-n   | 1-n       |                                                                                                                                                            |
+| `temporalCoverage`   | lang_string / url[] | 1-n   | 1-n       |                                                                                                                                                            |
+| `spatialCoverage`    | url[]               | 1-n   | 1-n       |                                                                                                                                                            |
+| `attributions`       | attribution[]       | 1-n   | 1-n       | manually entered (e.g. also people who don't have authorship, like reviewers, organizers, etc.)                                                            |
+| `licenses`           | license[]           | 1-n   | 1-n       | computed from the records if available and optionally added manually                                                                                       |
+| `copyrightHolders`   | string[]            | 1-n   | 1-n       | computed from the records if available and optionally added manually                                                                                       |
+| `authorship`         | authorship[]        | 1-n   | 1-n       | computed from the records if available and optionally added manually                                                                                       |
+| `licenseDates`       | dateInterval        | 1     | 1         | Computed from recods: Interval from earliest to latest licenseDate                                                                                         |
+| `abstract`           | lang_string         | 0-1   | 0-1       |                                                                                                                                                            |
+| `endDate`            | date                | 0-1   | 0-1       | String of format "YYYY-MM-DD"                                                                                                                              |
+| `secondaryURL`       | url                 | 0-1   | 0-1       |                                                                                                                                                            |
+| `dataManagementPlan` | dmp                 | 0-1   | 0-1       |                                                                                                                                                            |
+| `contactPoint`       | id                  | 0-1   | 0-1       | String containing the identifier of a person or organization                                                                                               |
+| `publications`       | publication[]       | 0-n   | 0-n       |                                                                                                                                                            |
+| `grants`             | grant[]             | 0-n   | 0-n       |                                                                                                                                                            |
+| `alternativeNames`   | lang_string[]       | 0-n   | 0-n       |                                                                                                                                                            |
 
-!!! question
-    Do permissions need to be a complex object?
-    Embargo probably needs the date when it ends.
-
-!!! question
-    `permissions` should be renamed to `rights` or `accessRights` 
-    (datacite uses `rights` and openAIRE and COAR use `accessRights`).
+<!-- TODO: model type for accessRights as in https://guidelines.openaire.eu/en/latest/data/field_date.html -->
 
 
 #### Dataset
 
-| Field          | Type          | Cardinality | Restrictions                                     | Remarks                                                              |
-| -------------- | ------------- | ----------- | ------------------------------------------------ | -------------------------------------------------------------------- |
-| `__id`         | string        | 1           |                                                  |                                                                      |
-| `__type`       | string        | 1           | Literal "Dataset"                                |                                                                      |
-| `pid`          | id            | 1           |                                                  |                                                                      |
-| `title`        | string        | 1           |                                                  |                                                                      |
-| `typeOfData`   | string[]      | 1-n         | Literal "XML", "Text", "Image", "Video", "Audio" | computed from the records if available and optionally added manually |
-| `licenses`     | license[]     | 1-n         |                                                  | computed from the records if available and optionally added manually |
-| `copyright`    | string[]      | 1-n         |                                                  | computed from the records if available and optionally added manually |
-| `attributions` | attribution[] | 1-n         |                                                  | computed from the records if available and optionally added manually |
-| `howToCite`    | string        | 0-1         |                                                  | A generated field along with the ARK.                                |
-| `description`  | lang_string   | 0-1         |                                                  |                                                                      |
-| `dateCreated`  | date          | 0-1         |                                                  |                                                                      |
-
-!!! question
-    If `howToCite` is generated, should the cardinality be 1?
-
-!!! question
-    In the old model, we had `languages` on the dataset level. Do we still need this?
+| Field              | Type         | Card. | WIP-Card | Restrictions                                     | Remarks                                                              |
+| ------------------ | ------------ | ----- | -------- | ------------------------------------------------ | -------------------------------------------------------------------- |
+| `pid`              | id           | 1     | 1        |                                                  |                                                                      |
+| `title`            | string       | 1     | 1        |                                                  |                                                                      |
+| `typeOfData`       | string[]     | 1-n   | 0-n      | Literal "XML", "Text", "Image", "Video", "Audio" | computed from the records if available and optionally added manually |
+| `licenses`         | license[]    | 1-n   | 1-n      |                                                  | computed from the records if available and optionally added manually |
+| `copyrightHolders` | string[]     | 1-n   | 1-n      |                                                  | computed from the records if available and optionally added manually |
+| `authorship`       | authorship[] | 1-n   | 1-n      |                                                  | computed from the records if available and optionally added manually |
+| `licenseDates`     | dateInterval | 1     | 1        |                                                  | Computed from recods: Interval from earliest to latest licenseDate   |
+| `howToCite`        | string       | 1     | 1        |                                                  | A generated field along with the ARK.                                |
+| `description`      | lang_string  | 0-1   | 0-1      |                                                  |                                                                      |
+| `dateCreated`      | date         | 0-1   | 0-1      |                                                  |                                                                      |
+| `languages`        | string[]     | 1-n   | 0-n      |                                                  |                                                                      |
 
 
 !!! question
@@ -224,24 +219,23 @@ A record can only be part of one dataset.
 
 #### Collection
 
-| Field              | Type          | Cardinality | Restrictions                                     | Remarks                                                                                                                                         |
-| ------------------ | ------------- | ----------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `__id`             | string        | 1           |                                                  |                                                                                                                                                 |
-| `__type`           | string        | 1           | Literal 'Collection'                             |                                                                                                                                                 |
-| `pid`              | id            | 1           |                                                  |                                                                                                                                                 |
-| `name`             | string        | 1           |                                                  |                                                                                                                                                 |
-| `description`      | string / url  | 1-n         |                                                  |                                                                                                                                                 |
-| `typeOfData`       | string[]      | 1-n         | Literal "XML", "Text", "Image", "Video", "Audio" | copied from dataset; does this still make sense? -> Maybe not.  -> should it be optional? or removed?                                           |
-| `licenses`         | license[]     | 1-n         |                                                  | computed from the records if available and optionally added manually                                                                            |
-| `copyright`        | string[]      | 1-n         |                                                  | computed from the records if available and optionally added manually                                                                            |
-| `languages`        | lang_string[] | 1-n         |                                                  | copied from dataset; does this make sense? -> computed if available and optionally added manually.   -> ?                                       |
-| `attributions`     | attribution[] | 1-n         |                                                  | computed from the records if available and optionally added manually                                                                            |
-| `provenance`       | string        | 0-1         |                                                  | see: [openAIRE Guidelines](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_source.html#dc-source) |
-| `records`          | id[]          | 0-n         | Record IDs                                       | can be 0 in case it points to a collection                                                                                                      |
-| `collections`      | id[]          | 0-n         | Collection IDs                                   |                                                                                                                                                 |
-| `alternativeNames` | lang_string[] | 0-n         |                                                  |                                                                                                                                                 |
-| `keywords`         | lang_string[] | 0-n         |                                                  |                                                                                                                                                 |
-| `urls`             | url[]         | 0-n         |                                                  |                                                                                                                                                 |
+| Field              | Type          | Card. | WIP-Card. | Restrictions                                     | Remarks                                                                                                                                         |
+| ------------------ | ------------- | ----- | --------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pid`              | id            | 1     |           |                                                  |                                                                                                                                                 |
+| `name`             | string        | 1     |           |                                                  |                                                                                                                                                 |
+| `description`      | string / url  | 1-n   |           |                                                  |                                                                                                                                                 |
+| `typeOfData`       | string[]      | 1-n   |           | Literal "XML", "Text", "Image", "Video", "Audio" | copied from dataset; does this still make sense? -> Maybe not.  -> should it be optional? or removed?                                           |
+| `languages`        | lang_string[] | 1-n   |           |                                                  | copied from dataset; does this make sense? -> computed if available and optionally added manually.   -> ?                                       |
+| `licenses`         | license[]     | 1-n   | 1-n       |                                                  | computed from the records if available and optionally added manually                                                                            |
+| `copyrightHolders` | string[]      | 1-n   | 1-n       |                                                  | computed from the records if available and optionally added manually                                                                            |
+| `authorship`       | authorship[]  | 1-n   | 1-n       |                                                  | computed from the records if available and optionally added manually                                                                            |
+| `licenseDates`     | dateInterval  | 1     | 1         |                                                  | Computed from recods: Interval from earliest to latest licenseDate                                                                              |
+| `provenance`       | string        | 0-1   |           |                                                  | see: [openAIRE Guidelines](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_source.html#dc-source) |
+| `records`          | id[]          | 0-n   |           | Record IDs                                       | can be 0 in case it points to a collection                                                                                                      |
+| `collections`      | id[]          | 0-n   |           | Collection IDs                                   |                                                                                                                                                 |
+| `alternativeNames` | lang_string[] | 0-n   |           |                                                  |                                                                                                                                                 |
+| `keywords`         | lang_string[] | 0-n   |           |                                                  |                                                                                                                                                 |
+| `urls`             | url[]         | 0-n   |           |                                                  |                                                                                                                                                 |
 
 !!! note
     In the long term (not for now), we need to reference the records in the collection.
@@ -254,25 +248,28 @@ A record can only be part of one dataset.
 
 #### Record
 
-| Field               | Type        | Cardinality | Restrictions                                               | Remarks                                                                                                                                                                                                                                                    |
-| ------------------- | ----------- | ----------- | ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `__id`              | string      | 1           |                                                            |                                                                                                                                                                                                                                                            |
-| `__type`            | string      | 1           | Literal 'Record'                                           |                                                                                                                                                                                                                                                            |
-| `pid`               | id          | 1           |                                                            |                                                                                                                                                                                                                                                            |
-| `label`             | lang_string | 1           |                                                            | do we want this, or does it go too far? -> We want to keep it because it's the "name" of the record. But we can think about renaming it.                                                                                                                   |
-| `accessConditions`  | string      | 1           | Literal "open", "restricted", "embargo" or "metadata only" | copied from dataset; change to proper terms -> open, restricted, embargoed, metadata-only and renaming  `accessConditions` to `rights` to be in line with openAIRE.                                                                                        |
-| `embargoPeriodDate` | date        | 0-1         |                                                            | -> needs to be added to be in line with openAIRE, e.g., ```<datacite:dates> <datacite:date dateType="Accepted">2011-12-01</datacite:date> <datacite:date dateType="Available">2012-12-01</datacite:date> </datacite:dates>```                              |
-| `publisher`         | string      | 1           |                                                            | should be DaSCH                                                                                                                                                                                                                                            |
-| `license`           | license     | 1           |                                                            | copied from dataset; should be computed from the records -> No, you have to indicate the license here. Computation is not possible.                                                                                                                        |
-| `copyright`         | string      | 1           |                                                            | computed along with license -> -> No, you have to indicate the copyright here. Computation is not possible.                                                                                                                                                |
-| `attribution`       | attribution | 1           |                                                            | do we want this, or does it go too far? -> Yes                                                                                                                                                                                                             |
-| `provenance`        | string      | 0-1         |                                                            | do we want this, or does it go too far? -> Yes, [openAIRE data-source](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_source.html#dc-source)                                                                |
-| `datePublished`     | date        | 0-1         |                                                            | copied from dataset; do they make sense? -> Yes                                                                                                                                                                                                            |
-| `dateCreated`       | date        | 0-1         |                                                            | copied from dataset; do they make sense?  -> Yes                                                                                                                                                                                                           |
-| `dateModified`      | date        | 0-1         |                                                            | copied from dataset; do they make sense?   -> Yes                                                                                                                                                                                                          |
-| `typeOfData`        | string      | 0-1         | Literal "XML", "Text", "Image", "Video", "Audio"           | copied from dataset; wanted? what values?    -> Yes, type is computed and should represent: [openAIRE Resource Type](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_publicationtype.html#aire-resourcetype) |
-| `size`              | string      | 0-1         |                                                            | needs to be added, see: [openAIRE Size](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_size.html#dci-size)                                                                                                  |
-| `audience`          | string      | 0-n         |                                                            | needs to be added, see: [openAIRE Audience](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_audience.html#dct-audience)                                                                                      |
+| Field               | Type        | Card. | WIP-Card. | Restrictions                                               | Remarks                                                                                                                                                                                                                                                    |
+| ------------------- | ----------- | ----- | --------- | ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pid`               | id          | 1     |           |                                                            |                                                                                                                                                                                                                                                            |
+| `label`             | lang_string | 1     |           |                                                            | do we want this, or does it go too far? -> We want to keep it because it's the "name" of the record. But we can think about renaming it.                                                                                                                   |
+| `accessConditions`  | string      | 1     |           | Literal "open", "restricted", "embargo" or "metadata only" | copied from dataset; change to proper terms -> open, restricted, embargoed, metadata-only and renaming  `accessConditions` to `rights` to be in line with openAIRE.                                                                                        |
+| `embargoPeriodDate` | date        | 0-1   |           |                                                            | -> needs to be added to be in line with openAIRE, e.g., ```<datacite:dates> <datacite:date dateType="Accepted">2011-12-01</datacite:date> <datacite:date dateType="Available">2012-12-01</datacite:date> </datacite:dates>```                              |
+| `publisher`         | string      | 1     |           |                                                            | should be DaSCH                                                                                                                                                                                                                                            |
+| `license`           | license     | 1     | 1         |                                                            | If not provided "Ask copyright holder for permission"                                                                                                                                                                                                      |
+| `copyrightHolder`   | string      | 1     | 1         |                                                            | If not specified use project as copyright holder                                                                                                                                                                                                           |
+| `authorship`        | authorship  | 1-n   | 1-n       |                                                            | If not provided, "Author unknown"                                                                                                                                                                                                                          |
+| `licenseDate`       | authorship  | 1     | 1         |                                                            | If not provided, use creation date of the record                                                                                                                                                                                                           |
+| `provenance`        | string      | 0-1   |           |                                                            | do we want this, or does it go too far? -> Yes, [openAIRE data-source](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_source.html#dc-source)                                                                |
+| `datePublished`     | date        | 0-1   |           |                                                            | copied from dataset; do they make sense? -> Yes                                                                                                                                                                                                            |
+| `dateCreated`       | date        | 0-1   |           |                                                            | copied from dataset; do they make sense?  -> Yes                                                                                                                                                                                                           |
+| `dateModified`      | date        | 0-1   |           |                                                            | copied from dataset; do they make sense?   -> Yes                                                                                                                                                                                                          |
+| `typeOfData`        | string      | 0-1   |           | Literal "XML", "Text", "Image", "Video", "Audio"           | copied from dataset; wanted? what values?    -> Yes, type is computed and should represent: [openAIRE Resource Type](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_publicationtype.html#aire-resourcetype) |
+| `size`              | string      | 0-1   |           |                                                            | needs to be added, see: [openAIRE Size](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_size.html#dci-size)                                                                                                  |
+| `audience`          | string      | 0-n   |           |                                                            | needs to be added, see: [openAIRE Audience](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_audience.html#dct-audience)                                                                                      |
+
+<!-- TODO: license type mmust be licenseText and licenseUri -->
+
+
 
 !!! question
     rename `accessConditions` to `rights` or `accessRights`?
@@ -408,11 +405,12 @@ or a reference to a resource in an external authority file.
 
 #### Attribution
 
-| Field    | Type   | Cardinality | Restrictions              | Remark                            |
-| -------- | ------ | ----------- | ------------------------- | --------------------------------- |
-| `__type` | string | 1           | Literal 'Attribution'     |                                   |
-| `agent`  | id     | 1           | Person or Organization ID | Or can this only be person? -> No |
-| `roles`  | string | 1-n         |                           |                                   |
+Modelled according to the [OpenAIRE guidelines](https://guidelines.openaire.eu/en/latest/data/field_contributor.html).
+
+| Field             | Type   | Cardinality | Restrictions                                  |
+| ----------------- | ------ | ----------- | --------------------------------------------- |
+| `contributor`     | id     | 1           | Person or Organization ID                     |
+| `contributorType` | string | 1-n         | controlled vocababulary according to OpenAIRE |
 
 #### Grant
 
@@ -423,165 +421,3 @@ or a reference to a resource in an external authority file.
 | `number`  | string | 0-1         |                            |
 | `name`    | string | 0-1         |                            |
 | `url`     | url    | 0-1         |                            |
-
-## Entity-Relationship Diagram
-
-<!-- ERD needs to be updated (once finalized) -->
-
-```mermaid
-erDiagram
-    projectCluster |o--|{ project : projects
-    project ||--|{ dataset : datasets
-    project ||--|| person : contactPoint
-    project ||--|| organization : contactPoint
-    project ||--|{ person : funders
-    project ||--|{ organization : funders
-    project |o--|{ collection : collections
-    dataset ||--|{ record : records
-    collection |o--o{ collection : collections
-    collection |o--o{ record : records
-    person ||--|{ organization : affiliations
-
-    projectCluster {
-        string __id "1"
-        string name "1"
-        id[] projects "1-n; Project IDs"
-        lang_string description "0-1"
-        lang_string[] alternativeNames "0-n"
-        url url "0-1"
-        id contactPoint "0-1"
-        id[] institutionalPartner "0-n; Organization IDs"
-    }
-    
-    project {
-        string __id "1"
-        string __type "1; Literal 'Project'"
-        string shortcode "1"
-        string status "1; Literal 'Ongoing', 'Finished'"
-        string name "1"
-        lang_string description "1"
-        date startDate "1"
-        string teaserText "1"
-        url url "1"
-        string howToCite "1"
-        id[] datasets "1-n; Dataset IDs"
-        lang_string[] keywords "1-n"
-        lang_string_or_url[] disciplines "1-n"
-        lang_string_or_url[] temporalCoverage "1-n"
-        url[] spatialCoverage "1-n"
-        id[] funders "1-n; Person or Organization IDs"
-        attribution[] attributions "1-n"
-        date endDate "0-1"
-        url secondaryURL "0-1"
-        dmp dataManagementPlan "0-1"
-        id contactPoint "0-1"
-        publication[] publications "0-n"
-        grant[] grants "0-n"
-        lang_string[] alternativeNames "0-n"
-    }
-
-    dataset {
-        string __id "1"
-        string __type "1; Literal 'Dataset'"
-        string title "1"
-        string[] typeOfData "1-n; Literal 'XML', 'Text', 'Image', 'Video', 'Audio'"
-        license[] licenses "1-n"
-        string[] copyright "1-n"
-        attribution[] attributions "1-n"
-        string howToCite "0-1"
-        lang_string description "0-1"
-        date dateCreated "0-1"
-    }
-
-    collection {
-        string __id "1"
-        string __type "1; Literal 'Collection'"
-        string name "1"
-        string accessConditions "1; Literal 'open', 'restricted' or 'closed'"
-        string provenance "0-1"
-        date datePublished "0-1"
-        date dateCreated "0-1"
-        date dateModified "0-1"
-        url distribution "0-1"
-        id[] records "0-n; Record IDs"
-        id[] collections "0-n; Collection IDs"
-        lang_string[] alternativeNames "0-n"
-        lang_string[] keywords "0-n"
-        url[] urls "0-n"
-        lang_string_or_url[] additional "0-n"
-        lang_string_or_url[] description "1-n"
-        string[] typeOfData "1-n; Literal 'XML', 'Text', 'Image', 'Video', 'Audio'"
-        license[] licenses "1-n"
-        string[] copyright "1-n"
-        lang_string[] languages "1-n"
-        attribution[] attributions "1-n"
-    }
-
-    record {
-        string __id "1"
-        string __type "1; Literal 'Record'"
-        string pid "1"
-        lang_string label "1"
-        string accessConditions "1; Literal 'open', 'restricted' or 'closed'"
-        license license "1"
-        string copyright "1"
-        attribution attribution "1"
-        string provenance "0-1"
-        date datePublished "0-1"
-        date dateCreated "0-1"
-        date dateModified "0-1"
-        string typeOfData "0-1; Literal 'XML', 'Text', 'Image', 'Video', 'Audio'"
-    }
-
-    person {
-        string __id "1"
-        string __type "1; Literal 'Person'"
-        string[] givenNames "1-n"
-        string[] familyNames "1-n"
-        string[] jobTitles "0-n"
-        id[] affiliations "0-n; Organization IDs"
-        address address "0-1"
-        string email "0-1"
-        string secondaryEmail "0-1"
-        url[] authorityRefs "0-n"
-    }
-
-    organization {
-        string __id "1"
-        string __type "1; Literal 'Organization'"
-        string name "1"
-        url url "1"
-        address address "0-1"
-        string email "0-1"
-        lang_string alternativeName "0-1"
-        url[] authorityRefs "0-n"
-    }
-```
-
-## Change Log
-
-- Make `Grant` a value type and remove it from the top level.
-- Added entity `projectCluster` to the top level.
-- Added entity `collection` to the top level.
-- Added entity `record` to the top level.
-- Added `pid` to `project`.
-- Added `attributions` to `project`.
-- Added `licenses` to `project`.
-- Added `copyright` to `project`.
-- Added `abstract` to `project`.
-- Added `copyright` to `dataset`.
-- Changed type of `abstract`/`description` in `dataset` to `lang_string`.
-- Changed cardinality of `abstract`/`description` in `dataset` to 1.
-- Changed cardinality of `howToCite` in `dataset` to 0-1.
-- Changed cardinality of `description` in `dataset` to 0-1.
-- Removed `funders` from `project`.
-- Removed `accessConditions` from `dataset`.
-- Removed `status` from `dataset`.
-- Renamed `abstract` to `description` in `dataset`.
-- Removed `languages` from `dataset`. (?)
-- Removed `datePublished`, and `dateModified` from `dataset`.
-- Removed `distribution` from `dataset`.
-- Removed `additional` from `dataset`.
-- Removed `alternativeTitles` from `dataset`.
-- Removed `urls` from `dataset`.
-- Changed options of `rights` etc. to "open", "restricted", "embargo", "metadata only".
