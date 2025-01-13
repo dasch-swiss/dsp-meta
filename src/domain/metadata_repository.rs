@@ -11,7 +11,7 @@ use crate::domain::model::draft_model::*;
 use crate::error::DspMetaError;
 use crate::infrastructure::load_json_file_paths;
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct Pagination {
     #[serde(rename = "_page")]
     pub page: usize,
@@ -27,12 +27,36 @@ impl Default for Pagination {
     }
 }
 
-#[derive(Deserialize, Default, Debug)]
+#[derive(Debug, Deserialize, Default, Clone)]
+pub struct OptionalPagination {
+    #[serde(flatten)]
+    pub pagination: Option<Pagination>,
+}
+
+impl OptionalPagination {
+    pub fn or_default(&self) -> Pagination {
+        self.pagination.clone().unwrap_or_default()
+    }
+}
+
+#[derive(Deserialize, Default, Debug, Clone)]
 pub struct Filter {
     #[serde(rename = "q")]
     pub query: Option<String>,
     #[serde(rename = "filter")]
     pub filter: Option<String>,
+}
+
+#[derive(Debug, Deserialize, Default, Clone)]
+pub struct OptionalFilter {
+    #[serde(flatten)]
+    pub filter: Option<Filter>,
+}
+
+impl OptionalFilter {
+    pub fn or_default(&self) -> Filter {
+        self.filter.clone().unwrap_or_default()
+    }
 }
 
 pub struct Page<T> {
