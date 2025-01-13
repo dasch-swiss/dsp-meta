@@ -40,13 +40,15 @@ pub async fn get_by_shortcode(
 #[instrument(skip(state))]
 pub async fn get_by_page_and_filter(
     State(state): State<Arc<AppState>>,
-    pagination: Option<Query<Pagination>>,
-    filter: Option<Query<Filter>>,
+    pagination: Query<Option<Pagination>>,
+    filter: Query<Option<Filter>>,
 ) -> Result<Response, DspMetaError> {
     trace!("entered get_all_project_metadata()");
-    let Query(pagination) = pagination.unwrap_or_default();
-    let Query(filter) = filter.unwrap_or_default();
-    let page = state.metadata_service.find(&filter, &pagination)?;
+    let Query(pagination) = pagination;
+    let Query(filter) = filter;
+    let page = state
+        .metadata_service
+        .find(&filter.unwrap_or_default(), &pagination.unwrap_or_default())?;
     let mut response = Json(
         page.data
             .into_iter()
