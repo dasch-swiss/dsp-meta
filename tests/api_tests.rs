@@ -104,6 +104,41 @@ mod tests {
 
         let response = server.get("/api/v1/projects").await;
 
+        assert_eq!(response.status_code(), StatusCode::OK);
+
+        let resp_txt = response.text();
+        assert!(resp_txt == "[]");
+        let actual: Value = serde_json::from_str(&resp_txt).unwrap();
+        if let Value::Array(arr) = actual {
+            assert_eq!(arr.len(), 0);
+        } else {
+            panic!("Expected an array");
+        }
+        assert_eq!(response.status_code(), StatusCode::OK);
+    }
+
+    #[tokio::test]
+    async fn projects_should_return_empty_array_with_no_data_using_pagination() {
+        let server = build_server(vec![]);
+
+        let response = server.get("/api/v1/projects?_page=1&_limit=10").await;
+
+        let resp_txt = response.text();
+        let actual: Value = serde_json::from_str(&resp_txt).unwrap();
+        if let Value::Array(arr) = actual {
+            assert_eq!(arr.len(), 0);
+        } else {
+            panic!("Expected an array");
+        }
+        assert_eq!(response.status_code(), StatusCode::OK);
+    }
+
+    #[tokio::test]
+    async fn projects_should_return_empty_array_with_no_data_using_filter() {
+        let server = build_server(vec![]);
+
+        let response = server.get("/api/v1/projects?q=foo&filter=bar").await;
+
         let resp_txt = response.text();
         let actual: Value = serde_json::from_str(&resp_txt).unwrap();
         if let Value::Array(arr) = actual {
