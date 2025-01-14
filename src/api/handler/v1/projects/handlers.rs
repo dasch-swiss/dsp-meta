@@ -10,7 +10,7 @@ use crate::api::handler::v1::projects::responses::{
     ProjectMetadataDto, ProjectMetadataWithInfoDto,
 };
 use crate::app_state::AppState;
-use crate::domain::metadata_repository::{Filter, Pagination};
+use crate::domain::metadata_repository::{OptionalFilter, OptionalPagination};
 use crate::domain::model::draft_model::Shortcode;
 use crate::error::DspMetaError;
 
@@ -38,14 +38,15 @@ pub async fn get_by_shortcode(
 }
 
 #[instrument(skip(state))]
+#[axum_macros::debug_handler]
 pub async fn get_by_page_and_filter(
     State(state): State<Arc<AppState>>,
-    pagination: Option<Query<Pagination>>,
-    filter: Option<Query<Filter>>,
+    pagination: Query<OptionalPagination>,
+    filter: Query<OptionalFilter>,
 ) -> Result<Response, DspMetaError> {
     trace!("entered get_all_project_metadata()");
-    let Query(pagination) = pagination.unwrap_or_default();
-    let Query(filter) = filter.unwrap_or_default();
+    let pagination = pagination.0.or_default();
+    let filter = filter.0.or_default();
     let page = state.metadata_service.find(&filter, &pagination)?;
     let mut response = Json(
         page.data

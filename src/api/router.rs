@@ -30,7 +30,7 @@ pub fn router(shared_state: Arc<AppState>) -> Router {
             get(v1::projects::handlers::get_by_page_and_filter),
         )
         .route(
-            "/api/v1/projects/:shortcode",
+            "/api/v1/projects/{shortcode}",
             get(v1::projects::handlers::get_by_shortcode),
         )
         .route("/health", get(health::health))
