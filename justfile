@@ -108,6 +108,4 @@ markdownlint:
     docker run \
     -v $PWD:/workdir ghcr.io/igorshubovych/markdownlint-cli:latest \
     --config .markdownlint.yml \
-    --ignore "docs/domain_model/*.md" \
-    --disable MD013 MD040 -- \
     "docs/**/*.md"
