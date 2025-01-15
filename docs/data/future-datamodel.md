@@ -609,15 +609,26 @@ Formerly from project:
 
 Modelled according to the [OpenAIRE guidelines](https://guidelines.openaire.eu/en/latest/data/field_contributor.html).
 
-| Field             | Type   | Cardinality | Restrictions                                  |
-| ----------------- | ------ | ----------- | --------------------------------------------- |
-| `contributor`     | id     | 1           | Person or Organization ID                     |
-| `contributorType` | string | 1-n         | controlled vocababulary according to OpenAIRE |
+| Field             | Type   | Card. |
+| ----------------- | ------ | ----- |
+| `contributor`     | id     | 1     |
+| `contributorType` | string | 1-n   |
 
 ##### Access Rights
 
+| Field          | Type   | Card. |
+| -------------- | ------ | ----- |
+| `accessRights` | string | 1     |
+| `embargoDate`  | date   | 0-1   |
 
-TODO: model type for accessRights as in https://guidelines.openaire.eu/en/latest/data/field_date.html
+- `accessRights`: The access rights of the record.  
+  Literal "Open", "Restricted", "Embargoed", "Metadata only".
+- `embargoDate`: The date when the embargo ends.
+
+!!! question
+    openAire rights here seem different... should we look at datacite instead?
+    see [here](https://guidelines.openaire.eu/en/latest/data/field_rights.html#d-rights)  
+    Not sufe if that is correct just yet.
 
 !!! question
     Should we use more flattering terms?
