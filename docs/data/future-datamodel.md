@@ -14,7 +14,7 @@
     while remaining compatible with the current implementation,
     should be created alongside this model.
 
-The enhancements to the DSP metadata model are thoughtfully designed to better accommodate
+The enhancements to the DSP metadata model are designed to better accommodate
 the inherent complexity of humanities projects, while still being flexible enough to
 support simpler project structures.
 
@@ -409,39 +409,66 @@ A record can only be part of one dataset.
 
 #### Person
 
-| Field            | Type     | Card. | Restrictions                           |
-| ---------------- | -------- | ----- | -------------------------------------- |
-| `givenNames`     | string[] | 1-n   |                                        |
-| `familyNames`    | string[] | 1-n   |                                        |
-| `jobTitles`      | string[] | 0-n   |                                        |
-| `affiliations`   | id[]     | 0-n   | Organization IDs                       |
-| `address`        | address  | 0-1   |                                        |
-| `email`          | string   | 0-1   |                                        |
-| `secondaryEmail` | string   | 0-1   |                                        |
-| `authorityRefs`  | url[]    | 0-n   | References to external authority files |
+| Field            | Type     | Card. |
+| ---------------- | -------- | ----- |
+| `givenNames`     | string[] | 1-n   |
+| `familyNames`    | string[] | 1-n   |
+| `jobTitles`      | string[] | 0-n   |
+| `affiliations`   | id[]     | 0-n   |
+| `address`        | address  | 0-1   |
+| `email`          | string   | 0-1   |
+| `secondaryEmail` | string   | 0-1   |
+| `authorityRefs`  | url[]    | 0-n   |
 
 Cardinality is the same for both stages.
+
+- `givenNames`: The given names of the person.  
+  Multiple given names are possible.
+- `familyNames`: The family names of the person.
+- `jobTitles`: The job titles of the person.  
+  Multiple job titles are possible.
+- `affiliations`: The affiliations of the person to organizations.
+- `address`: The address of the person.  
+  Value type as defined below.
+- `email`: The email address of the person.
+- `secondaryEmail`: A secondary email address of the person.
+- `authorityRefs`: References to external authority files.
 
 !!! question
     Does job title make sense?  
     should we model functions over time,
     so that we can re-use the same person for different roles in different projects?
 
+!!! question
+    If it becomes reusable, should we model it as a separate entity with an identifier (pid/ARK).
+
 #### Organization
 
-| Field             | Type        | Card. | Restrictions                           |
-| ----------------- | ----------- | ----- | -------------------------------------- |
-| `name`            | string      | 1     |                                        |
-| `url`             | url         | 1     |                                        |
-| `address`         | address     | 0-1   |                                        |
-| `email`           | string      | 0-1   |                                        |
-| `alternativeName` | lang_string | 0-1   |                                        |
-| `authorityRefs`   | url[]       | 0-n   | References to external authority files |
+| Field             | Type        | Card. |
+| ----------------- | ----------- | ----- |
+| `name`            | string      | 1     |
+| `url`             | url         | 1     |
+| `address`         | address     | 0-1   |
+| `email`           | string      | 0-1   |
+| `alternativeName` | lang_string | 0-1   |
+| `authorityRefs`   | url[]       | 0-n   |
 
 Cardinality is the same for both stages.
 
+- `name`: The name of the organization.
+- `url`: The URL of the organization.
+- `address`: The address of the organization.  
+  Value type as defined below.
+- `email`: The email address of the organization.
+- `alternativeName`: Alternative names of the organization.  
+  Strings with language tag, possibly with multiple languages per name.
+- `authorityRefs`: References to external authority files.
+
 !!! question
     Again, should we model this over time, so that it's reuseable?
+
+!!! question
+    If it becomes reusable, should we model it as a separate entity with an identifier (pid/ARK)?
 
 ### Value Types
 
