@@ -333,8 +333,7 @@ A record can only be part of one dataset.
 - `dateModified`: The date when the collection was last modified.
 - `records`: A list of record identifiers that make up the collection.
 - `collections`: A list of collection identifiers that make up the collection, if nested.
-- `provenance`: The provenance of the collection.  
-  List of Strings with language tag, possibly with multiple languages.
+- `provenance`: The provenance of the collection.
 - `languages`: A list of languages contained in the collection.  
   Computed from the records if available and optionally added manually.
 - `alternativeNames`: Alternative names of the collection.  
@@ -352,44 +351,74 @@ A record can only be part of one dataset.
 
 #### Record
 
-| Field               | Type        | Card. | WIP-Card. | Restrictions                                               | Remarks                                                                                                                                                                                                                                                    |
-| ------------------- | ----------- | ----- | --------- | ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pid`               | id          | 1     | 1         |                                                            |                                                                                                                                                                                                                                                            |
-| `label`             | lang_string | 1     | 1         |                                                            | do we want this, or does it go too far? -> We want to keep it because it's the "name" of the record. But we can think about renaming it.                                                                                                                   |
-| `accessRights`      | string      | 1     | 1         | Literal "open", "restricted", "embargo" or "metadata only" | copied from dataset; change to proper terms -> open, restricted, embargoed, metadata-only and renaming  `accessConditions` to `rights` to be in line with openAIRE.                                                                                        |
-| `embargoPeriodDate` | date        | 0-1   | 0-1       |                                                            | -> needs to be added to be in line with openAIRE, e.g., ```<datacite:dates> <datacite:date dateType="Accepted">2011-12-01</datacite:date> <datacite:date dateType="Available">2012-12-01</datacite:date> </datacite:dates>```                              |
-| `publisher`         | string      | 1     | 1         | Literal "DaSCH"                                            |                                                                                                                                                                                                                                                            |
-| `license`           | license     | 1     | 1         |                                                            | If not provided "Ask copyright holder for permission"                                                                                                                                                                                                      |
-| `copyrightHolder`   | string      | 1     | 1         |                                                            | If not specified use project as copyright holder                                                                                                                                                                                                           |
-| `authorship`        | authorship  | 1-n   | 1-n       |                                                            | If not provided, "Author unknown"                                                                                                                                                                                                                          |
-| `licenseDate`       | authorship  | 1     | 1         |                                                            | If not provided, use creation date of the record                                                                                                                                                                                                           |
-| `provenance`        | string      | 0-1   | 0-1       |                                                            | do we want this, or does it go too far? -> Yes, [openAIRE data-source](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_source.html#dc-source)                                                                |
-| `datePublished`     | date        | 0-1   | 0-1       |                                                            | copied from dataset; do they make sense? -> Yes                                                                                                                                                                                                            |
-| `dateCreated`       | date        | 0-1   | 0-1       |                                                            | copied from dataset; do they make sense?  -> Yes                                                                                                                                                                                                           |
-| `dateModified`      | date        | 0-1   | 0-1       |                                                            | copied from dataset; do they make sense?   -> Yes                                                                                                                                                                                                          |
-| `typeOfData`        | string      | 0-1   | 0-1       | Literal "XML", "Text", "Image", "Video", "Audio"           | copied from dataset; wanted? what values?    -> Yes, type is computed and should represent: [openAIRE Resource Type](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_publicationtype.html#aire-resourcetype) |
-| `size`              | string      | 0-1   | 0-1       |                                                            | needs to be added, see: [openAIRE Size](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_size.html#dci-size)                                                                                                  |
-| `audience`          | string      | 0-n   | 0-n       |                                                            | needs to be added, see: [openAIRE Audience](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_audience.html#dct-audience)                                                                                      |
+| Field          | Type          | Card. | WIP-Card. |
+| -------------- | ------------- | ----- | --------- |
+| `pid`          | id            | 1     | 1         |
+| `label`        | lang_string   | 1     | 1         |
+| `accessRights` | string        | 1     | 1         |
+| `legal`        | legalMultiple | 1     | 1         |
+| `howToCite`    | string        | 1     | 1         |
+| `publisher`    | string        | 1     | 1         |
+| `provenance`   | string        | 0-1   | 0-1       |
+| `dateCreated`  | date          | 0-1   | 0-1       |
+| `dateModified` | date          | 0-1   | 0-1       |
+| `typeOfData`   | string        | 0-1   | 0-1       |
+| `size`         | string        | 0-1   | 0-1       |
+| `audience`     | string        | 0-n   | 0-n       |
 
+- `pid`: A unique persisten identifier (for now ARK URL) for the record.
+- `name`: The name of the record.
+- `accessRights`: The access rights of the record.  
+  Complex value type, see under "Value Types".
+- `legal`: Legal information about the record.  
+  Complex value type, see under "Value Types".
+- `howToCite`: How to cite the record.  
+  If not provided, we use the standard form `name (year). [Record]. DaSCH. ARK`.
+- `publisher`: The publisher of the record.  
+  Literal "DaSCH". Required for OpenAIRE compliance.
+- `provenance`: The provenance of the record.  
+  required for [openAIRE](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_source.html#dc-source)
+- `description`: The description of the record.  
+  URL or String with language tag, possibly with multiple languages.
+- `typeOfData`: The type of data in the record.  
+  Literal "XML", "Text", "Image", "Video", "Audio".
+- `size`: The size of the record.  
+  [openAIRE Size](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_size.html#dci-size)
+- `audience`: The audience of the record.  
+  [openAIRE Audience](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_audience.html#dct-audience)  
 
-<!-- TODO: move embargo date to separate type -->
+!!! question
+    What is the standard form for citing a records?
 
 !!! question
     How do we ensure that embargo dates are consistent across the records of a dataset?
     Do they have to be? What would the implications be?
 
+!!! question
+    I have deleted `datePublished` 
+    as it seems unclear what it should represent compared to `dateCreated` and `dateModified`.
+
+!!! question
+    type of data does not cover all possible types of data we could have.  
+    Also, where does this information come from?
+
+!!! question
+    OpenAIRE links here point to the guidelines for literature repositories which is wrong.  
+    We should have the correct links.  
+    The question becomes though, if these properties then even apply to us, according to the correct guidelines.
+
 #### Person
 
-| Field            | Type     | Card. | Restrictions                           | Remarks |
-| ---------------- | -------- | ----- | -------------------------------------- | ------- |
-| `givenNames`     | string[] | 1-n   |                                        |         |
-| `familyNames`    | string[] | 1-n   |                                        |         |
-| `jobTitles`      | string[] | 0-n   |                                        |         |
-| `affiliations`   | id[]     | 0-n   | Organization IDs                       |         |
-| `address`        | address  | 0-1   |                                        |         |
-| `email`          | string   | 0-1   |                                        |         |
-| `secondaryEmail` | string   | 0-1   |                                        |         |
-| `authorityRefs`  | url[]    | 0-n   | References to external authority files |         |
+| Field            | Type     | Card. | Restrictions                           |
+| ---------------- | -------- | ----- | -------------------------------------- |
+| `givenNames`     | string[] | 1-n   |                                        |
+| `familyNames`    | string[] | 1-n   |                                        |
+| `jobTitles`      | string[] | 0-n   |                                        |
+| `affiliations`   | id[]     | 0-n   | Organization IDs                       |
+| `address`        | address  | 0-1   |                                        |
+| `email`          | string   | 0-1   |                                        |
+| `secondaryEmail` | string   | 0-1   |                                        |
+| `authorityRefs`  | url[]    | 0-n   | References to external authority files |
 
 Cardinality is the same for both stages.
 
@@ -519,6 +548,7 @@ Modelled according to the [OpenAIRE guidelines](https://guidelines.openaire.eu/e
 
 ## Open Questions
 
+See in the text.
 
 !!! question
     Are we happy with all WIP-Cardinalities?
