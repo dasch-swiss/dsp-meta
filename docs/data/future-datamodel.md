@@ -206,7 +206,8 @@ There is no difference in cardinality between the archival and in-progress stage
   Maximum length: X characters.
 - `url`: The URL of the project.  
   Value type as defined below.
-- `howToCite`: How to cite the project.
+- `howToCite`: How to cite the project.  
+  If not provided, we use the standard form `name (year). [Project]. DaSCH. ARK`.
 - `accessRights`: The access rights of the project.  
   Complex value type, see under "Value Types".
 - `legal`: Legal information about the project.  
@@ -238,6 +239,9 @@ There is no difference in cardinality between the archival and in-progress stage
   Strings with language tag, possibly with multiple languages per name.
 
 !!! question
+    Is the standard form for citing a project correct?
+
+!!! question
     Do we still need `teaserText`?  
     Is the WIP-Cardinality correct there?
     How many characters should it have?
@@ -251,28 +255,40 @@ There is no difference in cardinality between the archival and in-progress stage
     If we have datasets optional while in progress, and the legal stuff is computed from the records,
     it can happen that there are no records, so I guess we need to make the legal stuff optional as well.
 
-<!-- TODO: model type for accessRights as in https://guidelines.openaire.eu/en/latest/data/field_date.html -->
-
-<!-- TODO: unify tables (cols) -->
-
 #### Dataset
 
-| Field              | Type         | Card. | WIP-Card | Restrictions                                                                                                                                               | Remarks                                                                                          |
-| ------------------ | ------------ | ----- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `pid`              | id           | 1     | 1        |                                                                                                                                                            |                                                                                                  |
-| `title`            | string       | 1     | 1        |                                                                                                                                                            |                                                                                                  |
-| `accessRights`     | accessRights | 1     | 1        | Literal "open", "restricted", "embargoed" or "metadata only", according to [COAR Access Rights](https://vocabularies.coar-repositories.org/access_rights/) |                                                                                                  |
-| `typeOfData`       | string[]     | 1-n   | 0-n      | Literal "XML", "Text", "Image", "Video", "Audio"                                                                                                           | computed from the records if available and optionally added manually                             |
-| `licenses`         | license[]    | 1-n   | 1-n      |                                                                                                                                                            | computed from the records if available and optionally added manually                             |
-| `copyrightHolders` | string[]     | 1-n   | 1-n      |                                                                                                                                                            | computed from the records if available and optionally added manually                             |
-| `authorship`       | authorship[] | 1-n   | 1-n      |                                                                                                                                                            | computed from the records if available and optionally added manually                             |
-| `licenseDates`     | dateInterval | 1     | 1        |                                                                                                                                                            | Computed from recods: Interval from earliest to latest licenseDate                               |
-| `howToCite`        | string       | 1     | 1        |                                                                                                                                                            | A generated field along with the ARK.                                                            |
-| `description`      | lang_string  | 0-1   | 0-1      |                                                                                                                                                            |                                                                                                  |
-| `dateCreated`      | date         | 0-1   | 0-1      |                                                                                                                                                            | Date when the dataset was created; may coincide with the creation of the first record.           |
-| `dateModified`     | date         | 0-1   | 0-1      |                                                                                                                                                            | Date when the dataset was last modified; should coincide with the last modification of a record. |
-| `records`          | id[]         | 0-n   | 0-n      | Record IDs                                                                                                                                                 |                                                                                                  |
-| `languages`        | string[]     | 1-n   | 0-n      |                                                                                                                                                            |                                                                                                  |
+| Field          | Type          | Card. | WIP-Card |
+| -------------- | ------------- | ----- | -------- |
+| `pid`          | id            | 1     | 1        |
+| `title`        | string        | 1     | 1        |
+| `accessRights` | accessRights  | 1     | 1        |
+| `legal`        | legalMultiple | 1     | 1        |
+| `howToCite`    | string        | 1     | 1        |
+| `typeOfData`   | string[]      | 1-n   | 0-n      |
+| `dateCreated`  | date          | 1     | 0-1      |
+| `dateModified` | date          | 0-1   | 0-1      |
+| `records`      | id[]          | 0-n   | 0-n      |
+| `description`  | lang_string   | 0-1   | 0-1      |
+| `languages`    | string[]      | 1-n   | 0-n      |
+
+- `pid`: A unique persisten identifier (for now ARK URL) for the dataset.
+- `title`: The title of the dataset.
+- `accessRights`: The access rights of the dataset.  
+  Complex value type, see under "Value Types".
+- `legal`: Legal information about the dataset.  
+  Complex value type, see under "Value Types".
+- `howToCite`: How to cite the dataset.  
+  If not provided, we use the standard form `name (year). [Dataset]. DaSCH. ARK`.
+- `typeOfData`: The type of data in the dataset.  
+  Computed from the records if available and optionally added manually.
+  Literal "XML", "Text", "Image", "Video", "Audio".
+- `dateCreated`: The date when the dataset was created.
+- `dateModified`: The date when the dataset was last modified.
+- `records`: A list of record identifiers that make up the dataset.
+- `description`: The description of the dataset.  
+  String with language tag, possibly with multiple languages.
+- `languages`: A list of languages contained in the dataset.  
+  Computed from the records if available and optionally added manually.
 
 A project can have more than one dataset if it's the project's wish and if it provides meaningful grouping of the
 records e.g., 2 researchers worked one one part of the data and the 2 other researchers on the other part of the data,
@@ -281,24 +297,58 @@ A record can only be part of one dataset.
 
 #### Collection
 
-| Field              | Type          | Card. | WIP-Card. | Restrictions                                                                                                                                               | Remarks                                                                                                                                         |
-| ------------------ | ------------- | ----- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pid`              | id            | 1     | 1         |                                                                                                                                                            |                                                                                                                                                 |
-| `name`             | string        | 1     | 1         |                                                                                                                                                            |                                                                                                                                                 |
-| `accessRights`     | accessRights  | 1     | 1         | Literal "open", "restricted", "embargoed" or "metadata only", according to [COAR Access Rights](https://vocabularies.coar-repositories.org/access_rights/) |                                                                                                                                                 |
-| `description`      | string / url  | 1-n   | 0-n       |                                                                                                                                                            |                                                                                                                                                 |
-| `typeOfData`       | string[]      | 1-n   | 0-n       | Literal "XML", "Text", "Image", "Video", "Audio"                                                                                                           | copied from dataset; does this still make sense? -> Maybe not.  -> should it be optional? or removed?                                           |
-| `languages`        | lang_string[] | 1-n   | 0-n       |                                                                                                                                                            | copied from dataset; does this make sense? -> computed if available and optionally added manually.   -> ?                                       |
-| `licenses`         | license[]     | 1-n   | 1-n       |                                                                                                                                                            | computed from the records if available and optionally added manually                                                                            |
-| `copyrightHolders` | string[]      | 1-n   | 1-n       |                                                                                                                                                            | computed from the records if available and optionally added manually                                                                            |
-| `authorship`       | authorship[]  | 1-n   | 1-n       |                                                                                                                                                            | computed from the records if available and optionally added manually                                                                            |
-| `licenseDates`     | dateInterval  | 1     | 1         |                                                                                                                                                            | Computed from recods: Interval from earliest to latest licenseDate                                                                              |
-| `provenance`       | string        | 0-1   | 0-1       |                                                                                                                                                            | see: [openAIRE Guidelines](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_source.html#dc-source) |
-| `records`          | id[]          | 0-n   | 0-n       | Record IDs                                                                                                                                                 | can be 0 in case it points to a collection                                                                                                      |
-| `collections`      | id[]          | 0-n   | 0-n       | Collection IDs                                                                                                                                             |                                                                                                                                                 |
-| `alternativeNames` | lang_string[] | 0-n   | 0-n       |                                                                                                                                                            |                                                                                                                                                 |
-| `keywords`         | lang_string[] | 0-n   | 0-n       |                                                                                                                                                            |                                                                                                                                                 |
-| `urls`             | url[]         | 0-n   | 0-n       |                                                                                                                                                            |                                                                                                                                                 |
+| Field              | Type              | Card. | WIP-Card. |
+| ------------------ | ----------------- | ----- | --------- |
+| `pid`              | id                | 1     | 1         |
+| `name`             | string            | 1     | 1         |
+| `accessRights`     | accessRights      | 1     | 1         |
+| `legal`            | legalMultiple     | 1     | 1         |
+| `howToCite`        | string            | 1     | 1         |
+| `description`      | lang_string / url | 1-n   | 0-n       |
+| `typeOfData`       | string[]          | 1-n   | 0-n       |
+| `dateCreated`      | date              | 1     | 0-1       |
+| `dateModified`     | date              | 0-1   | 0-1       |
+| `records`          | id[]              | 0-n   | 0-n       |
+| `collections`      | id[]              | 0-n   | 0-n       |
+| `provenance`       | string            | 0-1   | 0-1       |
+| `languages`        | lang_string[]     | 1-n   | 0-n       |
+| `alternativeNames` | lang_string[]     | 0-n   | 0-n       |
+| `keywords`         | lang_string[]     | 0-n   | 0-n       |
+| `urls`             | url[]             | 0-n   | 0-n       |
+
+- `pid`: A unique persisten identifier (for now ARK URL) for the collection.
+- `name`: The name of the collection.
+- `accessRights`: The access rights of the collection.  
+  Complex value type, see under "Value Types".
+- `legal`: Legal information about the collection.  
+  Complex value type, see under "Value Types".
+- `howToCite`: How to cite the collection.  
+  If not provided, we use the standard form `name (year). [Collection]. DaSCH. ARK`.
+- `description`: The description of the collection.  
+  URL or String with language tag, possibly with multiple languages.
+- `typeOfData`: The type of data in the collection.  
+  Computed from the records if available and optionally added manually.
+  Literal "XML", "Text", "Image", "Video", "Audio".
+- `dateCreated`: The date when the collection was created.
+- `dateModified`: The date when the collection was last modified.
+- `records`: A list of record identifiers that make up the collection.
+- `collections`: A list of collection identifiers that make up the collection, if nested.
+- `provenance`: The provenance of the collection.  
+  List of Strings with language tag, possibly with multiple languages.
+- `languages`: A list of languages contained in the collection.  
+  Computed from the records if available and optionally added manually.
+- `alternativeNames`: Alternative names of the collection.  
+  Strings with language tag, possibly with multiple languages per name.
+- `keywords`: A list of keywords describing the collection.  
+  Strings with language tag, possibly with multiple languages per keyword.
+- `urls`: A list of URLs related to the collection.  
+  URLs, as defined below.
+
+!!! question
+    What is the standard form for citing a collection?
+
+!!! question
+    does urls here make sense?
 
 #### Record
 
@@ -460,9 +510,17 @@ Modelled according to the [OpenAIRE guidelines](https://guidelines.openaire.eu/e
 | `name`    | string | 0-1         |                            |
 | `url`     | url    | 0-1         |                            |
 
+#### Access Rights
+
+
+<!-- TODO: model type for accessRights as in https://guidelines.openaire.eu/en/latest/data/field_date.html -->
+
+<!-- TODO: naming of open, restricted, etc. -- something like "full open access", "restricted open access" etc. -->
+
+## Open Questions
+
 
 !!! question
     Are we happy with all WIP-Cardinalities?
 
 
-<!-- TODO: naming of open, restricted, etc. -->
