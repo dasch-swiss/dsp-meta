@@ -112,6 +112,10 @@ but it is always part of one of the top-level elements.
 Such elements do not have an identifier,
 but are identified by their position in the hierarchy.
 
+In the column `Type` of the tables below,
+unless the type is a primitive type like `string` or `date`,
+the definition of the type is given in a separate section.
+
 | Field            | Type           | Archival Cardinality | In-progress Cardinality |
 | ---------------- | -------------- | -------------------- | ----------------------- |
 | `projectCluster` | projectCluster | 0-1                  | 0-1                     |
@@ -145,11 +149,10 @@ but are identified by their position in the hierarchy.
 - `projects`: A list of project identifiers that are part of the project cluster.
 - `projectClusters`: A list of project cluster identifiers that are part of the project cluster, 
   in case of nested project clusters.
-- `description`: The description of the project cluster.  
-  String with language tag, possibly with multiple languages.
+- `description`: The description of the project cluster.
 - `url`: The URL of the project cluster.
 - `howToCite`: How to cite the project cluster.  
-  If not provided, we use the standard form XXX.
+  If not provided, we use the standard form `name (year). [Project Cluster]. DaSCH. ARK`.
 - `alternativeNames`: Alternative names of the project cluster.
 - `contactPoint`: A list of identifiers of persons or organizations responsible for the project cluster.
 
@@ -196,47 +199,31 @@ There is no difference in cardinality between the archival and in-progress stage
 - `status`: The status of the project.  
   Either "Ongoing" or "Finished".
 - `name`: The name of the project.
-- `description`: The description of the project.  
-  String with language tag, possibly with multiple languages.
+- `description`: The description of the project.
 - `startDate`: The start date of the project.  
-  Value type as defined below.
 - `endData`: The end date of the project.  
-  Value type as defined below.
 - `teaserText`: A short text to be displayed as a teaser.  
   Maximum length: X characters.
 - `url`: The URL of the project.  
-  Value type as defined below.
 - `howToCite`: How to cite the project.  
   If not provided, we use the standard form `name (year). [Project]. DaSCH. ARK`.
 - `accessRights`: The access rights of the project.  
-  Complex value type, see under "Value Types".
 - `legal`: Legal information about the project.  
-  Complex value type, see under "Value Types".
 - `dataManagementPlan`: A data management plan of the project.
   String or URL, use "not accessible" if not available to us.
 - `datasets`: A list of dataset identifiers that make up the project data.
 - `keywords`: A list of keywords describing the project.  
-  Strings with language tag, possibly with multiple languages per keyword.
 - `disciplines`: A list of disciplines the project is related to.  
-  Either strings with language tag or URLs, as defined below.
 - `temporalCoverage`: A list of temporal coverages of the project.  
-  Either strings with language tag or URLs, as defined below.
 - `spatialCoverage`: A list of spatial coverages of the project.  
-  URLs, as defined below.
 - `attributions`: A list of attributions defining what roles people/organizations have in the project.  
   Manually entered, as there may be people who don't have authorship, like reviewers, organizers, etc.
-  Value attribution is defined below.
 - `abstract`: An abstract of the project.  
-  String with language tag, possibly with multiple languages.
 - `secondaryURL`: A secondary URL of the project.  
-  Value type as defined below.
 - `contactPoint`: A person or organization responsible for the project.
 - `publications`: A list of publications related to the project.  
-  Value type as defined below.
 - `grants`: A list of grants related to the project.
-  Value type as defined below.
 - `alternativeNames`: Alternative names of the project.
-  Strings with language tag, possibly with multiple languages per name.
 
 !!! question
     Is the standard form for citing a project correct?
@@ -274,9 +261,7 @@ There is no difference in cardinality between the archival and in-progress stage
 - `pid`: A unique persisten identifier (for now ARK URL) for the dataset.
 - `title`: The title of the dataset.
 - `accessRights`: The access rights of the dataset.  
-  Complex value type, see under "Value Types".
 - `legal`: Legal information about the dataset.  
-  Complex value type, see under "Value Types".
 - `howToCite`: How to cite the dataset.  
   If not provided, we use the standard form `name (year). [Dataset]. DaSCH. ARK`.
 - `typeOfData`: The type of data in the dataset.  
@@ -286,7 +271,6 @@ There is no difference in cardinality between the archival and in-progress stage
 - `dateModified`: The date when the dataset was last modified.
 - `records`: A list of record identifiers that make up the dataset.
 - `description`: The description of the dataset.  
-  String with language tag, possibly with multiple languages.
 - `languages`: A list of languages contained in the dataset.  
   Computed from the records if available and optionally added manually.
 
@@ -319,13 +303,10 @@ A record can only be part of one dataset.
 - `pid`: A unique persisten identifier (for now ARK URL) for the collection.
 - `name`: The name of the collection.
 - `accessRights`: The access rights of the collection.  
-  Complex value type, see under "Value Types".
 - `legal`: Legal information about the collection.  
-  Complex value type, see under "Value Types".
 - `howToCite`: How to cite the collection.  
   If not provided, we use the standard form `name (year). [Collection]. DaSCH. ARK`.
 - `description`: The description of the collection.  
-  URL or String with language tag, possibly with multiple languages.
 - `typeOfData`: The type of data in the collection.  
   Computed from the records if available and optionally added manually.
   Literal "XML", "Text", "Image", "Video", "Audio".
@@ -337,11 +318,8 @@ A record can only be part of one dataset.
 - `languages`: A list of languages contained in the collection.  
   Computed from the records if available and optionally added manually.
 - `alternativeNames`: Alternative names of the collection.  
-  Strings with language tag, possibly with multiple languages per name.
 - `keywords`: A list of keywords describing the collection.  
-  Strings with language tag, possibly with multiple languages per keyword.
 - `urls`: A list of URLs related to the collection.  
-  URLs, as defined below.
 
 !!! question
     What is the standard form for citing a collection?
@@ -369,9 +347,7 @@ A record can only be part of one dataset.
 - `pid`: A unique persisten identifier (for now ARK URL) for the record.
 - `name`: The name of the record.
 - `accessRights`: The access rights of the record.  
-  Complex value type, see under "Value Types".
 - `legal`: Legal information about the record.  
-  Complex value type, see under "Value Types".
 - `howToCite`: How to cite the record.  
   If not provided, we use the standard form `name (year). [Record]. DaSCH. ARK`.
 - `publisher`: The publisher of the record.  
@@ -379,7 +355,6 @@ A record can only be part of one dataset.
 - `provenance`: The provenance of the record.  
   required for [openAIRE](https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_source.html#dc-source)
 - `description`: The description of the record.  
-  URL or String with language tag, possibly with multiple languages.
 - `typeOfData`: The type of data in the record.  
   Literal "XML", "Text", "Image", "Video", "Audio".
 - `size`: The size of the record.  
@@ -423,13 +398,10 @@ A record can only be part of one dataset.
 Cardinality is the same for both stages.
 
 - `givenNames`: The given names of the person.  
-  Multiple given names are possible.
 - `familyNames`: The family names of the person.
 - `jobTitles`: The job titles of the person.  
-  Multiple job titles are possible.
 - `affiliations`: The affiliations of the person to organizations.
 - `address`: The address of the person.  
-  Value type as defined below.
 - `email`: The email address of the person.
 - `secondaryEmail`: A secondary email address of the person.
 - `authorityRefs`: References to external authority files.
@@ -458,10 +430,8 @@ Cardinality is the same for both stages.
 - `name`: The name of the organization.
 - `url`: The URL of the organization.
 - `address`: The address of the organization.  
-  Value type as defined below.
 - `email`: The email address of the organization.
 - `alternativeName`: Alternative names of the organization.  
-  Strings with language tag, possibly with multiple languages per name.
 - `authorityRefs`: References to external authority files.
 
 !!! question
