@@ -128,65 +128,126 @@ but are identified by their position in the hierarchy.
 
 #### Project Cluster
 
-| Field              | Type          | Card. | Restrictions                                                   |
-| ------------------ | ------------- | ----- | -------------------------------------------------------------- |
-| `pid`              | id            | 1     |                                                                |
-| `name`             | string        | 1     |                                                                |
-| `projects`         | id[]          | 0-n   | String containing the identifier of a project                  |
-| `projectClusters`  | id[]          | 0-n   | String containing the identifier of a project cluster          |
-| `description`      | lang_string   | 0-1   |                                                                |
-| `url`              | url           | 0-1   |                                                                |
-| `hotToCite`        | string        | 0-1   |                                                                |
-| `alternativeNames` | lang_string[] | 0-n   |                                                                |
-| `contactPoint`     | id[]          | 0-n   | Strings containing the identifiers of a person or organization |
+| Field              | Type          | Card. |
+| ------------------ | ------------- | ----- |
+| `pid`              | id            | 1     |
+| `name`             | string        | 1     |
+| `projects`         | id[]          | 0-n   |
+| `projectClusters`  | id[]          | 0-n   |
+| `description`      | lang_string   | 0-1   |
+| `url`              | url           | 0-1   |
+| `hotToCite`        | string        | 0-1   |
+| `alternativeNames` | lang_string[] | 0-n   |
+| `contactPoint`     | id[]          | 0-n   |
+
+- `pid`: A unique persisten identifier (for now ARK URL) for the project cluster.
+- `name`: The name of the project cluster.
+- `projects`: A list of project identifiers that are part of the project cluster.
+- `projectClusters`: A list of project cluster identifiers that are part of the project cluster, 
+  in case of nested project clusters.
+- `description`: The description of the project cluster.  
+  String with language tag, possibly with multiple languages.
+- `url`: The URL of the project cluster.
+- `howToCite`: How to cite the project cluster.  
+  If not provided, we use the standard form XXX.
+- `alternativeNames`: Alternative names of the project cluster.
+- `contactPoint`: A list of identifiers of persons or organizations responsible for the project cluster.
 
 To make the model of this entity as flexible as possible,
 most of the fields are optional.  
 There is no difference in cardinality between the archival and in-progress stages.
 
+!!! question
+    What is the standard form for citing a project cluster?
+
 #### Project
 
-| Field                | Type                | Card. | WIP Card. | Restrictions                                                                                                                                               |
-| -------------------- | ------------------- | ----- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pid`                | id                  | 1     | 1         |                                                                                                                                                            |
-| `shortcode`          | string              | 1     | 1         | 4 char hexadecimal                                                                                                                                         |
-| `status`             | string              | 1     | 1         | Literal "Ongoing" or "Finished"                                                                                                                            |
-| `name`               | string              | 1     | 1         |                                                                                                                                                            |
-| `description`        | lang_string         | 1     | 1         |                                                                                                                                                            |
-| `startDate`          | date                | 1     | 1         | String of format "YYYY-MM-DD"                                                                                                                              |
-| `teaserText`         | string              | 1     | 1         |                                                                                                                                                            |
-| `url`                | url                 | 1     | 1         |                                                                                                                                                            |
-| `howToCite`          | string              | 1     | 1         |                                                                                                                                                            |
-| `accessRights`       | accessRights        | 1     | 1         | Literal "open", "restricted", "embargoed" or "metadata only", according to [COAR Access Rights](https://vocabularies.coar-repositories.org/access_rights/) |
-| `datasets`           | id[]                | 1-n   | 0-n       | String containing the identifier of a dataset                                                                                                              |
-| `keywords`           | lang_string[]       | 1-n   | 0-n       |                                                                                                                                                            |
-| `disciplines`        | lang_string / url[] | 1-n   | 0-n       |                                                                                                                                                            |
-| `temporalCoverage`   | lang_string / url[] | 1-n   | 0-n       |                                                                                                                                                            |
-| `spatialCoverage`    | url[]               | 1-n   | 0-n       |                                                                                                                                                            |
-| `attributions`       | attribution[]       | 1-n   | 0-n       | manually entered (e.g. also people who don't have authorship, like reviewers, organizers, etc.)                                                            |
-| `licenses`           | license[]           | 1-n   | 1-n       | computed from the records if available and optionally added manually                                                                                       |
-| `copyrightHolders`   | string[]            | 1-n   | 1-n       | computed from the records if available and optionally added manually                                                                                       |
-| `authorship`         | authorship[]        | 1-n   | 1-n       | computed from the records if available and optionally added manually                                                                                       |
-| `licenseDates`       | dateInterval        | 1     | 1         | computed from recods: Interval from earliest to latest licenseDate                                                                                         |
-| `abstract`           | lang_string         | 0-1   | 0-1       |                                                                                                                                                            |
-| `endDate`            | date                | 0-1   | 0-1       | String of format "YYYY-MM-DD"                                                                                                                              |
-| `secondaryURL`       | url                 | 0-1   | 0-1       |                                                                                                                                                            |
-| `dataManagementPlan` | dmp                 | 0-1   | 0-1       |                                                                                                                                                            |
-| `contactPoint`       | id                  | 0-1   | 0-1       | String containing the identifier of a person or organization                                                                                               |
-| `publications`       | publication[]       | 0-n   | 0-n       |                                                                                                                                                            |
-| `grants`             | grant[]             | 0-n   | 0-n       |                                                                                                                                                            |
-| `alternativeNames`   | lang_string[]       | 0-n   | 0-n       |                                                                                                                                                            |
+| Field                | Type                | Card. | WIP Card. |
+| -------------------- | ------------------- | ----- | --------- |
+| `pid`                | id                  | 1     | 1         |
+| `shortcode`          | string              | 1     | 1         |
+| `status`             | string              | 1     | 1         |
+| `name`               | string              | 1     | 1         |
+| `description`        | lang_string         | 1     | 1         |
+| `startDate`          | date                | 1     | 0-1       |
+| `endDate`            | date                | 1     | 0-1       |
+| `teaserText`         | string              | 1     | 0-1       |
+| `url`                | url                 | 1     | 0-1       |
+| `howToCite`          | string              | 1     | 1         |
+| `accessRights`       | accessRights        | 1     | 1         |
+| `legal`              | legalMultiple       | 1     | 1         |
+| `dataManagementPlan` | string / url        | 1     | 1         |
+| `datasets`           | id[]                | 1-n   | 0-n       |
+| `keywords`           | lang_string[]       | 1-n   | 0-n       |
+| `disciplines`        | lang_string / url[] | 1-n   | 0-n       |
+| `temporalCoverage`   | lang_string / url[] | 1-n   | 0-n       |
+| `spatialCoverage`    | url[]               | 1-n   | 0-n       |
+| `attributions`       | attribution[]       | 1-n   | 0-n       |
+| `abstract`           | lang_string         | 0-1   | 0-1       |
+| `secondaryURL`       | url                 | 0-1   | 0-1       |
+| `contactPoint`       | id                  | 0-1   | 0-1       |
+| `publications`       | publication[]       | 0-n   | 0-n       |
+| `grants`             | grant[]             | 0-n   | 0-n       |
+| `alternativeNames`   | lang_string[]       | 0-n   | 0-n       |
 
-!!! danger
+- `pid`: A unique persisten identifier (for now ARK URL) for the project.
+- `shortcode`: The project's DSP short code.  
+  4 characters hexadecimal, upper case.
+- `status`: The status of the project.  
+  Either "Ongoing" or "Finished".
+- `name`: The name of the project.
+- `description`: The description of the project.  
+  String with language tag, possibly with multiple languages.
+- `startDate`: The start date of the project.  
+  Value type as defined below.
+- `endData`: The end date of the project.  
+  Value type as defined below.
+- `teaserText`: A short text to be displayed as a teaser.  
+  Maximum length: X characters.
+- `url`: The URL of the project.  
+  Value type as defined below.
+- `howToCite`: How to cite the project.
+- `accessRights`: The access rights of the project.  
+  Complex value type, see under "Value Types".
+- `legal`: Legal information about the project.  
+  Complex value type, see under "Value Types".
+- `dataManagementPlan`: A data management plan of the project.
+  String or URL, use "not accessible" if not available to us.
+- `datasets`: A list of dataset identifiers that make up the project data.
+- `keywords`: A list of keywords describing the project.  
+  Strings with language tag, possibly with multiple languages per keyword.
+- `disciplines`: A list of disciplines the project is related to.  
+  Either strings with language tag or URLs, as defined below.
+- `temporalCoverage`: A list of temporal coverages of the project.  
+  Either strings with language tag or URLs, as defined below.
+- `spatialCoverage`: A list of spatial coverages of the project.  
+  URLs, as defined below.
+- `attributions`: A list of attributions defining what roles people/organizations have in the project.  
+  Manually entered, as there may be people who don't have authorship, like reviewers, organizers, etc.
+  Value attribution is defined below.
+- `abstract`: An abstract of the project.  
+  String with language tag, possibly with multiple languages.
+- `secondaryURL`: A secondary URL of the project.  
+  Value type as defined below.
+- `contactPoint`: A person or organization responsible for the project.
+- `publications`: A list of publications related to the project.  
+  Value type as defined below.
+- `grants`: A list of grants related to the project.
+  Value type as defined below.
+- `alternativeNames`: Alternative names of the project.
+  Strings with language tag, possibly with multiple languages per name.
+
+!!! question
     Do we still need `teaserText`?  
     Is the WIP-Cardinality correct there?
+    How many characters should it have?
 
-!!! danger
+!!! question
     What is the difference between `url` and `pid`?  
     Is it needed if we also have `secondaryURL`?  
     What about the cardinality?
 
-!!! danger
+!!! question
     If we have datasets optional while in progress, and the legal stuff is computed from the records,
     it can happen that there are no records, so I guess we need to make the legal stuff optional as well.
 
@@ -263,7 +324,7 @@ A record can only be part of one dataset.
 
 <!-- TODO: move embargo date to separate type -->
 
-!!! danger
+!!! question
     How do we ensure that embargo dates are consistent across the records of a dataset?
     Do they have to be? What would the implications be?
 
@@ -282,7 +343,7 @@ A record can only be part of one dataset.
 
 Cardinality is the same for both stages.
 
-!!! danger
+!!! question
     Does job title make sense?  
     should we model functions over time,
     so that we can re-use the same person for different roles in different projects?
@@ -300,7 +361,7 @@ Cardinality is the same for both stages.
 
 Cardinality is the same for both stages.
 
-!!! danger
+!!! question
     Again, should we model this over time, so that it's reuseable?
 
 ### Value Types
@@ -367,10 +428,19 @@ long term we may provide an option to upload DMPs so they can use a URL.
 2. Copright holder
 3. Authorship
 
-!!! danger
+!!! question
     Does that make sense like this? If so, adjust everywhere.
 
 <!-- TODO: maybe adjust everywhere else -->
+
+from project:
+
+| Field              | Type         | Card. | WIP Card. | Restrictions                                                         |
+| ------------------ | ------------ | ----- | --------- | -------------------------------------------------------------------- |
+| `licenses`         | license[]    | 1-n   | 1-n       | computed from the records if available and optionally added manually |
+| `copyrightHolders` | string[]     | 1-n   | 1-n       | computed from the records if available and optionally added manually |
+| `authorship`       | authorship[] | 1-n   | 1-n       | computed from the records if available and optionally added manually |
+| `licenseDates`     | dateInterval | 1     | 1         | computed from recods: Interval from earliest to latest licenseDate   |
 
 #### Attribution
 
@@ -391,7 +461,7 @@ Modelled according to the [OpenAIRE guidelines](https://guidelines.openaire.eu/e
 | `url`     | url    | 0-1         |                            |
 
 
-!!! danger
+!!! question
     Are we happy with all WIP-Cardinalities?
 
 
