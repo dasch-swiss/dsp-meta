@@ -329,20 +329,20 @@ A record can only be part of one dataset.
 
 #### Record
 
-| Field          | Type          | Card. | WIP-Card. |
-| -------------- | ------------- | ----- | --------- |
-| `pid`          | id            | 1     | 1         |
-| `label`        | lang_string   | 1     | 1         |
-| `accessRights` | string        | 1     | 1         |
-| `legal`        | legalMultiple | 1     | 1         |
-| `howToCite`    | string        | 1     | 1         |
-| `publisher`    | string        | 1     | 1         |
-| `provenance`   | string        | 0-1   | 0-1       |
-| `dateCreated`  | date          | 0-1   | 0-1       |
-| `dateModified` | date          | 0-1   | 0-1       |
-| `typeOfData`   | string        | 0-1   | 0-1       |
-| `size`         | string        | 0-1   | 0-1       |
-| `audience`     | string        | 0-n   | 0-n       |
+| Field          | Type        | Card. | WIP-Card. |
+| -------------- | ----------- | ----- | --------- |
+| `pid`          | id          | 1     | 1         |
+| `label`        | lang_string | 1     | 1         |
+| `accessRights` | string      | 1     | 1         |
+| `legal`        | legalSingle | 1     | 1         |
+| `howToCite`    | string      | 1     | 1         |
+| `publisher`    | string      | 1     | 1         |
+| `provenance`   | string      | 0-1   | 0-1       |
+| `dateCreated`  | date        | 0-1   | 0-1       |
+| `dateModified` | date        | 0-1   | 0-1       |
+| `typeOfData`   | string      | 0-1   | 0-1       |
+| `size`         | string      | 0-1   | 0-1       |
+| `audience`     | string      | 0-n   | 0-n       |
 
 - `pid`: A unique persisten identifier (for now ARK URL) for the record.
 - `name`: The name of the record.
@@ -453,9 +453,7 @@ Object with an ISO language code as key and a string as value.
 }
 ```
 
-#### Date
-
-String with the format `YYYY-MM-DD`.
+This means that for a single lang_string value, there can be multiple translations.
 
 #### URL
 
@@ -465,67 +463,49 @@ the URL may be a generic URL
 or a more specific link, like a PID
 or a reference to a resource in an external authority file.
 
-| Field  | Type   | Cardinality | Restrictions                                                                                                                                |
-| ------ | ------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type` | string | 1           | Literal 'URL', 'Geonames', 'Pleiades', 'Skos', 'Periodo', 'Chronontology', 'GND', 'VIAF', 'Grid', 'ORCID', 'Creative Commons', 'DOI', 'ARK' |
-| `url`  | string | 1           |                                                                                                                                             |
-| `text` | string | 0-1         |                                                                                                                                             |
+| Field  | Type   | Card. |
+| ------ | ------ | ----- |
+| `type` | string | 1     |
+| `url`  | string | 1     |
+| `text` | string | 0-1   |
 
+- `type`: The type of the URL.  
+  Literal 'URL', 'Geonames', 'Pleiades', 'Skos', 'Periodo', 'Chronontology', 'GND', 'VIAF', 'Grid', 'ORCID',
+  'Creative Commons', 'DOI', 'ARK'.  
+  This is used to determine the semantics of the URL.
+- `url`: The URL itself.
+- `text`: A human-readable text for display.
 
-#### Data Management Plan (`dmp`)
-
-type: String ot URL, use "not accessible" if not available to us.  
-long term we may provide an option to upload DMPs so they can use a URL.
-
-<!-- TODO: make nice -->
-
+!!! question
+    When do we clean this up?
 
 #### Publication
 
-| Field  | Type   | Cardinality | Restrictions |
-| ------ | ------ | ----------- | ------------ |
-| `text` | string | 1           |              |
-| `url`  | url    | 0-1         |              |
+| Field  | Type   | Card. |
+| ------ | ------ | ----- |
+| `text` | string | 1     |
+| `url`  | url    | 0-1   |
+
+- `text`: The text of the publication.
+- `url`: A URL to the publication, if e.g. a DOI is available.
 
 #### Address
 
-| Field        | Type   | Cardinality | Restrictions |
-| ------------ | ------ | ----------- | ------------ |
-| `street`     | string | 1           |              |
-| `postalCode` | string | 1           |              |
-| `locality`   | string | 1           |              |
-| `country`    | string | 1           |              |
-| `canton`     | string | 0-1         |              |
-| `additional` | string | 0-1         |              |
+| Field        | Type   | Card. |
+| ------------ | ------ | ----- |
+| `street`     | string | 1     |
+| `postalCode` | string | 1     |
+| `locality`   | string | 1     |
+| `country`    | string | 1     |
+| `canton`     | string | 0-1   |
+| `additional` | string | 0-1   |
 
-#### Legal
-
-1. License: consists `licenseText`, `licenseUri` and `licenseDate`.
-2. Copright holder
-3. Authorship
-
-!!! question
-    Does that make sense like this? If so, adjust everywhere.
-
-<!-- TODO: maybe adjust everywhere else -->
-
-from project:
-
-| Field              | Type         | Card. | WIP Card. | Restrictions                                                         |
-| ------------------ | ------------ | ----- | --------- | -------------------------------------------------------------------- |
-| `licenses`         | license[]    | 1-n   | 1-n       | computed from the records if available and optionally added manually |
-| `copyrightHolders` | string[]     | 1-n   | 1-n       | computed from the records if available and optionally added manually |
-| `authorship`       | authorship[] | 1-n   | 1-n       | computed from the records if available and optionally added manually |
-| `licenseDates`     | dateInterval | 1     | 1         | computed from recods: Interval from earliest to latest licenseDate   |
-
-#### Attribution
-
-Modelled according to the [OpenAIRE guidelines](https://guidelines.openaire.eu/en/latest/data/field_contributor.html).
-
-| Field             | Type   | Cardinality | Restrictions                                  |
-| ----------------- | ------ | ----------- | --------------------------------------------- |
-| `contributor`     | id     | 1           | Person or Organization ID                     |
-| `contributorType` | string | 1-n         | controlled vocababulary according to OpenAIRE |
+- `street`: The street of the address.
+- `postalCode`: The postal code of the address.
+- `locality`: The locality of the address.
+- `country`: The country of the address.
+- `canton`: The canton of the address.
+- `additional`: Additional information about the address, if needed.
 
 #### Grant
 
@@ -536,12 +516,116 @@ Modelled according to the [OpenAIRE guidelines](https://guidelines.openaire.eu/e
 | `name`    | string | 0-1         |                            |
 | `url`     | url    | 0-1         |                            |
 
-#### Access Rights
+#### Legal
+
+There are two variants of the `legal` type: `legalSingle` and `legalMultiple`. 
+They contain different subtypes.
+
+!!! question
+    Can we simplify this?
+
+##### Legal Single
+
+This model applies for a single record.
+
+| Field             | Type          | Card. | WIP Card. |
+| ----------------- | ------------- | ----- | --------- |
+| `license`         | singleLicense | 1     | 1         |
+| `copyrightHolder` | string        | 1     | 1         |
+| `authorship`      | authorship[]  | 1-n   | 1-n       |
 
 
-<!-- TODO: model type for accessRights as in https://guidelines.openaire.eu/en/latest/data/field_date.html -->
+| `licenseDate`     | date         | 1     | 1         |
 
-<!-- TODO: naming of open, restricted, etc. -- something like "full open access", "restricted open access" etc. -->
+##### Legal Multiple
+
+This model applies for projects, datasets and collections.
+
+| Field              | Type         | Card. | WIP Card. |
+| ------------------ | ------------ | ----- | --------- |
+| `licenses`         | MultiLicense | 1-n   | 1-n       |
+| `copyrightHolders` | string[]     | 1-n   | 1-n       |
+| `authorship`       | authorship[] | 1-n   | 1-n       |
+
+##### Single License
+
+| Field         | Type    | Card. | WIP Card. |
+| ------------- | ------- | ----- | --------- |
+| `license`     | license | 1     | 1         |
+| `licenseDate` | date    | 1     | 1         |
+
+##### Multi License
+
+| Field          | Type            | Card. | WIP Card. |
+| -------------- | --------------- | ----- | --------- |
+| `licenses`     | singleLicense[] | 1-n   | 1-n       |
+| `licenseDates` | dateInterval    | 1     | 1         |
+
+##### License
+
+| Field         | Type        | Card. | WIP Card. |
+| ------------- | ----------- | ----- | --------- |
+| `licenseText` | lang_string | 1     | 1         |
+| `licenseUri`  | url         | 1     | 1         |
+
+##### Authorship
+
+| Field    | Type   | Card. | WIP Card. |
+| -------- | ------ | ----- | --------- |
+| `author` | id     | 1     | 1         |
+| `role`   | string | 1     | 1         |
+
+##### Date Interval
+
+| Field       | Type | Card. | WIP Card. |
+| ----------- | ---- | ----- | --------- |
+| `startDate` | date | 1     | 1         |
+| `endDate`   | date | 1     | 1         |
+
+--
+
+Formerly from record:
+
+| Field             | Type       | Card. | WIP Card. | Restrictions                                          |
+| ----------------- | ---------- | ----- | --------- | ----------------------------------------------------- |
+| `license`         | license    | 1     | 1         | If not provided "Ask copyright holder for permission" |
+| `copyrightHolder` | string     | 1     | 1         | If not specified use project as copyright holder      |
+| `authorship`      | authorship | 1-n   | 1-n       | If not provided, "Author unknown"                     |
+| `licenseDate`     | authorship | 1     | 1         | If not provided, use creation date of the record      |
+
+Formerly from project:
+
+| Field              | Type         | Card. | WIP Card. | Restrictions                                                         |
+| ------------------ | ------------ | ----- | --------- | -------------------------------------------------------------------- |
+| `licenses`         | license[]    | 1-n   | 1-n       | computed from the records if available and optionally added manually |
+| `copyrightHolders` | string[]     | 1-n   | 1-n       | computed from the records if available and optionally added manually |
+| `authorship`       | authorship[] | 1-n   | 1-n       | computed from the records if available and optionally added manually |
+| `licenseDates`     | dateInterval | 1     | 1         | computed from recods: Interval from earliest to latest licenseDate   |
+
+!!! question
+    How do we deal with the string fallbacks, if things are modelled as types?
+
+##### Attribution
+
+Modelled according to the [OpenAIRE guidelines](https://guidelines.openaire.eu/en/latest/data/field_contributor.html).
+
+| Field             | Type   | Cardinality | Restrictions                                  |
+| ----------------- | ------ | ----------- | --------------------------------------------- |
+| `contributor`     | id     | 1           | Person or Organization ID                     |
+| `contributorType` | string | 1-n         | controlled vocababulary according to OpenAIRE |
+
+##### Access Rights
+
+
+TODO: model type for accessRights as in https://guidelines.openaire.eu/en/latest/data/field_date.html
+
+!!! question
+    Should we use more flattering terms?
+
+    - "Open" -> "Full Open Access"
+    - "Restricted" -> "Restricted Open Access"
+    - "Embargoed" -> "Embargoed"
+    - "Metadata only" -> "Metadata only"
 
 ## Open Questions
 
