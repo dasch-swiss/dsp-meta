@@ -2,6 +2,7 @@
     "$schema": "../../resources/schema-metadata-draft.json",
     "project": {
         "__type": "Project",
+        "status": "Ongoing",
         "howToCite": "Canonicity, Obscenity, and the Making of Modern Chaucer (COMMode) (2028). “COMMode Primary Texts.” DaSCH. https://ark.dasch.swiss/ark:/72163/1/083B.",
         "teaserText": "This project will recover the untold history of how Chaucer became both an icon of literary fame and an icon of obscenity.",
         "datasets": [
