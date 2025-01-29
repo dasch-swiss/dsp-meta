@@ -8,11 +8,8 @@
     This model is an idealized version of the metadata model.
     With the current implementation that is entirely separate from the DSP,
     it is not feasible to implement metadata on the record level.  
-    Such a system may be implemented in the archive in the future,
-    but for now, we will keep the metadata on the dataset level.  
-    A separate, simplified model for applying some of these changes,
-    while remaining compatible with the current implementation,
-    should be created alongside this model.
+    Such a system will be implemented in the archive in the future,
+    but for now, we will keep the metadata on the dataset level.
 
 The enhancements to the DSP metadata model are designed to better accommodate
 the inherent complexity of humanities projects, while still being flexible enough to
@@ -21,9 +18,9 @@ support simpler project structures.
 One of the key improvements is the introduction of an additional hierarchical level above
 the research project, which we refer to as a project cluster. This allows for a more
 accurate representation of overarching initiatives that span multiple research projects
-over extended periods. Additionally, we have implemented collections and subcollections
+over extended periods of time. Additionally, we have implemented collections and subcollections
 to facilitate more precise referencing and organization of different parts of the data,
-additionally enabling projects to retain and represent historical groupings of data.
+additionally enabling projects to retain and represent historical or otherwise relevant groupings of data.
 
 By expanding our metadata model in this way, we aim to provide a more robust framework
 that supports the integrity and longevity of humanities research data. This evolution
@@ -41,7 +38,7 @@ with greater accuracy and detail.
     If only one cardinality is given, it applies to both stages.
 
 !!! note
-    We consider all metadata as public domain. This needs to be in the deposit agreement.  
+    We consider all metadata as public domain. By signing the deposit agreement, projects must consent to that.  
     This is unlike the domain metadata which is part of the project's data and hence can be licensed as the project wishes.
 
 ## Overview
@@ -58,14 +55,14 @@ flowchart TD
     project -->|0-n| collection[Collection]
     projectCluster -->|0-n| collection
     collection --> collection
-    collection --> record
+    collection -->|0-n| record
 ```
 
 - A `Project Cluster` collects `Research Projects` or nested `Project Clusters`.  
   It is typically of institutional nature,
   not directly tied to a specific funding grant,
   and may be long-lived.  
-  Examples are EKWS/CAS, BEOL or LIMC.
+  Examples are EKWS/CAS, BEOL or LHTT.
 - A `Research Project` is the main entity of the metadata model.  
   It corresponds to a `project` in the DSP.
   It is typically tied to a specific funding grant,
@@ -78,57 +75,28 @@ flowchart TD
   or any other distinctive feature of the `Records`.
   Many projects will have only 1 `Dataset`, but multiple are possible.  
   A `Dataset` is part of exactly 1 `Research Project` and contains 1-n `Records`.
-- A `Collection` is also a grouping of `Records` within a `Research Project`.  
-  It is meant for semantic grouping of `Records` within a `Research Project`,
+- A `Collection` is also a grouping of `Records`.  
+  It is meant for semantic grouping of `Records`,
   and may have a "historical meaning" in the context of the project.  
-  Examples may be physical collections such as p person's "Nachlass" in an archive,
+  Examples may be physical collections such as person's "Nachlass" in an archive,
   or groupings of records based on a specific research question within a project.  
   A `Collection` is part of at least 1 `Research Project`, `Project Cluster` or `Collection`,
   but can be part of multiple. It may either contain 0-n `Collections` or 1-n `Records`.  
   By allowing nested collections, and records to be part of multiple collections, 
   collections can be used to represent relationships or changes in the data over time.
 - A `Record` is a single entry within a `Dataset`.  
-  It represents a single entity, and the smallest unit that can meaningfully have an identifier.
+  It represents the smallest unit that can meaningfully have an identifier.
   It maps to a `knora-base:Resource` (DSP-API) or an `Asset` (SIPI/Ingest) in the DSP.  
+  In the case of DSP Resources, the metadata of the record is the existence of the resource itself
+  as well as information such as the label, access rights, and provenance.
+  The core data of the resource are the values on that resource.  
+  In the case of assets, the metadata is the existence of the asset itself, as well as access rights.
+  The core data is the binary information of the asset.
   A `Record` is part of exactly 1 `Dataset` and may be part of 0-n `Collections`.
 
 Additionally, there are the entities `Person` and `Organization`:  
 `Person` and `Organization` are entities that are independent of the `Research Project` hierarchy,
 and may be related to various entities within the hierarchy.
-
-## Top Level
-
-A set of metadata consists of the following top-level elements:
-
-- Project Cluster
-- Project
-- Dataset
-- Collection
-- Record
-- Person
-- Organization
-
-Each of these elements is an entity identified by a unique identifier.
-Other elements can refer to these entities by their identifier.
-
-Any other metadata element may itself be a complex object as presented in data,
-but it is always part of one of the top-level elements.
-Such elements do not have an identifier,
-but are identified by their position in the hierarchy.
-
-In the column `Type` of the tables below,
-unless the type is a primitive type like `string` or `date`,
-the definition of the type is given in a separate section.
-
-| Field            | Type           | Archival Cardinality | In-progress Cardinality |
-| ---------------- | -------------- | -------------------- | ----------------------- |
-| `projectCluster` | projectCluster | 0-1                  | 0-1                     |
-| `project`        | project        | 1 / 1-n              | 1 / 0-1                 |
-| `datasets`       | dataset[]      | 1-n                  | 0-n                     |
-| `collections`    | collection[]   | 0-n                  | 0-n                     |
-| `records`        | record[]       | 1-n                  | 0-n                     |
-| `persons`        | person[]       | 0-n                  | 0-n                     |
-| `organizations`  | organization[] | 0-n                  | 0-n                     |
 
 ## Entity Types
 
@@ -480,8 +448,6 @@ A persistent identifier. May be an ARK or a DOI.
 | `url`     | url    | 0-1         |                            |
 
 ### Legal Info
-
-This model applies for a single record.
 
 | Field             | Type     | Card. | WIP Card. |
 | ----------------- | -------- | ----- | --------- |
