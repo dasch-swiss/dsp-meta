@@ -1,5 +1,31 @@
 # Changelog
 
+## [2.3.4](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.3...dsp-meta-v2.3.4) (2025-01-29)
+
+
+### Maintenances
+
+* **deps-dev:** Bump prettier-plugin-svelte from 3.3.2 to 3.3.3 in /web-frontend in the frontend-dependencies group ([#299](https://github.com/dasch-swiss/dsp-meta/issues/299)) ([abc920b](https://github.com/dasch-swiss/dsp-meta/commit/abc920b6cd859c1593f7a97f4f9f1d92344336a6))
+* **deps:** Bump clap from 4.5.26 to 4.5.27 in the backend-dependencies group ([#301](https://github.com/dasch-swiss/dsp-meta/issues/301)) ([aee4ffb](https://github.com/dasch-swiss/dsp-meta/commit/aee4ffb9626b7fe75752e81969a534b19fac7dc0))
+* **deps:** Bump the backend-dependencies group across 1 directory with 8 updates ([#298](https://github.com/dasch-swiss/dsp-meta/issues/298)) ([ade9581](https://github.com/dasch-swiss/dsp-meta/commit/ade9581b7c618321ebb4d3bbb9ce18ddf724be8f))
+* **deps:** Bump the backend-dependencies group across 1 directory with 9 updates ([#293](https://github.com/dasch-swiss/dsp-meta/issues/293)) ([71717ac](https://github.com/dasch-swiss/dsp-meta/commit/71717ac28577c024423e6ddbfbd2e8be47a875d4))
+* **deps:** Bump the backend-dependencies group with 4 updates ([#300](https://github.com/dasch-swiss/dsp-meta/issues/300)) ([0991a7d](https://github.com/dasch-swiss/dsp-meta/commit/0991a7d9e03c02511e70d84cf7686232b0446177))
+* Update Copyright 2025 ([#295](https://github.com/dasch-swiss/dsp-meta/issues/295)) ([b9d046c](https://github.com/dasch-swiss/dsp-meta/commit/b9d046c03c4804af69d379af1cc92c79063bbfb2))
+
+
+### Project Data
+
+* Add project stilus ([#302](https://github.com/dasch-swiss/dsp-meta/issues/302)) ([43447a2](https://github.com/dasch-swiss/dsp-meta/commit/43447a22ad0cbbb0f12e812e9296ed8c00765b35))
+* Update BEOL metadata ([#306](https://github.com/dasch-swiss/dsp-meta/issues/306)) ([e0e1c7e](https://github.com/dasch-swiss/dsp-meta/commit/e0e1c7e3de60869e13eb4957f15508f8fcdd9ae0))
+* Update commode ([#304](https://github.com/dasch-swiss/dsp-meta/issues/304)) ([baf32e9](https://github.com/dasch-swiss/dsp-meta/commit/baf32e9b04836839087c0ce3a7e19d3f1e195168))
+
+
+### Documentation
+
+* Continue work on future datamodel ([#297](https://github.com/dasch-swiss/dsp-meta/issues/297)) ([f9abdd3](https://github.com/dasch-swiss/dsp-meta/commit/f9abdd37967950f8058f980ec09f09804277c4a8))
+* Continue work on future metadata model ([#303](https://github.com/dasch-swiss/dsp-meta/issues/303)) ([acd1e24](https://github.com/dasch-swiss/dsp-meta/commit/acd1e2467eb35407919c0edf0dc7556af12f2538))
+* Small adjustments to future metadata model ([#305](https://github.com/dasch-swiss/dsp-meta/issues/305)) ([a71524d](https://github.com/dasch-swiss/dsp-meta/commit/a71524da685669d252a8c084847ba983ff474d64))
+
 ## [2.3.3](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.2...dsp-meta-v2.3.3) (2024-12-16)
 
 
