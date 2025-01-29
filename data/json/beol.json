@@ -2,7 +2,7 @@
   "$schema": "../../resources/schema-metadata-draft.json",
   "project": {
     "__type": "Project",
-    "howToCite": "Bernoulli-Euler Online (BEOL), 2019, DaSCH. https://beol.dasch.swiss",
+    "howToCite": "Bernoulli-Euler Online (BEOL), 2019, DaSCH. https://ark.dasch.swiss/ark:/72163/1/0801",
     "teaserText": "The project Bernoulli-Euler Online (BEOL) focuses on the mathematics influenced by the Bernoulli dynasty and Leonhard Euler and presents these materials to the public and researchers.",
     "datasets": [
       "http://ns.dasch.swiss/repository#dsp-0801-dataset-000",
@@ -130,7 +130,7 @@
     "secondaryURL": {
       "__type": "URL",
       "type": "URL",
-      "url": "https://beol.dasch.swiss/",
+      "url": "https://bernoulli-euler.dhlab.unibas.ch/",
       "text": "Project Website"
     },
     "status": "Ongoing"
@@ -148,7 +148,7 @@
         }
       ],
       "accessConditions": "open",
-      "howToCite": "Bernoulli-Euler Online (BEOL), 2019, DaSCH. https://beol.dasch.swiss",
+      "howToCite": "Bernoulli-Euler Online (BEOL), 2019, DaSCH. https://ark.dasch.swiss/ark:/72163/1/0801",
       "languages": [
         {
           "en": "English",
@@ -224,7 +224,7 @@
         }
       ],
       "accessConditions": "open",
-      "howToCite": "Bernoulli-Euler Online (BEOL), 2019, DaSCH. https://beol.dasch.swiss",
+      "howToCite": "Bernoulli-Euler Online (BEOL), 2019, DaSCH. https://ark.dasch.swiss/ark:/72163/1/0801",
       "languages": [
         {
           "en": "French",
@@ -282,7 +282,7 @@
         }
       ],
       "accessConditions": "open",
-      "howToCite": "Bernoulli-Euler Online (BEOL), 2019, DaSCH. https://beol.dasch.swiss",
+      "howToCite": "Bernoulli-Euler Online (BEOL), 2019, DaSCH. https://ark.dasch.swiss/ark:/72163/1/0801",
       "languages": [
         {
           "en": "English",
@@ -349,7 +349,7 @@
       "dateCreated": "2018-01-01",
       "dateModified": "2018-01-01",
       "datePublished": "2018-01-01",
-      "howToCite": "Bernoulli-Euler Online (BEOL), 2019, DaSCH. https://beol.dasch.swiss",
+      "howToCite": "Bernoulli-Euler Online (BEOL), 2019, DaSCH. https://ark.dasch.swiss/ark:/72163/1/0801",
       "languages": [
         {
           "en": "French",
