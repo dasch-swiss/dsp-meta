@@ -1,0 +1,299 @@
+{
+    "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
+    "project": {
+        "__type": "Project",
+        "howToCite": "Alice in DaSCHland Project Team (2025). Alice in DaSCHland Dataset [Database]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/0854.",
+        "teaserText": "Alice in DaSCHland whisks you away on a whimsical digital journey where data and metadata spark fantastical adventures - showcase project from DaSCH!",
+        "datasets": [
+            "http://ns.dasch.swiss/repository#dsp-0854-dataset-000",
+            "http://ns.dasch.swiss/repository#dsp-0854-dataset-001"
+        ],
+        "contactPoint": "http://ns.dasch.swiss/repository#dsp-0854-organization-000",
+        "description": {
+            "fr": "Alice in DaSCHland is the showcase project from DaSCH that reimagines Alice’s adventures through a digital lens. The project blends literary elements with advanced data management systems, offering users a unique exploration of data curation, visualization, and retrieval in a surreal narrative landscape.\nAlice in DaSCHland est le projet vitrine de DaSCH qui réimagine les aventures d'Alice à travers une perspective numérique. \nLe projet mélange des éléments littéraires avec des systèmes de gestion de données avancés, offrant aux utilisateurs une exploration unique de la préservation, de la visualisation et de la recherche de données dans un paysage narratif surréaliste."
+        },
+        "disciplines": [
+            {
+                "__type": "URL",
+                "type": "Skos",
+                "url": "http://skos.um.es/unescothes/C03636",
+                "text": "Short stories"
+            },
+            {
+                "de": "10501 German and English languages and literature"
+            }
+        ],
+        "funders": [
+            "http://ns.dasch.swiss/repository#dsp-0854-organization-000"
+        ],
+        "grants": [
+            "http://ns.dasch.swiss/repository#dsp-0854-grant-000"
+        ],
+        "keywords": [
+            {
+                "en": "Alice in Wonderland"
+            },
+            {
+                "en": "DaSCH"
+            },
+            {
+                "en": "Data"
+            },
+            {
+                "en": "Data Visualization"
+            },
+            {
+                "en": "Digital Humanities"
+            },
+            {
+                "en": "Humanities"
+            },
+            {
+                "en": "Metadata"
+            },
+            {
+                "en": "Narrative Exploration"
+            },
+            {
+                "en": "Showcase Project"
+            }
+        ],
+        "name": "Alice in DaSCHland",
+        "shortcode": "0854",
+        "spatialCoverage": [
+            {
+                "__type": "URL",
+                "type": "Geonames",
+                "url": "https://www.geonames.org/2661604/basel.html",
+                "text": "Basel"
+            }
+        ],
+        "startDate": "2024-01-01",
+        "temporalCoverage": [
+            {
+                "de": "2024-2025",
+                "en": "2024-2025",
+                "fr": "2024-2025"
+            }
+        ]
+    },
+    "datasets": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0854-dataset-000",
+            "__type": "Dataset",
+            "abstracts": [
+                {
+                    "en": "This dataset comprises the data structures, metadata, and character data used in the Alice in DaSCHland showcase project. It offers an exploratory environment where users interact with narrative data, data visualization elements, and metadata anomalies through Alice’s adventures."
+                }
+            ],
+            "accessConditions": "restricted",
+            "howToCite": "Alice in DaSCHland Project Team (2025). Alice in DaSCHland Dataset [Database]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/0854.",
+            "languages": [
+                {
+                    "en": "English",
+                    "de": "Englisch",
+                    "fr": "anglais"
+                },
+                {
+                    "en": "French",
+                    "de": "Französisch",
+                    "fr": "français"
+                },
+                {
+                    "de": "Deutsch",
+                    "en": "German",
+                    "fr": "allemand"
+                },
+                {
+                    "en": "Italian",
+                    "de": "Italienisch",
+                    "fr": "italien"
+                }
+            ],
+            "licenses": [
+                {
+                    "__type": "License",
+                    "date": "2025-02-09",
+                    "license": {
+                        "__type": "URL",
+                        "type": "Creative Commons",
+                        "url": "https://creativecommons.org/licenses/by/4.0/",
+                        "text": "CC BY 4.0"
+                    }
+                }
+            ],
+            "attributions": [
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0854-person-000",
+                    "roles": [
+                        "Creator"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0854-person-001",
+                    "roles": [
+                        "Creator"
+                    ]
+                }
+            ],
+            "status": "Ongoing",
+            "title": "Alice in DaSCHland",
+            "typeOfData": [
+                "Audio",
+                "Image",
+                "Video",
+                "Text"
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0854-dataset-001",
+            "__type": "Dataset",
+            "abstracts": [
+                {
+                    "en": "This dataset comprises the metadata and project documentation of the showcase project “Alice in DaSCHland”."
+                }
+            ],
+            "accessConditions": "restricted",
+            "howToCite": "Alice in DaSCHland Project Team (2025). Metadata DaSCHland Dataset [Database]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/0854",
+            "languages": [
+                {
+                    "en": "English",
+                    "de": "Englisch",
+                    "fr": "anglais"
+                },
+                {
+                    "en": "French",
+                    "de": "Französisch",
+                    "fr": "français"
+                },
+                {
+                    "de": "Deutsch",
+                    "en": "German",
+                    "fr": "allemand"
+                },
+                {
+                    "en": "Italian",
+                    "de": "Italienisch",
+                    "fr": "italien"
+                }
+            ],
+            "licenses": [
+                {
+                    "__type": "License",
+                    "date": "2025-02-09",
+                    "license": {
+                        "__type": "URL",
+                        "type": "Creative Commons",
+                        "url": "https://creativecommons.org/licenses/by/4.0/",
+                        "text": "CC BY 4.0"
+                    }
+                }
+            ],
+            "attributions": [
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0854-person-000",
+                    "roles": [
+                        "Creator"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0854-person-001",
+                    "roles": [
+                        "Creator"
+                    ]
+                }
+            ],
+            "status": "Ongoing",
+            "title": "Metadata DaSCHland",
+            "typeOfData": [
+                "Text",
+                "XML"
+            ]
+        }
+    ],
+    "persons": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0854-person-000",
+            "__type": "Person",
+            "email": "noemi.villars@dasch.swiss",
+            "familyNames": [
+                "Villars-Amberg"
+            ],
+            "givenNames": [
+                "Noémi"
+            ],
+            "jobTitles": [
+                "Senior Research Data Specialist"
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0854-organization-000"
+            ],
+            "authorityRefs": [
+                {
+                    "__type": "URL",
+                    "type": "ORCID",
+                    "url": "https://orcid.org/0009-0005-0190-5244",
+                    "text": "ORCID URL: https://orcid.org/0009-0005-0190-5244"
+                }
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0854-person-001",
+            "__type": "Person",
+            "email": "daniela.subotic@dasch.swiss",
+            "familyNames": [
+                "Subotic"
+            ],
+            "givenNames": [
+                "Daniela"
+            ],
+            "jobTitles": [
+                "Product Manager & Research Data Specialist"
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0854-organization-000"
+            ]
+        }
+    ],
+    "organizations": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0854-organization-000",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Kornhausgasse 7",
+                "postalCode": "4051",
+                "locality": "Basel",
+                "country": "Switzerland"
+            },
+            "email": "info@dasch.swiss",
+            "name": "DaSCH – Swiss National Data and Service Center for the Humanities",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://www.dasch.swiss/",
+                "text": "https://www.dasch.swiss/"
+            }
+        }
+    ],
+    "grants": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0854-grant-000",
+            "__type": "Grant",
+            "funders": [
+                "http://ns.dasch.swiss/repository#dsp-0854-organization-000"
+            ],
+            "name": "DaSCH",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://www.dasch.swiss/",
+                "text": "https://www.dasch.swiss/"
+            }
+        }
+    ]
+}
