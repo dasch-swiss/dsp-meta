@@ -54,10 +54,46 @@
                 "en": "Metadata"
             },
             {
-                "en": "Narrative Exploration"
+                "en": "Showcase Project"
             },
             {
-                "en": "Showcase Project"
+                "fr": "Alice au pays des merveilles"
+            },
+            {
+                "fr": "Données"
+            },
+            {
+                "fr": "Visualisation des données"
+            },
+            {
+                "fr": "Humanités numériques"
+            },
+            {
+                "fr": "Science humaines"
+            },
+            {
+                "fr": "Métadonnées"
+            },
+            {
+                "fr": "Projet de démonstration"
+            },
+            {
+                "de": "Alice im Wunderland"
+            },
+            {
+                "de": "Daten"
+            },
+            {
+                "de": "Datenvisualisierung"
+            },
+            {
+                "de": "Geisteswissenschaften"
+            },
+            {
+                "de": "Metadaten"
+            },
+            {
+                "de": "Vorzeigeprojekt"
             }
         ],
         "name": "Alice in DaSCHland",
