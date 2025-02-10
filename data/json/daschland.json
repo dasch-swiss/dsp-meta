@@ -11,7 +11,8 @@
         ],
         "contactPoint": "http://ns.dasch.swiss/repository#dsp-0854-organization-000",
         "description": {
-            "fr": "Alice in DaSCHland is the showcase project from DaSCH that reimagines Alice’s adventures through a digital lens. The project blends literary elements with advanced data management systems, offering users a unique exploration of data curation, visualization, and retrieval in a surreal narrative landscape.\nAlice in DaSCHland est le projet vitrine de DaSCH qui réimagine les aventures d'Alice à travers une perspective numérique. \nLe projet mélange des éléments littéraires avec des systèmes de gestion de données avancés, offrant aux utilisateurs une exploration unique de la préservation, de la visualisation et de la recherche de données dans un paysage narratif surréaliste."
+            "en": "Alice in DaSCHland is the showcase project from DaSCH that reimagines Alice’s adventures through a digital lens. The project blends literary elements with advanced data management systems, offering users a unique exploration of data curation, visualization, and retrieval in a surreal narrative landscape.",
+            "fr": "Alice in DaSCHland est le projet vitrine de DaSCH qui réimagine les aventures d'Alice à travers une perspective numérique. Le projet mélange des éléments littéraires avec des systèmes de gestion de données avancés, offrant aux utilisateurs une exploration unique de la préservation, de la visualisation et de la recherche de données dans un paysage narratif surréaliste."
         },
         "disciplines": [
             {
