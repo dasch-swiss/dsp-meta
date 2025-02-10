@@ -308,6 +308,12 @@
     "url": {
       "__type": "URL",
       "type": "URL",
+      "url": "https://app.dasch.swiss/project/uiZ68iQnTKO2iXJwnKMdvg",
+      "text": "Discover Project Data"
+    },
+    "secondaryURL": {
+      "__type": "URL",
+      "type": "URL",
       "url": "https://lhtt.philhist.unibas.ch/",
       "text": "External Project Website"
     },
