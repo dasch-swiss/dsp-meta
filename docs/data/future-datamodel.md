@@ -48,14 +48,22 @@ The metadata model is a hierarchical structure of metadata elements.
 ```mermaid
 
 flowchart TD
-    projectCluster[ProjectCluster] -->|0-n| project[Research Project]
-    projectCluster -->|0-n| projectCluster
-    project -->|1-n| dataset[Dataset]
-    dataset -->|1-n| record[Record]
-    project -->|0-n| collection[Collection]
+    projectCluster[Project Cluster]
+    project[Research Project]
+    dataset[Dataset]
+    record[Record]
+    collection[Collection]
+    user[User]
+
+    user -->|0-n| dataset
+    user -->|0-n| collection
+
+    projectCluster -->|0-n| project
     projectCluster -->|0-n| collection
-    collection --> collection
-    collection -->|0-n| record
+
+    project -->|1-n| dataset
+    dataset -->|1-n| record
+    collection --> |0-n| dataset
 ```
 
 - A `Project Cluster` collects `Research Projects` or nested `Project Clusters`.  
@@ -68,23 +76,24 @@ flowchart TD
   It is typically tied to a specific funding grant,
   and hence has a limited lifetime of ~3-5 years;
   multiple funding rounds and a longer lifetime are possible.  
-  A `Research Project` is part of 0-n `Project Clusters`,
-  it has 1-n `Datasets` and 0-n `Collections`.
-- A `Dataset` is a discrete segmentation of the `Records` of a `Research Project`.  
-  It is a logical grouping of `Records`, and may be based on the type of data,
-  or any other distinctive feature of the `Records`.
-  Many projects will have only 1 `Dataset`, but multiple are possible.  
-  A `Dataset` is part of exactly 1 `Research Project` and contains 1-n `Records`.
-- A `Collection` is also a grouping of `Records`.  
-  It is meant for semantic grouping of `Records`,
-  and may have a "historical meaning" in the context of the project.  
+  A `Research Project` is part of 0-n `Project Clusters` and it has 1-n `Datasets`.
+- A `Dataset` is a semantically meaningful grouping of the `Records` of a `Research Project`.  
+  If a project has different types of data, they should be separated into different datasets, 
+  so that it is e.g. possible to download only the images or only the resources.  
+  Datasets should be able to give  a "historical meaning" in the context of the project.  
   Examples may be physical collections such as person's "Nachlass" in an archive,
   or groupings of records based on a specific research question within a project.  
-  A `Collection` is part of at least 1 `Research Project`, `Project Cluster` or `Collection`,
-  but can be part of multiple. It may either contain 0-n `Collections` or 1-n `Records`.  
-  By allowing nested collections, and records to be part of multiple collections, 
-  collections can be used to represent relationships or changes in the data over time.
-- A `Record` is a single entry within a `Dataset`.  
+  They are referenceable and citable with a persistent identifier.  
+  Initially, datasets will be associarted with their respective projects,
+  but in the future, users should be able to create their own datasets that are not tied to a project. 
+  However, all records of a dataset must be part of the same project.
+- A `Collection` is also a grouping of `Datasets`.  
+  They serve a comparable purpose to datasets but may be nested or span datasets of different projects.  
+  In the first iteration, collections will not be implemented.
+  Later on, they will initially be associated with a project or a project cluster,
+  but in the future, users should be able to create their own collections that are not tied to a project.  
+  They are referenceable and citable with a persistent identifier.
+- A `Record` is a single entry within a project.  
   It represents the smallest unit that can meaningfully have an identifier.
   It maps to a `knora-base:Resource` (DSP-API) or an `Asset` (SIPI/Ingest) in the DSP.  
   In the case of DSP Resources, the metadata of the record is the existence of the resource itself
@@ -92,7 +101,7 @@ flowchart TD
   The core data of the resource are the values on that resource.  
   In the case of assets, the metadata is the existence of the asset itself, as well as access rights.
   The core data is the binary information of the asset.
-  A `Record` is part of exactly 1 `Dataset` and may be part of 0-n `Collections`.
+  A `Record` is part of exactly 1 `Research Project` and may be part of 0-n `Datasets`.
 
 Additionally, there are the entities `Person` and `Organization`:  
 `Person` and `Organization` are entities that are independent of the `Research Project` hierarchy,
@@ -148,7 +157,8 @@ There is no difference in cardinality between the archival and in-progress stage
 | `accessRights`       | accessRights                           | 1     | 1         |
 | `legalInfo`          | legalInfo[]                            | 1-n   | 0-n       |
 | `dataManagementPlan` | string / url                           | 1     | 1         |
-| `datasets`           | id[]                                   | 1-n   | 0-n       |
+| `datasets`           | id[]                                   | 0-n   | 0-n       |
+| `records`            | id[]                                   | 0-n   | 0-n       |
 | `keywords`           | lang_string[]                          | 1-n   | 0-n       |
 | `disciplines`        | lang_string / authorityfileReference[] | 1-n   | 0-n       |
 | `temporalCoverage`   | lang_string / authorityfileReference[] | 1-n   | 0-n       |
@@ -249,7 +259,7 @@ A record can only be part of one dataset.
 | `typeOfData`         | string[]      | 1-n   | 0-n       |
 | `dateCreated`        | date          | 1     | 0-1       |
 | `dateModified`       | date          | 0-1   | 0-1       |
-| `records`            | id[]          | 0-n   | 0-n       |
+| `datasets`           | id[]          | 0-n   | 0-n       |
 | `collections`        | id[]          | 0-n   | 0-n       |
 | `languages`          | lang_string[] | 1-n   | 0-n       |
 | `additionalMaterial` | url[]         | 0-n   | 0-n       |
@@ -269,7 +279,7 @@ A record can only be part of one dataset.
   Literal "XML", "Text", "Image", "Video", "Audio".
 - `dateCreated`: The date when the collection was created.
 - `dateModified`: The date when the collection was last modified.
-- `records`: A list of record identifiers that make up the collection.
+- `datasets`: A list of dataset identifiers that make up the collection.
 - `collections`: A list of collection identifiers that make up the collection, if nested.
 - `languages`: A list of languages contained in the collection.  
   Computed from the records if available and optionally added manually.
@@ -491,3 +501,4 @@ Modelled according to the [OpenAIRE guidelines](https://guidelines.openaire.eu/e
     - track provenance of dataset etc. through time (even before entered)
     - could also track version history in the archive (predecessor)
 - Model Person and Organization in a re-useable fashion. This should include making stuff like affiliation time/project bound
+- Alongside keywords, we could also have categories. Where keywords are free text, categories are from a controlled vocabulary.
