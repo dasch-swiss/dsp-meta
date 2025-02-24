@@ -27,11 +27,25 @@ fn default_page() -> usize {
 }
 
 #[derive(Deserialize, Default, Debug, Clone)]
-pub struct Filter {
+pub struct FilterAndQuery {
     #[serde(rename = "q")]
     pub query: Option<String>,
     #[serde(rename = "filter")]
-    pub filter: Option<String>,
+    #[serde(default)]
+    pub filter: MetadataFilter,
+}
+
+#[derive(Deserialize, Debug, Clone, Default)]
+pub enum MetadataFilter {
+    #[serde(rename = "f")]
+    RemoveFinished,
+    #[serde(rename = "o")]
+    RemoveOngoing,
+    #[serde(rename = "of")]
+    RemoveBoth,
+    #[default]
+    #[serde(rename = "none")]
+    RemoveNone,
 }
 
 pub struct Page<T> {
@@ -98,18 +112,18 @@ impl MetadataRepository {
     #[instrument(skip(self))]
     pub fn find(
         &self,
-        filter: &Filter,
+        filter: &FilterAndQuery,
         pagination: &Pagination,
     ) -> Result<Page<DraftMetadata>, DspMetaError> {
         let db = self.db.read().unwrap();
-        let query_status: Option<Vec<DraftProjectStatus>> = match filter.filter.as_deref() {
-            Some("o") => Some(vec![DraftProjectStatus::Ongoing]),
-            Some("f") => Some(vec![DraftProjectStatus::Finished]),
-            Some("of") => Some(vec![
+        let query_status: Option<Vec<DraftProjectStatus>> = match filter.filter {
+            MetadataFilter::RemoveOngoing => Some(vec![DraftProjectStatus::Ongoing]),
+            MetadataFilter::RemoveFinished => Some(vec![DraftProjectStatus::Finished]),
+            MetadataFilter::RemoveBoth => Some(vec![
                 DraftProjectStatus::Ongoing,
                 DraftProjectStatus::Finished,
             ]),
-            _ => None,
+            MetadataFilter::RemoveNone => None,
         };
 
         let values = db
