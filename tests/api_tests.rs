@@ -134,10 +134,10 @@ mod tests {
     }
 
     #[tokio::test]
-    async fn projects_should_return_empty_array_with_no_data_using_filter() {
+    async fn projects_should_return_empty_array_with_no_data_using_filter_none() {
         let server = build_server(vec![]);
 
-        let response = server.get("/api/v1/projects?q=foo&filter=bar").await;
+        let response = server.get("/api/v1/projects?filter=none").await;
 
         let resp_txt = response.text();
         let actual: Value = serde_json::from_str(&resp_txt).unwrap();
@@ -147,6 +147,13 @@ mod tests {
             panic!("Expected an array");
         }
         assert_eq!(response.status_code(), StatusCode::OK);
+    }
+
+    #[tokio::test]
+    async fn invalid_filter_should_return_400() {
+        let server = build_server(vec![]);
+        let response = server.get("/api/v1/projects?filter=invalid").await;
+        response.assert_status_bad_request();
     }
 
     #[tokio::test]
