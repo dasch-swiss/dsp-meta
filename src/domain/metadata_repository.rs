@@ -20,7 +20,7 @@ pub struct Pagination {
 }
 
 fn default_limit() -> usize {
-    25
+    100
 }
 fn default_page() -> usize {
     1
