@@ -1,11 +1,11 @@
 use axum::http::StatusCode;
 use axum::response::{IntoResponse, Response};
 use axum::Json;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 
 use crate::domain::model::draft_model::{DraftMetadata, DraftProjectStatus};
 
-#[derive(Debug, Clone, PartialEq, Serialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct ProjectMetadataDto(pub DraftMetadata);
 
 /// Convert `ProjectMetadataDto` into an Axum response.
@@ -20,7 +20,7 @@ impl IntoResponse for ProjectMetadataDto {
     }
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct ProjectMetadataWithInfoDto {
     id: String,
     name: String,

@@ -11,52 +11,41 @@ use crate::domain::model::draft_model::*;
 use crate::error::DspMetaError;
 use crate::infrastructure::load_json_file_paths;
 
-#[derive(Deserialize, Debug, Clone)]
+#[derive(Deserialize, Debug, Clone, Default)]
 pub struct Pagination {
-    #[serde(rename = "_page")]
+    #[serde(rename = "_page", default = "default_page")]
     pub page: usize,
-    #[serde(rename = "_limit")]
+    #[serde(rename = "_limit", default = "default_limit")]
     pub limit: usize,
 }
-impl Default for Pagination {
-    fn default() -> Self {
-        Pagination {
-            page: 1,
-            limit: 100,
-        }
-    }
-}
 
-#[derive(Debug, Deserialize, Default, Clone)]
-pub struct OptionalPagination {
-    #[serde(flatten)]
-    pub pagination: Option<Pagination>,
+fn default_limit() -> usize {
+    100
 }
-
-impl OptionalPagination {
-    pub fn or_default(&self) -> Pagination {
-        self.pagination.clone().unwrap_or_default()
-    }
+fn default_page() -> usize {
+    1
 }
 
 #[derive(Deserialize, Default, Debug, Clone)]
-pub struct Filter {
+pub struct FilterAndQuery {
     #[serde(rename = "q")]
     pub query: Option<String>,
     #[serde(rename = "filter")]
-    pub filter: Option<String>,
+    #[serde(default)]
+    pub filter: MetadataFilter,
 }
 
-#[derive(Debug, Deserialize, Default, Clone)]
-pub struct OptionalFilter {
-    #[serde(flatten)]
-    pub filter: Option<Filter>,
-}
-
-impl OptionalFilter {
-    pub fn or_default(&self) -> Filter {
-        self.filter.clone().unwrap_or_default()
-    }
+#[derive(Deserialize, Debug, Clone, Default)]
+pub enum MetadataFilter {
+    #[serde(rename = "f")]
+    RemoveFinished,
+    #[serde(rename = "o")]
+    RemoveOngoing,
+    #[serde(rename = "of")]
+    RemoveBoth,
+    #[default]
+    #[serde(rename = "none")]
+    RemoveNone,
 }
 
 pub struct Page<T> {
@@ -123,18 +112,18 @@ impl MetadataRepository {
     #[instrument(skip(self))]
     pub fn find(
         &self,
-        filter: &Filter,
+        filter: &FilterAndQuery,
         pagination: &Pagination,
     ) -> Result<Page<DraftMetadata>, DspMetaError> {
         let db = self.db.read().unwrap();
-        let query_status: Option<Vec<DraftProjectStatus>> = match filter.filter.as_deref() {
-            Some("o") => Some(vec![DraftProjectStatus::Ongoing]),
-            Some("f") => Some(vec![DraftProjectStatus::Finished]),
-            Some("of") => Some(vec![
+        let query_status: Option<Vec<DraftProjectStatus>> = match filter.filter {
+            MetadataFilter::RemoveOngoing => Some(vec![DraftProjectStatus::Ongoing]),
+            MetadataFilter::RemoveFinished => Some(vec![DraftProjectStatus::Finished]),
+            MetadataFilter::RemoveBoth => Some(vec![
                 DraftProjectStatus::Ongoing,
                 DraftProjectStatus::Finished,
             ]),
-            _ => None,
+            MetadataFilter::RemoveNone => None,
         };
 
         let values = db
