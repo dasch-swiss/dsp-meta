@@ -1,2 +1,8 @@
 # Repository owners
 * @BalduinLandolt @mpro7 @seakayone @siers
+
+# Data files are handled by RDU
+/data/ @danielasubotic @Notheturtle
+
+# Documentation of the metadata model is handled by PM
+/docs/data/ @danielasubotic @subotic @BalduinLandolt
