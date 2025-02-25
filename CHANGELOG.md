@@ -1,5 +1,24 @@
 # Changelog
 
+## [2.3.7](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.6...dsp-meta-v2.3.7) (2025-02-25)
+
+
+### Maintenances
+
+* **deps-dev:** Bump prettier from 3.5.1 to 3.5.2 in /web-frontend in the frontend-dependencies group ([#318](https://github.com/dasch-swiss/dsp-meta/issues/318)) ([b21d60c](https://github.com/dasch-swiss/dsp-meta/commit/b21d60c3bf57fd9fb4d3997d17d3b87e572b0f21))
+* **deps:** Bump the backend-dependencies group with 5 updates ([#319](https://github.com/dasch-swiss/dsp-meta/issues/319)) ([ecce268](https://github.com/dasch-swiss/dsp-meta/commit/ecce26844e4325f78b9a8610fa8130ee9ba53abf))
+* Update CODEOWNERS ([#323](https://github.com/dasch-swiss/dsp-meta/issues/323)) ([3691d2c](https://github.com/dasch-swiss/dsp-meta/commit/3691d2c2af95ed5bca17292e3c9c034495fcee86))
+
+
+### Documentation
+
+* Update future datamodel ([#316](https://github.com/dasch-swiss/dsp-meta/issues/316)) ([f1e8d78](https://github.com/dasch-swiss/dsp-meta/commit/f1e8d7879e2e8942057fe0079e60b8d5c23b31a0))
+
+
+### Bug Fixes
+
+* Make Pagination work again by using default vaules for limit and page (DEV-4624) ([#321](https://github.com/dasch-swiss/dsp-meta/issues/321)) ([059b5a1](https://github.com/dasch-swiss/dsp-meta/commit/059b5a16f538602353f04ff36b20a771bb59601c))
+
 ## [2.3.6](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.5...dsp-meta-v2.3.6) (2025-02-17)
 
 
