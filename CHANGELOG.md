@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.3.8](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.7...dsp-meta-v2.3.8) (2025-03-03)
+
+
+### Maintenances
+
+* **deps-dev:** Bump prettier from 3.5.2 to 3.5.3 in /web-frontend in the frontend-dependencies group ([#325](https://github.com/dasch-swiss/dsp-meta/issues/325)) ([29ddc08](https://github.com/dasch-swiss/dsp-meta/commit/29ddc08fb529ceda430c5b5c9ee16de3d867034d))
+* **deps:** Bump the backend-dependencies group with 3 updates ([#324](https://github.com/dasch-swiss/dsp-meta/issues/324)) ([f490b7a](https://github.com/dasch-swiss/dsp-meta/commit/f490b7ae6298b3afe2c1fa4fed923b097c897c56))
+
 ## [2.3.7](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.6...dsp-meta-v2.3.7) (2025-02-25)
 
 
