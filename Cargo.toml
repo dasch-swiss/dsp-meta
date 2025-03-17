@@ -12,17 +12,17 @@ authors = ["DaSCH - Swiss National Data and Service Center for the Humanities"]
 
 [dependencies]
 anyhow = "1"
-async-trait = "0.1.87"
+async-trait = "0.1.88"
 axum = "0.8.1" # web framework
 axum-macros = "0.5.0"
-clap = { version = "4.5.31", features = ["derive"] } # command-line parser
-config = "0.15.9" # Layered configuration with strong support for 12-factor applications
+clap = { version = "4.5.32", features = ["derive"] } # command-line parser
+config = "0.15.11" # Layered configuration with strong support for 12-factor applications
 chrono = { version = "0.4.40", features = ["serde"] }
 dirs = "5.0.1" # provides platform-specific locations for storing user configuration
-http-body-util = "0.1.0"
+http-body-util = "0.1.3"
 indicatif = "0.17.11" # prograss bars and spinners
 log = "0.4.26" # logging facade
-once_cell = "1.20.3"
+once_cell = "1.21.1"
 pid1 = "0.1.4"
 serde = { version = "1", features = ["derive"] }
 serde_with = "3.12.0"
