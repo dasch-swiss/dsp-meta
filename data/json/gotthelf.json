@@ -1,5 +1,5 @@
 {
-    "$schema": "https://raw.githubusercontent.com/dasch-swiss/dsp-meta-svc/main/docs/services/metadata/schema-metadata.json",
+    "$schema": "../../resources/schema-metadata-final.json",
     "project": {
         "__type": "Project",
         "howToCite": "Zihlmann, Patricia; von Zimmermann, Christian (2025), TEI-XML source data for the Jeremias Gotthelf edition [Dataset], https://ark.dasch.swiss/ark:/72163/1/0862",
@@ -74,7 +74,15 @@
         "name": "(digitale) Historisch-Kritische Gesamtausgabe der Werke und Briefe von Jeremias Gotthelf, HKG und dHKG",
         "publications": [
             {
-                "text": " Jeremias Gotthelf, digitale Historisch-kritische Gesamtausgabe. Hg. von Christian von Zimmermann u. Patricia Zihlmann. Bern 2025ff. (gotthelf-digital.ch)."
+                "text": " Jeremias Gotthelf, digitale Historisch-kritische Gesamtausgabe. Hg. von Christian von Zimmermann u. Patricia Zihlmann. Bern 2025ff. ",
+                "url": [
+                    {
+                        "__type": "URL",
+                        "type": "URL",
+                        "url": "https://gotthelf-digital.ch",
+                        "text": "https://gotthelf-digital.ch"
+                    }
+                ]
             },
             {
                 "text": " Jeremias Gotthelf: Historisch-kritische Gesamtausgabe. Hg. von Barbara Mahlmann-Bauer (2012 bis 2025), Christian von Zimmermann (seit 2012) und Patricia Zihlmann (seit 2025). 67 Bände. Hildesheim, New York: Olms 2012ff."
@@ -111,14 +119,8 @@
         "url": {
             "__type": "URL",
             "type": "URL",
-            "url": "",
-            "text": "Discover Project data"
-        },
-        "secondaryURL": {
-            "__type": "URL",
-            "type": "URL",
             "url": "https://gotthelf-digital.ch",
-            "text": "External project website"
+            "text": "External Project Website"
         }
     },
     "datasets": [
@@ -133,7 +135,10 @@
             "accessConditions": "open",
             "additional": [
                 {
-                    "de": "Reichen, Roland; Zihlmann, Patricia; von Zimmermann, Christian: Richtlinien der (digitalen) «Historisch-kritischen Gesamtausgabe der Werke und Briefe» von Jeremias Gotthelf. Bern 2024: https://doi.org/10.48350/197792"
+                    "__type": "URL",
+                    "type": "URL",
+                    "url": "https://doi.org/10.48350/197792",
+                    "text": "Richtlinien der (digitalen) Gotthelf Edition"
                 }
             ],
             "howToCite": "Zihlmann, Patricia; von Zimmermann, Christian (2025), TEI-XML source data for the Jeremias Gotthelf edition [Dataset], https://ark.dasch.swiss/ark:/72163/1/0862",
@@ -161,11 +166,11 @@
                     "__type": "Attribution",
                     "agent": "http://ns.dasch.swiss/repository#dsp-0862-person-000",
                     "roles": [
-                        "Editor",
-                        "Project Leader"
+                        "Project Leader",
+                        "Editor"
                     ]
                 },
-                                {
+                {
                     "__type": "Attribution",
                     "agent": "http://ns.dasch.swiss/repository#dsp-0862-person-001",
                     "roles": [
@@ -177,8 +182,8 @@
                     "__type": "Attribution",
                     "agent": "http://ns.dasch.swiss/repository#dsp-0862-person-004",
                     "roles": [
-                        "Textphilologe",
-                        "Researcher"
+                        "Researcher",
+                        "Textphilologe"
                     ]
                 },
                 {
@@ -199,8 +204,8 @@
                     "__type": "Attribution",
                     "agent": "http://ns.dasch.swiss/repository#dsp-0862-organization-000",
                     "roles": [
-                        "Data Creator",
-                        "Research Group"
+                        "Research Group",
+                        "Data Creator"
                     ]
                 }
             ],
@@ -209,14 +214,6 @@
             "typeOfData": [
                 "Text",
                 "XML"
-            ],
-            "urls": [
-                {
-                    "__type": "URL",
-                    "type": "URL",
-                    "url": "https://gotthelf-digital.ch",
-                    "text": "https://gotthelf-digital.ch"
-                }
             ]
         }
     ],
