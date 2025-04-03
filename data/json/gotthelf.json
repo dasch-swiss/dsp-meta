@@ -1,0 +1,520 @@
+{
+    "$schema": "../../resources/schema-metadata-final.json",
+    "project": {
+        "__type": "Project",
+        "howToCite": "Zihlmann, Patricia; von Zimmermann, Christian (2025), TEI-XML source data for the Jeremias Gotthelf edition [Dataset], https://ark.dasch.swiss/ark:/72163/1/0862",
+        "teaserText": "Die Historisch-kritische Gesamtausgabe von Jeremias Gotthelfs Werken und Briefen (2008–2040) lädt zu einer Entdeckung der Texte in ihren Kontexten ein.",
+        "datasets": [
+            "http://ns.dasch.swiss/repository#dsp-0862-dataset-000"
+        ],
+        "contactPoint": "http://ns.dasch.swiss/repository#dsp-0862-person-000",
+        "description": {
+            "de": "Seit 2012 erscheint die auf insgesamt 67 gedruckte Editionsbände angelegte Historisch-kritische Gesamtausgabe der Werke und Briefe von Jeremias Gotthelf. 2025 startet die digitale Edition mit einem umfassenden Datenbestand, der sich aus gedruckt und handschriftlich überlieferten Texten, aus Korrespondenzen, aus ersten Kommentaren und zahlreichen Registerdaten zusammensetzt. Die Historisch-kritische Gesamtausgabe der Werke und Briefe von Jeremias Gotthelf wird als ein editorisches Langzeitprojekt in einer Printedition und einer digitalen Edition erarbeitet. Ausgehend von einem breiten Verständnis des literarischen Textes, dessen multiple Genese in den Schreiboperationen auf dem Papier, in der intellektuellen Arbeit eines Textschöpfers und in den diskursiven, institutionellen und medialen Kontexten seiner Entstehungszeit stattfindet, setzt die Gotthelf-Edition einen deutlichen Akzent auf (1) die Textgenese, (2) die Arbeitsprozesse und (3) die historische Einbettung der Texte in unterschiedliche Kommentarformen. \n\nDie Basis sowohl der Historisch-kritischen Gesamtausgabe als auch der digitalen Edition sind nach den Richtlinien TEI-P5 erfasste XML-Dateien. Sie erlauben dank der Verbindung mit Normdateien eine Vernetzung mit weiteren digitalen Ressourcen. Die konsequent inhaltlich-analytische Codierung ermöglicht eine variable Visualisierung der Daten, sowohl von Metadaten als auch von textphilologischen Codierungen."
+        },
+        "disciplines": [
+            {
+                "en": "10102 Religious studies, Theology"
+            },
+            {
+                "en": "10103 Ecclesiastical history"
+            },
+            {
+                "en": "10301 General history"
+            },
+            {
+                "en": "10302 Swiss history"
+            },
+            {
+                "de": "10501 German and English languages and literature"
+            }
+        ],
+        "endDate": "2040-01-01",
+        "funders": [
+            "http://ns.dasch.swiss/repository#dsp-0862-organization-001",
+            "http://ns.dasch.swiss/repository#dsp-0862-organization-004",
+            "http://ns.dasch.swiss/repository#dsp-0862-organization-005",
+            "http://ns.dasch.swiss/repository#dsp-0862-organization-006",
+            "http://ns.dasch.swiss/repository#dsp-0862-organization-007"
+        ],
+        "keywords": [
+            {
+                "en": "Correspondence"
+            },
+            {
+                "en": "Digital edition"
+            },
+            {
+                "en": "Digital philology"
+            },
+            {
+                "en": "Ecclesiastical history"
+            },
+            {
+                "en": "Editorial philology"
+            },
+            {
+                "en": "History of the 19th century"
+            },
+            {
+                "en": "Jeremias Gotthelf"
+            },
+            {
+                "en": "Literary history"
+            },
+            {
+                "en": "Scholarly edition"
+            },
+            {
+                "de": "Swiss German literature"
+            },
+            {
+                "en": "Textgenetics"
+            }
+        ],
+        "name": "(digitale) Historisch-Kritische Gesamtausgabe der Werke und Briefe von Jeremias Gotthelf, HKG und dHKG",
+        "publications": [
+            {
+                "text": " Jeremias Gotthelf, digitale Historisch-kritische Gesamtausgabe. Hg. von Christian von Zimmermann u. Patricia Zihlmann. Bern 2025ff. ",
+                "url": [
+                    {
+                        "__type": "URL",
+                        "type": "URL",
+                        "url": "https://gotthelf-digital.ch",
+                        "text": "https://gotthelf-digital.ch"
+                    }
+                ]
+            },
+            {
+                "text": " Jeremias Gotthelf: Historisch-kritische Gesamtausgabe. Hg. von Barbara Mahlmann-Bauer (2012 bis 2025), Christian von Zimmermann (seit 2012) und Patricia Zihlmann (seit 2025). 67 Bände. Hildesheim, New York: Olms 2012ff."
+            }
+        ],
+        "shortcode": "0862",
+        "spatialCoverage": [
+            {
+                "__type": "URL",
+                "type": "Geonames",
+                "url": "https://www.geonames.org/2661551",
+                "text": "Bern"
+            },
+            {
+                "__type": "URL",
+                "type": "Geonames",
+                "url": "https://www.geonames.org/2658434",
+                "text": "Switzerland"
+            }
+        ],
+        "startDate": "2008-01-01",
+        "temporalCoverage": [
+            {
+                "de": "1797-1854",
+                "en": "1797-1854",
+                "fr": "1797-1854"
+            },
+            {
+                "de": "2012-2040",
+                "en": "2012-2040",
+                "fr": "2012-2040"
+            }
+        ],
+        "url": {
+            "__type": "URL",
+            "type": "URL",
+            "url": "https://gotthelf-digital.ch",
+            "text": "External Project Website"
+        },
+        "status": "Ongoing"
+    },
+    "datasets": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0862-dataset-000",
+            "__type": "Dataset",
+            "abstracts": [
+                {
+                    "en": "The data set includes the works and letters of the Swiss author Jeremias Gotthelf (Albert Bitzius). The text documents are supplemented with comprehensive commentaries and indexes, which are also available as XML-documents."
+                }
+            ],
+            "accessConditions": "open",
+            "additional": [
+                {
+                    "__type": "URL",
+                    "type": "URL",
+                    "url": "https://doi.org/10.48350/197792",
+                    "text": "Richtlinien der (digitalen) Gotthelf Edition"
+                }
+            ],
+            "howToCite": "Zihlmann, Patricia; von Zimmermann, Christian (2025), TEI-XML source data for the Jeremias Gotthelf edition [Dataset], https://ark.dasch.swiss/ark:/72163/1/0862",
+            "languages": [
+                {
+                    "de": "Deutsch",
+                    "en": "German",
+                    "fr": "allemand"
+                }
+            ],
+            "licenses": [
+                {
+                    "__type": "License",
+                    "date": "2025-04-01",
+                    "license": {
+                        "__type": "URL",
+                        "type": "Creative Commons",
+                        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+                        "text": "CC BY-SA 4.0"
+                    }
+                }
+            ],
+            "attributions": [
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0862-person-000",
+                    "roles": [
+                        "Project Leader",
+                        "Editor"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0862-person-001",
+                    "roles": [
+                        "Data Manager",
+                        "Editor"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0862-person-004",
+                    "roles": [
+                        "Researcher",
+                        "Textphilologe"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0862-person-003",
+                    "roles": [
+                        "Präsident des Wissenschaftlichen Beirats der Historisch-kritischen Gesamtausgabe Jeremias Gotthelf"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0862-person-002",
+                    "roles": [
+                        "Editor (retired)"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0862-organization-000",
+                    "roles": [
+                        "Research Group",
+                        "Data Creator"
+                    ]
+                }
+            ],
+            "status": "Ongoing",
+            "title": "TEI-XML source data for the Jeremias Gotthelf edition",
+            "typeOfData": [
+                "Text",
+                "XML"
+            ]
+        }
+    ],
+    "persons": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0862-person-002",
+            "__type": "Person",
+            "email": "barbara.mahlmann@unibe.ch",
+            "familyNames": [
+                "Mahlmann-Bauer"
+            ],
+            "givenNames": [
+                "Barbara"
+            ],
+            "jobTitles": [
+                "Prof. em. Dr."
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0862-organization-001"
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0862-person-003",
+            "__type": "Person",
+            "address": {
+                "__type": "Address",
+                "street": "Universität Bern\r Institut für Historische Theologie\r Länggassstrasse 51",
+                "postalCode": "CH-3012",
+                "locality": "Bern",
+                "country": "Switzerland"
+            },
+            "email": "martin.sallmann@unibe.ch",
+            "familyNames": [
+                "Sallmann"
+            ],
+            "givenNames": [
+                "Martin"
+            ],
+            "jobTitles": [
+                "Prof. Dr."
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0862-organization-001",
+                "http://ns.dasch.swiss/repository#dsp-0862-organization-002"
+            ],
+            "authorityRefs": [
+                {
+                    "__type": "URL",
+                    "type": "ORCID",
+                    "url": "https://orcid.org/0009-0009-7757-0961",
+                    "text": "ORCID URL: https://orcid.org/0009-0009-7757-0961"
+                }
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0862-person-001",
+            "__type": "Person",
+            "address": {
+                "__type": "Address",
+                "street": "Universität Bern\r Forschungsstelle Jeremias Gotthelf\r Muesmattstrasse 45",
+                "postalCode": "CH-3012",
+                "locality": "Bern",
+                "country": "Switzerland"
+            },
+            "email": "patricia.zihlmann@unibe.ch",
+            "familyNames": [
+                "Zihlmann-Märki"
+            ],
+            "givenNames": [
+                "Patricia"
+            ],
+            "jobTitles": [
+                "Wissenschaftliche Mitarbeiterin",
+                "stv. Leiterin der Forschungsstelle Jeremias Gotthelf"
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0862-organization-000",
+                "http://ns.dasch.swiss/repository#dsp-0862-organization-001"
+            ],
+            "authorityRefs": [
+                {
+                    "__type": "URL",
+                    "type": "ORCID",
+                    "url": "https://orcid.org/0000-0002-3530-507X",
+                    "text": "ORCID URL: https://orcid.org/0000-0002-3530-507X"
+                }
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0862-person-004",
+            "__type": "Person",
+            "address": {
+                "__type": "Address",
+                "street": "Universität Bern\r Forschungsstelle Jeremias Gotthelf\r Muesmattstrasse 45",
+                "postalCode": "CH-3012",
+                "locality": "Bern",
+                "country": "Switzerland"
+            },
+            "email": "roland.reichen@unibe.ch",
+            "familyNames": [
+                "Reichen"
+            ],
+            "givenNames": [
+                "Roland Bruno"
+            ],
+            "jobTitles": [
+                "Wissenschaftlicher Mitarbeiter der Forschungsstelle Jeremias Gotthelf"
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0862-organization-000",
+                "http://ns.dasch.swiss/repository#dsp-0862-organization-001"
+            ],
+            "authorityRefs": [
+                {
+                    "__type": "URL",
+                    "type": "ORCID",
+                    "url": "https://orcid.org/0000-0002-2969-9009",
+                    "text": "ORCID URL: https://orcid.org/0000-0002-2969-9009"
+                }
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0862-person-000",
+            "__type": "Person",
+            "address": {
+                "__type": "Address",
+                "street": "Universität Bern\r Forschungsstelle Jeremias Gotthelf\r Muesmattstrasse 45",
+                "postalCode": "CH-3012",
+                "locality": "Bern",
+                "country": "Switzerland"
+            },
+            "email": "christian.vonzimmermann@unibe.ch",
+            "familyNames": [
+                "von Zimmermann"
+            ],
+            "givenNames": [
+                "Christian"
+            ],
+            "jobTitles": [
+                "Dozent, Leiter der Forschungsstelle Jeremias Gotthelf"
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0862-organization-000",
+                "http://ns.dasch.swiss/repository#dsp-0862-organization-001"
+            ],
+            "authorityRefs": [
+                {
+                    "__type": "URL",
+                    "type": "ORCID",
+                    "url": "https://orcid.org/0000-0002-5186-4445",
+                    "text": "ORCID URL: https://orcid.org/0000-0002-5186-4445"
+                }
+            ]
+        }
+    ],
+    "organizations": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0862-organization-002",
+            "__type": "Organization",
+            "name": "Wissenschaftlicher Beirat der Historisch-kritischen Gesamtausgabe Jeremias Gotthelf",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "http://www.gotthelf.unibe.ch/ueber_uns/wissenschaftlicher_beirat",
+                "text": "www.gotthelf.unibe.ch/ueber_uns/wissenschaftlicher_beirat"
+            }
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0862-organization-003",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Schweizerische Akademie der Geistes- und Sozialwissenschaften\rGeneralsekretariat\rHaus der Akademien\rLaupenstrasse 7",
+                "postalCode": "CH-3001",
+                "locality": "Bern",
+                "country": "Switzerland"
+            },
+            "name": "Schweizerische Akademie der Geistes- und Sozialwissenschaften",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "http://www.sagw.ch",
+                "text": "www.sagw.ch"
+            }
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0862-organization-007",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Stiftung Vinetum\r Sydebusweg 9",
+                "postalCode": "CH-2502",
+                "locality": "Biel",
+                "country": "Switzerland"
+            },
+            "name": "Stiftung Vinetum",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "http://www.vinetum.ch",
+                "text": "www.vinetum.ch"
+            }
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0862-organization-004",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Jeremias Gotthelf-Stiftung\r Universität Bern\r Hochschulstrasse 6",
+                "postalCode": "CH-3012",
+                "locality": "Bern",
+                "country": "Switzerland"
+            },
+            "name": "Jeremias Gotthelf-Stiftung"
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0862-organization-005",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Wildhainweg 3",
+                "postalCode": "CH-3001",
+                "locality": "Bern",
+                "country": "Switzerland"
+            },
+            "email": "com@snf.ch",
+            "name": "Swiss National Science Foundation (SNSF)",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "http://www.snf.ch/",
+                "text": "www.snf.ch/"
+            }
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0862-organization-006",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Ernst Göhner Stiftung\rArtherstrasse 19",
+                "postalCode": "CH-6300",
+                "locality": "Zug",
+                "country": "Switzerland"
+            },
+            "name": "Ernst Göhner Stiftung",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "http://www.ernst-goehner-stiftung.ch",
+                "text": "www.ernst-goehner-stiftung.ch"
+            }
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0862-organization-000",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Universität Bern\r Forschungsstelle Jeremias Gotthelf\r Muesmattstrasse 45",
+                "postalCode": "CH-3012",
+                "locality": "Bern",
+                "country": "Switzerland"
+            },
+            "name": "Forschungsstelle Jeremias Gotthelf",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "http://www.gotthelf.unibe.ch",
+                "text": "www.gotthelf.unibe.ch"
+            }
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0862-organization-001",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Universität Bern\r Generalsekretariat\r Hochschulstrasse 6",
+                "postalCode": "CH-3012",
+                "locality": "Bern",
+                "country": "Switzerland"
+            },
+            "name": "Universität Bern",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://ror.org/02k7v4d05",
+                "text": "https://ror.org/02k7v4d05"
+            }
+        }
+    ],
+    "grants": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0862-grant-000",
+            "__type": "Grant",
+            "funders": [
+                "http://ns.dasch.swiss/repository#dsp-0862-organization-001",
+                "http://ns.dasch.swiss/repository#dsp-0862-organization-003",
+                "http://ns.dasch.swiss/repository#dsp-0862-organization-004",
+                "http://ns.dasch.swiss/repository#dsp-0862-organization-005",
+                "http://ns.dasch.swiss/repository#dsp-0862-organization-006"
+            ]
+        }
+    ]
+}
