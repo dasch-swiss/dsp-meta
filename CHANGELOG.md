@@ -1,5 +1,23 @@
 # Changelog
 
+## [2.3.8](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.7...dsp-meta-v2.3.8) (2025-04-07)
+
+
+### Maintenances
+
+* **deps-dev:** Bump prettier from 3.5.2 to 3.5.3 in /web-frontend in the frontend-dependencies group ([#325](https://github.com/dasch-swiss/dsp-meta/issues/325)) ([29ddc08](https://github.com/dasch-swiss/dsp-meta/commit/29ddc08fb529ceda430c5b5c9ee16de3d867034d))
+* **deps:** Bump the backend-dependencies group with 2 updates ([#332](https://github.com/dasch-swiss/dsp-meta/issues/332)) ([08f0ae7](https://github.com/dasch-swiss/dsp-meta/commit/08f0ae7eef32d9a00506ff68c4e1b271e387f9de))
+* **deps:** Bump the backend-dependencies group with 3 updates ([#324](https://github.com/dasch-swiss/dsp-meta/issues/324)) ([f490b7a](https://github.com/dasch-swiss/dsp-meta/commit/f490b7ae6298b3afe2c1fa4fed923b097c897c56))
+* **deps:** Bump the backend-dependencies group with 5 updates ([#327](https://github.com/dasch-swiss/dsp-meta/issues/327)) ([a57a74b](https://github.com/dasch-swiss/dsp-meta/commit/a57a74b2f48baaea1a67b942ddf6ac84f6092bd3))
+* **deps:** Bump the backend-dependencies group with 5 updates ([#329](https://github.com/dasch-swiss/dsp-meta/issues/329)) ([dc385e1](https://github.com/dasch-swiss/dsp-meta/commit/dc385e15b55c8795caa867751c23c8bb59b1e6f2))
+* **deps:** Bump the backend-dependencies group with 6 updates ([#328](https://github.com/dasch-swiss/dsp-meta/issues/328)) ([447f810](https://github.com/dasch-swiss/dsp-meta/commit/447f810b526254152341c9d3a734ada370e9998e))
+
+
+### Project Data
+
+* Adding 0862 gotthelf ([#330](https://github.com/dasch-swiss/dsp-meta/issues/330)) ([6058312](https://github.com/dasch-swiss/dsp-meta/commit/605831233f6c5f7c92df912dce38de99eee951e9))
+* Update bmf ([#331](https://github.com/dasch-swiss/dsp-meta/issues/331)) ([be9287f](https://github.com/dasch-swiss/dsp-meta/commit/be9287f855037a3d0e541d173c98d8187ce44b49))
+
 ## [2.3.7](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.6...dsp-meta-v2.3.7) (2025-02-25)
 
 
