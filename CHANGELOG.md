@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.9](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.8...dsp-meta-v2.3.9) (2025-04-15)
+
+
+### Documentation
+
+* Update future datamodel ([#334](https://github.com/dasch-swiss/dsp-meta/issues/334)) ([67ead60](https://github.com/dasch-swiss/dsp-meta/commit/67ead6020c0a7de6e076d1f253ed507178a9c2b8))
+
 ## [2.3.8](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.7...dsp-meta-v2.3.8) (2025-04-07)
 
 
