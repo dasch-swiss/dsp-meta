@@ -505,4 +505,4 @@ Modelled according to the [OpenAIRE guidelines](https://guidelines.openaire.eu/e
 
 ## JSON Schema
 
-a draft of the data model as JSON Schema is on [github](https://github.com/dasch-swiss/pipeline-metadata-schema/tree/main/schema) 
+a draft of the data model as JSON Schema is on [github](https://github.com/dasch-swiss/pipeline-metadata-schema/tree/main/schema)
