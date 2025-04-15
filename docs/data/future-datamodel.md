@@ -165,7 +165,7 @@ There is no difference in cardinality between the archival and in-progress stage
 | `spatialCoverage`    | authorityfileReference[]               | 1-n   | 0-n       |
 | `attributions`       | attribution[]                          | 1-n   | 0-n       |
 | `abstract`           | lang_string                            | 0-1   | 0-1       |
-| `contactPoint`       | id[]                                     | 0-1   | 0-1       |
+| `contactPoint`       | id[]                                   | 0-n   | 0-n       |
 | `publications`       | publication[]                          | 0-n   | 0-n       |
 | `grants`             | grant[]                                | 0-n   | 0-n       |
 | `alternativeNames`   | lang_string[]                          | 0-n   | 0-n       |
