@@ -165,7 +165,7 @@ There is no difference in cardinality between the archival and in-progress stage
 | `spatialCoverage`    | authorityfileReference[]               | 1-n   | 0-n       |
 | `attributions`       | attribution[]                          | 1-n   | 0-n       |
 | `abstract`           | lang_string                            | 0-1   | 0-1       |
-| `contactPoint`       | id                                     | 0-1   | 0-1       |
+| `contactPoint`       | id[]                                     | 0-1   | 0-1       |
 | `publications`       | publication[]                          | 0-n   | 0-n       |
 | `grants`             | grant[]                                | 0-n   | 0-n       |
 | `alternativeNames`   | lang_string[]                          | 0-n   | 0-n       |
@@ -216,7 +216,7 @@ There is no difference in cardinality between the archival and in-progress stage
 | `dateCreated`        | date          | 1     | 0-1      |
 | `dateModified`       | date          | 0-1   | 0-1      |
 | `records`            | id[]          | 1-n   | 0-n      |
-| `languages`          | string[]      | 1-n   | 0-n      |
+| `languages`          | lang_string[] | 1-n   | 0-n      |
 | `additionalMaterial` | url[]         | 0-n   | 0-n      |
 | `provenance`         | string        | 0-1   | 0-1      |
 | `keywords`           | lang_string[] | 0-n   | 0-n      |
@@ -502,3 +502,7 @@ Modelled according to the [OpenAIRE guidelines](https://guidelines.openaire.eu/e
     - could also track version history in the archive (predecessor)
 - Model Person and Organization in a re-useable fashion. This should include making stuff like affiliation time/project bound
 - Alongside keywords, we could also have categories. Where keywords are free text, categories are from a controlled vocabulary.
+
+## JSON Schema
+
+a draft of the data model as JSON Schema is on [github](https://github.com/dasch-swiss/pipeline-metadata-schema/tree/main/schema) 
