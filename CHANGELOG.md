@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.3.9](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.8...dsp-meta-v2.3.9) (2025-05-05)
+
+
+### Maintenances
+
+* Add docker healthcheck (INFRA-786) ([#338](https://github.com/dasch-swiss/dsp-meta/issues/338)) ([79bdfc7](https://github.com/dasch-swiss/dsp-meta/commit/79bdfc742d10fe7bb22a3012eed1fb13928a97aa))
+* **deps:** Bump the backend-dependencies group across 1 directory with 3 updates ([#336](https://github.com/dasch-swiss/dsp-meta/issues/336)) ([ab7a419](https://github.com/dasch-swiss/dsp-meta/commit/ab7a419612b5fd92a9a9d730458d7d22a3c2bdf4))
+* **deps:** Bump the backend-dependencies group with 2 updates ([#337](https://github.com/dasch-swiss/dsp-meta/issues/337)) ([652db28](https://github.com/dasch-swiss/dsp-meta/commit/652db282c305964cfd3cd267ab0879f048c3a6a7))
+
+
+### Documentation
+
+* Update future datamodel ([#334](https://github.com/dasch-swiss/dsp-meta/issues/334)) ([67ead60](https://github.com/dasch-swiss/dsp-meta/commit/67ead6020c0a7de6e076d1f253ed507178a9c2b8))
+
 ## [2.3.8](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.7...dsp-meta-v2.3.8) (2025-04-07)
 
 
