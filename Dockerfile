@@ -9,6 +9,10 @@ COPY . .
 RUN cd web-frontend && yarn install && yarn run build --bundleConfigAsCjs
 
 FROM debian:bookworm-slim AS runtime
+# install curl
+RUN apt-get update && apt-get install --no-install-recommends -y curl && \
+  rm -rf /var/cache/apt/archives /var/lib/apt/lists/*
+
 # add data
 COPY ./data /data
 
