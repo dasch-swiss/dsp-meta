@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.10](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.9...dsp-meta-v2.3.10) (2025-05-06)
+
+
+### Maintenances
+
+* Add PR title check ([#340](https://github.com/dasch-swiss/dsp-meta/issues/340)) ([2ca8bfa](https://github.com/dasch-swiss/dsp-meta/commit/2ca8bfaa8a5b3731468b37adf49edfa0d2be4100))
+
 ## [2.3.9](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.8...dsp-meta-v2.3.9) (2025-05-05)
 
 
