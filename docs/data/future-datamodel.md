@@ -84,10 +84,10 @@ flowchart TD
   Examples may be physical collections such as person's "Nachlass" in an archive,
   or groupings of records based on a specific research question within a project.  
   They are referenceable and citable with a persistent identifier.  
-  Initially, datasets will be associarted with their respective projects,
+  Initially, datasets will be associated with their respective projects,
   but in the future, users should be able to create their own datasets that are not tied to a project. 
   However, all records of a dataset must be part of the same project.
-- A `Collection` is also a grouping of `Datasets`.  
+- A `Collection` is a grouping of `Datasets`.  
   They serve a comparable purpose to datasets but may be nested or span datasets of different projects.  
   In the first iteration, collections will not be implemented.
   Later on, they will initially be associated with a project or a project cluster,
