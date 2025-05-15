@@ -550,4 +550,8 @@ Questions:
   But I now think this was intentional: We didn't want to conflate the "outside pressure"
   of having to have datasets with our implementation detail of partitioning the data.
   These are two separate concerns.
+- [ ] Find solution for "self-funded" or "strukturell finanzierte" projects.
+  How exactly?
+- [ ] Improved description of properties!
+
  -->
