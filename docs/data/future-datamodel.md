@@ -511,3 +511,17 @@ Modelled according to the [OpenAIRE guidelines](https://guidelines.openaire.eu/e
 ## JSON Schema
 
 a draft of the data model as JSON Schema is on [github](https://github.com/dasch-swiss/pipeline-metadata-schema/tree/main/schema)
+
+
+<!--
+
+Questions:
+- [ ] License on Metadata
+  How should we represent this?
+- [ ] I noted: Documentation material (Projects, Dataset, Collection)
+  What exactly do we want there? How should it be modelled?
+- [ ] I noted that project should not have references to records, but only datasets. 
+  But I now think this was intentional: We didn't want to conflate the "outside pressure"
+  of having to have datasets with our implementation detail of partitioning the data.
+  These are two separate concerns.
+ -->
