@@ -41,6 +41,11 @@ with greater accuracy and detail.
     We consider all metadata as public domain. By signing the deposit agreement, projects must consent to that.  
     This is unlike the domain metadata which is part of the project's data and hence can be licensed as the project wishes.
 
+    Metadata is always publicly available, even if the corresponding project, dataset or record is not.
+    This is to ensure that the metadata is always findable and reusable, even if the data itself is not.
+    The only exception to this is the status "embargoed", during which the metadata is _only_ available on the project level.
+
+
 ## Overview
 
 The metadata model is a hierarchical structure of metadata elements.
