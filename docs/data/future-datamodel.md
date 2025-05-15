@@ -118,6 +118,7 @@ and may be related to various entities within the hierarchy.
 
 | Field              | Type          | Card. |
 | ------------------ | ------------- | ----- |
+| `id`               | id            | 1     |
 | `pid`              | id            | 1     |
 | `name`             | string        | 1     |
 | `projects`         | id[]          | 0-n   |
@@ -128,6 +129,8 @@ and may be related to various entities within the hierarchy.
 | `alternativeNames` | lang_string[] | 0-n   |
 | `contactPoint`     | id[]          | 0-n   |
 
+- `id`: A unique identifier for the project cluster.  
+  This is the internal ID, which is not exposed to the user and is not persistent.
 - `pid`: A unique persistent identifier (for now ARK URL) for the project cluster.
 - `name`: The name of the project cluster.
 - `projects`: A list of project identifiers that are part of the project cluster.
@@ -148,6 +151,7 @@ There is no difference in cardinality between the archival and in-progress stage
 
 | Field                | Type                                   | Card. | WIP Card. |
 | -------------------- | -------------------------------------- | ----- | --------- |
+| `id`                 | id                                     | 1     | 1         |
 | `pid`                | id                                     | 1     | 1         |
 | `shortcode`          | string                                 | 1     | 1         |
 | `officialName`       | string                                 | 1     | 1         |
@@ -175,6 +179,8 @@ There is no difference in cardinality between the archival and in-progress stage
 | `grants`             | grant[]                                | 0-n   | 0-n       |
 | `alternativeNames`   | lang_string[]                          | 0-n   | 0-n       |
 
+- `id`: A unique identifier for the project.  
+  This is the internal ID, which is not exposed to the user and is not persistent.
 - `pid`: A unique persistent identifier (for now ARK URL) for the project.
 - `shortcode`: The project's DSP short code.  
   4 characters hexadecimal, upper case.
@@ -211,6 +217,7 @@ There is no difference in cardinality between the archival and in-progress stage
 
 | Field                | Type          | Card. | WIP-Card |
 | -------------------- | ------------- | ----- | -------- |
+| `id`                 | id            | 1     | 1        |
 | `pid`                | id            | 1     | 1        |
 | `name`               | string        | 1     | 1        |
 | `accessRights`       | accessRights  | 1     | 1        |
@@ -226,6 +233,8 @@ There is no difference in cardinality between the archival and in-progress stage
 | `provenance`         | string        | 0-1   | 0-1      |
 | `keywords`           | lang_string[] | 0-n   | 0-n      |
 
+- `id`: A unique identifier for the dataset.  
+  This is the internal ID, which is not exposed to the user and is not persistent.
 - `pid`: A unique persistent identifier (for now ARK URL) for the dataset.
 - `name`: The title of the dataset.
 - `accessRights`: The access rights of the dataset.
@@ -255,6 +264,7 @@ A record can only be part of one dataset.
 
 | Field                | Type          | Card. | WIP-Card. |
 | -------------------- | ------------- | ----- | --------- |
+| `id`                 | id            | 1     | 1         |
 | `pid`                | id            | 1     | 1         |
 | `name`               | string        | 1     | 1         |
 | `accessRights`       | accessRights  | 1     | 1         |
@@ -271,6 +281,8 @@ A record can only be part of one dataset.
 | `provenance`         | string        | 0-1   | 0-1       |
 | `keywords`           | lang_string[] | 0-n   | 0-n       |
 
+- `id`: A unique identifier for the collection.  
+  This is the internal ID, which is not exposed to the user and is not persistent.
 - `pid`: A unique persistent identifier (for now ARK URL) for the collection.
 - `name`: The name of the collection.
 - `accessRights`: The access rights of the collection.
@@ -296,6 +308,7 @@ A record can only be part of one dataset.
 
 | Field           | Type          | Card. | WIP-Card. |
 | --------------- | ------------- | ----- | --------- |
+| `id`            | id            | 1     | 1         |
 | `pid`           | id            | 1     | 1         |
 | `label`         | lang_string   | 1     | 1         |
 | `accessRights`  | string        | 1     | 1         |
@@ -311,6 +324,8 @@ A record can only be part of one dataset.
 | `size`          | string        | 0-1   | 0-1       |
 | `keywords`      | lang_string[] | 0-n   | 0-n       |
 
+- `id`: A unique identifier for the record.  
+  This is the internal ID, which is not exposed to the user and is not persistent.
 - `pid`: A unique persistent identifier (for now ARK URL) for the record.
 - `label`: The label of the record.  
   For assets, this may be the original file name.  
@@ -342,30 +357,39 @@ A record can only be part of one dataset.
 
 ### Person
 
-| Field          | Type                     | Card. |
-| -------------- | ------------------------ | ----- |
-| `pid`          | id                       | 1     |
-| `sameAs`       | authorityfileReference[] | 0-n   |
-| `givenNames`   | string[]                 | 1-n   |
-| `familyNames`  | string[]                 | 1-n   |
-| `jobTitles`    | string[]                 | 0-n   |
-| `affiliations` | id[]                     | 0-n   |
-| `email`        | string                   | 0-n   |
+| Field            | Type                     | Card. |
+| ---------------- | ------------------------ | ----- |
+| `id`             | id                       | 1     |
+| `pid`            | id                       | 1     |
+| `sameAs`         | authorityfileReference[] | 0-n   |
+| `givenNames`     | string[]                 | 1-n   |
+| `familyNames`    | string[]                 | 1-n   |
+| `honoraryPrefix` | string[]                 | 0-n   |
+| `honorarySuffix` | string[]                 | 0-n   |
+| `affiliations`   | id[]                     | 0-n   |
+| `email`          | string                   | 0-n   |
+| `address`        | address                  | 0-1   |
 
 Cardinality is the same for both stages.
 
-- `pid`: A unique persistent identifier (for now ARK URL) for the record.
+- `id`: A unique identifier for the person.  
+  This is the internal ID, which is not exposed to the user and is not persistent.
+- `pid`: A unique persistent identifier (for now ARK URL) for the person.
 - `sameAs`: References to external authority files. (ORCID, VIAF, GND…)
 - `givenNames`: The given names of the person.
 - `familyNames`: The family names of the person.
-- `jobTitles`: The job titles of the person.
+- `honoraryPrefix`: The honorary prefixes of the person, e.g. "Prof. Dr.".
+- `honorarySuffix`: The honorary suffixes of the person, e.g. "PhD", "MA".
 - `affiliations`: The affiliations of the person to organizations.
 - `email`: The email address of the person.
+- `address`: The post address of the person.  
+  This should not be the personal address, but the specific address of the person at theyr organization.
 
 ### Organization
 
 | Field             | Type                     | Card. |
 | ----------------- | ------------------------ | ----- |
+| `id`              | id                       | 1     |
 | `pid`             | id                       | 1     |
 | `sameAs`          | authorityfileReference[] | 0-n   |
 | `name`            | string                   | 1     |
@@ -376,7 +400,9 @@ Cardinality is the same for both stages.
 
 Cardinality is the same for both stages.
 
-- `pid`: A unique persistent identifier (for now ARK URL) for the record.
+- `id`: A unique identifier for the organization.  
+  This is the internal ID, which is not exposed to the user and is not persistent.
+- `pid`: A unique persistent identifier (for now ARK URL) for the organization.
 - `sameAs`: References to external authority files. ([ROR](https://ror.org/))
 - `name`: The name of the organization.
 - `url`: The URL of the organization.
