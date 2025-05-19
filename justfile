@@ -14,6 +14,7 @@ check:
     just --check --fmt --unstable
     cargo +nightly fmt --check
     cargo clippy -- -D warnings
+    cargo +nightly clippy -- -D warnings
 
 # Format all rust code
 fmt:
