@@ -71,7 +71,7 @@ impl MetadataRepository {
         Self { db }
     }
     pub fn from_path(data_path: &Path) -> Self {
-        info!("Init Repository {:?}", data_path);
+        info!("Init Repository {data_path:?}");
         let db: Arc<RwLock<HashMap<Shortcode, DraftMetadata>>> =
             Arc::new(RwLock::new(HashMap::new()));
 
@@ -85,7 +85,7 @@ impl MetadataRepository {
             let mut db = db.write().unwrap();
             let shortcode = entity.project.shortcode.to_owned();
             if known_shortcodes.contains(&shortcode) {
-                panic!("Duplicate shortcode: {:?}", shortcode);
+                panic!("Duplicate shortcode: {shortcode:?}",);
             }
             known_shortcodes.push(shortcode);
 
@@ -159,7 +159,7 @@ impl MetadataRepository {
 
     pub fn find_all(&self) -> Result<Vec<DraftMetadata>, DspMetaError> {
         let db = self.db.read().unwrap();
-        let v = db.iter().map(|(_, v)| v.clone()).collect();
+        let v = db.values().cloned().collect();
         Ok(v)
     }
 
@@ -181,7 +181,7 @@ mod tests {
         dbg!(&data_dir);
 
         let files = load_json_file_paths(&data_dir);
-        let repo = MetadataRepository::from_path(&data_dir.as_path());
+        let repo = MetadataRepository::from_path(data_dir.as_path());
         let actual = repo.count().expect("count");
         assert_eq!(actual, files.len());
     }

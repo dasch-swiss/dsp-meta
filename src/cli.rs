@@ -84,7 +84,7 @@ pub fn parse() -> Result<(), String> {
                     } else {
                         println!("ERRORS:");
                         for error in state.errors {
-                            println!(" * {:?}", error)
+                            println!(" * {error:?}")
                         }
                         println!();
                         Err("Validation failed".to_string())
