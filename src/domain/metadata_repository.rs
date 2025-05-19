@@ -159,7 +159,7 @@ impl MetadataRepository {
 
     pub fn find_all(&self) -> Result<Vec<DraftMetadata>, DspMetaError> {
         let db = self.db.read().unwrap();
-        let v = db.iter().map(|(_, v)| v.clone()).collect();
+        let v = db.values().map(|v| v.clone()).collect();
         Ok(v)
     }
 
@@ -181,7 +181,7 @@ mod tests {
         dbg!(&data_dir);
 
         let files = load_json_file_paths(&data_dir);
-        let repo = MetadataRepository::from_path(&data_dir.as_path());
+        let repo = MetadataRepository::from_path(data_dir.as_path());
         let actual = repo.count().expect("count");
         assert_eq!(actual, files.len());
     }
