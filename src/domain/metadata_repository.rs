@@ -71,7 +71,7 @@ impl MetadataRepository {
         Self { db }
     }
     pub fn from_path(data_path: &Path) -> Self {
-        info!("Init Repository {:?}", data_path);
+        info!("Init Repository {data_path:?}");
         let db: Arc<RwLock<HashMap<Shortcode, DraftMetadata>>> =
             Arc::new(RwLock::new(HashMap::new()));
 
@@ -85,7 +85,7 @@ impl MetadataRepository {
             let mut db = db.write().unwrap();
             let shortcode = entity.project.shortcode.to_owned();
             if known_shortcodes.contains(&shortcode) {
-                panic!("Duplicate shortcode: {:?}", shortcode);
+                panic!("Duplicate shortcode: {shortcode:?}",);
             }
             known_shortcodes.push(shortcode);
 
