@@ -159,7 +159,7 @@ impl MetadataRepository {
 
     pub fn find_all(&self) -> Result<Vec<DraftMetadata>, DspMetaError> {
         let db = self.db.read().unwrap();
-        let v = db.values().map(|v| v.clone()).collect();
+        let v = db.values().cloned().collect();
         Ok(v)
     }
 
