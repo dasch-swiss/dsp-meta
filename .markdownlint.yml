@@ -38,3 +38,5 @@ MD045: false
 
 # MD046/code-block-style - Code block style (conflicts with admonitions)
 MD046: false
+# MD059/desriptive-link-text - Link text should be descriptive
+MD059: false
