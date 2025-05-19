@@ -176,7 +176,7 @@ There is no difference in cardinality between the archival and in-progress stage
 | `abstract`           | lang_string                            | 0-1   | 0-1       |
 | `contactPoint`       | id[]                                   | 0-n   | 0-n       |
 | `publications`       | publication[]                          | 0-n   | 0-n       |
-| `grants`             | grant[]                                | 0-n   | 0-n       |
+| `funding`            | string / grant[]                       | 1-n   | 0-n       |
 | `alternativeNames`   | lang_string[]                          | 0-n   | 0-n       |
 
 - `id`: A unique identifier for the project.  
@@ -216,7 +216,7 @@ There is no difference in cardinality between the archival and in-progress stage
 - `abstract`: An abstract of the project.
 - `contactPoint`: A person or organization serving as first contact for the project.
 - `publications`: A list of publications related to the project.
-- `grants`: A list of grants related to the project.
+- `funding`: Either a string ("No funding") or a list of grants received by the project.
 - `alternativeNames`: Alternative names of the project.
 
 ### Dataset
@@ -562,8 +562,5 @@ Questions:
   But I now think this was intentional: We didn't want to conflate the "outside pressure"
   of having to have datasets with our implementation detail of partitioning the data.
   These are two separate concerns.
-- [ ] Find solution for "self-funded" or "strukturell finanzierte" projects.
-  How exactly?
-- [ ] Improved description of properties!
 
  -->
