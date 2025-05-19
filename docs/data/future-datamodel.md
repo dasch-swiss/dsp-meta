@@ -137,7 +137,7 @@ and may be related to various entities within the hierarchy.
 - `projectClusters`: A list of project cluster identifiers that are part of the project cluster,
   in case of nested project clusters.
 - `description`: The description of the project cluster.
-- `url`: The URL of the project cluster.
+- `url`: The URL to the web presence of the project cluster.
 - `howToCite`: How to cite the project cluster.  
   If not provided, we use the standard form `<name> (<year>). [Project Cluster]. DaSCH. <ARK>`.
 - `alternativeNames`: Alternative names of the project cluster.
@@ -182,33 +182,39 @@ There is no difference in cardinality between the archival and in-progress stage
 - `id`: A unique identifier for the project.  
   This is the internal ID, which is not exposed to the user and is not persistent.
 - `pid`: A unique persistent identifier (for now ARK URL) for the project.
-- `shortcode`: The project's DSP short code.  
-  4 characters hexadecimal, upper case.
+- `shortcode`: The project's DSP short code, internal only.  
+  4 characters hexadecimal, upper case.  
 - `status`: The status of the project.  
   Either "Ongoing" or "Finished".
 - `name`: The name of the project.
 - `shortDescription`: A short text to be displayed as a teaser.  
   Maximum length: 200 characters (all including).
-- `description`: The description of the project.
+- `description`: The full description of the project.
 - `startDate`: The start date of the project.
 - `endData`: The end date of the project.
-- `url`: The URL of the project.
+- `url`: The URL to the web presence of the project.  
+  The first URL should point to where the data is available,
+  the second, optional URL may point to the project website.
 - `howToCite`: How to cite the project.  
   If not provided, we use the standard form `<contributors> (<year>). <project name> [Database]. DaSCH. <ARK>`.
-- `accessRights`: The access rights of the project.
+- `accessRights`: The access rights of the project.  
+  Literal "Full Open Access", "Open Access with Restrictions", "Embargoed Access", "Metadata only Access".
+  If the project is embargoed, the metadata is only available on the project level.
+  Access rights define to what extent the project data is available to access in the DPE.
 - `legalInfo`: Legal information about the project.
   Calculated from Datasets. Can _not_ be specified explicitly on the project.
 - `dataManagementPlan`: A data management plan of the project.
   String or URL, use "not accessible" if not available to us.
 - `datasets`: A list of dataset identifiers that make up the project data.
+- `records`: A list of record identifiers that make up the project data.
 - `keywords`: A list of keywords describing the project.
 - `disciplines`: A list of disciplines the project is related to.
-- `temporalCoverage`: A list of temporal coverages of the project.
-- `spatialCoverage`: A list of spatial coverages of the project.
+- `temporalCoverage`: A list of epoches or time periods the project is related to.
+- `spatialCoverage`: A list of references to spatial entities (Places, Regions, etc.) the project is related to.
 - `attributions`: A list of attributions defining what roles people/organizations have in the project.  
   Manually entered, as there may be people who don't have authorship, like reviewers, organizers, etc.
 - `abstract`: An abstract of the project.
-- `contactPoint`: A person or organization responsible for the project.
+- `contactPoint`: A person or organization serving as first contact for the project.
 - `publications`: A list of publications related to the project.
 - `grants`: A list of grants related to the project.
 - `alternativeNames`: Alternative names of the project.
@@ -237,7 +243,9 @@ There is no difference in cardinality between the archival and in-progress stage
   This is the internal ID, which is not exposed to the user and is not persistent.
 - `pid`: A unique persistent identifier (for now ARK URL) for the dataset.
 - `name`: The title of the dataset.
-- `accessRights`: The access rights of the dataset.
+- `accessRights`: The access rights of the dataset.  
+  Literal "Full Open Access", "Open Access with Restrictions", "Embargoed Access", "Metadata only Access".
+  Access rights define to what extent the dataset data is available to access in the DPE.
 - `legalInfo`: Legal information about the dataset.  
   Calculated from records. May be added manually (if no records present yet, or if records don't have this information).
 - `howToCite`: How to cite the dataset.  
@@ -285,11 +293,13 @@ A record can only be part of one dataset.
   This is the internal ID, which is not exposed to the user and is not persistent.
 - `pid`: A unique persistent identifier (for now ARK URL) for the collection.
 - `name`: The name of the collection.
-- `accessRights`: The access rights of the collection.
+- `accessRights`: The access rights of the collection.  
+  Literal "Full Open Access", "Open Access with Restrictions", "Embargoed Access", "Metadata only Access".
+  Access rights define to what extent the collection data is available to access in the DPE.
 - `legalInfo`: Legal information about the collection.  
-  Calculated from records/sub-collections. May be added manually.
+  Calculated from datasets/sub-collections. May be added manually.
 - `howToCite`: How to cite the collection.  
-  If not provided, we use the standard form `<contributors> (<year>). <collection name> [Dataset]. DaSCH. <ARK>`.
+  If not provided, we use the standard form `<contributors> (<year>). <collection name> [Collection]. DaSCH. <ARK>`.
 - `description`: The description of the collection.
 - `typeOfData`: The type of data in the collection.  
   Computed from the records if available and optionally added manually.
@@ -331,7 +341,9 @@ A record can only be part of one dataset.
   For assets, this may be the original file name.  
   For IIIF URLs, this may be good to have for the case when the URL is no longer available.  
   In the long run, we would want to have IIIF Manifests, not Image URLs, so that we can extract labels from there.
-- `accessRights`: The access rights of the record.
+- `accessRights`: The access rights of the record.  
+  Literal "Full Open Access", "Open Access with Restrictions", "Embargoed Access", "Metadata only Access".
+  Access rights define to what extent the record data is available to access in the DPE.
 - `legalInfo`: Legal information about the record.
 - `howToCite`: How to cite the record.  
   If not provided, we use the standard form `<label> (<creation year>). [Data Record]. DaSCH. <ARK>`.
