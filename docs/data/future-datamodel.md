@@ -37,16 +37,22 @@ with greater accuracy and detail.
 
     If only one cardinality is given, it applies to both stages.
 
-!!! note
-    We consider all metadata as public domain. By signing the deposit agreement, projects must consent to that.  
-    This is unlike the domain metadata which is part of the project's data and hence can be licensed as the project wishes.
+## Licensing
 
-    Metadata is always publicly available, even if the corresponding project, dataset or record is not.
-    This is to ensure that the metadata is always findable and reusable, even if the data itself is not.
-    The only exception to this is the status "embargoed", during which the metadata is _only_ available on the project level.
+We consider all metadata as public domain. By signing the deposit agreement, projects must consent to that.  
+This is unlike the domain metadata which is part of the project's data and hence can be licensed as the project wishes.
+
+Whenever metadata is served to a client, it is served with legal information.  
+Legal information on metadata, just as everywhere else, consists of the license, copyright holder and authorship.
+The license is always "public domain", the copyright holder is always "DaSCH" 
+and the authorship is always the project and DaSCH.
+
+Metadata is always publicly available, even if the corresponding project, dataset or record is not.
+This is to ensure that the metadata is always findable and reusable, even if the data itself is not.
+The only exception to this is the status "embargoed", during which the metadata is _only_ available on the project level.
 
 
-## Overview
+## Model Overview
 
 The metadata model is a hierarchical structure of metadata elements.
 
@@ -67,6 +73,7 @@ flowchart TD
     projectCluster -->|0-n| collection
 
     project -->|1-n| dataset
+    project -->|1-n| record
     dataset -->|1-n| record
     collection --> |0-n| dataset
 ```
@@ -116,18 +123,19 @@ and may be related to various entities within the hierarchy.
 
 ### Project Cluster
 
-| Field              | Type          | Card. |
-| ------------------ | ------------- | ----- |
-| `id`               | id            | 1     |
-| `pid`              | id            | 1     |
-| `name`             | string        | 1     |
-| `projects`         | id[]          | 0-n   |
-| `projectClusters`  | id[]          | 0-n   |
-| `description`      | lang_string   | 0-1   |
-| `url`              | url           | 0-1   |
-| `howToCite`        | string        | 0-1   |
-| `alternativeNames` | lang_string[] | 0-n   |
-| `contactPoint`     | id[]          | 0-n   |
+| Field                   | Type          | Card. |
+| ----------------------- | ------------- | ----- |
+| `id`                    | id            | 1     |
+| `pid`                   | id            | 1     |
+| `name`                  | string        | 1     |
+| `projects`              | id[]          | 0-n   |
+| `projectClusters`       | id[]          | 0-n   |
+| `description`           | lang_string   | 0-1   |
+| `url`                   | url           | 0-1   |
+| `howToCite`             | string        | 0-1   |
+| `alternativeNames`      | lang_string[] | 0-n   |
+| `contactPoint`          | id[]          | 0-n   |
+| `documentationMaterial` | url[]         | 0-n   |
 
 - `id`: A unique identifier for the project cluster.  
   This is the internal ID, which is not exposed to the user and is not persistent.
@@ -142,6 +150,7 @@ and may be related to various entities within the hierarchy.
   If not provided, we use the standard form `<name> (<year>). [Project Cluster]. DaSCH. <ARK>`.
 - `alternativeNames`: Alternative names of the project cluster.
 - `contactPoint`: A list of identifiers of persons or organizations responsible for the project cluster.
+- `documentationMaterial`: A list of URLs pointing to documentation material related to the project cluster.
 
 To make the model of this entity as flexible as possible,
 most of the fields are optional.  
@@ -149,35 +158,36 @@ There is no difference in cardinality between the archival and in-progress stage
 
 ### Project
 
-| Field                | Type                                   | Card. | WIP Card. |
-| -------------------- | -------------------------------------- | ----- | --------- |
-| `id`                 | id                                     | 1     | 1         |
-| `pid`                | id                                     | 1     | 1         |
-| `shortcode`          | string                                 | 1     | 1         |
-| `officialName`       | string                                 | 1     | 1         |
-| `status`             | string                                 | 1     | 1         |
-| `name`               | string                                 | 1     | 1         |
-| `shortDescription`   | string                                 | 1     | 0-1       |
-| `description`        | lang_string                            | 1     | 1         |
-| `startDate`          | date                                   | 1     | 0-1       |
-| `endDate`            | date                                   | 1     | 0-1       |
-| `url`                | url                                    | 1-2   | 0-2       |
-| `howToCite`          | string                                 | 1     | 1         |
-| `accessRights`       | accessRights                           | 1     | 1         |
-| `legalInfo`          | legalInfo[]                            | 1-n   | 0-n       |
-| `dataManagementPlan` | string / url                           | 1     | 1         |
-| `datasets`           | id[]                                   | 0-n   | 0-n       |
-| `records`            | id[]                                   | 0-n   | 0-n       |
-| `keywords`           | lang_string[]                          | 1-n   | 0-n       |
-| `disciplines`        | lang_string / authorityfileReference[] | 1-n   | 0-n       |
-| `temporalCoverage`   | lang_string / authorityfileReference[] | 1-n   | 0-n       |
-| `spatialCoverage`    | authorityfileReference[]               | 1-n   | 0-n       |
-| `attributions`       | attribution[]                          | 1-n   | 0-n       |
-| `abstract`           | lang_string                            | 0-1   | 0-1       |
-| `contactPoint`       | id[]                                   | 0-n   | 0-n       |
-| `publications`       | publication[]                          | 0-n   | 0-n       |
-| `funding`            | string / grant[]                       | 1-n   | 0-n       |
-| `alternativeNames`   | lang_string[]                          | 0-n   | 0-n       |
+| Field                   | Type                                   | Card. | WIP Card. |
+| ----------------------- | -------------------------------------- | ----- | --------- |
+| `id`                    | id                                     | 1     | 1         |
+| `pid`                   | id                                     | 1     | 1         |
+| `shortcode`             | string                                 | 1     | 1         |
+| `officialName`          | string                                 | 1     | 1         |
+| `status`                | string                                 | 1     | 1         |
+| `name`                  | string                                 | 1     | 1         |
+| `shortDescription`      | string                                 | 1     | 0-1       |
+| `description`           | lang_string                            | 1     | 1         |
+| `startDate`             | date                                   | 1     | 0-1       |
+| `endDate`               | date                                   | 1     | 0-1       |
+| `url`                   | url                                    | 1-2   | 0-2       |
+| `howToCite`             | string                                 | 1     | 1         |
+| `accessRights`          | accessRights                           | 1     | 1         |
+| `legalInfo`             | legalInfo[]                            | 1-n   | 0-n       |
+| `dataManagementPlan`    | string / url                           | 1     | 1         |
+| `datasets`              | id[]                                   | 0-n   | 0-n       |
+| `records`               | id[]                                   | 0-n   | 0-n       |
+| `keywords`              | lang_string[]                          | 1-n   | 0-n       |
+| `disciplines`           | lang_string / authorityfileReference[] | 1-n   | 0-n       |
+| `temporalCoverage`      | lang_string / authorityfileReference[] | 1-n   | 0-n       |
+| `spatialCoverage`       | authorityfileReference[]               | 1-n   | 0-n       |
+| `attributions`          | attribution[]                          | 1-n   | 0-n       |
+| `abstract`              | lang_string                            | 0-1   | 0-1       |
+| `contactPoint`          | id[]                                   | 0-n   | 0-n       |
+| `publications`          | publication[]                          | 0-n   | 0-n       |
+| `funding`               | string / grant[]                       | 1-n   | 0-n       |
+| `alternativeNames`      | lang_string[]                          | 0-n   | 0-n       |
+| `documentationMaterial` | url[]                                  | 0-n   | 0-n       |
 
 - `id`: A unique identifier for the project.  
   This is the internal ID, which is not exposed to the user and is not persistent.
@@ -218,26 +228,34 @@ There is no difference in cardinality between the archival and in-progress stage
 - `publications`: A list of publications related to the project.
 - `funding`: Either a string ("No funding") or a list of grants received by the project.
 - `alternativeNames`: Alternative names of the project.
+- `documentationMaterial`: A list of URLs pointing to documentation material related to the project.
+
+!!! note
+    In the metadata, the project has references to all its records.
+
+    This does not mean that internally, the data is not partitioned in some way.
+    This partitioning simply is not exposed to the user.
 
 ### Dataset
 
-| Field                | Type          | Card. | WIP-Card |
-| -------------------- | ------------- | ----- | -------- |
-| `id`                 | id            | 1     | 1        |
-| `pid`                | id            | 1     | 1        |
-| `name`               | string        | 1     | 1        |
-| `accessRights`       | accessRights  | 1     | 1        |
-| `legalInfo`          | legalInfo[]   | 1-n   | 1-n      |
-| `howToCite`          | string        | 1     | 1        |
-| `description`        | lang_string   | 0-1   | 0-1      |
-| `typeOfData`         | string[]      | 1-n   | 0-n      |
-| `dateCreated`        | date          | 1     | 0-1      |
-| `dateModified`       | date          | 0-1   | 0-1      |
-| `records`            | id[]          | 1-n   | 0-n      |
-| `languages`          | lang_string[] | 1-n   | 0-n      |
-| `additionalMaterial` | url[]         | 0-n   | 0-n      |
-| `provenance`         | string        | 0-1   | 0-1      |
-| `keywords`           | lang_string[] | 0-n   | 0-n      |
+| Field                   | Type          | Card. | WIP-Card |
+| ----------------------- | ------------- | ----- | -------- |
+| `id`                    | id            | 1     | 1        |
+| `pid`                   | id            | 1     | 1        |
+| `name`                  | string        | 1     | 1        |
+| `accessRights`          | accessRights  | 1     | 1        |
+| `legalInfo`             | legalInfo[]   | 1-n   | 1-n      |
+| `howToCite`             | string        | 1     | 1        |
+| `description`           | lang_string   | 0-1   | 0-1      |
+| `typeOfData`            | string[]      | 1-n   | 0-n      |
+| `dateCreated`           | date          | 1     | 0-1      |
+| `dateModified`          | date          | 0-1   | 0-1      |
+| `records`               | id[]          | 1-n   | 0-n      |
+| `languages`             | lang_string[] | 1-n   | 0-n      |
+| `additionalMaterial`    | url[]         | 0-n   | 0-n      |
+| `provenance`            | string        | 0-1   | 0-1      |
+| `keywords`              | lang_string[] | 0-n   | 0-n      |
+| `documentationMaterial` | url[]         | 0-n   | 0-n      |
 
 - `id`: A unique identifier for the dataset.  
   This is the internal ID, which is not exposed to the user and is not persistent.
@@ -262,32 +280,43 @@ There is no difference in cardinality between the archival and in-progress stage
 - `additionalMaterial`: A list of URLs related to the collection.
 - `provenance`: the history of the dataset, if applicable.
 - `keywords`: Keywords for search purposes.
+- `documentationMaterial`: A list of URLs pointing to documentation material related to the dataset.
 
 A project can have more than one dataset if it's the project's wish and if it provides meaningful grouping of the
 records e.g., 2 researchers worked one one part of the data and the 2 other researchers on the other part of the data,
 EKWS digitizing different boxes and each box becomes a dataset.
 A record can only be part of one dataset.
 
+For each project, there will eventually be multiple default datasets:
+
+- One dataset for the entire project data.
+- One dataset for the all assets of the project.
+- One dataset for the all non-asset resources of the project.
+
+Eventually, projects should be able to create their own datasets
+according to what is meaningful within the project.
+
 ### Collection
 
-| Field                | Type          | Card. | WIP-Card. |
-| -------------------- | ------------- | ----- | --------- |
-| `id`                 | id            | 1     | 1         |
-| `pid`                | id            | 1     | 1         |
-| `name`               | string        | 1     | 1         |
-| `accessRights`       | accessRights  | 1     | 1         |
-| `legalInfo`          | legalInfo[]   | 1-n   | 1-n       |
-| `howToCite`          | string        | 1     | 1         |
-| `description`        | lang_string   | 0-1   | 0-1       |
-| `typeOfData`         | string[]      | 1-n   | 0-n       |
-| `dateCreated`        | date          | 1     | 0-1       |
-| `dateModified`       | date          | 0-1   | 0-1       |
-| `datasets`           | id[]          | 0-n   | 0-n       |
-| `collections`        | id[]          | 0-n   | 0-n       |
-| `languages`          | lang_string[] | 1-n   | 0-n       |
-| `additionalMaterial` | url[]         | 0-n   | 0-n       |
-| `provenance`         | string        | 0-1   | 0-1       |
-| `keywords`           | lang_string[] | 0-n   | 0-n       |
+| Field                   | Type          | Card. | WIP-Card. |
+| ----------------------- | ------------- | ----- | --------- |
+| `id`                    | id            | 1     | 1         |
+| `pid`                   | id            | 1     | 1         |
+| `name`                  | string        | 1     | 1         |
+| `accessRights`          | accessRights  | 1     | 1         |
+| `legalInfo`             | legalInfo[]   | 1-n   | 1-n       |
+| `howToCite`             | string        | 1     | 1         |
+| `description`           | lang_string   | 0-1   | 0-1       |
+| `typeOfData`            | string[]      | 1-n   | 0-n       |
+| `dateCreated`           | date          | 1     | 0-1       |
+| `dateModified`          | date          | 0-1   | 0-1       |
+| `datasets`              | id[]          | 0-n   | 0-n       |
+| `collections`           | id[]          | 0-n   | 0-n       |
+| `languages`             | lang_string[] | 1-n   | 0-n       |
+| `additionalMaterial`    | url[]         | 0-n   | 0-n       |
+| `provenance`            | string        | 0-1   | 0-1       |
+| `keywords`              | lang_string[] | 0-n   | 0-n       |
+| `documentationMaterial` | url[]         | 0-n   | 0-n       |
 
 - `id`: A unique identifier for the collection.  
   This is the internal ID, which is not exposed to the user and is not persistent.
@@ -313,6 +342,7 @@ A record can only be part of one dataset.
 - `additionalMaterial`: A list of URLs related to the collection.
 - `provenance`: The provenance of the collection.
 - `keywords`: A list of keywords describing the collection.
+- `documentationMaterial`: A list of URLs pointing to documentation material related to the collection.
 
 ### Record
 
@@ -550,17 +580,13 @@ Modelled according to the [OpenAIRE guidelines](https://guidelines.openaire.eu/e
 
 a draft of the data model as JSON Schema is on [github](https://github.com/dasch-swiss/pipeline-metadata-schema/tree/main/schema)
 
+## Example
+
+...
 
 <!--
 
-Questions:
-- [ ] License on Metadata
-  How should we represent this?
-- [ ] I noted: Documentation material (Projects, Dataset, Collection)
-  What exactly do we want there? How should it be modelled?
-- [ ] I noted that project should not have references to records, but only datasets. 
-  But I now think this was intentional: We didn't want to conflate the "outside pressure"
-  of having to have datasets with our implementation detail of partitioning the data.
-  These are two separate concerns.
+TODO::
+- [ ] Add an example
 
  -->
