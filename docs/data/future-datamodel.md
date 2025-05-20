@@ -580,13 +580,215 @@ Modelled according to the [OpenAIRE guidelines](https://guidelines.openaire.eu/e
 
 a draft of the data model as JSON Schema is on [github](https://github.com/dasch-swiss/pipeline-metadata-schema/tree/main/schema)
 
-## Example
+## Examples
 
-...
+### Project Cluster
 
-<!--
+```json
+{
+  "accessRights": {
+    "license": {
+      "licenseIdentifier": "public domain",
+      "licenseDate": "2023-01-01",
+      "licenseURI": "https://www.dasch.swiss/licenses/public-domain"
+    },
+    "copyrightHolder": "DaSCH",
+    "authorship": [
+        "DaSCH",
+        "Project Cluster XYZ"
+      ]
+  },
+  "metadata": {
+    "id": "cluster-0001",
+    "pid": "https://ark.dasch.swiss/ark:/72163/1/cluster-0001",
+    "name": "Project Cluster Name",
+    "projects": ["project-0001", "project-0002"],
+    "projectClusters": ["cluster-0002"],
+    "description": {
+      "en": "Project Cluster Description",
+      "de": "Projektcluster Beschreibung"
+    },
+    "url": "https://example.com/project-cluster",
+    "howToCite": "Project Cluster Name (2025). [Project Cluster]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/cluster-0001",
+    "alternativeNames": [
+      {
+        "en": "Alternative Name",
+        "de": "Alternativer Name"
+      }
+    ],
+    "contactPoint": ["person-0001", "organization-0001"],
+    "documentationMaterial": ["https://example.com/documentation"]
+  }
+}
+```
 
-TODO::
-- [ ] Add an example
+### Project
 
- -->
+```json
+{
+  "accessRights": {
+    "license": {
+      "licenseIdentifier": "public domain",
+      "licenseDate": "2023-01-01",
+      "licenseURI": "https://www.dasch.swiss/licenses/public-domain"
+    },
+    "copyrightHolder": "DaSCH",
+    "authorship": [
+        "DaSCH",
+        "Project XYZ"
+      ]
+  },
+  "metadata": {
+    "id": "project-0001",
+    "pid": "https://ark.dasch.swiss/ark:/72163/1/project-0001",
+    "shortcode": "1234",
+    "officialName": "Project Official Name",
+    "status": "Ongoing",
+    "name": "Project Name",
+    "shortDescription": "Short description of the project.",
+    "description": {
+      "en": "Project Description",
+      "de": "Projektbeschreibung"
+    },
+    "startDate": "2023-01-01",
+    "endDate": "2028-01-01",
+    "url": [
+      "https://data.dasch.swiss/projects/project-0001",
+      "https://example.com/project-website"
+    ],
+    "howToCite": "Project Name (2025). [Project]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/project-0001",
+    "accessRights": "Full Open Access",
+    "legalInfo": [
+      {
+        "license": {
+          "licenseIdentifier": "CC-BY-4.0",
+          "licenseDate": "2023-01-01",
+          "licenseURI": "https://creativecommons.org/licenses/by/4.0/"
+        }
+      }
+    ],
+    "dataManagementPlan": "https://example.com/dmp",
+    "datasets": ["dataset-0001", "dataset-0002"],
+    "records": ["record-0001", "record-0002"],
+    "keywords": [
+      {
+        "en": "Keyword 1",
+        "de": "Stichwort 1"
+      }
+    ],
+    "disciplines": [
+      {
+        "en": "Discipline 1",
+        "de": "Disziplin 1"
+      }
+    ],
+    "temporalCoverage": [
+      {
+        "en": "Temporal Coverage 1",
+        "de": "Zeitliche Abdeckung 1"
+      }
+    ],
+    "spatialCoverage": [
+      {
+        "type": "Geonames",
+        "url": "https://www.geonames.org/1234567",
+        "text": {
+          "en": "Spatial Coverage 1",
+          "de": "Räumliche Abdeckung 1"
+        }
+      }
+    ],
+    "attributions": [
+      {
+        "contributor": "person-0001",
+        "contributorType": ["author", "editor"]
+      }
+    ],
+    "abstract": {
+      "en": "Project Abstract",
+      "de": "Projektzusammenfassung"
+    },
+    "contactPoint": ["person-0001", "organization-0001"],
+    "publications": [
+      {
+        "text": "Publication Title",
+        "pid": "https://doi.org/10.1234/5678"
+      }
+    ],
+    "funding": [
+      {
+        "funders": ["organization-0001"],
+        "number": "123456",
+        "name": "Grant Name",
+        "url": "https://example.com/grant"
+      }
+    ],
+    "alternativeNames": [
+      {
+        "en": "Alternative Name",
+        "de": "Alternativer Name"
+      }
+    ],
+    "documentationMaterial": ["https://example.com/documentation"]
+  }
+}
+```
+
+### Dataset
+
+
+```json
+{
+  "accessRights": {
+    "license": {
+      "licenseIdentifier": "public domain",
+      "licenseDate": "2023-01-01",
+      "licenseURI": "https://www.dasch.swiss/licenses/public-domain"
+    },
+    "copyrightHolder": "DaSCH",
+    "authorship": [
+        "DaSCH",
+        "Project XYZ"
+      ]
+  },
+  "metadata": {
+    "id": "dataset-0001",
+    "pid": "https://ark.dasch.swiss/ark:/72163/1/dataset-0001",
+    "name": "Dataset Name",
+    "accessRights": "Full Open Access",
+    "legalInfo": [
+      {
+        "license": {
+          "licenseIdentifier": "CC-BY-4.0",
+          "licenseDate": "2023-01-01",
+          "licenseURI": "https://creativecommons.org/licenses/by/4.0/"
+        }
+      }
+    ],
+    "howToCite": "Dataset Name (2025). [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/dataset-0001",
+    "description": {
+      "en": "Dataset Description",
+      "de": "Datensatzbeschreibung"
+    },
+    "typeOfData": ["XML", "Text"],
+    "dateCreated": "2023-01-01",
+    "dateModified": "2023-01-02",
+    "records": ["record-0001", "record-0002"],
+    "languages": [
+      {
+        "en": "English",
+        "de": "Deutsch"
+      }
+    ],
+    "additionalMaterial": ["https://example.com/additional-material"],
+    "provenance": "Dataset provenance information.",
+    "keywords": [
+      {
+        "en": "Keyword 1",
+        "de": "Stichwort 1"
+      }
+    ],
+    "documentationMaterial": ["https://example.com/documentation"]
+  }
+}
+```
