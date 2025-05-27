@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.3.10](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.9...dsp-meta-v2.3.10) (2025-05-27)
+
+
+### Maintenances
+
+* Add PR title check ([#340](https://github.com/dasch-swiss/dsp-meta/issues/340)) ([2ca8bfa](https://github.com/dasch-swiss/dsp-meta/commit/2ca8bfaa8a5b3731468b37adf49edfa0d2be4100))
+* Solve CI failures ([#347](https://github.com/dasch-swiss/dsp-meta/issues/347)) ([c682292](https://github.com/dasch-swiss/dsp-meta/commit/c682292502be4e5ead66bafd696342984a4106b6))
+
+
+### Documentation
+
+* Clarify the model if internal identifiers ([#349](https://github.com/dasch-swiss/dsp-meta/issues/349)) ([9b0f9a4](https://github.com/dasch-swiss/dsp-meta/commit/9b0f9a4aa5f0738cba3b65e4fdff586c6f25371a))
+* Minor changes to the future datamodel ([#346](https://github.com/dasch-swiss/dsp-meta/issues/346)) ([e315202](https://github.com/dasch-swiss/dsp-meta/commit/e31520236945ca0e7fadf89a8c56df0ac4b2321e))
+
 ## [2.3.9](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.8...dsp-meta-v2.3.9) (2025-05-05)
 
 
