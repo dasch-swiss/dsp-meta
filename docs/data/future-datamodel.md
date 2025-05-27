@@ -125,16 +125,16 @@ and may be related to various entities within the hierarchy.
 
 | Field                   | Type          | Card. |
 | ----------------------- | ------------- | ----- |
-| `id`                    | id            | 1     |
-| `pid`                   | id            | 1     |
+| `id`                    | internal_id   | 1     |
+| `pid`                   | string        | 1     |
 | `name`                  | string        | 1     |
-| `projects`              | id[]          | 0-n   |
-| `projectClusters`       | id[]          | 0-n   |
+| `projects`              | internal_id[] | 0-n   |
+| `projectClusters`       | internal_id[] | 0-n   |
 | `description`           | lang_string   | 0-1   |
 | `url`                   | url           | 0-1   |
 | `howToCite`             | string        | 0-1   |
 | `alternativeNames`      | lang_string[] | 0-n   |
-| `contactPoint`          | id[]          | 0-n   |
+| `contactPoint`          | internal_id[] | 0-n   |
 | `documentationMaterial` | url[]         | 0-n   |
 
 - `id`: A unique identifier for the project cluster.  
@@ -160,8 +160,8 @@ There is no difference in cardinality between the archival and in-progress stage
 
 | Field                   | Type                                   | Card. | WIP Card. |
 | ----------------------- | -------------------------------------- | ----- | --------- |
-| `id`                    | id                                     | 1     | 1         |
-| `pid`                   | id                                     | 1     | 1         |
+| `id`                    | internal_id                            | 1     | 1         |
+| `pid`                   | string                                 | 1     | 1         |
 | `shortcode`             | string                                 | 1     | 1         |
 | `officialName`          | string                                 | 1     | 1         |
 | `status`                | string                                 | 1     | 1         |
@@ -175,15 +175,15 @@ There is no difference in cardinality between the archival and in-progress stage
 | `accessRights`          | accessRights                           | 1     | 1         |
 | `legalInfo`             | legalInfo[]                            | 1-n   | 0-n       |
 | `dataManagementPlan`    | string / url                           | 1     | 1         |
-| `datasets`              | id[]                                   | 0-n   | 0-n       |
-| `records`               | id[]                                   | 0-n   | 0-n       |
+| `datasets`              | internal_id[]                          | 0-n   | 0-n       |
+| `records`               | internal_id[]                          | 0-n   | 0-n       |
 | `keywords`              | lang_string[]                          | 1-n   | 0-n       |
 | `disciplines`           | lang_string / authorityfileReference[] | 1-n   | 0-n       |
 | `temporalCoverage`      | lang_string / authorityfileReference[] | 1-n   | 0-n       |
 | `spatialCoverage`       | authorityfileReference[]               | 1-n   | 0-n       |
 | `attributions`          | attribution[]                          | 1-n   | 0-n       |
 | `abstract`              | lang_string                            | 0-1   | 0-1       |
-| `contactPoint`          | id[]                                   | 0-n   | 0-n       |
+| `contactPoint`          | internal_id[]                          | 0-n   | 0-n       |
 | `publications`          | publication[]                          | 0-n   | 0-n       |
 | `funding`               | string / grant[]                       | 1-n   | 0-n       |
 | `alternativeNames`      | lang_string[]                          | 0-n   | 0-n       |
@@ -224,7 +224,7 @@ There is no difference in cardinality between the archival and in-progress stage
 - `attributions`: A list of attributions defining what roles people/organizations have in the project.  
   Manually entered, as there may be people who don't have authorship, like reviewers, organizers, etc.
 - `abstract`: An abstract of the project.
-- `contactPoint`: A person or organization serving as first contact for the project.
+- `contactPoint`: A list of identifiers of persons or organizations responsible for the project.
 - `publications`: A list of publications related to the project.
 - `funding`: Either a string ("No funding") or a list of grants received by the project.
 - `alternativeNames`: Alternative names of the project.
@@ -240,8 +240,8 @@ There is no difference in cardinality between the archival and in-progress stage
 
 | Field                   | Type          | Card. | WIP-Card |
 | ----------------------- | ------------- | ----- | -------- |
-| `id`                    | id            | 1     | 1        |
-| `pid`                   | id            | 1     | 1        |
+| `id`                    | internal_id   | 1     | 1        |
+| `pid`                   | string        | 1     | 1        |
 | `name`                  | string        | 1     | 1        |
 | `accessRights`          | accessRights  | 1     | 1        |
 | `legalInfo`             | legalInfo[]   | 1-n   | 1-n      |
@@ -250,7 +250,7 @@ There is no difference in cardinality between the archival and in-progress stage
 | `typeOfData`            | string[]      | 1-n   | 0-n      |
 | `dateCreated`           | date          | 1     | 0-1      |
 | `dateModified`          | date          | 0-1   | 0-1      |
-| `records`               | id[]          | 1-n   | 0-n      |
+| `records`               | internal_id[] | 1-n   | 0-n      |
 | `languages`             | lang_string[] | 1-n   | 0-n      |
 | `additionalMaterial`    | url[]         | 0-n   | 0-n      |
 | `provenance`            | string        | 0-1   | 0-1      |
@@ -300,8 +300,8 @@ according to what is meaningful within the project.
 
 | Field                   | Type          | Card. | WIP-Card. |
 | ----------------------- | ------------- | ----- | --------- |
-| `id`                    | id            | 1     | 1         |
-| `pid`                   | id            | 1     | 1         |
+| `id`                    | internal_id   | 1     | 1         |
+| `pid`                   | string        | 1     | 1         |
 | `name`                  | string        | 1     | 1         |
 | `accessRights`          | accessRights  | 1     | 1         |
 | `legalInfo`             | legalInfo[]   | 1-n   | 1-n       |
@@ -310,8 +310,8 @@ according to what is meaningful within the project.
 | `typeOfData`            | string[]      | 1-n   | 0-n       |
 | `dateCreated`           | date          | 1     | 0-1       |
 | `dateModified`          | date          | 0-1   | 0-1       |
-| `datasets`              | id[]          | 0-n   | 0-n       |
-| `collections`           | id[]          | 0-n   | 0-n       |
+| `datasets`              | internal_id[] | 0-n   | 0-n       |
+| `collections`           | internal_id[] | 0-n   | 0-n       |
 | `languages`             | lang_string[] | 1-n   | 0-n       |
 | `additionalMaterial`    | url[]         | 0-n   | 0-n       |
 | `provenance`            | string        | 0-1   | 0-1       |
@@ -348,8 +348,8 @@ according to what is meaningful within the project.
 
 | Field           | Type          | Card. | WIP-Card. |
 | --------------- | ------------- | ----- | --------- |
-| `id`            | id            | 1     | 1         |
-| `pid`           | id            | 1     | 1         |
+| `id`            | internal_id   | 1     | 1         |
+| `pid`           | string        | 1     | 1         |
 | `label`         | lang_string   | 1     | 1         |
 | `accessRights`  | string        | 1     | 1         |
 | `legalInfo`     | legalInfo     | 1     | 1         |
@@ -401,14 +401,14 @@ according to what is meaningful within the project.
 
 | Field            | Type                     | Card. |
 | ---------------- | ------------------------ | ----- |
-| `id`             | id                       | 1     |
-| `pid`            | id                       | 1     |
+| `id`             | internal_id              | 1     |
+| `pid`            | string                   | 1     |
 | `sameAs`         | authorityfileReference[] | 0-n   |
 | `givenNames`     | string[]                 | 1-n   |
 | `familyNames`    | string[]                 | 1-n   |
 | `honoraryPrefix` | string[]                 | 0-n   |
 | `honorarySuffix` | string[]                 | 0-n   |
-| `affiliations`   | id[]                     | 0-n   |
+| `affiliations`   | internal_id[]            | 0-n   |
 | `email`          | string                   | 0-n   |
 | `address`        | address                  | 0-1   |
 
@@ -422,7 +422,7 @@ Cardinality is the same for both stages.
 - `familyNames`: The family names of the person.
 - `honoraryPrefix`: The honorary prefixes of the person, e.g. "Prof. Dr.".
 - `honorarySuffix`: The honorary suffixes of the person, e.g. "PhD", "MA".
-- `affiliations`: The affiliations of the person to organizations.
+- `affiliations`: A list of identifiers referencing the affiliations of the person to organizations.
 - `email`: The email address of the person.
 - `address`: The post address of the person.  
   This should not be the personal address, but the specific address of the person at theyr organization.
@@ -431,8 +431,8 @@ Cardinality is the same for both stages.
 
 | Field             | Type                     | Card. |
 | ----------------- | ------------------------ | ----- |
-| `id`              | id                       | 1     |
-| `pid`             | id                       | 1     |
+| `id`              | internal_id              | 1     |
+| `pid`             | string                   | 1     |
 | `sameAs`          | authorityfileReference[] | 0-n   |
 | `name`            | string                   | 1     |
 | `url`             | url                      | 1     |
@@ -523,12 +523,12 @@ A persistent identifier. May be an ARK or a DOI.
 
 ### Grant
 
-| Field     | Type   | Cardinality | Restrictions               |
-| --------- | ------ | ----------- | -------------------------- |
-| `funders` | id[]   | 1-n         | Person or Organization IDs |
-| `number`  | string | 0-1         |                            |
-| `name`    | string | 0-1         |                            |
-| `url`     | url    | 0-1         |                            |
+| Field     | Type          | Cardinality | Restrictions               |
+| --------- | ------------- | ----------- | -------------------------- |
+| `funders` | internal_id[] | 1-n         | Person or Organization IDs |
+| `number`  | string        | 0-1         |                            |
+| `name`    | string        | 0-1         |                            |
+| `url`     | url           | 0-1         |                            |
 
 ### Legal Info
 
@@ -550,10 +550,10 @@ A persistent identifier. May be an ARK or a DOI.
 
 Modelled according to the [OpenAIRE guidelines](https://guidelines.openaire.eu/en/latest/data/field_contributor.html).
 
-| Field             | Type   | Card. |
-| ----------------- | ------ | ----- |
-| `contributor`     | id     | 1     |
-| `contributorType` | string | 1-n   |
+| Field             | Type        | Card. |
+| ----------------- | ----------- | ----- |
+| `contributor`     | internal_id | 1     |
+| `contributorType` | string      | 1-n   |
 
 ### Access Rights
 
@@ -565,6 +565,11 @@ Modelled according to the [OpenAIRE guidelines](https://guidelines.openaire.eu/e
 - `accessRights`: The access rights of the record.  
   Literal "Full Open Access", "Open Access with Restrictions", "Embargoed Access", "Metadata only Access".
 - `embargoDate`: The date when the embargo ends.
+
+### Internal ID
+
+An internal ID (`internal_id`) is a unique identifier for an entity within the system.
+It is not intentionally exposed to the user, and will be presented as a string.
 
 ## Later
 
