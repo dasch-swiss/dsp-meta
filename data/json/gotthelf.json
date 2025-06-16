@@ -119,6 +119,12 @@
         "url": {
             "__type": "URL",
             "type": "URL",
+            "url": "https://app.dasch.swiss/project/eO6sHBvNTJOvD9vqFY4WCA",
+            "text": "Discover Project Data"
+        },
+        "secondaryURL": {
+            "__type": "URL",
+            "type": "URL",
             "url": "https://gotthelf-digital.ch",
             "text": "External Project Website"
         },
