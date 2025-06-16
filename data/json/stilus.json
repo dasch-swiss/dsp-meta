@@ -124,6 +124,12 @@
                 "text": "Late Antiquity II"
             }
         ],
+        "url": {
+            "__type": "URL",
+            "type": "URL",
+            "url": "https://app.dasch.swiss/project/PP2HHckRQpSs6-dUL1b9GA",
+            "text": "Discover Project Data"
+        },
         "status": "Finished"
     },
     "datasets": [
