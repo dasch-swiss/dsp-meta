@@ -241,15 +241,6 @@
             "text": "Project Website"
         },
         "status": "Ongoing",
-        "attributions": [
-            {
-                "__type": "Attribution",
-                "agent": "http://ns.dasch.swiss/repository#dsp-085A-person-001",
-                "roles": [
-                    "Creator of the project"
-                ]
-            }
-        ],
         "datasets": [
             "http://ns.dasch.swiss/repository#dsp-085A-dataset-001"
         ]
