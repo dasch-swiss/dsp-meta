@@ -1,0 +1,446 @@
+{
+    "$schema": "../../resources/schema-metadata-final.json",
+    "project": {
+        "__type": "Project",
+        "howToCite": "Sandoz, Raphaël (2019). Interactive Historical Atlas of the Disciplines [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/085A",
+        "teaserText": "The Interactive Historical Atlas of the Disciplines aims to map data related to the history of academic disciplines and provides tools to visualize the evolution of disciplinary borders over time.",
+        "alternativeNames": [
+            {
+                "en": "Historical Atlas of the Disciplines"
+            }
+        ],
+        "contactPoint": "http://ns.dasch.swiss/repository#dsp-085A-person-001",
+        "description": {
+            "en": "The purpose of this project is to reconstruct the genealogical tree of the sciences, namely, the \"table of contents\" of the history of human knowledge. As such, the present atlas should be of interest not only to historians, but also to philosophers, sociologists and anyone interested in the history of their discipline and its relations to other sciences."
+        },
+        "keywords": [
+            {
+                "en": "history of disciplines"
+            },
+            {
+                "en": "historical atlas"
+            },
+            {
+                "en": "disciplines"
+            },
+            {
+                "en": "disciplines of knowing"
+            },
+            {
+                "en": "classification of knowledge"
+            },
+            {
+                "en": "classification of the sciences"
+            },
+            {
+                "en": "classification of the arts"
+            },
+            {
+                "en": "disciplinary borders"
+            },
+            {
+                "en": "liberal arts"
+            },
+            {
+                "en": "branches of science"
+            },
+            {
+                "en": "distribution of human knowledge"
+            },
+            {
+                "en": "organization of knowledge"
+            },
+            {
+                "en": "knowledge organization"
+            },
+            {
+                "en": "disciplinary maps"
+            },
+            {
+                "en": "mapping science"
+            },
+            {
+                "en": "atlas of knowledge"
+            },
+            {
+                "en": "tree of knowledge"
+            },
+            {
+                "en": "interdisciplinarity"
+            },
+            {
+                "en": "departments of learning"
+            },
+            {
+                "fr": "Histoire des disciplines"
+            },
+            {
+                "fr": "atlas historique"
+            },
+            {
+                "fr": "atlas des disciplines"
+            },
+            {
+                "fr": "classification des sciences"
+            },
+            {
+                "fr": "classification des arts"
+            },
+            {
+                "fr": "frontières disciplinaires"
+            },
+            {
+                "fr": "cartes disciplinaires"
+            },
+            {
+                "fr": "interdisciplinarité"
+            },
+            {
+                "fr": "arbre de la connaissance"
+            },
+            {
+                "fr": "cartes du savoir"
+            },
+            {
+                "fr": "organisation des connaissances"
+            },
+            {
+                "fr": "organisation du savoir"
+            },
+            {
+                "fr": "départements de la connaissance"
+            }
+        ],
+        "name": "Interactive Historical Atlas of the Disciplines",
+        "publications": [
+            {
+                "text": "Sandoz, R. (2016), \"Whewell on the classification of the sciences\", Studies in History and Philosophy of Science Part A, 60, pp. 48--54.",
+                "url": [
+                    {
+                        "__type": "URL",
+                        "type": "URL",
+                        "url": "https://doi.org/10.1016/j.shpsa.2016.10.001",
+                        "text": "https://doi.org/10.1016/j.shpsa.2016.10.001"
+                    }
+                ]
+            },
+            {
+                "text": "Sandoz, R. (2017), \"La « hiérarchie des sciences » comtienne revisitée par Edmond Goblot\", Revue philosophique de la France et de l'étranger, 142(3), pp. 303--324.",
+                "url": [
+                    {
+                        "__type": "URL",
+                        "type": "URL",
+                        "url": "https://doi.org/10.3917/rphi.173.0303",
+                        "text": "https://doi.org/10.3917/rphi.173.0303"
+                    }
+                ]
+            },
+            {
+                "text": "Sandoz, R. (2021), \"Coordonner les savoirs: L'interdisciplinarité dans une perspective historique\", Cosmopolis, 1(2), pp. 95--108."
+            },
+            {
+                "text": "Sandoz, R. (2021), \"Thematic reclassifications and emerging sciences\", Journal for General Philosophy of Science, 52(1), pp. 63--85.",
+                "url": [
+                    {
+                        "__type": "URL",
+                        "type": "URL",
+                        "url": "https://doi.org/10.1007/s10838-020-09526-2",
+                        "text": "https://doi.org/10.1007/s10838-020-09526-2"
+                    }
+                ]
+            },
+            {
+                "text": "Sandoz, R. (2021), \"La classification des sciences au regard des dispositifs schématiques : arbre, tableau, cercle\", actes du colloque \"Matières à raisonner\", Savoirs.",
+                "url": [
+                    {
+                        "__type": "URL",
+                        "type": "URL",
+                        "url": "https://savoirs.app/fr/articles/la-classification-des-sciences-au-regard-des-dispositifs-schematiques-arbre-tableau-cercle",
+                        "text": "https://savoirs.app/fr/articles/la-classification-des-sciences-au-regard-des-dispositifs-schematiques-arbre-tableau-cercle"
+                    }
+                ]
+            },
+            {
+                "text": "Sandoz, R. (2023), \"Comment retracer la mutation des frontières disciplinaires : éléments d'une cartographie historique des savoirs\", in Faire et défaire les savoirs, Genève: Droz, pp. 39--62."
+            }
+        ],
+        "shortcode": "085A",
+        "disciplines": [
+            {
+                "en": "10301 Ancient history and archaeology"
+            },
+            {
+                "en": "10101 Philosophy"
+            },
+            {
+                "en": "10201 History"
+            },
+            {
+                "__type": "URL",
+                "type": "Skos",
+                "url": "http://skos.um.es/unesco6/7205/html",
+                "text": "History of science"
+            },
+            {
+                "__type": "URL",
+                "type": "Skos",
+                "url": "http://skos.um.es/unesco6/7201/html",
+                "text": "Philosophy of science"
+            },
+            {
+                "__type": "URL",
+                "type": "Skos",
+                "url": "http://skos.um.es/unesco6/55",
+                "text": "History"
+            },
+            {
+                "__type": "URL",
+                "type": "Skos",
+                "url": "http://skos.um.es/unesco6/550618",
+                "text": "History of periods"
+            },
+            {
+                "__type": "URL",
+                "type": "Skos",
+                "url": "http://skos.um.es/unesco6/550622",
+                "text": "History by topics"
+            },
+            {
+                "__type": "URL",
+                "type": "Skos",
+                "url": "http://skos.um.es/unesco6/630608",
+                "text": "Sociology of science"
+            }
+        ],
+        "startDate": "2017-09-01",
+        "endDate": "2021-08-31",
+        "temporalCoverage": [
+            {
+                "en": "From Ancient Greek period to Contemporary period"
+            }
+        ],
+        "spatialCoverage": [
+            {
+                "__type": "URL",
+                "type": "Geonames",
+                "url": "https://www.geonames.org/6295630",
+                "text": "World"
+            }
+        ],
+        "funders": [
+            "http://ns.dasch.swiss/repository#dsp-085A-organization-001",
+            "http://ns.dasch.swiss/repository#dsp-085A-organization-002"
+        ],
+        "grants": [
+            "http://ns.dasch.swiss/repository#dsp-085A-grant-001"
+        ],
+        "url": {
+            "__type": "URL",
+            "type": "URL",
+            "url": "https://atlas-disciplines.unige.ch",
+            "text": "Project Website"
+        },
+        "status": "Ongoing",
+        "attributions": [
+            {
+                "__type": "Attribution",
+                "agent": "http://ns.dasch.swiss/repository#dsp-085A-person-001",
+                "roles": [
+                    "Creator of the project"
+                ]
+            }
+        ],
+        "datasets": [
+            "http://ns.dasch.swiss/repository#dsp-085A-dataset-001"
+        ]
+    },
+    "datasets": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-085A-dataset-001",
+            "__type": "Dataset",
+            "additional": [
+                {
+                    "__type": "URL",
+                    "type": "URL",
+                    "url": "https://atlas-disciplines.unige.ch/#:[ref[15]][.[/]]",
+                    "text": "Find additional documentation here"
+                }
+            ],
+            "title": "Interactive Historical Atlas of the Disciplines",
+            "alternativeTitles": [
+                {
+                    "en": "Historical Atlas of the Disciplines"
+                }
+            ],
+            "abstracts": [
+                {
+                    "en": "The Interactive Historical Atlas of the Disciplines aims at collecting and mapping data related to the history of the disciplinary structure of science. This database provides several tools to explore the various 'classifications of the sciences' put forward by numerous scholars over the centuries, and to visualize the evolution of disciplinary borders from Antiquity to our days."
+                }
+            ],
+            "typeOfData": [
+                "Text",
+                "Image",
+                "XML"
+            ],
+            "urls": [
+                {
+                    "__type": "URL",
+                    "type": "URL",
+                    "url": "http://atlas-disciplines.unige.ch",
+                    "text": "Interactive Historical Atlas of the Disciplines"
+                },
+                {
+                    "__type": "URL",
+                    "type": "URL",
+                    "url": "https://atlas-disciplines.unige.ch/Archived/IHAD_28.02.2025.html",
+                    "text": "Archived version of the Interactive Historical Atlas of the Disciplines"
+                }
+            ],
+            "licenses": [
+                {
+                    "__type": "License",
+                    "date": "2019-03-14",
+                    "license": {
+                        "__type": "URL",
+                        "type": "Creative Commons",
+                        "url": "http://creativecommons.org/licenses/by-nc-nd/4.0/",
+                        "text": "CC BY-NC-ND 4.0"
+                    }
+                }
+            ],
+            "accessConditions": "open",
+            "howToCite": "Raphaël Sandoz (2019), Interactive Historical Atlas of the Disciplines, University of Geneva.",
+            "datePublished": "2019-03-14",
+            "languages": [
+                {
+                    "en": "English",
+                    "de": "Englisch",
+                    "fr": "anglais"
+                },
+                {
+                    "en": "French",
+                    "de": "Französisch",
+                    "fr": "français"
+                },
+                {
+                    "en": "German",
+                    "de": "Deutsch",
+                    "fr": "allemand"
+                },
+                {
+                    "en": "Italian",
+                    "de": "Italienisch",
+                    "fr": "italien"
+                },
+                {
+                    "en": "Spanish",
+                    "de": "Spanisch",
+                    "fr": "espagnol"
+                },
+                {
+                    "en": "Latin",
+                    "de": "Lateinisch",
+                    "fr": "latin"
+                },
+                {
+                    "en": "Greek",
+                    "de": "Griechisch",
+                    "fr": "grec"
+                }
+            ],
+            "attributions": [
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-085A-person-001",
+                    "roles": [
+                        "Creator of the project"
+                    ]
+                }
+            ],
+            "dateCreated": "2018-06-01",
+            "dateModified": "2025-02-28"
+        }
+    ],
+    "persons": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-085A-person-001",
+            "__type": "Person",
+            "familyNames": [
+                "Sandoz"
+            ],
+            "givenNames": [
+                "Raphaël"
+            ],
+            "jobTitles": [
+                "Post-doctoral researcher"
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-085A-organization-001"
+            ],
+            "email": "sandoz.raphael@gmail.com",
+            "address": {
+                "__type": "Address",
+                "street": "Rouges-Terres 7a",
+                "postalCode": "2068",
+                "locality": "Hauterive",
+                "country": "Switzerland"
+            }
+        }
+    ],
+    "organizations": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-085A-organization-001",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "16, Boulevard d'Yvoy",
+                "postalCode": "1205",
+                "locality": "Genève",
+                "country": "Switzerland"
+            },
+            "email": "raphael.sandoz@unige.ch",
+            "name": "Université de Genève",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://www.unige.ch/",
+                "text": "https://www.unige.ch/"
+            }
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-085A-organization-002",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Wildhainweg 3",
+                "postalCode": "3001",
+                "locality": "Berne",
+                "country": "Switzerland"
+            },
+            "name": "Swiss National Science Foundation (SNSF)",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://www.snf.ch/",
+                "text": "https://www.snf.ch/"
+            }
+        }
+    ],
+    "grants": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-085A-grant-001",
+            "__type": "Grant",
+            "funders": [
+                "http://ns.dasch.swiss/repository#dsp-085A-organization-002"
+            ],
+            "name": "Advanced Postdoc.Mobility",
+            "number": "174428",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://data.snf.ch/grants/grant/174428",
+                "text": "https://data.snf.ch/grants/grant/174428"
+            }
+        }
+    ]
+}
