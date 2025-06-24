@@ -1,5 +1,32 @@
 # Changelog
 
+## [2.3.10](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.9...dsp-meta-v2.3.10) (2025-06-23)
+
+
+### Maintenances
+
+* Add PR title check ([#340](https://github.com/dasch-swiss/dsp-meta/issues/340)) ([2ca8bfa](https://github.com/dasch-swiss/dsp-meta/commit/2ca8bfaa8a5b3731468b37adf49edfa0d2be4100))
+* **deps-dev:** Bump prettier from 3.5.3 to 3.6.0 in /web-frontend in the frontend-dependencies group ([#355](https://github.com/dasch-swiss/dsp-meta/issues/355)) ([0b483d9](https://github.com/dasch-swiss/dsp-meta/commit/0b483d916c5e07cb5b0aacd29624ec493b56e437))
+* **deps-dev:** Bump the frontend-dependencies group across 1 directory with 4 updates ([#348](https://github.com/dasch-swiss/dsp-meta/issues/348)) ([0773471](https://github.com/dasch-swiss/dsp-meta/commit/0773471482e21be6e437a175f77cb450fba9d69b))
+* **deps-dev:** Bump the frontend-dependencies group in /web-frontend with 3 updates ([#350](https://github.com/dasch-swiss/dsp-meta/issues/350)) ([a7c9459](https://github.com/dasch-swiss/dsp-meta/commit/a7c9459126539b3d81b64afc539728d3059d79ec))
+* **deps:** Bump the backend-dependencies group with 2 updates ([#353](https://github.com/dasch-swiss/dsp-meta/issues/353)) ([c64d229](https://github.com/dasch-swiss/dsp-meta/commit/c64d229a9e40001c837a23a77138331fea965e75))
+* **deps:** Bump the backend-dependencies group with 3 updates ([#343](https://github.com/dasch-swiss/dsp-meta/issues/343)) ([e447e5a](https://github.com/dasch-swiss/dsp-meta/commit/e447e5aad632bb4d0db2c237c50e30bf4a4a867d))
+* Solve CI failures ([#347](https://github.com/dasch-swiss/dsp-meta/issues/347)) ([c682292](https://github.com/dasch-swiss/dsp-meta/commit/c682292502be4e5ead66bafd696342984a4106b6))
+
+
+### Project Data
+
+* Add atlasdisciplines ([#354](https://github.com/dasch-swiss/dsp-meta/issues/354)) ([60cd6ea](https://github.com/dasch-swiss/dsp-meta/commit/60cd6eaa26af05b8c62d79b8e9935e066b011058))
+* Add project link for stilus ([#351](https://github.com/dasch-swiss/dsp-meta/issues/351)) ([c5a7412](https://github.com/dasch-swiss/dsp-meta/commit/c5a74128bb8f3a0d180f1d7f6ed31ff725c8199a))
+* Add URL Project Data (Gotthelf 0862) ([#345](https://github.com/dasch-swiss/dsp-meta/issues/345)) ([390a575](https://github.com/dasch-swiss/dsp-meta/commit/390a57583a03cc63e78c87499a48cf182a865c41))
+* Update external project link for kirchen-rom ([#352](https://github.com/dasch-swiss/dsp-meta/issues/352)) ([f871507](https://github.com/dasch-swiss/dsp-meta/commit/f8715076761a30a6a20b107144915d2ea65a32fb))
+
+
+### Documentation
+
+* Clarify the model if internal identifiers ([#349](https://github.com/dasch-swiss/dsp-meta/issues/349)) ([9b0f9a4](https://github.com/dasch-swiss/dsp-meta/commit/9b0f9a4aa5f0738cba3b65e4fdff586c6f25371a))
+* Minor changes to the future datamodel ([#346](https://github.com/dasch-swiss/dsp-meta/issues/346)) ([e315202](https://github.com/dasch-swiss/dsp-meta/commit/e31520236945ca0e7fadf89a8c56df0ac4b2321e))
+
 ## [2.3.9](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.8...dsp-meta-v2.3.9) (2025-05-05)
 
 
