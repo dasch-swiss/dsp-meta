@@ -64,7 +64,7 @@ fn load_path_as_json(path: &Path) -> Result<Value> {
     value.map_err(NotAJsonFile)
 }
 
-fn load_json_schema(schema_version: SchemaVersion, scope: &mut Scope) -> Result<ScopedSchema> {
+fn load_json_schema(schema_version: SchemaVersion, scope: &mut Scope) -> Result<ScopedSchema<'_>> {
     let schema_str = schema_version.schema_str();
     let json = serde_json::from_str(schema_str).map_err(NotAJsonFile)?;
     scope.compile_and_return(json, false).map_err(SchemaError)
