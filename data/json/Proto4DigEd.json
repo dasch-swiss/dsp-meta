@@ -1,0 +1,507 @@
+{
+    "$schema": "../../resources/schema-metadata-final.json",
+    "project": {
+        "__type": "Project",
+        "howToCite": "Bähler, Ursula; Baumgartner, Reto; Weber, Stéphanie; Zimmermann, Elias (2025). Prototyping Workflows for Digital Editions [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/0861.",
+        "teaserText": "Anschauungsbeispiel einer generischen Edition: Korrespondenz zwischen dem Philologen G. Paris (1839-1903) und einem seiner Schüler, dem Philosophen W. Lutosławski (1863-1954)",
+        "datasets": [
+            "http://ns.dasch.swiss/repository#dsp-0861-dataset-000"
+        ],
+        "alternativeNames": [
+            {
+                "en": "Proto4DigEd"
+            }
+        ],
+        "contactPoint": "http://ns.dasch.swiss/repository#dsp-0861-person-000",
+        "description": {
+            "de": "Die vorliegende Edition stellt einen Ausschnitt der Korrespondenz zwischen dem französischen Philologen Gaston Paris (1839-1903) und einem seiner Schüler, dem polnischen Philosophen Wincenty Lutosławski (1863-1954) zur Verfügung. Sie dient als Anschauungsbeispiel dafür, wie mit möglichst standardisierten Mitteln eine wissenschaftliche digitale Edition (digital scholarly edition, DSE) erstellt, publiziert und langfristig zugänglich gemacht werden kann. Das gleichzeitig entstandene Handbuch zur Erstellung einer digitalen Edition verweist zu diesem Zweck extensiv auf die vorliegende Edition.\n\nIm Vordergrund steht also keine vollständige Edition; die Arbeit an dieser ‘showcase edition’ hat jedoch notwendige technische und editionsphilologische Mittel getestet, um die Erstellung zukünftiger Editionen zu erleichtern. Eine größere Edition ausgesuchter Korrespondenzen von Gaston Paris entsteht von 2025-2029 im Rahmen des SNF-Forschungsprojektes “PARES: Gaston Paris, des archives aux réseaux”."
+        },
+        "disciplines": [
+            {
+                "de": "10502 Schwerpunkt Romanistik"
+            }
+        ],
+        "endDate": "2025-06-30",
+        "funders": [
+            "http://ns.dasch.swiss/repository#dsp-0861-organization-000"
+        ],
+        "grants": [
+            "http://ns.dasch.swiss/repository#dsp-0861-grant-001"
+        ],
+        "keywords": [
+            {
+                "en": "Digital Scholarly Edition"
+            },
+            {
+                "en": "French Philology"
+            }
+        ],
+        "name": "Prototyping Workflows for Digital Editions",
+        "publications": [
+            {
+                "text": " Baumgartner, R., Zimmermann, E.: Handbuch zur Erstellung einer digitalen Edition.",
+                "url": [
+                    {
+                        "__type": "URL",
+                        "type": "URL",
+                        "url": "https://digital-editions.pages.uzh.ch/proto4diged/handbook/en",
+                        "text": "https://digital-editions.pages.uzh.ch/proto4diged/handbook/en/ (Stand: 1.6.2025)."
+                    }
+                ]
+            },
+            {
+                "text": " Bähler, U., Zimmermann, E., Stricker, Y., Baumgartner, R., & Gautschy, R. (2024). Proto4DigEd: Prototypical Workflows for Digital Editions. Workflows: Digital Methods for Reproducible Research Practices in the Arts and Humanities, Lisbon, Portugal. Zenodo.",
+                "url": [
+                    {
+                        "__type": "URL",
+                        "type": "DOI",
+                        "url": "https://doi.org/10.5281/zenodo.11632615",
+                        "text": "DOI: 10.5281/zenodo.11632615"
+                    }
+                ]
+            }
+        ],
+        "shortcode": "0861",
+        "spatialCoverage": [
+            {
+                "__type": "URL",
+                "type": "Geonames",
+                "url": "https://www.geonames.org/3017382",
+                "text": "France"
+            }
+        ],
+        "startDate": "2023-07-01",
+        "temporalCoverage": [
+            {
+                "__type": "URL",
+                "type": "Periodo",
+                "url": "http://n2t.net/ark:/99152/p086kj9tqzk",
+                "text": "19th Century"
+            }
+        ],
+        "url": {
+            "__type": "URL",
+            "type": "URL",
+            "url": "https://app.dasch.swiss/project/Ghzevo5YT8-rpAKEqlq1AA",
+            "text": "Discover Project Data"
+        },
+        "secondaryURL": {
+            "__type": "URL",
+            "type": "URL",
+            "url": "https://www.zde.uzh.ch/de/projects/proto4diged.html",
+            "text": "External Project Website"
+        },
+        "status": "Finished"
+    },
+    "datasets": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0861-dataset-000",
+            "__type": "Dataset",
+            "abstracts": [
+                {
+                    "en": "Seven digitally scholarly edited letters with indices (places, names, organizations, bibliography, keywords)."
+                }
+            ],
+            "alternativeTitles": [
+                {
+                    "en": "Proto4DigEd"
+                }
+            ],
+            "accessConditions": "open",
+            "dateCreated": "2025-06-07",
+            "howToCite": "Bähler, Ursula; Baumgartner, Reto; Weber, Stéphanie; Zimmermann, Elias (2025). Prototyping Workflows for Digital Editions [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/0861.",
+            "languages": [
+                {
+                    "en": "French",
+                    "de": "Französisch",
+                    "fr": "français"
+                }
+            ],
+            "licenses": [
+                {
+                    "__type": "License",
+                    "date": "2025-07-07",
+                    "license": {
+                        "__type": "URL",
+                        "type": "Creative Commons",
+                        "url": "https://creativecommons.org/licenses/by/4.0",
+                        "text": "CC BY 4.0"
+                    }
+                }
+            ],
+            "attributions": [
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0861-person-000",
+                    "roles": [
+                        "Project Leader",
+                        "Editor"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0861-person-001",
+                    "roles": [
+                        "ProjectManager",
+                        "Editor"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0861-person-002",
+                    "roles": [
+                        "Data Curator",
+                        "Data Collector"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0861-person-003",
+                    "roles": [
+                        "Project Manager"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0861-person-004",
+                    "roles": [
+                        "Metadata specialist",
+                        "Related Person"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0861-person-005",
+                    "roles": [
+                        "Archiving specialist",
+                        "Related Person"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0861-person-006",
+                    "roles": [
+                        "Project Manager"
+                    ]
+                }
+            ],
+            "status": "Finished",
+            "title": "Dataset of Prototyping Workflows for Digital Editions",
+            "typeOfData": [
+                "Image",
+                "Text",
+                "XML"
+            ],
+            "urls": [
+                {
+                    "__type": "URL",
+                    "type": "URL",
+                    "url": "https://www.zde.uzh.ch/de/projects/proto4diged.html",
+                    "text": "Proto4DigEd Project Website"
+                }
+            ]
+        }
+    ],
+    "persons": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0861-person-003",
+            "__type": "Person",
+            "email": "yann.stricker@ub.uzh.ch",
+            "familyNames": [
+                "Stricker"
+            ],
+            "givenNames": [
+                "Yann"
+            ],
+            "jobTitles": [
+                "Dr."
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0861-organization-003"
+            ],
+            "authorityRefs": [
+                {
+                    "__type": "URL",
+                    "type": "ORCID",
+                    "url": "https://orcid.org/0009-0006-5768-0379",
+                    "text": "ORCID URL: https://orcid.org/0009-0006-5768-0379"
+                }
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0861-person-004",
+            "__type": "Person",
+            "email": "marcus.zerbst@zb.uzh.ch",
+            "familyNames": [
+                "Zerbst"
+            ],
+            "givenNames": [
+                "Marcus"
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0861-organization-004"
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0861-person-005",
+            "__type": "Person",
+            "address": {
+                "__type": "Address",
+                "street": "Kornhausgasse 7",
+                "postalCode": "4051",
+                "locality": "Basel",
+                "country": "Switzerland"
+            },
+            "email": "rita.gautschy@dasch.swiss",
+            "familyNames": [
+                "Gautschy"
+            ],
+            "givenNames": [
+                "Rita"
+            ],
+            "jobTitles": [
+                "Prof. Dr."
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0861-organization-005"
+            ],
+            "authorityRefs": [
+                {
+                    "__type": "URL",
+                    "type": "ORCID",
+                    "url": "https://orcid.org/0000-0002-5470-8720",
+                    "text": "ORCID URL: https://orcid.org/0000-0002-5470-8720"
+                }
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0861-person-006",
+            "__type": "Person",
+            "email": "irina.angela.matti@gmail.com",
+            "familyNames": [
+                "Matti"
+            ],
+            "givenNames": [
+                "Irina"
+            ],
+            "jobTitles": [
+                "MA"
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0861-organization-001"
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0861-person-001",
+            "__type": "Person",
+            "address": {
+                "__type": "Address",
+                "street": "Zürichbergstrasse 8",
+                "postalCode": "8032",
+                "locality": "Zürich",
+                "country": "Switzerland"
+            },
+            "email": "elias.zimmermann@uzh.ch",
+            "familyNames": [
+                "Zimmermann"
+            ],
+            "givenNames": [
+                "Elias"
+            ],
+            "jobTitles": [
+                "Dr."
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0861-organization-001"
+            ],
+            "authorityRefs": [
+                {
+                    "__type": "URL",
+                    "type": "ORCID",
+                    "url": "https://orcid.org/0009-0002-7956-5655",
+                    "text": "ORCID URL: https://orcid.org/0009-0002-7956-5655"
+                }
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0861-person-002",
+            "__type": "Person",
+            "email": "reto.baumgartner@zi.uzh.ch",
+            "familyNames": [
+                "Baumgartner"
+            ],
+            "givenNames": [
+                "Reto"
+            ],
+            "jobTitles": [
+                "Science IT Consultant"
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0861-organization-002"
+            ],
+            "authorityRefs": [
+                {
+                    "__type": "URL",
+                    "type": "ORCID",
+                    "url": "https://orcid.org/0009-0006-4458-461X",
+                    "text": "ORCID URL: https://orcid.org/0009-0006-4458-461X"
+                }
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0861-person-000",
+            "__type": "Person",
+            "address": {
+                "__type": "Address",
+                "street": "Zürichbergstrasse 8",
+                "postalCode": "8032",
+                "locality": "Zürich",
+                "country": "Switzerland"
+            },
+            "email": "ubaehler@rom.uzh.ch",
+            "familyNames": [
+                "Bähler"
+            ],
+            "givenNames": [
+                "Ursula"
+            ],
+            "jobTitles": [
+                "Prof. Dr."
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0861-organization-001"
+            ],
+            "authorityRefs": [
+                {
+                    "__type": "URL",
+                    "type": "ORCID",
+                    "url": "https://orcid.org/0000-0001-5970-5388",
+                    "text": "ORCID URL: https://orcid.org/0000-0001-5970-5388"
+                }
+            ]
+        }
+    ],
+    "organizations": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0861-organization-002",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Winterthurerstrasse 190",
+                "postalCode": "8057",
+                "locality": "Zurich",
+                "country": "Switzerland"
+            },
+            "email": "contact@s3it.uzh.ch",
+            "name": "Science IT (S3IT), University of Zurich",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://www.zi.uzh.ch/en/teaching-and-research/science-it/experts.html",
+                "text": "https://www.zi.uzh.ch/en/teaching-and-research/science-it/experts.html"
+            }
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0861-organization-003",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Strickhofstrasse 39",
+                "postalCode": "8057",
+                "locality": "Zürich",
+                "country": "Switzerland"
+            },
+            "name": "Center Digital Editions & Edition Analytics, University of Zurich",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://www.zde.uzh.ch/en.html",
+                "text": "https://www.zde.uzh.ch/en.html"
+            }
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0861-organization-004",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Zähringerplatz 6",
+                "postalCode": "8001",
+                "locality": "Zürich",
+                "country": "Switzerland"
+            },
+            "email": "zb@zb.uzh.ch",
+            "name": "Zentralbibliothek Zürich",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://www.zb.uzh.ch/en",
+                "text": "https://www.zb.uzh.ch/en"
+            }
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0861-organization-005",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Kornhausgasse 7",
+                "postalCode": "4051",
+                "locality": "Basel",
+                "country": "Switzerland"
+            },
+            "email": "info@dasch.swiss",
+            "name": "Swiss National Data and Service Center for the Humanities (DaSCH)",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://www.dasch.swiss/",
+                "text": "https://www.dasch.swiss/"
+            }
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0861-organization-000",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Effingerstrasse 15, Postfach",
+                "postalCode": "3001",
+                "locality": "Bern",
+                "country": "Switzerland"
+            },
+            "name": "swissuniversities",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://www.swissuniversities.ch/en/",
+                "text": "https://www.swissuniversities.ch/en/"
+            }
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0861-organization-001",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Zürichbergstrasse 8",
+                "postalCode": "8032",
+                "locality": "Zürich",
+                "country": "Switzerland"
+            },
+            "name": "Institute of Romance Studies, University of Zurich",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://www.rose.uzh.ch/en.html",
+                "text": "https://www.rose.uzh.ch/en.html"
+            }
+        }
+    ],
+    "grants": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0861-grant-001",
+            "__type": "Grant",
+            "funders": [
+                "http://ns.dasch.swiss/repository#dsp-0861-organization-000"
+            ],
+            "name": "Swiss Open Research Data Grants Track A: Explore projects"
+        }
+    ]
+}
