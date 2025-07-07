@@ -14,6 +14,7 @@ check:
     just --check --fmt --unstable
     cargo +nightly fmt --check
     cargo clippy -- -D warnings
+    cargo +nightly clippy -- -D warnings
 
 # Format all rust code
 fmt:
@@ -108,6 +109,4 @@ markdownlint:
     docker run \
     -v $PWD:/workdir ghcr.io/igorshubovych/markdownlint-cli:latest \
     --config .markdownlint.yml \
-    --ignore "docs/domain_model/*.md" \
-    --disable MD013 MD040 -- \
     "docs/**/*.md"

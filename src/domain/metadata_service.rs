@@ -1,6 +1,6 @@
 use tracing::{instrument, trace};
 
-use crate::domain::metadata_repository::{Filter, MetadataRepository, Page, Pagination};
+use crate::domain::metadata_repository::{FilterAndQuery, MetadataRepository, Page, Pagination};
 use crate::domain::model::draft_model::*;
 use crate::error::DspMetaError;
 
@@ -26,7 +26,7 @@ impl MetadataService {
     #[instrument(skip(self))]
     pub fn find(
         &self,
-        filter: &Filter,
+        filter: &FilterAndQuery,
         pagination: &Pagination,
     ) -> Result<Page<DraftMetadata>, DspMetaError> {
         self.repo.find(filter, pagination)

@@ -1,0 +1,255 @@
+{
+    "$schema": "../../resources/schema-metadata-draft.json",
+    "project": {
+        "__type": "Project",
+        "howToCite": "J. Luginbühl (2025). Mit Stilus, Volumen und Spiegel. Untersuchungen zur Verbreitung von Lesen und Schreiben bei Frauen aus dem römischen Reich anhand von Funden aus dem Grabkontext. DaSCH. https://ark.dasch.swiss/ark:/72163/1/0852.",
+        "teaserText": "By analyzing burial finds linked to the deceased, the dissertation «Mit Stilus, Volumen und Spiegel» traces female literacy in the Latin West of the Roman Empire.",
+        "datasets": [
+            "http://ns.dasch.swiss/repository#dsp-0852-dataset-000"
+        ],
+        "contactPoint": "http://ns.dasch.swiss/repository#dsp-0852-person-000",
+        "description": {
+            "de": "Die Dissertation «Mit Stilus, Volumen und Spiegel» widmet sich der weiblichen Literalität im lateinischsprachigen Westen des Römischen Reiches. Ausgangspunkt der Untersuchung ist das archäologische Fundmaterial. Grabfunde und Grabmarkierungen weisen immer eine enge Verbindung zwischen Objekt und verstorbener Person auf, da sie von den Hinterbliebenen bewusst ausgewählt wurden. Die Objektauswahl, das Alter, das Geschlecht, das soziales Umfeld, das konstruierte Bild der Erinnerung und die geographische Verteilung erlauben so Rückschlüsse auf die Verbreitung von Literalität von Frauen im römischen Reich, die in den literarischen Quellen nicht sichtbar sind."
+        },
+        "disciplines": [
+            {
+                "en": "10303 Ancient history and Classical studies"
+            },
+            {
+                "en": "10402 Archaeology"
+            }
+        ],
+        "endDate": "2025-01-01",
+        "funders": [
+            "http://ns.dasch.swiss/repository#dsp-0852-organization-001"
+        ],
+        "grants": [
+            "http://ns.dasch.swiss/repository#dsp-0852-grant-000"
+        ],
+        "keywords": [
+            {
+                "en": "Grave Goods"
+            },
+            {
+                "en": "Inscriptions"
+            },
+            {
+                "en": "Latin West"
+            },
+            {
+                "en": "Literacy"
+            },
+            {
+                "en": "Tombs"
+            },
+            {
+                "en": "Women"
+            },
+            {
+                "en": "Writing Equipment"
+            }
+        ],
+        "name": "Mit Stilus, Volumen und Spiegel. Untersuchungen zur Verbreitung von Lesen und Schreiben bei Frauen aus dem römischen Reich anhand von Funden aus dem Grabkontext.",
+        "publications": [
+            {
+                "text": " J. Luginbühl, Grabfunde als Spiegel der Bildung: Zur Literalität der Frauen in den westlichen Provinzen des Römischen Reiches (Oxford im Druck)"
+            },
+            {
+                "text": " J. Luginbühl, Educated by the Nine Muses? Representations of Women with Writing Materials on Funerary Monuments, in: T. Grüll (Hrsg.), Representations of Writing Materials on Roman Funerary Monuments. Text, Image, Message, Archaeopress Roman Archaeology 104 (Oxford 2023) 71–83"
+            },
+            {
+                "text": " J. Luginbühl, Young Ladies with Their Writing Equipment, in: M. Heinzelmann – M. Bentz (Hrsg.), Sessions 2–3. Single Contributions, Archaeology and Economy in the Ancient World – Proceedings of the 19th International Congress of Classical Archaeology, Cologne/Bonn 2018 53 (Heidelberg 2022) 147–157, online verfügbar:",
+                "url": [
+                    {
+                        "__type": "URL",
+                        "type": "DOI",
+                        "url": "https://doi.org/10.11588/propylaeum.999.c13352",
+                        "text": "DOI: 10.11588/propylaeum.999.c13352"
+                    }
+                ]
+            },
+            {
+                "text": " J. Luginbühl, LECTRIX, LIBRARIA UND PUELLA DOCTA, Literalität römischer Frauen im Spiegel der Grabreliefs, in: L. Balandat – K. Opitz-Pohl (Hrsg.), Grab ∙ Denk ∙ Mal. Workshop am Institut für Klassische Archäologie der Universität Tübingen, 17.–19. November 2017, Tübinger Archäologische Forschungen 36 (Rahden/Westf. 2022) 177–189"
+            },
+            {
+                "text": " J. Luginbühl, The Girl with the Bronze Stylus, guest blog, 13.06.2022:",
+                "url": [
+                    {
+                        "__type": "URL",
+                        "type": "URL",
+                        "url": "https://latinnow.eu/2022/06/13/the-girl-with-the-bronze-stylus/",
+                        "text": "https://latinnow.eu/2022/06/13/the-girl-with-the-bronze-stylus/"
+                    }
+                ]
+            },
+            {
+                "text": " J. Luginbühl, Salve Domina. Hinweise auf lesende und schreibende Frauen im Römischen Reich, HASBonline 22, 2017, 49–73, online verfügbar: ",
+                "url": [
+                    {
+                        "__type": "URL",
+                        "type": "URL",
+                        "url": "http://dx.doi.org/10.22013/HASBonline/2017/3",
+                        "text": "http://dx.doi.org/10.22013/HASBonline/2017/3"
+                    }
+                ]
+            }
+        ],
+        "shortcode": "0852",
+        "spatialCoverage": [
+            {
+                "__type": "URL",
+                "type": "Geonames",
+                "url": "https://www.geonames.org/6255148/europe.html",
+                "text": "Europe"
+            }
+        ],
+        "startDate": "2014-01-01",
+        "temporalCoverage": [
+            {
+                "__type": "URL",
+                "type": "Chronontology",
+                "url": "http://chronontology.dainst.org/period/RX2Rv7kcbLGk",
+                "text": "Roman Republic"
+            },
+            {
+                "__type": "URL",
+                "type": "Chronontology",
+                "url": "http://chronontology.dainst.org/period/ojQ3ix9NCdGq",
+                "text": "Roman imperial period"
+            },
+            {
+                "__type": "URL",
+                "type": "Chronontology",
+                "url": "http://chronontology.dainst.org/period/9ni4lSCi1app",
+                "text": "Late Antiquity II"
+            }
+        ],
+        "url": {
+            "__type": "URL",
+            "type": "URL",
+            "url": "https://app.dasch.swiss/project/PP2HHckRQpSs6-dUL1b9GA",
+            "text": "Discover Project Data"
+        },
+        "status": "Finished"
+    },
+    "datasets": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0852-dataset-000",
+            "__type": "Dataset",
+            "abstracts": [
+                {
+                    "en": "Catalogue of graves, grave monuments and grave inscriptions as testimonies of female literacy in the Roman Empire. Collection of graves with writing utensils from the Latin West of the Roman Empire. It includes female, male and sexually indeterminate graves. Funerary monuments remind us of the deceased long after the burial and create a certain image with which they are remembered. In this catalogue, grave monuments of women with writing implements as attributes from the Latin West are compiled. Due to the large number of sarcophagus reliefs, these are only included as a representative sample. Representations of Muses are excluded unless there is an identification with the deceased person. Compilation of funerary inscriptions of women with a connection to literacy. The inscriptions mention activities that presuppose or make probable a certain mastery of reading and writing. This ranges from working as a reader or scribe to attending school and being praised by ones high education."
+                }
+            ],
+            "accessConditions": "open",
+            "dateCreated": "2018-01-01",
+            "dateModified": "2025-01-01",
+            "datePublished": "2025-01-01",
+            "howToCite": "J. Luginbühl (2025). Mit Stilus, Volumen und Spiegel. Untersuchungen zur Verbreitung von Lesen und Schreiben bei Frauen aus dem römischen Reich anhand von Funden aus dem Grabkontext. DaSCH. https://ark.dasch.swiss/ark:/72163/1/0852.",
+            "languages": [
+                {
+                    "de": "Deutsch",
+                    "en": "German",
+                    "fr": "allemand"
+                }
+            ],
+            "licenses": [
+                {
+                    "__type": "License",
+                    "date": "2025-01-27",
+                    "license": {
+                        "__type": "URL",
+                        "type": "Creative Commons",
+                        "url": "https://creativecommons.org/licenses/by-nc/4.0/",
+                        "text": "CC BY-NC 4.0"
+                    }
+                }
+            ],
+            "attributions": [
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0852-person-000",
+                    "roles": [
+                        "Project Leader"
+                    ]
+                }
+            ],
+            "status": "Finished",
+            "title": "Female literacy in funerary contexts",
+            "typeOfData": [
+                "Image",
+                "Text"
+            ]
+        }
+    ],
+    "persons": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0852-person-000",
+            "__type": "Person",
+            "email": "josy.luginbuehl@unibe.ch",
+            "familyNames": [
+                "Luginbühl"
+            ],
+            "givenNames": [
+                "Josy",
+                "Martina"
+            ],
+            "jobTitles": [
+                "Research assistant at University of Bern; curator of the Antikensammlung der Universität Bern"
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0852-organization-000"
+            ],
+            "authorityRefs": [
+                {
+                    "__type": "URL",
+                    "type": "ORCID",
+                    "url": "https://orcid.org/0009-0002-3058-2497",
+                    "text": "ORCID URL: https://orcid.org/0009-0002-3058-2497"
+                }
+            ]
+        }
+    ],
+    "organizations": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0852-organization-000",
+            "__type": "Organization",
+            "name": "University of Bern, Institute of Archaeological Sciences, Mediterranean Archaeology"
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0852-organization-001",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Wildhainweg 3",
+                "postalCode": "3001",
+                "locality": "Bern",
+                "country": "Switzerland"
+            },
+            "name": "Swiss National Science Foundation (SNSF)",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://www.snf.ch/en",
+                "text": "https://www.snf.ch/en"
+            }
+        }
+    ],
+    "grants": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0852-grant-000",
+            "__type": "Grant",
+            "funders": [
+                "http://ns.dasch.swiss/repository#dsp-0852-organization-001"
+            ],
+            "name": "Doc.Mobility",
+            "number": "168626",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://data.snf.ch/grants/grant/168626",
+                "text": "Doc.Mobility"
+            }
+        }
+    ]
+}

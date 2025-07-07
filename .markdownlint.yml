@@ -24,21 +24,19 @@ MD013:
     tables: false
     # Include headings
     headings: true
-    headers: true
     # Strict length checking
     strict: false
     # Stern length checking
     stern: false
 
+# MD025/single-title - Multiple top level headers in the same document
 MD024:
     siblings_only: true
 
-# MD033/no-inline-html - Inline HTML
-MD033:
-    allowed_elements: [br, center]
-
-# MD041/first-line-heading/first-line-h1 - First line in a file should be a top-level heading
-MD041: false
-
 # MD045/no-alt-text - Images should have alternate text (alt text)
 MD045: false
+
+# MD046/code-block-style - Code block style (conflicts with admonitions)
+MD046: false
+# MD059/desriptive-link-text - Link text should be descriptive
+MD059: false

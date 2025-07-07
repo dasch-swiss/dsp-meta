@@ -11,28 +11,41 @@ use crate::domain::model::draft_model::*;
 use crate::error::DspMetaError;
 use crate::infrastructure::load_json_file_paths;
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Debug, Clone, Default)]
 pub struct Pagination {
-    #[serde(rename = "_page")]
+    #[serde(rename = "_page", default = "default_page")]
     pub page: usize,
-    #[serde(rename = "_limit")]
+    #[serde(rename = "_limit", default = "default_limit")]
     pub limit: usize,
 }
-impl Default for Pagination {
-    fn default() -> Self {
-        Pagination {
-            page: 1,
-            limit: 100,
-        }
-    }
+
+fn default_limit() -> usize {
+    100
+}
+fn default_page() -> usize {
+    1
 }
 
-#[derive(Deserialize, Default, Debug)]
-pub struct Filter {
+#[derive(Deserialize, Default, Debug, Clone)]
+pub struct FilterAndQuery {
     #[serde(rename = "q")]
     pub query: Option<String>,
     #[serde(rename = "filter")]
-    pub filter: Option<String>,
+    #[serde(default)]
+    pub filter: MetadataFilter,
+}
+
+#[derive(Deserialize, Debug, Clone, Default)]
+pub enum MetadataFilter {
+    #[serde(rename = "f")]
+    RemoveFinished,
+    #[serde(rename = "o")]
+    RemoveOngoing,
+    #[serde(rename = "of")]
+    RemoveBoth,
+    #[default]
+    #[serde(rename = "none")]
+    RemoveNone,
 }
 
 pub struct Page<T> {
@@ -58,7 +71,7 @@ impl MetadataRepository {
         Self { db }
     }
     pub fn from_path(data_path: &Path) -> Self {
-        info!("Init Repository {:?}", data_path);
+        info!("Init Repository {data_path:?}");
         let db: Arc<RwLock<HashMap<Shortcode, DraftMetadata>>> =
             Arc::new(RwLock::new(HashMap::new()));
 
@@ -72,7 +85,7 @@ impl MetadataRepository {
             let mut db = db.write().unwrap();
             let shortcode = entity.project.shortcode.to_owned();
             if known_shortcodes.contains(&shortcode) {
-                panic!("Duplicate shortcode: {:?}", shortcode);
+                panic!("Duplicate shortcode: {shortcode:?}",);
             }
             known_shortcodes.push(shortcode);
 
@@ -99,18 +112,18 @@ impl MetadataRepository {
     #[instrument(skip(self))]
     pub fn find(
         &self,
-        filter: &Filter,
+        filter: &FilterAndQuery,
         pagination: &Pagination,
     ) -> Result<Page<DraftMetadata>, DspMetaError> {
         let db = self.db.read().unwrap();
-        let query_status: Option<Vec<DraftProjectStatus>> = match filter.filter.as_deref() {
-            Some("o") => Some(vec![DraftProjectStatus::Ongoing]),
-            Some("f") => Some(vec![DraftProjectStatus::Finished]),
-            Some("of") => Some(vec![
+        let query_status: Option<Vec<DraftProjectStatus>> = match filter.filter {
+            MetadataFilter::RemoveOngoing => Some(vec![DraftProjectStatus::Ongoing]),
+            MetadataFilter::RemoveFinished => Some(vec![DraftProjectStatus::Finished]),
+            MetadataFilter::RemoveBoth => Some(vec![
                 DraftProjectStatus::Ongoing,
                 DraftProjectStatus::Finished,
             ]),
-            _ => None,
+            MetadataFilter::RemoveNone => None,
         };
 
         let values = db
@@ -146,7 +159,7 @@ impl MetadataRepository {
 
     pub fn find_all(&self) -> Result<Vec<DraftMetadata>, DspMetaError> {
         let db = self.db.read().unwrap();
-        let v = db.iter().map(|(_, v)| v.clone()).collect();
+        let v = db.values().cloned().collect();
         Ok(v)
     }
 
@@ -168,7 +181,7 @@ mod tests {
         dbg!(&data_dir);
 
         let files = load_json_file_paths(&data_dir);
-        let repo = MetadataRepository::from_path(&data_dir.as_path());
+        let repo = MetadataRepository::from_path(data_dir.as_path());
         let actual = repo.count().expect("count");
         assert_eq!(actual, files.len());
     }

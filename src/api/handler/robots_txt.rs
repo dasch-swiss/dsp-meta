@@ -18,8 +18,7 @@ pub async fn robots_txt(
         .status(StatusCode::OK)
         .header("Content-Type", "text/plain")
         .body(format!(
-            "Sitemap: {}\nUser-agent: *\nDisallow:\n",
-            sitemap_xml
+            "Sitemap: {sitemap_xml}\nUser-agent: *\nDisallow:\n"
         ))
         .expect("Failed to build response");
     Ok(response)

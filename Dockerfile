@@ -9,6 +9,10 @@ COPY . .
 RUN cd web-frontend && yarn install && yarn run build --bundleConfigAsCjs
 
 FROM debian:bookworm-slim AS runtime
+# install curl
+RUN apt-get update && apt-get install --no-install-recommends -y curl && \
+  rm -rf /var/cache/apt/archives /var/lib/apt/lists/*
+
 # add data
 COPY ./data /data
 
@@ -25,6 +29,10 @@ ENV DSP_META_LOG_FILTER="info,hyper=info"
 
 # set log output type
 ENV DSP_META_LOG_FMT="json"
+
+# enable periodic container health check
+HEALTHCHECK --start-period=60s --interval=60s --timeout=10s --retries=3 \
+  CMD curl -sS --fail "http://127.0.0.1:3000/health" | grep '^healthy$' || exit 1
 
 EXPOSE 3000
 ENTRYPOINT ["dsp-meta"]
