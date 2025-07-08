@@ -22,6 +22,7 @@
     ['de', 'German'],
     ['en', 'English'],
     ['fr', 'French'],
+    ['it', 'Italian'],
   ]);
 
   let isDescriptionExpanded: boolean;
@@ -35,7 +36,8 @@
       availableDescriptionsIso.length === 1
         ? availableDescriptionsIso[0]
         : language;
-    return [...descriptionLanguages].find(([key, val]) => val === lang)[0];
+    const found = [...descriptionLanguages].find(([key, val]) => val === lang);
+    return found ? found[0] : lang;
   };
 
   onMount(async () => {
@@ -113,21 +115,18 @@
         on:click={() => history.back()}
         class="goback-button"
         title="go back to the projects list"
-        disabled={!$previousRoute && window.history.length <= 2}
-      >
+        disabled={!$previousRoute && window.history.length <= 2}>
         <svg
           class="icon"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+          xmlns="http://www.w3.org/2000/svg">
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
-            d="M10 19l-7-7m0 0l7-7m-7 7h18"
-          />
+            d="M10 19l-7-7m0 0l7-7m-7 7h18" />
         </svg>
         <span class="button-label">Go Back</span>
       </button>
@@ -167,17 +166,16 @@
               <span
                 style={availableDescriptionsIso.length <= 1
                   ? 'display: none'
-                  : 'display: contents'}
-              >
+                  : 'display: contents'}>
                 in
-                {#each Object.keys($projectMetadata?.project.description).map( (k) => descriptionLanguages.get(k), ) as l}
+                {#each Object.keys($projectMetadata?.project.description).map((k) => descriptionLanguages.get(k) || k) as l}
                   <button
                     class="language {availableDescriptionsIso.length > 1 &&
                     displayedDescriptionsLanguage === getIso(l)
                       ? 'active'
                       : ''}"
-                    on:click={() => (displayedDescriptionsLanguage = getIso(l))}
-                  >
+                    on:click={() =>
+                      (displayedDescriptionsLanguage = getIso(l))}>
                     {l}
                   </button>
                 {/each}
@@ -187,8 +185,7 @@
               id="description"
               class="data new-text {isDescriptionExpanded
                 ? ''
-                : 'description-short'}"
-            >
+                : 'description-short'}">
               {$projectMetadata?.project.description[
                 displayedDescriptionsLanguage
               ]}
@@ -219,8 +216,7 @@
                         class="publication-link {arePublicationsExpanded
                           ? 'data'
                           : 'hidden'}"
-                        target="_"
-                      >
+                        target="_">
                         {url.text}
                         {p.url.length > 0 && n < p.url.length - 1 ? ',' : ''}
                       </a>
@@ -237,8 +233,7 @@
                         class="publication-link {arePublicationsExpanded
                           ? 'data'
                           : 'hidden'}"
-                        target="_"
-                      >
+                        target="_">
                         {url.text}
                         {p.url.length > 0 && n < p.url.length - 1 ? ',' : ''}
                       </a>
@@ -264,21 +259,18 @@
             on:click={() =>
               window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
             class="gototop-button"
-            title="Get back to the top"
-          >
+            title="Get back to the top">
             <svg
               class="icon"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+              xmlns="http://www.w3.org/2000/svg">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
-                d="M5 10l7-7m0 0l7 7m-7-7v18"
-              />
+                d="M5 10l7-7m0 0l7 7m-7-7v18" />
             </svg>
           </button>
         {/if}
@@ -289,21 +281,18 @@
             on:click={() => history.back()}
             class="goback-button"
             title="go back to the projects list"
-            disabled={!$previousRoute && window.history.length <= 2}
-          >
+            disabled={!$previousRoute && window.history.length <= 2}>
             <svg
               class="icon"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+              xmlns="http://www.w3.org/2000/svg">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
-                d="M10 19l-7-7m0 0l7-7m-7 7h18"
-              />
+                d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
             <span class="button-label">Go Back</span>
           </button>
@@ -324,21 +313,18 @@
               window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
             }}
             class="gototop-button m-hidden"
-            title="Get back to the top"
-          >
+            title="Get back to the top">
             <svg
               class="icon"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+              xmlns="http://www.w3.org/2000/svg">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
-                d="M5 10l7-7m0 0l7 7m-7-7v18"
-              />
+                d="M5 10l7-7m0 0l7 7m-7-7v18" />
             </svg>
           </button>
         {/if}
