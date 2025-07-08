@@ -100,14 +100,7 @@
                 "text": "Early Christian"
             }
         ],
-        "url": {
-            "__type": "URL",
-            "type": "URL",
-            "url": "https://app.dasch.swiss",
-            "text": "Discover Project Data"
-        },
         "status": "Finished"
-
     },
     "datasets": [
         {
@@ -145,9 +138,9 @@
                     "__type": "Attribution",
                     "agent": "http://ns.dasch.swiss/repository#dsp-0857-person-000",
                     "roles": [
-                        "DataCollector",
-                        "ProjectLeader",
-                        "DataCurator"
+                        "Project Leader",
+                        "Data Collector",
+                        "Data Curator"
                     ]
                 }
             ],
@@ -233,7 +226,7 @@
             "funders": [
                 "http://ns.dasch.swiss/repository#dsp-0857-organization-000"
             ],
-            "name": "SNSF Swiss Postdoctoral Fellowships",
+            "name": "Postdoctoral Fellowships",
             "number": "217184",
             "url": {
                 "__type": "URL",
