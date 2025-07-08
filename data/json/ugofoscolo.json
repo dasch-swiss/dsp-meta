@@ -14,7 +14,7 @@
         ],
         "contactPoint": "http://ns.dasch.swiss/repository#dsp-084B-person-001",
         "description": {
-            "fr": "\"L'epistolario di Ugo Foscolo: catalogo\" costituisce l'esito del sottoprogetto dottorale del progetto di ricerca \"Ugo Foscolo, Epistolario 1825-1827\". All'interno del catalogo sono descritte tutte le lettere note dell'epistolario del poeta italo-greco in relazione con i manoscritti e le copie, i soggetti conservatori che le custodiscono, le edizioni, le persone e i luoghi: lo scopo del lavoro è offrire un catalogo che consenta di accedere a tutte le informazioni note su una lettera, un personaggio, un particolare manoscritto in rapporto alla tradizione foscoliana."
+            "it": "\"L'epistolario di Ugo Foscolo: catalogo\" costituisce l'esito del sottoprogetto dottorale del progetto di ricerca \"Ugo Foscolo, Epistolario 1825-1827\". All'interno del catalogo sono descritte tutte le lettere note dell'epistolario del poeta italo-greco in relazione con i manoscritti e le copie, i soggetti conservatori che le custodiscono, le edizioni, le persone e i luoghi: lo scopo del lavoro è offrire un catalogo che consenta di accedere a tutte le informazioni note su una lettera, un personaggio, un particolare manoscritto in rapporto alla tradizione foscoliana."
         },
         "disciplines": [
             {
@@ -77,7 +77,7 @@
                     "en": "The catalogue of the Foscolo epistolary contains the data, metadata and images relating to the letters, documents, witnesses, preserving institutions and editions of the letters."
                 }
             ],
-            "accessConditions": "open",
+            "accessConditions": "restricted",
             "howToCite": "Michele Stefani (2025). L’epistolario di Ugo Foscolo: catalogo. [Dataset]. https://ark.dasch.swiss/ark:/72163/1/084B",
             "languages": [
                 {
