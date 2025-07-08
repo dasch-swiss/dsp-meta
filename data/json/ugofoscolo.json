@@ -1,237 +1,239 @@
 {
-    "$schema": "../../resources/schema-metadata-final.json",
-    "project": {
-        "__type": "Project",
-        "howToCite": "Michele Stefani (2025). L’epistolario di Ugo Foscolo: catalogo. [Dataset]. https://ark.dasch.swiss/ark:/72163/1/084B",
-        "teaserText": "The catalogue of the Foscolo epistolary contains the data, metadata and images relating to the letters, documents, witnesses, holding institutions and editions of the letters.",
-        "datasets": [
-            "http://ns.dasch.swiss/repository#dsp-084B-dataset-000"
-        ],
-        "alternativeNames": [
-            {
-                "en": "ugofoscolo"
-            }
-        ],
-        "contactPoint": "http://ns.dasch.swiss/repository#dsp-084B-person-001",
-        "description": {
-            "it": "\"L'epistolario di Ugo Foscolo: catalogo\" costituisce l'esito del sottoprogetto dottorale del progetto di ricerca \"Ugo Foscolo, Epistolario 1825-1827\". All'interno del catalogo sono descritte tutte le lettere note dell'epistolario del poeta italo-greco in relazione con i manoscritti e le copie, i soggetti conservatori che le custodiscono, le edizioni, le persone e i luoghi: lo scopo del lavoro è offrire un catalogo che consenta di accedere a tutte le informazioni note su una lettera, un personaggio, un particolare manoscritto in rapporto alla tradizione foscoliana."
-        },
-        "disciplines": [
-            {
-                "__type": "URL",
-                "type": "Skos",
-                "url": "http://skos.um.es/unesco6/62",
-                "text": "Science of Arts and Letters"
-            },
-            {
-                "fr": "10502 Langues romanes"
-            }
-        ],
-        "endDate": "2024-06-30",
-        "funders": [
-            "http://ns.dasch.swiss/repository#dsp-084B-organization-001"
-        ],
-        "grants": [
-            "http://ns.dasch.swiss/repository#dsp-084B-grant-000"
-        ],
-        "keywords": [
-            {
-                "en": "Letters"
-            },
-            {
-                "en": "Ugo Foscolo"
-            }
-        ],
-        "name": "L’epistolario di Ugo Foscolo: catalogo",
-        "shortcode": "084B",
-        "spatialCoverage": [
-            {
-                "__type": "URL",
-                "type": "Geonames",
-                "url": "https://www.geonames.org/6255148/",
-                "text": "Europe"
-            }
-        ],
-        "startDate": "2021-01-01",
-        "temporalCoverage": [
-            {
-                "de": "1794-1871",
-                "en": "1794-1871",
-                "fr": "1794-1871"
-            }
-        ],
-        "url": {
-            "__type": "URL",
-            "type": "URL",
-            "url": "https://app.dasch.swiss",
-            "text": "Discover Project Data"
-        },
-        "status": "Ongoing"
-    },
+  "$schema": "../../resources/schema-metadata-final.json",
+  "project": {
+    "__type": "Project",
+    "howToCite": "Michele Stefani (2025). L’epistolario di Ugo Foscolo: catalogo. [Dataset]. https://ark.dasch.swiss/ark:/72163/1/084B",
+    "teaserText": "The catalogue of the Foscolo epistolary contains the data, metadata and images relating to the letters, documents, witnesses, holding institutions and editions of the letters.",
     "datasets": [
-        {
-            "__id": "http://ns.dasch.swiss/repository#dsp-084B-dataset-000",
-            "__type": "Dataset",
-            "abstracts": [
-                {
-                    "en": "The catalogue of the Foscolo epistolary contains the data, metadata and images relating to the letters, documents, witnesses, preserving institutions and editions of the letters."
-                }
-            ],
-            "accessConditions": "restricted",
-            "howToCite": "Michele Stefani (2025). L’epistolario di Ugo Foscolo: catalogo. [Dataset]. https://ark.dasch.swiss/ark:/72163/1/084B",
-            "languages": [
-                {
-                    "en": "English",
-                    "de": "Englisch",
-                    "fr": "anglais"
-                },
-                {
-                    "en": "Italian",
-                    "de": "Italienisch",
-                    "fr": "italien"
-                }
-            ],
-            "licenses": [
-                {
-                    "__type": "License",
-                    "date": "2025-07-08",
-                    "license": {
-                        "__type": "URL",
-                        "type": "Creative Commons",
-                        "url": "https://creativecommons.org/licenses/by-sa/4.0",
-                        "text": "CC BY-SA 4.0"
-                    }
-                }
-            ],
-            "attributions": [
-                {
-                    "__type": "Attribution",
-                    "agent": "http://ns.dasch.swiss/repository#dsp-084B-person-001",
-                    "roles": [
-                        "Project Leader"
-                    ]
-                },
-                {
-                    "__type": "Attribution",
-                    "agent": "http://ns.dasch.swiss/repository#dsp-084B-person-000",
-                    "roles": [
-                        "Creator"
-                    ]
-                }
-            ],
-            "status": "Ongoing",
-            "title": "Dataset of \"L'epistolario di Ugo Foscolo: catalogo\"",
-            "typeOfData": [
-                "Image",
-                "Text"
-            ]
-        }
+      "http://ns.dasch.swiss/repository#dsp-084B-dataset-000"
     ],
-    "persons": [
-        {
-            "__id": "http://ns.dasch.swiss/repository#dsp-084B-person-000",
-            "__type": "Person",
-            "email": "michele.stefani@unifr.ch",
-            "familyNames": [
-                "Stefani"
-            ],
-            "givenNames": [
-                "Michele"
-            ],
-            "jobTitles": [
-                "Phd"
-            ],
-            "affiliation": [
-                "http://ns.dasch.swiss/repository#dsp-084B-organization-000"
-            ],
-            "authorityRefs": [
-                {
-                    "__type": "URL",
-                    "type": "ORCID",
-                    "url": "https://orcid.org/0009-0005-2811-9454",
-                    "text": "ORCID URL: https://orcid.org/0009-0005-2811-9454"
-                }
-            ]
-        },
-        {
-            "__id": "http://ns.dasch.swiss/repository#dsp-084B-person-001",
-            "__type": "Person",
-            "email": "paolo.borsa@unifr.ch",
-            "familyNames": [
-                "Borsa"
-            ],
-            "givenNames": [
-                "Paolo"
-            ],
-            "jobTitles": [
-                "Full Professor"
-            ],
-            "affiliation": [
-                "http://ns.dasch.swiss/repository#dsp-084B-organization-000"
-            ],
-            "authorityRefs": [
-                {
-                    "__type": "URL",
-                    "type": "ORCID",
-                    "url": "https://orcid.org/0000-0002-7210-3477",
-                    "text": "ORCID URL: https://orcid.org/0000-0002-7210-3477"
-                }
-            ]
-        }
+    "alternativeNames": [
+      {
+        "en": "ugofoscolo"
+      }
     ],
-    "organizations": [
-        {
-            "__id": "http://ns.dasch.swiss/repository#dsp-084B-organization-000",
-            "__type": "Organization",
-            "address": {
-                "__type": "Address",
-                "street": "Av. de l'Europe 20",
-                "postalCode": "1700",
-                "locality": "Fribourg",
-                "country": "Switzerland"
-            },
-            "name": "Université de Fribourg",
-            "url": {
-                "__type": "URL",
-                "type": "URL",
-                "url": "https://www.unifr.ch",
-                "text": "https://www.unifr.ch"
-            }
-        },
-        {
-            "__id": "http://ns.dasch.swiss/repository#dsp-084B-organization-001",
-            "__type": "Organization",
-            "address": {
-                "__type": "Address",
-                "street": "Wildhainweg 3",
-                "postalCode": "3001",
-                "locality": "Bern",
-                "country": "Switzerland"
-            },
-            "name": "Swiss National Science Foundation (SNSF)",
-            "url": {
-                "__type": "URL",
-                "type": "URL",
-                "url": "https://www.snf.ch/en",
-                "text": "https://www.snf.ch/en"
-            }
-        }
+    "contactPoint": "http://ns.dasch.swiss/repository#dsp-084B-person-001",
+    "description":
+      {
+        "it": "\"L'epistolario di Ugo Foscolo: catalogo\" costituisce l'esito del sottoprogetto dottorale del progetto di ricerca \"Ugo Foscolo, Epistolario 1825-1827\". All'interno del catalogo sono descritte tutte le lettere note dell'epistolario del poeta italo-greco in relazione con i manoscritti e le copie, i soggetti conservatori che le custodiscono, le edizioni, le persone e i luoghi: lo scopo del lavoro è offrire un catalogo che consenta di accedere a tutte le informazioni note su una lettera, un personaggio, un particolare manoscritto in rapporto alla tradizione foscoliana.",
+        "en": "\"L'epistolario di Ugo Foscolo: catalogo\" is the outcome of the doctoral sub-project of the research project \"Ugo Foscolo, Epistolario 1825-1827\" (https://data.snf.ch/grants/grant/197859). The catalogue describes all the known letters of the Italian-Greek poet's epistolary in relation to manuscripts and copies, the subjects that conserve them, editions, people and places: the aim of the work is to offer a catalogue that provides access to all known information on a letter, a character, a particular manuscript in relation to the Foscolo tradition."
+      },
+    "disciplines": [
+      {
+        "__type": "URL",
+        "type": "Skos",
+        "url": "http://skos.um.es/unesco6/62",
+        "text": "Science of Arts and Letters"
+      },
+      {
+        "fr": "10502 Langues romanes"
+      }
+    ],
+    "endDate": "2024-06-30",
+    "funders": [
+      "http://ns.dasch.swiss/repository#dsp-084B-organization-001"
     ],
     "grants": [
+      "http://ns.dasch.swiss/repository#dsp-084B-grant-000"
+    ],
+    "keywords": [
+      {
+        "en": "Letters"
+      },
+      {
+        "en": "Ugo Foscolo"
+      }
+    ],
+    "name": "L’epistolario di Ugo Foscolo: catalogo",
+    "shortcode": "084B",
+    "spatialCoverage": [
+      {
+        "__type": "URL",
+        "type": "Geonames",
+        "url": "https://www.geonames.org/6255148/",
+        "text": "Europe"
+      }
+    ],
+    "startDate": "2021-01-01",
+    "temporalCoverage": [
+      {
+        "de": "1794-1871",
+        "en": "1794-1871",
+        "fr": "1794-1871"
+      }
+    ],
+    "url": {
+      "__type": "URL",
+      "type": "URL",
+      "url": "https://app.dasch.swiss",
+      "text": "Discover Project Data"
+    },
+    "status": "Ongoing"
+  },
+  "datasets": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-084B-dataset-000",
+      "__type": "Dataset",
+      "abstracts": [
         {
-            "__id": "http://ns.dasch.swiss/repository#dsp-084B-grant-000",
-            "__type": "Grant",
-            "funders": [
-                "http://ns.dasch.swiss/repository#dsp-084B-organization-001"
-            ],
-            "name": "Encouragement de projets. Project funding in humanities and social sciences (Division I) 2020 April.",
-            "number": "197859",
-            "url": {
-                "__type": "URL",
-                "type": "URL",
-                "url": "https://data.snf.ch/grants/grant/197859",
-                "text": "https://data.snf.ch/grants/grant/197859"
-            }
+          "en": "The catalogue of the Foscolo epistolary contains the data, metadata and images relating to the letters, documents, witnesses, preserving institutions and editions of the letters."
         }
-    ]
+      ],
+      "accessConditions": "restricted",
+      "howToCite": "Michele Stefani (2025). L’epistolario di Ugo Foscolo: catalogo. [Dataset]. https://ark.dasch.swiss/ark:/72163/1/084B",
+      "languages": [
+        {
+          "en": "English",
+          "de": "Englisch",
+          "fr": "anglais"
+        },
+        {
+          "en": "Italian",
+          "de": "Italienisch",
+          "fr": "italien"
+        }
+      ],
+      "licenses": [
+        {
+          "__type": "License",
+          "date": "2025-07-08",
+          "license": {
+            "__type": "URL",
+            "type": "Creative Commons",
+            "url": "https://creativecommons.org/licenses/by-sa/4.0",
+            "text": "CC BY-SA 4.0"
+          }
+        }
+      ],
+      "attributions": [
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-084B-person-001",
+          "roles": [
+            "Project Leader"
+          ]
+        },
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-084B-person-000",
+          "roles": [
+            "Creator"
+          ]
+        }
+      ],
+      "status": "Ongoing",
+      "title": "Dataset of \"L'epistolario di Ugo Foscolo: catalogo\"",
+      "typeOfData": [
+        "Image",
+        "Text"
+      ]
+    }
+  ],
+  "persons": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-084B-person-000",
+      "__type": "Person",
+      "email": "michele.stefani@unifr.ch",
+      "familyNames": [
+        "Stefani"
+      ],
+      "givenNames": [
+        "Michele"
+      ],
+      "jobTitles": [
+        "Phd"
+      ],
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-084B-organization-000"
+      ],
+      "authorityRefs": [
+        {
+          "__type": "URL",
+          "type": "ORCID",
+          "url": "https://orcid.org/0009-0005-2811-9454",
+          "text": "ORCID URL: https://orcid.org/0009-0005-2811-9454"
+        }
+      ]
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-084B-person-001",
+      "__type": "Person",
+      "email": "paolo.borsa@unifr.ch",
+      "familyNames": [
+        "Borsa"
+      ],
+      "givenNames": [
+        "Paolo"
+      ],
+      "jobTitles": [
+        "Full Professor"
+      ],
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-084B-organization-000"
+      ],
+      "authorityRefs": [
+        {
+          "__type": "URL",
+          "type": "ORCID",
+          "url": "https://orcid.org/0000-0002-7210-3477",
+          "text": "ORCID URL: https://orcid.org/0000-0002-7210-3477"
+        }
+      ]
+    }
+  ],
+  "organizations": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-084B-organization-000",
+      "__type": "Organization",
+      "address": {
+        "__type": "Address",
+        "street": "Av. de l'Europe 20",
+        "postalCode": "1700",
+        "locality": "Fribourg",
+        "country": "Switzerland"
+      },
+      "name": "Université de Fribourg",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://www.unifr.ch",
+        "text": "https://www.unifr.ch"
+      }
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-084B-organization-001",
+      "__type": "Organization",
+      "address": {
+        "__type": "Address",
+        "street": "Wildhainweg 3",
+        "postalCode": "3001",
+        "locality": "Bern",
+        "country": "Switzerland"
+      },
+      "name": "Swiss National Science Foundation (SNSF)",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://www.snf.ch/en",
+        "text": "https://www.snf.ch/en"
+      }
+    }
+  ],
+  "grants": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-084B-grant-000",
+      "__type": "Grant",
+      "funders": [
+        "http://ns.dasch.swiss/repository#dsp-084B-organization-001"
+      ],
+      "name": "Encouragement de projets. Project funding in humanities and social sciences (Division I) 2020 April.",
+      "number": "197859",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://data.snf.ch/grants/grant/197859",
+        "text": "https://data.snf.ch/grants/grant/197859"
+      }
+    }
+  ]
 }
