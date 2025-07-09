@@ -1,0 +1,239 @@
+{
+    "$schema": "../../resources/schema-metadata-final.json",
+    "project": {
+        "__type": "Project",
+        "howToCite": "Spinazzè, E. (2025). Symbolism of light in Early Christian sacred buildings in the Swiss Alpine valleys [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/0857.",
+        "teaserText": "Were early Christian churches aligned with the sun or the moon? A study across Switzerland and Northern Italy explores the links between the sky and sacred architecture.",
+        "datasets": [
+            "http://ns.dasch.swiss/repository#dsp-0857-dataset-000"
+        ],
+        "alternativeNames": [
+            {
+                "en": "symblight"
+            }
+        ],
+        "contactPoint": "http://ns.dasch.swiss/repository#dsp-0857-person-000",
+        "description": {
+            "en": "I reconstructed the building concept of the Early Christian sacred buildings spread after the religious freedom guaranteed by the Rescript of Milan (313 AD) to the North. The aim was to understand if light has influenced the disposition of the church, baptistery and its layout, if the building tradition was passed on from Northern Italy beyond the Alps. New knowledge about ancient building rules became visible for scholars going beyond the state-of-the-art. My methodology cross-checks evidence from the sacred buildings (georeferenced surveys) and written evidence (primary, secondary sources) with an interdisciplinary analysis to verify or falsify the hypothesis that the light guided the Early sacred building in choosing its position. My methodology serves as a model of research. The results open new research paths and questions, an interrelationship between Natural science and the Humanities.\n\nIt is a revolutionary transdisciplinary research because the topic is approached from different angles involving various disciplines (i.e., history, architecture, topography, archaeology, astronomy, religion, liturgy, philosophy), all interwoven and interacting with each other, leading to increased critical thinking. In this way I shed light on design characteristics of Early Christian architectures."
+        },
+        "disciplines": [
+            {
+                "__type": "URL",
+                "type": "Skos",
+                "url": "http://skos.um.es/unesco6/330534",
+                "text": "Topography of building"
+            },
+            {
+                "en": "10102 Religious Studies, Theology"
+            },
+            {
+                "en": "10402 Archaeology"
+            },
+            {
+                "en": "10407 Architecture"
+            },
+            {
+                "en": "20200 Astronomy"
+            }
+        ],
+        "endDate": "2025-08-31",
+        "funders": [
+            "http://ns.dasch.swiss/repository#dsp-0857-organization-000"
+        ],
+        "grants": [
+            "http://ns.dasch.swiss/repository#dsp-0857-grant-001"
+        ],
+        "keywords": [
+            {
+                "en": "Early Christianity"
+            },
+            {
+                "en": "GPS surveys"
+            },
+            {
+                "en": "Italy: comparative analysis"
+            },
+            {
+                "en": "Switzerland"
+            },
+            {
+                "en": "archaeoastronomy"
+            },
+            {
+                "en": "light"
+            },
+            {
+                "en": "measurements"
+            },
+            {
+                "en": "orientation"
+            },
+            {
+                "en": "sacred Christian buildings"
+            },
+            {
+                "en": "symbolism"
+            }
+        ],
+        "name": "Symbolism of light in Early Christian sacred buildings in the Swiss Alpine valleys",
+        "shortcode": "0857",
+        "spatialCoverage": [
+            {
+                "__type": "URL",
+                "type": "Geonames",
+                "url": "https://www.geonames.org/3175395",
+                "text": "Italy"
+            },
+            {
+                "__type": "URL",
+                "type": "Geonames",
+                "url": "https://www.geonames.org/2658434",
+                "text": "Switzerland"
+            }
+        ],
+        "startDate": "2023-09-01",
+        "temporalCoverage": [
+            {
+                "__type": "URL",
+                "type": "Chronontology",
+                "url": "https://chronontology.dainst.org/period/J316Dxjfexrl",
+                "text": "Early Christian"
+            }
+        ],
+        "status": "Finished"
+    },
+    "datasets": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0857-dataset-000",
+            "__type": "Dataset",
+            "abstracts": [
+                {
+                    "en": "This dataset contains the source data of the symblight project, which investigates the symbolism of light in Early Christian sacred buildings in the Swiss Alpine valleys."
+                }
+            ],
+            "accessConditions": "closed",
+            "dateCreated": "2025-07-01",
+            "howToCite": "Spinazzè, E. (2025). Symbolism of light in Early Christian sacred buildings in the Swiss Alpine valleys [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/0857.",
+            "languages": [
+                {
+                    "en": "English",
+                    "de": "Englisch",
+                    "fr": "anglais"
+                }
+            ],
+            "licenses": [
+                {
+                    "__type": "License",
+                    "date": "2025-07-02",
+                    "license": {
+                        "__type": "URL",
+                        "type": "URL",
+                        "url": "https://creativecommons.org/licenses/by-nc/4.0/",
+                        "text": "CC BY NC 4.0"
+                    }
+                }
+            ],
+            "attributions": [
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0857-person-000",
+                    "roles": [
+                        "Project Leader",
+                        "Data Collector",
+                        "Data Curator"
+                    ]
+                }
+            ],
+            "status": "Finished",
+            "title": "Source data of the symblight project",
+            "typeOfData": [
+                "Image",
+                "Text"
+            ]
+        }
+    ],
+    "persons": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0857-person-000",
+            "__type": "Person",
+            "email": "eva.spinazze@unifr.ch",
+            "secondaryEmail": "aquadelph@gmail.com",
+            "familyNames": [
+                "Spinazzè"
+            ],
+            "givenNames": [
+                "Eva"
+            ],
+            "jobTitles": [
+                "Post-doc researcher"
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0857-organization-001"
+            ],
+            "authorityRefs": [
+                {
+                    "__type": "URL",
+                    "type": "ORCID",
+                    "url": "https://orcid.org/0000-0002-0120-5249",
+                    "text": "ORCID URL: https://orcid.org/0000-0002-0120-5249"
+                }
+            ]
+        }
+    ],
+    "organizations": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0857-organization-001",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Av. de l'Europe 20",
+                "postalCode": "CH-1700",
+                "locality": "Fribourg",
+                "country": "Switzerland"
+            },
+            "name": "University of Fribourg",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://www.unifr.ch",
+                "text": "https://www.unifr.ch"
+            }
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0857-organization-000",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Wildhainweg 3",
+                "postalCode": "CH-3001",
+                "locality": "Bern",
+                "country": "Switzerland"
+            },
+            "email": "com@snf.ch",
+            "name": "Swiss National Science Foundation (SNSF)",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "http://www.snf.ch/",
+                "text": "http://www.snf.ch/"
+            }
+        }
+    ],
+    "grants": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0857-grant-001",
+            "__type": "Grant",
+            "funders": [
+                "http://ns.dasch.swiss/repository#dsp-0857-organization-000"
+            ],
+            "name": "Postdoctoral Fellowships",
+            "number": "217184",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://data.snf.ch/grants/grant/217184",
+                "text": "https://data.snf.ch/grants/grant/217184"
+            }
+        }
+    ]
+}
