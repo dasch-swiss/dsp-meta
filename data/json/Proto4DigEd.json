@@ -82,6 +82,12 @@
         "url": {
             "__type": "URL",
             "type": "URL",
+            "url": "https://app.dasch.swiss/project/_2XaTj-pTkq2ixyJYJjohA",
+            "text": "Discover Project Data"
+        },
+        "secondaryURL": {
+            "__type": "URL",
+            "type": "URL",
             "url": "https://www.zde.uzh.ch/de/projects/proto4diged.html",
             "text": "External Project Website"
         },
