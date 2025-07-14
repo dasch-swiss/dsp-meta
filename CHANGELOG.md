@@ -1,5 +1,24 @@
 # Changelog
 
+## [2.3.11](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.10...dsp-meta-v2.3.11) (2025-07-14)
+
+
+### Maintenances
+
+* **deps-dev:** Bump prettier from 3.6.0 to 3.6.2 in /web-frontend in the frontend-dependencies group across 1 directory ([#364](https://github.com/dasch-swiss/dsp-meta/issues/364)) ([8d55ae9](https://github.com/dasch-swiss/dsp-meta/commit/8d55ae96404bbaa51bb7a9d13fe45dc94695619f))
+* **deps-dev:** Bump svelte from 3.59.2 to 4.2.19 in /web-frontend ([#261](https://github.com/dasch-swiss/dsp-meta/issues/261)) ([83a83bc](https://github.com/dasch-swiss/dsp-meta/commit/83a83bca04eaaf94e5d3ac995f1eeed903a65401))
+* **deps:** Bump the backend-dependencies group with 3 updates ([#357](https://github.com/dasch-swiss/dsp-meta/issues/357)) ([934b1e3](https://github.com/dasch-swiss/dsp-meta/commit/934b1e3b9026afc9cc2e7e7a1be5d83758531bc9))
+* **deps:** Bump the backend-dependencies group with 3 updates ([#365](https://github.com/dasch-swiss/dsp-meta/issues/365)) ([92b3ad1](https://github.com/dasch-swiss/dsp-meta/commit/92b3ad1d0135026b9c413f2e162a5dd576b071fc))
+
+
+### Project Data
+
+* Metadata for 084b ugofoscolo ([#361](https://github.com/dasch-swiss/dsp-meta/issues/361)) ([c5d676d](https://github.com/dasch-swiss/dsp-meta/commit/c5d676d02caba49aed8e6d86249b38df6cbe31f7))
+* Metadata for 0857 symblight ([#360](https://github.com/dasch-swiss/dsp-meta/issues/360)) ([09a6f92](https://github.com/dasch-swiss/dsp-meta/commit/09a6f920ffafca2a6a6153cf97889571f98e4970))
+* Metadata for 0861 (Proto4DigEd) ([#366](https://github.com/dasch-swiss/dsp-meta/issues/366)) ([2862b70](https://github.com/dasch-swiss/dsp-meta/commit/2862b709a46f90a6888c7ceca6129b9dbcccd016))
+* Metadata for 0861 proto4diged ([#363](https://github.com/dasch-swiss/dsp-meta/issues/363)) ([bfac492](https://github.com/dasch-swiss/dsp-meta/commit/bfac49259a2cd4906e721e78d702d4d9044422d1))
+* Update Metadata for 084c (kirchen-rom) ([#362](https://github.com/dasch-swiss/dsp-meta/issues/362)) ([923d4d6](https://github.com/dasch-swiss/dsp-meta/commit/923d4d649234cf75d459e66d9b99bbd07f997641))
+
 ## [2.3.10](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.9...dsp-meta-v2.3.10) (2025-06-23)
 
 
