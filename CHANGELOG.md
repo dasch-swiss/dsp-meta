@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.3.12](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.11...dsp-meta-v2.3.12) (2025-07-17)
+
+
+### Project Data
+
+* Update Metadata for 084C (kirchen-rom) ([#367](https://github.com/dasch-swiss/dsp-meta/issues/367)) ([ea8aa0c](https://github.com/dasch-swiss/dsp-meta/commit/ea8aa0c210335cb48e2e59a398ae37c2e74b18ae))
+* Update mls ([#369](https://github.com/dasch-swiss/dsp-meta/issues/369)) ([96801a9](https://github.com/dasch-swiss/dsp-meta/commit/96801a96476fc5f3617137dfa3d19f71450a8f8e))
+
 ## [2.3.11](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.10...dsp-meta-v2.3.11) (2025-07-14)
 
 

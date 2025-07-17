@@ -1,6 +1,6 @@
 [package]
 name = "dsp-meta"
-version = "2.3.11"
+version = "2.3.12"
 edition = "2021"
 license = "MIT OR Apache-2.0"
 homepage = "https://github.com/dasch-swiss/dsp-meta"
