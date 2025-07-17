@@ -28,7 +28,7 @@
   let isDescriptionExpanded: boolean;
   let descriptionLinesNumber: number;
   let arePublicationsExpanded: boolean;
-  let displayedDescriptionsLanguage: string = '';
+  let displayedDescriptionsLanguage: string = 'en';
   let availableDescriptionsIso: string[] = [];
 
   const getIso = (language: string): string => {
@@ -44,13 +44,17 @@
     // wait with component creation for the data to be fetched
     await getProjectMetadata();
     availableDescriptionsIso = Object.keys(
-      $projectMetadata?.project.description,
+      $projectMetadata?.project.description || {},
     );
-    // initialize iso language to load => assumption is if more than 1 language is available English exists and set as default
-    displayedDescriptionsLanguage =
-      availableDescriptionsIso.length === 1
-        ? availableDescriptionsIso[0]
-        : 'en';
+    // initialize iso language to load => use first available language if only one, otherwise prefer English or fall back to first
+    if (availableDescriptionsIso.length > 0) {
+      displayedDescriptionsLanguage =
+        availableDescriptionsIso.length === 1
+          ? availableDescriptionsIso[0]
+          : availableDescriptionsIso.includes('en')
+            ? 'en'
+            : availableDescriptionsIso[0];
+    }
   });
 
   onDestroy(() => {
@@ -187,7 +191,7 @@
                 ? ''
                 : 'description-short'}">
               {$projectMetadata?.project.description[
-                displayedDescriptionsLanguage
+                displayedDescriptionsLanguage || availableDescriptionsIso[0]
               ]}
             </div>
             {#if descriptionLinesNumber > 6}
