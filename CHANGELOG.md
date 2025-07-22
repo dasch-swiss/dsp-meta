@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.3.13](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.12...dsp-meta-v2.3.13) (2025-07-22)
+
+
+### Maintenances
+
+* Deploy meta to prod on release (INFRA-855) ([#371](https://github.com/dasch-swiss/dsp-meta/issues/371)) ([135d08e](https://github.com/dasch-swiss/dsp-meta/commit/135d08e7abb5454c442c5ae8e5bfc148912ddcfb))
+
+
+### Project Data
+
+* Update symblight.json ([#372](https://github.com/dasch-swiss/dsp-meta/issues/372)) ([cb36052](https://github.com/dasch-swiss/dsp-meta/commit/cb360526fe4bd13e247c9e6e65a1047df458d067))
+
 ## [2.3.12](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.11...dsp-meta-v2.3.12) (2025-07-17)
 
 
