@@ -14,7 +14,7 @@
         ],
         "contactPoint": "http://ns.dasch.swiss/repository#dsp-0857-person-000",
         "description": {
-            "en": "I reconstructed the building concept of the Early Christian sacred buildings spread after the religious freedom guaranteed by the Rescript of Milan (313 AD) to the North. The aim was to understand if light has influenced the disposition of the church, baptistery and its layout, if the building tradition was passed on from Northern Italy beyond the Alps. New knowledge about ancient building rules became visible for scholars going beyond the state-of-the-art. My methodology cross-checks evidence from the sacred buildings (georeferenced surveys) and written evidence (primary, secondary sources) with an interdisciplinary analysis to verify or falsify the hypothesis that the light guided the Early sacred building in choosing its position. My methodology serves as a model of research. The results open new research paths and questions, an interrelationship between Natural science and the Humanities.\n\nIt is a revolutionary transdisciplinary research because the topic is approached from different angles involving various disciplines (i.e., history, architecture, topography, archaeology, astronomy, religion, liturgy, philosophy), all interwoven and interacting with each other, leading to increased critical thinking. In this way I shed light on design characteristics of Early Christian architectures."
+            "en": "I reconstructed the building concept of the Early Christian sacred architectures that spread after the religious freedom guaranteed by the Rescript of Milan (313 AD) to the North. The aim was to determine whether light has influenced the disposition of the sacred building (church, baptistery) and its layout, whether the tradition of orienting religious structures was passed on from Northern Italy beyond the Alps, and which orientation criteria was used. For the first time, going back to the origin, to the very ancient churches and baptisteries, built during the 4th and 5th century, in the geographical area formed by the archdiocese of Milan, the dioceses of Como, Martigny, Geneva and Chur, about 22 buildings have been analysed with the focus on the diffusion of the building tradition. A comparative analysis was extended to the first sacred buildings in Aquileia and Ravenna, the second capital of the Western Roman Empire (402-476 AD) after Milan (286-402 AD). This research uncovered new insights into ancient building principles, advancing knowledge beyond the current state of the art. My methodology cross-references evidence from sacred buildings (georeferenced surveys) supported by technical data, trigonometric and astronomical calculations, with written sources (primary and secondary), employing an interdisciplinary analysis to verify or falsify the hypothesis that light guided the positioning of Early Christian sacred building. My methodology serves as a model for future research. The results open new research paths and questions at the intersection of Natural science and the Humanities. The research is revolutionary and transdisciplinary, addressing the topic from different angles involving various disciplines (i.e., history, architecture, topography, archaeology, astronomy, religion, liturgy, philosophy), all interwoven and interacting with each other, fostering enhanced critical thinking. In this way, I shed light on the design characteristics of Early Christian architecture."
         },
         "disciplines": [
             {
@@ -48,31 +48,28 @@
                 "en": "Early Christianity"
             },
             {
-                "en": "GPS surveys"
-            },
-            {
-                "en": "Italy: comparative analysis"
+                "en": "sacred Christian buildings"
             },
             {
                 "en": "Switzerland"
             },
             {
+                "en": "Italy"
+            },
+            {
+                "en": "orientation and light incidence"
+            },
+            {
                 "en": "archaeoastronomy"
             },
             {
-                "en": "light"
-            },
-            {
-                "en": "measurements"
-            },
-            {
-                "en": "orientation"
-            },
-            {
-                "en": "sacred Christian buildings"
+                "en": "georeferenced surveys"
             },
             {
                 "en": "symbolism"
+            },
+            {
+                "en": "comparative analysis"
             }
         ],
         "name": "Symbolism of light in Early Christian sacred buildings in the Swiss Alpine valleys",
@@ -81,14 +78,14 @@
             {
                 "__type": "URL",
                 "type": "Geonames",
-                "url": "https://www.geonames.org/3175395",
-                "text": "Italy"
+                "url": "https://www.geonames.org/2658434",
+                "text": "Switzerland"
             },
             {
                 "__type": "URL",
                 "type": "Geonames",
-                "url": "https://www.geonames.org/2658434",
-                "text": "Switzerland"
+                "url": "https://www.geonames.org/3175395",
+                "text": "Italy"
             }
         ],
         "startDate": "2023-09-01",
@@ -100,6 +97,12 @@
                 "text": "Early Christian"
             }
         ],
+        "url": {
+            "__type": "URL",
+            "type": "URL",
+            "url": "https://app.dasch.swiss/project/y789ttUvS-moXGlGSWy7TQ",
+            "text": "Discover Project Data"
+        },
         "status": "Finished"
     },
     "datasets": [
@@ -156,7 +159,7 @@
         {
             "__id": "http://ns.dasch.swiss/repository#dsp-0857-person-000",
             "__type": "Person",
-            "email": "eva.spinazze@unifr.ch",
+            "email": "eva.spinazze@alumni.unive.it",
             "secondaryEmail": "aquadelph@gmail.com",
             "familyNames": [
                 "Spinazzè"
