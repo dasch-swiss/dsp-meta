@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.14](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.13...dsp-meta-v2.3.14) (2025-07-25)
+
+
+### Project Data
+
+* Add texturessacredscript ([#374](https://github.com/dasch-swiss/dsp-meta/issues/374)) ([35250db](https://github.com/dasch-swiss/dsp-meta/commit/35250db763e28f614208b04ec5edb37c1f70d593))
+
 ## [2.3.13](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.12...dsp-meta-v2.3.13) (2025-07-22)
 
 
