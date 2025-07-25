@@ -1,0 +1,579 @@
+{
+    "$schema": "../../resources/schema-metadata-draft.json",
+    "project": {
+        "__type": "Project",
+        "howToCite": "Ganz, D., Rainer, T., Schmid, S., Theil, K., Aceto, M., Schmidt-Ott, K., Lombardo, T., Hofmann, C., Jembrih-Simbürger, D. (2025). Textures of Sacred Scripture [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/0860.",
+        "teaserText": "Textures of Sacred Scripture. Materials and Semantics of Sacred Book Ornament in the Western Middle Ages, 780-1300",
+        "datasets": [
+            "http://ns.dasch.swiss/repository#dsp-0860-dataset-000"
+        ],
+        "contactPoint": "http://ns.dasch.swiss/repository#dsp-0860-person-001",
+        "description": {
+            "en": "The project combines material and art historical analyses on medieval book ornament, It aims to establish a new approach to this field of research. In the early and high Middle Ages, decorated books were created not as neutral storage devices to secure texts meant for reading, but as sacred objects. The distinctive decoration of the books used both in the liturgy and for private piety is characterized by the use of precious materials, and the different modes of evoking such materials on the body of the book. The appearance of this decoration shapes the surface textures of sacred scriptures on the outer covers as well as on the inscribed and illuminated pages within the books.\n\nTo investigate the precious surface landscapes of medieval manuscripts, we have chosen four exemplary subcategories: gold and silver, purple, precious stones, and textiles. In all subcategories, we combine a close-up look at selected individual examples with a perspective that creates an overview of different geographic regions and time periods. Six questions common to the four subcategories are examined: 1) the topology, i.e. the distribution of the decorative elements and ornament on the three-dimensional body of the book; 2) the materials, techniques, and effects of the surface embellishments and their multi-sensory potential; 3) the art of writing – precious materials and script; 4) the iconicity of book ornament; and finally, 5) networks of actions and 6) discourses that determine the perception and semantics of the ornamentality of holy books."
+        },
+        "disciplines": [
+            {
+                "en": "10404 Art history"
+            },
+            {
+                "en": "10102 Religious studies"
+            },
+            {
+                "en": "10301 General history"
+            }
+        ],
+        "endDate": "2024-10-31",
+        "funders": [
+            "http://ns.dasch.swiss/repository#dsp-0860-organization-000"
+        ],
+        "grants": [
+            "http://ns.dasch.swiss/repository#dsp-0860-grant-000"
+        ],
+        "keywords": [
+            {
+                "en": "Medieval book art"
+            },
+            {
+                "en": "780–1300"
+            },
+            {
+                "en": "Materiality"
+            },
+            {
+                "en": "Pigment"
+            },
+            {
+                "en": "Dyes"
+            },
+            {
+                "en": "Metal Inks"
+            },
+            {
+                "en": "Material analysis"
+            },
+            {
+                "en": "Spectroscopy"
+            },
+            {
+                "en": "FORS"
+            },
+            {
+                "en": "XRF"
+            },
+            {
+                "en": "Book illumination"
+            },
+            {
+                "en": "Chrysography"
+            },
+            {
+                "en": "Purple colouring"
+            },
+            {
+                "en": "Book textiles"
+            },
+            {
+                "en": "Book cover"
+            },
+            {
+                "en": "Precious Stones"
+            },
+            {
+                "en": "Treasure art"
+            },
+            {
+                "en": "Book Ornament"
+            },
+            {
+                "en": "Manuscript"
+            },
+            {
+                "en": "Material semantics"
+            }
+        ],
+        "name": "Textures of Sacred Scripture",
+        "publications": [
+            {
+                "text": "David Ganz, Thomas Rainer, Katharina Theil, Sabrina Schmid (Ed.), Handbook of Medieval Book Ornament, Berlin/Boston: De Gruyter (in preparation)"
+            },
+            {
+                "text": "David Ganz (Ed.), Der Goldene Psalter von St. Gallen, Cod. Sang. 22, St. Gallen Stiftsbibliothek, Kommentar zur Faksimile-Edition. Luzern: Quaternio 2024"
+            },
+            {
+                "text": "Thomas Rainer: Farbstoffe, Pigmente und Metalltuschen: Die Farbigkeit des Goldenen Psalters im Licht materialanalytischer Untersuchungen. In: David Ganz (Ed.), Der Goldene Psalter, Luzern: Quaternio 2024, 149-157."
+            },
+            {
+                "text": "Katharina Theil, Die Präsenz des göttlichen Logos. Zur Bedeutung der zentralen Gemme mit arabischen Schriftzeichen auf dem Evangeliar aus dem Bamberger Dom (BSB Clm 4454). In: Sakrale Schriftbilder: Zur ikonischen Präsenz des Geschriebenen im mittelalterlichen Kirchenraum (Materiale Textkultures 42), ed. by Tobias Frese, Lisa Horstmann und Franziska Wenig, Berlin/Boston: De Gruyter 2024, 47¬-73",
+                "url": [
+                    {
+                        "__type": "URL",
+                        "type": "DOI",
+                        "url": "https://doi.org/10.1515/9783111304496",
+                        "text": "DOI: 10.1515/9783111304496"
+                    }
+                ]
+            },
+            {
+                "text": "Dubravka Jembrih-Simbürger and Thomas Rainer et al.: The Dagulf Psalter (Austrian National Library Cod. 1861): A Multi-Analytical Approach to Study Inks, Dyes, and Pigments of this Early Carolingian Manuscript. In: Restaurator. International Journal for the Preservation of Library and Archival Material, 2024.",
+                "url": [
+                    {
+                        "__type": "URL",
+                        "type": "DOI",
+                        "url": "https://doi.org/10.1515/res-2023-0026",
+                        "text": "DOI: 10.1515/res-2023-0026"
+                    }
+                ]
+            }
+        ],
+        "shortcode": "0860",
+        "spatialCoverage": [
+            {
+                "__type": "URL",
+                "type": "Geonames",
+                "url": "https://www.geonames.org/2782113",
+                "text": "Austria"
+            },
+            {
+                "__type": "URL",
+                "type": "Geonames",
+                "url": "https://www.geonames.org/2658434",
+                "text": "Switzerland"
+            },
+            {
+                "__type": "URL",
+                "type": "Geonames",
+                "url": "https://www.geonames.org/3017382",
+                "text": "France"
+            },
+            {
+                "__type": "URL",
+                "type": "Geonames",
+                "url": "https://www.geonames.org/2921044",
+                "text": "Germany"
+            }
+        ],
+        "startDate": "2020-11-01",
+        "temporalCoverage": [
+            {
+                "en": "780–1300"
+            }
+        ],
+        "url": {
+            "__type": "URL",
+            "type": "URL",
+            "url": "https://app.dasch.swiss/project/OzFCxwRlRLG24KLFjiKLqA",
+            "text": "Discover Project Data"
+        },
+        "secondaryURL": {
+            "__type": "URL",
+            "type": "URL",
+            "url": "https://textures-of-scripture.ch/",
+            "text": "External Project Website"
+        },
+        "status": "Finished"
+    },
+    "datasets": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0860-dataset-000",
+            "__type": "Dataset",
+            "abstracts": [
+                {
+                    "en": "The database comprises the results of the material analyses of the pigments, dyes, metal inks, textiles, bindings and precious stones of medieval manuscripts conducted in eight public libraries and archives from 2021 to 2023 as part of the SNSF project \"Textures of Sacred Scripture\". It contains the reports on the measurement campaigns, PDFs with the locations of the measurement points, and the results of the spectroscopic FORS and XRF measurements, including spectra and microimages."
+                }
+            ],
+            "accessConditions": "open",
+            "dateCreated": "2021-01-01",
+            "datePublished": "2025-08-31",
+            "howToCite": "Ganz, D., Rainer, T., Schmid, S., Theil, K., Aceto, M., Schmidt-Ott, K., Lombardo, T., Hofmann, C., Jembrih-Simbürger, D. (2025). Textures of Sacred Scripture [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/0860.",
+            "languages": [
+                {
+                    "en": "English"
+                }
+            ],
+            "licenses": [
+                {
+                    "__type": "License",
+                    "date": "2025-08-31",
+                    "license": {
+                        "__type": "URL",
+                        "type": "URL",
+                        "url": "https://creativecommons.org/licenses/by/4.0/",
+                        "text": "CC BY 4.0"
+                    }
+                }
+            ],
+            "attributions": [
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0860-person-000",
+                    "roles": [
+                        "Project Leader",
+                        "Principal Investigator (PI)"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0860-person-001",
+                    "roles": [
+                        "Co-Principal Investigator",
+                        "Material Analyses"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0860-person-002",
+                    "roles": [
+                        "Researcher"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0860-person-003",
+                    "roles": [
+                        "Researcher"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0860-person-004",
+                    "roles": [
+                        "Data Collector"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0860-person-005",
+                    "roles": [
+                        "Data Collector"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0860-person-006",
+                    "roles": [
+                        "Data Collector"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0860-person-007",
+                    "roles": [
+                        "Data Collector"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-0860-person-008",
+                    "roles": [
+                        "Data Collector"
+                    ]
+                }
+            ],
+            "status": "Finished",
+            "title": "Textures of Sacred Scripture",
+            "typeOfData": [
+                "Text",
+                "Image"
+            ]
+        }
+    ],
+    "persons": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0860-person-000",
+            "__type": "Person",
+            "email": "david.ganz@uzh.ch",
+            "familyNames": [
+                "Ganz"
+            ],
+            "givenNames": [
+                "David"
+            ],
+            "jobTitles": [
+                "Chair of Medieval Art History / full professor"
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0860-organization-001"
+            ],
+            "authorityRefs": [
+                {
+                    "__type": "URL",
+                    "type": "ORCID",
+                    "url": "https://orcid.org/0000-0001-6559-8937",
+                    "text": "ORCID URL: https://orcid.org/0000-0001-6559-8937"
+                }
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0860-person-001",
+            "__type": "Person",
+            "email": "thomas.rainer@unibas.ch",
+            "familyNames": [
+                "Rainer"
+            ],
+            "givenNames": [
+                "Thomas"
+            ],
+            "jobTitles": [
+                "Manging director and program coordinator of eikones"
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0860-organization-003"
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0860-person-002",
+            "__type": "Person",
+            "email": "sabrina.schmid@uzh.ch",
+            "familyNames": [
+                "Schmid"
+            ],
+            "givenNames": [
+                "Sabrina"
+            ],
+            "jobTitles": [
+                "Doctoral student"
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0860-organization-001"
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0860-person-003",
+            "__type": "Person",
+            "email": "katharina.theil@uzh.ch",
+            "familyNames": [
+                "Theil"
+            ],
+            "givenNames": [
+                "Katharina"
+            ],
+            "jobTitles": [
+                "Doctoral student"
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0860-organization-001"
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0860-person-004",
+            "__type": "Person",
+            "email": "maurizio.aceto@uniupo.it",
+            "familyNames": [
+                "Aceto"
+            ],
+            "givenNames": [
+                "Maurizio"
+            ],
+            "jobTitles": [
+                "Professor"
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0860-organization-005"
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0860-person-005",
+            "__type": "Person",
+            "email": "katharina.schmidt-ott@nationalmuseum.ch",
+            "familyNames": [
+                "Schmidt-Ott"
+            ],
+            "givenNames": [
+                "Katharina"
+            ],
+            "jobTitles": [
+                "Head of Conservation Research"
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0860-organization-002"
+            ],
+            "authorityRefs": [
+                {
+                    "__type": "URL",
+                    "type": "ORCID",
+                    "url": "https://orcid.org/0000-0003-0196-025X",
+                    "text": "ORCID URL: https://orcid.org/0000-0003-0196-025X"
+                }
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0860-person-006",
+            "__type": "Person",
+            "email": "tiziana.lombardo@nationalmuseum.ch",
+            "familyNames": [
+                "Lombardo"
+            ],
+            "givenNames": [
+                "Tiziana"
+            ],
+            "jobTitles": [
+                "Conservation scientist"
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0860-organization-002"
+            ],
+            "authorityRefs": [
+                {
+                    "__type": "URL",
+                    "type": "ORCID",
+                    "url": "https://orcid.org/0000-0002-0904-7177",
+                    "text": "ORCID URL: https://orcid.org/0000-0002-0904-7177"
+                }
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0860-person-007",
+            "__type": "Person",
+            "email": "christa.hofmann@onb.ac.at",
+            "familyNames": [
+                "Hofmann"
+            ],
+            "givenNames": [
+                "Christa"
+            ],
+            "jobTitles": [
+                "Head of the Conservation Department"
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0860-organization-004"
+            ],
+            "authorityRefs": [
+                {
+                    "__type": "URL",
+                    "type": "ORCID",
+                    "url": "https://orcid.org/0000-0003-3851-2629",
+                    "text": "ORCID URL: https://orcid.org/0000-0003-3851-2629"
+                }
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0860-person-008",
+            "__type": "Person",
+            "email": "D.Jembrih-Simbuerger@akbild.ac.at",
+            "familyNames": [
+                "Jembrih-Simbürger"
+            ],
+            "givenNames": [
+                "Dubravka"
+            ],
+            "jobTitles": [
+                "Conservation scientist"
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-0860-organization-006"
+            ],
+            "authorityRefs": [
+                {
+                    "__type": "URL",
+                    "type": "ORCID",
+                    "url": "https://orcid.org/0000-0002-5578-2850",
+                    "text": "ORCID URL: https://orcid.org/0000-0002-5578-2850"
+                }
+            ]
+        }
+    ],
+    "organizations": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0860-organization-000",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Wildhainweg 3",
+                "postalCode": "3001",
+                "locality": "Berne",
+                "country": "Switzerland"
+            },
+            "email": "desk@snf.ch",
+            "name": "Swiss National Science Foundation (SNSF)",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "http://www.snf.ch/",
+                "text": "http://www.snf.ch/"
+            }
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0860-organization-001",
+            "__type": "Organization",
+            "name": "Kunsthistorisches Institut Universität Zürich",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://www.khist.uzh.ch",
+                "text": "https://www.khist.uzh.ch"
+            }
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0860-organization-002",
+            "__type": "Organization",
+            "name": "Schweizerische Landesmuseum, Sammlungszentrum",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://www.sammlungszentrum.ch",
+                "text": "https://www.sammlungszentrum.ch"
+            }
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0860-organization-003",
+            "__type": "Organization",
+            "name": "Universität Basel",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://www.unibas.ch/en",
+                "text": "https://www.unibas.ch/en"
+            }
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0860-organization-004",
+            "__type": "Organization",
+            "name": "Österreichische Nationalbibliothek",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://www.onb.ac.at",
+                "text": "https://www.onb.ac.at"
+            }
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0860-organization-005",
+            "__type": "Organization",
+            "name": "Università degli Studi del Piemonte Orientale",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://uniupo.it/en",
+                "text": "https://uniupo.it/en"
+            }
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0860-organization-006",
+            "__type": "Organization",
+            "name": "Akademie der Bildenden Künste, Wien",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://www.akbild.ac.at/en/home?set_language=en",
+                "text": "https://www.akbild.ac.at/en/home?set_language=en"
+            }
+        }
+    ],
+    "grants": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-0860-grant-000",
+            "__type": "Grant",
+            "funders": [
+                "http://ns.dasch.swiss/repository#dsp-0860-organization-000"
+            ],
+            "name": "Project funding",
+            "number": "197292",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://data.snf.ch/grants/grant/197292",
+                "text": "https://data.snf.ch/grants/grant/197292"
+            }
+        }
+    ]
+}
