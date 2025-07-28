@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.15](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.14...dsp-meta-v2.3.15) (2025-07-28)
+
+
+### Bug Fixes
+
+* Pagination missing on last page if only one element is present ([#377](https://github.com/dasch-swiss/dsp-meta/issues/377)) ([61fe4ef](https://github.com/dasch-swiss/dsp-meta/commit/61fe4ef89679f92c59261445074c80933dd672ca))
+
 ## [2.3.14](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.13...dsp-meta-v2.3.14) (2025-07-25)
 
 
