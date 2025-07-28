@@ -61,7 +61,7 @@
       <p>{message}</p>
     {/if}
   </div>
-  {#if $pagedResults && $pagedResults.length && $pagedResults.length > 1}
+  {#if $pagedResults && $pagedResults.length && $pagedResults.length > 0}
     <Pagination />
   {/if}
 </main>
