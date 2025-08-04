@@ -237,8 +237,14 @@
         "url": {
             "__type": "URL",
             "type": "URL",
-            "url": "https://atlas-disciplines.unige.ch",
+            "url": "https://app.dasch.swiss/project/uLYpE1RNTee1eO7dz3lPQw",
             "text": "Project Website"
+        },
+        "secondaryURL": {
+            "__type": "URL",
+            "type": "URL",
+            "url": "https://atlas-disciplines.unige.ch",
+            "text": "External Project Website"
         },
         "status": "Ongoing",
         "datasets": [
