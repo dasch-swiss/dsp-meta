@@ -246,7 +246,7 @@
             "url": "https://atlas-disciplines.unige.ch",
             "text": "External Project Website"
         },
-        "status": "Ongoing",
+        "status": "Finished",
         "datasets": [
             "http://ns.dasch.swiss/repository#dsp-085A-dataset-001"
         ]
@@ -263,6 +263,7 @@
                     "text": "Find additional documentation here"
                 }
             ],
+            "status": "Finished",
             "title": "Interactive Historical Atlas of the Disciplines",
             "alternativeTitles": [
                 {
