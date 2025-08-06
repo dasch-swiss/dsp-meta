@@ -2,7 +2,9 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-node-resolve": "^16.0.1",
+    "@types/express-serve-static-core": "^5.0.7",
     "estree-walker": "2.0.2",
-    "rollup": "^4.44.2"
+    "rollup": "^4.44.2",
+    "typescript": "^5.9.2"
   }
 }
