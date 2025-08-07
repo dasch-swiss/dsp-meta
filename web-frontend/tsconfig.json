@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["es5", "es6", "dom"],
-    "importsNotUsedAsValues": "error",
+    "lib": [
+      "es5",
+      "es6",
+      "dom"
+    ],
     "isolatedModules": true,
     "strict": false,
     "baseUrl": ".",
@@ -10,12 +13,21 @@
     "preserveConstEnums": true,
     "removeComments": true,
     "sourceMap": true,
-    "types": ["node", "express", "svelte"],
+    "types": [
+      "node",
+      "express",
+      "svelte"
+    ],
     "skipLibCheck": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true
   },
-  "exclude": ["bazel-*", "node_modules", "__sapper__/*", "public/*"]
+  "exclude": [
+    "bazel-*",
+    "node_modules",
+    "__sapper__/*",
+    "public/*"
+  ]
 }

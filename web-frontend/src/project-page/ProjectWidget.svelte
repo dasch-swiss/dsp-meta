@@ -34,8 +34,7 @@
           <img
             class="chevron"
             src="/assets/icon/Chevron_right.svg"
-            alt="chevron right indicating a link"
-          />
+            alt="chevron right indicating a link" />
         </a>
       {/if}
       <!-- Secondary URL -->
@@ -43,14 +42,12 @@
         <a
           class="data"
           href={$projectMetadata?.project.secondaryURL.url}
-          target="_"
-        >
+          target="_">
           {truncateString($projectMetadata?.project.secondaryURL.text)}
           <img
             class="chevron"
             src="/assets/icon/Chevron_right.svg"
-            alt="chevron right indicating a link"
-          />
+            alt="chevron right indicating a link" />
         </a>
       {/if}
     </div>
@@ -64,8 +61,7 @@
           <img
             class="chevron"
             src="/assets/icon/Chevron_right.svg"
-            alt="chevron right indicating a link"
-          />
+            alt="chevron right indicating a link" />
         </a>
       {:else if $isTestEnvironment}
         <div class="label">Project Data</div>
@@ -76,14 +72,12 @@
         <a
           class="data"
           href={$projectMetadata?.project.secondaryURL.url}
-          target="_"
-        >
+          target="_">
           {truncateString($projectMetadata?.project.secondaryURL.text)}
           <img
             class="chevron"
             src="/assets/icon/Chevron_right.svg"
-            alt="chevron right indicating a link"
-          />
+            alt="chevron right indicating a link" />
         </a>
       {/if}
     </div>
@@ -96,8 +90,7 @@
         Permalink
         <button
           on:click={copyPermalink}
-          title="copy permalink to the clipboard"
-        >
+          title="copy permalink to the clipboard">
           <svg
             class="icon"
             fill="none"
@@ -109,8 +102,8 @@
               stroke-linejoin="round"
               stroke-width="2"
               d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
-            ></path></svg
-          >
+            ></path
+            ></svg>
         </button>
       </span>
     </div>
@@ -141,8 +134,7 @@
           {#if $projectMetadata?.project.howToCite}
             <button
               on:click={copyHowToCite}
-              title="copy citation to the clipboard"
-            >
+              title="copy citation to the clipboard">
               <svg
                 class="icon"
                 fill="none"
@@ -154,8 +146,8 @@
                   stroke-linejoin="round"
                   stroke-width="2"
                   d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
-                ></path></svg
-              >
+                ></path
+                ></svg>
             </button>
           {/if}
         </span>
@@ -176,8 +168,7 @@
           <a
             class="data"
             href="http://www.snf.ch/SiteCollectionDocuments/allg_disziplinenliste.pdf"
-            target="_">{truncateString(getText(d))}</a
-          >
+            target="_">{truncateString(getText(d))}</a>
         {:else}
           <div class="data">{getText(d)}</div>
         {/if}
@@ -193,8 +184,7 @@
       {#each $projectMetadata?.project.temporalCoverage as t}
         {#if t.__type === 'URL'}
           <a class="data" href={t.url} target="_"
-            >{t.text ? truncateString(t.text) : truncateString(t.url)}</a
-          >
+            >{t.text ? truncateString(t.text) : truncateString(t.url)}</a>
         {:else}
           <div class="data">{getText(t)}</div>
         {/if}
@@ -212,8 +202,7 @@
           class="data"
           style="text-transform: capitalize"
           href={s.url}
-          target="_">{truncateString(s.text)}</a
-        >
+          target="_">{truncateString(s.text)}</a>
       {/each}
     {:else if $isTestEnvironment}
       <div class="label">Spatial Coverage</div>
@@ -246,7 +235,10 @@
         return findObjectByID(o);
       }) as f}
         {#if f.__type === 'Person'}
-          <div class="data">{f?.givenNames?.join(' ')} {f?.familyNames?.join(' ')}</div>
+          <div class="data">
+            {f?.givenNames?.join(' ')}
+            {f?.familyNames?.join(' ')}
+          </div>
         {:else if f.__type === 'Organization'}
           <div class="data">{f.name}</div>
         {/if}
@@ -264,8 +256,7 @@
       }) as g}
         {#if g?.number && g?.url && g?.name}
           <a class="data" href={g?.url.url} target="_"
-            >{truncateString(`${g?.name}: ${g?.number}`)}</a
-          >
+            >{truncateString(`${g?.name}: ${g?.number}`)}</a>
         {:else if g?.number && g?.url}
           <a class="data" href={g?.url.url} target="_">{g?.number}</a>
         {:else if g?.number}
@@ -274,10 +265,13 @@
           {#each [g?.funders[0]].map((o) => {
             return findObjectByID(o);
           }) as f}
-            {#if f?.name}
+            {#if f?.__type === 'Organization'}
+              <span class="data">{f.name}</span>
+            {:else if f?.__type === 'Grant' && f.name}
               <span class="data">{f.name}</span>
             {:else if f?.__type === 'Person'}
-              <span class="data">{f?.givenNames?.join(' ')} {f?.familyNames?.join(' ')}</span>
+              <span class="data"
+                >{f?.givenNames?.join(' ')} {f?.familyNames?.join(' ')}</span>
             {/if}
           {/each}
         {/if}
@@ -324,8 +318,7 @@
           .map((t) => {
             return getText(t);
           })
-          .join(', ')}</span
-      >
+          .join(', ')}</span>
     {:else if $isTestEnvironment}
       <div class="label">Keywords</div>
       <div class="warning">keywords missing</div>

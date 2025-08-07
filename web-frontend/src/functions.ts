@@ -29,24 +29,24 @@ export const copyPermalink = () => {
   copyToClipboard('permalink');
 };
 
-export function findPersonByID(id: string): Person {
+export function findPersonByID(id: string): Person | undefined {
   let persons = get(ProjectMetadata).persons;
   if (persons && persons.length > 0) {
     return persons.find((o) => o.__id === id);
   }
 }
 
-export function findOrganizationByID(id: string): Organization {
+export function findOrganizationByID(id: string): Organization | undefined {
   let x = get(ProjectMetadata).organizations;
   return x ? x.find((o) => o.__id === id) : undefined;
 }
 
-export function findGrantByID(id: string): Grant {
+export function findGrantByID(id: string): Grant | undefined {
   let x = get(ProjectMetadata).grants;
   return x ? x.find((o) => o.__id === id) : undefined;
 }
 
-export function findObjectByID(id: string): Grant | Person | Organization {
+export function findObjectByID(id: string): Grant | Person | Organization | undefined {
   let o: Grant | Person | Organization;
   o = findPersonByID(id);
   if (o) return o;
