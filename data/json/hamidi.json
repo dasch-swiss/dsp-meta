@@ -2,7 +2,7 @@
   "$schema": "../../resources/schema-metadata-draft.json",
   "project": {
     "__type": "Project",
-    "howToCite": "© Tall al-Hamidiya project. DaSCH. https://ark.dasch.swiss/ark:/72163/1/085E.",
+    "howToCite": "© Tall al-Hamidiya Online project. DaSCH. https://ark.dasch.swiss/ark:/72163/1/085E.",
     "teaserText": "The Swiss excavations at Tall al-Hamidiya (NE Syria) revealed a 245-ha Late Bronze Age city. Architecture and texts make it likely that the site was Taidu, the royal residence of the Mitanni empire.",
     "datasets": [
       "http://ns.dasch.swiss/repository#dsp-085E-dataset-001"
@@ -58,7 +58,7 @@
         "en": "Near Eastern Archaeology"
       }
     ],
-    "name": "Tell al-Hamidiya",
+    "name": "Tall al-Hamidiya Online",
     "publications": [
       {
         "text": "See",
@@ -133,7 +133,7 @@
         }
       ],
       "accessConditions": "open",
-      "howToCite": "© Tall al-Hamidiya project. DaSCH. https://ark.dasch.swiss/ark:/72163/1/085E.",
+      "howToCite": "© Tall al-Hamidiya Online project. DaSCH. https://ark.dasch.swiss/ark:/72163/1/085E.",
       "languages": [
         {
           "en": "English",
