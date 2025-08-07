@@ -1,0 +1,333 @@
+{
+  "$schema": "../../resources/schema-metadata-draft.json",
+  "project": {
+    "__type": "Project",
+    "howToCite": "© Tall al-Hamidiya Online project. DaSCH. https://ark.dasch.swiss/ark:/72163/1/085E.",
+    "teaserText": "The Swiss excavations at Tall al-Hamidiya (NE Syria) revealed a 245-ha Late Bronze Age city. Architecture and texts make it likely that the site was Taidu, the royal residence of the Mitanni empire.",
+    "datasets": [
+      "http://ns.dasch.swiss/repository#dsp-085E-dataset-001"
+    ],
+    "alternativeNames": [
+      {
+        "en": "hamidi"
+      }
+    ],
+    "contactPoint": "http://ns.dasch.swiss/repository#dsp-085E-person-001",
+    "description": {
+      "en": "From 1984 to 2011, the Swiss Archaeological Mission excavated Tall al-Hamidiya in Northeast Syria. The Late Bronze Age acropolis, with its monumental structures, including the Southwest Palace (approx. 14,500 m²) and the Central Palace (approx. 38,500 m²), was central to a city of approximately 245 ha. The impressive structures and Hurro-Akkadian texts suggest that Tall al-Hamidiya was Taidu, the royal city of the Mitannian empire, which had dominated Northern Mesopotamia and the Levant (ca. 16th-13th century BCE). Middle Assyrian kings conquered the site (13th-11th century BCE) and continued its occupation into the Neo-Assyrian period (9th-8th century BCE). This makes Tall al-Hamidiya one of the few sites in the region with a well-documented sequence of Mitanni—Middle Assyrian—Neo Assyrian habitation. From 1984 to 2020, Prof. Dr. Markus Wäfler (University of Bern) directed and funded the excavations. Since 2010/2011, the project has been situated at the University of Basel, where Dr. Oskar Kaelin (https: //whitelevy.fas.harvard.edu/people/oskar-kaelin), a project member since 1995 and co-director since 2008, has been affiliated. The main goals of the project supported by the Shelby White and Leon Levy Program for Archaeological Publications and directed by Dr. Oskar Kaelin are: Ensure that all excavated data (photos, plans, drawings) is freely accessible online (in English) through the long-term preservation center DaSCH – Swiss National Data and Service Center for the Humanities to guarantee future accessibility (with Prof. Dr. Rita Gautschy and her team). Produce a monograph (as a free e-book) analyzing the findings at Tall al-Hamidiya, contextualizing them within the history of the Khabur region and the Ancient Near East, particularly the Mitannian, Middle, and Neo-Assyrian periods."
+    },
+    "disciplines": [
+      {
+        "en": "10303 Ancient history and Classical studies"
+      }
+    ],
+    "endDate": "2028-07-31",
+    "funders": [
+      "http://ns.dasch.swiss/repository#dsp-085E-organization-001",
+      "http://ns.dasch.swiss/repository#dsp-085E-organization-003",
+      "http://ns.dasch.swiss/repository#dsp-085E-person-002"
+    ],
+    "grants": [
+      "http://ns.dasch.swiss/repository#dsp-085E-grant-001",
+      "http://ns.dasch.swiss/repository#dsp-085E-grant-002",
+      "http://ns.dasch.swiss/repository#dsp-085E-grant-003"
+    ],
+    "keywords": [
+      {
+        "en": "Mitanni"
+      },
+      {
+        "en": "Assyria"
+      },
+      {
+        "en": "palaces"
+      },
+      {
+        "en": "cemeteries"
+      },
+      {
+        "en": "Syria"
+      },
+      {
+        "en": "Khabur river"
+      },
+      {
+        "en": "Jaghjagh river"
+      },
+      {
+        "en": "Near Eastern Archaeology"
+      }
+    ],
+    "name": "Tall al-Hamidiya Online",
+    "publications": [
+      {
+        "text": "See",
+        "url": [
+          {
+            "__type": "URL",
+            "type": "URL",
+            "url": "https://sites.google.com/site/hamidiyataidu/home/publications?authuser=0",
+            "text": "Publications"
+          }
+        ]
+      }
+    ],
+    "shortcode": "085E",
+    "spatialCoverage": [
+      {
+        "__type": "URL",
+        "type": "Geonames",
+        "url": "https://www.geonames.org/169996/tall-hamidi.html",
+        "text": "Tall Hamidi"
+      }
+    ],
+    "startDate": "2025-07-01",
+    "temporalCoverage": [
+      {
+        "en": "Late Bronze Age"
+      },
+      {
+        "en": "Iron Age"
+      },
+      {
+        "en": "Mitanni"
+      },
+      {
+        "en": "Middle Assyrian"
+      },
+      {
+        "en": "Neo-Assyrian"
+      },
+      {
+        "en": "Hellenistic"
+      }
+    ],
+    "url": {
+      "__type": "URL",
+      "type": "URL",
+      "url": "https://sites.google.com/site/hamidiyataidu/home",
+      "text": "External Project Website"
+    },
+    "status": "Ongoing"
+  },
+  "datasets": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-085E-dataset-001",
+      "__type": "Dataset",
+      "abstracts": [
+        {
+          "en": "Materials from the excavations of the Swiss Archaeological Mission at Tall al-Hamidiya, Northeast Syria (1984-2011)"
+        }
+      ],
+      "alternativeTitles": [
+        {
+          "en": "hamidi"
+        }
+      ],
+      "additional": [
+        {
+          "__type": "URL",
+          "type": "URL",
+          "url": "https://sites.google.com/site/hamidiyataidu/home?authuser=0",
+          "text": "Find additional documentation here"
+        }
+      ],
+      "accessConditions": "open",
+      "howToCite": "© Tall al-Hamidiya Online project. DaSCH. https://ark.dasch.swiss/ark:/72163/1/085E.",
+      "languages": [
+        {
+          "en": "English",
+          "de": "Englisch",
+          "fr": "anglais"
+        }
+      ],
+      "licenses": [
+        {
+          "__type": "License",
+          "date": "2025-07-01",
+          "license": {
+            "__type": "URL",
+            "type": "Creative Commons",
+            "url": "https://creativecommons.org/licenses/by/4.0/deed.en",
+            "text": "CC BY 4.0"
+          }
+        }
+      ],
+      "attributions": [
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-085E-person-001",
+          "roles": [
+            "Project Leader",
+            "Editor",
+            "Data Curator"
+          ]
+        },
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-085E-person-002",
+          "roles": [
+            "Related Person"
+          ]
+        },
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-085E-person-003",
+          "roles": [
+            "Data Curator"
+          ]
+        }
+      ],
+      "status": "Ongoing",
+      "title": "Tall al-Hamidiya Online",
+      "typeOfData": [
+        "Text",
+        "Image",
+        "Video"
+      ]
+    }
+  ],
+  "persons": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-085E-person-001",
+      "__type": "Person",
+      "email": "oskar.kaelin@unibas.ch",
+      "familyNames": [
+        "Kaelin"
+      ],
+      "givenNames": [
+        "Oskar"
+      ],
+      "jobTitles": [
+        "Scientific Collaborator"
+      ],
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-085E-organization-002"
+      ],
+      "address": {
+        "__type": "Address",
+        "street": "Theologische Fakultät, Nadelberg 10",
+        "postalCode": "4051",
+        "locality": "Basel",
+        "country": "Switzerland"
+      }
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-085E-person-002",
+      "__type": "Person",
+      "familyNames": [
+        "Wäfler"
+      ],
+      "givenNames": [
+        "Markus"
+      ],
+      "jobTitles": [
+        "Professor"
+      ]
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-085E-person-003",
+      "__type": "Person",
+      "familyNames": [
+        "Gautschy"
+      ],
+      "givenNames": [
+        "Rita"
+      ],
+      "jobTitles": [
+        "Professor"
+      ],
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-085E-organization-004"
+      ]
+    }
+  ],
+  "organizations": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-085E-organization-001",
+      "__type": "Organization",
+      "address": {
+        "__type": "Address",
+        "street": "The Shelby White and Leon Levy Program for Archaeological Publications, Harvard University, The Harvard Museum of the Ancient Near East, 6 Divinity Ave #102",
+        "postalCode": "02138",
+        "locality": "Cambridge, MA",
+        "country": "United States"
+      },
+      "email": "whitelev@fas.harvard.edu",
+      "name": "Shelby White and Leon Levy",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://whitelevy.fas.harvard.edu/",
+        "text": "https://whitelevy.fas.harvard.edu/"
+      }
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-085E-organization-002",
+      "__type": "Organization",
+      "address": {
+        "__type": "Address",
+        "street": "Nadelberg 10",
+        "postalCode": "4051",
+        "locality": "Basel",
+        "country": "Switzerland"
+      },
+      "name": "University of Basel, Theologische Fakultät",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://theologie.unibas.ch/de/",
+        "text": "https://theologie.unibas.ch/de/"
+      }
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-085E-organization-003",
+      "__type": "Organization",
+      "name": "Swiss National Science Foundation (SNSF)"
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-085E-organization-004",
+      "__type": "Organization",
+      "name": "Swiss National Data and Service Center for the Humanities (DaSCH)"
+    }
+  ],
+  "grants": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-085E-grant-001",
+      "__type": "Grant",
+      "funders": [
+        "http://ns.dasch.swiss/repository#dsp-085E-organization-001"
+      ],
+      "name": "Shelby White and Leon Levy Program for Archaeological Publications",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://whitelevy.fas.harvard.edu/digitisation-and-publication-finds-swiss-archaeological-mission-tall-al-hamidiya-northeast-syria",
+        "text": "https://whitelevy.fas.harvard.edu/digitisation-and-publication-finds-swiss-archaeological-mission-tall-al-hamidiya-northeast-syria"
+      }
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-085E-grant-002",
+      "__type": "Grant",
+      "funders": [
+        "http://ns.dasch.swiss/repository#dsp-085E-organization-003"
+      ],
+      "name": "Project funding",
+      "number": "120549",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://data.snf.ch/grants/grant/120549",
+        "text": "https://data.snf.ch/grants/grant/120549"
+      }
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-085E-grant-003",
+      "__type": "Grant",
+      "funders": [
+        "http://ns.dasch.swiss/repository#dsp-085E-person-002"
+      ],
+      "name": "Private funding"
+    }
+  ]
+}

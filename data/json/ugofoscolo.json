@@ -61,6 +61,12 @@
         "fr": "1794-1871"
       }
     ],
+    "url": {
+      "__type": "URL",
+      "type": "URL",
+      "url": "https://app.dasch.swiss/project/dRHtOCjWRZe6qyixRRz9wQ",
+      "text": "Discover Project Data"
+    },
     "status": "Ongoing"
   },
   "datasets": [

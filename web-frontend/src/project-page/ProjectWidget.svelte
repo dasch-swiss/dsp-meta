@@ -246,8 +246,7 @@
         return findObjectByID(o);
       }) as f}
         {#if f.__type === 'Person'}
-          <!-- TODO: handle funding person - need to find example -->
-          <!-- <div class=data>{findObjectById(f)?.givenName.split(";").join(" ")} {findObjectById(f)?.familyName}</div> -->
+          <div class="data">{f?.givenNames?.join(' ')} {f?.familyNames?.join(' ')}</div>
         {:else if f.__type === 'Organization'}
           <div class="data">{f.name}</div>
         {/if}
@@ -273,9 +272,13 @@
           <span class="data">{g?.number}</span>
         {:else}
           {#each [g?.funders[0]].map((o) => {
-            return findOrganizationByID(o);
+            return findObjectByID(o);
           }) as f}
-            <span class="data">{f.name}</span>
+            {#if f?.name}
+              <span class="data">{f.name}</span>
+            {:else if f?.__type === 'Person'}
+              <span class="data">{f?.givenNames?.join(' ')} {f?.familyNames?.join(' ')}</span>
+            {/if}
           {/each}
         {/if}
       {/each}
@@ -300,7 +303,9 @@
           {#if Array.isArray(c?.affiliation)}
             {#each c?.affiliation as o}
               {#each [findOrganizationByID(o)] as org}
-                <span class="data">{org.name}</span>
+                {#if org?.name}
+                  <span class="data">{org.name}</span>
+                {/if}
               {/each}
             {/each}
           {/if}
