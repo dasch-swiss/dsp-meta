@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.3.16](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.15...dsp-meta-v2.3.16) (2025-08-07)
+
+
+### Maintenances
+
+* **deps:** Bump the backend-dependencies group across 1 directory with 4 updates ([#379](https://github.com/dasch-swiss/dsp-meta/issues/379)) ([a71b829](https://github.com/dasch-swiss/dsp-meta/commit/a71b829aab8b6a6f1bde8bbc3c57c71d9cbaef4e))
+
+
+### Project Data
+
+* Add hamidi, update ugofoscolo and atlasdisciplines ([#382](https://github.com/dasch-swiss/dsp-meta/issues/382)) ([af94a1f](https://github.com/dasch-swiss/dsp-meta/commit/af94a1fc743471bbaaa56db1e1ac7ad4e0167062))
+* Metadata update for 085a atlasdisciplines ([#380](https://github.com/dasch-swiss/dsp-meta/issues/380)) ([ddc9bfe](https://github.com/dasch-swiss/dsp-meta/commit/ddc9bfe196bf5958ac24b608310337831521df10))
+
 ## [2.3.15](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.14...dsp-meta-v2.3.15) (2025-07-28)
 
 
