@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.17](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.16...dsp-meta-v2.3.17) (2025-08-07)
+
+
+### Documentation
+
+* Add CLAUDE.md files for repository and data guidance ([#384](https://github.com/dasch-swiss/dsp-meta/issues/384)) ([2486f18](https://github.com/dasch-swiss/dsp-meta/commit/2486f1803b5e839d2b53f27156acf6f74c01d97a))
+
 ## [2.3.16](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.15...dsp-meta-v2.3.16) (2025-08-07)
 
 
