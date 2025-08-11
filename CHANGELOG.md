@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.3.17](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.16...dsp-meta-v2.3.17) (2025-08-11)
+
+
+### Maintenances
+
+* **deps:** Bump clap from 4.5.42 to 4.5.43 in the backend-dependencies group ([#386](https://github.com/dasch-swiss/dsp-meta/issues/386)) ([93f3ce0](https://github.com/dasch-swiss/dsp-meta/commit/93f3ce0396031767c58766bb7df25d4a0c5dc222))
+
+
+### Project Data
+
+* Update atlasdisciplines.json ([#387](https://github.com/dasch-swiss/dsp-meta/issues/387)) ([4ee5f8a](https://github.com/dasch-swiss/dsp-meta/commit/4ee5f8a7f41f947838b909e772ba64801f9d7f6a))
+
+
+### Documentation
+
+* Add CLAUDE.md files for repository and data guidance ([#384](https://github.com/dasch-swiss/dsp-meta/issues/384)) ([2486f18](https://github.com/dasch-swiss/dsp-meta/commit/2486f1803b5e839d2b53f27156acf6f74c01d97a))
+
 ## [2.3.16](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.15...dsp-meta-v2.3.16) (2025-08-07)
 
 
