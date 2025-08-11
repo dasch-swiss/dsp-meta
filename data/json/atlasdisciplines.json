@@ -255,14 +255,6 @@
         {
             "__id": "http://ns.dasch.swiss/repository#dsp-085A-dataset-001",
             "__type": "Dataset",
-            "additional": [
-                {
-                    "__type": "URL",
-                    "type": "URL",
-                    "url": "https://app.dasch.swiss/project/uLYpE1RNTee1eO7dz3lPQw/ontology/atlasdisciplines/Website",
-                    "text": "Find additional documentation here"
-                }
-            ],
             "status": "Finished",
             "title": "Interactive Historical Atlas of the Disciplines",
             "alternativeTitles": [
@@ -284,13 +276,7 @@
                 {
                     "__type": "URL",
                     "type": "URL",
-                    "url": "http://atlas-disciplines.unige.ch",
-                    "text": "Interactive Historical Atlas of the Disciplines"
-                },
-                {
-                    "__type": "URL",
-                    "type": "URL",
-                    "url": "https://atlas-disciplines.unige.ch/Archived/IHAD_28.02.2025.html",
+                    "url": "https://app.dasch.swiss/project/uLYpE1RNTee1eO7dz3lPQw/ontology/atlasdisciplines/Website",
                     "text": "Archived version of the Interactive Historical Atlas of the Disciplines"
                 }
             ],
