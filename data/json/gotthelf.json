@@ -30,6 +30,7 @@
         ],
         "endDate": "2040-01-01",
         "funders": [
+            "http://ns.dasch.swiss/repository#dsp-0862-organization-003",
             "http://ns.dasch.swiss/repository#dsp-0862-organization-001",
             "http://ns.dasch.swiss/repository#dsp-0862-organization-004",
             "http://ns.dasch.swiss/repository#dsp-0862-organization-005",
