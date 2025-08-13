@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.18](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.17...dsp-meta-v2.3.18) (2025-08-13)
+
+
+### Project Data
+
+* Metadata update for 0862 GOTTHELF ([#388](https://github.com/dasch-swiss/dsp-meta/issues/388)) ([79baf4b](https://github.com/dasch-swiss/dsp-meta/commit/79baf4bd4dd91e388044e1e771de0ec93c259912))
+
 ## [2.3.17](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.16...dsp-meta-v2.3.17) (2025-08-11)
 
 
