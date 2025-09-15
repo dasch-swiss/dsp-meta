@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.3.19](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.18...dsp-meta-v2.3.19) (2025-09-15)
+
+
+### Maintenances
+
+* **deps:** Bump the backend-dependencies group with 3 updates ([#395](https://github.com/dasch-swiss/dsp-meta/issues/395)) ([d9918f3](https://github.com/dasch-swiss/dsp-meta/commit/d9918f328ce3bea74755b572647f2834f0ca366a))
+* **deps:** Bump the backend-dependencies group with 3 updates ([#396](https://github.com/dasch-swiss/dsp-meta/issues/396)) ([76d3e66](https://github.com/dasch-swiss/dsp-meta/commit/76d3e66b5308c947e88b909273404616625e18e6))
+* **deps:** Bump tracing-subscriber from 0.3.19 to 0.3.20 ([#393](https://github.com/dasch-swiss/dsp-meta/issues/393)) ([9743fc0](https://github.com/dasch-swiss/dsp-meta/commit/9743fc0bdeeeafe693bac55e941e1ddd17f76bf4))
+
 ## [2.3.18](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.17...dsp-meta-v2.3.18) (2025-08-25)
 
 
