@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.3.18](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.17...dsp-meta-v2.3.18) (2025-08-25)
+
+
+### Maintenances
+
+* **deps:** Bump the backend-dependencies group with 4 updates ([#390](https://github.com/dasch-swiss/dsp-meta/issues/390)) ([e860ff2](https://github.com/dasch-swiss/dsp-meta/commit/e860ff2355f02e2d8d7f168412139531b217bbe4))
+* **deps:** Bump the backend-dependencies group with 4 updates ([#392](https://github.com/dasch-swiss/dsp-meta/issues/392)) ([ec4d244](https://github.com/dasch-swiss/dsp-meta/commit/ec4d2448c425b523a9fb4900b861fad90068e98d))
+
+
+### Project Data
+
+* Metadata update for 0862 GOTTHELF ([#388](https://github.com/dasch-swiss/dsp-meta/issues/388)) ([79baf4b](https://github.com/dasch-swiss/dsp-meta/commit/79baf4bd4dd91e388044e1e771de0ec93c259912))
+
 ## [2.3.17](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.16...dsp-meta-v2.3.17) (2025-08-11)
 
 
