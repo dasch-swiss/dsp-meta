@@ -156,11 +156,14 @@ There is no difference in cardinality between the archival and in-progress stage
 | `description`           | lang_string                            | 1     | 1         |
 | `startDate`             | date                                   | 1     | 0-1       |
 | `endDate`               | date                                   | 1     | 0-1       |
+| `dataPublicationYear`   | date                                   | 1     | 0-1       |
 | `url`                   | url                                    | 1-2   | 0-2       |
 | `howToCite`             | string                                 | 1     | 1         |
 | `accessRights`          | accessRights                           | 1     | 1         |
 | `legalInfo`             | legalInfo[]                            | 1-n   | 0-n       |
 | `dataManagementPlan`    | string / url                           | 1     | 1         |
+| `typeOfData`            | string[]                               | 1-n   | 0-n       |
+| `dataLanguage`          | lang_string[]                          | 1-n   | 0-n       |
 | `collections`           | internal_id[]                          | 0-n   | 0-n       |
 | `records`               | internal_id[]                          | 0-n   | 0-n       |
 | `keywords`              | lang_string[]                          | 1-n   | 0-n       |
@@ -174,6 +177,8 @@ There is no difference in cardinality between the archival and in-progress stage
 | `funding`               | string / grant[]                       | 1-n   | 0-n       |
 | `alternativeNames`      | lang_string[]                          | 0-n   | 0-n       |
 | `documentationMaterial` | url[]                                  | 0-n   | 0-n       |
+| `provenance`            | string                                 | 0-1   | 0-1       |
+| `additionalMaterial`    | url[]                                  | 0-n   | 0-n       |
 
 - `id`: A unique identifier for the project.  
   This is the internal ID, which is not exposed to the user and is not persistent.
@@ -188,6 +193,10 @@ There is no difference in cardinality between the archival and in-progress stage
 - `description`: The full description of the project.
 - `startDate`: The start date of the project.
 - `endData`: The end date of the project.
+- `dataPublicationYear`: The year when the data is published.  
+  This is normally the year when the project is finished and the data is moved to the archive.
+  If the project is under embargo, this will be the year when the embargo is lifted.  
+  For projects that were published while in the VRE, a specific publication year may be set.
 - `url`: The URL to the web presence of the project.  
   The first URL should point to where the data is available,
   the second, optional URL may point to the project website.
@@ -201,6 +210,11 @@ There is no difference in cardinality between the archival and in-progress stage
   Calculated from Records. Can _not_ be specified explicitly on the project.
 - `dataManagementPlan`: A data management plan of the project.
   String or URL, use "not accessible" if not available to us.
+- `typeOfData`: The type of data in the project.  
+  Computed from the records if available and optionally added manually.
+  Literal "XML", "Text", "Image", "Video", "Audio".
+- `dataLanguage`: A list of languages contained in the project.  
+  Computed from the records if available and optionally added manually.
 - `collections`: A list of collection identifiers that optionally group project data.
 - `records`: A list of record identifiers that make up the project data.  
   This is the canonical list of ALL records in the project.
@@ -216,6 +230,8 @@ There is no difference in cardinality between the archival and in-progress stage
 - `funding`: Either a string ("No funding") or a list of grants received by the project.
 - `alternativeNames`: Alternative names of the project.
 - `documentationMaterial`: A list of URLs pointing to documentation material related to the project.
+- `provenance`: the history of the project, if applicable.
+- `additionalMaterial`: A list of URLs related to the project.
 
 !!! note
     In the metadata, the project has references to all its records in the `records` array.
@@ -574,6 +590,8 @@ The OpenAIRE Guidelines specify 18 fields with the following cardinalities:
     - could also track version history in the archive (predecessor)
 - Model Person and Organization in a re-useable fashion. This should include making stuff like affiliation time/project bound
 - Alongside keywords, we could also have categories. Where keywords are free text, categories are from a controlled vocabulary.
+- Model attribution in terms of DataCite contribution types.
+- Model TypeOfData in terms of DataCite's resource types.
 
 ## JSON Schema
 
