@@ -85,6 +85,15 @@ docker-image-tag:
 watch:
     cargo watch -x test
 
+# Check all URLs in JSON metadata files (terminal output)
+check-urls:
+    cargo run --bin dsp-meta-validator -- check-urls --data-dir ./data/json
+
+# Check all URLs and save markdown report to file
+check-urls-report:
+    cargo run --bin dsp-meta-validator -- check-urls --data-dir ./data/json --format markdown > url-check-report.md
+    @echo "Report saved to url-check-report.md"
+
 # Generate the OpenApi in {{openapiDir}} yml from the tapir endpoints
 docs-openapi-generate:
     echo "Not implemented."
