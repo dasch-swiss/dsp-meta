@@ -18,9 +18,11 @@ support simpler project structures.
 One of the key improvements is the introduction of an additional hierarchical level above
 the research project, which we refer to as a project cluster. This allows for a more
 accurate representation of overarching initiatives that span multiple research projects
-over extended periods of time. Additionally, we have implemented collections and subcollections
-to facilitate more precise referencing and organization of different parts of the data,
-additionally enabling projects to retain and represent historical or otherwise relevant groupings of data.
+over extended periods of time. Additionally, we have implemented collections to facilitate 
+more precise referencing and organization of different parts of the data, enabling projects 
+to retain and represent historical or otherwise relevant groupings of data. Collections 
+replace the previous dataset concept while providing more flexibility for cross-project 
+organization and nesting.
 
 By expanding our metadata model in this way, we aim to provide a more robust framework
 that supports the integrity and longevity of humanities research data. This evolution
@@ -47,10 +49,9 @@ Legal information on metadata, just as everywhere else, consists of the license,
 The license is always "public domain", the copyright holder is always "DaSCH" 
 and the authorship is always the project and DaSCH.
 
-Metadata is always publicly available, even if the corresponding project, dataset or record is not.
+Metadata is always publicly available, even if the corresponding project, collection or record is not.
 This is to ensure that the metadata is always findable and reusable, even if the data itself is not.
 The only exception to this is the status "embargoed", during which the metadata is _only_ available on the project level.
-
 
 ## Model Overview
 
@@ -61,21 +62,16 @@ The metadata model is a hierarchical structure of metadata elements.
 flowchart TD
     projectCluster[Project Cluster]
     project[Research Project]
-    dataset[Dataset]
     record[Record]
     collection[Collection]
-    user[User]
-
-    user -->|0-n| dataset
-    user -->|0-n| collection
 
     projectCluster -->|0-n| project
     projectCluster -->|0-n| collection
 
-    project -->|1-n| dataset
+    project -->|0-n| collection
     project -->|1-n| record
-    dataset -->|1-n| record
-    collection --> |0-n| dataset
+    collection --> |0-n| record
+    collection --> |0-n| collection
 ```
 
 - A `Project Cluster` collects `Research Projects` or nested `Project Clusters`.  
@@ -88,23 +84,12 @@ flowchart TD
   It is typically tied to a specific funding grant,
   and hence has a limited lifetime of ~3-5 years;
   multiple funding rounds and a longer lifetime are possible.  
-  A `Research Project` is part of 0-n `Project Clusters` and it has 1-n `Datasets`.
-- A `Dataset` is a semantically meaningful grouping of the `Records` of a `Research Project`.  
-  If a project has different types of data, they should be separated into different datasets, 
-  so that it is e.g. possible to download only the images or only the resources.  
-  Datasets should be able to give  a "historical meaning" in the context of the project.  
-  Examples may be physical collections such as person's "Nachlass" in an archive,
-  or groupings of records based on a specific research question within a project.  
-  They are referenceable and citable with a persistent identifier.  
-  Initially, datasets will be associated with their respective projects,
-  but in the future, users should be able to create their own datasets that are not tied to a project. 
-  However, all records of a dataset must be part of the same project.
-- A `Collection` is a grouping of `Datasets`.  
-  They serve a comparable purpose to datasets but may be nested or span datasets of different projects.  
-  In the first iteration, collections will not be implemented.
-  Later on, they will initially be associated with a project or a project cluster,
-  but in the future, users should be able to create their own collections that are not tied to a project.  
-  They are referenceable and citable with a persistent identifier.
+  A `Research Project` is part of 0-n `Project Clusters` and contains both `Collections` and `Records`.
+  All records in the project must be listed in the project's records array, regardless of collection membership.
+- A `Collection` is a flexible grouping of `Records` 
+  that can span multiple projects or be nested within other collections.  
+  Collections serve to enable cross-project data organization and support subsetting and specialized access patterns.
+  Collections may contain both individual records and other nested collections.
 - A `Record` is a single entry within a project.  
   It represents the smallest unit that can meaningfully have an identifier.
   It maps to a `knora-base:Resource` (DSP-API) or an `Asset` (SIPI/Ingest) in the DSP.  
@@ -113,7 +98,7 @@ flowchart TD
   The core data of the resource are the values on that resource.  
   In the case of assets, the metadata is the existence of the asset itself, as well as access rights.
   The core data is the binary information of the asset.
-  A `Record` is part of exactly 1 `Research Project` and may be part of 0-n `Datasets`.
+  A `Record` is part of exactly 1 `Research Project` and may be part of 0-n `Collections`.
 
 Additionally, there are the entities `Person` and `Organization`:  
 `Person` and `Organization` are entities that are independent of the `Research Project` hierarchy,
@@ -130,6 +115,7 @@ and may be related to various entities within the hierarchy.
 | `name`                  | string        | 1     |
 | `projects`              | internal_id[] | 0-n   |
 | `projectClusters`       | internal_id[] | 0-n   |
+| `collections`           | internal_id[] | 0-n   |
 | `description`           | lang_string   | 0-1   |
 | `url`                   | url           | 0-1   |
 | `howToCite`             | string        | 0-1   |
@@ -170,12 +156,15 @@ There is no difference in cardinality between the archival and in-progress stage
 | `description`           | lang_string                            | 1     | 1         |
 | `startDate`             | date                                   | 1     | 0-1       |
 | `endDate`               | date                                   | 1     | 0-1       |
+| `dataPublicationYear`   | date                                   | 1     | 0-1       |
 | `url`                   | url                                    | 1-2   | 0-2       |
 | `howToCite`             | string                                 | 1     | 1         |
 | `accessRights`          | accessRights                           | 1     | 1         |
 | `legalInfo`             | legalInfo[]                            | 1-n   | 0-n       |
 | `dataManagementPlan`    | string / url                           | 1     | 1         |
-| `datasets`              | internal_id[]                          | 0-n   | 0-n       |
+| `typeOfData`            | string[]                               | 1-n   | 0-n       |
+| `dataLanguage`          | lang_string[]                          | 1-n   | 0-n       |
+| `collections`           | internal_id[]                          | 0-n   | 0-n       |
 | `records`               | internal_id[]                          | 0-n   | 0-n       |
 | `keywords`              | lang_string[]                          | 1-n   | 0-n       |
 | `disciplines`           | lang_string / authorityfileReference[] | 1-n   | 0-n       |
@@ -188,6 +177,8 @@ There is no difference in cardinality between the archival and in-progress stage
 | `funding`               | string / grant[]                       | 1-n   | 0-n       |
 | `alternativeNames`      | lang_string[]                          | 0-n   | 0-n       |
 | `documentationMaterial` | url[]                                  | 0-n   | 0-n       |
+| `provenance`            | string                                 | 0-1   | 0-1       |
+| `additionalMaterial`    | url[]                                  | 0-n   | 0-n       |
 
 - `id`: A unique identifier for the project.  
   This is the internal ID, which is not exposed to the user and is not persistent.
@@ -202,6 +193,10 @@ There is no difference in cardinality between the archival and in-progress stage
 - `description`: The full description of the project.
 - `startDate`: The start date of the project.
 - `endData`: The end date of the project.
+- `dataPublicationYear`: The year when the data is published.  
+  This is normally the year when the project is finished and the data is moved to the archive.
+  If the project is under embargo, this will be the year when the embargo is lifted.  
+  For projects that were published while in the VRE, a specific publication year may be set.
 - `url`: The URL to the web presence of the project.  
   The first URL should point to where the data is available,
   the second, optional URL may point to the project website.
@@ -212,11 +207,17 @@ There is no difference in cardinality between the archival and in-progress stage
   If the project is embargoed, the metadata is only available on the project level.
   Access rights define to what extent the project data is available to access in the DPE.
 - `legalInfo`: Legal information about the project.
-  Calculated from Datasets. Can _not_ be specified explicitly on the project.
+  Calculated from Records. Can _not_ be specified explicitly on the project.
 - `dataManagementPlan`: A data management plan of the project.
   String or URL, use "not accessible" if not available to us.
-- `datasets`: A list of dataset identifiers that make up the project data.
-- `records`: A list of record identifiers that make up the project data.
+- `typeOfData`: The type of data in the project.  
+  Computed from the records if available and optionally added manually.
+  Literal "XML", "Text", "Image", "Video", "Audio".
+- `dataLanguage`: A list of languages contained in the project.  
+  Computed from the records if available and optionally added manually.
+- `collections`: A list of collection identifiers that optionally group project data.
+- `records`: A list of record identifiers that make up the project data.  
+  This is the canonical list of ALL records in the project.
 - `keywords`: A list of keywords describing the project.
 - `disciplines`: A list of disciplines the project is related to.
 - `temporalCoverage`: A list of epoches or time periods the project is related to.
@@ -229,14 +230,14 @@ There is no difference in cardinality between the archival and in-progress stage
 - `funding`: Either a string ("No funding") or a list of grants received by the project.
 - `alternativeNames`: Alternative names of the project.
 - `documentationMaterial`: A list of URLs pointing to documentation material related to the project.
+- `provenance`: the history of the project, if applicable.
+- `additionalMaterial`: A list of URLs related to the project.
 
 !!! note
-    In the metadata, the project has references to all its records.
+    In the metadata, the project has references to all its records in the `records` array.
+    This is the canonical list - all records must be listed here, regardless of collection membership.
 
-    This does not mean that internally, the data is not partitioned in some way.
-    This partitioning simply is not exposed to the user.
-
-### Dataset
+### Collection
 
 | Field                   | Type          | Card. | WIP-Card |
 | ----------------------- | ------------- | ----- | -------- |
@@ -250,73 +251,13 @@ There is no difference in cardinality between the archival and in-progress stage
 | `typeOfData`            | string[]      | 1-n   | 0-n      |
 | `dateCreated`           | date          | 1     | 0-1      |
 | `dateModified`          | date          | 0-1   | 0-1      |
-| `records`               | internal_id[] | 1-n   | 0-n      |
+| `records`               | internal_id[] | 0-n   | 0-n      |
+| `collections`           | internal_id[] | 0-n   | 0-n      |
 | `languages`             | lang_string[] | 1-n   | 0-n      |
 | `additionalMaterial`    | url[]         | 0-n   | 0-n      |
 | `provenance`            | string        | 0-1   | 0-1      |
 | `keywords`              | lang_string[] | 0-n   | 0-n      |
 | `documentationMaterial` | url[]         | 0-n   | 0-n      |
-
-- `id`: A unique identifier for the dataset.  
-  This is the internal ID, which is not exposed to the user and is not persistent.
-- `pid`: A unique persistent identifier (for now ARK URL) for the dataset.
-- `name`: The title of the dataset.
-- `accessRights`: The access rights of the dataset.  
-  Literal "Full Open Access", "Open Access with Restrictions", "Embargoed Access", "Metadata only Access".
-  Access rights define to what extent the dataset data is available to access in the DPE.
-- `legalInfo`: Legal information about the dataset.  
-  Calculated from records. May be added manually (if no records present yet, or if records don't have this information).
-- `howToCite`: How to cite the dataset.  
-  If not provided, we use the standard form `<contributors> (<year>). <dataset name> [Dataset]. DaSCH. <ARK>`.
-- `description`: The description of the dataset.
-- `typeOfData`: The type of data in the dataset.  
-  Computed from the records if available and optionally added manually.
-  Literal "XML", "Text", "Image", "Video", "Audio".
-- `dateCreated`: The date when the dataset was created.
-- `dateModified`: The date when the dataset was last modified.
-- `records`: A list of record identifiers that make up the dataset.
-- `languages`: A list of languages contained in the dataset.  
-  Computed from the records if available and optionally added manually.
-- `additionalMaterial`: A list of URLs related to the collection.
-- `provenance`: the history of the dataset, if applicable.
-- `keywords`: Keywords for search purposes.
-- `documentationMaterial`: A list of URLs pointing to documentation material related to the dataset.
-
-A project can have more than one dataset if it's the project's wish and if it provides meaningful grouping of the
-records e.g., 2 researchers worked one one part of the data and the 2 other researchers on the other part of the data,
-EKWS digitizing different boxes and each box becomes a dataset.
-A record can only be part of one dataset.
-
-For each project, there will eventually be multiple default datasets:
-
-- One dataset for the entire project data.
-- One dataset for the all assets of the project.
-- One dataset for the all non-asset resources of the project.
-
-Eventually, projects should be able to create their own datasets
-according to what is meaningful within the project.
-
-### Collection
-
-| Field                   | Type          | Card. | WIP-Card. |
-| ----------------------- | ------------- | ----- | --------- |
-| `id`                    | internal_id   | 1     | 1         |
-| `pid`                   | string        | 1     | 1         |
-| `name`                  | string        | 1     | 1         |
-| `accessRights`          | accessRights  | 1     | 1         |
-| `legalInfo`             | legalInfo[]   | 1-n   | 1-n       |
-| `howToCite`             | string        | 1     | 1         |
-| `description`           | lang_string   | 0-1   | 0-1       |
-| `typeOfData`            | string[]      | 1-n   | 0-n       |
-| `dateCreated`           | date          | 1     | 0-1       |
-| `dateModified`          | date          | 0-1   | 0-1       |
-| `datasets`              | internal_id[] | 0-n   | 0-n       |
-| `collections`           | internal_id[] | 0-n   | 0-n       |
-| `languages`             | lang_string[] | 1-n   | 0-n       |
-| `additionalMaterial`    | url[]         | 0-n   | 0-n       |
-| `provenance`            | string        | 0-1   | 0-1       |
-| `keywords`              | lang_string[] | 0-n   | 0-n       |
-| `documentationMaterial` | url[]         | 0-n   | 0-n       |
 
 - `id`: A unique identifier for the collection.  
   This is the internal ID, which is not exposed to the user and is not persistent.
@@ -326,7 +267,7 @@ according to what is meaningful within the project.
   Literal "Full Open Access", "Open Access with Restrictions", "Embargoed Access", "Metadata only Access".
   Access rights define to what extent the collection data is available to access in the DPE.
 - `legalInfo`: Legal information about the collection.  
-  Calculated from datasets/sub-collections. May be added manually.
+  Calculated from records/sub-collections. May be added manually.
 - `howToCite`: How to cite the collection.  
   If not provided, we use the standard form `<contributors> (<year>). <collection name> [Collection]. DaSCH. <ARK>`.
 - `description`: The description of the collection.
@@ -335,13 +276,13 @@ according to what is meaningful within the project.
   Literal "XML", "Text", "Image", "Video", "Audio".
 - `dateCreated`: The date when the collection was created.
 - `dateModified`: The date when the collection was last modified.
-- `datasets`: A list of dataset identifiers that make up the collection.
-- `collections`: A list of collection identifiers that make up the collection, if nested.
+- `records`: A list of record identifiers that make up the collection.
+- `collections`: A list of nested collection identifiers for hierarchical collections.
 - `languages`: A list of languages contained in the collection.  
   Computed from the records if available and optionally added manually.
 - `additionalMaterial`: A list of URLs related to the collection.
-- `provenance`: The provenance of the collection.
-- `keywords`: A list of keywords describing the collection.
+- `provenance`: The history of the collection, if applicable.
+- `keywords`: Keywords for search purposes.
 - `documentationMaterial`: A list of URLs pointing to documentation material related to the collection.
 
 ### Record
@@ -501,7 +442,7 @@ A persistent identifier. May be an ARK or a DOI.
 | `pid`  | pid    | 0-1   |
 
 - `text`: The text of the publication.
-- `pid`: A URL to the publication, if e.g. a DOI is available.
+- `pid`: A URL to the publication, if e.g. a DOI is available.
 
 ### Address
 
@@ -571,6 +512,75 @@ Modelled according to the [OpenAIRE guidelines](https://guidelines.openaire.eu/e
 An internal ID (`internal_id`) is a unique identifier for an entity within the system.
 It is not intentionally exposed to the user, and will be presented as a string.
 
+## OpenAIRE Mapping
+
+Our metadata model includes mappings to the OpenAIRE Guidelines for Data Archives, 
+which are based on the DataCite Metadata Schema. Currently, only Projects are exposed as OpenAIRE Datasets.
+
+### OpenAIRE Fields
+
+The OpenAIRE Guidelines specify 18 fields with the following cardinalities:
+
+- M = Mandatory
+- R = Recommended  
+- MA = Mandatory if Applicable
+- O = Optional
+
+1. **Identifier (M)**
+2. **Creator (M)** 
+3. **Title (M)**
+4. **Publisher (M)**
+5. **PublicationYear (M)**
+6. **Subject (R)**
+7. **Contributor (MA/O)**
+8. **Date (M)**
+9. **Language (R)**
+10. **ResourceType (R)**
+11. **AlternateIdentifier (O)**
+12. **RelatedIdentifier (MA)**
+13. **Size (O)**
+14. **Format (O)**
+15. **Version (O)**
+16. **Rights (MA)**
+17. **Description (MA)**
+18. **GeoLocation (O)**
+
+### Project → OpenAIRE Dataset Mapping
+
+| Project Field                      | OpenAIRE Field              | Mapping Notes                                 |
+| ---------------------------------- | --------------------------- | --------------------------------------------- |
+| `pid`                              | **Identifier (M)**          | Direct mapping                                |
+| `attributions` (TBD roles)         | **Creator (M)**             | ❓ Which roles count as creators?              |
+| `name`                             | **Title (M)**               | Direct mapping                                |
+| Fixed "DaSCH"                      | **Publisher (M)**           | Static value                                  |
+| TBD date field                     | **PublicationYear (M)**     | ❓ startDate or endDate year? Project-specific |
+| `keywords`                         | **Subject (R)**             | Direct mapping                                |
+| `attributions` (non-creator roles) | **Contributor (MA/O)**      | Remaining attributions                        |
+| `startDate`, `endDate`             | **Date (M)**                | Multiple dates                                |
+| Computed from records              | **Language (R)**            | Aggregated from project records               |
+| Fixed "Dataset"                    | **ResourceType (R)**        | Static value for projects                     |
+| `shortcode`                        | **AlternateIdentifier (O)** | DSP shortcode as alternate ID                 |
+| `collections` refs                 | **RelatedIdentifier (MA)**  | Collection relationships                      |
+| Computed from records              | **Size (O)**                | Aggregated from project records               |
+| Computed from records              | **Format (O)**              | Aggregated typeOfData from records            |
+| Not applicable                     | **Version (O)**             | Projects don't have versions                  |
+| `legalInfo`                        | **Rights (MA)**             | Direct mapping                                |
+| `description`                      | **Description (MA)**        | Direct mapping                                |
+| `spatialCoverage`                  | **GeoLocation (O)**         | Direct mapping                                |
+
+### Open Questions
+
+1. **PublicationYear mapping**: Projects have startDate/endDate, but OpenAIRE expects PublicationYear. 
+   This may differ project to project - needs case-by-case decision.
+2. **Creator mapping**: Which attribution roles should map to OpenAIRE Creator vs Contributor? 
+   May be more than just "author" roles that count as creators.
+3. **Future consideration**: Should Collections also be exposed as OpenAIRE Datasets in addition to Projects?
+4. Of the properties we formerly had on Dataset, should we add the following to Project?
+   - `typeOfData`
+   - `languages`
+   - `provenance`
+   - something like publication date (which may not be the same as project start or end date)
+
 ## Later
 
 - Provenance:
@@ -580,6 +590,8 @@ It is not intentionally exposed to the user, and will be presented as a string.
     - could also track version history in the archive (predecessor)
 - Model Person and Organization in a re-useable fashion. This should include making stuff like affiliation time/project bound
 - Alongside keywords, we could also have categories. Where keywords are free text, categories are from a controlled vocabulary.
+- Model attribution in terms of DataCite contribution types.
+- Model TypeOfData in terms of DataCite's resource types.
 
 ## JSON Schema
 
@@ -673,7 +685,7 @@ a draft of the data model as JSON Schema is on [github](https://github.com/dasch
       }
     ],
     "dataManagementPlan": "https://example.com/dmp",
-    "datasets": ["dataset-0001", "dataset-0002"],
+    "collections": ["collection-0001", "collection-0002"],
     "records": ["record-0001", "record-0002"],
     "keywords": [
       {
@@ -739,8 +751,7 @@ a draft of the data model as JSON Schema is on [github](https://github.com/dasch
 }
 ```
 
-### Dataset
-
+### Collection
 
 ```json
 {
@@ -757,9 +768,9 @@ a draft of the data model as JSON Schema is on [github](https://github.com/dasch
       ]
   },
   "metadata": {
-    "id": "dataset-0001",
-    "pid": "https://ark.dasch.swiss/ark:/72163/1/dataset-0001",
-    "name": "Dataset Name",
+    "id": "collection-0001",
+    "pid": "https://ark.dasch.swiss/ark:/72163/1/collection-0001",
+    "name": "Collection Name",
     "accessRights": "Full Open Access",
     "legalInfo": [
       {
@@ -770,15 +781,16 @@ a draft of the data model as JSON Schema is on [github](https://github.com/dasch
         }
       }
     ],
-    "howToCite": "Dataset Name (2025). [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/dataset-0001",
+    "howToCite": "Collection Name (2025). [Collection]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/collection-0001",
     "description": {
-      "en": "Dataset Description",
-      "de": "Datensatzbeschreibung"
+      "en": "Collection Description",
+      "de": "Sammlungsbeschreibung"
     },
     "typeOfData": ["XML", "Text"],
     "dateCreated": "2023-01-01",
     "dateModified": "2023-01-02",
     "records": ["record-0001", "record-0002"],
+    "collections": ["collection-0002"],
     "languages": [
       {
         "en": "English",
@@ -786,7 +798,7 @@ a draft of the data model as JSON Schema is on [github](https://github.com/dasch
       }
     ],
     "additionalMaterial": ["https://example.com/additional-material"],
-    "provenance": "Dataset provenance information.",
+    "provenance": "Collection provenance information.",
     "keywords": [
       {
         "en": "Keyword 1",
