@@ -1,4 +1,5 @@
 FROM rust:1-slim-bookworm AS builder-rs
+RUN apt-get update && apt-get install -y pkg-config libssl-dev && rm -rf /var/lib/apt/lists/*
 WORKDIR /dsp-meta
 COPY . .
 RUN cargo install --path ./
