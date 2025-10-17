@@ -49,8 +49,8 @@ behind the data.
 If you are interested in viewing the metadata in human-readable form,
 you can visit the [DSP Metadata Browser](https://meta.dasch.swiss).
 
-If you are interested in re-using our metadata, you can find extensive documentation [here](data/current-datamodel.md),
-and the work-in-progress documentation of our future data-model [here](data/future-datamodel.md).
+If you are interested in re-using our metadata, you can find extensive documentation [here](data/v1-datamodel.md),
+and the work-in-progress documentation of our v2 data model [here](data/v2-datamodel.md).
 
 The metadata itself can be found [here](https://github.com/dasch-swiss/dsp-meta/tree/main/data/json)
 or requested over the API as described [here](data/api.md).

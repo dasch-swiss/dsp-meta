@@ -1,8 +1,8 @@
-# Future Data Model
+# Data Model v2
 
 !!! warning
-    This document does _not_ represent the current state of the metadata model.  
-    It is a working document for planned upcoming changes to the metadata model.
+    This document describes the v2 metadata model, which is not yet implemented.
+    It is a working document for planned upcoming changes from v1 to v2.
 
 !!! note
     This model is an idealized version of the metadata model.
