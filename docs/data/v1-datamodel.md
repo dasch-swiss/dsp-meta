@@ -1,4 +1,4 @@
-# Current Data Model
+# Data Model v1
 
 All metadata are modelled according to the model as described in the following.
 
