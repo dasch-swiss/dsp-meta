@@ -9,6 +9,10 @@ use dsp_meta::domain::metadata_repository::MetadataRepository;
 use dsp_meta::domain::metadata_service::MetadataService;
 use pid1::Pid1Settings;
 use tokio::net::TcpListener;
+use opentelemetry::trace::TracerProvider as _;
+use opentelemetry::KeyValue;
+use opentelemetry_sdk::trace::TracerProvider;
+use opentelemetry_sdk::Resource;
 use tracing::info;
 use tracing_subscriber::prelude::*;
 use tracing_subscriber::{fmt, EnvFilter};
@@ -22,16 +26,38 @@ fn main() {
         .launch()
         .expect("pid1 launch");
 
+    // Initialize OpenTelemetry tracer provider
+    // Note: In opentelemetry_sdk 0.26, resources are configured via config()
+    let resource = Resource::new(vec![KeyValue::new("service.name", "dsp-meta")]);
+    let tracer_provider = TracerProvider::builder()
+        .with_config(opentelemetry_sdk::trace::Config::default().with_resource(resource))
+        .build();
+
+    // Set the global tracer provider
+    opentelemetry::global::set_tracer_provider(tracer_provider.clone());
+
+    // Set W3C TraceContext propagator as the global propagator
+    // This enables extracting trace context from traceparent/tracestate headers
+    opentelemetry::global::set_text_map_propagator(
+        opentelemetry_sdk::propagation::TraceContextPropagator::new(),
+    );
+
+    // Create the OpenTelemetry tracing layer
+    let tracer = tracer_provider.tracer("dsp-meta");
+    let opentelemetry_layer = tracing_opentelemetry::layer().with_tracer(tracer);
+
     // configure tracing library at runtime
     match env::var("DSP_META_LOG_FMT") {
         Ok(value) if value.to_lowercase() == "json" => {
             tracing_subscriber::registry()
+                .with(opentelemetry_layer)
                 .with(fmt::layer().event_format(fmt::format().json()))
                 .with(EnvFilter::from_env("DSP_META_LOG_FILTER"))
                 .init();
         }
         _ => {
             tracing_subscriber::registry()
+                .with(opentelemetry_layer)
                 .with(fmt::layer().event_format(fmt::format().compact()))
                 .with(EnvFilter::from_env("DSP_META_LOG_FILTER"))
                 .init();

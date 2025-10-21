@@ -3,6 +3,7 @@ use std::time::Duration;
 
 use axum::body::Bytes;
 use axum::http::{HeaderMap, Request};
+use axum::middleware;
 use axum::response::Response;
 use axum::routing::get;
 use axum::{http, Router};
@@ -14,6 +15,7 @@ use tower_http::trace::TraceLayer;
 use tracing::{error, info_span, warn, Span};
 
 use crate::api::handler::{health, robots_txt, sitemap_xml, v1};
+use crate::api::middleware::opentelemetry::extract_trace_context;
 use crate::app_state::AppState;
 
 /// Having a function that produces our router makes it easy to call it from tests
@@ -78,6 +80,10 @@ pub fn router(shared_state: Arc<AppState>) -> Router {
                     |_error: ServerErrorsFailureClass, _latency: Duration, _span: &Span| (),
                 ),
         )
+        // Extract OpenTelemetry trace context from incoming requests
+        // This middleware runs BEFORE TraceLayer (layers execute in reverse order)
+        // Enables distributed tracing by continuing traces from reverse proxy
+        .layer(middleware::from_fn(extract_trace_context))
 }
 
 #[cfg(test)]
