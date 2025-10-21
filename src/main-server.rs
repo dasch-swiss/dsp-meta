@@ -7,12 +7,12 @@ use config::Config;
 use dsp_meta::app_state::AppState;
 use dsp_meta::domain::metadata_repository::MetadataRepository;
 use dsp_meta::domain::metadata_service::MetadataService;
-use pid1::Pid1Settings;
-use tokio::net::TcpListener;
-use opentelemetry::KeyValue;
 use opentelemetry::trace::TracerProvider as _;
+use opentelemetry::KeyValue;
 use opentelemetry_otlp::WithExportConfig;
 use opentelemetry_sdk::{runtime, Resource};
+use pid1::Pid1Settings;
+use tokio::net::TcpListener;
 use tracing::info;
 use tracing_subscriber::prelude::*;
 use tracing_subscriber::{fmt, EnvFilter};
@@ -46,12 +46,11 @@ fn main() {
             .with_exporter(
                 opentelemetry_otlp::new_exporter()
                     .tonic()
-                    .with_endpoint(otlp_endpoint)
+                    .with_endpoint(otlp_endpoint),
             )
-            .with_trace_config(
-                opentelemetry_sdk::trace::Config::default()
-                    .with_resource(Resource::new(vec![KeyValue::new("service.name", "dsp-meta")]))
-            )
+            .with_trace_config(opentelemetry_sdk::trace::Config::default().with_resource(
+                Resource::new(vec![KeyValue::new("service.name", "dsp-meta")]),
+            ))
             .install_batch(runtime::Tokio)
             .unwrap_or_else(|e| {
                 eprintln!("Failed to initialize OTLP exporter: {}", e);

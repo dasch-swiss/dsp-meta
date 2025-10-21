@@ -21,7 +21,8 @@ impl<'a> Extractor for HeaderExtractor<'a> {
 ///
 /// This middleware:
 /// - Extracts W3C TraceContext (traceparent/tracestate headers) from the request
-/// - Establishes the extracted context as the parent for all spans created during request processing
+/// - Establishes the extracted context as the parent for all spans created during request
+///   processing
 /// - Falls back gracefully when no trace context is present (creates new root spans)
 ///
 /// In production with a reverse proxy, the proxy injects traceparent headers and this middleware

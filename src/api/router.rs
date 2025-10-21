@@ -12,7 +12,6 @@ use tower_http::cors::{Any, CorsLayer};
 use tower_http::services::{ServeDir, ServeFile};
 use tower_http::trace::TraceLayer;
 use tracing::{error, info_span, warn, Span};
-
 use tracing_opentelemetry::OpenTelemetrySpanExt;
 
 use crate::api::handler::{health, robots_txt, sitemap_xml, v1};
