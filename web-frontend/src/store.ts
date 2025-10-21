@@ -47,7 +47,11 @@ export async function getProjectsMetadata(
 
   navigate(`/${route}`);
 
-  await fetch(`/api/v1/${route}`)
+  await fetch(`/api/v1/${route}`, {
+      headers: {
+        'DSP-CLIENT': 'dsp-meta-frontend-v1'
+      }
+    })
     .then((r) => {
       const totalCount = parseInt(r.headers.get('X-Total-Count'));
       let totalPages = Math.floor(totalCount / baseResultsRange[1]);

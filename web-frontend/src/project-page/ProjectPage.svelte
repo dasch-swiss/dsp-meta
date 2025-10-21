@@ -65,7 +65,11 @@
   const getProjectMetadata = async () => {
     const projectID = window.location.pathname.split('/')[2];
 
-    const res = await fetch(`/api/v1/projects/${projectID}`);
+    const res = await fetch(`/api/v1/projects/${projectID}`, {
+      headers: {
+        'DSP-CLIENT': 'dsp-meta-frontend-v1'
+      }
+    });
     const metadata: Metadata = await res.json();
 
     projectMetadata.set(metadata);
