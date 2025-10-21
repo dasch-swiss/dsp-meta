@@ -25,7 +25,7 @@ graph LR
 
 The trace flow:
 
-1. **OpenTelemetry Middleware** ([src/api/middleware/opentelemetry.rs](../../src/api/middleware/opentelemetry.rs))
+1. **OpenTelemetry Middleware** (`src/api/middleware/opentelemetry.rs`)
    extracts W3C TraceContext from HTTP headers
 2. **TraceLayer** creates an `http_request` span as a child of the extracted context
 3. **Handler Functions** with `#[instrument]` create child spans automatically
