@@ -25,7 +25,8 @@ graph LR
 
 The trace flow:
 
-1. **OpenTelemetry Middleware** ([src/api/middleware/opentelemetry.rs](../../src/api/middleware/opentelemetry.rs)) extracts W3C TraceContext from HTTP headers
+1. **OpenTelemetry Middleware** ([src/api/middleware/opentelemetry.rs](../../src/api/middleware/opentelemetry.rs))
+   extracts W3C TraceContext from HTTP headers
 2. **TraceLayer** creates an `http_request` span as a child of the extracted context
 3. **Handler Functions** with `#[instrument]` create child spans automatically
 4. **OTLP Exporter** (optional) sends spans to observability backends
@@ -119,7 +120,7 @@ The easiest way to test with observability is using the dedicated `just` targets
 
 After running any of these commands, you should see:
 
-```
+```text
 Observability stack started:
   - Grafana: http://localhost:3001
   - Tempo: http://localhost:3200
@@ -218,7 +219,8 @@ In the Grafana trace view:
 - **Attributes**: HTTP method, URI, status code, latency, etc.
 
 !!! success "Verifying Trace Propagation"
-    When you send a request with a `traceparent` header, the Trace ID in Grafana should match the ID you sent. This confirms that trace context propagation is working correctly.
+    When you send a request with a `traceparent` header, the Trace ID in Grafana should match the ID you sent.
+    This confirms that trace context propagation is working correctly.
 
 ## Span Propagation
 
@@ -226,12 +228,13 @@ In the Grafana trace view:
 
 The `traceparent` header follows the [W3C TraceContext](https://www.w3.org/TR/trace-context/) standard:
 
-```
+```text
 traceparent: 00-{trace-id}-{parent-span-id}-{trace-flags}
 ```
 
 Example:
-```
+
+```text
 traceparent: 00-0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331-01
 ```
 
@@ -372,7 +375,8 @@ let tracer_provider = TracerProvider::builder()
 ### Security
 
 !!! warning "Endpoint Security"
-    Ensure the OTLP endpoint is secured with authentication when exposing to production networks. The current implementation sends traces without authentication.
+    Ensure the OTLP endpoint is secured with authentication when exposing to production networks.
+    The current implementation sends traces without authentication.
 
 ## Available Just Commands
 

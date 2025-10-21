@@ -145,3 +145,10 @@ markdownlint:
     -v $PWD:/workdir ghcr.io/igorshubovych/markdownlint-cli:latest \
     --config .markdownlint.yml \
     "docs/**/*.md"
+
+markdownlint-fix:
+    docker run \
+    -v $PWD:/workdir ghcr.io/igorshubovych/markdownlint-cli:latest \
+    --config .markdownlint.yml \
+    --fix \
+    "docs/**/*.md"

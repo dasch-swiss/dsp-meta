@@ -1,11 +1,7 @@
 # Config file for https://github.com/igorshubovych/markdownlint-cli
 
 # MD007/ul-indent - Unordered list indentation
-MD007:
-    # Whether to indent the first level of the list
-    start_indented: false
-    # By how many spaces every next level must be indented. The default of 2 is not compatible with mkdocs!
-    indent: 4
+MD007: false
 
 # MD009/no-trailing-spaces - Trailing spaces
 MD009: false
@@ -36,7 +32,11 @@ MD024:
 # MD045/no-alt-text - Images should have alternate text (alt text)
 MD045: false
 
+# MD040/fenced-code-language - Fenced code blocks should have a language specified
+MD040: false
+
 # MD046/code-block-style - Code block style (conflicts with admonitions)
 MD046: false
+
 # MD059/desriptive-link-text - Link text should be descriptive
 MD059: false

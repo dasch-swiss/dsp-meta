@@ -9,9 +9,9 @@ The back-end of the DSP Metadata Browser is built with Rust using the [Axum](htt
 - **HTTP Server** ([src/main-server.rs](../../src/main-server.rs)): Entry point using Axum framework with async Tokio runtime
 - **API Router** ([src/api/router.rs](../../src/api/router.rs)): HTTP routing, CORS, and tracing middleware
 - **Domain Layer** ([src/domain/](../../src/domain/)): Business logic and data access
-  - `metadata_service.rs`: Service layer for metadata operations
-  - `metadata_repository.rs`: Data access for JSON metadata files
-  - `model/`: Domain models and validation
+    - `metadata_service.rs`: Service layer for metadata operations
+    - `metadata_repository.rs`: Data access for JSON metadata files
+    - `model/`: Domain models and validation
 - **Handlers** ([src/api/handler/](../../src/api/handler/)): HTTP request handlers organized by API version
 
 ### Technology Stack
@@ -26,7 +26,8 @@ The back-end of the DSP Metadata Browser is built with Rust using the [Axum](htt
 
 ### Metadata Management
 
-The backend serves project metadata stored as JSON files. Each project is identified by a unique shortcode and validated against JSON schemas defined in `resources/`.
+The backend serves project metadata stored as JSON files. Each project is identified by a unique shortcode and
+validated against JSON schemas defined in `resources/`.
 
 ### API Endpoints
 
