@@ -11,7 +11,8 @@ use pid1::Pid1Settings;
 use tokio::net::TcpListener;
 use opentelemetry::trace::TracerProvider as _;
 use opentelemetry::KeyValue;
-use opentelemetry_sdk::trace::TracerProvider;
+use opentelemetry_otlp::WithExportConfig;
+use opentelemetry_sdk::trace::{BatchSpanProcessor, TracerProvider};
 use opentelemetry_sdk::Resource;
 use tracing::info;
 use tracing_subscriber::prelude::*;
@@ -26,12 +27,47 @@ fn main() {
         .launch()
         .expect("pid1 launch");
 
+    // Manually create a tokio runtime (as opposed to using the macro)
+    // We need to do this before initializing OpenTelemetry, as the OTLP exporter
+    // requires a runtime context
+    let runtime = tokio::runtime::Builder::new_multi_thread()
+        .enable_all()
+        .build()
+        .unwrap();
+
+    // Initialize OpenTelemetry within the runtime context
+    let _guard = runtime.enter();
+
     // Initialize OpenTelemetry tracer provider
-    // Note: In opentelemetry_sdk 0.26, resources are configured via config()
     let resource = Resource::new(vec![KeyValue::new("service.name", "dsp-meta")]);
-    let tracer_provider = TracerProvider::builder()
-        .with_config(opentelemetry_sdk::trace::Config::default().with_resource(resource))
-        .build();
+
+    // Build tracer provider with optional OTLP exporter
+    let mut tracer_provider_builder = TracerProvider::builder()
+        .with_config(opentelemetry_sdk::trace::Config::default().with_resource(resource));
+
+    // If OTLP endpoint is configured, add batch exporter
+    if let Ok(otlp_endpoint) = env::var("DSP_META_OTLP_ENDPOINT") {
+        eprintln!("Configuring OTLP exporter with endpoint: {}", otlp_endpoint);
+
+        match opentelemetry_otlp::new_exporter()
+            .tonic()
+            .with_endpoint(otlp_endpoint)
+            .build_span_exporter()
+        {
+            Ok(exporter) => {
+                let batch_processor = BatchSpanProcessor::builder(exporter, opentelemetry_sdk::runtime::Tokio).build();
+                tracer_provider_builder = tracer_provider_builder.with_span_processor(batch_processor);
+                eprintln!("OTLP exporter configured successfully");
+            }
+            Err(e) => {
+                eprintln!("Failed to initialize OTLP exporter: {}", e);
+            }
+        }
+    } else {
+        eprintln!("No OTLP endpoint configured (DSP_META_OTLP_ENDPOINT not set). Traces will only be logged locally.");
+    }
+
+    let tracer_provider = tracer_provider_builder.build();
 
     // Set the global tracer provider
     opentelemetry::global::set_tracer_provider(tracer_provider.clone());
@@ -64,12 +100,8 @@ fn main() {
         }
     }
 
-    // Manually create a tokio runtime (as opposed to using the macro)
-    tokio::runtime::Builder::new_multi_thread()
-        .enable_all()
-        .build()
-        .unwrap()
-        .block_on(init_server())
+    // Run the server
+    runtime.block_on(init_server())
 }
 
 async fn init_server() {

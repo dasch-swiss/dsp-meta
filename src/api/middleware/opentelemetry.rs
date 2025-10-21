@@ -3,7 +3,6 @@ use axum::http::HeaderMap;
 use axum::middleware::Next;
 use axum::response::Response;
 use opentelemetry::propagation::Extractor;
-use tracing_opentelemetry::OpenTelemetrySpanExt;
 
 /// Extractor adapter for Axum's HeaderMap to work with OpenTelemetry's propagation API
 struct HeaderExtractor<'a>(&'a HeaderMap);
@@ -35,11 +34,8 @@ pub async fn extract_trace_context(request: Request, next: Next) -> Response {
         propagator.extract(&HeaderExtractor(request.headers()))
     });
 
-    // Set the extracted context as the parent for the current tracing span
-    // This ensures all subsequent spans created during this request become children
-    // of the extracted trace context
-    let current_span = tracing::Span::current();
-    current_span.set_parent(parent_context);
-
+    // Attach the context for the duration of the request
+    // This ensures any spans created during request processing use this context
+    let _guard = parent_context.attach();
     next.run(request).await
 }

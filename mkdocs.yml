@@ -11,6 +11,7 @@ nav:
           - Overview: code/overview.md
           - Front End: code/front-end.md
           - Back End: code/back-end.md
+          - Observability & Tracing: code/observability.md
 
 plugins:
     - include-markdown
