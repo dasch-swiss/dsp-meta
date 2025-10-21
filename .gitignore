@@ -9,6 +9,7 @@ web-frontend/.yarn/install-state.gz
 
 /target
 /.direnv
+.envrc
 
 # virtual environment for testing docs locally
 .venv
