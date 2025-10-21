@@ -11,7 +11,9 @@ use tower_http::classify::ServerErrorsFailureClass;
 use tower_http::cors::{Any, CorsLayer};
 use tower_http::services::{ServeDir, ServeFile};
 use tower_http::trace::TraceLayer;
-use tracing::{error, info_span, warn, Span};
+use tracing::{error, event, info_span, warn, Level, Span};
+
+use tracing_opentelemetry::OpenTelemetrySpanExt;
 
 use crate::api::handler::{health, robots_txt, sitemap_xml, v1};
 use crate::app_state::AppState;
@@ -70,16 +72,45 @@ pub fn router(shared_state: Arc<AppState>) -> Router {
                         "http_request",
                         method = ?request.method(),
                         uri = request.uri().to_string(),
+                        dsp_client = tracing::field::Empty,
+                        referer = tracing::field::Empty,
+                        origin = tracing::field::Empty,
                         status_code = tracing::field::Empty,
                         latency = tracing::field::Empty,
                     );
 
+                    request
+                        .headers()
+                        .get("DSP-CLIENT")
+                        .and_then(|h| h.to_str().ok())
+                        .map(|client| span.record("dsp_client", client));
+
+                    request
+                        .headers()
+                        .get("Referer")
+                        .and_then(|h| h.to_str().ok())
+                        .map(|referer| span.record("referer", referer));
+
+                    request
+                        .headers()
+                        .get("Origin")
+                        .and_then(|h| h.to_str().ok())
+                        .map(|origin| span.record("origin", origin));
+
                     // Set the parent context on the newly created span
-                    use tracing_opentelemetry::OpenTelemetrySpanExt;
                     span.set_parent(parent_cx);
                     span
                 })
-                .on_request(|_request: &Request<_>, _span: &Span| ())
+                .on_request(|request: &Request<_>, span: &Span| {
+                    if request.headers().get("DSP-CLIENT").is_none() {
+                        warn!(
+                            parent: span,
+                            "Client did not identify itself via DSP-CLIENT header: {} {}",
+                            request.method(),
+                            request.uri()
+                        );
+                    }
+                })
                 .on_response(|response: &Response, latency: Duration, span: &Span| {
                     span.record("status_code", response.status().as_u16());
                     span.record("latency", latency.as_millis());
@@ -123,7 +154,7 @@ mod tests {
 
         let shared_state = Arc::new(AppState {
             metadata_service: MetadataService::new(MetadataRepository::from_path(
-                &data_dir.as_path(),
+                data_dir.as_path(),
             )),
             public_dir: "".to_string(),
             version: "",
@@ -156,7 +187,7 @@ mod tests {
 
         let shared_state = Arc::new(AppState {
             metadata_service: MetadataService::new(MetadataRepository::from_path(
-                &data_dir.as_path(),
+                data_dir.as_path(),
             )),
             public_dir: "".to_string(),
             version: "",
