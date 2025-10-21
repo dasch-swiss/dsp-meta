@@ -9,11 +9,10 @@ use dsp_meta::domain::metadata_repository::MetadataRepository;
 use dsp_meta::domain::metadata_service::MetadataService;
 use pid1::Pid1Settings;
 use tokio::net::TcpListener;
-use opentelemetry::trace::TracerProvider as _;
 use opentelemetry::KeyValue;
+use opentelemetry::trace::TracerProvider as _;
 use opentelemetry_otlp::WithExportConfig;
-use opentelemetry_sdk::trace::{BatchSpanProcessor, TracerProvider};
-use opentelemetry_sdk::Resource;
+use opentelemetry_sdk::{runtime, Resource};
 use tracing::info;
 use tracing_subscriber::prelude::*;
 use tracing_subscriber::{fmt, EnvFilter};
@@ -38,39 +37,30 @@ fn main() {
     // Initialize OpenTelemetry within the runtime context
     let _guard = runtime.enter();
 
-    // Initialize OpenTelemetry tracer provider
-    let resource = Resource::new(vec![KeyValue::new("service.name", "dsp-meta")]);
-
-    // Build tracer provider with optional OTLP exporter
-    let mut tracer_provider_builder = TracerProvider::builder()
-        .with_config(opentelemetry_sdk::trace::Config::default().with_resource(resource));
-
-    // If OTLP endpoint is configured, add batch exporter
-    if let Ok(otlp_endpoint) = env::var("DSP_META_OTLP_ENDPOINT") {
+    // Initialize tracer provider with optional OTLP exporter
+    let tracer_provider = if let Ok(otlp_endpoint) = env::var("DSP_META_OTLP_ENDPOINT") {
         eprintln!("Configuring OTLP exporter with endpoint: {}", otlp_endpoint);
 
-        match opentelemetry_otlp::new_exporter()
-            .tonic()
-            .with_endpoint(otlp_endpoint)
-            .build_span_exporter()
-        {
-            Ok(exporter) => {
-                let batch_processor = BatchSpanProcessor::builder(exporter, opentelemetry_sdk::runtime::Tokio).build();
-                tracer_provider_builder = tracer_provider_builder.with_span_processor(batch_processor);
-                eprintln!("OTLP exporter configured successfully");
-            }
-            Err(e) => {
+        opentelemetry_otlp::new_pipeline()
+            .tracing()
+            .with_exporter(
+                opentelemetry_otlp::new_exporter()
+                    .tonic()
+                    .with_endpoint(otlp_endpoint)
+            )
+            .with_trace_config(
+                opentelemetry_sdk::trace::Config::default()
+                    .with_resource(Resource::new(vec![KeyValue::new("service.name", "dsp-meta")]))
+            )
+            .install_batch(runtime::Tokio)
+            .unwrap_or_else(|e| {
                 eprintln!("Failed to initialize OTLP exporter: {}", e);
-            }
-        }
+                opentelemetry_sdk::trace::TracerProvider::default()
+            })
     } else {
         eprintln!("No OTLP endpoint configured (DSP_META_OTLP_ENDPOINT not set). Traces will only be logged locally.");
-    }
-
-    let tracer_provider = tracer_provider_builder.build();
-
-    // Set the global tracer provider
-    opentelemetry::global::set_tracer_provider(tracer_provider.clone());
+        opentelemetry_sdk::trace::TracerProvider::default()
+    };
 
     // Set W3C TraceContext propagator as the global propagator
     // This enables extracting trace context from traceparent/tracestate headers

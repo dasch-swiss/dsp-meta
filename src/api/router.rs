@@ -11,7 +11,7 @@ use tower_http::classify::ServerErrorsFailureClass;
 use tower_http::cors::{Any, CorsLayer};
 use tower_http::services::{ServeDir, ServeFile};
 use tower_http::trace::TraceLayer;
-use tracing::{error, event, info_span, warn, Level, Span};
+use tracing::{error, info_span, warn, Span};
 
 use tracing_opentelemetry::OpenTelemetrySpanExt;
 
