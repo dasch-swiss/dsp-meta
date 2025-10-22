@@ -55,7 +55,7 @@ serve-frontend:
 
 # Start observability stack (Grafana + Tempo)
 observability-up:
-    docker-compose -f docker-compose.observability.yml up -d
+    docker compose -f docker-compose.observability.yml up -d
     @echo "Observability stack started:"
     @echo "  - Grafana: http://localhost:3001"
     @echo "  - Tempo: http://localhost:3200"
@@ -63,11 +63,11 @@ observability-up:
 
 # Stop observability stack
 observability-down:
-    docker-compose -f docker-compose.observability.yml down
+    docker compose -f docker-compose.observability.yml down
 
 # Stop observability stack and remove volumes (deletes traces)
 observability-clean:
-    docker-compose -f docker-compose.observability.yml down -v
+    docker compose -f docker-compose.observability.yml down -v
 
 # Run dsp-meta with observability enabled
 serve-with-observability: observability-up
