@@ -7,6 +7,8 @@ use axum::response::Response;
 use axum::routing::get;
 use axum::{http, Router};
 use log::info;
+use opentelemetry::global::get_text_map_propagator;
+use opentelemetry::propagation::Extractor;
 use tower_http::classify::ServerErrorsFailureClass;
 use tower_http::cors::{Any, CorsLayer};
 use tower_http::services::{ServeDir, ServeFile};
@@ -20,7 +22,7 @@ use crate::app_state::AppState;
 /// Extractor adapter for Axum's HeaderMap to work with OpenTelemetry's propagation API
 struct HeaderExtractor<'a>(&'a HeaderMap);
 
-impl<'a> opentelemetry::propagation::Extractor for HeaderExtractor<'a> {
+impl<'a> Extractor for HeaderExtractor<'a> {
     fn get(&self, key: &str) -> Option<&str> {
         self.0.get(key).and_then(|v| v.to_str().ok())
     }
@@ -65,7 +67,7 @@ pub fn router(shared_state: Arc<AppState>) -> Router {
             TraceLayer::new_for_http()
                 .make_span_with(|request: &Request<_>| {
                     // Extract parent context from request headers for span creation
-                    let parent_cx = opentelemetry::global::get_text_map_propagator(|propagator| {
+                    let parent_cx = get_text_map_propagator(|propagator| {
                         propagator.extract(&HeaderExtractor(request.headers()))
                     });
 

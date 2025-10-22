@@ -9,6 +9,8 @@ use dsp_meta::domain::metadata_repository::MetadataRepository;
 use dsp_meta::domain::metadata_service::MetadataService;
 use opentelemetry::trace::TracerProvider as _;
 use opentelemetry::KeyValue;
+use opentelemetry_sdk::propagation::TraceContextPropagator;
+use opentelemetry_sdk::trace::{Config as TraceConfig, TracerProvider};
 use opentelemetry_sdk::{runtime, Resource};
 use pid1::Pid1Settings;
 use tokio::net::TcpListener;
@@ -42,24 +44,22 @@ fn main() {
         opentelemetry_otlp::new_pipeline()
             .tracing()
             .with_exporter(opentelemetry_otlp::new_exporter().tonic())
-            .with_trace_config(opentelemetry_sdk::trace::Config::default().with_resource(
-                Resource::new(vec![KeyValue::new("service.name", "dsp-meta")]),
-            ))
+            .with_trace_config(TraceConfig::default().with_resource(Resource::new(vec![
+                KeyValue::new("service.name", "dsp-meta"),
+            ])))
             .install_batch(runtime::Tokio)
             .unwrap_or_else(|e| {
                 eprintln!("Failed to initialize OTLP exporter: {}", e);
-                opentelemetry_sdk::trace::TracerProvider::default()
+                TracerProvider::default()
             })
     } else {
         eprintln!("No OTLP endpoint configured (OTEL_EXPORTER_OTLP_ENDPOINT not set). Traces will only be logged locally.");
-        opentelemetry_sdk::trace::TracerProvider::default()
+        TracerProvider::default()
     };
 
     // Set W3C TraceContext propagator as the global propagator
     // This enables extracting trace context from traceparent/tracestate headers
-    opentelemetry::global::set_text_map_propagator(
-        opentelemetry_sdk::propagation::TraceContextPropagator::new(),
-    );
+    opentelemetry::global::set_text_map_propagator(TraceContextPropagator::new());
 
     // Create the OpenTelemetry tracing layer
     let tracer = tracer_provider.tracer("dsp-meta");
