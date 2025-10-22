@@ -15,22 +15,20 @@ The backend uses [OpenTelemetry](https://opentelemetry.io/) with the Rust tracin
 
 ```mermaid
 graph LR
-    A[Reverse Proxy] -->|traceparent header| B[OpenTelemetry Middleware]
-    B --> C[TraceLayer]
-    C --> D[Handler Functions]
-    D --> E[OTLP Exporter]
-    E --> F[Tempo/Jaeger/etc]
-    F --> G[Grafana]
+    A[Reverse Proxy] -->|traceparent header| B[TraceLayer]
+    B --> C[Handler Functions]
+    C --> D[OTLP Exporter]
+    D --> E[Tempo/Jaeger/etc]
+    E --> F[Grafana]
 ```
 
 The trace flow:
 
-1. **OpenTelemetry Middleware** (`src/api/middleware/opentelemetry.rs`)
-   extracts W3C TraceContext from HTTP headers
-2. **TraceLayer** creates an `http_request` span as a child of the extracted context
-3. **Handler Functions** with `#[instrument]` create child spans automatically
-4. **OTLP Exporter** (optional) sends spans to observability backends
-5. **Grafana/Tempo** visualize the distributed traces
+1. **TraceLayer** (`src/api/router.rs`) extracts W3C TraceContext from HTTP headers and creates an
+   `http_request` span as a child of the extracted context
+2. **Handler Functions** with `#[instrument]` create child spans automatically
+3. **OTLP Exporter** (optional) sends spans to observability backends
+4. **Grafana/Tempo** visualize the distributed traces
 
 !!! info "Automatic Fallback"
     When no `traceparent` header is present (e.g., local development), new root spans are created automatically.
@@ -39,11 +37,11 @@ The trace flow:
 
 ### Environment Variables
 
-| Variable | Description | Default | Example |
-|----------|-------------|---------|---------|
-| `DSP_META_OTLP_ENDPOINT` | OTLP endpoint URL for exporting traces | Not set (local only) | `http://localhost:4317` |
-| `DSP_META_LOG_FILTER` | Log level filter | `info` | `debug` |
-| `DSP_META_LOG_FMT` | Log output format | `compact` | `json` |
+| Variable                      | Description                                                             | Default              | Example                 |
+| ----------------------------- | ----------------------------------------------------------------------- | -------------------- | ----------------------- |
+| `OTEL_EXPORTER_OTLP_ENDPOINT` | OTLP endpoint URL for exporting traces (standard OpenTelemetry env var) | Not set (local only) | `http://localhost:4317` |
+| `DSP_META_LOG_FILTER`         | Log level filter                                                        | `info`               | `debug`                 |
+| `DSP_META_LOG_FMT`            | Log output format                                                       | `compact`            | `json`                  |
 
 ### Local Development (No Export)
 
@@ -58,7 +56,7 @@ just serve-dev
 Export traces to a local Grafana + Tempo stack:
 
 ```bash
-DSP_META_OTLP_ENDPOINT=http://localhost:4317 just serve-dev
+OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317 just serve-dev
 ```
 
 ### Production
@@ -66,7 +64,7 @@ DSP_META_OTLP_ENDPOINT=http://localhost:4317 just serve-dev
 In production, configure the OTLP endpoint to send traces to your observability backend:
 
 ```bash
-DSP_META_OTLP_ENDPOINT=https://tempo.yourcompany.com:4317
+OTEL_EXPORTER_OTLP_ENDPOINT=https://tempo.yourcompany.com:4317
 DSP_META_LOG_FILTER=info
 DSP_META_LOG_FMT=json
 ```
@@ -91,7 +89,7 @@ The easiest way to test with observability is using the dedicated `just` targets
     ```
 
     This will:
-    1. Start Grafana + Tempo
+    1. Start Grafana LGTM stack (all-in-one observability container)
     2. Start dsp-meta with OTLP exporter enabled
     3. Display URLs for accessing the services
 
@@ -118,13 +116,13 @@ The easiest way to test with observability is using the dedicated `just` targets
     just observability-down
     ```
 
-After running any of these commands, you should see:
+After running any of these commands, the observability stack will be available:
 
 ```text
-Observability stack started:
+Observability stack:
   - Grafana: http://localhost:3001
-  - Tempo: http://localhost:3200
-  - OTLP endpoint: http://localhost:4317
+  - OTLP gRPC endpoint: http://localhost:4317
+  - OTLP HTTP endpoint: http://localhost:4318
 ```
 
 ### Manual Setup (Alternative)
@@ -133,16 +131,21 @@ If you prefer manual control:
 
 #### Step 1: Start Observability Stack
 
-Start Grafana and Tempo:
+Start the Grafana LGTM all-in-one observability stack:
 
 ```bash
 docker-compose -f docker-compose.observability.yml up -d
 ```
 
-This starts:
+This starts a single container with:
 
-- **Tempo** on port 4317 (OTLP gRPC endpoint)
-- **Grafana** on port 3001 (UI)
+- **Grafana** on port 3001
+- **Tempo** (traces backend)
+- **Loki** (logs backend)
+- **Mimir/Prometheus** (metrics backend)
+- **Pyroscope** (profiling backend)
+- **OTLP gRPC endpoint** on port 4317
+- **OTLP HTTP endpoint** on port 4318
 
 #### Step 2: Start Application with Exporter
 
@@ -151,7 +154,7 @@ Run the application with the OTLP endpoint configured:
 === "Using just"
 
     ```bash
-    DSP_META_OTLP_ENDPOINT=http://localhost:4317 \
+    OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317 \
     DSP_META_LOG_FILTER=info \
     just serve-dev
     ```
@@ -160,7 +163,7 @@ Run the application with the OTLP endpoint configured:
 
     ```bash
     cargo build
-    DSP_META_OTLP_ENDPOINT=http://localhost:4317 \
+    OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317 \
     ./target/debug/dsp-meta
     ```
 
@@ -289,28 +292,27 @@ These custom attributes will be visible in Grafana and can be used for filtering
 
 ### No traces appearing in Grafana
 
-??? question "Check Tempo is running"
+??? question "Check observability stack is running"
 
     ```bash
-    docker ps | grep tempo
-    curl http://localhost:3200/ready
+    docker ps | grep otel-lgtm
     ```
 
-    Tempo should respond with a `200 OK` status.
+    You should see a container named `otel-lgtm` running.
 
 ??? question "Check application is exporting traces"
 
     Look for this log message when starting the application:
     ```
-    OTLP exporter configured successfully
+    Configuring OTLP exporter with endpoint: http://localhost:4317
     ```
 
-    If not present, verify the `DSP_META_OTLP_ENDPOINT` environment variable is set.
+    If not present, verify the `OTEL_EXPORTER_OTLP_ENDPOINT` environment variable is set.
 
-??? question "Check Tempo logs"
+??? question "Check LGTM container logs"
 
     ```bash
-    docker logs tempo
+    docker logs dsp-meta-otel-lgtm-1
     ```
 
     Look for any errors receiving or processing spans.
@@ -320,7 +322,7 @@ These custom attributes will be visible in Grafana and can be used for filtering
 If you see connection errors, try using Docker's host networking:
 
 ```bash
-DSP_META_OTLP_ENDPOINT=http://host.docker.internal:4317 just serve-dev
+OTEL_EXPORTER_OTLP_ENDPOINT=http://host.docker.internal:4317 just serve-dev
 ```
 
 ### Traces appear but are incomplete
@@ -382,13 +384,13 @@ let tracer_provider = TracerProvider::builder()
 
 The following `just` commands are available for managing observability:
 
-| Command | Description |
-|---------|-------------|
-| `just observability-up` | Start Grafana + Tempo stack |
-| `just observability-down` | Stop observability stack |
-| `just observability-clean` | Stop stack and remove volumes (deletes traces) |
-| `just serve-with-observability` | Start observability stack and run dsp-meta |
-| `just serve-dev-with-observability` | Start stack and run dsp-meta with hot reload |
+| Command                             | Description                                             |
+| ----------------------------------- | ------------------------------------------------------- |
+| `just observability-up`             | Start Grafana LGTM observability stack                  |
+| `just observability-down`           | Stop observability stack                                |
+| `just observability-clean`          | Stop stack and remove volumes (deletes all stored data) |
+| `just serve-with-observability`     | Start observability stack and run dsp-meta              |
+| `just serve-dev-with-observability` | Start stack and run dsp-meta with hot reload            |
 
 ## Cleanup
 

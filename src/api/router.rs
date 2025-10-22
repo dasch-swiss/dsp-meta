@@ -17,6 +17,19 @@ use tracing_opentelemetry::OpenTelemetrySpanExt;
 use crate::api::handler::{health, robots_txt, sitemap_xml, v1};
 use crate::app_state::AppState;
 
+/// Extractor adapter for Axum's HeaderMap to work with OpenTelemetry's propagation API
+struct HeaderExtractor<'a>(&'a HeaderMap);
+
+impl<'a> opentelemetry::propagation::Extractor for HeaderExtractor<'a> {
+    fn get(&self, key: &str) -> Option<&str> {
+        self.0.get(key).and_then(|v| v.to_str().ok())
+    }
+
+    fn keys(&self) -> Vec<&str> {
+        self.0.keys().map(|k| k.as_str()).collect()
+    }
+}
+
 /// Having a function that produces our router makes it easy to call it from tests
 /// without having to create an HTTP server.
 pub fn router(shared_state: Arc<AppState>) -> Router {
@@ -52,17 +65,6 @@ pub fn router(shared_state: Arc<AppState>) -> Router {
             TraceLayer::new_for_http()
                 .make_span_with(|request: &Request<_>| {
                     // Extract parent context from request headers for span creation
-                    use opentelemetry::propagation::Extractor;
-                    struct HeaderExtractor<'a>(&'a HeaderMap);
-                    impl<'a> Extractor for HeaderExtractor<'a> {
-                        fn get(&self, key: &str) -> Option<&str> {
-                            self.0.get(key).and_then(|v| v.to_str().ok())
-                        }
-                        fn keys(&self) -> Vec<&str> {
-                            self.0.keys().map(|k| k.as_str()).collect()
-                        }
-                    }
-
                     let parent_cx = opentelemetry::global::get_text_map_propagator(|propagator| {
                         propagator.extract(&HeaderExtractor(request.headers()))
                     });
@@ -71,30 +73,42 @@ pub fn router(shared_state: Arc<AppState>) -> Router {
                         "http_request",
                         method = ?request.method(),
                         uri = request.uri().to_string(),
-                        dsp_client = tracing::field::Empty,
-                        referer = tracing::field::Empty,
-                        origin = tracing::field::Empty,
+                        "http.request.header.dsp-client" = tracing::field::Empty,
+                        "http.request.header.referer" = tracing::field::Empty,
+                        "http.request.header.origin" = tracing::field::Empty,
                         status_code = tracing::field::Empty,
                         latency = tracing::field::Empty,
                     );
 
-                    request
-                        .headers()
-                        .get("DSP-CLIENT")
-                        .and_then(|h| h.to_str().ok())
-                        .map(|client| span.record("dsp_client", client));
+                    // Record header values as arrays to comply with OpenTelemetry semantic conventions
+                    // which require http.request.header.<key> to be arrays of strings
+                    // Using get_all() to properly handle multi-value headers
+                    let dsp_client_values: Vec<_> =
+                        request.headers().get_all("DSP-CLIENT").iter().collect();
+                    if !dsp_client_values.is_empty() {
+                        span.record(
+                            "http.request.header.dsp-client",
+                            tracing::field::debug(&dsp_client_values),
+                        );
+                    }
 
-                    request
-                        .headers()
-                        .get("Referer")
-                        .and_then(|h| h.to_str().ok())
-                        .map(|referer| span.record("referer", referer));
+                    let referer_values: Vec<_> =
+                        request.headers().get_all("Referer").iter().collect();
+                    if !referer_values.is_empty() {
+                        span.record(
+                            "http.request.header.referer",
+                            tracing::field::debug(&referer_values),
+                        );
+                    }
 
-                    request
-                        .headers()
-                        .get("Origin")
-                        .and_then(|h| h.to_str().ok())
-                        .map(|origin| span.record("origin", origin));
+                    let origin_values: Vec<_> =
+                        request.headers().get_all("Origin").iter().collect();
+                    if !origin_values.is_empty() {
+                        span.record(
+                            "http.request.header.origin",
+                            tracing::field::debug(&origin_values),
+                        );
+                    }
 
                     // Set the parent context on the newly created span
                     span.set_parent(parent_cx);

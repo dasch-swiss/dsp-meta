@@ -9,7 +9,6 @@ use dsp_meta::domain::metadata_repository::MetadataRepository;
 use dsp_meta::domain::metadata_service::MetadataService;
 use opentelemetry::trace::TracerProvider as _;
 use opentelemetry::KeyValue;
-use opentelemetry_otlp::WithExportConfig;
 use opentelemetry_sdk::{runtime, Resource};
 use pid1::Pid1Settings;
 use tokio::net::TcpListener;
@@ -38,16 +37,11 @@ fn main() {
     let _guard = runtime.enter();
 
     // Initialize tracer provider with optional OTLP exporter
-    let tracer_provider = if let Ok(otlp_endpoint) = env::var("DSP_META_OTLP_ENDPOINT") {
-        eprintln!("Configuring OTLP exporter with endpoint: {}", otlp_endpoint);
-
+    // The SDK automatically reads OTEL_EXPORTER_OTLP_ENDPOINT if set
+    let tracer_provider = if env::var("OTEL_EXPORTER_OTLP_ENDPOINT").is_ok() {
         opentelemetry_otlp::new_pipeline()
             .tracing()
-            .with_exporter(
-                opentelemetry_otlp::new_exporter()
-                    .tonic()
-                    .with_endpoint(otlp_endpoint),
-            )
+            .with_exporter(opentelemetry_otlp::new_exporter().tonic())
             .with_trace_config(opentelemetry_sdk::trace::Config::default().with_resource(
                 Resource::new(vec![KeyValue::new("service.name", "dsp-meta")]),
             ))
@@ -57,7 +51,7 @@ fn main() {
                 opentelemetry_sdk::trace::TracerProvider::default()
             })
     } else {
-        eprintln!("No OTLP endpoint configured (DSP_META_OTLP_ENDPOINT not set). Traces will only be logged locally.");
+        eprintln!("No OTLP endpoint configured (OTEL_EXPORTER_OTLP_ENDPOINT not set). Traces will only be logged locally.");
         opentelemetry_sdk::trace::TracerProvider::default()
     };
 

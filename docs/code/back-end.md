@@ -40,14 +40,14 @@ validated against JSON schemas defined in `resources/`.
 
 The application is configured via environment variables with the `DSP_META_` prefix:
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `DSP_META_DATA_DIR` | Path to metadata JSON files | `/data` |
-| `DSP_META_PUBLIC_DIR` | Path to static frontend files | `/public` |
-| `DSP_META_BASE_URL` | Base URL for the service | `https://meta.dasch.swiss` |
-| `DSP_META_LOG_FILTER` | Log level filter | `info` |
-| `DSP_META_LOG_FMT` | Log format (json/compact) | `compact` |
-| `DSP_META_OTLP_ENDPOINT` | OpenTelemetry OTLP endpoint | Not set |
+| Variable                      | Description                                    | Default                    |
+| ----------------------------- | ---------------------------------------------- | -------------------------- |
+| `DSP_META_DATA_DIR`           | Path to metadata JSON files                    | `/data`                    |
+| `DSP_META_PUBLIC_DIR`         | Path to static frontend files                  | `/public`                  |
+| `DSP_META_BASE_URL`           | Base URL for the service                       | `https://meta.dasch.swiss` |
+| `DSP_META_LOG_FILTER`         | Log level filter                               | `info`                     |
+| `DSP_META_LOG_FMT`            | Log format (json/compact)                      | `compact`                  |
+| `OTEL_EXPORTER_OTLP_ENDPOINT` | OpenTelemetry OTLP endpoint (standard env var) | Not set                    |
 
 ### Observability
 
