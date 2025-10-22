@@ -7,14 +7,30 @@ use axum::response::Response;
 use axum::routing::get;
 use axum::{http, Router};
 use log::info;
+use opentelemetry::global::get_text_map_propagator;
+use opentelemetry::propagation::Extractor;
 use tower_http::classify::ServerErrorsFailureClass;
 use tower_http::cors::{Any, CorsLayer};
 use tower_http::services::{ServeDir, ServeFile};
 use tower_http::trace::TraceLayer;
 use tracing::{error, info_span, warn, Span};
+use tracing_opentelemetry::OpenTelemetrySpanExt;
 
 use crate::api::handler::{health, robots_txt, sitemap_xml, v1};
 use crate::app_state::AppState;
+
+/// Extractor adapter for Axum's HeaderMap to work with OpenTelemetry's propagation API
+struct HeaderExtractor<'a>(&'a HeaderMap);
+
+impl<'a> Extractor for HeaderExtractor<'a> {
+    fn get(&self, key: &str) -> Option<&str> {
+        self.0.get(key).and_then(|v| v.to_str().ok())
+    }
+
+    fn keys(&self) -> Vec<&str> {
+        self.0.keys().map(|k| k.as_str()).collect()
+    }
+}
 
 /// Having a function that produces our router makes it easy to call it from tests
 /// without having to create an HTTP server.
@@ -50,15 +66,67 @@ pub fn router(shared_state: Arc<AppState>) -> Router {
         .layer(
             TraceLayer::new_for_http()
                 .make_span_with(|request: &Request<_>| {
-                    info_span!(
+                    // Extract parent context from request headers for span creation
+                    let parent_cx = get_text_map_propagator(|propagator| {
+                        propagator.extract(&HeaderExtractor(request.headers()))
+                    });
+
+                    let span = info_span!(
                         "http_request",
                         method = ?request.method(),
                         uri = request.uri().to_string(),
+                        "http.request.header.dsp-client" = tracing::field::Empty,
+                        "http.request.header.referer" = tracing::field::Empty,
+                        "http.request.header.origin" = tracing::field::Empty,
                         status_code = tracing::field::Empty,
                         latency = tracing::field::Empty,
-                    )
+                    );
+
+                    // Record header values as arrays to comply with OpenTelemetry semantic
+                    // conventions which require http.request.header.<key> to be
+                    // arrays of strings Using get_all() to properly handle
+                    // multi-value headers
+                    let dsp_client_values: Vec<_> =
+                        request.headers().get_all("DSP-CLIENT").iter().collect();
+                    if !dsp_client_values.is_empty() {
+                        span.record(
+                            "http.request.header.dsp-client",
+                            tracing::field::debug(&dsp_client_values),
+                        );
+                    }
+
+                    let referer_values: Vec<_> =
+                        request.headers().get_all("Referer").iter().collect();
+                    if !referer_values.is_empty() {
+                        span.record(
+                            "http.request.header.referer",
+                            tracing::field::debug(&referer_values),
+                        );
+                    }
+
+                    let origin_values: Vec<_> =
+                        request.headers().get_all("Origin").iter().collect();
+                    if !origin_values.is_empty() {
+                        span.record(
+                            "http.request.header.origin",
+                            tracing::field::debug(&origin_values),
+                        );
+                    }
+
+                    // Set the parent context on the newly created span
+                    span.set_parent(parent_cx);
+                    span
                 })
-                .on_request(|_request: &Request<_>, _span: &Span| ())
+                .on_request(|request: &Request<_>, span: &Span| {
+                    if request.headers().get("DSP-CLIENT").is_none() {
+                        warn!(
+                            parent: span,
+                            "Client did not identify itself via DSP-CLIENT header: {} {}",
+                            request.method(),
+                            request.uri()
+                        );
+                    }
+                })
                 .on_response(|response: &Response, latency: Duration, span: &Span| {
                     span.record("status_code", response.status().as_u16());
                     span.record("latency", latency.as_millis());
@@ -102,7 +170,7 @@ mod tests {
 
         let shared_state = Arc::new(AppState {
             metadata_service: MetadataService::new(MetadataRepository::from_path(
-                &data_dir.as_path(),
+                data_dir.as_path(),
             )),
             public_dir: "".to_string(),
             version: "",
@@ -135,7 +203,7 @@ mod tests {
 
         let shared_state = Arc::new(AppState {
             metadata_service: MetadataService::new(MetadataRepository::from_path(
-                &data_dir.as_path(),
+                data_dir.as_path(),
             )),
             public_dir: "".to_string(),
             version: "",
