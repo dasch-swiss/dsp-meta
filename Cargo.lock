@@ -920,6 +920,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "eac8f7d7865dcb88bd4373ab671c8cf4508703796caa2b1985a9ca867b3fcb78"
 dependencies = [
  "futures-core",
+ "futures-sink",
 ]
 
 [[package]]
@@ -1767,6 +1768,7 @@ dependencies = [
  "bytes",
  "http",
  "opentelemetry",
+ "reqwest",
 ]
 
 [[package]]
@@ -1779,9 +1781,12 @@ dependencies = [
  "futures-core",
  "http",
  "opentelemetry",
+ "opentelemetry-http",
  "opentelemetry-proto",
  "opentelemetry_sdk",
  "prost",
+ "reqwest",
+ "serde_json",
  "thiserror 1.0.69",
  "tokio",
  "tonic",
@@ -1793,9 +1798,11 @@ version = "0.26.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c9d3968ce3aefdcca5c27e3c4ea4391b37547726a70893aab52d3de95d5f8b34"
 dependencies = [
+ "hex",
  "opentelemetry",
  "opentelemetry_sdk",
  "prost",
+ "serde",
  "tonic",
 ]
 
@@ -2224,6 +2231,7 @@ dependencies = [
  "base64 0.22.1",
  "bytes",
  "encoding_rs",
+ "futures-channel",
  "futures-core",
  "futures-util",
  "h2",
