@@ -43,7 +43,7 @@ fn main() {
     let tracer_provider = if env::var("OTEL_EXPORTER_OTLP_ENDPOINT").is_ok() {
         opentelemetry_otlp::new_pipeline()
             .tracing()
-            .with_exporter(opentelemetry_otlp::new_exporter().tonic())
+            .with_exporter(opentelemetry_otlp::new_exporter())
             .with_trace_config(TraceConfig::default().with_resource(Resource::new(vec![
                 KeyValue::new("service.name", "dsp-meta"),
             ])))
