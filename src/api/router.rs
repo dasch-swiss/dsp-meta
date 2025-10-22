@@ -82,9 +82,10 @@ pub fn router(shared_state: Arc<AppState>) -> Router {
                         latency = tracing::field::Empty,
                     );
 
-                    // Record header values as arrays to comply with OpenTelemetry semantic conventions
-                    // which require http.request.header.<key> to be arrays of strings
-                    // Using get_all() to properly handle multi-value headers
+                    // Record header values as arrays to comply with OpenTelemetry semantic
+                    // conventions which require http.request.header.<key> to be
+                    // arrays of strings Using get_all() to properly handle
+                    // multi-value headers
                     let dsp_client_values: Vec<_> =
                         request.headers().get_all("DSP-CLIENT").iter().collect();
                     if !dsp_client_values.is_empty() {
