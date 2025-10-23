@@ -2,6 +2,7 @@ use std::sync::Arc;
 use std::time::Duration;
 
 use axum::body::Bytes;
+use axum::extract::MatchedPath;
 use axum::http::{HeaderMap, Request};
 use axum::response::Response;
 use axum::routing::get;
@@ -73,14 +74,25 @@ pub fn router(shared_state: Arc<AppState>) -> Router {
 
                     let span = info_span!(
                         "http_request",
-                        method = ?request.method(),
-                        uri = request.uri().to_string(),
+                        "otel.name" = request.method().as_str(),
+                        "otel.kind" = "server",
+                        "url.full" = request.uri().to_string(),
+                        "http.route" = tracing::field::Empty,
+                        "http.request.method" = ?request.method(),
                         "http.request.header.dsp-client" = tracing::field::Empty,
                         "http.request.header.referer" = tracing::field::Empty,
                         "http.request.header.origin" = tracing::field::Empty,
-                        status_code = tracing::field::Empty,
+                        "http.response.status_code" = tracing::field::Empty,
                         latency = tracing::field::Empty,
                     );
+
+                    if let Some(matched_path) = request.extensions().get::<MatchedPath>() {
+                        span.record(
+                            "otel.name",
+                            format!("{} {}", request.method().as_str(), matched_path.as_str()),
+                        );
+                        span.record("http.route", matched_path.as_str());
+                    }
 
                     // Record header values as arrays to comply with OpenTelemetry semantic
                     // conventions which require http.request.header.<key> to be
@@ -128,7 +140,7 @@ pub fn router(shared_state: Arc<AppState>) -> Router {
                     }
                 })
                 .on_response(|response: &Response, latency: Duration, span: &Span| {
-                    span.record("status_code", response.status().as_u16());
+                    span.record("http.response.status_code", response.status().as_u16());
                     span.record("latency", latency.as_millis());
                     if response.status() >= http::StatusCode::INTERNAL_SERVER_ERROR {
                         error!("response handled by server with 5xx");
