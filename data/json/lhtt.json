@@ -1086,14 +1086,6 @@
       ],
       "affiliation": [
         "http://ns.dasch.swiss/repository#dsp-0820-organization-005"
-      ],
-      "authorityRefs": [
-        {
-          "__type": "URL",
-          "type": "URL",
-          "url": "https://www.balgrist.ch/angebot/fachbereiche/tumore/thomas-boeni/",
-          "text": "https://www.balgrist.ch/angebot/fachbereiche/tumore/thomas-boeni/"
-        }
       ]
     },
     {
@@ -1504,8 +1496,8 @@
         {
           "__type": "URL",
           "type": "URL",
-          "url": "https://research.manchester.ac.uk/en/persons/iwona.kozieradzka-ogunmakin",
-          "text": "https://research.manchester.ac.uk/en/persons/iwona.kozieradzka-ogunmakin"
+          "url": "https://experts.exeter.ac.uk/37070-iwona-kozieradzkaogunmakin",
+          "text": "https://experts.exeter.ac.uk/37070-iwona-kozieradzkaogunmakin"
         }
       ]
     },
@@ -1849,14 +1841,6 @@
       ],
       "affiliation": [
         "http://ns.dasch.swiss/repository#dsp-0820-organization-002"
-      ],
-      "authorityRefs": [
-        {
-          "__type": "URL",
-          "type": "URL",
-          "url": "https://www.iem.uzh.ch/en/people/ppms/rogerseiler.html",
-          "text": "https://www.iem.uzh.ch/en/people/ppms/rogerseiler.html"
-        }
       ]
     },
     {
