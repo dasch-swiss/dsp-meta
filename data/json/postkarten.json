@@ -49,12 +49,6 @@
       "url": "https://app.dasch.swiss/project/vNYc6-z_ST-a_ENjDxSZjQ",
       "text": "Discover Project Data"
     },
-    "secondaryURL": {
-      "__type": "URL",
-      "type": "URL",
-      "url": "https://data.dasch.swiss/postcards/",
-      "text": "Project Website"
-    },
     "funders": [
       "http://ns.dasch.swiss/repository#dsp-0811-organization-000"
     ],
