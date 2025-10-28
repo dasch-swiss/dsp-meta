@@ -34,7 +34,7 @@ tokio-test = "0.4.4"
 tower = "0.5.2"
 tower-http = { version = "0.6.6", features = ["trace", "fs", "cors"] }
 hyper = "1.7.0"
-regex = "1.11.3"
+regex = "1.12.1"
 thiserror = "1.0.69"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = [
@@ -45,7 +45,13 @@ tracing-subscriber = { version = "0.3", features = [
   "json",
 ] }
 tracing-test = "0.2"
+opentelemetry = "0.26"
+opentelemetry_sdk = { version = "0.26", features = ["rt-tokio"] }
+opentelemetry-http = "0.26"
+opentelemetry-otlp = { version = "0.26", features = ["reqwest-client", "reqwest-rustls", "http-proto", "http-json"] }
+tracing-opentelemetry = "0.27"
 url = { version = "2", features = ["serde"] }
+reqwest = { version = "0.12", features = ["json"] }
 
 [dev-dependencies]
 assert_cmd = "2.0.17"

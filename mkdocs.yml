@@ -4,13 +4,14 @@ nav:
     - DSP-META: index.md
     - Metadata:
           - Metadata API: data/api.md
-          - Current Data Model: data/current-datamodel.md
-          - Future Data Model: data/future-datamodel.md
+          - Data Model v1: data/v1-datamodel.md
+          - Data Model v2: data/v2-datamodel.md
           - Adding Metadata: data/adding-metadata.md
     - Code Documentation:
           - Overview: code/overview.md
           - Front End: code/front-end.md
           - Back End: code/back-end.md
+          - Observability & Tracing: code/observability.md
 
 plugins:
     - include-markdown

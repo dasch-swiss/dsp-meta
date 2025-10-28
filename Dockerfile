@@ -1,4 +1,5 @@
 FROM rust:1-slim-bookworm AS builder-rs
+RUN apt-get update && apt-get install -y pkg-config libssl-dev && rm -rf /var/lib/apt/lists/*
 WORKDIR /dsp-meta
 COPY . .
 RUN cargo install --path ./
@@ -10,7 +11,7 @@ RUN cd web-frontend && yarn install && yarn run build --bundleConfigAsCjs
 
 FROM debian:bookworm-slim AS runtime
 # install curl
-RUN apt-get update && apt-get install --no-install-recommends -y curl && \
+RUN apt-get update && apt-get install --no-install-recommends -y curl ca-certificates && \
   rm -rf /var/cache/apt/archives /var/lib/apt/lists/*
 
 # add data

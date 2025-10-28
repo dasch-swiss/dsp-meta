@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  # Grafana LGTM (Loki, Grafana, Tempo, Mimir) - All-in-one observability stack
+  # This is a simplified development setup - for production use separate services
+  otel-lgtm:
+    image: grafana/otel-lgtm:latest
+    ports:
+      - "3001:3000"   # Grafana web UI (login: admin/admin) - mapped to 3001 to avoid conflict
+      - "4317:4317"   # OTLP gRPC receiver
+      - "4318:4318"   # OTLP HTTP receiver
+    environment:
+      # Enable anonymous authentication for local development (no password needed)
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+    restart: unless-stopped

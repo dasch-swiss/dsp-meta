@@ -53,6 +53,32 @@ serve-dev:
 serve-frontend:
     cd web-frontend && yarn run dev
 
+# Start observability stack (Grafana + Tempo)
+observability-up:
+    docker compose -f docker-compose.observability.yml up -d
+    @echo "Observability stack started:"
+    @echo "  - Grafana: http://localhost:3001"
+    @echo "  - Tempo: http://localhost:3200"
+    @echo "  - OTLP endpoint: http://localhost:4317"
+
+# Stop observability stack
+observability-down:
+    docker compose -f docker-compose.observability.yml down
+
+# Stop observability stack and remove volumes (deletes traces)
+observability-clean:
+    docker compose -f docker-compose.observability.yml down -v
+
+# Run dsp-meta with observability enabled
+serve-with-observability: observability-up
+    @echo "Starting dsp-meta with OTLP exporter..."
+    export DSP_META_DATA_DIR=${PWD}/data && export DSP_META_PUBLIC_DIR=${PWD}/web-frontend/public && export DSP_META_LOG_FILTER=info && export OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318 && export OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf && cargo run --bin dsp-meta
+
+# Run dsp-meta with observability and watch for changes
+serve-dev-with-observability: observability-up
+    @echo "Starting dsp-meta with OTLP exporter and file watching..."
+    export DSP_META_DATA_DIR=${PWD}/data && export DSP_META_PUBLIC_DIR=${PWD}/web-frontend/public && export DSP_META_LOG_FILTER=info && export OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318 && export OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf && cargo watch -x 'run --bin dsp-meta'
+
 # Build linux/amd64 Docker image locally
 docker-build-amd64:
     docker buildx build --platform linux/amd64 -t {{ DOCKER_IMAGE }}-amd64 --load .
@@ -85,6 +111,15 @@ docker-image-tag:
 watch:
     cargo watch -x test
 
+# Check all URLs in JSON metadata files (terminal output)
+check-urls:
+    cargo run --bin dsp-meta-validator -- check-urls --data-dir ./data/json
+
+# Check all URLs and save markdown report to file
+check-urls-report:
+    cargo run --bin dsp-meta-validator -- check-urls --data-dir ./data/json --format markdown > url-check-report.md
+    @echo "Report saved to url-check-report.md"
+
 # Generate the OpenApi in {{openapiDir}} yml from the tapir endpoints
 docs-openapi-generate:
     echo "Not implemented."
@@ -109,4 +144,11 @@ markdownlint:
     docker run \
     -v $PWD:/workdir ghcr.io/igorshubovych/markdownlint-cli:latest \
     --config .markdownlint.yml \
+    "docs/**/*.md"
+
+markdownlint-fix:
+    docker run \
+    -v $PWD:/workdir ghcr.io/igorshubovych/markdownlint-cli:latest \
+    --config .markdownlint.yml \
+    --fix \
     "docs/**/*.md"
