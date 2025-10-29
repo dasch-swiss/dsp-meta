@@ -1,5 +1,44 @@
 # Changelog
 
+## [2.4.0](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.18...dsp-meta-v2.4.0) (2025-10-29)
+
+
+### Maintenances
+
+* **deps-dev:** Bump rollup-plugin-svelte from 7.2.2 to 7.2.3 in /web-frontend in the frontend-dependencies group ([#391](https://github.com/dasch-swiss/dsp-meta/issues/391)) ([62f5dab](https://github.com/dasch-swiss/dsp-meta/commit/62f5dabc91d80261e8a3ec4ee5e99fdd2adaec48))
+* **deps:** Bump regex from 1.11.3 to 1.12.1 in the backend-dependencies group ([#402](https://github.com/dasch-swiss/dsp-meta/issues/402)) ([f791fd3](https://github.com/dasch-swiss/dsp-meta/commit/f791fd3f69d1930e2d7c1286725d856c1de64d19))
+* **deps:** Bump the backend-dependencies group with 3 updates ([#395](https://github.com/dasch-swiss/dsp-meta/issues/395)) ([d9918f3](https://github.com/dasch-swiss/dsp-meta/commit/d9918f328ce3bea74755b572647f2834f0ca366a))
+* **deps:** Bump the backend-dependencies group with 3 updates ([#396](https://github.com/dasch-swiss/dsp-meta/issues/396)) ([76d3e66](https://github.com/dasch-swiss/dsp-meta/commit/76d3e66b5308c947e88b909273404616625e18e6))
+* **deps:** Bump the backend-dependencies group with 3 updates ([#401](https://github.com/dasch-swiss/dsp-meta/issues/401)) ([7008d3b](https://github.com/dasch-swiss/dsp-meta/commit/7008d3b9bec92d10738b28eaf5ebbdbb3f378428))
+* **deps:** Bump the backend-dependencies group with 4 updates ([#400](https://github.com/dasch-swiss/dsp-meta/issues/400)) ([431dab7](https://github.com/dasch-swiss/dsp-meta/commit/431dab753b429cf11350a2b42b6d60780fa0a5bb))
+* **deps:** Bump the backend-dependencies group with 5 updates ([#399](https://github.com/dasch-swiss/dsp-meta/issues/399)) ([4f4db53](https://github.com/dasch-swiss/dsp-meta/commit/4f4db537ebed0f655d68ae34da15c6f3647c4b1c))
+* **deps:** Bump tracing-subscriber from 0.3.19 to 0.3.20 ([#393](https://github.com/dasch-swiss/dsp-meta/issues/393)) ([9743fc0](https://github.com/dasch-swiss/dsp-meta/commit/9743fc0bdeeeafe693bac55e941e1ddd17f76bf4))
+* **otel:** Standardize span name, kind and attributes ([#409](https://github.com/dasch-swiss/dsp-meta/issues/409)) ([bd74ef5](https://github.com/dasch-swiss/dsp-meta/commit/bd74ef5ff855dd6123f2b7670591d5d81214050a))
+* Set up observability for clients accessing v1 API ([#406](https://github.com/dasch-swiss/dsp-meta/issues/406)) ([e56dbc5](https://github.com/dasch-swiss/dsp-meta/commit/e56dbc54999e899d3dd14407df2ba69e7c67c5ad))
+
+
+### Project Data
+
+* Add campane-ticino ([#413](https://github.com/dasch-swiss/dsp-meta/issues/413)) ([d01ace5](https://github.com/dasch-swiss/dsp-meta/commit/d01ace5dd2e263cc335a1cc271d86722e91423cf))
+* Cleanup links ([#412](https://github.com/dasch-swiss/dsp-meta/issues/412)) ([2c2ffb0](https://github.com/dasch-swiss/dsp-meta/commit/2c2ffb0204966bd9f7176b19eea1e6e15a262406))
+
+
+### Documentation
+
+* Rename current and future datamodel to v1 and v2 ([#404](https://github.com/dasch-swiss/dsp-meta/issues/404)) ([4ad1bcf](https://github.com/dasch-swiss/dsp-meta/commit/4ad1bcfdaa1f17a4f82fc013616255fa5f2109a9))
+* Update future metadata model documentation ([#398](https://github.com/dasch-swiss/dsp-meta/issues/398)) ([67ab401](https://github.com/dasch-swiss/dsp-meta/commit/67ab4013beb3c521006f79bcc50709d5ac0fe7a3))
+
+
+### Enhancements
+
+* Add URL checker for metadata validation ([#403](https://github.com/dasch-swiss/dsp-meta/issues/403)) ([793e9c0](https://github.com/dasch-swiss/dsp-meta/commit/793e9c000b3dd61fbc650ac5a7f1a8b52eaa1148))
+
+
+### Bug Fixes
+
+* **docker:** Install ca-certificates ([#410](https://github.com/dasch-swiss/dsp-meta/issues/410)) ([73f7078](https://github.com/dasch-swiss/dsp-meta/commit/73f707836a233cb4f9f0946ab1d3f41013f7cf31))
+* **otel:** Use http otlp protocol ([#408](https://github.com/dasch-swiss/dsp-meta/issues/408)) ([261e775](https://github.com/dasch-swiss/dsp-meta/commit/261e7753a2bc350bf12325a80694e323ed85d289))
+
 ## [2.3.18](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.17...dsp-meta-v2.3.18) (2025-08-25)
 
 
