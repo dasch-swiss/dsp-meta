@@ -9,7 +9,9 @@
     ],
     "alternativeNames": [
       {
-        "en": "campane-ticino",
+        "en": "campane-ticino"
+      },
+      {
         "it": "Le campane del Canton Ticino. Studio di un patrimonio materiale e immateriale"
       }
     ],
@@ -24,46 +26,25 @@
     },
     "disciplines": [
       {
-        "__type": "URL",
-        "type": "Skos",
-        "url": "http://skos.um.es/unesco6/5501",
-        "text": "Local history"
+        "en": "10302 Swiss history"
       },
       {
-        "__type": "URL",
-        "type": "Skos",
-        "url": "http://skos.um.es/unesco6/5504",
-        "text": "History by periods"
+        "en": "10301 General history (without pre-and early history)"
       },
       {
-        "__type": "URL",
-        "type": "Skos",
-        "url": "http://skos.um.es/unesco6/510106",
-        "text": "Prehistory and Archaeology"
+        "en": "10402 Archaeology"
       },
       {
-        "__type": "URL",
-        "type": "Skos",
-        "url": "http://skos.um.es/unesco6/5504",
-        "text": "History of religions"
+        "en": "10103 Ecclesiastical history"
       },
       {
-        "__type": "URL",
-        "type": "Skos",
-        "url": "http://skos.um.es/unesco6/6203",
-        "text": "Art history"
+        "en": "10404 Visual arts and Art history"
       },
       {
-        "__type": "URL",
-        "type": "Skos",
-        "url": "http://skos.um.es/unesco6/6203",
-        "text": "Musicology"
+        "en": "10405 Musicology"
       },
       {
-        "__type": "URL",
-        "type": "Skos",
-        "url": "http://skos.um.es/unesco6/510102",
-        "text": "Ethnology and Ethnography"
+        "en": "10403 Ethnology"
       }
     ],
     "endDate": "2026-08-31",
@@ -75,23 +56,31 @@
     ],
     "keywords": [
       {
-        "it": "campane",
+        "it": "campane"
+      },
+      {
         "en": "bells"
       },
       {
-        "it": "Canton Ticino",
+        "it": "Canton Ticino"
+      },
+      {
         "en": "Canton Ticino"
       },
       {
-        "it": "campanologia",
+        "it": "campanologia"
+      },
+      {
         "en": "campanology"
       },
       {
-        "it": "patrimonio",
+        "it": "patrimonio"
+      },
+      {
         "en": "heritage"
       }
     ],
-    "name": "Le campane del Canton Ticino. Studio di un patrimonio materiale e immateriale",
+    "name": "The bells of Canton Ticino. Study of a tangible and intangible heritage",
     "shortcode": "0108",
     "spatialCoverage": [
       {
@@ -113,18 +102,15 @@
         "__type": "URL",
         "type": "Periodo",
         "url": "http://n2t.net/ark:/99152/p06c6g39bvp",
-        "text": "Modern period"
+        "text": "Early Modern"
+      },
+      {
+        "en": "Modern period"
       },
       {
         "en": "Contemporary period"
       }
     ],
-    "url": {
-      "__type": "URL",
-      "type": "URL",
-      "url": "https://app.dasch.swiss/project/0108",
-      "text": "Discover Project Data"
-    },
     "status": "Ongoing"
   },
   "datasets": [
@@ -148,7 +134,9 @@
       "howToCite": "Dell'Era R., Rivoal M., Jaouen L. (2025). Le campane del Canton Ticino [database]. Swiss National Data and Service Center for the Humanities (DaSCH). https://ark.dasch.swiss/ark:/72163/1/0108",
       "languages": [
         {
-          "it": "italiano",
+          "it": "italiano"
+        },
+        {
           "en": "Italian"
         }
       ],
@@ -210,8 +198,8 @@
         "Romeo"
       ],
       "jobTitles": [
-        "ricercatore associato",
-        "associate researcher"
+        "associate researcher",
+        "ricercatore associato"
       ],
       "affiliation": [
         "http://ns.dasch.swiss/repository#dsp-0108-organization-002"
@@ -322,7 +310,7 @@
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-0108-organization-001"
       ],
-      "name": "Borsa di ricerca, categoria B (ricercatori avanzati),",
+      "name": "Borsa di ricerca, cat. B",
       "number": "2024/26",
       "url": {
         "__type": "URL",
