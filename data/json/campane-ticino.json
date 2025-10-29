@@ -9,7 +9,8 @@
     ],
     "alternativeNames": [
       {
-        "en": "campane-ticino"
+        "en": "campane-ticino",
+        "it": "Le campane del Canton Ticino. Studio di un patrimonio materiale e immateriale"
       }
     ],
     "contactPoint": "http://ns.dasch.swiss/repository#dsp-0108-person-001",
@@ -138,6 +139,11 @@
           "en": "Database of the project \"The bells of Canton Ticino: study of a tangible and intangible heritage\""
         }
       ],
+      "alternativeTitles": [
+        {
+          "it": "Le campane del Canton Ticino"
+        }
+      ],
       "accessConditions": "restricted",
       "howToCite": "Dell'Era R., Rivoal M., Jaouen L. (2025). Le campane del Canton Ticino [database]. Swiss National Data and Service Center for the Humanities (DaSCH). https://ark.dasch.swiss/ark:/72163/1/0108",
       "languages": [
@@ -184,7 +190,7 @@
         }
       ],
       "status": "Ongoing",
-      "title": "Le campane del Canton Ticino",
+      "title": "The bells of Canton Ticino",
       "typeOfData": [
         "Text",
         "Image",
