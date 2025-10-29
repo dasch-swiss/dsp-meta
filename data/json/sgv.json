@@ -291,7 +291,7 @@
     "secondaryURL": {
       "__type": "URL",
       "type": "URL",
-      "url": "https://archiv.sgv-sstp.ch/",
+      "url": "https://www.ekws.ch/de/archiv",
       "text": "External Project Website"
     },
     "status": "Ongoing"
@@ -718,7 +718,7 @@
         {
           "__type": "URL",
           "type": "URL",
-          "url": "https://www.volkskunde.ch/",
+          "url": "https://www.ekws.ch/",
           "text": "Find more information about CAS here"
         }
       ]
@@ -1732,8 +1732,8 @@
       "url": {
         "__type": "URL",
         "type": "URL",
-        "url": "https://www.cms-basel.ch/stiftung/selbstaendige-stiftungen/jacqueline-spengler-stiftung",
-        "text": "https://www.cms-basel.ch/stiftung/selbstaendige-stiftungen/jacqueline-spengler-stiftung"
+        "url": "https://dachstiftung-cms.ch/stiftungen/jacqueline-spengler-stiftung-2",
+        "text": "https://dachstiftung-cms.ch/stiftungen/jacqueline-spengler-stiftung-2"
       }
     },
     {
@@ -1806,13 +1806,12 @@
         "locality": "Basel",
         "country": "Switzerland"
       },
-      "email": "archiv@sgv-sstp.ch",
       "name": "Photo Archive of the Cultural Anthropology Switzerland (CAS)",
       "url": {
         "__type": "URL",
         "type": "URL",
-        "url": "https://archiv.sgv-sstp.ch/",
-        "text": "https://archiv.sgv-sstp.ch/"
+        "url": "https://www.ekws.ch/de/archiv",
+        "text": "https://www.ekws.ch/de/archiv"
       }
     }
   ],

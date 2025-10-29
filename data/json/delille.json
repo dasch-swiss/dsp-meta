@@ -47,8 +47,8 @@
           {
             "__type": "URL",
             "type": "URL",
-            "url": "https://delille.philhist.unibas.ch/dokuwiki/doku.php?id=start",
-            "text": "https://delille.philhist.unibas.ch/dokuwiki/doku.php?id=start"
+            "url": "https://delille.philhist.unibas.ch/",
+            "text": "https://delille.philhist.unibas.ch/"
           }
         ]
       }
@@ -80,7 +80,7 @@
     "url": {
       "__type": "URL",
       "type": "URL",
-      "url": "https://delille.philhist.unibas.ch/dokuwiki/doku.php?id=start",
+      "url": "https://delille.philhist.unibas.ch/",
       "text": "Discover Project Data"
     },
     "status": "Finished"

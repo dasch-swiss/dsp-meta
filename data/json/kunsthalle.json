@@ -154,7 +154,7 @@
         {
           "__type": "URL",
           "type": "URL",
-          "url": "https://www.kunsthallebasel.ch/fotoarchiv/",
+          "url": "https://kunsthallebasel.ch/de/archive",
           "text": "Find more information about the database here"
         }
       ]
@@ -306,13 +306,7 @@
       "funders": [
         "http://ns.dasch.swiss/repository#dsp-080C-organization-003"
       ],
-      "name": "Kulturelles BL",
-      "url": {
-        "__type": "URL",
-        "type": "URL",
-        "url": "https://www.baselland.ch/politik-und-behorden/direktionen/bildungs-kultur-und-sportdirektion/kultur/kulturelles-bl",
-        "text": "https://www.baselland.ch/politik-und-behorden/direktionen/bildungs-kultur-und-sportdirektion/kultur/kulturelles-bl"
-      }
+      "name": "Kulturelles BL"
     },
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-080C-grant-003",
