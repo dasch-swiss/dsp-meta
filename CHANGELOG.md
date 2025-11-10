@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.1](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.0...dsp-meta-v2.4.1) (2025-11-10)
+
+
+### Project Data
+
+* Update campane-ticino ([#415](https://github.com/dasch-swiss/dsp-meta/issues/415)) ([5cf43cf](https://github.com/dasch-swiss/dsp-meta/commit/5cf43cf8fb84a4814295755bfe68db8852306f2e))
+
 ## [2.4.0](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.3.18...dsp-meta-v2.4.0) (2025-10-29)
 
 
