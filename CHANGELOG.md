@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.2](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.1...dsp-meta-v2.4.2) (2025-11-19)
+
+
+### Project Data
+
+* Update daschland.json ([#417](https://github.com/dasch-swiss/dsp-meta/issues/417)) ([c530834](https://github.com/dasch-swiss/dsp-meta/commit/c530834e5c6b88a78461edc7ed1491c6d05a127c))
+
 ## [2.4.1](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.0...dsp-meta-v2.4.1) (2025-11-10)
 
 
