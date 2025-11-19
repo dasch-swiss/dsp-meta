@@ -113,7 +113,13 @@
                 "en": "2024-2025",
                 "fr": "2024-2025"
             }
-        ]
+        ],
+        "url": {
+            "__type": "URL",
+            "type": "URL",
+            "url": "https://app.demo.dasch.swiss/project/Xop21NOSTDiGL3uF3h3ONg/data",
+            "text": "Discover Project Data"
+        }
     },
     "datasets": [
         {
