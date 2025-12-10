@@ -37,6 +37,19 @@
       "http://ns.dasch.swiss/repository#dsp-080E-grant-003",
       "http://ns.dasch.swiss/repository#dsp-080E-grant-004"
     ],
+    "publications": [
+      {
+        "text": "Gautschy, R. (2025). Digital LIMC – A Knowledge Graph for Classical Mythology. Journal of Open Humanities Data, 11: 64, pp. 1–5.",
+        "url": [
+          {
+            "__type": "URL",
+            "type": "DOI",
+            "url": "https://doi.org/10.5334/johd.403",
+            "text": "DOI: 10.5334/johd.403"
+          }
+        ]
+      }
+    ],
     "keywords": [
       {
         "en": "Archaeology"
@@ -198,6 +211,14 @@
       "typeOfData": [
         "Image",
         "Text"
+      ],
+      "additional": [
+        {
+          "__type": "URL",
+          "type": "DOI",
+          "url": "https://doi.org/10.5334/johd.403",
+          "text": "Please find additional documentation here"
+        }
       ]
     }
   ],
