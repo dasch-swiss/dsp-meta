@@ -1,0 +1,108 @@
+{
+  "$schema": "../../resources/schema-metadata-draft.json",
+  "project": {
+    "__type": "Project",
+    "howToCite": "H-STEINER: Hans Eugen Steiner (1907-1962) : un destin national [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/0110",
+    "teaserText": "Des milliers de tirages originaux, 7500 planches contacts, des centaines de diapositives et 106'000 négatifs du photographe Hans Eugen Steiner (1907-1962).",
+    "datasets": [
+      "http://ns.dasch.swiss/repository#dsp-0110-dataset-000"
+    ],
+    "contactPoint": "http://ns.dasch.swiss/repository#dsp-0110-person-000",
+    "description": {
+      "fr": "Des milliers de tirages originaux (à l'inventaire), des milliers de planches contacts (7500 planches contacts), des centaines de diapositives (à l'inventaire), 106'000 négatifs, bref un ensemble de phototypes très important provenant de deux sources : l'achat à Hans Rudolf Graf de la plus grande partie du fonds en 1989 (positifs, négatifs et planches contacts) ; le don en 1996 de Beat Jost, successeur du photographe (positifs et négatifs). L'achat de 1989 fait suite à une proposition d'un particulier qui voulait se défaire d'un patrimoine hérité. Des films et des albums à caractère privé ont été retrouvés, les premiers feront l'objet d'une numérisation."
+    },
+    "disciplines": [
+      {
+        "en": "10404 Visual arts and Art history"
+      }
+    ],
+    "keywords": [
+      {
+        "fr": "diapositives"
+      }
+    ],
+    "name": "Hans Eugen Steiner (1907-1962) : un destin national",
+    "shortcode": "0110",
+    "startDate": "2021-11-01",
+    "status": "Finished",
+    "url": {
+      "__type": "URL",
+      "type": "URL",
+      "url": "https://app.ls-prod-server.dasch.swiss/project/0110/",
+      "text": "Discover Project Data"
+    }
+  },
+  "datasets": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0110-dataset-000",
+      "__type": "Dataset",
+      "abstracts": [
+        {
+          "fr": "Des milliers de tirages originaux (à l'inventaire), des milliers de planches contacts (7500 planches contacts), des centaines de diapositives (à l'inventaire), 106'000 négatifs, bref un ensemble de phototypes très important provenant de deux sources : l'achat à Hans Rudolf Graf de la plus grande partie du fonds en 1989 (positifs, négatifs et planches contacts) ; le don en 1996 de Beat Jost, successeur du photographe (positifs et négatifs)."
+        }
+      ],
+      "accessConditions": "open",
+      "howToCite": "H-STEINER: Hans Eugen Steiner (1907-1962) : un destin national [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/0110",
+      "languages": [
+        {
+          "de": "Deutsch",
+          "en": "German",
+          "fr": "allemand"
+        }
+      ],
+      "attributions": [
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0110-person-000",
+          "roles": [
+            "Project Leader"
+          ]
+        }
+      ],
+      "status": "Finished",
+      "title": "Hans Eugen Steiner (1907-1962) : un destin national",
+      "typeOfData": [
+        "Image"
+      ]
+    }
+  ],
+  "persons": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0110-person-000",
+      "__type": "Person",
+      "email": "Francois.Vallotton@unil.ch",
+      "familyNames": [
+        "Vallotton"
+      ],
+      "givenNames": [
+        "François"
+      ],
+      "jobTitles": [
+        "Professeur ordinaire en histoire contemporaine"
+      ],
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-0110-organization-000"
+      ]
+    }
+  ],
+  "organizations": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0110-organization-000",
+      "__type": "Organization",
+      "address": {
+        "__type": "Address",
+        "street": "Unicentre",
+        "postalCode": "1015",
+        "locality": "Lausanne",
+        "country": "Switzerland"
+      },
+      "name": "Université de Lausanne",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://www.unil.ch/",
+        "text": "https://www.unil.ch/"
+      }
+    }
+  ]
+}
