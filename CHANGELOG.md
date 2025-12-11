@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.4.3](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.2...dsp-meta-v2.4.3) (2025-12-11)
+
+
+### Maintenances
+
+* **deps-dev:** Bump prettier from 3.7.3 to 3.7.4 in /web-frontend in the frontend-dependencies group ([#423](https://github.com/dasch-swiss/dsp-meta/issues/423)) ([081d97e](https://github.com/dasch-swiss/dsp-meta/commit/081d97e320134889aed4365c4ec283c5f6d11642))
+* **deps-dev:** Bump the frontend-dependencies group across 1 directory with 2 updates ([#420](https://github.com/dasch-swiss/dsp-meta/issues/420)) ([3d8339a](https://github.com/dasch-swiss/dsp-meta/commit/3d8339a0f7f8558e0ac5ab25f5c34372f8f4fd0d))
+
+
+### Project Data
+
+* Add 0110 and 0115 metadata ([#426](https://github.com/dasch-swiss/dsp-meta/issues/426)) ([8f8adc3](https://github.com/dasch-swiss/dsp-meta/commit/8f8adc3857e80ab5f19b67eabaa29ca89a3f7590))
+* Create metzger.json ([#428](https://github.com/dasch-swiss/dsp-meta/issues/428)) ([da06588](https://github.com/dasch-swiss/dsp-meta/commit/da065886c07b841d06675845ad339b803ae2fb70))
+* Metadata update (0863) samaria ivories ([#425](https://github.com/dasch-swiss/dsp-meta/issues/425)) ([f4511d8](https://github.com/dasch-swiss/dsp-meta/commit/f4511d800d4018459eeabf5c30ecef0d8c88abb7))
+* Update campane-ticino.json ([#429](https://github.com/dasch-swiss/dsp-meta/issues/429)) ([65ab167](https://github.com/dasch-swiss/dsp-meta/commit/65ab167fdd9edbda47f8a8991513c7153072f874))
+* Update limc.json ([#427](https://github.com/dasch-swiss/dsp-meta/issues/427)) ([85cd21e](https://github.com/dasch-swiss/dsp-meta/commit/85cd21e4694622ff14a62a5397643246215df2e8))
+
 ## [2.4.2](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.1...dsp-meta-v2.4.2) (2025-11-19)
 
 
