@@ -82,6 +82,12 @@
     ],
     "name": "Le campane del Canton Ticino. Studio di un patrimonio materiale e immateriale",
     "shortcode": "0108",
+    "url": {
+      "__type": "URL",
+      "type": "URL",
+      "url": "https://app.dasch.swiss/project/AWr228EuQ3y5kkTwompsHg",
+      "text": "Discover Project Data"
+    },
     "spatialCoverage": [
       {
         "__type": "URL",

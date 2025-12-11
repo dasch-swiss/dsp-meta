@@ -29,7 +29,9 @@ jobs:
           submodules: true
       - name: Install nightly
         uses: dtolnay/rust-toolchain@nightly
-      - uses: taiki-e/install-action@nextest
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-nextest
       - name: cargo test --locked
         run: cargo nextest run --locked --all-features --all-targets
   # https://twitter.com/alcuadrado/status/1571291687837732873
@@ -47,7 +49,9 @@ jobs:
           submodules: true
       - name: Install beta
         uses: dtolnay/rust-toolchain@beta
-      - uses: taiki-e/install-action@nextest
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-nextest
       - name: cargo update
         run: cargo update
       - name: cargo test
