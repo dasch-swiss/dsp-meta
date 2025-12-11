@@ -1,6 +1,7 @@
 # Observability and Tracing
 
-DSP-META implements OpenTelemetry distributed tracing to enable monitoring and debugging of requests across the service infrastructure.
+DSP-META implements OpenTelemetry distributed tracing to enable monitoring and debugging of requests
+across the service infrastructure.
 
 ## Overview
 
