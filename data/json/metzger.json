@@ -1,0 +1,353 @@
+{
+  "$schema": "../../resources/schema-metadata-draft.json",
+  "project": {
+    "__type": "Project",
+    "howToCite": "Uta Bergmann, Sophie Wolf, Marion Gartenmeister, Elisa Ambrosio und Vitrocentre Romont (2022). U.D. Metzger – Handschrift eines Hinterglasmalers. Digitale Edition, Kommentar und Werkverzeichnis, Romont, 2022. https://ulrichdanielmetzger.digital.",
+    "teaserText": "Die Handschrift Ulrich Daniel Metzgers (1671–1738) dokumentiert das Leben des Glasers und Hinterglasmalers und wirft Licht auf die Lebensumstände wandernder Künstler in der Barockzeit.",
+    "datasets": [
+      "http://ns.dasch.swiss/repository#dsp-0840-dataset-000"
+    ],
+    "contactPoint": "http://ns.dasch.swiss/repository#dsp-0840-organization-000",
+    "description": {
+      "de": "Die Handschrift Ulrich Daniel Metzgers (1671 – nach 1738) ist eine äusserst aufschlussreiche Quelle: Sie dokumentiert einen Ausschnitt aus dem Leben des aus Speyer stammenden Glasers und Hinterglasmalers und erlaubt es uns, seinen Werdegang in den Wanderjahren von 1708 bis 1715 zu rekonstruieren. Die Handschrift, die neben Zeichnungen, Reimen und Widmungen auch rund 90 Farbrezepte und Malanleitungen enthält, gibt Einblick in das Leben, Schaffen, Wissen und Können dieses vielseitigen und weitgereisten Künstlers. Die Handschrift, die das Vitrocentre Romont 2004 auf einer Auktion ersteigern konnte, war der Ausgangspunkt für ein viereinhalbjähriges, vom Schweizerischen Nationalfonds unterstütztes Forschungsprojekt. Die Forschungsergebnisse werden über das vorliegende Onlineportal frei zugänglich gemacht. Die Website beinhaltet die kommentierte Edition der Handschrift und der darin versammelten Rezepte, einen Werkkatalog, schriftliche Quellen sowie mehrere Aufsätze über die Entstehung und Bedeutung der Handschrift, den Werdegang, das künstlerische und soziale Umfeld und das Werk Ulrich Daniel Metzgers sowie das Selbstverständnis dieser facettenreichen Persönlichkeit. Die veröffentlichten Dokumente und Forschungsergebnisse geben nicht nur Aufschluss über den Lebensweg und -wandel eines Individuums, sondern werfen auch Licht auf die Lebensumstände und die soziale und wirtschaftliche Stellung einer bisher von den Kunstwissenschaften vernachlässigten Künstlergruppe, die – sei es aus wirtschaftlicher Not oder um sich weiterzubilden – im 17. und 18. Jahrhundert durch Mitteleuropa zog und ein Auskommen suchte. Die Rezepturen liefern wertvolle Informationen zu den Techniken, Materialien und Werkzeugen der Glas- und Hinterglasmalerei und anderen in der Barockzeit ausgeübten Künsten.",
+      "en": "The manuscript of Ulrich Daniel Metzger documents the life of the glazier and reverse glass painter from Speyer between 1708 and 1715. The small book, which in addition to drawings, rhymes and dedications also contains around 90 paint recipes, gives an insight into the work, knowledge and skills of the versatile and widely travelled artist. This website provides an annotated edition of the manuscript and the paint recipes it includes, a catalogue raisonné, textual sources and several essays on the significance of Metzger's book as well as on the career, the social and artistic environment and the self-image of this multifaceted personality. The contents of the website, which are the result of a four-and-a-half-year research project funded by the Swiss National Science Foundation, are not only shedding light on the living conditions and the social and economic position of an individual, but also on those of a group of artists hitherto neglected by art history, who – whether out of economic necessity or in order to further their education – travelled through Europe in the 17th and 18th centuries seeking a livelihood. The paint recipes provide valuable information on the techniques, materials and tools used in glass and reverse glass painting and other arts practiced during the Baroque period."
+    },
+    "disciplines": [
+      {
+        "__type": "URL",
+        "type": "Skos",
+        "url": "http://skos.um.es/unesco6/550602",
+        "text": "History of art"
+      },
+      {
+        "__type": "URL",
+        "type": "Skos",
+        "url": "http://skos.um.es/unesco6/550624",
+        "text": "History of technology"
+      },
+      {
+        "__type": "URL",
+        "type": "Skos",
+        "url": "http://skos.um.es/unesco6/620307",
+        "text": "Painting"
+      },
+      {
+        "__type": "URL",
+        "type": "Skos",
+        "url": "http://skos.um.es/unesco6/331206",
+        "text": "Glass"
+      },
+      {
+        "en": "10404 Visual arts and Art history"
+      }
+    ],
+    "endDate": "2022-11-30",
+    "funders": [
+      "http://ns.dasch.swiss/repository#dsp-0840-organization-001"
+    ],
+    "grants": [
+      "http://ns.dasch.swiss/repository#dsp-0840-grant-000"
+    ],
+    "keywords": [
+      {
+        "de": "Barock",
+        "en": "Baroque"
+      },
+      {
+        "de": "Handschrift",
+        "en": "manuscript"
+      },
+      {
+        "de": "Hinterglasmalerei",
+        "en": "reverse painting on glass"
+      },
+      {
+        "de": "Farbrezepte",
+        "en": "paint recipes"
+      },
+      {
+        "de": "Wanderkünstler",
+        "en": "wandering artist"
+      }
+    ],
+    "name": "U.D. Metzger – Handschrift eines Hinterglasmalers. Digitale Edition, Kommentar und Werkverzeichnis",
+    "shortcode": "0840",
+    "spatialCoverage": [
+      {
+        "__type": "URL",
+        "type": "Geonames",
+        "url": "https://www.geonames.org/6255148/europe.html",
+        "text": "Europe"
+      }
+    ],
+    "startDate": "2018-06-01",
+    "temporalCoverage": [
+      {
+        "de": "Barock, 17.–18. Jahrhundert",
+        "en": "Baroque period, seventeenth and eighteenth centuries"
+      }
+    ],
+    "url": {
+      "__type": "URL",
+      "type": "URL",
+      "url": "https://app.dasch.swiss/project/SmE5g964SpKkSPi9_odEVA",
+      "text": "Discover Project Data"
+    },
+    "secondaryURL": {
+      "__type": "URL",
+      "type": "URL",
+      "url": "https://ulrichdanielmetzger.digital/",
+      "text": "External Project Website"
+    },
+    "publications": [
+      {
+        "text": "Sophie Wolf, Katharina Schmidt-Ott und Uta Bergmann (2022), \"Roth Loth vom Seel[igen] H[errn] Hanß Jac[ob] Güder\"– Untersuchungen zum Rotlotrezept im Reise- und Rezeptbuch von Ulrich Daniel Metzger, in: Zeitschrift für Schweizerische Archäologie und Kunstgeschichte 79, 1, 53–66."
+      },
+      {
+        "text": "Elisa Ambrosio und Sophie Wolf (2019), \"Bleÿgelb, Umbra únd Silbergledt\" – Les recettes de couleurs du peintre-verrier et peintre sous verre Ulrich Daniel Metzger, in: NIKE-Bulletin 2019, 1, 48–51."
+      }
+    ],
+    "dataManagementPlan": {
+      "__type": "DataManagementPlan",
+      "available": true
+    },
+    "status": "Finished"
+  },
+  "datasets": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0840-dataset-000",
+      "__type": "Dataset",
+      "abstracts": [
+        {
+          "de": "Das Datenset enthält die kommentierte Edition der Handschrift Ulrich Daniel Metzgers einschliesslich der darin enthaltenen Farbrezepte und Malanleitungen, ein Glossar, ein Verzeichnis der Reiseetappen Metzgers, ein Werkverzeichnis, ein Personen- und ein Ortsregister, Forschungstexte, schriftliche Quellen von und zu Metzger sowie Informationen zum Projekt (Projektpartner, Kontakt, Impressum).",
+          "en": "The data set contains the annotated edition of Ulrich Daniel Metzger's manuscript including the paint recipes therein, a glossary, an index of Metzger's travel stages, a catalogue raisonné, an index of persons and places, research texts, other written sources by and on Metzger as well as information on the project (project partners, contact, imprint)."
+        }
+      ],
+      "accessConditions": "restricted",
+      "datePublished": "2022-11-21",
+      "howToCite": "Uta Bergmann, Sophie Wolf, Marion Gartenmeister, Elisa Ambrosio und Vitrocentre Romont (2022). U.D. Metzger – Handschrift eines Hinterglasmalers. Digitale Edition, Kommentar und Werkverzeichnis, Romont, 2022. https://ulrichdanielmetzger.digital.",
+      "languages": [
+        {
+          "de": "Deutsch",
+          "en": "German"
+        }
+      ],
+      "licenses": [
+        {
+          "__type": "License",
+          "date": "2022-11-21",
+          "license": {
+            "__type": "URL",
+            "type": "Creative Commons",
+            "url": "https://creativecommons.org/licenses/by-nc-nd/3.0/ch/",
+            "text": "CC BY-NC-ND 3.0 CH"
+          },
+          "details": "Images"
+        },
+        {
+          "__type": "License",
+          "date": "2022-11-21",
+          "license": {
+            "__type": "URL",
+            "type": "Creative Commons",
+            "url": "https://creativecommons.org/licenses/by-nc/3.0/ch/",
+            "text": "CC BY-NC 3.0 CH"
+          },
+          "details": "Texts (with the exception of the copyrighted images of third parties)"
+        }
+      ],
+      "attributions": [
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0840-person-000",
+          "roles": [
+            "Editor",
+            "Author"
+          ]
+        },
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0840-person-001",
+          "roles": [
+            "Editor",
+            "Author"
+          ]
+        },
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0840-organization-000",
+          "roles": [
+            "Publisher"
+          ]
+        },
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0840-organization-002",
+          "roles": [
+            "Creator",
+            "Maintainer"
+          ]
+        },
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0840-organization-003",
+          "roles": [
+            "Creator",
+            "Maintainer"
+          ]
+        }
+      ],
+      "status": "Finished",
+      "title": "Kommentierte Edition der Handschrift von Ulrich Daniel Metzger",
+      "typeOfData": [
+        "Text",
+        "Image"
+      ]
+    }
+  ],
+  "persons": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0840-person-000",
+      "__type": "Person",
+      "email": "sophie.wolf@vitrocentre.ch",
+      "familyNames": [
+        "Wolf"
+      ],
+      "givenNames": [
+        "Sophie"
+      ],
+      "jobTitles": [
+        "Wissenschaftliche Mitarbeiterin"
+      ],
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-0840-organization-000"
+      ],
+      "authorityRefs": [
+        {
+          "__type": "URL",
+          "type": "ORCID",
+          "url": "https://orcid.org/0000-0003-1634-2462",
+          "text": "ORCID URL: https://orcid.org/0000-0003-1634-2462"
+        }
+      ]
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0840-person-001",
+      "__type": "Person",
+      "email": "Francine.giese@vitrocentre.ch",
+      "familyNames": [
+        "Giese"
+      ],
+      "givenNames": [
+        "Francine"
+      ],
+      "jobTitles": [
+        "Direktorin"
+      ],
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-0840-organization-000"
+      ]
+    }
+  ],
+  "organizations": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0840-organization-000",
+      "__type": "Organization",
+      "address": {
+        "__type": "Address",
+        "street": "Rue du Château 108b, case postale 225",
+        "postalCode": "1680",
+        "locality": "Romont",
+        "country": "Switzerland"
+      },
+      "email": "info@vitrocentre.ch",
+      "name": "Vitrocentre Romont",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://vitrocentre.ch",
+        "text": "https://vitrocentre.ch"
+      },
+      "alternativeNames": [
+        {
+          "fr": "Centre suisse de recherche sur le vitrail et les arts du verre"
+        }
+      ]
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0840-organization-001",
+      "__type": "Organization",
+      "address": {
+        "__type": "Address",
+        "street": "Wildhainweg 3",
+        "postalCode": "3001",
+        "locality": "Bern",
+        "country": "Switzerland",
+        "additional": "Postfach"
+      },
+      "email": "desk@snf.ch",
+      "name": "Swiss National Science Foundation (SNSF)",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://snf.ch/",
+        "text": "https://snf.ch/"
+      }
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0840-organization-002",
+      "__type": "Organization",
+      "address": {
+        "__type": "Address",
+        "street": "Heckenweg 42",
+        "postalCode": "3007",
+        "locality": "Bern",
+        "country": "Switzerland"
+      },
+      "email": "info@textandbytes.com",
+      "name": "Text&Bytes GmbH",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://www.textandbytes.com/",
+        "text": "https://www.textandbytes.com/"
+      }
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0840-organization-003",
+      "__type": "Organization",
+      "address": {
+        "__type": "Address",
+        "street": "Hardturmstrasse 68",
+        "postalCode": "8005",
+        "locality": "Zürich",
+        "country": "Switzerland"
+      },
+      "email": "xy@herrmanngermann.ch",
+      "name": "Herrmann Germann GmbH",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://herrmanngermann.ch",
+        "text": "https://herrmanngermann.ch"
+      }
+    }
+  ],
+  "grants": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0840-grant-000",
+      "__type": "Grant",
+      "funders": [
+        "http://ns.dasch.swiss/repository#dsp-0840-organization-001"
+      ],
+      "name": "Project funding",
+      "number": "178961",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://data.snf.ch/grants/grant/178961",
+        "text": "https://data.snf.ch/grants/grant/178961"
+      }
+    }
+  ]
+}

@@ -550,10 +550,10 @@ The OpenAIRE Guidelines specify 18 fields with the following cardinalities:
 | Project Field                      | OpenAIRE Field              | Mapping Notes                                 |
 | ---------------------------------- | --------------------------- | --------------------------------------------- |
 | `pid`                              | **Identifier (M)**          | Direct mapping                                |
-| `attributions` (TBD roles)         | **Creator (M)**             | ❓ Which roles count as creators?              |
+| `attributions` (TBD roles)         | **Creator (M)**             | Which roles count as creators?                |
 | `name`                             | **Title (M)**               | Direct mapping                                |
 | Fixed "DaSCH"                      | **Publisher (M)**           | Static value                                  |
-| TBD date field                     | **PublicationYear (M)**     | ❓ startDate or endDate year? Project-specific |
+| TBD date field                     | **PublicationYear (M)**     | startDate or endDate year? Project-specific   |
 | `keywords`                         | **Subject (R)**             | Direct mapping                                |
 | `attributions` (non-creator roles) | **Contributor (MA/O)**      | Remaining attributions                        |
 | `startDate`, `endDate`             | **Date (M)**                | Multiple dates                                |
@@ -588,7 +588,8 @@ The OpenAIRE Guidelines specify 18 fields with the following cardinalities:
     - [https://www.w3.org/TR/prov-o/](https://www.w3.org/TR/prov-o/)
     - track provenance of dataset etc. through time (even before entered)
     - could also track version history in the archive (predecessor)
-- Model Person and Organization in a re-useable fashion. This should include making stuff like affiliation time/project bound
+- Model Person and Organization in a re-useable fashion. This should include making stuff like
+  affiliation time/project bound
 - Alongside keywords, we could also have categories. Where keywords are free text, categories are from a controlled vocabulary.
 - Model attribution in terms of DataCite contribution types.
 - Model TypeOfData in terms of DataCite's resource types.
