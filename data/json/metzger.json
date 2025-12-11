@@ -3,7 +3,7 @@
   "project": {
     "__type": "Project",
     "howToCite": "Uta Bergmann, Sophie Wolf, Marion Gartenmeister, Elisa Ambrosio und Vitrocentre Romont (2022). U.D. Metzger – Handschrift eines Hinterglasmalers. Digitale Edition, Kommentar und Werkverzeichnis, Romont, 2022. https://ulrichdanielmetzger.digital.",
-    "teaserText": "Die Handschrift Ulrich Daniel Metzgers (1671 – nach 1738) dokumentiert einen Ausschnitt aus dem Leben des Glasers und Hinterglasmalers und wirft Licht auf die Lebensumstände wandernder Künstler in der Barockzeit.",
+    "teaserText": "Die Handschrift Ulrich Daniel Metzgers (1671–1738) dokumentiert das Leben des Glasers und Hinterglasmalers und wirft Licht auf die Lebensumstände wandernder Künstler in der Barockzeit.",
     "datasets": [
       "http://ns.dasch.swiss/repository#dsp-0840-dataset-000"
     ],
