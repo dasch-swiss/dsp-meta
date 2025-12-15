@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.4.4](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.3...dsp-meta-v2.4.4) (2025-12-15)
+
+
+### Maintenances
+
+* **deps-dev:** Bump prettier-plugin-svelte from 3.4.0 to 3.4.1 in /web-frontend in the frontend-dependencies group ([#431](https://github.com/dasch-swiss/dsp-meta/issues/431)) ([d477d8a](https://github.com/dasch-swiss/dsp-meta/commit/d477d8aaebeafca914bc3ab4ceeb2f0ca7a1fadb))
+
+
+### Project Data
+
+* Change publication for 0863 ([#433](https://github.com/dasch-swiss/dsp-meta/issues/433)) ([109eb93](https://github.com/dasch-swiss/dsp-meta/commit/109eb934f979058a2956c6db8469ccc0de072b45))
+* Create martcult.json ([#435](https://github.com/dasch-swiss/dsp-meta/issues/435)) ([81a6d1c](https://github.com/dasch-swiss/dsp-meta/commit/81a6d1c9a185dce6e3ff59f0097ccb0e77922484))
+* Update nietzsche.json ([#432](https://github.com/dasch-swiss/dsp-meta/issues/432)) ([82b7680](https://github.com/dasch-swiss/dsp-meta/commit/82b76804b275ff0ff8975b65e139c699298083f0))
+
 ## [2.4.3](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.2...dsp-meta-v2.4.3) (2025-12-11)
 
 
