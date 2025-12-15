@@ -1,0 +1,219 @@
+{
+  "$schema": "../../resources/schema-metadata-draft.json",
+  "project": {
+    "__type": "Project",
+    "howToCite": "Martial Culture in Late Medieval Towns (2025). DaSCH. https://ark.dasch.swiss/ark:/72163/1/0850.",
+    "teaserText": "This project examines towns as producers and brokers of martial culture in late medieval Europe, exploring how urban centers shaped and were transformed by military techniques and weapons use.",
+    "datasets": [
+      "http://ns.dasch.swiss/repository#dsp-0850-dataset-000"
+    ],
+    "alternativeNames": [
+      {
+        "en": "martcult"
+      }
+    ],
+    "contactPoint": "http://ns.dasch.swiss/repository#dsp-0850-person-000",
+    "description": {
+      "en": "This project focus on towns as producers, organisers, and brokers of martial culture within the rapidly changing political world of late medieval Europe, examining how towns helped transform and were transformed by trend-setting military techniques and urban \"martial culture.\" This martial culture developed at the intersection of legal prerogatives, political requirements, physical skills, knowledge, and the evolving societal significance of the ownership and use of weapons. The project will thus integrate a number of historiographical approaches that are usually explored separately: urban institutional, social, and political history; military history; the history of weapons and weapon use; the history of urban martial competitions; the history of knowledge production and dissemination; the history of fighting expertise, and the transformation of the urban space itself."
+    },
+    "disciplines": [
+      {
+        "en": "10301 General history (without pre- and early history)"
+      }
+    ],
+    "endDate": "2022-12-31",
+    "funders": [
+      "http://ns.dasch.swiss/repository#dsp-0850-organization-000"
+    ],
+    "grants": [
+      "http://ns.dasch.swiss/repository#dsp-0850-grant-000"
+    ],
+    "keywords": [
+      {
+        "en": "Martial culture"
+      },
+      {
+        "en": "Medieval towns"
+      },
+      {
+        "en": "Military history"
+      },
+      {
+        "en": "Weapons"
+      },
+      {
+        "en": "Urban history"
+      },
+      {
+        "en": "Late medieval Europe"
+      }
+    ],
+    "name": "Martial Culture in Late Medieval Towns",
+    "shortcode": "0850",
+    "startDate": "2018-01-09",
+    "status": "Finished",
+    "url": {
+      "__type": "URL",
+      "type": "URL",
+      "url": "https://app.dasch.swiss/project/boH3fIyzSgexLlwC1KlnLQ",
+      "text": "Discover Project Data"
+    },
+    "secondaryURL": {
+      "__type": "URL",
+      "type": "URL",
+      "url": "https://martcult.hypotheses.org/",
+      "text": "External Project Website"
+    }
+  },
+  "datasets": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0850-dataset-000",
+      "__type": "Dataset",
+      "abstracts": [
+        {
+          "en": "This project focus on towns as producers, organisers, and brokers of martial culture within the rapidly changing political world of late medieval Europe, examining how towns helped transform and were transformed by trend-setting military techniques and urban \"martial culture.\" This martial culture developed at the intersection of legal prerogatives, political requirements, physical skills, knowledge, and the evolving societal significance of the ownership and use of weapons. The project will thus integrate a number of historiographical approaches that are usually explored separately: urban institutional, social, and political history; military history; the history of weapons and weapon use; the history of urban martial competitions; the history of knowledge production and dissemination; the history of fighting expertise, and the transformation of the urban space itself."
+        }
+      ],
+      "accessConditions": "open",
+      "attributions": [
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0850-person-000",
+          "roles": [
+            "Principal investigator"
+          ]
+        },
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0850-person-001",
+          "roles": [
+            "Project member"
+          ]
+        }
+      ],
+      "howToCite": "Martial Culture in Late Medieval Towns (2025). DaSCH. https://ark.dasch.swiss/ark:/72163/1/0850.",
+      "languages": [
+        {
+          "en": "English"
+        },
+        {
+          "de": "Deutsch"
+        },
+        {
+          "fr": "Francais"
+        }
+      ],
+      "licenses": [
+        {
+          "__type": "License",
+          "date": "2025-12-01",
+          "license": {
+            "__type": "URL",
+            "type": "Creative Commons",
+            "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+            "text": "CC BY-NC-SA 4.0"
+          }
+        }
+      ],
+      "status": "Finished",
+      "title": "Martial Culture in Late Medieval Towns",
+      "typeOfData": [
+        "Text",
+        "Image",
+        "Video"
+      ]
+    }
+  ],
+  "persons": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0850-person-000",
+      "__type": "Person",
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-0850-organization-001"
+      ],
+      "email": "regula.schmid@unibe.ch",
+      "familyNames": [
+        "Schmid Keeling"
+      ],
+      "givenNames": [
+        "Regula"
+      ],
+      "jobTitles": [
+        "Principal investigator"
+      ]
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0850-person-001",
+      "__type": "Person",
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-0850-organization-001"
+      ],
+      "email": "daniel.jaquet@epfl.ch",
+      "familyNames": [
+        "Jaquet"
+      ],
+      "givenNames": [
+        "Daniel"
+      ],
+      "jobTitles": [
+        "Project member"
+      ]
+    }
+  ],
+  "organizations": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0850-organization-000",
+      "__type": "Organization",
+      "address": {
+        "__type": "Address",
+        "street": "Wildhainweg 3",
+        "postalCode": "3001",
+        "locality": "Bern",
+        "country": "Switzerland"
+      },
+      "email": "desk@snf.ch",
+      "name": "Swiss National Science Foundation (SNSF)",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://www.snf.ch",
+        "text": "https://www.snf.ch"
+      }
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0850-organization-001",
+      "__type": "Organization",
+      "address": {
+        "__type": "Address",
+        "street": "Hochschulstrasse 6",
+        "postalCode": "3012",
+        "locality": "Bern",
+        "country": "Switzerland"
+      },
+      "name": "University of Bern",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://www.unibe.ch",
+        "text": "https://www.unibe.ch"
+      }
+    }
+  ],
+  "grants": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0850-grant-000",
+      "__type": "Grant",
+      "funders": [
+        "http://ns.dasch.swiss/repository#dsp-0850-organization-000"
+      ],
+      "name": "Project funding",
+      "number": "178896",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://data.snf.ch/grants/grant/178896",
+        "text": "https://data.snf.ch/grants/grant/178896"
+      }
+    }
+  ]
+}
