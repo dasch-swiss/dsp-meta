@@ -3,7 +3,7 @@
   "project": {
     "__type": "Project",
     "howToCite": "Martial Culture in Late Medieval Towns (2025). DaSCH. https://ark.dasch.swiss/ark:/72163/1/0850.",
-    "teaserText": "This project examines towns as producers and brokers of martial culture in late medieval Europe, exploring how urban centers shaped and were transformed by military techniques and weapons use.",
+    "teaserText": "The multifaceted martial culture of the late Medieval European town is sketched by this research project describing the ownership, handling, symbolism, use, and materiality of medieval weapons, and their cultural impact on urban society.",
     "datasets": [
       "http://ns.dasch.swiss/repository#dsp-0850-dataset-000"
     ],
@@ -14,11 +14,11 @@
     ],
     "contactPoint": "http://ns.dasch.swiss/repository#dsp-0850-person-000",
     "description": {
-      "en": "This project focus on towns as producers, organisers, and brokers of martial culture within the rapidly changing political world of late medieval Europe, examining how towns helped transform and were transformed by trend-setting military techniques and urban \"martial culture.\" This martial culture developed at the intersection of legal prerogatives, political requirements, physical skills, knowledge, and the evolving societal significance of the ownership and use of weapons. The project will thus integrate a number of historiographical approaches that are usually explored separately: urban institutional, social, and political history; military history; the history of weapons and weapon use; the history of urban martial competitions; the history of knowledge production and dissemination; the history of fighting expertise, and the transformation of the urban space itself."
+      "en": "This project focus on towns as producers, organisers, and brokers of martial culture within the rapidly changing political world of late medieval Europe, examining how towns helped transform and were transformed by trend-setting military techniques and urban 'martial culture.' This martial culture developed at the intersection of legal prerogatives, political requirements, physical skills, knowledge, and the evolving societal significance of the ownership and use of weapons. The project will thus integrate a number of historiographical approaches that are usually explored separately: urban institutional, social, and political history; military history; the history of weapons and weapon use; the history of urban martial competitions; the history of knowledge production and dissemination; the history of fighting expertise, and the transformation of the urban space itself."
     },
     "disciplines": [
       {
-        "en": "10301 General history (without pre- and early history)"
+        "en": "Historical studies"
       }
     ],
     "endDate": "2022-12-31",
@@ -30,27 +30,37 @@
     ],
     "keywords": [
       {
-        "en": "Martial culture"
+        "en": "Martial Culture"
       },
       {
-        "en": "Medieval towns"
+        "en": "Medieval History"
       },
       {
-        "en": "Military history"
+        "en": "Urban History"
       },
       {
-        "en": "Weapons"
+        "en": "Arms and Armour"
       },
       {
-        "en": "Urban history"
-      },
-      {
-        "en": "Late medieval Europe"
+        "en": "Warfare"
       }
     ],
     "name": "Martial Culture in Late Medieval Towns",
     "shortcode": "0850",
+    "spatialCoverage": [
+      {
+        "__type": "URL",
+        "type": "Geonames",
+        "url": "https://www.geonames.org/6255148/europe.html",
+        "text": "Europe"
+      }
+    ],
     "startDate": "2018-01-09",
+    "temporalCoverage": [
+      {
+        "en": "1300-1650"
+      }
+    ],
     "status": "Finished",
     "url": {
       "__type": "URL",
@@ -63,7 +73,75 @@
       "type": "URL",
       "url": "https://martcult.hypotheses.org/",
       "text": "External Project Website"
-    }
+    },
+    "publications": [
+      {
+        "text": "Jaquet, Daniel; Schmid, Regula; Tzouriadis, Iason (2022), Martial Culture in Medieval Towns. An anthology. Basel: Schwabe."
+      },
+      {
+        "text": "Magli, Elena (2021), Daniela Schulte, Die zerstorte Stadt. Katastrophen in den schweizerischen Bilderchroniken des 15. und 16. Jahrhunderts. In N/A, 71(1), 168-170."
+      },
+      {
+        "text": "Schmid, Regula (2021), Die Rustung im Schlafzimmer. Zum \"Ort\" militarischer Waffen in stadtischen Haushalten des Spatmittelalters. In Freitag, Werner; Scheutz, Martin (Eds.), Ein burgerliches Pulverfass? Waffenbesitz und Waffenkontrolle in der alteuropaischen Stadt. Stadteforschung, Reihe A: Darstellungen, Bd. 102 (pp. 19-31). Wien, Koln, Weimar: Bohlau."
+      },
+      {
+        "text": "Schmid, Regula (2021), Bereit zur Gewalt? Die Sorge um \"Rustung und Wehr\" im Spatmittelalter als Problem der vergleichenden Stadtgeschichte. In Timpener, Evelien; Wittmann, Helge (Eds.), Reichsstadt und Gewalt. Mulhauser Arbeitskreis fur Reichsstadtgeschichte (pp. 115-134). Petershausen: Michael Imhof."
+      },
+      {
+        "text": "Roelofsen, Mathijs (2021), \"En garde - un, deux!\": Military Sabre Fencing in Nineteenth-century Switzerland. In Acta Periodica Duellatorum, 9(1), 3."
+      },
+      {
+        "text": "Jaquet, Daniel (2021), Fight like a girl! An investigation into female martial practices in European Fight Books from the 14th to the 20th century. In Martial Arts Studies, 0(11), 71-85."
+      },
+      {
+        "text": "Jaquet, Daniel; Magli, Elena; Roelofsen, Mathijs; Schmid, Regula (2021), Martial Culture in Medieval Towns. Medieval history research project at the University of Bern (2018-2022). In Militaergeschichtliche Zeitschrift, 80(2), 348-355."
+      },
+      {
+        "text": "Schmid, Regula (2021), Veit Weber uber die Burgunderbeute. In Dolezalek, Isabelle; Savoy, Benedicte; Skwirblies, Robert (Eds.), Beute. Eine Anthologie zu Kunstraub und Kulturerbe (pp. 68-74). Berlin: Matthes & Seitz Berlin."
+      },
+      {
+        "text": "Jaquet, Daniel (2020), Ecrire la chose militaire a la fin du Moyen Age. Enquete au sein de la litterature technique et didactique sur les arts et les sciences militaires. In Deruelle, Benjamin (Ed.), La construction du militaire, volume 3. Les mots du militaire: dire et se dire militaire en Occident (pp. 127-146). Paris: Publications de la Sorbonne."
+      },
+      {
+        "text": "Jaquet, Daniel (2020), European Fight Books 1305-1630: Classification, typology and comparison between manuscripts and prints. In Acta Periodica Duellatorum, 8(1), 5-24."
+      },
+      {
+        "text": "Jaquet, Daniel (2020), Collecting Martial Art Knowledge on Paper in Early Modern Germany and China: The Examples of Paulus Hector Mair and Qi Jiguang and their Reading in the 21st Century. In Martial Arts Studies, 0(9), 86-92."
+      },
+      {
+        "text": "Roelofsen, Mathijs (2020), La Noble Science des Joueurs d'Espee: Fight Book and Commercial Product. In Acta Periodica Duellatorum, 8(1), 73-88."
+      },
+      {
+        "text": "Schmid, Regula (2019), Drei Zurcher Fahnen. In Niederhauser, Peter; Schmid, Regula (Eds.), Querblicke. Zurcher Reformationsgeschichten. Mitteilungen der Antiquarischen Gesellschaft in Zurich (pp. 113-117). Zurich: Chronos."
+      },
+      {
+        "text": "Schmid, Regula (2019), Der Harnisch im Haushalt. Waffen als Indikatoren und als Triebkrafte sozialen Wandels in der mittelalterlichen Stadt. In Heusinger, Sabine, von; Wittekind, Susanne (Eds.), Die materielle Kultur der Stadt in Spatmittelalter und Fruher Neuzeit. Stadteforschung, Reihe A: Darstellungen, Bd. 100 (pp. 205-224). Wien, Koln, Weimar: Bohlau."
+      },
+      {
+        "text": "Schmid, Regula; Rogger, Philippe (2019), Miliz oder Soldner? Einleitende Bemerkungen zur wechselvollen Beziehung zweier Kriegertypen in Mittelalter und fruher Neuzeit. In Rogger, Philippe; Schmid, Regula (Eds.), Miliz oder Soldner? Wehrpflicht und Solddienst in Stadt, Republik und Furstenstaat (13.-18. Jh.). Krieg in der Geschichte (pp. 1-15). Paderborn: Schoningh."
+      },
+      {
+        "text": "Jaquet, Daniel (2019), \"...schirmen mit Federklingen\". Towards a terminology of fencing swords (1400-1600). In Kaiser, Mirjam (Ed.), The Sword: Form and Thoughts. Armour and weapons (pp. 24-42). Woodbridge: Boydell and Brewer."
+      },
+      {
+        "text": "Rogger, Philippe; Schmid, Regula (Eds.) (2019), Miliz oder Soldner? Wehrpflicht und Solddienst in Stadt, Republik und Furstenstaat, 13.-18. Jh. Stadt in der Geschichte. Paderborn: Schoningh."
+      },
+      {
+        "text": "Niederhauser, Peter; Schmid, Regula (Eds.) (2019), Querblicke. Zurcher Reformationsgeschichten. Mitteilungen der Antiquarischen Gesellschaft in Zurich. Zurich: Chronos."
+      },
+      {
+        "text": "Schmid, Regula (2019), Ein wiederentdeckter Reisrodel der Constaffel aus dem 16. Jahrhundert. In Zurcher Taschenbuch, N. F. 140, 1-13."
+      },
+      {
+        "text": "Jaquet, Daniel (2019), De l'office du marechal et du tresorier des guerres. Aspects de l'organisation militaire des armees d'Amedee VIII. In Caesar, Mathieu (Ed.), La loi du Prince. Les Statuts de Savoie d'Amedee VIII de 1430. Biblioteca Storica Subalpina (pp. 269-290). Torino: Palazzo Carignano."
+      },
+      {
+        "text": "Schmid, Regula (2019), Bezahlte Burger - Gratissoldner. Die Zusammensetzung stadtischer Heere im Spatmittelalter. In Rogger, Philippe; Schmid, Regula (Eds.), Miliz oder Soldner? Wehrpflicht und Solddienst in Stadt, Republik und Furstenstaat (13.-18. Jh.). Krieg in der Geschichte (pp. 91-114). Paderborn: Schoningh."
+      },
+      {
+        "text": "Roelofsen, Mathijs; Zufferey, Dimitri (2018), Sweat and Blood: Swordsmanship and sabre in Fribourg. In Acta Periodica Duellatorum, 6(2), 103-124."
+      }
+    ]
   },
   "datasets": [
     {
@@ -71,7 +149,7 @@
       "__type": "Dataset",
       "abstracts": [
         {
-          "en": "This project focus on towns as producers, organisers, and brokers of martial culture within the rapidly changing political world of late medieval Europe, examining how towns helped transform and were transformed by trend-setting military techniques and urban \"martial culture.\" This martial culture developed at the intersection of legal prerogatives, political requirements, physical skills, knowledge, and the evolving societal significance of the ownership and use of weapons. The project will thus integrate a number of historiographical approaches that are usually explored separately: urban institutional, social, and political history; military history; the history of weapons and weapon use; the history of urban martial competitions; the history of knowledge production and dissemination; the history of fighting expertise, and the transformation of the urban space itself."
+          "en": "Collection of primary sources used during the research project (both documents and objects), linked to output of the research data including the exhibition and the research blog."
         }
       ],
       "accessConditions": "open",
@@ -80,14 +158,14 @@
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-0850-person-000",
           "roles": [
-            "Principal investigator"
+            "Author"
           ]
         },
         {
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-0850-person-001",
           "roles": [
-            "Project member"
+            "Author"
           ]
         }
       ],
@@ -128,6 +206,13 @@
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0850-person-000",
       "__type": "Person",
+      "address": {
+        "__type": "Address",
+        "street": "Langgassstrasse 51",
+        "postalCode": "3012",
+        "locality": "Bern",
+        "country": "Switzerland"
+      },
       "affiliation": [
         "http://ns.dasch.swiss/repository#dsp-0850-organization-001"
       ],
@@ -139,16 +224,31 @@
         "Regula"
       ],
       "jobTitles": [
-        "Principal investigator"
+        "Associate Professor of Medieval History"
+      ],
+      "authorityRefs": [
+        {
+          "__type": "URL",
+          "type": "ORCID",
+          "url": "https://orcid.org/0000-0002-7478-6072",
+          "text": "ORCID URL: https://orcid.org/0000-0002-7478-6072"
+        }
       ]
     },
     {
       "__id": "http://ns.dasch.swiss/repository#dsp-0850-person-001",
       "__type": "Person",
+      "address": {
+        "__type": "Address",
+        "street": "Langgassstrasse 51",
+        "postalCode": "3012",
+        "locality": "Bern",
+        "country": "Switzerland"
+      },
       "affiliation": [
         "http://ns.dasch.swiss/repository#dsp-0850-organization-001"
       ],
-      "email": "daniel.jaquet@epfl.ch",
+      "email": "daniel.jaquet@unil.ch",
       "familyNames": [
         "Jaquet"
       ],
@@ -156,7 +256,15 @@
         "Daniel"
       ],
       "jobTitles": [
-        "Project member"
+        "Senior researcher"
+      ],
+      "authorityRefs": [
+        {
+          "__type": "URL",
+          "type": "ORCID",
+          "url": "https://orcid.org/0000-0003-1515-3619",
+          "text": "ORCID URL: https://orcid.org/0000-0003-1515-3619"
+        }
       ]
     }
   ],
@@ -185,17 +293,17 @@
       "__type": "Organization",
       "address": {
         "__type": "Address",
-        "street": "Hochschulstrasse 6",
+        "street": "Langgassstrasse 51",
         "postalCode": "3012",
         "locality": "Bern",
         "country": "Switzerland"
       },
-      "name": "University of Bern",
+      "name": "Universitat Bern",
       "url": {
         "__type": "URL",
         "type": "URL",
-        "url": "https://www.unibe.ch",
-        "text": "https://www.unibe.ch"
+        "url": "https://www.unibe.ch/index_eng.html",
+        "text": "https://www.unibe.ch/index_eng.html"
       }
     }
   ],
