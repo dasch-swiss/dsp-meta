@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.6](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.5...dsp-meta-v2.4.6) (2025-12-17)
+
+
+### Project Data
+
+* Fix martcult ([#438](https://github.com/dasch-swiss/dsp-meta/issues/438)) ([edee2ec](https://github.com/dasch-swiss/dsp-meta/commit/edee2eca2bc41da71df8aa05bfe5c45aacad7078))
+
 ## [2.4.5](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.4...dsp-meta-v2.4.5) (2025-12-16)
 
 
