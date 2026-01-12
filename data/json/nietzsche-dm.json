@@ -1,0 +1,298 @@
+{
+  "$schema": "../../resources/schema-metadata-draft.json",
+  "project": {
+    "__type": "Project",
+    "howToCite": "Der späte Nietzsche. Digitale Edition der Druckdokumente (2024). DaSCH. https://ark.dasch.swiss/ark:/72163/1/0867.",
+    "teaserText": "The digital edition project \"Der späte Nietzsche\" (The Late Nietzsche) publishes Friedrich Nietzsche's late estate digitally congruent to the manuscripts.",
+    "datasets": [
+      "http://ns.dasch.swiss/repository#dsp-0867-dataset-000"
+    ],
+    "alternativeNames": [
+      {
+        "de": "Der späte Nietzsche. Druckdokumente"
+      }
+    ],
+    "contactPoint": "http://ns.dasch.swiss/repository#dsp-0867-person-000",
+    "description": {
+      "de": "Die digitale Edition der Druckdokumente von „Zur Genealogie der Moral“ wurde im Rahmen des von 2021 bis 2024 durch den Schweizerischen Nationalfonds geförderten Projekts „Im Schreib-Druck. Digitale Edition und Erforschung von Friedrich Nietzsches Druckmanuskripten 1886-1889“ erstellt. Ziel des Projekts war es, am Beispiel der Entstehungs- und Druckgeschichte von „Zur Genealogie der Moral“ den Finalisierungsprozess in der Endphase der Textproduktion zu untersuchen und mit einer digitalen Edition die Druckdokumente als genuine textgenetische Zeugen zu erschließen und der Forschung zugänglich zu machen."
+    },
+    "disciplines": [
+      {
+        "en": "10101 Philosophy"
+      }
+    ],
+    "endDate": "2024-12-31",
+    "funders": [
+      "http://ns.dasch.swiss/repository#dsp-0867-organization-000"
+    ],
+    "grants": [
+      "http://ns.dasch.swiss/repository#dsp-0867-grant-000"
+    ],
+    "keywords": [
+      {
+        "de": "Digitale Edition"
+      },
+      {
+        "de": "Manuskriptedition"
+      },
+      {
+        "de": "Nachlass"
+      },
+      {
+        "de": "Friedrich Nietzsche"
+      },
+      {
+        "de": "Philosophie"
+      },
+      {
+        "de": "Schreibprozess"
+      },
+      {
+        "de": "Textgenese"
+      }
+    ],
+    "name": "Der späte Nietzsche. Digitale Edition der Druckdokumente",
+    "shortcode": "0867",
+    "spatialCoverage": [
+      {
+        "__type": "URL",
+        "type": "Geonames",
+        "url": "https://www.geonames.org/countries/DE/germany.html",
+        "text": "Germany"
+      }
+    ],
+    "startDate": "2022-01-01",
+    "temporalCoverage": [
+      {
+        "de": "1885-1889",
+        "en": "1885-1889",
+        "fr": "1885-1889"
+      }
+    ],
+    "url": {
+      "__type": "URL",
+      "type": "URL",
+      "url": "https://nietzsche.philhist.unibas.ch",
+      "text": "External Project Website"
+    },
+    "status": "Ongoing"
+  },
+  "datasets": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0867-dataset-000",
+      "__type": "Dataset",
+      "abstracts": [
+        {
+          "de": "Die digitale Edition erschließt die überlieferten Druckdokumente zu Friedrich Nietzsche, Zur Genealogie der Moral. Eine Streitschrift, Verlag von C. G. Naumann, Leipzig 1887. Diese Dokumente beinhalten das Druckmanuskript, Korrekturbogen und den Erstdruck. Die Edition bietet (1.) eine diplomatische Transkription nach topologischem Prinzip des eigenhändigen Druckmanuskripts, (2.) eine lemmatische Wiedergabe der handschriftlichen Korrekturen in den Korrekturbogen und (3.) eine seiten- und zeilengenaue Textwiedergabe des Erstdrucks. Zu allen edierten Dokumenten beziehungsweise Dokumentseiten sind Digitalisate der Originaldokumente aus dem Goethe- und Schiller-Archiv (GSA) und der Herzogin Anna Amalia Bibliothek (HAAB) der Klassik Stiftung Weimar abrufbar."
+        }
+      ],
+      "accessConditions": "open",
+      "howToCite": "Der späte Nietzsche. Digitale Edition der Druckdokumente (2024). DaSCH. https://ark.dasch.swiss/ark:/72163/1/0867.",
+      "dateCreated": "2024-12-31",
+      "datePublished": "2024-12-31",
+      "languages": [
+        {
+          "de": "Deutsch",
+          "en": "German",
+          "fr": "allemand"
+        }
+      ],
+      "licenses": [
+        {
+          "__type": "License",
+          "date": "2024-12-31",
+          "license": {
+            "__type": "URL",
+            "type": "Creative Commons",
+            "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/deed.de",
+            "text": "CC BY-NC-ND 4.0"
+          }
+        },
+        {
+          "__type": "License",
+          "date": "2024-12-31",
+          "license": {
+            "__type": "URL",
+            "type": "Creative Commons",
+            "url": "https://creativecommons.org/licenses/by/4.0/deed.de",
+            "text": "CC BY 4.0"
+          }
+        }
+      ],
+      "attributions": [
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0867-person-000",
+          "roles": [
+            "Project lead"
+          ]
+        },
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0867-person-001",
+          "roles": [
+            "Transcription and philological comments"
+          ]
+        },
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0867-person-002",
+          "roles": [
+            "Transcription, philological comments and Digital edition"
+          ]
+        },
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0867-person-003",
+          "roles": [
+            "Transcription, philological comments and Digital edition"
+          ]
+        },
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0867-person-004",
+          "roles": [
+            "Digital edition"
+          ]
+        }
+      ],
+      "status": "Ongoing",
+      "title": "Der späte Nietzsche. Digitale Manuskriptedition",
+      "typeOfData": [
+        "Image",
+        "Text"
+      ]
+    }
+  ],
+  "persons": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0867-person-001",
+      "__type": "Person",
+      "familyNames": [
+        "Riebe"
+      ],
+      "givenNames": [
+        "Thomas"
+      ]
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0867-person-002",
+      "__type": "Person",
+      "familyNames": [
+        "Röllin"
+      ],
+      "givenNames": [
+        "Beat"
+      ]
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0867-person-003",
+      "__type": "Person",
+      "familyNames": [
+        "Stockmar"
+      ],
+      "givenNames": [
+        "René"
+      ]
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0867-person-004",
+      "__type": "Person",
+      "familyNames": [
+        "Steiner"
+      ],
+      "givenNames": [
+        "Christian"
+      ]
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0867-person-000",
+      "__type": "Person",
+      "address": {
+        "__type": "Address",
+        "street": "Nadelberg 4",
+        "postalCode": "4051",
+        "locality": "Basel",
+        "country": "Switzerland"
+      },
+      "email": "hubert.thuering@unibas.ch",
+      "familyNames": [
+        "Thüring"
+      ],
+      "givenNames": [
+        "Hubert"
+      ],
+      "jobTitles": [
+        "Prof. Dr."
+      ],
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-0867-organization-001"
+      ],
+      "authorityRefs": [
+        {
+          "__type": "URL",
+          "type": "URL",
+          "url": "https://germanistik.philhist.unibas.ch/de/personen/hubert-thuering/",
+          "text": "https://germanistik.philhist.unibas.ch/de/personen/hubert-thuering/"
+        }
+      ]
+    }
+  ],
+  "organizations": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0867-organization-001",
+      "__type": "Organization",
+      "address": {
+        "__type": "Address",
+        "street": "Nadelberg 4",
+        "postalCode": "4051",
+        "locality": "Basel",
+        "country": "Switzerland"
+      },
+      "email": "germa-dslw@unibas.ch",
+      "name": "Universität Basel, Deutsches Seminar",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://germanistik.philhist.unibas.ch",
+        "text": "https://germanistik.philhist.unibas.ch"
+      }
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0867-organization-000",
+      "__type": "Organization",
+      "address": {
+        "__type": "Address",
+        "street": "Wildhainweg 3",
+        "postalCode": "3001",
+        "locality": "Bern",
+        "country": "Switzerland"
+      },
+      "email": "desk@snf.ch",
+      "name": "Swiss National Science Foundation (SNSF)",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://www.snf.ch/",
+        "text": "https://www.snf.ch/"
+      }
+    }
+  ],
+  "grants": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0867-grant-000",
+      "__type": "Grant",
+      "funders": [
+        "http://ns.dasch.swiss/repository#dsp-0867-organization-000"
+      ],
+      "name": "Editions",
+      "number": "204401",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://data.snf.ch/grants/grant/204401",
+        "text": "https://data.snf.ch/grants/grant/204401"
+      }
+    }
+  ]
+}
