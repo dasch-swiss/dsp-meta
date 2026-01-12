@@ -2,16 +2,17 @@
   "$schema": "../../resources/schema-metadata-draft.json",
   "project": {
     "__type": "Project",
+    "howToCite": "Der späte Nietzsche. Digitale Manuskriptedition (2021). DaSCH. https://ark.dasch.swiss/ark:/72163/1/0866.",
     "teaserText": "The digital edition project \"Der späte Nietzsche\" (The Late Nietzsche) publishes Friedrich Nietzsche's late estate digitally congruent to the manuscripts.",
     "datasets": [
-      "http://ns.dasch.swiss/repository#dsp-0836-dataset-000"
+      "http://ns.dasch.swiss/repository#dsp-0866-dataset-000"
     ],
     "alternativeNames": [
       {
         "de": "Der späte Nietzsche. Manuskriptedition"
       }
     ],
-    "contactPoint": "http://ns.dasch.swiss/repository#dsp-0836-person-000",
+    "contactPoint": "http://ns.dasch.swiss/repository#dsp-0866-person-000",
     "description": {
       "en": "The digital edition project “Der späte Nietzsche” (The Late Nietzsche) publishes Friedrich Nietzsche’s late estate digitally congruent to the manuscripts keeping the notation and draft character of Nietzsche’s later writings with its corrections, deletions and revisions, which are mapped together with the topological information and the context in a highly detailed granularity reaching down to the level of lines, single words and their  changes through corrections. Manuscript descriptions, cross references and editoral comments are also provided for each of published manuscript pages / transcriptions."
     },
@@ -22,10 +23,10 @@
     ],
     "endDate": "2021-12-31",
     "funders": [
-      "http://ns.dasch.swiss/repository#dsp-0836-organization-000"
+      "http://ns.dasch.swiss/repository#dsp-0866-organization-000"
     ],
     "grants": [
-      "http://ns.dasch.swiss/repository#dsp-0836-grant-000"
+      "http://ns.dasch.swiss/repository#dsp-0866-grant-000"
     ],
     "keywords": [
       {
@@ -51,7 +52,7 @@
       }
     ],
     "name": "Der späte Nietzsche. Digitale Manuskriptedition",
-    "shortcode": "0836",
+    "shortcode": "0866",
     "spatialCoverage": [
       {
         "__type": "URL",
@@ -74,11 +75,11 @@
       "url": "https://nietzsche.philhist.unibas.ch",
       "text": "External Project Website"
     },
-    "status": "Ongoing"
+    "status": "Finished"
   },
   "datasets": [
     {
-      "__id": "http://ns.dasch.swiss/repository#dsp-0836-dataset-000",
+      "__id": "http://ns.dasch.swiss/repository#dsp-0866-dataset-000",
       "__type": "Dataset",
       "abstracts": [
         {
@@ -86,6 +87,7 @@
         }
       ],
       "accessConditions": "open",
+      "howToCite": "Der späte Nietzsche. Digitale Manuskriptedition (2021). DaSCH. https://ark.dasch.swiss/ark:/72163/1/0866.",
       "dateCreated": "2021-12-31",
       "datePublished": "2021-12-31",
       "languages": [
@@ -120,76 +122,76 @@
       "attributions": [
         {
           "__type": "Attribution",
-          "agent": "http://ns.dasch.swiss/repository#dsp-0836-person-000",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0866-person-000",
           "roles": [
             "Project lead"
           ]
         },
         {
           "__type": "Attribution",
-          "agent": "http://ns.dasch.swiss/repository#dsp-0836-person-001",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0866-person-001",
           "roles": [
             "Transcription and philological comments"
           ]
         },
         {
           "__type": "Attribution",
-          "agent": "http://ns.dasch.swiss/repository#dsp-0836-person-002",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0866-person-002",
           "roles": [
             "Transcription and philological comments"
           ]
         },
         {
           "__type": "Attribution",
-          "agent": "http://ns.dasch.swiss/repository#dsp-0836-person-003",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0866-person-003",
           "roles": [
             "Transcription and philological comments"
           ]
         },
         {
           "__type": "Attribution",
-          "agent": "http://ns.dasch.swiss/repository#dsp-0836-person-004",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0866-person-004",
           "roles": [
             "Transcription and philological comments"
           ]
         },
         {
           "__type": "Attribution",
-          "agent": "http://ns.dasch.swiss/repository#dsp-0836-person-005",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0866-person-005",
           "roles": [
             "Transcription and philological comments"
           ]
         },
         {
           "__type": "Attribution",
-          "agent": "http://ns.dasch.swiss/repository#dsp-0836-person-006",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0866-person-006",
           "roles": [
             "Digital edition"
           ]
         },
         {
           "__type": "Attribution",
-          "agent": "http://ns.dasch.swiss/repository#dsp-0836-person-007",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0866-person-007",
           "roles": [
             "Digital edition"
           ]
         },
         {
           "__type": "Attribution",
-          "agent": "http://ns.dasch.swiss/repository#dsp-0836-person-008",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0866-person-008",
           "roles": [
             "Digital edition"
           ]
         },
         {
           "__type": "Attribution",
-          "agent": "http://ns.dasch.swiss/repository#dsp-0836-person-009",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0866-person-009",
           "roles": [
             "Digital edition"
           ]
         }
       ],
-      "status": "Ongoing",
+      "status": "Finished",
       "title": "Der späte Nietzsche. Digitale Manuskriptedition",
       "typeOfData": [
         "Image",
@@ -199,7 +201,7 @@
   ],
   "persons": [
     {
-      "__id": "http://ns.dasch.swiss/repository#dsp-0836-person-001",
+      "__id": "http://ns.dasch.swiss/repository#dsp-0866-person-001",
       "__type": "Person",
       "familyNames": [
         "Riebe"
@@ -209,7 +211,7 @@
       ]
     },
     {
-      "__id": "http://ns.dasch.swiss/repository#dsp-0836-person-002",
+      "__id": "http://ns.dasch.swiss/repository#dsp-0866-person-002",
       "__type": "Person",
       "familyNames": [
         "Röllin"
@@ -219,7 +221,7 @@
       ]
     },
     {
-      "__id": "http://ns.dasch.swiss/repository#dsp-0836-person-003",
+      "__id": "http://ns.dasch.swiss/repository#dsp-0866-person-003",
       "__type": "Person",
       "familyNames": [
         "Stockmar"
@@ -229,7 +231,7 @@
       ]
     },
     {
-      "__id": "http://ns.dasch.swiss/repository#dsp-0836-person-004",
+      "__id": "http://ns.dasch.swiss/repository#dsp-0866-person-004",
       "__type": "Person",
       "familyNames": [
         "Haase"
@@ -239,7 +241,7 @@
       ]
     },
     {
-      "__id": "http://ns.dasch.swiss/repository#dsp-0836-person-005",
+      "__id": "http://ns.dasch.swiss/repository#dsp-0866-person-005",
       "__type": "Person",
       "familyNames": [
         "Kohlenbach"
@@ -249,7 +251,7 @@
       ]
     },
     {
-      "__id": "http://ns.dasch.swiss/repository#dsp-0836-person-006",
+      "__id": "http://ns.dasch.swiss/repository#dsp-0866-person-006",
       "__type": "Person",
       "familyNames": [
         "Steinbach"
@@ -259,7 +261,7 @@
       ]
     },
     {
-      "__id": "http://ns.dasch.swiss/repository#dsp-0836-person-007",
+      "__id": "http://ns.dasch.swiss/repository#dsp-0866-person-007",
       "__type": "Person",
       "familyNames": [
         "Steiner"
@@ -269,7 +271,7 @@
       ]
     },
     {
-      "__id": "http://ns.dasch.swiss/repository#dsp-0836-person-008",
+      "__id": "http://ns.dasch.swiss/repository#dsp-0866-person-008",
       "__type": "Person",
       "familyNames": [
         "Erhardt"
@@ -279,7 +281,7 @@
       ]
     },
     {
-      "__id": "http://ns.dasch.swiss/repository#dsp-0836-person-009",
+      "__id": "http://ns.dasch.swiss/repository#dsp-0866-person-009",
       "__type": "Person",
       "familyNames": [
         "Schmidt"
@@ -289,7 +291,7 @@
       ]
     },
     {
-      "__id": "http://ns.dasch.swiss/repository#dsp-0836-person-000",
+      "__id": "http://ns.dasch.swiss/repository#dsp-0866-person-000",
       "__type": "Person",
       "address": {
         "__type": "Address",
@@ -309,7 +311,7 @@
         "Prof. Dr."
       ],
       "affiliation": [
-        "http://ns.dasch.swiss/repository#dsp-0836-organization-001"
+        "http://ns.dasch.swiss/repository#dsp-0866-organization-001"
       ],
       "authorityRefs": [
         {
@@ -323,7 +325,7 @@
   ],
   "organizations": [
     {
-      "__id": "http://ns.dasch.swiss/repository#dsp-0836-organization-001",
+      "__id": "http://ns.dasch.swiss/repository#dsp-0866-organization-001",
       "__type": "Organization",
       "address": {
         "__type": "Address",
@@ -342,7 +344,7 @@
       }
     },
     {
-      "__id": "http://ns.dasch.swiss/repository#dsp-0836-organization-000",
+      "__id": "http://ns.dasch.swiss/repository#dsp-0866-organization-000",
       "__type": "Organization",
       "address": {
         "__type": "Address",
@@ -363,10 +365,10 @@
   ],
   "grants": [
     {
-      "__id": "http://ns.dasch.swiss/repository#dsp-0836-grant-000",
+      "__id": "http://ns.dasch.swiss/repository#dsp-0866-grant-000",
       "__type": "Grant",
       "funders": [
-        "http://ns.dasch.swiss/repository#dsp-0836-organization-000"
+        "http://ns.dasch.swiss/repository#dsp-0866-organization-000"
       ],
       "name": "Editions",
       "number": "198240",
