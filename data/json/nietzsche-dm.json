@@ -2,14 +2,14 @@
   "$schema": "../../resources/schema-metadata-draft.json",
   "project": {
     "__type": "Project",
-    "howToCite": "Der späte Nietzsche. Digitale Manuskriptedition (2024). DaSCH. https://ark.dasch.swiss/ark:/72163/1/0867.",
+    "howToCite": "Der späte Nietzsche. Digitale Edition der Druckdokumente (2024). DaSCH. https://ark.dasch.swiss/ark:/72163/1/0867.",
     "teaserText": "The digital edition project \"Der späte Nietzsche\" (The Late Nietzsche) publishes Friedrich Nietzsche's late estate digitally congruent to the manuscripts.",
     "datasets": [
       "http://ns.dasch.swiss/repository#dsp-0867-dataset-000"
     ],
     "alternativeNames": [
       {
-        "de": "Der späte Nietzsche. Druckmanuskripte"
+        "de": "Der späte Nietzsche. Druckdokumente"
       }
     ],
     "contactPoint": "http://ns.dasch.swiss/repository#dsp-0867-person-000",
@@ -51,7 +51,7 @@
         "de": "Textgenese"
       }
     ],
-    "name": "Der späte Nietzsche. Digitale Manuskriptedition",
+    "name": "Der späte Nietzsche. Digitale Edition der Druckdokumente",
     "shortcode": "0867",
     "spatialCoverage": [
       {
@@ -87,7 +87,7 @@
         }
       ],
       "accessConditions": "open",
-      "howToCite": "Der späte Nietzsche. Digitale Manuskriptedition (2024). DaSCH. https://ark.dasch.swiss/ark:/72163/1/0867.",
+      "howToCite": "Der späte Nietzsche. Digitale Edition der Druckdokumente (2024). DaSCH. https://ark.dasch.swiss/ark:/72163/1/0867.",
       "dateCreated": "2024-12-31",
       "datePublished": "2024-12-31",
       "languages": [
