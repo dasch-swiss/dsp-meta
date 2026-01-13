@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.4.7](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.6...dsp-meta-v2.4.7) (2026-01-12)
+
+
+### Project Data
+
+* Add gossembrot ([#444](https://github.com/dasch-swiss/dsp-meta/issues/444)) ([cc9cea6](https://github.com/dasch-swiss/dsp-meta/commit/cc9cea6f7916f1e825bc6e6989148c75ce3e5fe4))
+* Replace-nietzsche ([#442](https://github.com/dasch-swiss/dsp-meta/issues/442)) ([1ca17bc](https://github.com/dasch-swiss/dsp-meta/commit/1ca17bc8c3615bfd9348e7aa7f900b1c7e593ced))
+
 ## [2.4.6](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.5...dsp-meta-v2.4.6) (2025-12-17)
 
 
