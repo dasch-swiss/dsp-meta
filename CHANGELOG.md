@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.4.8](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.7...dsp-meta-v2.4.8) (2026-01-15)
+
+
+### Project Data
+
+* Fix title nietzsche-dm ([#449](https://github.com/dasch-swiss/dsp-meta/issues/449)) ([a1bcadd](https://github.com/dasch-swiss/dsp-meta/commit/a1bcadde1032d9fe982baedb7e70211aa612de3d))
+* Nietzsche-dm correct date in description  ([#450](https://github.com/dasch-swiss/dsp-meta/issues/450)) ([755e83d](https://github.com/dasch-swiss/dsp-meta/commit/755e83d38a6fc63500154867f0960711f715cdbc))
+
+
+### Bug Fixes
+
+* **cd:** Fix deployment being cancelled ([#446](https://github.com/dasch-swiss/dsp-meta/issues/446)) ([ad22a42](https://github.com/dasch-swiss/dsp-meta/commit/ad22a423b4871d00397803f6e7e6bccefd5143d9))
+
 ## [2.4.7](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.6...dsp-meta-v2.4.7) (2026-01-12)
 
 
