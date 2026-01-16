@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.9](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.8...dsp-meta-v2.4.9) (2026-01-16)
+
+
+### Maintenances
+
+* **deps:** Bump the backend-dependencies group across 1 directory with 19 updates ([#451](https://github.com/dasch-swiss/dsp-meta/issues/451)) ([e99fda8](https://github.com/dasch-swiss/dsp-meta/commit/e99fda820eecb5e0638f058f4c92a2c1ff0a988f))
+
 ## [2.4.8](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.7...dsp-meta-v2.4.8) (2026-01-15)
 
 
