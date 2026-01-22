@@ -1,0 +1,426 @@
+{
+  "$schema": "../../resources/schema-metadata-draft.json",
+  "project": {
+    "__type": "Project",
+    "howToCite": "Berschin (2026): Vitae Sanctae Wiboradae, DaSCH. https://ark.dasch.swiss/ark:/72163/1/085C",
+    "teaserText": "Edition und Übersetzung der beiden von den St. Galler Mönchen Ekkehart I. und Herimannus verfassten Viten Wiboradas von St. Gallen († 926) durch Walter Berschin.",
+    "datasets": [
+      "http://ns.dasch.swiss/repository#dsp-085C-dataset-000"
+    ],
+    "alternativeNames": [
+      {
+        "de": "Edition Wiborada-Viten",
+        "en": "Edition Wiborada-Viten"
+      }
+    ],
+    "contactPoint": "http://ns.dasch.swiss/repository#dsp-085C-organization-003",
+    "description": {
+      "de": "Wiborada, die Schutzpatronin der Bücher und Bibliotheken, wurde im Jahr 1047 als erste Frau überhaupt formell vom Papst heiliggesprochen. Sie hatte sich im 10. Jahrhundert in eine Zelle in St. Gallen einmauern lassen und erlitt bei einem Angriff der Ungarn im Jahr 926 das Martyrium.\n\nIn dieser digitalen Ausgabe sind die beiden Viten von St. Galler Mönchen, die erhalten sind, sorgfältig ediert und übersetzt. Die erste von Klosterdekan Ekkehart I. entstand um 960/970, die zweite des Herimannus um 1072/1076. Dank diesen Lebensbeschreibungen, ergänzt durch weitere Quellen, gehört Wiborada zu den am besten dokumentierten Frauen des Frühmittelalters.",
+      "en": "Wiborada, the patron saint of books and libraries, was formally canonized by the Pope in 1047---the first woman ever to receive this honor. In the 10th century, she chose a life of radical devotion by having herself enclosed in a cell at St. Gall, where she ultimately suffered martyrdom during a Hungarian raid in 926.\n\nThis digital edition offers, in carefully edited and translated form, the two vitae written by monks of St. Gall, that have been preserved. The first was composed by the monastery dean Ekkehart I around 960--970, and the second by Herimannus around 1072--1076. Thanks to these accounts, complemented by additional sources, Wiborada stands among the best-documented women of the early Middle Ages."
+    },
+    "disciplines": [
+      {
+        "__type": "URL",
+        "type": "Skos",
+        "url": "http://skos.um.es/unesco6/550403",
+        "text": "Medieval history"
+      },
+        {
+            "__type": "URL",
+            "type": "Skos",
+            "url": "http://skos.um.es/unesco6/550621",
+            "text": "History of religions"
+        }
+    ],
+    "endDate": "2025-12-31",
+    "funders": [
+      "http://ns.dasch.swiss/repository#dsp-085C-organization-003"
+    ],
+    "keywords": [
+      {
+        "de": "Wiborada"
+      },
+      {
+        "de": "Ekkehart I."
+      },
+      {
+        "de": "Herimannus"
+      },
+      {
+        "de": "Ekkehart IV."
+      },
+      {
+        "de": "St. Gallen"
+      },
+      {
+        "de": "St. Georgen-St. Gallen"
+      },
+      {
+        "de": "St. Mangen-St. Gallen"
+      },
+      {
+        "de": "Inklusin"
+      },
+      {
+        "de": "Märtyrerin"
+      },
+      {
+        "de": "Heilige"
+      },
+      {
+        "de": "Ungarn"
+      },
+      {
+        "en": "Wiborada"
+      },
+      {
+        "en": "Ekkehart I"
+      },
+      {
+        "en": "Herimannus"
+      },
+      {
+        "en": "Ekkehart IV"
+      },
+      {
+        "en": "St Gall"
+      },
+      {
+        "en": "St Georgen-St Gall"
+      },
+      {
+        "en": "St Mangen-St Gall"
+      },
+      {
+        "en": "Recluse"
+      },
+      {
+        "en": "Martyr"
+      },
+      {
+        "en": "Saint"
+      },
+      {
+        "en": "Hungarians"
+      }
+    ],
+    "name": "Vitae Sanctae Wiboradae — Lebensbeschreibungen der heiligen Wiborada von St. Gallen, herausgegeben, übersetzt und mit einer Einleitung und Anmerkungen versehen von Walter Berschin",
+    "publications": [
+      {
+        "text": "Ekkehart I. von St. Gallen und Herimannus von St. Gallen, Vitae sanctae Wiboradae. Lebensbeschreibungen der heiligen Wiborada von St. Gallen, Lateinisch/Deutsch, herausgegeben, übersetzt und mit Anmerkungen versehen von Walter Berschin. Zum Druck vorbereitet und mit einem Nachwort versehen von Cornel Dora, Ditzingen, Reclam, Philipp, 2025."
+      }
+    ],
+    "shortcode": "085C",
+    "spatialCoverage": [
+      {
+        "__type": "URL",
+        "type": "Geonames",
+        "url": "https://www.geonames.org/2658822",
+        "text": "St. Gallen"
+      },
+      {
+        "__type": "URL",
+        "type": "Geonames",
+        "url": "https://www.geonames.org/2657895",
+        "text": "Thurgau"
+      },
+      {
+        "__type": "URL",
+        "type": "Geonames",
+        "url": "https://www.geonames.org/3169070",
+        "text": "Rome"
+      }
+    ],
+    "startDate": "2021-06-01",
+    "temporalCoverage": [
+      {
+        "de": "9. und 10. Jahrhundert",
+        "en": "9th and 10th century",
+        "fr": "9ème et 10ème siècle"
+      }
+    ],
+    "status": "Finished"
+  },
+  "datasets": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-085C-dataset-000",
+      "__type": "Dataset",
+      "abstracts": [
+        {
+          "en": "Wiborada, the patron saint of books and libraries, was formally canonized by the Pope in 1047---the first woman ever to receive this honor. In the 10th century, she chose a life of radical devotion by having herself enclosed in a cell at St. Gall, where she ultimately suffered martyrdom during a Hungarian raid in 926.\n\nThis digital edition offers, in carefully edited and translated form, the two vitae written by monks of St. Gall, that have been preserved. The first was composed by the monastery dean Ekkehart I around 960--970, and the second by Herimannus around 1072--1076. Thanks to these accounts, complemented by additional sources, Wiborada stands among the best-documented women of the early Middle Ages."
+        }
+      ],
+      "alternativeTitles": [
+        {
+          "de": "Wiborada",
+          "en": "Wiborada"
+        }
+      ],
+      "accessConditions": "open",
+      "howToCite": "Berschin (2026). Edition Wiborada-Viten [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/085C.",
+      "languages": [
+        {
+          "en": "Latin",
+          "de": "Latein",
+          "fr": "latin"
+        },
+        {
+          "de": "Deutsch",
+          "en": "German",
+          "fr": "allemand"
+        }
+      ],
+      "licenses": [
+        {
+          "__type": "License",
+          "date": "2026-01-01",
+          "license": {
+            "__type": "URL",
+            "type": "Creative Commons",
+            "url": "https://creativecommons.org/licenses/by-nc/4.0/ ",
+            "text": "CC BY-NC 4.0"
+          }
+        }
+      ],
+      "attributions": [
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-085C-person-000",
+          "roles": [
+            "editor",
+            "translator",
+            "author",
+            "commentator"
+          ]
+        },
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-085C-person-001",
+          "roles": [
+            "Data curator"
+          ]
+        },
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-085C-person-002",
+          "roles": [
+            "Layout"
+          ]
+        },
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-085C-person-003",
+          "roles": [
+            "Lectorate"
+          ]
+        }
+      ],
+      "status": "Finished",
+      "title": "Edition Wiborada-Viten",
+      "typeOfData": [
+        "XML",
+        "Text"
+      ]
+    }
+  ],
+  "persons": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-085C-person-000",
+      "__type": "Person",
+      "address": {
+        "__type": "Address",
+        "street": "Grabengasse 3-5",
+        "postalCode": "69117",
+        "locality": "Heidelberg",
+        "country": "Germany"
+      },
+      "email": "Walter.Berschin@urz.uni-heidelberg.de",
+      "familyNames": [
+        "Berschin"
+      ],
+      "givenNames": [
+        "Walter"
+      ],
+      "jobTitles": [
+        "Emeritus Prof."
+      ],
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-085C-organization-000"
+      ],
+      "authorityRefs": [
+        {
+          "__type": "URL",
+          "type": "URL",
+          "url": "https://www.uni-heidelberg.de/fakultaeten/philosophie/zegk/mlat/bibliowb.html",
+          "text": "https://www.uni-heidelberg.de/fakultaeten/philosophie/zegk/mlat/bibliowb.html"
+        }
+      ]
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-085C-person-001",
+      "__type": "Person",
+      "address": {
+        "__type": "Address",
+        "street": "Universitätsstrasse 33",
+        "postalCode": "50931",
+        "locality": "Köln",
+        "country": "Germany"
+      },
+      "email": "berkenstraeter@ub.uni-koeln.de",
+      "familyNames": [
+        "Berkensträter"
+      ],
+      "givenNames": [
+        "Svenja"
+      ],
+      "jobTitles": [
+        "Collaborator Historische Bestände und Sammlungen, Bestandserhaltung und Digitalisierung"
+      ],
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-085C-organization-001"
+      ]
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-085C-person-002",
+      "__type": "Person",
+      "address": {
+        "__type": "Address",
+        "street": "Kielganstrasse 4a",
+        "postalCode": "10783",
+        "locality": "Berlin",
+        "country": "Germany"
+      },
+      "email": "wolfgang@existsolutions.com",
+      "familyNames": [
+        "Meier"
+      ],
+      "givenNames": [
+        "Wolfgang"
+      ],
+      "jobTitles": [
+        "Director"
+      ],
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-085C-organization-002"
+      ],
+      "authorityRefs": [
+        {
+          "__type": "URL",
+          "type": "ORCID",
+          "url": "https://orcid.org/0000-0003-0626-7067",
+          "text": "ORCID URL: 0000-0003-0626-7067"
+        }
+      ]
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-085C-person-003",
+      "__type": "Person",
+      "address": {
+        "__type": "Address",
+        "street": "Klosterhof 6d",
+        "postalCode": "9000",
+        "locality": "St. Gallen",
+        "country": "Switzerland"
+      },
+      "email": "cornel.dora@stibi.ch",
+      "familyNames": [
+        "Dora"
+      ],
+      "givenNames": [
+        "Cornel"
+      ],
+      "jobTitles": [
+        "Director"
+      ],
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-085C-organization-003"
+      ],
+      "authorityRefs": [
+        {
+          "__type": "URL",
+          "type": "ORCID",
+          "url": "https://orcid.org/0009-0009-6829-5814",
+          "text": "ORCID URL: 0009-0009-6829-5814"
+        }
+      ]
+    }
+  ],
+  "organizations": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-085C-organization-000",
+      "__type": "Organization",
+      "address": {
+        "__type": "Address",
+        "street": "Grabengasse 3-5",
+        "postalCode": "69117",
+        "locality": "Heidelberg",
+        "country": "Germany"
+      },
+      "email": "kv0@ix.urz.uni-heidelberg.de",
+      "name": "Heidelberg University, Historisches Seminar, Mittellatein",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://www.uni-heidelberg.de/en",
+        "text": "https://www.uni-heidelberg.de/en"
+      }
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-085C-organization-001",
+      "__type": "Organization",
+      "address": {
+        "__type": "Address",
+        "street": "Universitätsstrasse 33",
+        "postalCode": "50931",
+        "locality": "Köln",
+        "country": "Germany"
+      },
+      "email": "sammlung@ub.uni-koeln.de",
+      "name": "Universitäts- und Stadtbibliothek Köln",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://ub.uni-koeln.de/",
+        "text": "https://ub.uni-koeln.de/"
+      }
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-085C-organization-002",
+      "__type": "Organization",
+      "address": {
+        "__type": "Address",
+        "street": "Kielganstrasse 4a",
+        "postalCode": "10783",
+        "locality": "Berlin",
+        "country": "Germany"
+      },
+      "email": "info@existsolutions.com",
+      "name": "Exist Solutions",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://www.existsolutions.com",
+        "text": "https://www.existsolutions.com"
+      }
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-085C-organization-003",
+      "__type": "Organization",
+      "address": {
+        "__type": "Address",
+        "street": "Klosterhof 6d",
+        "postalCode": "9000",
+        "locality": "St. Gallen",
+        "country": "Switzerland"
+      },
+      "email": "stibi@stibi.ch",
+      "name": "Stiftsbibliothek St.Gallen",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://www.stiftsbibliothek.ch",
+        "text": "https://www.stiftsbibliothek.ch"
+      }
+    }
+  ]
+}
