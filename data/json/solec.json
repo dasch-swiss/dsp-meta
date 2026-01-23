@@ -1,0 +1,254 @@
+{
+  "$schema": "../../resources/schema-metadata-draft.json",
+  "project": {
+    "__type": "Project",
+    "howToCite": "Gautschy R. (2026). Canon of solar eclipses from 2501 BCE to 1000 CE [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/0868.",
+    "teaserText": "When did the Sun darken in antiquity? Discover calculated solar eclipses and their traces in ancient historical sources.",
+    "datasets": [
+      "http://ns.dasch.swiss/repository#dsp-0868-dataset-000"
+    ],
+    "alternativeNames": [
+      {
+        "en": "solec"
+      }
+    ],
+    "contactPoint": "http://ns.dasch.swiss/repository#dsp-0868-person-000",
+    "description": {
+      "en": "This project examined several applications of astronomical chronology in the field of classical studies. This dataset contains calculations of notable solar eclipses for the period between 2500 BCE and 1000 CE for the areas of present-day Greece, Turkey, Italy, Persia and Egypt. The aim of the study was to create a solar eclipse canon with identifications of the eclipses recorded in historical sources."
+    },
+    "disciplines": [
+      {
+        "__type": "URL",
+        "type": "Skos",
+        "url": "http://skos.um.es/unesco6/550622",
+        "text": "History of Science "
+      },
+      {
+        "__type": "URL",
+        "type": "Skos",
+        "url": "http://skos.um.es/unesco6/7205",
+        "text": "Philosophy of science"
+      },
+      {
+        "en": "20200 Astronomy, Astrophysics and Space Sciences"
+      }
+    ],
+    "endDate": "2010-10-31",
+    "funders": [
+      "http://ns.dasch.swiss/repository#dsp-0868-organization-001"
+    ],
+    "grants": [
+      "http://ns.dasch.swiss/repository#dsp-0868-grant-000"
+    ],
+    "keywords": [
+      {
+        "en": "Solar eclipse"
+      },
+      {
+        "en": "Canon"
+      },
+      {
+        "en": "Near East"
+      },
+      {
+        "en": "Greece"
+      },
+      {
+        "en": "Egypt"
+      },
+      {
+        "en": "Roman Imperium"
+      },
+      {
+        "en": "Italy"
+      }
+    ],
+    "name": "Canon of solar eclipses from 2501 BCE to 1000 CE",
+    "publications": [
+      {
+        "text": "Gautschy, Rita. 2012. Sonnenfinsternisse und ihre chronologische Bedeutung: Ein neuer Sonnenfinsterniskanon für Altertumswissenschaftler. Klio 94.1, 7--17."
+      }
+    ],
+    "shortcode": "0868",
+    "spatialCoverage": [
+      {
+        "__type": "URL",
+        "type": "Geonames",
+        "url": "https://www.geonames.org/357994",
+        "text": "Egypt"
+      },
+      {
+        "__type": "URL",
+        "type": "Geonames",
+        "url": "https://d-nb.info/gnd/4068878-1",
+        "text": "Near East"
+      },
+      {
+        "__type": "URL",
+        "type": "Geonames",
+        "url": "https://www.geonames.org/390903",
+        "text": "Greece"
+      },
+      {
+        "__type": "URL",
+        "type": "Geonames",
+        "url": "https://www.geonames.org/3175395",
+        "text": "Italy"
+      },
+      {
+        "__type": "URL",
+        "type": "Pleiades",
+        "url": "https://pleiades.stoa.org/places/837",
+        "text": "Asia Minor"
+      },
+      {
+        "__type": "URL",
+        "type": "Geonames",
+        "url": "https://www.geonames.org/8354456/imperium-romanum.html",
+        "text": "Imperium Romanum"
+      }
+    ],
+    "startDate": "2008-11-01",
+    "temporalCoverage": [
+      {
+        "en": "2500 BCE to 1000 CE"
+      }
+    ],
+    "url": {
+      "__type": "URL",
+      "type": "URL",
+      "url": "https://gautschy.ch/~rita/archast/solec/solec.html",
+      "text": "External Project Website"
+    },
+    "status": "Finished"
+  },
+  "datasets": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0868-dataset-000",
+      "__type": "Dataset",
+      "abstracts": [
+        {
+          "en": "This dataset contains calculations of notable solar eclipses for the period between 2500 BCE and 1000 CE for the areas of present-day Greece, Turkey, Italy, Persia and Egypt. The aim of the study was to create a solar eclipse canon with identifications of the eclipses recorded in historical sources."
+        }
+      ],
+      "alternativeTitles": [
+        {
+          "en": "solec"
+        }
+      ],
+      "accessConditions": "open",
+      "dateCreated": "2011-01-01",
+      "datePublished": "2026-01-15",
+       "additional": [
+          {
+            "__type": "URL",
+            "type": "URL",
+            "url": "https://gautschy.ch/~rita/archast/solec/solec.html",
+            "text": "Solec Documentation Calculation"
+          }
+        ]
+      ,
+      "howToCite": "Gautschy R. (2026). Canon of solar eclipses from 2501 BCE to 1000 CE [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/0868.",
+      "languages": [
+        {
+          "en": "English",
+          "de": "Englisch",
+          "fr": "anglais"
+        }
+      ],
+      "licenses": [
+        {
+          "__type": "License",
+          "date": "2026-01-15",
+          "license": {
+            "__type": "URL",
+            "type": "Creative Commons",
+            "url": "https://creativecommons.org/licenses/by/4.0/deed.en",
+            "text": "CC BY 4.0"
+          }
+        }
+      ],
+      "attributions": [
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0868-person-000",
+          "roles": [
+            "Researcher",
+            "Project leader",
+            "Data collector",
+            "Data curator"
+          ]
+        }
+      ],
+      "status": "Finished",
+      "title": "Canon of solar eclipses from 2501 BCE to 1000 CE",
+      "typeOfData": [
+        "Text",
+        "Image"
+      ]
+    }
+  ],
+  "persons": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0868-person-000",
+      "__type": "Person",
+      "address": {
+        "__type": "Address",
+        "street": "Petersgraben 51",
+        "postalCode": "4051",
+        "locality": "Basel",
+        "country": "Switzerland"
+      },
+      "email": "rita.gautschy@unibas.ch",
+      "familyNames": [
+        "Gautschy"
+      ],
+      "givenNames": [
+        "Rita"
+      ],
+      "jobTitles": [
+        "Scientific Collaborator"
+      ],
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-0868-organization-000"
+      ],
+      "authorityRefs": [
+        {
+          "__type": "URL",
+          "type": "ORCID",
+          "url": "https://orcid.org/0000-0002-5470-8720",
+          "text": "ORCID URL: 0000-0002-5470-8720"
+        }
+      ]
+    }
+  ],
+  "organizations": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0868-organization-000",
+      "__type": "Organization",
+      "name": "University of Basel, Department of Ancient Civilizations"
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0868-organization-001",
+      "__type": "Organization",
+      "name": "Swiss National Science Foundation"
+    }
+  ],
+  "grants": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0868-grant-000",
+      "__type": "Grant",
+      "funders": [
+        "http://ns.dasch.swiss/repository#dsp-0868-organization-001"
+      ],
+      "name": "Marie Heim-Voegtlin Beiträge",
+      "number": "122824",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://data.snf.ch/grants/grant/122824",
+        "text": "https://data.snf.ch/grants/grant/122824"
+      }
+    }
+  ]
+}
