@@ -9,7 +9,7 @@
     ],
     "contactPoint": "http://ns.dasch.swiss/repository#dsp-0869-person-000",
     "description": {
-      "de": "GLAUBENMACHENLASSEN ist ein visuell-anthropologisches und filmethnographisches Dissertationsprojekt, das Identität bzw. den Identifikationsprozess im Setting eines kinematographischen Labors erforscht. Anhand der Versuchsanordnung im kinematographischen Labor eine experimentelle Herangehensweise zum Gebrauch der digitalen Kinematographie als Forschungsinstrument in den Sozialwissenschaften des dritten Jahrtausends. Forschungszeitraum: 2009-2022. Forscher: Balz Alter, Universität Basel.",
+      "de": "GLAUBENMACHENLASSEN ist ein visuell-anthropologisches und filmethnographisches Dissertationsprojekt, das Identität bzw. den Identifikationsprozess im Setting eines kinematographischen Labors erforscht. Anhand der Versuchsanordnung im kinematographischen Labor eine experimentelle Herangehensweise zum Gebrauch der digitalen Kinematographie als Forschungsinstrument in den Sozialwissenschaften des dritten Jahrtausends. Forschungszeitraum: 2009-2022. Forscher: Balz Andrea Alter, Universität Basel.",
       "en": "GLAUBENMACHENLASSEN is a visual anthropological and film ethnographic dissertation project that explores identity and the process of identification in the setting of a cinematographic laboratory. Based on an experimental setup, it takes a novel approach to the use of digital cinematography as a research tool in the actual social sciences."
     },
     "disciplines": [
@@ -57,7 +57,7 @@
     "name": "GLAUBENMACHENLASSEN",
     "publications": [
       {
-        "text": "",
+        "text": "E 3600 Scientific Artworks. 2015. Otu Bala Jah - Ya Kamerun (Official HD Video). 4:08.",
         "url": [
           {
             "__type": "URL",
@@ -92,7 +92,7 @@
         "__type": "URL",
         "type": "Geonames",
         "url": "https://www.geonames.org/2624652",
-        "text": "Denmark"
+        "text": "Aarhus"
       }
     ],
     "startDate": "2012-03-01",
