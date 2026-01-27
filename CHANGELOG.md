@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.4.9](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.8...dsp-meta-v2.4.9) (2026-01-27)
+
+
+### Maintenances
+
+* **deps-dev:** Bump prettier from 3.7.4 to 3.8.0 in /web-frontend in the frontend-dependencies group ([#453](https://github.com/dasch-swiss/dsp-meta/issues/453)) ([62f18d8](https://github.com/dasch-swiss/dsp-meta/commit/62f18d8f899925cb1db039e57b9099753aaf673c))
+* **deps-dev:** Bump prettier from 3.8.0 to 3.8.1 in /web-frontend in the frontend-dependencies group ([#457](https://github.com/dasch-swiss/dsp-meta/issues/457)) ([4df0091](https://github.com/dasch-swiss/dsp-meta/commit/4df0091f7fb005bf58bee551ae94163ef65bbcf0))
+* **deps:** Bump the backend-dependencies group across 1 directory with 19 updates ([#451](https://github.com/dasch-swiss/dsp-meta/issues/451)) ([e99fda8](https://github.com/dasch-swiss/dsp-meta/commit/e99fda820eecb5e0638f058f4c92a2c1ff0a988f))
+
+
+### Project Data
+
+* Add glaubenmachenlassen ([#456](https://github.com/dasch-swiss/dsp-meta/issues/456)) ([e91fd03](https://github.com/dasch-swiss/dsp-meta/commit/e91fd03f9a4518e3a11d7d8e386de72d42ef75d0))
+* Adding  085C Wiborada ([#454](https://github.com/dasch-swiss/dsp-meta/issues/454)) ([d96db7d](https://github.com/dasch-swiss/dsp-meta/commit/d96db7d1bf7f1a53b7db0ca9974a84385219f512))
+* Adding 0868 solec ([#455](https://github.com/dasch-swiss/dsp-meta/issues/455)) ([f71ad30](https://github.com/dasch-swiss/dsp-meta/commit/f71ad30672f1dd6b0d682132364b83035d7fc180))
+
 ## [2.4.8](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.7...dsp-meta-v2.4.8) (2026-01-15)
 
 
