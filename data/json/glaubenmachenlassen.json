@@ -1,0 +1,409 @@
+{
+  "$schema": "../../resources/schema-metadata-draft.json",
+  "project": {
+    "__type": "Project",
+    "howToCite": "Alter & Ottou (2025). GLAUBENMACHENLASSEN [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/0869.",
+    "teaserText": "GLAUBENMACHENLASSEN is a visual anthropological and film ethnographic dissertation exploring identity in a cinematographic laboratory. Research period: 2009-2022.",
+    "datasets": [
+      "http://ns.dasch.swiss/repository#dsp-0869-dataset-000"
+    ],
+    "contactPoint": "http://ns.dasch.swiss/repository#dsp-0869-person-000",
+    "description": {
+      "de": "GLAUBENMACHENLASSEN ist ein visuell-anthropologisches und filmethnographisches Dissertationsprojekt, das Identität bzw. den Identifikationsprozess im Setting eines kinematographischen Labors erforscht. Anhand der Versuchsanordnung im kinematographischen Labor eine experimentelle Herangehensweise zum Gebrauch der digitalen Kinematographie als Forschungsinstrument in den Sozialwissenschaften des dritten Jahrtausends. Forschungszeitraum: 2009-2022. Forscher: Balz Andrea Alter, Universität Basel.",
+      "en": "GLAUBENMACHENLASSEN is a visual anthropological and film ethnographic dissertation project that explores identity and the process of identification in the setting of a cinematographic laboratory. Based on an experimental setup, it takes a novel approach to the use of digital cinematography as a research tool in the actual social sciences."
+    },
+    "disciplines": [
+      {
+        "en": "10102 Ethnology"
+      },
+      {
+        "en": "10603 Musicology"
+      },
+      {
+        "en": "10604 Theatre and Film Studies"
+      },
+      {
+        "en": "10406 Visual arts and Art History"
+      },
+      {
+        "en": "10403 Fine Arts and Art History"
+      },
+      {
+        "en": "10201 Sociology"
+      },
+      {
+        "en": "10207 Social anthropology and ethnology"
+      }
+    ],
+    "endDate": "2021-03-01",
+    "funders": [
+      "http://ns.dasch.swiss/repository#dsp-0869-organization-002",
+      "http://ns.dasch.swiss/repository#dsp-0869-organization-003",
+      "http://ns.dasch.swiss/repository#dsp-0869-organization-004"
+    ],
+    "grants": [
+      "http://ns.dasch.swiss/repository#dsp-0869-grant-000",
+      "http://ns.dasch.swiss/repository#dsp-0869-grant-001",
+      "http://ns.dasch.swiss/repository#dsp-0869-grant-002"
+    ],
+    "keywords": [
+      {
+        "en": "Film as Research"
+      },
+      {
+        "en": "Cinematographic Laboratory"
+      }
+    ],
+    "name": "GLAUBENMACHENLASSEN",
+    "publications": [
+      {
+        "text": "E 3600 Scientific Artworks. 2015. Otu Bala Jah - Ya Kamerun (Official HD Video). 4:08.",
+        "url": [
+          {
+            "__type": "URL",
+            "type": "URL",
+            "url": "https://www.youtube.com/watch?v=Il2fYT1WmbY",
+            "text": "https://www.youtube.com/watch?v=Il2fYT1WmbY"
+          }
+        ]
+      }
+    ],
+    "shortcode": "0869",
+    "spatialCoverage": [
+      {
+        "__type": "URL",
+        "type": "Geonames",
+        "url": "https://www.geonames.org/2233387",
+        "text": "Cameroon"
+      },
+      {
+        "__type": "URL",
+        "type": "Geonames",
+        "url": "https://www.geonames.org/2988507",
+        "text": "Paris"
+      },
+      {
+        "__type": "URL",
+        "type": "Geonames",
+        "url": "https://www.geonames.org/2657896",
+        "text": "Zurich"
+      },
+      {
+        "__type": "URL",
+        "type": "Geonames",
+        "url": "https://www.geonames.org/2624652",
+        "text": "Aarhus"
+      }
+    ],
+    "startDate": "2012-03-01",
+    "temporalCoverage": [
+      {
+        "en": "2012-2021"
+      }
+    ],
+    "status": "Ongoing"
+  },
+  "datasets": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0869-dataset-000",
+      "__type": "Dataset",
+      "abstracts": [
+        {
+          "en": "GLAUBENMACHENLASSEN is a visual anthropological and film ethnographic dissertation project that explores identity and the process of identification in the setting of a cinematographic laboratory. Based on an experimental setup, it takes a novel approach to the use of digital cinematography as a research tool in the actual social sciences."
+        }
+      ],
+      "accessConditions": "open",
+      "datePublished": "2026-03-26",
+      "howToCite": "Alter & Ottou (2025). GLAUBENMACHENLASSEN [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/0869.",
+      "languages": [
+        {
+          "en": "French",
+          "de": "Französisch",
+          "fr": "français"
+        },
+        {
+          "en": "German",
+          "de": "Deutsch",
+          "fr": "allemand"
+        },
+        {
+          "en": "English",
+          "de": "Englisch",
+          "fr": "anglais"
+        },
+        {
+          "en": "Ewondo",
+          "de": "Ewondo",
+          "fr": "ewondo"
+        }
+      ],
+      "licenses": [
+        {
+          "__type": "License",
+          "date": "2026-03-26",
+          "license": {
+            "__type": "URL",
+            "type": "Creative Commons",
+            "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+            "text": "CC BY-NC-ND 4.0"
+          }
+        }
+      ],
+      "attributions": [
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0869-person-001",
+          "roles": [
+            "Project leader"
+          ]
+        },
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0869-person-000",
+          "roles": [
+            "Project manager",
+            "Researcher",
+            "Data collector",
+            "Creator",
+            "Director",
+            "Author",
+            "Data curator"
+          ]
+        },
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0869-person-002",
+          "roles": [
+            "Editor"
+          ]
+        },
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0869-person-003",
+          "roles": [
+            "Editor"
+          ]
+        },
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0869-person-004",
+          "roles": [
+            "Editor"
+          ]
+        },
+        {
+          "__type": "Attribution",
+          "agent": "http://ns.dasch.swiss/repository#dsp-0869-person-005",
+          "roles": [
+            "Composer"
+          ]
+        }
+      ],
+      "status": "Ongoing",
+      "title": "GLAUBENMACHENLASSEN",
+      "typeOfData": [
+        "Text",
+        "Image",
+        "Video",
+        "Audio"
+      ]
+    }
+  ],
+  "persons": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0869-person-000",
+      "__type": "Person",
+      "address": {
+        "__type": "Address",
+        "street": "Birkenstrasse 38",
+        "postalCode": "4055",
+        "locality": "Basel",
+        "country": "Switzerland"
+      },
+      "email": "Balz.Alter@unibas.ch",
+      "familyNames": [
+        "Alter"
+      ],
+      "givenNames": [
+        "Balz Andrea"
+      ],
+      "jobTitles": [
+        "Associate Member"
+      ],
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-0869-organization-001",
+        "http://ns.dasch.swiss/repository#dsp-0869-organization-000"
+      ],
+      "authorityRefs": [
+        {
+          "__type": "URL",
+          "type": "ORCID",
+          "url": "https://orcid.org/0009-0005-8658-1524",
+          "text": "ORCID URL: 0009-0005-8658-1524"
+        }
+      ]
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0869-person-001",
+      "__type": "Person",
+      "familyNames": [
+        "Ottou Ottou"
+      ],
+      "givenNames": [
+        "André"
+      ],
+      "jobTitles": [
+        "Project leader"
+      ],
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-0869-organization-000"
+      ]
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0869-person-002",
+      "__type": "Person",
+      "familyNames": [
+        "Geisseler"
+      ],
+      "givenNames": [
+        "Florian"
+      ],
+      "jobTitles": [
+        "Editor"
+      ],
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-0869-organization-006"
+      ]
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0869-person-003",
+      "__type": "Person",
+      "familyNames": [
+        "Ragaz"
+      ],
+      "givenNames": [
+        "Stefan"
+      ],
+      "jobTitles": [
+        "Editor"
+      ],
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-0869-organization-005"
+      ]
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0869-person-004",
+      "__type": "Person",
+      "familyNames": [
+        "Mayrshofer"
+      ],
+      "givenNames": [
+        "Johanna"
+      ],
+      "jobTitles": [
+        "Editor"
+      ],
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-0869-organization-000"
+      ]
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0869-person-005",
+      "__type": "Person",
+      "familyNames": [
+        "Sturzenegger"
+      ],
+      "givenNames": [
+        "Fabian"
+      ],
+      "jobTitles": [
+        "Composer"
+      ],
+      "affiliation": [
+        "http://ns.dasch.swiss/repository#dsp-0869-organization-000"
+      ]
+    }
+  ],
+  "organizations": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0869-organization-000",
+      "__type": "Organization",
+      "address": {
+        "__type": "Address",
+        "street": "Birkenstrasse 38",
+        "postalCode": "4055",
+        "locality": "Basel",
+        "country": "Switzerland"
+      },
+      "email": "e3600scientificartworks@gmail.com",
+      "name": "E 3600 scientific artworks",
+      "url": {
+        "__type": "URL",
+        "type": "URL",
+        "url": "https://e3600scientificartworks.wordpress.com/",
+        "text": "https://e3600scientificartworks.wordpress.com/"
+      }
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0869-organization-001",
+      "__type": "Organization",
+      "name": "Centre for Africa Studies, University of Basel"
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0869-organization-002",
+      "__type": "Organization",
+      "name": "Stipendienfonds Fritz und Paul Sarasin"
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0869-organization-003",
+      "__type": "Organization",
+      "name": "Stipendienfonds für Nachwuchsförderung der Universität Basel"
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0869-organization-004",
+      "__type": "Organization",
+      "name": "Swiss National Science Foundation (SNSF)"
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0869-organization-005",
+      "__type": "Organization",
+      "name": "University of Basel"
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0869-organization-006",
+      "__type": "Organization",
+      "name": "Zurich University of the Arts"
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0869-organization-007",
+      "__type": "Organization",
+      "name": "University of Aarhus"
+    }
+  ],
+  "grants": [
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0869-grant-000",
+      "__type": "Grant",
+      "funders": [
+        "http://ns.dasch.swiss/repository#dsp-0869-organization-002"
+      ],
+      "name": "G3S Start-Up Grant"
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0869-grant-001",
+      "__type": "Grant",
+      "funders": [
+        "http://ns.dasch.swiss/repository#dsp-0869-organization-007"
+      ],
+      "name": "Guest Research Grant University of Aarhus"
+    },
+    {
+      "__id": "http://ns.dasch.swiss/repository#dsp-0869-grant-002",
+      "__type": "Grant",
+      "funders": [
+        "http://ns.dasch.swiss/repository#dsp-0869-organization-005"
+      ],
+      "name": "Get-on-Track Grant Universität Basel"
+    }
+  ]
+}
