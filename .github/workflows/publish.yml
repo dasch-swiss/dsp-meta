@@ -5,7 +5,7 @@ on:
     branches:
       - main
   release:
-    types: [published]
+    types: [released]
 
 jobs:
   # Build for release and publish amd64
