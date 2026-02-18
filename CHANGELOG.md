@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.4.10](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.9...dsp-meta-v2.4.10) (2026-02-18)
+
+
+### Maintenances
+
+* **deploy:** Rename dev to stage (INFRA-1021) ([#464](https://github.com/dasch-swiss/dsp-meta/issues/464)) ([4e2faa8](https://github.com/dasch-swiss/dsp-meta/commit/4e2faa860d8357d394a0c341cfe57ffbd4f1f71e))
+* **deps:** Bump bytes from 1.10.1 to 1.11.1 ([#460](https://github.com/dasch-swiss/dsp-meta/issues/460)) ([435ded2](https://github.com/dasch-swiss/dsp-meta/commit/435ded2ce846f35c7998782bdde1817778d7c474))
+* **deps:** Bump clap from 4.5.54 to 4.5.56 in the backend-dependencies group ([#458](https://github.com/dasch-swiss/dsp-meta/issues/458)) ([a4359ad](https://github.com/dasch-swiss/dsp-meta/commit/a4359ad1633e9dfbd3a3a12f6b07e4c1276c9deb))
+* **deps:** Bump the backend-dependencies group with 2 updates ([#463](https://github.com/dasch-swiss/dsp-meta/issues/463)) ([c8780bb](https://github.com/dasch-swiss/dsp-meta/commit/c8780bba01bcd1cbc1f4037b307e94d6763d7251))
+* **deps:** Bump the backend-dependencies group with 4 updates ([#462](https://github.com/dasch-swiss/dsp-meta/issues/462)) ([003dfbb](https://github.com/dasch-swiss/dsp-meta/commit/003dfbb0dcbbb37a14a1c47739b29759d0052e85))
+* **deps:** Bump time from 0.3.36 to 0.3.47 ([#461](https://github.com/dasch-swiss/dsp-meta/issues/461)) ([3e388ff](https://github.com/dasch-swiss/dsp-meta/commit/3e388ffa2fc9d6ef5b4898febe3b11c0b9d2df4b))
+
 ## [2.4.9](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.8...dsp-meta-v2.4.9) (2026-01-27)
 
 
