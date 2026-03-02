@@ -154,7 +154,10 @@
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-0869-person-001",
           "roles": [
-            "Project leader"
+            "Project leader",
+            "Research Assistant",
+            "Composer",
+            "CO-Author"
           ]
         },
         {
@@ -174,21 +177,21 @@
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-0869-person-002",
           "roles": [
-            "Editor"
+            "Film Editor"
           ]
         },
         {
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-0869-person-003",
           "roles": [
-            "Editor"
+            "Text Editor"
           ]
         },
         {
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-0869-person-004",
           "roles": [
-            "Editor"
+            "Text Editor"
           ]
         },
         {
