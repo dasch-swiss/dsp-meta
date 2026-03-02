@@ -154,7 +154,7 @@
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-0869-person-001",
           "roles": [
-            "Project leader",
+            "Project Leader",
             "Research Assistant",
             "Composer",
             "CO-Author"
@@ -164,13 +164,13 @@
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-0869-person-000",
           "roles": [
-            "Project manager",
+            "Project Manager",
             "Researcher",
-            "Data collector",
+            "Data Collector",
             "Creator",
             "Director",
             "Author",
-            "Data curator"
+            "Data Curator"
           ]
         },
         {
