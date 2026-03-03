@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.4.11](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.10...dsp-meta-v2.4.11) (2026-03-03)
+
+
+### Maintenances
+
+* **deps-dev:** Bump rollup from 4.44.2 to 4.59.0 ([#471](https://github.com/dasch-swiss/dsp-meta/issues/471)) ([e966075](https://github.com/dasch-swiss/dsp-meta/commit/e966075f3ffc255832b2e23f94c143667a24ae62))
+* **deps:** Bump minimatch from 3.1.2 to 3.1.5 in /web-frontend ([#469](https://github.com/dasch-swiss/dsp-meta/issues/469)) ([75e498c](https://github.com/dasch-swiss/dsp-meta/commit/75e498cac55350df22d071e3fed6c09768ef2947))
+* **deps:** Bump the backend-dependencies group with 2 updates ([#472](https://github.com/dasch-swiss/dsp-meta/issues/472)) ([81aacad](https://github.com/dasch-swiss/dsp-meta/commit/81aacadb1b59bc6235fe3f8c4c9f7d953c1dada0))
+* Remove CODEOWNERS ([#475](https://github.com/dasch-swiss/dsp-meta/issues/475)) ([ccb36b6](https://github.com/dasch-swiss/dsp-meta/commit/ccb36b60c6d08d16aed8cdb9fa80f25ea5701563))
+
 ## [2.4.10](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.9...dsp-meta-v2.4.10) (2026-03-02)
 
 
