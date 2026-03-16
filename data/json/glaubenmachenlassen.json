@@ -95,6 +95,12 @@
         "text": "Aarhus"
       }
     ],
+    "url": {
+      "__type": "URL",
+      "type": "URL",
+      "url": "https://app.dasch.swiss/project/ONaIjCzpTYGHOF1At1ph_Q",
+      "text": "Discover Project Data"
+    },
     "startDate": "2012-03-01",
     "temporalCoverage": [
       {
