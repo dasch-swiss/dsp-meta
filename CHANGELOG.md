@@ -1,5 +1,39 @@
 # Changelog
 
+## [2.4.11](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.10...dsp-meta-v2.4.11) (2026-03-16)
+
+
+### Maintenances
+
+* **deps-dev:** Bump rollup from 4.44.2 to 4.59.0 ([#471](https://github.com/dasch-swiss/dsp-meta/issues/471)) ([e966075](https://github.com/dasch-swiss/dsp-meta/commit/e966075f3ffc255832b2e23f94c143667a24ae62))
+* **deps:** Bump minimatch from 3.1.2 to 3.1.5 in /web-frontend ([#469](https://github.com/dasch-swiss/dsp-meta/issues/469)) ([75e498c](https://github.com/dasch-swiss/dsp-meta/commit/75e498cac55350df22d071e3fed6c09768ef2947))
+* **deps:** Bump the backend-dependencies group with 2 updates ([#472](https://github.com/dasch-swiss/dsp-meta/issues/472)) ([81aacad](https://github.com/dasch-swiss/dsp-meta/commit/81aacadb1b59bc6235fe3f8c4c9f7d953c1dada0))
+* Remove CODEOWNERS ([#475](https://github.com/dasch-swiss/dsp-meta/issues/475)) ([ccb36b6](https://github.com/dasch-swiss/dsp-meta/commit/ccb36b60c6d08d16aed8cdb9fa80f25ea5701563))
+
+
+### Project Data
+
+* 0869 add link projectdata ([#481](https://github.com/dasch-swiss/dsp-meta/issues/481)) ([d2bf3e0](https://github.com/dasch-swiss/dsp-meta/commit/d2bf3e0eb1215a964268fb912c6c57d96136866e))
+
+## [2.4.10](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.9...dsp-meta-v2.4.10) (2026-03-02)
+
+
+### Maintenances
+
+* **deploy:** Rename dev to stage (INFRA-1021) ([#464](https://github.com/dasch-swiss/dsp-meta/issues/464)) ([4e2faa8](https://github.com/dasch-swiss/dsp-meta/commit/4e2faa860d8357d394a0c341cfe57ffbd4f1f71e))
+* **deps-dev:** Bump the frontend-dependencies group in /web-frontend with 2 updates ([#468](https://github.com/dasch-swiss/dsp-meta/issues/468)) ([7a0aca2](https://github.com/dasch-swiss/dsp-meta/commit/7a0aca239e6061d96fb958f33789c93157e3802a))
+* **deps:** Bump bytes from 1.10.1 to 1.11.1 ([#460](https://github.com/dasch-swiss/dsp-meta/issues/460)) ([435ded2](https://github.com/dasch-swiss/dsp-meta/commit/435ded2ce846f35c7998782bdde1817778d7c474))
+* **deps:** Bump clap from 4.5.54 to 4.5.56 in the backend-dependencies group ([#458](https://github.com/dasch-swiss/dsp-meta/issues/458)) ([a4359ad](https://github.com/dasch-swiss/dsp-meta/commit/a4359ad1633e9dfbd3a3a12f6b07e4c1276c9deb))
+* **deps:** Bump the backend-dependencies group with 2 updates ([#463](https://github.com/dasch-swiss/dsp-meta/issues/463)) ([c8780bb](https://github.com/dasch-swiss/dsp-meta/commit/c8780bba01bcd1cbc1f4037b307e94d6763d7251))
+* **deps:** Bump the backend-dependencies group with 2 updates ([#467](https://github.com/dasch-swiss/dsp-meta/issues/467)) ([7dab0c9](https://github.com/dasch-swiss/dsp-meta/commit/7dab0c96a8507b21997e4b6fc04ff26eebc70cc4))
+* **deps:** Bump the backend-dependencies group with 4 updates ([#462](https://github.com/dasch-swiss/dsp-meta/issues/462)) ([003dfbb](https://github.com/dasch-swiss/dsp-meta/commit/003dfbb0dcbbb37a14a1c47739b29759d0052e85))
+* **deps:** Bump time from 0.3.36 to 0.3.47 ([#461](https://github.com/dasch-swiss/dsp-meta/issues/461)) ([3e388ff](https://github.com/dasch-swiss/dsp-meta/commit/3e388ffa2fc9d6ef5b4898febe3b11c0b9d2df4b))
+
+
+### Project Data
+
+* Edit roles glaubenmachenlassen ([#473](https://github.com/dasch-swiss/dsp-meta/issues/473)) ([bf87246](https://github.com/dasch-swiss/dsp-meta/commit/bf8724645459328cecb0d0b30f1feb8332aef35c))
+
 ## [2.4.9](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.8...dsp-meta-v2.4.9) (2026-01-27)
 
 

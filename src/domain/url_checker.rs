@@ -205,20 +205,18 @@ impl UrlChecker {
                     Self::extract_urls_recursive(val, file_path, &new_context, urls);
                 }
             }
-            Value::String(s) => {
-                // Check if the string looks like a URL and is not within a URL object
+            Value::String(s)
                 if (s.starts_with("http://") || s.starts_with("https://"))
-                    && !context.contains("__type")
-                {
-                    urls.push(UrlCheckResult {
-                        url: s.clone(),
-                        status: UrlStatus::Skipped {
-                            reason: "Not checked yet".to_string(),
-                        },
-                        file_path: file_path.to_string(),
-                        context: context.to_string(),
-                    });
-                }
+                    && !context.contains("__type") =>
+            {
+                urls.push(UrlCheckResult {
+                    url: s.clone(),
+                    status: UrlStatus::Skipped {
+                        reason: "Not checked yet".to_string(),
+                    },
+                    file_path: file_path.to_string(),
+                    context: context.to_string(),
+                });
             }
             _ => {}
         }
