@@ -2,7 +2,7 @@
   "$schema": "../../resources/schema-metadata-draft.json",
   "project": {
     "__type": "Project",
-    "howToCite": "Alter & Ottou (2025). GLAUBENMACHENLASSEN [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/0869.",
+    "howToCite": "Alter (2026). GLAUBENMACHENLASSEN [Dataset]. DaSCH. https://ark.dasch.swiss/ark:/72163/1/0869.",
     "teaserText": "GLAUBENMACHENLASSEN is a visual anthropological and film ethnographic dissertation exploring identity in a cinematographic laboratory. Research period: 2009-2022.",
     "datasets": [
       "http://ns.dasch.swiss/repository#dsp-0869-dataset-000"
@@ -160,51 +160,43 @@
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-0869-person-001",
           "roles": [
-            "Project Leader",
+            "Protagonist",
             "Research Assistant",
-            "Composer",
-            "CO-Author"
+            "CO-Author of Filmic Images",
+            "Moi, un Afropéen Production/Main Protagonist 2009-2017"
           ]
         },
         {
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-0869-person-000",
           "roles": [
-            "Project Manager",
-            "Researcher",
-            "Data Collector",
-            "Creator",
-            "Director",
+            "Principal Investigator",
             "Author",
-            "Data Curator"
+            "Data Model Designer",
+            "Data Curator",
+            "Moi, un Afropéen Production/Director 2009-2017",
+            "GLAUBENMACHENLASSEN/Author 2017-2021"
           ]
         },
         {
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-0869-person-002",
           "roles": [
-            "Film Editor"
+            "Moi, un Afropéen Production/Film Editor 2017"
           ]
         },
         {
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-0869-person-003",
           "roles": [
-            "Text Editor"
+            "GLAUBEMENMACHENLASSEN/Text Editor 2020"
           ]
         },
         {
           "__type": "Attribution",
           "agent": "http://ns.dasch.swiss/repository#dsp-0869-person-004",
           "roles": [
-            "Text Editor"
-          ]
-        },
-        {
-          "__type": "Attribution",
-          "agent": "http://ns.dasch.swiss/repository#dsp-0869-person-005",
-          "roles": [
-            "Composer"
+            "Moi, un Afropéen Production/Sound Engineer 2009-2017"
           ]
         }
       ],
@@ -236,9 +228,6 @@
       "givenNames": [
         "Balz Andrea"
       ],
-      "jobTitles": [
-        "Associate Member"
-      ],
       "affiliation": [
         "http://ns.dasch.swiss/repository#dsp-0869-organization-001",
         "http://ns.dasch.swiss/repository#dsp-0869-organization-000"
@@ -261,9 +250,6 @@
       "givenNames": [
         "André"
       ],
-      "jobTitles": [
-        "Project leader"
-      ],
       "affiliation": [
         "http://ns.dasch.swiss/repository#dsp-0869-organization-000"
       ]
@@ -276,9 +262,6 @@
       ],
       "givenNames": [
         "Florian"
-      ],
-      "jobTitles": [
-        "Editor"
       ],
       "affiliation": [
         "http://ns.dasch.swiss/repository#dsp-0869-organization-006"
@@ -293,9 +276,6 @@
       "givenNames": [
         "Stefan"
       ],
-      "jobTitles": [
-        "Editor"
-      ],
       "affiliation": [
         "http://ns.dasch.swiss/repository#dsp-0869-organization-005"
       ]
@@ -304,29 +284,10 @@
       "__id": "http://ns.dasch.swiss/repository#dsp-0869-person-004",
       "__type": "Person",
       "familyNames": [
-        "Mayrshofer"
-      ],
-      "givenNames": [
-        "Johanna"
-      ],
-      "jobTitles": [
-        "Editor"
-      ],
-      "affiliation": [
-        "http://ns.dasch.swiss/repository#dsp-0869-organization-000"
-      ]
-    },
-    {
-      "__id": "http://ns.dasch.swiss/repository#dsp-0869-person-005",
-      "__type": "Person",
-      "familyNames": [
         "Sturzenegger"
       ],
       "givenNames": [
         "Fabian"
-      ],
-      "jobTitles": [
-        "Composer"
       ],
       "affiliation": [
         "http://ns.dasch.swiss/repository#dsp-0869-organization-000"
