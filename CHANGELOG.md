@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.4.12](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.11...dsp-meta-v2.4.12) (2026-03-24)
+
+
+### Maintenances
+
+* Update GitHub Actions runners to use standard Ubuntu images ([#482](https://github.com/dasch-swiss/dsp-meta/issues/482)) ([1930fe6](https://github.com/dasch-swiss/dsp-meta/commit/1930fe6fae31aa83cb70fd096e6e28a08c58250b))
+* **workflow:** Trigger on released instead of published ([#465](https://github.com/dasch-swiss/dsp-meta/issues/465)) ([cd58f25](https://github.com/dasch-swiss/dsp-meta/commit/cd58f252bdff94fc08c89f0a53e4da41101b010b))
+
+
+### Project Data
+
+* Changes glm ([#485](https://github.com/dasch-swiss/dsp-meta/issues/485)) ([95f3558](https://github.com/dasch-swiss/dsp-meta/commit/95f35586a8431db15e810eb305af6cf75e4d22b5))
+
 ## [2.4.11](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.10...dsp-meta-v2.4.11) (2026-03-16)
 
 
