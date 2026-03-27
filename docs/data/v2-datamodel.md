@@ -111,7 +111,7 @@ and may be related to various entities within the hierarchy.
 | Field                   | Type          | Card. |
 | ----------------------- | ------------- | ----- |
 | `id`                    | internal_id   | 1     |
-| `pid`                   | string        | 1     |
+| `pid`                   | string        | 0-1   |
 | `name`                  | string        | 1     |
 | `projects`              | internal_id[] | 0-n   |
 | `projectClusters`       | internal_id[] | 0-n   |
@@ -343,7 +343,6 @@ There is no difference in cardinality between the archival and in-progress stage
 | Field            | Type                     | Card. |
 | ---------------- | ------------------------ | ----- |
 | `id`             | internal_id              | 1     |
-| `pid`            | string                   | 1     |
 | `sameAs`         | authorityfileReference[] | 0-n   |
 | `givenNames`     | string[]                 | 1-n   |
 | `familyNames`    | string[]                 | 1-n   |
@@ -357,7 +356,6 @@ Cardinality is the same for both stages.
 
 - `id`: A unique identifier for the person.  
   This is the internal ID, which is not exposed to the user and is not persistent.
-- `pid`: A unique persistent identifier (for now ARK URL) for the person.
 - `sameAs`: References to external authority files. (ORCID, VIAF, GND…)
 - `givenNames`: The given names of the person.
 - `familyNames`: The family names of the person.
@@ -373,7 +371,6 @@ Cardinality is the same for both stages.
 | Field             | Type                     | Card. |
 | ----------------- | ------------------------ | ----- |
 | `id`              | internal_id              | 1     |
-| `pid`             | string                   | 1     |
 | `sameAs`          | authorityfileReference[] | 0-n   |
 | `name`            | string                   | 1     |
 | `url`             | url                      | 1     |
@@ -385,7 +382,6 @@ Cardinality is the same for both stages.
 
 - `id`: A unique identifier for the organization.  
   This is the internal ID, which is not exposed to the user and is not persistent.
-- `pid`: A unique persistent identifier (for now ARK URL) for the organization.
 - `sameAs`: References to external authority files. ([ROR](https://ror.org/))
 - `name`: The name of the organization.
 - `url`: The URL of the organization.
