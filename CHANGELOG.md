@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.4.13](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.12...dsp-meta-v2.4.13) (2026-04-04)
+
+
+### Project Data
+
+* Edit 0869 ([#490](https://github.com/dasch-swiss/dsp-meta/issues/490)) ([f09a00a](https://github.com/dasch-swiss/dsp-meta/commit/f09a00afb8c182a8fd4290bad8003a0f8e50efe1))
+
+
+### Documentation
+
+* Remove pid from person/org datamodel, make optional on cluster ([#488](https://github.com/dasch-swiss/dsp-meta/issues/488)) ([30a9c3d](https://github.com/dasch-swiss/dsp-meta/commit/30a9c3dccc442feb115cd384e2a5129cd88d2a00))
+
 ## [2.4.12](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.11...dsp-meta-v2.4.12) (2026-03-24)
 
 
