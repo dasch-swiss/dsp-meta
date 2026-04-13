@@ -1,0 +1,388 @@
+{
+    "$schema": "../../resources/schema-metadata-draft.json",
+    "project": {
+        "__type": "Project",
+        "howToCite": "Harm den Boer et al.(2026). Mapping the Scriptures in Western Sepharic Literature Dataset. DaSCH. https://ark.dasch.swiss/ark:/72163/1/086A .",
+        "teaserText": "The project Mapping the Scriptures in Western Sephardic Literature (MSSL) seeks to carry out an extensive study on the role and the use of the Bible for the Spanish and Portuguese Jews with a Christian background in newly founded communities of the so-called Western Sephardic Diaspora (1550-1800). A unique feature of these Iberian Jews with a Christian background was the central place occupied by the Bible in the educational, religious and cultural lives, far beyond what was common in the European Jewry of the Early Modern Age. For the first time in history, Jews extensively read and referred to their Bible in Spanish translation, opening a broader audience, engaging more frequently and differently with Christians. Although the importance of the vernacular (above all Spanish) Bible translations is always mentioned in scholarship, no comprehensive study has been realized of the considerable output and content of these translations. Also, no comprehensive study on the reception and use of the (Spanish) Bible translations in Western Sephardic literature has been realized, although editions and manuscripts are nowadays largely available in digital collections. A groundbreaking feature of the project is the incorporation of resources and instruments provided by the Digital Humanities.",
+        "datasets": [
+            "http://ns.dasch.swiss/repository#dsp-086a-dataset-000"
+        ],
+        "alternativeNames": [
+            {
+                "en": "MSSL"
+            }
+        ],
+        "contactPoint": "http://ns.dasch.swiss/repository#dsp-086a-person-000",
+        "description": {
+            "en": "The project Mapping the Scriptures in Western Sephardic Literature (MSSL) seeks to carry out an extensive study on the role and the use of the Bible for the Spanish and Portuguese Jews with a Christian background in newly founded communities of the so-called Western Sephardic Diaspora (1550-1800).\n\nA unique feature of these Iberian Jews with a Christian background was the central place occupied by the Bible in the educational, religious and cultural lives, far beyond what was common in the European Jewry of the Early Modern Age. For the first time in history, Jews extensively read and referred to their Bible in Spanish translation, opening a broader audience, engaging more frequently and differently with Christians. Although the importance of the vernacular (above all Spanish) Bible translations is always mentioned in scholarship, no comprehensive study has been realized of the considerable output and content of these translations. Also, no comprehensive study on the reception and use of the (Spanish) Bible translations in Western Sephardic literature has been realized, although editions and manuscripts are nowadays largely available in digital collections.\n\nA groundbreaking feature of the project is the incorporation of resources and instruments provided by the Digital Humanities. The project aims to \"map\" the role and presence of the Bible in the Western Sephardi Diaspora in two ways:\n1. An online open access textual database containing a big data corpus enabling types of distant reading, statistics and visualizations only possible with the help of Digital Humanities. This database is the result of the predoctoral research project in Digital Humanities carried out by our team member Soledad Castaño Santos, and it is available at the following link: (https://heurist.huma-num.fr/mssl_projectdatabase/web/9042).\n2. A series of in-depth studies on the Bible in the Spanish and Portuguese Sephardic literature, such as:\n   1. The presence and role of the Psalms for the fashioning of individual and collective Converso religiosity/religious identity.\n   2. The use of the Bible in Spanish and Portuguese preaching of the Western Sephardic Diaspora.\n   3. The use of the Bible in Spanish/Portuguese polemical anti-Christian or apologetic literature.\n   4. The presence and relevance of the Bible in both religious and secular Spanish and Portuguese literature produced in the Western Sephardic Diaspora.\n\nThe studies of the second part benefit from the insights into the use of the Bible gathered with the database made in 1, allowing for finding special \"hot spots\" of biblical quotations, frequently quoted passages (in translation), the versions of the Bible used (e.g. the Spanish Jewish translation, a Spanish protestant translation, the Vulgata) etc."
+        },
+        "disciplines": [
+            {
+                "en": "10102 Religious studies, Theology"
+            },
+            {
+                "en": "10502 Romance languages and literature"
+            },
+            {
+                "__type": "URL",
+                "type": "Skos",
+                "url": "http://skos.um.es/unesco6/62",
+                "text": "62 Science of Arts and Letters"
+            },
+            {
+                "__type": "URL",
+                "type": "Skos",
+                "url": "http://skos.um.es/unesco6/63",
+                "text": "63 Sociology"
+            },
+            {
+                "__type": "URL",
+                "type": "Skos",
+                "url": "http://skos.um.es/unesco6/6301",
+                "text": "6301 Cultural sociology"
+            }
+        ],
+        "endDate": "2026-01-31",
+        "funders": [
+            "http://ns.dasch.swiss/repository#dsp-086a-organization-001"
+        ],
+        "grants": [
+            "http://ns.dasch.swiss/repository#dsp-086a-grant-000"
+        ],
+        "keywords": [
+            {
+                "en": "Intellectual History"
+            },
+            {
+                "en": "Spanish Studies"
+            },
+            {
+                "en": "Portuguese Literature"
+            },
+            {
+                "en": "Jewish Studies"
+            },
+            {
+                "en": "Early Modern History"
+            },
+            {
+                "en": "Digital Humanities"
+            },
+            {
+                "en": "Cultural Analysis"
+            }
+        ],
+        "name": "Mapping the Scriptures in Western Sephardi Literature",
+        "publications": [
+            {
+                "text": "Publications and project data.",
+                "url": [
+                    {
+                        "__type": "URL",
+                        "type": "URL",
+                        "url": "https://data.snf.ch/grants/grant/204389",
+                        "text": "https://data.snf.ch/grants/grant/204389"
+                    }
+                ]
+            },
+            {
+                "text": "Database of Sephardic Literature.",
+                "url": [
+                    {
+                        "__type": "URL",
+                        "type": "URL",
+                        "url": "https://heurist.huma-num.fr/mssl_projectdatabase/web/9042",
+                        "text": "https://heurist.huma-num.fr/mssl_projectdatabase/web/9042"
+                    }
+                ]
+            }
+        ],
+        "shortcode": "086a",
+        "spatialCoverage": [
+            {
+                "__type": "URL",
+                "type": "Geonames",
+                "url": "https://www.geonames.org/9408659/western-europe.html",
+                "text": "Western Europe"
+            },
+            {
+                "__type": "URL",
+                "type": "Geonames",
+                "url": "https://www.geonames.org/2759794/amsterdam.html",
+                "text": "Amsterdam"
+            },
+            {
+                "__type": "URL",
+                "type": "Geonames",
+                "url": "https://www.geonames.org/3177090/ferrara.html",
+                "text": "Ferrara"
+            }
+        ],
+        "startDate": "2022-02-01",
+        "temporalCoverage": [
+            {
+                "en": "16th to 18th centuries"
+            }
+        ],
+        "status": "Finished"
+    },
+    "datasets": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-086a-dataset-000",
+            "__type": "Dataset",
+            "abstracts": [
+                {
+                    "en": "Collection of 6 bibles encoded in XML-TEI."
+                }
+            ],
+            "accessConditions": "open",
+            "howToCite": "Harm den Boer et al.(2026). Mapping the Scriptures in Western Sepharic Literature Dataset. DaSCH. https://ark.dasch.swiss/ark:/72163/1/086A .",
+            "languages": [
+                {
+                    "en": "Spanish",
+                    "de": "Spanisch",
+                    "fr": "espagnol"
+                },
+                {
+                    "en": "English",
+                    "de": "Englisch",
+                    "fr": "anglais"
+                }
+            ],
+            "licenses": [
+                {
+                    "__type": "License",
+                    "date": "2026-04-30",
+                    "license": {
+                        "__type": "URL",
+                        "type": "Creative Commons",
+                        "url": "https://creativecommons.org/licenses/by/4.0",
+                        "text": "CC BY 4.0"
+                    }
+                }
+            ],
+            "attributions": [
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-086a-person-000",
+                    "roles": [
+                        "Project Leader",
+                        "Data Collector",
+                        "Data Curator"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-086a-person-001",
+                    "roles": [
+                        "Data Collector",
+                        "Data Curator",
+                        "Supervisor",
+                        "Project Member"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-086a-person-002",
+                    "roles": [
+                        "Data Collector",
+                        "Data Curator",
+                        "Editor",
+                        "Project Member"
+                    ]
+                },
+                {
+                    "__type": "Attribution",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-086a-person-003",
+                    "roles": [
+                        "Project Member"
+                    ]
+                }
+            ],
+            "status": "Finished",
+            "title": "Bibles Dataset",
+            "typeOfData": [
+                "XML"
+            ]
+        }
+    ],
+    "persons": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-086a-person-000",
+            "__type": "Person",
+            "address": {
+                "__type": "Address",
+                "street": "Maiengasse 51",
+                "postalCode": "4056",
+                "locality": "Basel",
+                "country": "Switzerland"
+            },
+            "email": "harm.denboer@unibas.ch",
+            "familyNames": [
+                "den Boer"
+            ],
+            "givenNames": [
+                "Harm"
+            ],
+            "jobTitles": [
+                "Professor für Iberoromanische Literaturwissenschaft"
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-086a-organization-000"
+            ],
+            "authorityRefs": [
+                {
+                    "__type": "URL",
+                    "type": "URL",
+                    "url": "https://iberoromanistik.philhist.unibas.ch/de/personen/harm-den-boer/",
+                    "text": "https://iberoromanistik.philhist.unibas.ch/de/personen/harm-den-boer/"
+                }
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-086a-person-001",
+            "__type": "Person",
+            "address": {
+                "__type": "Address",
+                "street": "Maiengasse 51",
+                "postalCode": "4056",
+                "locality": "Basel",
+                "country": "Switzerland"
+            },
+            "email": "fernandopancorbo1@gmail.com",
+            "familyNames": [
+                "Pancorbo Murillo"
+            ],
+            "givenNames": [
+                "Fernando José"
+            ],
+            "jobTitles": [
+                "Assistant Professor"
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-086a-organization-000"
+            ],
+            "authorityRefs": [
+                {
+                    "__type": "URL",
+                    "type": "ORCID",
+                    "url": "https://orcid.org/0000-0002-2557-4428",
+                    "text": "ORCID URL: https://orcid.org/0000-0002-2557-4428"
+                }
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-086a-person-002",
+            "__type": "Person",
+            "address": {
+                "__type": "Address",
+                "street": "Maiengasse 51",
+                "postalCode": "4056",
+                "locality": "Basel",
+                "country": "Switzerland"
+            },
+            "email": "soledad.castano@uv.es",
+            "familyNames": [
+                "Castaño Santos"
+            ],
+            "givenNames": [
+                "Soledad"
+            ],
+            "jobTitles": [
+                "Assistant Professor"
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-086a-organization-000"
+            ],
+            "authorityRefs": [
+                {
+                    "__type": "URL",
+                    "type": "ORCID",
+                    "url": "https://orcid.org/0000-0001-7456-4595",
+                    "text": "ORCID URL: https://orcid.org/0000-0001-7456-4595"
+                }
+            ]
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-086a-person-003",
+            "__type": "Person",
+            "address": {
+                "__type": "Address",
+                "street": "Maiengasse 51",
+                "postalCode": "4056",
+                "locality": "Basel",
+                "country": "Switzerland"
+            },
+            "email": "david.spirgi@unibas.ch",
+            "familyNames": [
+                "Spirgi"
+            ],
+            "givenNames": [
+                "David"
+            ],
+            "jobTitles": [
+                "Assistant Professor"
+            ],
+            "affiliation": [
+                "http://ns.dasch.swiss/repository#dsp-086a-organization-000"
+            ],
+            "authorityRefs": [
+                {
+                    "__type": "URL",
+                    "type": "URL",
+                    "url": "https://iberoromanistik.philhist.unibas.ch/de/personen/david-spirgi/",
+                    "text": "https://iberoromanistik.philhist.unibas.ch/de/personen/david-spirgi/"
+                }
+            ]
+        }
+    ],
+    "organizations": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-086a-organization-000",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Maiengasse 51",
+                "postalCode": "4056",
+                "locality": "Basel",
+                "country": "Switzerland"
+            },
+            "name": "Iberoromanistik Department, Universität Basel"
+        },
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-086a-organization-001",
+            "__type": "Organization",
+            "address": {
+                "__type": "Address",
+                "street": "Wildhainweg 3",
+                "postalCode": "3001",
+                "locality": "Berne",
+                "country": "Switzerland"
+            },
+            "name": "Swiss National Science Foundation (SNSF)",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://www.snf.ch/",
+                "text": "https://www.snf.ch/"
+            }
+        }
+    ],
+    "grants": [
+        {
+            "__id": "http://ns.dasch.swiss/repository#dsp-086a-grant-000",
+            "__type": "Grant",
+            "funders": [
+                "http://ns.dasch.swiss/repository#dsp-086a-organization-001"
+            ],
+            "name": "Project Funding",
+            "number": "204389",
+            "url": {
+                "__type": "URL",
+                "type": "URL",
+                "url": "https://data.snf.ch/grants/grant/204389",
+                "text": "https://data.snf.ch/grants/grant/204389"
+            }
+        }
+    ]
+}
