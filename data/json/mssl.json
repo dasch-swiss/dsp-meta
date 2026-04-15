@@ -5,14 +5,14 @@
         "howToCite": "Harm den Boer et al.(2026). Mapping the Scriptures in Western Sepharic Literature Dataset. DaSCH. https://ark.dasch.swiss/ark:/72163/1/086A .",
         "teaserText": "The project Mapping the Scriptures in Western Sephardic Literature (MSSL) seeks to carry out an extensive study on the role and the use of the Bible for the Spanish and Portuguese Jews with a Christian background in newly founded communities of the so-called Western Sephardic Diaspora (1550-1800). A unique feature of these Iberian Jews with a Christian background was the central place occupied by the Bible in the educational, religious and cultural lives, far beyond what was common in the European Jewry of the Early Modern Age. For the first time in history, Jews extensively read and referred to their Bible in Spanish translation, opening a broader audience, engaging more frequently and differently with Christians. Although the importance of the vernacular (above all Spanish) Bible translations is always mentioned in scholarship, no comprehensive study has been realized of the considerable output and content of these translations. Also, no comprehensive study on the reception and use of the (Spanish) Bible translations in Western Sephardic literature has been realized, although editions and manuscripts are nowadays largely available in digital collections. A groundbreaking feature of the project is the incorporation of resources and instruments provided by the Digital Humanities.",
         "datasets": [
-            "http://ns.dasch.swiss/repository#dsp-086a-dataset-000"
+            "http://ns.dasch.swiss/repository#dsp-086A-dataset-000"
         ],
         "alternativeNames": [
             {
                 "en": "MSSL"
             }
         ],
-        "contactPoint": "http://ns.dasch.swiss/repository#dsp-086a-person-000",
+        "contactPoint": "http://ns.dasch.swiss/repository#dsp-086A-person-000",
         "description": {
             "en": "The project Mapping the Scriptures in Western Sephardic Literature (MSSL) seeks to carry out an extensive study on the role and the use of the Bible for the Spanish and Portuguese Jews with a Christian background in newly founded communities of the so-called Western Sephardic Diaspora (1550-1800).\n\nA unique feature of these Iberian Jews with a Christian background was the central place occupied by the Bible in the educational, religious and cultural lives, far beyond what was common in the European Jewry of the Early Modern Age. For the first time in history, Jews extensively read and referred to their Bible in Spanish translation, opening a broader audience, engaging more frequently and differently with Christians. Although the importance of the vernacular (above all Spanish) Bible translations is always mentioned in scholarship, no comprehensive study has been realized of the considerable output and content of these translations. Also, no comprehensive study on the reception and use of the (Spanish) Bible translations in Western Sephardic literature has been realized, although editions and manuscripts are nowadays largely available in digital collections.\n\nA groundbreaking feature of the project is the incorporation of resources and instruments provided by the Digital Humanities. The project aims to \"map\" the role and presence of the Bible in the Western Sephardi Diaspora in two ways:\n1. An online open access textual database containing a big data corpus enabling types of distant reading, statistics and visualizations only possible with the help of Digital Humanities. This database is the result of the predoctoral research project in Digital Humanities carried out by our team member Soledad Castaño Santos, and it is available at the following link: (https://heurist.huma-num.fr/mssl_projectdatabase/web/9042).\n2. A series of in-depth studies on the Bible in the Spanish and Portuguese Sephardic literature, such as:\n   1. The presence and role of the Psalms for the fashioning of individual and collective Converso religiosity/religious identity.\n   2. The use of the Bible in Spanish and Portuguese preaching of the Western Sephardic Diaspora.\n   3. The use of the Bible in Spanish/Portuguese polemical anti-Christian or apologetic literature.\n   4. The presence and relevance of the Bible in both religious and secular Spanish and Portuguese literature produced in the Western Sephardic Diaspora.\n\nThe studies of the second part benefit from the insights into the use of the Bible gathered with the database made in 1, allowing for finding special \"hot spots\" of biblical quotations, frequently quoted passages (in translation), the versions of the Bible used (e.g. the Spanish Jewish translation, a Spanish protestant translation, the Vulgata) etc."
         },
@@ -44,10 +44,10 @@
         ],
         "endDate": "2026-01-31",
         "funders": [
-            "http://ns.dasch.swiss/repository#dsp-086a-organization-001"
+            "http://ns.dasch.swiss/repository#dsp-086A-organization-001"
         ],
         "grants": [
-            "http://ns.dasch.swiss/repository#dsp-086a-grant-000"
+            "http://ns.dasch.swiss/repository#dsp-086A-grant-000"
         ],
         "keywords": [
             {
@@ -97,7 +97,7 @@
                 ]
             }
         ],
-        "shortcode": "086a",
+        "shortcode": "086A",
         "spatialCoverage": [
             {
                 "__type": "URL",
@@ -128,7 +128,7 @@
     },
     "datasets": [
         {
-            "__id": "http://ns.dasch.swiss/repository#dsp-086a-dataset-000",
+            "__id": "http://ns.dasch.swiss/repository#dsp-086A-dataset-000",
             "__type": "Dataset",
             "abstracts": [
                 {
@@ -164,7 +164,7 @@
             "attributions": [
                 {
                     "__type": "Attribution",
-                    "agent": "http://ns.dasch.swiss/repository#dsp-086a-person-000",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-086A-person-000",
                     "roles": [
                         "Project Leader",
                         "Data Collector",
@@ -173,7 +173,7 @@
                 },
                 {
                     "__type": "Attribution",
-                    "agent": "http://ns.dasch.swiss/repository#dsp-086a-person-001",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-086A-person-001",
                     "roles": [
                         "Data Collector",
                         "Data Curator",
@@ -183,7 +183,7 @@
                 },
                 {
                     "__type": "Attribution",
-                    "agent": "http://ns.dasch.swiss/repository#dsp-086a-person-002",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-086A-person-002",
                     "roles": [
                         "Data Collector",
                         "Data Curator",
@@ -193,7 +193,7 @@
                 },
                 {
                     "__type": "Attribution",
-                    "agent": "http://ns.dasch.swiss/repository#dsp-086a-person-003",
+                    "agent": "http://ns.dasch.swiss/repository#dsp-086A-person-003",
                     "roles": [
                         "Project Member"
                     ]
@@ -208,7 +208,7 @@
     ],
     "persons": [
         {
-            "__id": "http://ns.dasch.swiss/repository#dsp-086a-person-000",
+            "__id": "http://ns.dasch.swiss/repository#dsp-086A-person-000",
             "__type": "Person",
             "address": {
                 "__type": "Address",
@@ -228,7 +228,7 @@
                 "Professor für Iberoromanische Literaturwissenschaft"
             ],
             "affiliation": [
-                "http://ns.dasch.swiss/repository#dsp-086a-organization-000"
+                "http://ns.dasch.swiss/repository#dsp-086A-organization-000"
             ],
             "authorityRefs": [
                 {
@@ -240,7 +240,7 @@
             ]
         },
         {
-            "__id": "http://ns.dasch.swiss/repository#dsp-086a-person-001",
+            "__id": "http://ns.dasch.swiss/repository#dsp-086A-person-001",
             "__type": "Person",
             "address": {
                 "__type": "Address",
@@ -260,7 +260,7 @@
                 "Assistant Professor"
             ],
             "affiliation": [
-                "http://ns.dasch.swiss/repository#dsp-086a-organization-000"
+                "http://ns.dasch.swiss/repository#dsp-086A-organization-000"
             ],
             "authorityRefs": [
                 {
@@ -272,7 +272,7 @@
             ]
         },
         {
-            "__id": "http://ns.dasch.swiss/repository#dsp-086a-person-002",
+            "__id": "http://ns.dasch.swiss/repository#dsp-086A-person-002",
             "__type": "Person",
             "address": {
                 "__type": "Address",
@@ -292,7 +292,7 @@
                 "Assistant Professor"
             ],
             "affiliation": [
-                "http://ns.dasch.swiss/repository#dsp-086a-organization-000"
+                "http://ns.dasch.swiss/repository#dsp-086A-organization-000"
             ],
             "authorityRefs": [
                 {
@@ -304,7 +304,7 @@
             ]
         },
         {
-            "__id": "http://ns.dasch.swiss/repository#dsp-086a-person-003",
+            "__id": "http://ns.dasch.swiss/repository#dsp-086A-person-003",
             "__type": "Person",
             "address": {
                 "__type": "Address",
@@ -324,7 +324,7 @@
                 "Assistant Professor"
             ],
             "affiliation": [
-                "http://ns.dasch.swiss/repository#dsp-086a-organization-000"
+                "http://ns.dasch.swiss/repository#dsp-086A-organization-000"
             ],
             "authorityRefs": [
                 {
@@ -338,7 +338,7 @@
     ],
     "organizations": [
         {
-            "__id": "http://ns.dasch.swiss/repository#dsp-086a-organization-000",
+            "__id": "http://ns.dasch.swiss/repository#dsp-086A-organization-000",
             "__type": "Organization",
             "address": {
                 "__type": "Address",
@@ -350,7 +350,7 @@
             "name": "Iberoromanistik Department, Universität Basel"
         },
         {
-            "__id": "http://ns.dasch.swiss/repository#dsp-086a-organization-001",
+            "__id": "http://ns.dasch.swiss/repository#dsp-086A-organization-001",
             "__type": "Organization",
             "address": {
                 "__type": "Address",
@@ -370,10 +370,10 @@
     ],
     "grants": [
         {
-            "__id": "http://ns.dasch.swiss/repository#dsp-086a-grant-000",
+            "__id": "http://ns.dasch.swiss/repository#dsp-086A-grant-000",
             "__type": "Grant",
             "funders": [
-                "http://ns.dasch.swiss/repository#dsp-086a-organization-001"
+                "http://ns.dasch.swiss/repository#dsp-086A-organization-001"
             ],
             "name": "Project Funding",
             "number": "204389",
