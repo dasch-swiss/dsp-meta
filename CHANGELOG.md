@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.14](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.13...dsp-meta-v2.4.14) (2026-04-20)
+
+
+### Project Data
+
+* New metadata (086a) MSSL ([#493](https://github.com/dasch-swiss/dsp-meta/issues/493)) ([be4fb9a](https://github.com/dasch-swiss/dsp-meta/commit/be4fb9a183c70683218d4ac458af5fb57dea26e0))
+
 ## [2.4.13](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.12...dsp-meta-v2.4.13) (2026-04-04)
 
 
