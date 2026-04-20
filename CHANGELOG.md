@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.4.15](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.14...dsp-meta-v2.4.15) (2026-04-20)
+
+
+### Maintenances
+
+* **deps:** Bump picomatch from 4.0.2 to 4.0.4 ([#486](https://github.com/dasch-swiss/dsp-meta/issues/486)) ([da5d4d7](https://github.com/dasch-swiss/dsp-meta/commit/da5d4d7979c3bffd636cea6001bb2c24f5fc0892))
+
+
+### Project Data
+
+* Metadata update (086a) MSSL ([#495](https://github.com/dasch-swiss/dsp-meta/issues/495)) ([b6d6b15](https://github.com/dasch-swiss/dsp-meta/commit/b6d6b15ccbea94d7bfef9777cc7aff9199989838))
+
 ## [2.4.14](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.13...dsp-meta-v2.4.14) (2026-04-20)
 
 
