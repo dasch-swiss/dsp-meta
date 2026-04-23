@@ -72,6 +72,12 @@
     "url": {
       "__type": "URL",
       "type": "URL",
+      "url": "https://app.dasch.swiss/project/bduDoIi8ShmgHXOAten_Ww",
+      "text": "Discover Project Data"
+    },
+    "secondaryURL": {
+      "__type": "URL",
+      "type": "URL",
       "url": "https://nietzsche.philhist.unibas.ch",
       "text": "External Project Website"
     },
