@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.16](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.15...dsp-meta-v2.4.16) (2026-04-23)
+
+
+### Project Data
+
+* Add dsp-app data link to nietzsche-me (DEV-6293) ([#497](https://github.com/dasch-swiss/dsp-meta/issues/497)) ([622a202](https://github.com/dasch-swiss/dsp-meta/commit/622a2026b843429247edb289e70f7ed658862ad8))
+
 ## [2.4.15](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.14...dsp-meta-v2.4.15) (2026-04-20)
 
 
