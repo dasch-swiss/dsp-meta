@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.17](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.16...dsp-meta-v2.4.17) (2026-04-27)
+
+
+### Maintenances
+
+* **deps-dev:** Bump the frontend-dependencies group across 1 directory with 2 updates ([#492](https://github.com/dasch-swiss/dsp-meta/issues/492)) ([bb67c45](https://github.com/dasch-swiss/dsp-meta/commit/bb67c453de42937cd14ad9caaf12683a89430c69))
+
 ## [2.4.16](https://github.com/dasch-swiss/dsp-meta/compare/dsp-meta-v2.4.15...dsp-meta-v2.4.16) (2026-04-23)
 
 
